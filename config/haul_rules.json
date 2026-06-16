@@ -1,0 +1,20 @@
+{
+  "default_price_ceiling": 20,
+  "category_price_ceiling": {
+    "home": 20,
+    "kitchen": 20,
+    "toy": 20,
+    "pet": 20,
+    "beauty": 15,
+    "electronics": 20
+  },
+  "blocked_category_keywords": [
+    "food",
+    "supplement",
+    "medicine",
+    "medical",
+    "skin care",
+    "topical",
+    "cosmetic"
+  ]
+}

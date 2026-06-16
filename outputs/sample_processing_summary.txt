@@ -1,0 +1,3 @@
+SKU DEMO-STORAGE-BAG-001 failed with error 90041: Missing required field item_name.
+SKU DEMO-STORAGE-BAG-002 failed with error 100643: Brand must be Generic for Haul.
+SKU DEMO-STORAGE-BAG-003 warning 18320: Main image is missing.

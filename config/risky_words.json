@@ -1,0 +1,30 @@
+{
+  "high_risk_categories": [
+    "food",
+    "supplement",
+    "skin care",
+    "medical",
+    "medicine",
+    "health"
+  ],
+  "claim_words": [
+    "cure",
+    "treat",
+    "healing",
+    "therapy",
+    "therapeutic",
+    "pain relief",
+    "anti anxiety",
+    "medical grade",
+    "guaranteed",
+    "best",
+    "permanent"
+  ],
+  "generic_forbidden_brand_hints": [
+    "brand",
+    "logo",
+    "trademark",
+    "official",
+    "licensed"
+  ]
+}

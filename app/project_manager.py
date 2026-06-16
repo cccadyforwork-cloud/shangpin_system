@@ -1,0 +1,50 @@
+from datetime import datetime
+from pathlib import Path
+
+from .paths import PROJECTS_DIR, PROJECT_FOLDERS, ensure_base_dirs, safe_name
+from .workbook_io import create_intake_workbook
+
+
+def create_project(project_name):
+    ensure_base_dirs()
+    stamp = datetime.now().strftime("%Y%m%d")
+    folder_name = f"{stamp}_{safe_name(project_name)}"
+    project_dir = PROJECTS_DIR / folder_name
+    project_dir.mkdir(parents=True, exist_ok=True)
+
+    for folder in PROJECT_FOLDERS:
+        (project_dir / folder).mkdir(exist_ok=True)
+
+    intake_path = project_dir / "07_上架备注" / f"{safe_name(project_name)}_产品资料.xlsx"
+    if not intake_path.exists():
+        create_intake_workbook(intake_path)
+
+    readme_path = project_dir / "README.md"
+    if not readme_path.exists():
+        readme_path.write_text(
+            "\n".join([
+                f"# {project_name}",
+                "",
+                "## 最简执行顺序",
+                "",
+                "1. 收资料",
+                "2. 判断 Generic 还是品牌路线",
+                "3. 解析模板",
+                "4. 填基础字段",
+                "5. 换算尺寸重量",
+                "6. 写标题、五点、描述",
+                "7. 上传前自检",
+                "8. 上传",
+                "9. 看 processing summary",
+                "10. 按错误码修下一版",
+                ""
+            ]),
+            encoding="utf-8"
+        )
+
+    return project_dir, intake_path
+
+
+def list_projects():
+    ensure_base_dirs()
+    return sorted([path for path in PROJECTS_DIR.iterdir() if path.is_dir()])

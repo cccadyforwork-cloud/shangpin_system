@@ -1,0 +1,1444 @@
+{
+  "records": [
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v1xlsx-processing-summary.xlsm",
+      "code": "90244",
+      "category": "ERROR",
+      "message": "We can't accept the No you entered for Dangerous Goods Regulations. To fix this, select an approved value from the list for your product category and resubmit.",
+      "field": "Dangerous Goods Regulations (ER7)",
+      "sku": "YOGA-Block-Black",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "普通非危险品应填 Not Applicable，不要填 No；如是液体、化学品、喷雾、带电池产品需单独判断。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v1xlsx-processing-summary.xlsm",
+      "code": "90244",
+      "category": "ERROR",
+      "message": "We can't accept the No you entered for Dangerous Goods Regulations. To fix this, select an approved value from the list for your product category and resubmit.",
+      "field": "Dangerous Goods Regulations (ER8)",
+      "sku": "YOGA-Block-Green",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "普通非危险品应填 Not Applicable，不要填 No；如是液体、化学品、喷雾、带电池产品需单独判断。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v1xlsx-processing-summary.xlsm",
+      "code": "90244",
+      "category": "ERROR",
+      "message": "We can't accept the No you entered for Dangerous Goods Regulations. To fix this, select an approved value from the list for your product category and resubmit.",
+      "field": "Dangerous Goods Regulations (ER9)",
+      "sku": "YOGA-Block-Pink",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "普通非危险品应填 Not Applicable，不要填 No；如是液体、化学品、喷雾、带电池产品需单独判断。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v1xlsx-processing-summary.xlsm",
+      "code": "90244",
+      "category": "ERROR",
+      "message": "We can't accept the No you entered for Dangerous Goods Regulations. To fix this, select an approved value from the list for your product category and resubmit.",
+      "field": "Dangerous Goods Regulations (ER10)",
+      "sku": "YOGA-Block-Purple",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "普通非危险品应填 Not Applicable，不要填 No；如是液体、化学品、喷雾、带电池产品需单独判断。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v1xlsx-processing-summary.xlsm",
+      "code": "90244",
+      "category": "ERROR",
+      "message": "We can't accept the No you entered for Dangerous Goods Regulations. To fix this, select an approved value from the list for your product category and resubmit.",
+      "field": "Dangerous Goods Regulations (ER11)",
+      "sku": "YOGA-Block-Blue",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "普通非危险品应填 Not Applicable，不要填 No；如是液体、化学品、喷雾、带电池产品需单独判断。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Material' is required but missing.",
+      "field": "Material (AP7)",
+      "sku": "YOGA-Block-Black",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'List Price' is required but missing.",
+      "field": "List Price (CH7)",
+      "sku": "YOGA-Block-Black",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "List Price 上传前必须填数字；Haul Price / BZR Price 通常也要同步填写。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Material' is required but missing.",
+      "field": "Material (AP8)",
+      "sku": "YOGA-Block-Green",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'List Price' is required but missing.",
+      "field": "List Price (CH8)",
+      "sku": "YOGA-Block-Green",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "List Price 上传前必须填数字；Haul Price / BZR Price 通常也要同步填写。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Material' is required but missing.",
+      "field": "Material (AP9)",
+      "sku": "YOGA-Block-Pink",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'List Price' is required but missing.",
+      "field": "List Price (CH9)",
+      "sku": "YOGA-Block-Pink",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "List Price 上传前必须填数字；Haul Price / BZR Price 通常也要同步填写。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Material' is required but missing.",
+      "field": "Material (AP10)",
+      "sku": "YOGA-Block-Purple",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'List Price' is required but missing.",
+      "field": "List Price (CH10)",
+      "sku": "YOGA-Block-Purple",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "List Price 上传前必须填数字；Haul Price / BZR Price 通常也要同步填写。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Material' is required but missing.",
+      "field": "Material (AP11)",
+      "sku": "YOGA-Block-Blue",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T22:34:24",
+      "product_name": "彩色瑜伽砖",
+      "source_path": "/Users/admin/Downloads/彩色瑜伽砖_v2_dangerous_goods_fix-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'List Price' is required but missing.",
+      "field": "List Price (CH11)",
+      "sku": "YOGA-Block-Blue",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "List Price 上传前必须填数字；Haul Price / BZR Price 通常也要同步填写。",
+      "note": "瑜伽砖首次上传复盘：DG No 应改 Not Applicable；后续版本若缺 Material/List Price 也会失败。"
+    },
+    {
+      "learned_at": "2026-06-04T23:03:00",
+      "product_name": "花束卡片夹",
+      "source_path": "/Users/admin/Downloads/花束卡片夹_v2_user_specs-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Item depth Unit' is required but missing.",
+      "field": "Item Depth Unit (BT7)",
+      "sku": "CardPick-Circle-10",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "模板专属条件必填：当模板包含 item_depth_width_height 字段，且该 product_type/模板触发本体尺寸时，Item Depth/Height/Width 的数值和单位必须成对填写；不要套用到没有这些字段的模板。",
+      "note": "Item Depth/Height/Width 这类本体尺寸字段需要数值和单位成对填写；BOOK_DOCUMENT_STAND 触发 Item Depth Unit 条件必填。"
+    },
+    {
+      "learned_at": "2026-06-04T23:03:00",
+      "product_name": "花束卡片夹",
+      "source_path": "/Users/admin/Downloads/花束卡片夹_v2_user_specs-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Item depth Unit' is required but missing.",
+      "field": "Item Depth Unit (BT8)",
+      "sku": "CardPick-Stars-10",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "模板专属条件必填：当模板包含 item_depth_width_height 字段，且该 product_type/模板触发本体尺寸时，Item Depth/Height/Width 的数值和单位必须成对填写；不要套用到没有这些字段的模板。",
+      "note": "Item Depth/Height/Width 这类本体尺寸字段需要数值和单位成对填写；BOOK_DOCUMENT_STAND 触发 Item Depth Unit 条件必填。"
+    },
+    {
+      "learned_at": "2026-06-04T23:03:00",
+      "product_name": "花束卡片夹",
+      "source_path": "/Users/admin/Downloads/花束卡片夹_v2_user_specs-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Item depth Unit' is required but missing.",
+      "field": "Item Depth Unit (BT9)",
+      "sku": "CardPick-Heart-10",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "模板专属条件必填：当模板包含 item_depth_width_height 字段，且该 product_type/模板触发本体尺寸时，Item Depth/Height/Width 的数值和单位必须成对填写；不要套用到没有这些字段的模板。",
+      "note": "Item Depth/Height/Width 这类本体尺寸字段需要数值和单位成对填写；BOOK_DOCUMENT_STAND 触发 Item Depth Unit 条件必填。"
+    },
+    {
+      "learned_at": "2026-06-04T23:03:00",
+      "product_name": "花束卡片夹",
+      "source_path": "/Users/admin/Downloads/花束卡片夹_v2_user_specs-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Item depth Unit' is required but missing.",
+      "field": "Item Depth Unit (BT10)",
+      "sku": "CardPick-Circle-Pink-10",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "模板专属条件必填：当模板包含 item_depth_width_height 字段，且该 product_type/模板触发本体尺寸时，Item Depth/Height/Width 的数值和单位必须成对填写；不要套用到没有这些字段的模板。",
+      "note": "Item Depth/Height/Width 这类本体尺寸字段需要数值和单位成对填写；BOOK_DOCUMENT_STAND 触发 Item Depth Unit 条件必填。"
+    },
+    {
+      "learned_at": "2026-06-04T23:03:00",
+      "product_name": "花束卡片夹",
+      "source_path": "/Users/admin/Downloads/花束卡片夹_v2_user_specs-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Item depth Unit' is required but missing.",
+      "field": "Item Depth Unit (BT11)",
+      "sku": "CardPick-Bear-Gold-10",
+      "summary": {
+        "processed": "5",
+        "successful": "0",
+        "unsuccessful": "5",
+        "warnings": "0"
+      },
+      "rule_hint": "模板专属条件必填：当模板包含 item_depth_width_height 字段，且该 product_type/模板触发本体尺寸时，Item Depth/Height/Width 的数值和单位必须成对填写；不要套用到没有这些字段的模板。",
+      "note": "Item Depth/Height/Width 这类本体尺寸字段需要数值和单位成对填写；BOOK_DOCUMENT_STAND 触发 Item Depth Unit 条件必填。"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Neck Style' is required but missing.",
+      "field": "Number of attributes with errors (B7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Target Gender' is required but missing.",
+      "field": "Number of attributes with errors (B7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Sleeve Type' is required but missing.",
+      "field": "Number of attributes with errors (B7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Shirt Size Class' is required but missing.",
+      "field": "Number of attributes with errors (B7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Care Instructions' is required but missing.",
+      "field": "Number of attributes with errors (B7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Model Name' is required but missing.",
+      "field": "Model Name (S7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Style' is required but missing.",
+      "field": "Style (AS7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Department Name' is required but missing.",
+      "field": "Department Name (AT7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Age Range Description' is required but missing.",
+      "field": "Age Range Description (AU7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Fabric Type' is required but missing.",
+      "field": "Fabric Type (AY7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Size that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Size (BE7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Fit Type' is required but missing.",
+      "field": "Fit Type (BG7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Palm Style that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Palm Style (EL7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Glove Or Mitt that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Glove Or Mitt (FE7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Glove Liner Material that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Glove Liner Material (FK7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Base Coating Material that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Base Coating Material (HE7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Import Designation' is required but missing.",
+      "field": "Import Designation (IL7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Are batteries required? that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Are batteries required? (JV7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Are batteries included? that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Are batteries included? (JW7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Dangerous Goods Regulations that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Dangerous Goods Regulations (KL7)",
+      "sku": "GardenGlove-Purple-Violet",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "普通非危险品应填 Not Applicable，不要填 No；如是液体、化学品、喷雾、带电池产品需单独判断。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Neck Style' is required but missing.",
+      "field": "Number of attributes with errors (B8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Target Gender' is required but missing.",
+      "field": "Number of attributes with errors (B8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Sleeve Type' is required but missing.",
+      "field": "Number of attributes with errors (B8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Shirt Size Class' is required but missing.",
+      "field": "Number of attributes with errors (B8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Care Instructions' is required but missing.",
+      "field": "Number of attributes with errors (B8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Model Name' is required but missing.",
+      "field": "Model Name (S8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Style' is required but missing.",
+      "field": "Style (AS8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Department Name' is required but missing.",
+      "field": "Department Name (AT8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Age Range Description' is required but missing.",
+      "field": "Age Range Description (AU8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Fabric Type' is required but missing.",
+      "field": "Fabric Type (AY8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Size that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Size (BE8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Fit Type' is required but missing.",
+      "field": "Fit Type (BG8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Palm Style that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Palm Style (EL8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Glove Or Mitt that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Glove Or Mitt (FE8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Glove Liner Material that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Glove Liner Material (FK8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Base Coating Material that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Base Coating Material (HE8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Import Designation' is required but missing.",
+      "field": "Import Designation (IL8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Are batteries required? that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Are batteries required? (JV8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Are batteries included? that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Are batteries included? (JW8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Dangerous Goods Regulations that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Dangerous Goods Regulations (KL8)",
+      "sku": "GardenGlove-Green-Hibiscus",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "普通非危险品应填 Not Applicable，不要填 No；如是液体、化学品、喷雾、带电池产品需单独判断。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Neck Style' is required but missing.",
+      "field": "Number of attributes with errors (B9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Target Gender' is required but missing.",
+      "field": "Number of attributes with errors (B9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Sleeve Type' is required but missing.",
+      "field": "Number of attributes with errors (B9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Shirt Size Class' is required but missing.",
+      "field": "Number of attributes with errors (B9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Care Instructions' is required but missing.",
+      "field": "Number of attributes with errors (B9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Model Name' is required but missing.",
+      "field": "Model Name (S9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Style' is required but missing.",
+      "field": "Style (AS9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Department Name' is required but missing.",
+      "field": "Department Name (AT9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Age Range Description' is required but missing.",
+      "field": "Age Range Description (AU9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Fabric Type' is required but missing.",
+      "field": "Fabric Type (AY9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Size that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Size (BE9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Fit Type' is required but missing.",
+      "field": "Fit Type (BG9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Palm Style that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Palm Style (EL9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Glove Or Mitt that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Glove Or Mitt (FE9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Glove Liner Material that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Glove Liner Material (FK9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Base Coating Material that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Base Coating Material (HE9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "Material 在很多类目会条件必填；从采购资料或产品材质中提前填入，并确认值在 Valid Values 中。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Import Designation' is required but missing.",
+      "field": "Import Designation (IL9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Are batteries required? that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Are batteries required? (JV9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Are batteries included? that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Are batteries included? (JW9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-06-06T21:10:42",
+      "product_name": "花园艺手套",
+      "source_path": "/Users/admin/Downloads/花园艺手套_v1_upload-processing-summary.xlsm",
+      "code": "90000900",
+      "category": "WARNING",
+      "message": "You submitted an attribute Dangerous Goods Regulations that does not belong or is no longer applicable to the product type you were trying to list. We are ignoring the value and processing your submission to ensure a smoother listing experience.",
+      "field": "Dangerous Goods Regulations (KL9)",
+      "sku": "GardenGlove-Gray-BlackGrip",
+      "summary": {
+        "processed": "3",
+        "successful": "0",
+        "unsuccessful": "3",
+        "warnings": "3"
+      },
+      "rule_hint": "普通非危险品应填 Not Applicable，不要填 No；如是液体、化学品、喷雾、带电池产品需单独判断。",
+      "note": "v1_upload processing summary"
+    }
+  ]
+}
