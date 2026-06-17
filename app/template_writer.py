@@ -4,6 +4,7 @@ from shutil import copyfile
 from openpyxl import load_workbook
 
 from .paths import PROJECTS_DIR, safe_name
+from .template_sheet import find_template_sheet, template_sheet_names_text
 from .workbook_io import read_intake_rows
 
 
@@ -137,9 +138,9 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
     copyfile(template_path, output_path)
 
     wb = load_workbook(output_path, keep_vba=output_path.suffix.lower() == ".xlsm")
-    if "Template" not in wb.sheetnames:
-        raise ValueError(f"模板里没有 Template 页：{template_path}")
-    ws = wb["Template"]
+    ws = find_template_sheet(wb)
+    if ws is None:
+        raise ValueError(f"模板里没有 {template_sheet_names_text()} 页：{template_path}")
 
     field_to_col = {}
     for col in range(1, ws.max_column + 1):

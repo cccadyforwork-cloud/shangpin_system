@@ -155,9 +155,25 @@ python3 run.py learn-report "/路径/v1-processing-summary.xlsm" "/路径/v2-pro
 - 模板字段规则：只有模板存在对应字段时才检查，例如 `item_depth_width_height` 的数值和单位配套。
 - Product Type 规则：只对相同或相近 `product_type` 生效，不要直接套用到所有类目。
 
+## 成功上传模板样板库
+
+桌面 `亚马逊上传表格存档` 里的成功上传文件已整理到：
+
+```bash
+data/success_templates/
+```
+
+这些文件用于：
+
+- 对照不同 Product Type 的真实成功字段。
+- 提炼字段默认值、条件必填字段和类目差异。
+- 作为后续自动填表逻辑的回归样本。
+
+注意：这些是成功样板，不建议直接覆盖业务项目里的填表版本。新增产品仍应放到 `data/projects/` 下运行自动填表。
+
 ## 后续扩展方向
 
-1. 增加亚马逊模板字段映射，自动填 `Template/模板` 页。
+1. 从 `data/success_templates/` 提炼成功模板规则，反哺字段映射和自检。
 2. 增加 Data Definitions/数据定义 解析，自动判断条件必填。
 3. 增加图片 URL 检查。
 4. 增加英文标题、五点、描述生成。

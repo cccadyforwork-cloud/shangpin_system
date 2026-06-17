@@ -3,6 +3,7 @@ from pathlib import Path
 from openpyxl import load_workbook
 
 from .paths import OUTPUTS_DIR, safe_name
+from .template_sheet import find_template_sheet
 
 
 def _text(value):
@@ -55,8 +56,9 @@ def inspect_template(template_path, output_path=None):
             if findings["product_type"] and findings["product_type"] != "ACCESSORY":
                 break
 
-    if "Template" in wb.sheetnames:
-        ws = wb["Template"]
+    template_ws = find_template_sheet(wb)
+    if template_ws is not None:
+        ws = template_ws
         settings = _text(ws.cell(1, 1).value)
         marker = "ptds="
         if marker in settings:
@@ -81,8 +83,8 @@ def inspect_template(template_path, output_path=None):
                 findings["browse_node"] = _text(row[0])
                 break
 
-    if "Template" in wb.sheetnames:
-        ws = wb["Template"]
+    if template_ws is not None:
+        ws = template_ws
         labels = [_text(cell.value) for cell in ws[4]]
         field_names = [_text(cell.value) for cell in ws[5]]
         for idx, field_name in enumerate(field_names, 1):

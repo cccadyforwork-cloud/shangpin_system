@@ -3,6 +3,7 @@ from pathlib import Path
 from openpyxl import load_workbook
 
 from .paths import OUTPUTS_DIR
+from .template_sheet import find_template_sheet, template_sheet_names_text
 
 
 FIELD_NAMES = {
@@ -40,9 +41,9 @@ PRODUCT_TYPE_CONDITIONAL_FIELDS = {
 def validate_template_file(path, output_path=None):
     path = Path(path)
     wb = load_workbook(path, data_only=True, read_only=True)
-    if "Template" not in wb.sheetnames:
-        raise ValueError(f"文件没有 Template 页：{path}")
-    ws = wb["Template"]
+    ws = find_template_sheet(wb)
+    if ws is None:
+        raise ValueError(f"文件没有 {template_sheet_names_text()} 页：{path}")
     field_to_col = {
         str(ws.cell(5, col).value).strip(): col
         for col in range(1, ws.max_column + 1)
