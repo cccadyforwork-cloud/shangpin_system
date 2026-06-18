@@ -33,6 +33,28 @@ python3 run.py new-project "黑色收纳袋"
 
 产品资料表会放在 `07_上架备注` 里。
 
+## 查看项目状态
+
+```bash
+python3 run.py list-projects
+```
+
+系统会汇总显示：
+
+- 项目目录
+- 产品名
+- 当前状态
+- SKU 数
+- 模板自检错误数
+- 最新模板
+- 最近更新时间
+
+如果只想输出项目路径：
+
+```bash
+python3 run.py list-projects --paths
+```
+
 ## 上传前自检
 
 ```bash
@@ -155,6 +177,26 @@ python3 run.py learn-report "/路径/v1-processing-summary.xlsm" "/路径/v2-pro
 - 模板字段规则：只有模板存在对应字段时才检查，例如 `item_depth_width_height` 的数值和单位配套。
 - Product Type 规则：只对相同或相近 `product_type` 生效，不要直接套用到所有类目。
 
+## 标记上传成功
+
+Amazon 后台确认上传成功后，把项目状态沉淀下来：
+
+```bash
+python3 run.py mark-uploaded "data/projects/日期_产品名"
+```
+
+默认会自动取 `05_填表版本` 里的最新模板。也可以手动指定：
+
+```bash
+python3 run.py mark-uploaded "data/projects/日期_产品名" \
+  --template "data/projects/日期_产品名/05_填表版本/成功模板.xlsx" \
+  --sku-count 5 \
+  --uploaded-at 2026-06-18 \
+  --note "后台确认上传成功"
+```
+
+这会更新项目里的 `project_status.json`，后续 `auto-fill` 默认会跳过已成功上传的项目，避免误覆盖。
+
 ## 成功上传模板样板库
 
 桌面 `亚马逊上传表格存档` 里的成功上传文件已整理到：
@@ -176,5 +218,5 @@ data/success_templates/
 1. 从 `data/success_templates/` 提炼成功模板规则，反哺字段映射和自检。
 2. 增加 Data Definitions/数据定义 解析，自动判断条件必填。
 3. 增加图片 URL 检查。
-4. 增加英文标题、五点、描述生成。
+4. 增加基础测试，覆盖自动填表、状态读写和模板自检。
 5. 做一个本地网页界面，减少命令行操作。

@@ -12,6 +12,8 @@
 - 将上传报错沉淀到复盘库。
 - 通过 `project_status.json` 记录每个项目的流程状态。
 - 通过 `auto-fill` 命令串联自动提炼、写模板和模板自检。
+- 通过 `list-projects` 汇总显示项目状态、SKU 数、错误数和最新模板。
+- 通过 `mark-uploaded` 命令在上传成功后更新项目状态。
 - 通过 `data/success_templates/` 保存已成功上传表格样板，用于后续规则学习。
 
 ## 已验证样品
@@ -34,13 +36,14 @@
 python3 run.py list-projects
 python3 run.py auto-fill "data/projects/项目目录"
 python3 run.py auto-fill "data/projects/项目目录" --force
+python3 run.py mark-uploaded "data/projects/项目目录"
 python3 run.py check-template "路径/已填写模板.xlsx"
 python3 run.py learn-report "路径/processing-summary.xlsx" --product "产品名"
 ```
 
 ## 下一步建议
 
-1. 给 `list-projects` 增加项目状态汇总显示。
-2. 给成功上传后的项目增加 `mark-uploaded` 命令，减少手动编辑 JSON。
-3. 根据三款成功上传样品和 `data/success_templates/` 继续固化 product type 专属字段规则。
-4. 增加基础测试，覆盖 `auto-fill`、状态读写和模板自检。
+1. 根据三款成功上传样品和 `data/success_templates/` 继续固化 product type 专属字段规则。
+2. 增加图片 URL 检查。
+3. 增加基础测试，覆盖 `auto-fill`、状态读写和模板自检。
+4. 设计本地网页界面，减少命令行操作。

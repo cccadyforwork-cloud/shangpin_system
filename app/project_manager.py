@@ -2,6 +2,7 @@ from datetime import datetime
 from pathlib import Path
 
 from .paths import PROJECTS_DIR, PROJECT_FOLDERS, ensure_base_dirs, safe_name
+from .project_status import load_project_status
 from .workbook_io import create_intake_workbook
 
 
@@ -48,3 +49,28 @@ def create_project(project_name):
 def list_projects():
     ensure_base_dirs()
     return sorted([path for path in PROJECTS_DIR.iterdir() if path.is_dir()])
+
+
+def list_project_summaries():
+    summaries = []
+    for project_dir in list_projects():
+        status = load_project_status(project_dir)
+        summaries.append({
+            "project_dir": project_dir,
+            "folder": project_dir.name,
+            "product_name": status.get("product_name") or _name_from_folder(project_dir.name),
+            "status": status.get("status") or "not_started",
+            "sku_count": status.get("sku_count") or status.get("verification_sku_count") or "",
+            "template_error_count": status.get("template_error_count"),
+            "latest_template": status.get("latest_template") or status.get("verification_template") or "",
+            "updated_at": status.get("updated_at") or "",
+            "blocked_reason": status.get("blocked_reason") or "",
+        })
+    return summaries
+
+
+def _name_from_folder(folder_name):
+    parts = folder_name.split("_", 1)
+    if len(parts) == 2 and parts[0].isdigit():
+        return parts[1]
+    return folder_name

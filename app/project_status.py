@@ -2,6 +2,8 @@ import json
 from datetime import date, datetime
 from pathlib import Path
 
+from .workbook_io import read_intake_rows
+
 
 STATUS_FILE = "project_status.json"
 
@@ -50,3 +52,64 @@ def mark_uploaded_success(project_dir, product_name, latest_template, sku_count=
         "uploaded_at": uploaded_at or date.today().isoformat(),
         "notes": notes,
     })
+
+
+def infer_latest_template(project_dir):
+    project_dir = Path(project_dir)
+    candidates = []
+    for folder in ("05_填表版本", "04_模板原件"):
+        template_dir = project_dir / folder
+        if not template_dir.exists():
+            continue
+        for path in template_dir.glob("*"):
+            if path.name.startswith("~$"):
+                continue
+            if path.suffix.lower() not in {".xlsx", ".xlsm"}:
+                continue
+            if "产品资料" in path.name or "自动提炼草稿" in path.name:
+                continue
+            candidates.append(path)
+    if not candidates:
+        return None
+    return sorted(candidates, key=lambda path: path.stat().st_mtime, reverse=True)[0]
+
+
+def infer_product_name(project_dir, explicit_name=""):
+    if explicit_name:
+        return explicit_name
+    status = load_project_status(project_dir)
+    if status.get("product_name"):
+        return status["product_name"]
+    name = Path(project_dir).name
+    parts = name.split("_", 1)
+    if len(parts) == 2 and parts[0].isdigit():
+        return parts[1]
+    return name
+
+
+def infer_sku_count(project_dir, explicit_count=None):
+    if explicit_count is not None:
+        return explicit_count
+    status = load_project_status(project_dir)
+    for key in ("sku_count", "verification_sku_count"):
+        if status.get(key):
+            return status[key]
+    project_dir = Path(project_dir)
+    draft_dir = project_dir / "07_上架备注"
+    candidates = sorted(
+        [
+            path for path in draft_dir.glob("*.xlsx")
+            if not path.name.startswith("~$")
+            and ("自动提炼草稿" in path.name or "产品资料" in path.name)
+        ],
+        key=lambda path: path.stat().st_mtime,
+        reverse=True,
+    )
+    for path in candidates:
+        try:
+            rows = read_intake_rows(path)
+        except Exception:
+            continue
+        if rows:
+            return len(rows)
+    return None
