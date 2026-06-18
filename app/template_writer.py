@@ -4,6 +4,7 @@ from shutil import copyfile
 from openpyxl import load_workbook
 
 from .paths import PROJECTS_DIR, safe_name
+from .success_rule_defaults import load_safe_defaults
 from .template_sheet import find_template_sheet, template_sheet_names_text
 from .workbook_io import read_intake_rows
 
@@ -152,6 +153,7 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
 
     start_row = 7
     written_fields = []
+    rule_written_fields = []
     for row_index, row_data in enumerate(rows, start_row):
         for field_name, source in FIELD_MAP.items():
             col = field_to_col.get(field_name)
@@ -163,10 +165,23 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
             ws.cell(row_index, col).value = value
             written_fields.append(field_name)
 
+        rule_defaults = load_safe_defaults(
+            row_data.get("product_type"),
+            existing_fields=FIELD_MAP.keys(),
+        )
+        for field_name, value in rule_defaults.items():
+            col = field_to_col.get(field_name)
+            if not col:
+                continue
+            if ws.cell(row_index, col).value not in (None, ""):
+                continue
+            ws.cell(row_index, col).value = value
+            rule_written_fields.append(field_name)
+
     wb.save(output_path)
     report_path = output_path.with_name(f"{output_path.stem}_写入报告.md")
-    write_fill_report(report_path, output_path, draft_path, template_path, rows, written_fields)
-    return output_path, draft_path, template_path, sorted(set(written_fields))
+    write_fill_report(report_path, output_path, draft_path, template_path, rows, written_fields, rule_written_fields)
+    return output_path, draft_path, template_path, sorted(set(written_fields + rule_written_fields))
 
 
 def clear_template_data(ws):
@@ -175,7 +190,8 @@ def clear_template_data(ws):
             ws.cell(row, col).value = None
 
 
-def write_fill_report(path, output_path, draft_path, template_path, rows, written_fields):
+def write_fill_report(path, output_path, draft_path, template_path, rows, written_fields, rule_written_fields=None):
+    rule_written_fields = rule_written_fields or []
     first = rows[0]
     lines = [
         f"# {Path(output_path).name} 写入报告",
@@ -185,6 +201,7 @@ def write_fill_report(path, output_path, draft_path, template_path, rows, writte
         f"- 模板来源：{template_path}",
         f"- 写入 SKU 数：{len(rows)}",
         f"- 写入字段数：{len(set(written_fields))}",
+        f"- 成功规则补字段数：{len(set(rule_written_fields))}",
         "",
         "## 关键字段",
         "",
@@ -202,4 +219,8 @@ def write_fill_report(path, output_path, draft_path, template_path, rows, writte
     ]
     for field_name in sorted(set(written_fields)):
         lines.append(f"- `{field_name}`")
+    if rule_written_fields:
+        lines.extend(["", "## 成功规则补写字段", ""])
+        for field_name in sorted(set(rule_written_fields)):
+            lines.append(f"- `{field_name}`")
     Path(path).write_text("\n".join(lines), encoding="utf-8")

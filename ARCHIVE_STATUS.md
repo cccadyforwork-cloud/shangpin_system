@@ -15,6 +15,9 @@
 - 通过 `list-projects` 汇总显示项目状态、SKU 数、错误数和最新模板。
 - 通过 `mark-uploaded` 命令在上传成功后更新项目状态。
 - 通过 `data/success_templates/` 保存已成功上传表格样板，用于后续规则学习。
+- 通过 `learn-success-templates` 从成功样板中提炼 Product Type 字段规则。
+- `fill-template` / `auto-fill` 已开始保守接入成功规则，只补低风险默认值且不覆盖已有内容。
+- 通过 `workbench` 启动本地网页工作台，查看项目状态、执行自动填表、标记上传成功和查看规则库。
 
 ## 已验证样品
 
@@ -37,13 +40,15 @@ python3 run.py list-projects
 python3 run.py auto-fill "data/projects/项目目录"
 python3 run.py auto-fill "data/projects/项目目录" --force
 python3 run.py mark-uploaded "data/projects/项目目录"
+python3 run.py learn-success-templates
+python3 run.py workbench
 python3 run.py check-template "路径/已填写模板.xlsx"
 python3 run.py learn-report "路径/processing-summary.xlsx" --product "产品名"
 ```
 
 ## 下一步建议
 
-1. 根据三款成功上传样品和 `data/success_templates/` 继续固化 product type 专属字段规则。
-2. 增加图片 URL 检查。
-3. 增加基础测试，覆盖 `auto-fill`、状态读写和模板自检。
-4. 设计本地网页界面，减少命令行操作。
+1. 在工作台里增加资料放置指引和文件打开按钮。
+2. 继续扩大安全默认值范围，按 Product Type 补更多稳定字段。
+3. 增加图片 URL 检查。
+4. 增加基础测试，覆盖 `auto-fill`、状态读写和模板自检。

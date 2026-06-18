@@ -8,10 +8,12 @@ from .paths import TEMPLATES_DIR, ensure_base_dirs
 from .project_manager import create_project, list_project_summaries, list_projects
 from .project_status import infer_latest_template, infer_product_name, infer_sku_count, mark_uploaded_success
 from .report_parser import parse_processing_summary
+from .success_templates import learn_success_templates
 from .template_inspector import inspect_template
 from .template_validator import validate_template_file
 from .template_writer import fill_template
 from .validator import validate_intake, write_validation_report
+from .workbench import run_workbench
 from .workbook_io import create_intake_workbook
 
 
@@ -178,6 +180,22 @@ def cmd_mark_uploaded(args):
     print(f"项目状态：{status_path}")
 
 
+def cmd_learn_success_templates(args):
+    rules, json_path, report_path = learn_success_templates(
+        source_dir=args.source,
+        json_path=args.json_output,
+        report_path=args.report_output,
+    )
+    print(f"成功样板数：{rules['template_count']}")
+    print(f"Product Type 数：{rules['product_type_count']}")
+    print(f"规则 JSON：{json_path}")
+    print(f"规则报告：{report_path}")
+
+
+def cmd_workbench(args):
+    run_workbench(host=args.host, port=args.port, open_browser=not args.no_open)
+
+
 def _status_label(status):
     labels = {
         "uploaded_success": "已上传",
@@ -285,6 +303,18 @@ def build_parser():
     mark_uploaded.add_argument("--uploaded-at", help="上传成功日期，格式 YYYY-MM-DD；不填则使用今天")
     mark_uploaded.add_argument("--note", help="备注")
     mark_uploaded.set_defaults(func=cmd_mark_uploaded)
+
+    learn_success = subparsers.add_parser("learn-success-templates", help="从成功上传模板提炼字段规则")
+    learn_success.add_argument("--source", help="成功模板目录，默认 data/success_templates")
+    learn_success.add_argument("--json-output", help="规则 JSON 输出路径，默认 data/success_template_rules.json")
+    learn_success.add_argument("--report-output", help="规则报告输出路径，默认 outputs/成功模板规则提炼报告.md")
+    learn_success.set_defaults(func=cmd_learn_success_templates)
+
+    workbench = subparsers.add_parser("workbench", help="启动本地工作台")
+    workbench.add_argument("--host", default="127.0.0.1", help="监听地址，默认 127.0.0.1")
+    workbench.add_argument("--port", type=int, default=8765, help="端口，默认 8765")
+    workbench.add_argument("--no-open", action="store_true", help="只启动服务，不自动打开浏览器")
+    workbench.set_defaults(func=cmd_workbench)
 
     return parser
 
