@@ -3,13 +3,12 @@ from shutil import copyfile
 
 from openpyxl import load_workbook
 
-from .paths import PROJECTS_DIR, safe_name
+from .paths import DRAFT_DIRS, LEGACY_FILLED_TEMPLATE_DIR, TEMPLATE_DIRS, safe_name
 from .success_rule_defaults import load_safe_defaults
 from .template_sheet import find_template_sheet, template_sheet_names_text
 from .workbook_io import read_intake_rows
 
 
-TEMPLATE_DIRS = ["04_模板原件", "05_填表版本"]
 DRAFT_PATTERN = "*_自动提炼草稿.xlsx"
 
 
@@ -65,9 +64,14 @@ FIELD_MAP = {
 
 def find_latest_draft(project_dir):
     project_dir = Path(project_dir)
-    candidates = sorted((project_dir / "07_上架备注").glob(DRAFT_PATTERN), key=lambda p: p.stat().st_mtime, reverse=True)
+    candidates = []
+    for folder in DRAFT_DIRS:
+        draft_dir = project_dir / folder
+        if draft_dir.exists():
+            candidates.extend(draft_dir.glob(DRAFT_PATTERN))
+    candidates = sorted(candidates, key=lambda p: p.stat().st_mtime, reverse=True)
     if not candidates:
-        raise FileNotFoundError(f"没有找到自动提炼草稿：{project_dir / '07_上架备注'}")
+        raise FileNotFoundError(f"没有找到自动提炼草稿：{project_dir}")
     return candidates[0]
 
 
@@ -84,8 +88,8 @@ def find_template(project_dir):
             if path.suffix.lower() in {".xlsx", ".xlsm"} and "自动提炼草稿" not in path.name and "产品资料" not in path.name:
                 candidates.append(path)
     if not candidates:
-        raise FileNotFoundError(f"没有找到亚马逊模板，请放到 04_模板原件 或 05_填表版本：{project_dir}")
-    return sorted(candidates, key=lambda p: (p.parent.name != "04_模板原件", p.name))[0]
+        raise FileNotFoundError(f"没有找到亚马逊模板，请放到 05_模版原件：{project_dir}")
+    return sorted(candidates, key=lambda p: (TEMPLATE_DIRS.index(p.parent.name), p.name))[0]
 
 
 def _value_for(row, source):
@@ -131,7 +135,7 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
 
     if output_path is None:
         product_name = rows[0].get("product_name") or project_dir.name
-        output_path = project_dir / "05_填表版本" / f"{safe_name(str(product_name))}_v1_filled.xlsx"
+        output_path = project_dir / LEGACY_FILLED_TEMPLATE_DIR / f"{safe_name(str(product_name))}_v1_filled.xlsx"
     else:
         output_path = Path(output_path)
 

@@ -11,13 +11,25 @@ OUTPUTS_DIR = ROOT / "outputs"
 
 PROJECT_FOLDERS = [
     "01_采购资料",
-    "02_原始图片",
-    "03_竞品参考",
-    "04_模板原件",
-    "05_填表版本",
-    "06_处理报告",
-    "07_上架备注"
+    "02_产品包装和定价",
+    "03_产品详情页",
+    "04_竞品参考",
+    "05_模版原件"
 ]
+
+PURCHASE_DIR = "01_采购资料"
+PACKAGING_PRICING_DIR = "02_产品包装和定价"
+PRODUCT_DETAIL_DIR = "03_产品详情页"
+COMPETITOR_DIR = "04_竞品参考"
+TEMPLATE_SOURCE_DIR = "05_模版原件"
+
+LEGACY_COMPETITOR_DIR = "03_竞品参考"
+LEGACY_TEMPLATE_SOURCE_DIR = "04_模板原件"
+LEGACY_FILLED_TEMPLATE_DIR = "05_填表版本"
+LEGACY_REMARKS_DIR = "07_上架备注"
+
+DRAFT_DIRS = [PRODUCT_DETAIL_DIR, LEGACY_REMARKS_DIR]
+TEMPLATE_DIRS = [TEMPLATE_SOURCE_DIR, LEGACY_TEMPLATE_SOURCE_DIR, LEGACY_FILLED_TEMPLATE_DIR]
 
 
 def ensure_base_dirs():

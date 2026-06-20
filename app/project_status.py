@@ -2,6 +2,7 @@ import json
 from datetime import date, datetime
 from pathlib import Path
 
+from .paths import DRAFT_DIRS, TEMPLATE_DIRS
 from .workbook_io import read_intake_rows
 
 
@@ -57,7 +58,7 @@ def mark_uploaded_success(project_dir, product_name, latest_template, sku_count=
 def infer_latest_template(project_dir):
     project_dir = Path(project_dir)
     candidates = []
-    for folder in ("05_填表版本", "04_模板原件"):
+    for folder in TEMPLATE_DIRS:
         template_dir = project_dir / folder
         if not template_dir.exists():
             continue
@@ -95,16 +96,17 @@ def infer_sku_count(project_dir, explicit_count=None):
         if status.get(key):
             return status[key]
     project_dir = Path(project_dir)
-    draft_dir = project_dir / "07_上架备注"
-    candidates = sorted(
-        [
+    candidates = []
+    for folder in DRAFT_DIRS:
+        draft_dir = project_dir / folder
+        if not draft_dir.exists():
+            continue
+        candidates.extend([
             path for path in draft_dir.glob("*.xlsx")
             if not path.name.startswith("~$")
             and ("自动提炼草稿" in path.name or "产品资料" in path.name)
-        ],
-        key=lambda path: path.stat().st_mtime,
-        reverse=True,
-    )
+        ])
+    candidates = sorted(candidates, key=lambda path: path.stat().st_mtime, reverse=True)
     for path in candidates:
         try:
             rows = read_intake_rows(path)

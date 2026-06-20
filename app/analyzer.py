@@ -6,7 +6,17 @@ from pathlib import Path
 from openpyxl import load_workbook
 from pypdf import PdfReader
 
-from .paths import OUTPUTS_DIR, safe_name
+from .paths import (
+    COMPETITOR_DIR,
+    LEGACY_COMPETITOR_DIR,
+    LEGACY_REMARKS_DIR,
+    OUTPUTS_DIR,
+    PACKAGING_PRICING_DIR,
+    PRODUCT_DETAIL_DIR,
+    PURCHASE_DIR,
+    TEMPLATE_DIRS,
+    safe_name,
+)
 from .workbook_io import write_intake_workbook
 
 
@@ -104,15 +114,15 @@ RISK_WORDS = [
 
 
 SOURCE_FOLDERS = {
-    "01_采购资料",
-    "03_竞品参考",
-    "07_上架备注"
+    PURCHASE_DIR,
+    PACKAGING_PRICING_DIR,
+    PRODUCT_DETAIL_DIR,
+    COMPETITOR_DIR,
+    LEGACY_COMPETITOR_DIR,
+    LEGACY_REMARKS_DIR,
 }
 
-TEMPLATE_FOLDERS = {
-    "04_模板原件",
-    "05_填表版本"
-}
+TEMPLATE_FOLDERS = set(TEMPLATE_DIRS)
 
 
 def _read_text_file(path):
@@ -540,7 +550,7 @@ def analyze_project(project_dir, output_path=None):
         })
 
     if output_path is None:
-        output_path = project_dir / "07_上架备注" / f"{safe_name(project_dir.name)}_自动提炼草稿.xlsx"
+        output_path = project_dir / PRODUCT_DETAIL_DIR / f"{safe_name(project_dir.name)}_自动提炼草稿.xlsx"
     write_intake_workbook(output_path, rows)
 
     report_path = OUTPUTS_DIR / f"{safe_name(project_dir.name)}_资料提炼报告.md"

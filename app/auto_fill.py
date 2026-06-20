@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from .analyzer import analyze_project
+from .paths import DRAFT_DIRS, LEGACY_FILLED_TEMPLATE_DIR
 from .project_status import load_project_status, save_project_status
 from .template_validator import validate_template_file
 from .template_writer import fill_template, find_template
@@ -90,12 +91,17 @@ def auto_fill_project(project_dir, draft_path=None, template_path=None, output_p
 
 
 def _ensure_draft(project_dir):
-    remarks_dir = Path(project_dir) / "07_上架备注"
-    candidates = [
-        path for path in remarks_dir.glob("*.xlsx")
-        if not path.name.startswith("~$")
-        and "产品资料" not in path.name
-    ]
+    project_dir = Path(project_dir)
+    candidates = []
+    for folder in DRAFT_DIRS:
+        draft_dir = project_dir / folder
+        if not draft_dir.exists():
+            continue
+        candidates.extend([
+            path for path in draft_dir.glob("*.xlsx")
+            if not path.name.startswith("~$")
+            and "产品资料" not in path.name
+        ])
     if candidates:
         return sorted(candidates, key=lambda path: path.stat().st_mtime, reverse=True)[0]
 
@@ -107,7 +113,7 @@ def _default_output_path(project_dir, draft_path):
     project_dir = Path(project_dir)
     draft_path = Path(draft_path)
     product_name = draft_path.stem.replace("_自动提炼草稿", "")
-    return project_dir / "05_填表版本" / f"{product_name}_autofill.xlsx"
+    return project_dir / LEGACY_FILLED_TEMPLATE_DIR / f"{product_name}_autofill.xlsx"
 
 
 def _relative(project_dir, path):

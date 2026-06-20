@@ -1,7 +1,8 @@
 from datetime import datetime
 from pathlib import Path
+import shutil
 
-from .paths import PROJECTS_DIR, PROJECT_FOLDERS, ensure_base_dirs, safe_name
+from .paths import PRODUCT_DETAIL_DIR, PROJECTS_DIR, PROJECT_FOLDERS, ensure_base_dirs, safe_name
 from .project_status import load_project_status
 from .workbook_io import create_intake_workbook
 
@@ -16,7 +17,7 @@ def create_project(project_name):
     for folder in PROJECT_FOLDERS:
         (project_dir / folder).mkdir(exist_ok=True)
 
-    intake_path = project_dir / "07_上架备注" / f"{safe_name(project_name)}_产品资料.xlsx"
+    intake_path = project_dir / PRODUCT_DETAIL_DIR / f"{safe_name(project_name)}_产品资料.xlsx"
     if not intake_path.exists():
         create_intake_workbook(intake_path)
 
@@ -49,6 +50,24 @@ def create_project(project_name):
 def list_projects():
     ensure_base_dirs()
     return sorted([path for path in PROJECTS_DIR.iterdir() if path.is_dir()])
+
+
+def delete_project(project_dir):
+    ensure_base_dirs()
+    path = Path(project_dir).resolve()
+    projects_dir = PROJECTS_DIR.resolve()
+    try:
+        path.relative_to(projects_dir)
+    except ValueError as exc:
+        raise ValueError("项目路径必须在 data/projects 下。") from exc
+    if path == projects_dir:
+        raise ValueError("不能删除项目根目录。")
+    if not path.exists():
+        raise ValueError("项目不存在。")
+    if not path.is_dir():
+        raise ValueError("项目路径不是文件夹。")
+    shutil.rmtree(path)
+    return path
 
 
 def list_project_summaries():

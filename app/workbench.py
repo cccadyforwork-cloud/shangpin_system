@@ -1,4 +1,6 @@
+import cgi
 import json
+import shutil
 import threading
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -6,8 +8,8 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 from .auto_fill import auto_fill_project
-from .paths import OUTPUTS_DIR, PROJECTS_DIR, ROOT, ensure_base_dirs
-from .project_manager import create_project, list_project_summaries
+from .paths import DRAFT_DIRS, OUTPUTS_DIR, PROJECTS_DIR, PROJECT_FOLDERS, ROOT, TEMPLATE_DIRS, ensure_base_dirs, safe_name
+from .project_manager import create_project, delete_project, list_project_summaries
 from .project_status import infer_latest_template, infer_product_name, infer_sku_count, mark_uploaded_success
 from .success_templates import RULES_JSON, RULES_REPORT, SUCCESS_TEMPLATES_DIR, learn_success_templates
 
@@ -65,21 +67,47 @@ def _handler():
         def do_POST(self):
             parsed = urlparse(self.path)
             try:
-                payload = self._read_json()
-                if parsed.path == "/api/projects":
-                    result = _create_project(payload)
-                elif parsed.path == "/api/auto-fill":
-                    result = _auto_fill(payload)
-                elif parsed.path == "/api/mark-uploaded":
-                    result = _mark_uploaded(payload)
-                elif parsed.path == "/api/learn-success":
-                    result = _learn_success()
+                if parsed.path == "/api/upload-files":
+                    result = self._handle_file_upload()
                 else:
-                    self._send_json({"error": "not_found"}, status=404)
-                    return
+                    payload = self._read_json()
+                    if parsed.path == "/api/projects":
+                        result = _create_project(payload)
+                    elif parsed.path == "/api/auto-fill":
+                        result = _auto_fill(payload)
+                    elif parsed.path == "/api/mark-uploaded":
+                        result = _mark_uploaded(payload)
+                    elif parsed.path == "/api/delete-project":
+                        result = _delete_project(payload)
+                    elif parsed.path == "/api/learn-success":
+                        result = _learn_success()
+                    else:
+                        self._send_json({"error": "not_found"}, status=404)
+                        return
                 self._send_json(result)
             except Exception as exc:
                 self._send_json({"ok": False, "error": str(exc)}, status=500)
+
+        def _handle_file_upload(self):
+            content_type = self.headers.get("Content-Type", "")
+            if not content_type.startswith("multipart/form-data"):
+                raise ValueError("上传请求格式不正确。")
+            form = cgi.FieldStorage(
+                fp=self.rfile,
+                headers=self.headers,
+                environ={
+                    "REQUEST_METHOD": "POST",
+                    "CONTENT_TYPE": content_type,
+                    "CONTENT_LENGTH": self.headers.get("Content-Length", "0"),
+                },
+            )
+            project_dir = form.getfirst("project_dir", "")
+            folder = form.getfirst("folder", "")
+            files = []
+            if "files" in form:
+                files_field = form["files"]
+                files = files_field if isinstance(files_field, list) else [files_field]
+            return _upload_files(project_dir, folder, files)
 
         def log_message(self, _format, *_args):
             return
@@ -137,6 +165,7 @@ def _summary_payload():
         "projects_dir": str(PROJECTS_DIR),
         "outputs_dir": str(OUTPUTS_DIR),
         "success_templates_dir": str(SUCCESS_TEMPLATES_DIR),
+        "project_folders": PROJECT_FOLDERS,
         "counts": counts,
         "projects": projects,
         "totals": {
@@ -149,6 +178,61 @@ def _summary_payload():
         },
     }
 
+
+def _upload_files(project_dir, folder, file_items):
+    project_path = _project_path({"project_dir": project_dir})
+    if project_path == PROJECTS_DIR.resolve():
+        raise ValueError("请选择具体项目。")
+    if folder not in PROJECT_FOLDERS:
+        raise ValueError("资料夹不正确。")
+    real_files = [item for item in file_items if getattr(item, "filename", "") and getattr(item, "file", None)]
+    if not real_files:
+        raise ValueError("请选择文件。")
+
+    target_dir = project_path / folder
+    target_dir.mkdir(parents=True, exist_ok=True)
+    saved = []
+    for item in real_files:
+        filename = _safe_upload_filename(item.filename)
+        output_path = _unique_file_path(target_dir, filename)
+        item.file.seek(0)
+        with output_path.open("wb") as output:
+            shutil.copyfileobj(item.file, output)
+        saved.append({
+            "name": output_path.name,
+            "path": str(output_path),
+            "relative_path": _relative(output_path),
+        })
+
+    return {
+        "ok": True,
+        "message": f"已放入 {len(saved)} 个文件",
+        "folder": folder,
+        "files": saved,
+    }
+
+
+def _safe_upload_filename(filename):
+    name = Path(str(filename).replace("\\", "/")).name
+    cleaned = safe_name(name)
+    if cleaned in {".", ".."}:
+        cleaned = "uploaded_file"
+    return cleaned
+
+
+def _unique_file_path(folder, filename):
+    path = folder / filename
+    if not path.exists():
+        return path
+    original = Path(filename)
+    stem = original.stem or "uploaded_file"
+    suffix = original.suffix
+    index = 2
+    while True:
+        candidate = folder / f"{stem}_{index}{suffix}"
+        if not candidate.exists():
+            return candidate
+        index += 1
 
 def _rules_payload():
     if not RULES_JSON.exists():
@@ -239,6 +323,16 @@ def _mark_uploaded(payload):
     }
 
 
+def _delete_project(payload):
+    project_dir = _project_path(payload)
+    deleted_path = delete_project(project_dir)
+    return {
+        "ok": True,
+        "message": f"项目已删除：{deleted_path.name}",
+        "project_dir": str(deleted_path),
+    }
+
+
 def _learn_success():
     rules, json_path, report_path = learn_success_templates()
     return {
@@ -292,7 +386,7 @@ def _next_step(item):
 
 
 def _has_template(project_dir):
-    for folder in ("04_模板原件", "05_填表版本"):
+    for folder in TEMPLATE_DIRS:
         path = Path(project_dir) / folder
         if path.exists() and any(item.suffix.lower() in {".xlsx", ".xlsm"} for item in path.iterdir() if item.is_file()):
             return True
@@ -300,8 +394,11 @@ def _has_template(project_dir):
 
 
 def _has_draft(project_dir):
-    path = Path(project_dir) / "07_上架备注"
-    return path.exists() and any("自动提炼草稿" in item.name for item in path.iterdir() if item.is_file())
+    for folder in DRAFT_DIRS:
+        path = Path(project_dir) / folder
+        if path.exists() and any("自动提炼草稿" in item.name for item in path.iterdir() if item.is_file()):
+            return True
+    return False
 
 
 def _relative(path):
@@ -382,7 +479,7 @@ def _html():
     .stat .num { font-size: 26px; font-weight: 760; margin-top: 4px; }
     .panel { padding: 16px; margin-bottom: 16px; }
     .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-    input {
+    input, select {
       height: 36px;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -390,6 +487,11 @@ def _html():
       min-width: 240px;
       font: inherit;
       background: #fff;
+    }
+    input[type="file"] {
+      height: auto;
+      padding: 7px 10px;
+      min-width: min(420px, 100%);
     }
     button.action {
       height: 36px;
@@ -402,6 +504,7 @@ def _html():
       color: var(--text);
     }
     button.action.primary { background: var(--green); color: #fff; border-color: var(--green); }
+    button.action.danger { color: var(--red); border-color: #d8aca7; background: #fff7f6; }
     button.action:hover { filter: brightness(.98); }
     table { width: 100%; border-collapse: collapse; table-layout: fixed; }
     th, td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -423,6 +526,22 @@ def _html():
     .needs_manual_fix, .blocked { color: var(--red); border-color: #e4c0bc; background: #fff0ee; }
     .not_started { color: var(--yellow); border-color: #ded1a8; background: #fbf6df; }
     .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .upload-panel .toolbar { align-items: flex-end; }
+    .field { display: grid; gap: 5px; }
+    .field label { color: var(--muted); font-size: 12px; }
+    .upload-status { min-height: 18px; margin-top: 10px; }
+    .selected-files {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfa;
+      margin-top: 12px;
+      min-height: 54px;
+      max-height: 150px;
+      overflow: auto;
+      padding: 9px 10px;
+    }
+    .selected-files ul { margin: 0; padding-left: 18px; }
+    .selected-files li { margin: 2px 0; }
     .small { font-size: 12px; }
     .rules-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .rule { padding: 12px; min-height: 118px; }
@@ -493,6 +612,26 @@ def _html():
             <input id="new-project-name" placeholder="产品名">
             <button class="action primary" id="create-project-btn">新建</button>
           </div>
+        </div>
+        <div class="panel upload-panel" id="upload-panel">
+          <h2>放资料</h2>
+          <div class="toolbar">
+            <div class="field">
+              <label for="upload-project">项目</label>
+              <select id="upload-project"></select>
+            </div>
+            <div class="field">
+              <label for="upload-folder">资料夹</label>
+              <select id="upload-folder"></select>
+            </div>
+            <div class="field">
+              <label for="upload-files">文件</label>
+              <input id="upload-files" type="file" multiple>
+            </div>
+            <button class="action primary" id="upload-files-btn">放入项目</button>
+          </div>
+          <div class="selected-files small" id="selected-files">未选择文件</div>
+          <div class="muted small upload-status" id="upload-status"></div>
         </div>
         <div class="panel">
           <h2>项目状态</h2>
@@ -586,11 +725,42 @@ def _html():
           <td><span class="small">${escapeHtml(project.latest_template || '-')}</span></td>
           <td>${escapeHtml(project.next_step || '-')}</td>
           <td><div class="row-actions">
+            <button class="action" data-action="pick-upload" data-project="${escapeAttr(project.project_dir)}">放资料</button>
             <button class="action" data-action="auto-fill" data-project="${escapeAttr(project.project_dir)}">自动填表</button>
             <button class="action" data-action="mark-uploaded" data-project="${escapeAttr(project.project_dir)}">标记成功</button>
+            <button class="action danger" data-action="delete-project" data-project="${escapeAttr(project.project_dir)}" data-name="${escapeAttr(project.product_name)}">删除</button>
           </div></td>
         `;
         rows.appendChild(tr);
+      }
+      renderUploadOptions(summary);
+    }
+
+    function renderUploadOptions(summary) {
+      const projectSelect = document.getElementById('upload-project');
+      const selectedProject = projectSelect.value;
+      projectSelect.innerHTML = '';
+      for (const project of summary.projects) {
+        const option = document.createElement('option');
+        option.value = project.project_dir;
+        option.textContent = `${project.product_name} / ${project.folder}`;
+        projectSelect.appendChild(option);
+      }
+      if ([...projectSelect.options].some(option => option.value === selectedProject)) {
+        projectSelect.value = selectedProject;
+      }
+
+      const folderSelect = document.getElementById('upload-folder');
+      const selectedFolder = folderSelect.value;
+      folderSelect.innerHTML = '';
+      for (const folder of summary.project_folders || []) {
+        const option = document.createElement('option');
+        option.value = folder;
+        option.textContent = folder;
+        folderSelect.appendChild(option);
+      }
+      if ([...folderSelect.options].some(option => option.value === selectedFolder)) {
+        folderSelect.value = selectedFolder;
       }
     }
 
@@ -636,21 +806,80 @@ def _html():
         return;
       }
       const action = event.target.dataset.action;
+      if (action === 'pick-upload') {
+        document.getElementById('upload-project').value = event.target.dataset.project;
+        document.getElementById('upload-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
       if (action === 'auto-fill') {
         await guarded(() => postAction('/api/auto-fill', { project_dir: event.target.dataset.project }));
       }
       if (action === 'mark-uploaded') {
         await guarded(() => postAction('/api/mark-uploaded', { project_dir: event.target.dataset.project }));
       }
+      if (action === 'delete-project') {
+        const name = event.target.dataset.name || '这个项目';
+        if (window.confirm(`确定删除「${name}」吗？此操作会删除整个项目文件夹，不能从工作台恢复。`)) {
+          await guarded(() => postAction('/api/delete-project', { project_dir: event.target.dataset.project }));
+        }
+      }
     });
 
     document.getElementById('refresh-btn').addEventListener('click', () => guarded(loadAll));
     document.getElementById('learn-success-btn').addEventListener('click', () => guarded(() => postAction('/api/learn-success')));
+    document.getElementById('upload-files-btn').addEventListener('click', () => guarded(uploadFiles));
+    document.getElementById('upload-files').addEventListener('change', renderSelectedFiles);
     document.getElementById('create-project-btn').addEventListener('click', async () => {
       const input = document.getElementById('new-project-name');
       await guarded(() => postAction('/api/projects', { name: input.value }));
       input.value = '';
     });
+
+    async function uploadFiles() {
+      const status = document.getElementById('upload-status');
+      const fileInput = document.getElementById('upload-files');
+      const projectDir = document.getElementById('upload-project').value;
+      const folder = document.getElementById('upload-folder').value;
+      if (!projectDir) throw new Error('请选择项目。');
+      if (!folder) throw new Error('请选择资料夹。');
+      if (!fileInput.files.length) throw new Error('请选择文件。');
+
+      const form = new FormData();
+      form.append('project_dir', projectDir);
+      form.append('folder', folder);
+      for (const file of fileInput.files) {
+        form.append('files', file, file.name);
+      }
+      status.textContent = `正在放入 ${fileInput.files.length} 个文件...`;
+      const response = await fetch('/api/upload-files', { method: 'POST', body: form });
+      const result = await response.json();
+      if (!response.ok || result.ok === false) throw new Error(result.error || '上传失败');
+      fileInput.value = '';
+      renderSelectedFiles();
+      status.textContent = (result.files || []).map(file => file.relative_path).join('；');
+      showToast(result.message || '文件已放入项目');
+      await loadAll();
+    }
+
+    function renderSelectedFiles() {
+      const fileInput = document.getElementById('upload-files');
+      const box = document.getElementById('selected-files');
+      const files = [...fileInput.files];
+      if (!files.length) {
+        box.textContent = '未选择文件';
+        return;
+      }
+      const totalBytes = files.reduce((sum, file) => sum + file.size, 0);
+      const items = files
+        .map(file => `<li>${escapeHtml(file.name)} <span class="muted">(${formatBytes(file.size)})</span></li>`)
+        .join('');
+      box.innerHTML = `<div>${files.length} 个文件，合计 ${formatBytes(totalBytes)}</div><ul>${items}</ul>`;
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return `${bytes} B`;
+      if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+      return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+    }
 
     async function guarded(fn) {
       try { await fn(); } catch (error) { showToast(error.message); }
