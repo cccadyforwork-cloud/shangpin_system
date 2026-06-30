@@ -81,8 +81,13 @@ def list_project_summaries():
             "status": status.get("status") or "not_started",
             "sku_count": status.get("sku_count") or status.get("verification_sku_count") or "",
             "template_error_count": status.get("template_error_count"),
+            "latest_draft": status.get("latest_draft") or status.get("verification_draft") or "",
             "latest_template": status.get("latest_template") or status.get("verification_template") or "",
+            "source_template": status.get("source_template") or status.get("verification_source_template") or "",
+            "latest_check_report": status.get("latest_check_report") or status.get("verification_check_report") or "",
             "updated_at": status.get("updated_at") or "",
+            "uploaded_at": status.get("uploaded_at") or "",
+            "notes": status.get("notes") or "",
             "blocked_reason": status.get("blocked_reason") or "",
         })
     return summaries
