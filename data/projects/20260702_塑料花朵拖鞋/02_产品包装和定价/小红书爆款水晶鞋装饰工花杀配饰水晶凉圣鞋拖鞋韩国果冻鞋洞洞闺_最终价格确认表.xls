@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  <Worksheet ss:Name="最终价格确认">
+    <Table><Row><Cell><Data ss:Type="String">SKU</Data></Cell><Cell><Data ss:Type="String">款式标题</Data></Cell><Cell><Data ss:Type="String">长(in)</Data></Cell><Cell><Data ss:Type="String">宽(in)</Data></Cell><Cell><Data ss:Type="String">高(in)</Data></Cell><Cell><Data ss:Type="String">重(lb)</Data></Cell><Cell><Data ss:Type="String">定价</Data></Cell></Row><Row><Cell><Data ss:Type="String">Sandal-Golden-cc</Data></Cell><Cell><Data ss:Type="String">小红书爆款水晶鞋装饰工花杀配饰水晶凉圣鞋拖鞋韩国果冻鞋洞洞闺 - 颜色：金色；尺码：40</Data></Cell><Cell><Data ss:Type="Number">11.42</Data></Cell><Cell><Data ss:Type="Number">7.68</Data></Cell><Cell><Data ss:Type="Number">1.77</Data></Cell><Cell><Data ss:Type="Number">0.661</Data></Cell><Cell><Data ss:Type="Number">8.99</Data></Cell></Row><Row><Cell><Data ss:Type="String">Sandal-Black-cc</Data></Cell><Cell><Data ss:Type="String">小红书爆款水晶鞋装饰花杀配饰水晶凉圣鞋拖鞋韩国果冻鞋洞洞闺 - 颜色：黑色；尺码：40</Data></Cell><Cell><Data ss:Type="Number">11.42</Data></Cell><Cell><Data ss:Type="Number">7.68</Data></Cell><Cell><Data ss:Type="Number">1.77</Data></Cell><Cell><Data ss:Type="Number">0.661</Data></Cell><Cell><Data ss:Type="Number">8.99</Data></Cell></Row><Row><Cell><Data ss:Type="String">Sandal-Transp-cc</Data></Cell><Cell><Data ss:Type="String">小红书爆款水晶鞋装饰花杀配饰水晶凉圣鞋花拖鞋韩国果冻鞋洞洞鞋 - 颜色：透明；尺码：40</Data></Cell><Cell><Data ss:Type="Number">11.42</Data></Cell><Cell><Data ss:Type="Number">7.68</Data></Cell><Cell><Data ss:Type="Number">1.77</Data></Cell><Cell><Data ss:Type="Number">0.661</Data></Cell><Cell><Data ss:Type="Number">8.99</Data></Cell></Row></Table>
+  </Worksheet>
+</Workbook>
