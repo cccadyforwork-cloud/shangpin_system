@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>上传反馈处理与学习预览</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f6f3;
+      --panel: #ffffff;
+      --soft: #f0f4f1;
+      --text: #20231f;
+      --muted: #667065;
+      --line: #d8ded6;
+      --green: #287457;
+      --blue: #2f668a;
+      --amber: #9a6a17;
+      --red: #a13f35;
+      --ink: #27312c;
+      --shadow: 0 14px 36px rgba(35, 48, 40, .08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    button, input {
+      font: inherit;
+    }
+    button {
+      cursor: pointer;
+    }
+    .page {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .topbar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .small {
+      font-size: 12px;
+    }
+    .stage, .tag, .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+    .stage {
+      min-height: 28px;
+      border: 1px solid #dfcea7;
+      background: #fffaf0;
+      color: var(--amber);
+    }
+    .tag {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      color: var(--muted);
+    }
+    .status.ok {
+      border: 1px solid #bad4c6;
+      background: #edf8f1;
+      color: var(--green);
+    }
+    .status.warn {
+      border: 1px solid #dfcea7;
+      background: #fffaf0;
+      color: var(--amber);
+    }
+    .status.error {
+      border: 1px solid #e0bbb6;
+      background: #fff6f5;
+      color: var(--red);
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+    .section {
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+      gap: 16px;
+      align-items: stretch;
+    }
+    .version-card {
+      min-height: 188px;
+      border: 1px solid #dfcea7;
+      border-radius: 8px;
+      background: #fffaf0;
+      padding: 14px;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      min-width: 0;
+    }
+    .file-line {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+    .file-name {
+      font-weight: 720;
+      word-break: break-word;
+    }
+    .version-meta, .summary-grid, .learning-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .version-meta {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .summary-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .learning-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .meta-cell, .summary-item, .learning-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      min-width: 0;
+    }
+    .summary-item {
+      border-bottom: 1px solid var(--line);
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
+      border-radius: 0;
+      padding: 0 0 9px;
+    }
+    .meta-cell strong, .summary-item strong, .learning-card strong {
+      display: block;
+      margin-top: 2px;
+      word-break: break-word;
+    }
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .choice {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+      min-height: 156px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      min-width: 0;
+    }
+    .choice.success {
+      border-color: #bad4c6;
+      background: #f7fbf8;
+    }
+    .choice.fail {
+      border-color: #dfcea7;
+      background: #fffaf0;
+    }
+    .drop {
+      border: 1px dashed #b9c7bb;
+      border-radius: 8px;
+      background: rgba(255,255,255,.72);
+      padding: 10px;
+      display: grid;
+      gap: 7px;
+      min-width: 0;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-top: 14px;
+    }
+    .btn {
+      min-height: 38px;
+      border: 1px solid #b8c4ba;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      padding: 0 13px;
+    }
+    .btn.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+    .btn.warn {
+      border-color: var(--amber);
+      background: #fffaf0;
+      color: var(--amber);
+    }
+    .btn.ghost {
+      background: transparent;
+    }
+    .workspace {
+      display: none;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 16px;
+      align-items: start;
+    }
+    .workspace.is-active {
+      display: grid;
+    }
+    .main-stack, .side-stack {
+      display: grid;
+      gap: 14px;
+      min-width: 0;
+    }
+    .side-stack {
+      position: sticky;
+      top: 16px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      min-width: 0;
+    }
+    .step.current {
+      border-color: #dfcea7;
+      background: #fffaf0;
+    }
+    .step.success {
+      border-color: #bad4c6;
+      background: #f7fbf8;
+    }
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .version-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      font-weight: 760;
+    }
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      table-layout: fixed;
+      background: #fff;
+    }
+    th, td {
+      padding: 9px 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      word-break: break-word;
+    }
+    tr:last-child td {
+      border-bottom: 0;
+    }
+    th {
+      background: var(--soft);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 12px;
+    }
+    .rule-list {
+      display: grid;
+      gap: 9px;
+    }
+    .rule {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      min-width: 0;
+    }
+    .rule strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+    .confirm-panel {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      background: var(--ink);
+      color: #fff;
+    }
+    .confirm-panel .muted {
+      color: #d5ddd4;
+    }
+    .confirm-panel .btn {
+      border-color: rgba(255,255,255,.32);
+    }
+    @media (max-width: 980px) {
+      .overview-grid, .workspace {
+        grid-template-columns: 1fr;
+      }
+      .side-stack {
+        position: static;
+      }
+    }
+    @media (max-width: 720px) {
+      .feedback-grid, .version-meta, .summary-grid, .learning-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 620px) {
+      .page {
+        padding: 16px;
+      }
+      .topbar, .panel-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .step {
+        grid-template-columns: 1fr;
+      }
+      .actions {
+        justify-content: stretch;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <h1>上传反馈处理与学习</h1>
+        <div class="muted small">V1 小模块预览</div>
+      </div>
+      <span class="stage" id="stage-label">v1 上传失败，待修正</span>
+    </header>
+
+    <section class="section">
+      <div class="panel-head">
+        <h2>当前上传版本</h2>
+        <span class="tag">命名规则：产品名_v1 / v2 / v3</span>
+      </div>
+      <div class="overview-grid">
+        <div class="version-card">
+          <div class="panel-head">
+            <h3>当前模板</h3>
+            <span class="status error">上传失败</span>
+          </div>
+          <div class="file-line">
+            <span class="file-name">复古玻璃洒水壶_v1.xlsx</span>
+            <span class="muted small">初始填好的模板，人工上传 Amazon 后返回失败报告。</span>
+          </div>
+          <div class="version-meta">
+            <div class="meta-cell">
+              <span class="muted small">产品名</span>
+              <strong>复古玻璃洒水壶</strong>
+            </div>
+            <div class="meta-cell">
+              <span class="muted small">当前版本</span>
+              <strong>v1</strong>
+            </div>
+            <div class="meta-cell">
+              <span class="muted small">下一版</span>
+              <strong>v2</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel section" style="margin: 0;">
+          <div class="panel-head">
+            <h3>失败报告输入</h3>
+            <span class="tag">Amazon 反馈</span>
+          </div>
+          <div class="drop">
+            <strong>复古玻璃洒水壶_v1_失败报告.xlsx</strong>
+            <span class="muted small">支持预留：xlsx / csv / txt / html / pdf。</span>
+          </div>
+          <div class="summary-grid" style="margin-top: 12px;">
+            <div class="summary-item">
+              <span class="muted small">识别错误</span>
+              <strong>2 项</strong>
+            </div>
+            <div class="summary-item">
+              <span class="muted small">可自动修正</span>
+              <strong>2 项</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" type="button" id="fix-btn">输入失败报告并生成 v2</button>
+        <button class="btn" type="button">标记上传成功</button>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="panel-head">
+        <h2>上传反馈</h2>
+        <span class="tag">人工上传后的两种结果</span>
+      </div>
+      <div class="feedback-grid">
+        <div class="choice success">
+          <div class="panel-head">
+            <h3>上传成功</h3>
+            <span class="status ok">结束循环</span>
+          </div>
+          <div class="muted small">确认当前版本可上传，记录最终成功版本，并把成功模板收录到学习库。</div>
+          <button class="btn primary" type="button">标记当前版本上传成功</button>
+        </div>
+        <div class="choice fail">
+          <div class="panel-head">
+            <h3>上传失败</h3>
+            <span class="status warn">生成下一版</span>
+          </div>
+          <div class="muted small">输入失败分析报告，系统基于上一版模板修正字段，生成 `产品名_v2`、`产品名_v3`。</div>
+          <button class="btn warn" type="button">上传失败报告</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace is-active" id="workspace" aria-live="polite">
+      <div class="main-stack">
+        <section class="panel section">
+          <div class="panel-head">
+            <h2>修正结果</h2>
+            <span class="status ok">v2 已生成</span>
+          </div>
+          <div class="version-meta">
+            <div class="meta-cell">
+              <span class="muted small">来源模板</span>
+              <strong>复古玻璃洒水壶_v1.xlsx</strong>
+            </div>
+            <div class="meta-cell">
+              <span class="muted small">失败报告</span>
+              <strong>复古玻璃洒水壶_v1_失败报告.xlsx</strong>
+            </div>
+            <div class="meta-cell">
+              <span class="muted small">新模板</span>
+              <strong>复古玻璃洒水壶_v2.xlsx</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel section">
+          <div class="panel-head">
+            <h2>修正历史</h2>
+            <span class="tag">版本循环</span>
+          </div>
+          <div class="timeline">
+            <div class="step current">
+              <span class="version-pill">v1</span>
+              <div>
+                <strong>初始填表，上传失败</strong>
+                <div class="muted small">失败报告指出 standard_price 为空、capacity_unit 不符合模板枚举。</div>
+              </div>
+            </div>
+            <div class="step success">
+              <span class="version-pill">v2</span>
+              <div>
+                <strong>根据失败报告自动修正</strong>
+                <div class="muted small">补写售价字段；将容量单位从 milliliters 改为 milliliter；生成修正说明。</div>
+              </div>
+            </div>
+            <div class="step">
+              <span class="version-pill">成功</span>
+              <div>
+                <strong>等待人工上传 v2 后确认</strong>
+                <div class="muted small">如果 v2 失败，继续输入 v2 失败报告并生成 v3；如果成功，则进入学习沉淀。</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel section">
+          <div class="panel-head">
+            <h2>失败报告修正明细</h2>
+            <span class="tag">报告 → 模板字段</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>失败项</th>
+                  <th>报告原因</th>
+                  <th>修正字段</th>
+                  <th>修正后值</th>
+                  <th>下一次学习</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>standard_price</td>
+                  <td>Required field missing</td>
+                  <td>standard_price</td>
+                  <td>从确认产品资料补写 18.99</td>
+                  <td><span class="status ok">加入必填自检</span></td>
+                </tr>
+                <tr>
+                  <td>capacity_unit</td>
+                  <td>Invalid enumerated value</td>
+                  <td>capacity_unit_of_measure</td>
+                  <td>milliliter</td>
+                  <td><span class="status ok">记录枚举映射</span></td>
+                </tr>
+                <tr>
+                  <td>variation_theme</td>
+                  <td>Accepted</td>
+                  <td>无</td>
+                  <td>保持 Color</td>
+                  <td><span class="status warn">保留成功样本</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel section">
+          <div class="panel-head">
+            <h2>学习沉淀预览</h2>
+            <span class="tag">成功后写入</span>
+          </div>
+          <div class="learning-grid">
+            <div class="learning-card">
+              <span class="muted small">成功模板样本</span>
+              <strong>SPRAY_BOTTLE + 2 SKU</strong>
+            </div>
+            <div class="learning-card">
+              <span class="muted small">新增错误规则</span>
+              <strong>价格缺失提前拦截</strong>
+            </div>
+            <div class="learning-card">
+              <span class="muted small">新增字段规则</span>
+              <strong>ml → milliliter</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="side-stack">
+        <section class="panel section">
+          <div class="panel-head">
+            <h2>版本文件</h2>
+            <span class="tag">4 个</span>
+          </div>
+          <div class="rule-list">
+            <div class="rule">
+              <strong>复古玻璃洒水壶_v1.xlsx</strong>
+              <div class="muted small">初始填好的模板。</div>
+            </div>
+            <div class="rule">
+              <strong>复古玻璃洒水壶_v1_失败报告.xlsx</strong>
+              <div class="muted small">人工上传后返回的失败报告。</div>
+            </div>
+            <div class="rule">
+              <strong>复古玻璃洒水壶_v2.xlsx</strong>
+              <div class="muted small">根据失败报告修正的新模板。</div>
+            </div>
+            <div class="rule">
+              <strong>复古玻璃洒水壶_v2_修正说明.md</strong>
+              <div class="muted small">本次修改了哪些字段。</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel confirm-panel">
+          <div>
+            <h2>下一步</h2>
+            <div class="muted small">人工上传 v2。成功则学习，失败则继续生成 v3。</div>
+          </div>
+          <button class="btn" type="button">下载 v2 模板</button>
+          <button class="btn" type="button">查看修正说明</button>
+          <button class="btn primary" type="button">标记 v2 上传成功并学习</button>
+          <button class="btn ghost" type="button">v2 失败，输入报告生成 v3</button>
+        </section>
+      </aside>
+    </section>
+  </div>
+
+  <script>
+    const fixButton = document.getElementById('fix-btn');
+    const workspace = document.getElementById('workspace');
+    const stageLabel = document.getElementById('stage-label');
+
+    fixButton.addEventListener('click', () => {
+      workspace.classList.add('is-active');
+      stageLabel.textContent = 'v2 已生成，待上传';
+      workspace.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
+</body>
+</html>

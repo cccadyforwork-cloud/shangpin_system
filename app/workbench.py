@@ -5,15 +5,37 @@ import shutil
 import subprocess
 import threading
 import webbrowser
+from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, quote, unquote, urlparse
 
+from .analyzer import analyze_project
 from .auto_fill import auto_fill_project
-from .paths import DRAFT_DIRS, OUTPUTS_DIR, PROJECTS_DIR, PROJECT_FOLDERS, ROOT, TEMPLATE_DIRS, ensure_base_dirs, safe_name
+from .error_learning import learn_reports
+from .paths import (
+    COMPETITOR_DIR,
+    DRAFT_DIRS,
+    LEGACY_COMPETITOR_DIR,
+    LEGACY_FILLED_TEMPLATE_DIR,
+    LEGACY_TEMPLATE_SOURCE_DIR,
+    OUTPUTS_DIR,
+    PACKAGING_PRICING_DIR,
+    PRODUCT_DETAIL_DIR,
+    PROJECTS_DIR,
+    PROJECT_FOLDERS,
+    PURCHASE_DIR,
+    ROOT,
+    TEMPLATE_DIRS,
+    TEMPLATE_SOURCE_DIR,
+    ensure_base_dirs,
+    safe_name,
+)
 from .project_manager import create_project, delete_project, list_project_summaries
-from .project_status import infer_latest_template, infer_product_name, infer_sku_count, mark_uploaded_success
+from .project_status import infer_latest_template, infer_product_name, infer_sku_count, load_project_status, mark_uploaded_success, save_project_status
 from .success_templates import RULES_JSON, RULES_REPORT, SUCCESS_TEMPLATES_DIR, learn_success_templates
+from .template_writer import FIELD_MAP, find_template
+from .workbook_io import INTAKE_HEADERS, REQUIRED_CORE_FIELDS, read_intake_rows, write_intake_workbook
 
 
 STATUS_LABELS = {
@@ -26,6 +48,7 @@ STATUS_LABELS = {
 
 READABLE_SUFFIXES = {".txt", ".md", ".csv", ".tsv", ".html", ".htm", ".xlsx", ".xlsm", ".pdf"}
 LEGACY_DISPLAY_FOLDERS = ["02_原始图片", "03_竞品参考", "04_模板原件", "05_填表版本", "06_处理报告", "07_上架备注"]
+FEEDBACK_REPORT_DIR = "06_处理报告"
 SOURCE_REVIEW_FOLDERS = {
     "01_采购资料",
     "02_产品包装和定价",
@@ -57,7 +80,7 @@ def _handler():
     class WorkbenchHandler(BaseHTTPRequestHandler):
         def do_HEAD(self):
             parsed = urlparse(self.path)
-            if parsed.path in {"/", "/api/summary", "/api/rules", "/api/report"}:
+            if parsed.path in {"/", "/api/summary", "/api/workbench", "/api/rules", "/api/report"}:
                 self.send_response(200)
                 self.send_header("Content-Type", "text/html; charset=utf-8" if parsed.path == "/" else "application/json; charset=utf-8")
                 self.end_headers()
@@ -81,6 +104,8 @@ def _handler():
                 self._send_html(_html())
             elif parsed.path == "/api/summary":
                 self._send_json(_summary_payload())
+            elif parsed.path == "/api/workbench":
+                self._send_json(_workbench_payload())
             elif parsed.path == "/api/rules":
                 self._send_json(_rules_payload())
             elif parsed.path == "/api/report":
@@ -95,10 +120,18 @@ def _handler():
             try:
                 if parsed.path == "/api/upload-files":
                     result = self._handle_file_upload()
+                elif parsed.path == "/api/upload-feedback":
+                    result = self._handle_feedback_upload()
                 else:
                     payload = self._read_json()
                     if parsed.path == "/api/projects":
                         result = _create_project(payload)
+                    elif parsed.path == "/api/analyze-project":
+                        result = _analyze_project(payload)
+                    elif parsed.path == "/api/save-intake":
+                        result = _save_intake(payload)
+                    elif parsed.path == "/api/fill-template":
+                        result = _fill_template_version(payload)
                     elif parsed.path == "/api/auto-fill":
                         result = _auto_fill(payload)
                     elif parsed.path == "/api/mark-uploaded":
@@ -117,10 +150,24 @@ def _handler():
                 self._send_json({"ok": False, "error": str(exc)}, status=500)
 
         def _handle_file_upload(self):
+            form = self._read_multipart_form()
+            project_dir = form.getfirst("project_dir", "")
+            folder = form.getfirst("folder", "")
+            files = _form_files(form)
+            return _upload_files(project_dir, folder, files)
+
+        def _handle_feedback_upload(self):
+            form = self._read_multipart_form()
+            project_dir = form.getfirst("project_dir", "")
+            files = _form_files(form)
+            note = form.getfirst("note", "")
+            return _upload_feedback(project_dir, files, note=note)
+
+        def _read_multipart_form(self):
             content_type = self.headers.get("Content-Type", "")
             if not content_type.startswith("multipart/form-data"):
                 raise ValueError("上传请求格式不正确。")
-            form = cgi.FieldStorage(
+            return cgi.FieldStorage(
                 fp=self.rfile,
                 headers=self.headers,
                 environ={
@@ -129,13 +176,6 @@ def _handler():
                     "CONTENT_LENGTH": self.headers.get("Content-Length", "0"),
                 },
             )
-            project_dir = form.getfirst("project_dir", "")
-            folder = form.getfirst("folder", "")
-            files = []
-            if "files" in form:
-                files_field = form["files"]
-                files = files_field if isinstance(files_field, list) else [files_field]
-            return _upload_files(project_dir, folder, files)
 
         def log_message(self, _format, *_args):
             return
@@ -236,6 +276,252 @@ def _summary_payload():
     }
 
 
+def _workbench_payload():
+    summary = _summary_payload()
+    projects = []
+    for item in summary["projects"]:
+        project_dir = Path(item["project_dir"])
+        projects.append(_workbench_project_payload(project_dir, item))
+    return {
+        "ok": True,
+        "root": summary["root"],
+        "projects_dir": summary["projects_dir"],
+        "project_folders": summary["project_folders"],
+        "projects": projects,
+        "totals": summary["totals"],
+    }
+
+
+def _workbench_project_payload(project_dir, item):
+    status = item.get("status") or "not_started"
+    product_name = item.get("product_name") or infer_product_name(project_dir, "")
+    rows, draft_file, rows_error = _latest_intake_rows(project_dir, item)
+    source_template = _find_source_template(project_dir)
+    latest_template = _latest_filled_template(project_dir, item)
+    latest_report = _latest_check_report(project_dir, item, latest_template)
+    version_files = _template_version_files(project_dir)
+    failure_reports = _folder_file_infos(project_dir, [FEEDBACK_REPORT_DIR], suffixes={".txt", ".md", ".csv", ".tsv", ".html", ".htm", ".xlsx", ".xlsm", ".pdf"})
+    check_findings = _parse_check_report(str(latest_report)) if latest_report else []
+    error_count = len(check_findings)
+    next_version = _next_template_version(project_dir)
+    uploaded = status == "uploaded_success"
+    latest_template_info = _file_info(project_dir, latest_template) if latest_template else None
+    latest_report_info = _file_info(project_dir, latest_report) if latest_report else None
+    source_template_info = _file_info(project_dir, source_template) if source_template else None
+
+    return {
+        "id": _relative(project_dir),
+        "project_dir": str(project_dir),
+        "relative_dir": _relative(project_dir),
+        "name": product_name,
+        "folder": project_dir.name,
+        "status": "已上传" if uploaded else "等待中",
+        "status_code": status,
+        "updated": _format_updated(item.get("updated_at")),
+        "summary": _project_summary_text(status, latest_template, error_count, next_version, item),
+        "steps": _project_steps(status, rows, latest_template, error_count),
+        "intake": _intake_module_payload(project_dir, product_name, rows, draft_file, rows_error, item),
+        "template": _template_module_payload(
+            project_dir,
+            product_name,
+            rows,
+            source_template_info,
+            latest_template_info,
+            latest_report_info,
+            check_findings,
+            next_version,
+            item,
+        ),
+        "feedback": _feedback_module_payload(
+            project_dir,
+            product_name,
+            status,
+            latest_template_info,
+            latest_report_info,
+            version_files,
+            failure_reports,
+            next_version,
+            item,
+        ),
+    }
+
+
+def _intake_module_payload(project_dir, product_name, rows, draft_file, rows_error, item):
+    first = rows[0] if rows else _blank_intake_row(project_dir, product_name)
+    issues = _intake_issues(rows, rows_error)
+    return {
+        "productName": first.get("product_name") or product_name,
+        "draftFile": _file_info(project_dir, draft_file) if draft_file else None,
+        "reportFile": item.get("latest_draft_file"),
+        "rows": _json_rows(rows or [first]),
+        "files": [
+            {
+                "key": "price",
+                "label": "最终价格表",
+                "type": "Excel",
+                "folder": PACKAGING_PRICING_DIR,
+                "accept": ".xlsx,.xlsm,.xls,.csv",
+                "files": _folder_file_infos(project_dir, [PACKAGING_PRICING_DIR], suffixes={".xlsx", ".xlsm", ".xls", ".csv"}),
+            },
+            {
+                "key": "detail",
+                "label": "1688详情页",
+                "type": "HTML",
+                "folder": PRODUCT_DETAIL_DIR,
+                "accept": ".html,.htm,.txt",
+                "files": _folder_file_infos(project_dir, [PRODUCT_DETAIL_DIR, PURCHASE_DIR], suffixes={".html", ".htm", ".txt"}),
+            },
+            {
+                "key": "competitor",
+                "label": "竞品详情页",
+                "type": "多个 HTML",
+                "folder": COMPETITOR_DIR,
+                "accept": ".html,.htm,.txt",
+                "files": _folder_file_infos(project_dir, [COMPETITOR_DIR, LEGACY_COMPETITOR_DIR], suffixes={".html", ".htm", ".txt"}),
+            },
+        ],
+        "basic": [
+            {"label": "品类", "field": "category", "value": first.get("category") or first.get("product_type") or "", "source": "系统推断", "scope": "all"},
+            {"label": "Product Type", "field": "product_type", "value": first.get("product_type") or "", "source": "模板", "scope": "all"},
+            {"label": "材质", "field": "material", "value": first.get("material") or "", "source": "1688", "scope": "all"},
+            {"label": "包装内容", "field": "accessories", "value": first.get("accessories") or first.get("set_count") or "", "source": "价格表", "scope": "all"},
+        ],
+        "specs": [
+            {"label": "单品尺寸 length", "field": "package_length_in", "value": first.get("package_length_in") or "", "source": "价格表", "scope": "all"},
+            {"label": "单品尺寸 width", "field": "package_width_in", "value": first.get("package_width_in") or "", "source": "价格表", "scope": "all"},
+            {"label": "单品尺寸 height", "field": "package_height_in", "value": first.get("package_height_in") or "", "source": "价格表", "scope": "all"},
+            {"label": "重量 lb", "field": "package_weight_lb", "value": first.get("package_weight_lb") or "", "source": "价格表", "scope": "all"},
+            {"label": "产地", "field": "country_of_origin", "value": first.get("country_of_origin") or "China", "source": "默认", "scope": "all"},
+            {"label": "危险品", "field": "dangerous_goods", "value": first.get("dangerous_goods") or "No", "source": "人工确认", "scope": "all"},
+        ],
+        "title": first.get("title") or "",
+        "selling": _selling_text(first),
+        "keywords": _keywords_for_row(first),
+        "issues": issues,
+    }
+
+
+def _template_module_payload(project_dir, product_name, rows, source_template, latest_template, latest_report, check_findings, next_version, item):
+    first = rows[0] if rows else _blank_intake_row(project_dir, product_name)
+    latest_name = latest_template["name"] if latest_template else "尚未生成"
+    error_count = len(check_findings)
+    missing = _missing_required_fields(rows)
+    can_upload = bool(latest_template)
+    source_name = source_template["name"] if source_template else "等待上传 Amazon 模板"
+    source_path = source_template["folder_relative"] if source_template else f"{_relative(project_dir)}/{TEMPLATE_SOURCE_DIR}"
+    if latest_template and error_count == 0:
+        status = "自检通过"
+    elif latest_template:
+        status = f"有 {error_count} 项待修正"
+    else:
+        status = "等待模板填表"
+
+    checks = []
+    if check_findings:
+        checks.extend([
+            ["error", f"{item.get('field') or '字段'}", item.get("message") or "模板自检发现问题"]
+            for item in check_findings[:6]
+        ])
+    elif latest_template:
+        checks.append(["ok", "模板自检通过", "未发现当前自检规则覆盖的问题。"])
+    else:
+        checks.append(["warn", "待填表", f"上传 Amazon 模板后生成 {safe_name(product_name)}_v{next_version}.xlsx。"])
+    if missing:
+        checks.append(["warn", "产品资料仍需确认", "缺少：" + "、".join(missing[:6])])
+
+    generated = []
+    if latest_template:
+        generated.append({"label": "填好的表格", "file": latest_template})
+    if latest_report:
+        generated.append({"label": "自检报告", "file": latest_report})
+
+    return {
+        "ext": (source_template["name"].rsplit(".", 1)[-1].upper() if source_template and "." in source_template["name"] else "XLSX"),
+        "source": source_name,
+        "path": source_path,
+        "sourceFile": source_template,
+        "latestFile": latest_template,
+        "reportFile": latest_report,
+        "productType": first.get("product_type") or "-",
+        "sheet": "Template",
+        "skuCount": f"{len(rows)} 个" if rows else "0 个",
+        "output": latest_name,
+        "status": status,
+        "metrics": [
+            ["写入字段", str(item.get("written_field_count") or "-")],
+            ["生成 SKU", str(len(rows) if rows else item.get("sku_count") or 0)],
+            ["必须修正", str(error_count)],
+            ["建议确认", str(len(missing))],
+        ],
+        "checks": checks,
+        "mappings": _mapping_preview(first),
+        "generated": generated,
+        "next": _template_next_text(latest_template, error_count, next_version, product_name),
+        "fillAction": f"生成 {safe_name(product_name)}_v{next_version} 并自检",
+        "canUpload": can_upload,
+        "canFill": bool(rows and source_template),
+    }
+
+
+def _feedback_module_payload(project_dir, product_name, status, latest_template, latest_report, version_files, failure_reports, next_version, item):
+    uploaded = status == "uploaded_success"
+    current_version = _version_label(latest_template["name"] if latest_template else "")
+    if uploaded:
+        version_status = "上传成功"
+    elif latest_template:
+        version_status = f"{current_version or '当前版本'} 待上传"
+    else:
+        version_status = "未开始"
+
+    version_infos = [_file_info(project_dir, path) for path in version_files]
+    version_infos = [item for item in version_infos if item]
+    timeline = _version_timeline(version_infos, uploaded)
+    report_name = failure_reports[0]["name"] if failure_reports else "无失败报告"
+    latest_template_name = latest_template["name"] if latest_template else f"尚未生成 {safe_name(product_name)}_v1"
+    fix_rows = _learning_rows_for_product(product_name)
+
+    return {
+        "versionStatus": version_status,
+        "currentFile": latest_template_name,
+        "currentFileInfo": latest_template,
+        "reportFile": latest_report,
+        "note": _feedback_note(uploaded, latest_template, current_version),
+        "meta": [
+            ["产品名", product_name],
+            ["当前版本", current_version or "未生成"],
+            ["下一版", "成功" if uploaded else f"v{next_version}"],
+        ],
+        "report": report_name,
+        "reportFiles": failure_reports,
+        "reportNote": "支持 xlsx / csv / txt / html / pdf；失败后会生成下一版。",
+        "failureSummary": [["失败报告", str(len(failure_reports))], ["学习记录", str(len(fix_rows))]],
+        "generateAction": "上传失败报告并生成下一版" if latest_template else "等待 v1 生成",
+        "fixStatus": "学习完成" if uploaded else ("待上传" if latest_template else "未开始"),
+        "fixMeta": [
+            ["来源模板", latest_template_name],
+            ["失败报告", report_name],
+            ["新模板", "成功结束" if uploaded else f"{safe_name(product_name)}_v{next_version}.xlsx"],
+        ],
+        "timeline": timeline,
+        "fixes": fix_rows or [["无", "尚未上传失败报告", "无", "无", "等待反馈"]],
+        "learning": _learning_cards(product_name, uploaded, fix_rows),
+        "versionFiles": version_infos,
+        "next": _feedback_next_text(uploaded, latest_template, current_version),
+        "download": "下载当前模板" if latest_template else "等待 v1 生成",
+        "success": "标记当前版本上传成功并学习" if latest_template else "等待上传反馈",
+        "fail": "上传失败报告生成下一版" if latest_template else "等待失败报告",
+        "canUploadFeedback": bool(latest_template and not uploaded),
+        "canMarkSuccess": bool(latest_template and not uploaded),
+    }
+
+
+def _form_files(form):
+    if "files" not in form:
+        return []
+    files_field = form["files"]
+    return files_field if isinstance(files_field, list) else [files_field]
+
+
 def _upload_files(project_dir, folder, file_items):
     project_path = _project_path({"project_dir": project_dir})
     if project_path == PROJECTS_DIR.resolve():
@@ -261,11 +547,65 @@ def _upload_files(project_dir, folder, file_items):
             "relative_path": _relative(output_path),
         })
 
+    if folder in {TEMPLATE_SOURCE_DIR, LEGACY_TEMPLATE_SOURCE_DIR}:
+        template_files = [Path(file["path"]) for file in saved if Path(file["path"]).suffix.lower() in {".xlsx", ".xlsm"}]
+        if template_files:
+            save_project_status(project_path, {
+                "source_template": _relative_to_project(project_path, template_files[-1]),
+                "blocked_reason": None,
+            })
+
     return {
         "ok": True,
         "message": f"已放入 {len(saved)} 个文件",
         "folder": folder,
         "files": saved,
+    }
+
+
+def _upload_feedback(project_dir, file_items, note=""):
+    project_path = _project_path({"project_dir": project_dir})
+    real_files = [item for item in file_items if getattr(item, "filename", "") and getattr(item, "file", None)]
+    if not real_files:
+        raise ValueError("请选择失败分析报告。")
+
+    target_dir = project_path / FEEDBACK_REPORT_DIR
+    target_dir.mkdir(parents=True, exist_ok=True)
+    saved_paths = []
+    saved = []
+    for item in real_files:
+        filename = _safe_upload_filename(item.filename)
+        output_path = _unique_file_path(target_dir, filename)
+        item.file.seek(0)
+        with output_path.open("wb") as output:
+            shutil.copyfileobj(item.file, output)
+        saved_paths.append(output_path)
+        saved.append({
+            "name": output_path.name,
+            "path": str(output_path),
+            "relative_path": _relative(output_path),
+        })
+
+    product_name = infer_product_name(project_path, "")
+    added, learnings_path, report_path = learn_reports(saved_paths, product_name=product_name, note=note or "工作台上传失败报告")
+    fill_result = _fill_template_version({
+        "project_dir": str(project_path),
+        "reason": "failure_report",
+    })
+    fix_report = _write_feedback_fix_report(project_path, saved_paths, added, fill_result)
+    save_project_status(project_path, {
+        "latest_failure_report": _relative_to_project(project_path, saved_paths[-1]),
+        "latest_fix_report": _relative_to_project(project_path, fix_report),
+    })
+    return {
+        "ok": True,
+        "message": f"已学习 {len(added)} 条失败记录，并生成下一版模板",
+        "files": saved,
+        "learned_count": len(added),
+        "learnings_path": str(learnings_path),
+        "learning_report_path": str(report_path),
+        "fix_report": _file_info(project_path, fix_report),
+        "fill": fill_result,
     }
 
 
@@ -335,11 +675,106 @@ def _create_project(payload):
     if not name:
         raise ValueError("请填写产品名。")
     project_dir, intake_path = create_project(name)
+    save_project_status(project_dir, {
+        "product_name": name,
+        "status": "not_started",
+        "latest_draft": _relative_to_project(project_dir, intake_path),
+    })
     return {
         "ok": True,
         "message": "项目已创建",
         "project_dir": str(project_dir),
         "intake_path": str(intake_path),
+    }
+
+
+def _analyze_project(payload):
+    project_dir = _project_path(payload)
+    draft_path, report_path = analyze_project(project_dir)
+    rows = _read_rows_clean(draft_path)
+    product_name = rows[0].get("product_name") if rows else infer_product_name(project_dir, "")
+    save_project_status(project_dir, {
+        "product_name": product_name,
+        "latest_draft": _relative_to_project(project_dir, draft_path),
+        "latest_analysis_report": str(report_path),
+        "sku_count": len(rows),
+        "status": "not_started",
+        "blocked_reason": None,
+    })
+    return {
+        "ok": True,
+        "message": "产品资料已提炼，等待人工确认",
+        "draft_file": _file_info(project_dir, draft_path),
+        "report_file": _file_info(project_dir, report_path),
+        "rows": _json_rows(rows),
+    }
+
+
+def _save_intake(payload):
+    project_dir = _project_path(payload)
+    rows = payload.get("rows") or []
+    product_name = str(payload.get("product_name") or "").strip() or infer_product_name(project_dir, "")
+    normalized_rows = _normalize_intake_rows(rows, project_dir, product_name)
+    if not normalized_rows:
+        raise ValueError("没有可保存的产品资料行。")
+    product_name = normalized_rows[0].get("product_name") or product_name
+    output_path = project_dir / PRODUCT_DETAIL_DIR / f"{safe_name(product_name)}_产品资料.xlsx"
+    write_intake_workbook(output_path, normalized_rows)
+    save_project_status(project_dir, {
+        "product_name": product_name,
+        "latest_draft": _relative_to_project(project_dir, output_path),
+        "sku_count": len(normalized_rows),
+        "confirmed_at": datetime.now().isoformat(timespec="seconds"),
+        "status": "not_started",
+        "blocked_reason": None,
+    })
+    return {
+        "ok": True,
+        "message": "产品资料已保存并确认",
+        "draft_file": _file_info(project_dir, output_path),
+        "rows": _json_rows(normalized_rows),
+    }
+
+
+def _fill_template_version(payload):
+    project_dir = _project_path(payload)
+    status = load_project_status(project_dir)
+    if status.get("status") == "uploaded_success" and not payload.get("force"):
+        raise ValueError("该项目已标记上传成功。如需重新生成，请先明确 force。")
+
+    product_name = infer_product_name(project_dir, str(payload.get("product_name", "")).strip())
+    draft_path = _latest_draft_for_fill(project_dir, status)
+    template_path = _source_template_for_fill(project_dir)
+    rows = _read_rows_clean(draft_path)
+    if not rows:
+        raise ValueError("产品资料为空，请先完成资料提炼和人工确认。")
+    product_name = rows[0].get("product_name") or product_name
+    version = int(payload.get("version") or _next_template_version(project_dir))
+    output_path = _versioned_template_path(project_dir, product_name, version)
+
+    result = auto_fill_project(
+        project_dir,
+        draft_path=draft_path,
+        template_path=template_path,
+        output_path=output_path,
+        force=bool(payload.get("force")),
+    )
+    if result.get("blocked"):
+        raise ValueError(result.get("reason") or "自动填表暂停。")
+
+    filled_file = _file_info(project_dir, result.get("filled_path"))
+    report_file = _file_info(project_dir, result.get("report_path"))
+    return {
+        "ok": True,
+        "message": _auto_fill_message(result),
+        "version": version,
+        "status": result.get("status"),
+        "paths": {key: str(value) for key, value in result.items() if key.endswith("_path") or key.endswith("_dir")},
+        "filled_file": filled_file,
+        "report_file": report_file,
+        "sku_count": result.get("sku_count"),
+        "written_field_count": result.get("written_field_count"),
+        "error_count": result.get("error_count"),
     }
 
 
@@ -365,7 +800,8 @@ def _auto_fill(payload):
 
 def _mark_uploaded(payload):
     project_dir = _project_path(payload)
-    template_path = infer_latest_template(project_dir)
+    template_value = str(payload.get("template_path", "")).strip()
+    template_path = _local_project_file(project_dir, template_value) if template_value else _latest_filled_template(project_dir)
     if template_path is None:
         raise ValueError("没有找到可标记的上传模板。")
     product_name = infer_product_name(project_dir, "")
@@ -377,10 +813,21 @@ def _mark_uploaded(payload):
         sku_count=sku_count,
         notes="工作台标记上传成功",
     )
+    copied_template = _copy_success_template(project_dir, template_path)
+    learn_warning = ""
+    try:
+        rules, json_path, report_path = learn_success_templates()
+    except Exception as exc:
+        rules, json_path, report_path = {}, "", ""
+        learn_warning = f"成功状态已记录，但学习规则刷新失败：{exc}"
     return {
         "ok": True,
-        "message": "已标记上传成功",
+        "message": learn_warning or "已标记上传成功，并更新成功模板学习库",
         "status_path": str(status_path),
+        "success_template": str(copied_template) if copied_template else "",
+        "template_count": rules.get("template_count", 0) if isinstance(rules, dict) else 0,
+        "rules_json": str(json_path) if json_path else "",
+        "rules_report": str(report_path) if report_path else "",
     }
 
 
@@ -419,6 +866,515 @@ def _learn_success():
         "json_path": str(json_path),
         "report_path": str(report_path),
     }
+
+
+def _latest_intake_rows(project_dir, item=None):
+    item = item or {}
+    candidates = []
+    latest_value = item.get("latest_draft") or ""
+    if latest_value:
+        candidates.append(_project_file_candidate(project_dir, latest_value))
+    for folder in DRAFT_DIRS:
+        draft_dir = Path(project_dir) / folder
+        if not draft_dir.exists():
+            continue
+        candidates.extend([
+            path for path in draft_dir.glob("*.xlsx")
+            if not path.name.startswith("~$")
+            and ("产品资料" in path.name or "自动提炼草稿" in path.name)
+        ])
+    candidates = [path for path in candidates if path and path.exists()]
+    candidates = sorted(set(candidates), key=lambda path: path.stat().st_mtime, reverse=True)
+    last_error = ""
+    for path in candidates:
+        try:
+            rows = _read_rows_clean(path)
+        except Exception as exc:
+            last_error = str(exc)
+            continue
+        if rows:
+            return rows, path, ""
+    return [], candidates[0] if candidates else None, last_error
+
+
+def _latest_filled_template(project_dir, item=None):
+    item = item or {}
+    latest_value = item.get("latest_template") or item.get("verification_template") or ""
+    if latest_value:
+        candidate = _project_file_candidate(project_dir, latest_value)
+        if candidate and candidate.exists() and candidate.suffix.lower() in {".xlsx", ".xlsm"}:
+            return candidate
+    version_files = _template_version_files(project_dir)
+    if version_files:
+        return version_files[-1]
+    return None
+
+
+def _latest_check_report(project_dir, item, latest_template):
+    latest_value = item.get("latest_check_report") or ""
+    if latest_value:
+        candidate = _project_file_candidate(project_dir, latest_value)
+        if candidate and candidate.exists():
+            return candidate
+    if latest_template:
+        output_report = OUTPUTS_DIR / f"{Path(latest_template).stem}_模板自检报告.md"
+        if output_report.exists():
+            return output_report
+    candidates = sorted(OUTPUTS_DIR.glob("*_模板自检报告.md"), key=lambda path: path.stat().st_mtime, reverse=True)
+    template_stem = Path(latest_template).stem if latest_template else ""
+    for path in candidates:
+        if template_stem and template_stem in path.stem:
+            return path
+    return None
+
+
+def _find_source_template(project_dir):
+    project_dir = Path(project_dir)
+    status = load_project_status(project_dir)
+    for key in ("source_template", "verification_source_template"):
+        value = status.get(key)
+        if value:
+            candidate = _project_file_candidate(project_dir, value)
+            if candidate and candidate.exists():
+                return candidate
+    for folder in [TEMPLATE_SOURCE_DIR, LEGACY_TEMPLATE_SOURCE_DIR]:
+        template_dir = project_dir / folder
+        if not template_dir.exists():
+            continue
+        candidates = [
+            path for path in template_dir.iterdir()
+            if path.is_file()
+            and not path.name.startswith("~$")
+            and path.suffix.lower() in {".xlsx", ".xlsm"}
+        ]
+        if candidates:
+            return sorted(candidates, key=lambda path: path.stat().st_mtime, reverse=True)[0]
+    return None
+
+
+def _source_template_for_fill(project_dir):
+    source_template = _find_source_template(project_dir)
+    if source_template:
+        return source_template
+    return find_template(project_dir)
+
+
+def _latest_draft_for_fill(project_dir, status):
+    latest = status.get("latest_draft") or status.get("verification_draft") or ""
+    if latest:
+        candidate = _project_file_candidate(project_dir, latest)
+        if candidate and candidate.exists():
+            return candidate
+    rows, path, _error = _latest_intake_rows(project_dir, status)
+    if rows and path:
+        return path
+    raise FileNotFoundError("没有找到已确认的产品资料，请先提炼并确认。")
+
+
+def _read_rows_clean(path):
+    rows = read_intake_rows(path)
+    cleaned = []
+    for row in rows:
+        normalized = {header: _cell_text(row.get(header)) for header in INTAKE_HEADERS}
+        if normalized.get("sku", "").upper().startswith("DEMO"):
+            continue
+        if normalized.get("project_name") == "示例项目":
+            continue
+        if normalized.get("product_name") == "示例收纳袋":
+            continue
+        if not any(normalized.get(header) for header in INTAKE_HEADERS):
+            continue
+        cleaned.append(normalized)
+    return cleaned
+
+
+def _normalize_intake_rows(rows, project_dir, product_name):
+    normalized_rows = []
+    for index, raw_row in enumerate(rows, 1):
+        row = {header: _cell_text(raw_row.get(header)) for header in INTAKE_HEADERS}
+        if not any(row.values()):
+            continue
+        row["project_name"] = row.get("project_name") or Path(project_dir).name
+        row["product_name"] = row.get("product_name") or product_name
+        row["route"] = row.get("route") or "Haul Generic"
+        row["brand"] = row.get("brand") or "Generic"
+        row["manufacturer"] = row.get("manufacturer") or row.get("brand") or "Generic"
+        row["sku"] = row.get("sku") or _default_sku(row.get("product_name") or product_name, index)
+        row["country_of_origin"] = row.get("country_of_origin") or "China"
+        row["batteries_required"] = row.get("batteries_required") or "No"
+        row["dangerous_goods"] = row.get("dangerous_goods") or "No"
+        normalized_rows.append(row)
+    if not normalized_rows and product_name:
+        normalized_rows.append(_blank_intake_row(project_dir, product_name))
+    return normalized_rows
+
+
+def _json_rows(rows):
+    return [
+        {header: _cell_text(row.get(header)) for header in INTAKE_HEADERS}
+        for row in rows
+    ]
+
+
+def _blank_intake_row(project_dir, product_name):
+    return {
+        "project_name": Path(project_dir).name,
+        "product_name": product_name,
+        "route": "Haul Generic",
+        "brand": "Generic",
+        "manufacturer": "Generic",
+        "country_of_origin": "China",
+        "batteries_required": "No",
+        "dangerous_goods": "No",
+    }
+
+
+def _cell_text(value):
+    if value is None:
+        return ""
+    return str(value).strip()
+
+
+def _default_sku(product_name, index):
+    words = re.findall(r"[A-Za-z0-9]+", str(product_name).upper())
+    if words:
+        base = "-".join(words[:4])[:28]
+    else:
+        base = safe_name(str(product_name)).upper()[:28] or "PRODUCT"
+    return f"{base}-{index:03d}"
+
+
+def _folder_file_infos(project_dir, folders, suffixes=None):
+    infos = []
+    seen = set()
+    for folder in folders:
+        folder_path = Path(project_dir) / folder
+        if not folder_path.exists():
+            continue
+        for path in sorted(folder_path.iterdir(), key=lambda item: item.stat().st_mtime if item.exists() else 0, reverse=True):
+            if not path.is_file() or path.name.startswith("~$"):
+                continue
+            if suffixes and path.suffix.lower() not in suffixes:
+                continue
+            if path.resolve() in seen:
+                continue
+            info = _file_info(project_dir, path)
+            if info:
+                infos.append(info)
+                seen.add(path.resolve())
+    return infos
+
+
+def _template_version_files(project_dir):
+    version_dir = Path(project_dir) / LEGACY_FILLED_TEMPLATE_DIR
+    if not version_dir.exists():
+        return []
+    candidates = [
+        path for path in version_dir.iterdir()
+        if path.is_file()
+        and not path.name.startswith("~$")
+        and path.suffix.lower() in {".xlsx", ".xlsm"}
+        and "产品资料" not in path.name
+        and "自动提炼草稿" not in path.name
+    ]
+    return sorted(candidates, key=lambda path: (_version_number(path.name), path.stat().st_mtime))
+
+
+def _version_number(value):
+    match = re.search(r"(?:^|[_\-\s])v(\d+)", str(value), re.I)
+    return int(match.group(1)) if match else 0
+
+
+def _version_label(value):
+    number = _version_number(value)
+    return f"v{number}" if number else ""
+
+
+def _next_template_version(project_dir):
+    current = [_version_number(path.name) for path in _template_version_files(project_dir)]
+    return (max(current) + 1) if current else 1
+
+
+def _versioned_template_path(project_dir, product_name, version):
+    version_dir = Path(project_dir) / LEGACY_FILLED_TEMPLATE_DIR
+    version_dir.mkdir(parents=True, exist_ok=True)
+    path = version_dir / f"{safe_name(product_name)}_v{version}.xlsx"
+    if not path.exists():
+        return path
+    return _unique_file_path(version_dir, path.name)
+
+
+def _intake_issues(rows, rows_error):
+    issues = []
+    if rows_error:
+        issues.append(["error", "产品资料读取失败", rows_error])
+    if not rows:
+        issues.append(["warn", "等待资料提炼", "上传最终价格表、1688详情页和竞品详情页后点击提炼。"])
+        return issues
+    missing = _missing_required_fields(rows)
+    if missing:
+        issues.append(["warn", "核心字段待确认", "缺少：" + "、".join(missing[:8])])
+    if any(not row.get("list_price") for row in rows):
+        issues.append(["warn", "售价需要确认", "List Price / Haul Price 为空会在模板自检中被拦截。"])
+    if not missing:
+        issues.append(["ok", "资料结构完整", "核心字段已具备，可以人工检查后确认。"])
+    return issues
+
+
+def _missing_required_fields(rows):
+    if not rows:
+        return list(REQUIRED_CORE_FIELDS)
+    missing = []
+    for field in REQUIRED_CORE_FIELDS:
+        if any(not row.get(field) for row in rows):
+            missing.append(field)
+    return missing
+
+
+def _selling_text(row):
+    bullets = [row.get(f"bullet_{index}") for index in range(1, 6)]
+    text = "\n".join(_cell_text(value) for value in bullets if _cell_text(value))
+    description = _cell_text(row.get("description"))
+    return f"{text}\n\n{description}".strip() if description else text
+
+
+def _keywords_for_row(row):
+    candidates = [
+        row.get("item_type_keyword"),
+        row.get("product_type"),
+        row.get("category"),
+        row.get("material"),
+    ]
+    title_words = re.findall(r"[A-Za-z][A-Za-z0-9-]{2,}", row.get("title") or "")
+    candidates.extend(title_words[:6])
+    keywords = []
+    for value in candidates:
+        value = _cell_text(value)
+        if value and value not in keywords:
+            keywords.append(value)
+    return keywords[:8]
+
+
+def _mapping_preview(row):
+    rows = [
+        ("产品名", row.get("title") or row.get("product_name"), "item_name", "已写入" if row.get("title") else "待写入"),
+        ("SKU", row.get("sku"), "contribution_sku / model_number", "已写入" if row.get("sku") else "待写入"),
+        ("Product Type", row.get("product_type"), "product_type", "已写入" if row.get("product_type") else "需确认"),
+        ("颜色", row.get("color"), "color", "已写入" if row.get("color") else "待写入"),
+        ("材质", row.get("material"), "material", "已写入" if row.get("material") else "待写入"),
+        ("售价", row.get("list_price") or row.get("haul_price"), "list_price / BZR price", "已写入" if row.get("list_price") or row.get("haul_price") else "需确认"),
+        ("尺寸重量", _dimension_text(row), "package dimensions / weight", "已写入" if row.get("package_weight_lb") else "需确认"),
+    ]
+    return [[_cell_text(value) for value in item] for item in rows]
+
+
+def _dimension_text(row):
+    dims = [row.get("package_length_in"), row.get("package_width_in"), row.get("package_height_in")]
+    dim_text = " x ".join(_cell_text(value) or "-" for value in dims)
+    weight = _cell_text(row.get("package_weight_lb")) or "-"
+    return f"{dim_text} in / {weight} lb"
+
+
+def _template_next_text(latest_template, error_count, next_version, product_name):
+    if not latest_template:
+        return f"生成 {safe_name(product_name)}_v{next_version}.xlsx 后，下载并人工上传 Amazon。"
+    if error_count:
+        return "先查看自检报告并修正；必要时重新生成下一版。"
+    return "人工上传当前模板。成功则标记上传成功，失败则上传失败报告生成下一版。"
+
+
+def _feedback_note(uploaded, latest_template, current_version):
+    if uploaded:
+        return "当前版本已确认上传成功，成功模板已进入学习流程。"
+    if latest_template:
+        return f"{current_version or '当前版本'} 已生成，等待人工上传 Amazon 后记录成功或失败。"
+    return "等待 Amazon 模板填表后生成 v1。"
+
+
+def _feedback_next_text(uploaded, latest_template, current_version):
+    if uploaded:
+        return "已上传成功，可用于后续同类模板学习。"
+    if latest_template:
+        return f"人工上传 {current_version or '当前版本'}。成功则学习，失败则输入失败报告生成下一版。"
+    return "先完成填表与自检，生成 v1 后再进入上传反馈循环。"
+
+
+def _version_timeline(version_infos, uploaded):
+    if not version_infos:
+        return [["", "v1", "等待生成", "先填入 Amazon 模板并自检。"]]
+    timeline = []
+    for index, info in enumerate(version_infos):
+        version = _version_label(info["name"]) or f"v{index + 1}"
+        is_last = index == len(version_infos) - 1
+        state = "success" if uploaded and is_last else ("current" if is_last else "")
+        title = "上传成功" if uploaded and is_last else ("当前待上传版本" if is_last else "历史版本")
+        body = "最终成功模板已收录学习库。" if uploaded and is_last else f"{info['name']} 已生成。"
+        timeline.append([state, version, title, body])
+    if not uploaded:
+        timeline.append(["", "成功/失败", "等待人工上传反馈", "成功则结束并学习；失败则上传失败报告继续生成下一版。"])
+    return timeline
+
+
+def _learning_rows_for_product(product_name):
+    path = ROOT / "data" / "error_learnings.json"
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    rows = []
+    for record in reversed(data.get("records", [])):
+        if product_name and record.get("product_name") and product_name not in record.get("product_name", ""):
+            continue
+        rows.append([
+            record.get("field") or record.get("code") or "未识别字段",
+            record.get("message") or "报告已记录",
+            record.get("field") or "待判断",
+            record.get("rule_hint") or "待归纳",
+            "加入失败复盘库",
+        ])
+        if len(rows) >= 8:
+            break
+    return rows
+
+
+def _learning_cards(product_name, uploaded, fix_rows):
+    cards = [
+        ["成功模板样本", "上传成功后写入成功模板库" if not uploaded else f"{product_name} 已收录"],
+        ["失败规则", f"{len(fix_rows)} 条失败记录可用于后续自检"],
+        ["下一次动作", "继续上传验证" if not uploaded else "后续同类模板可复用规则"],
+    ]
+    return cards
+
+
+def _project_steps(status, rows, latest_template, error_count):
+    if rows:
+        intake = "已确认"
+    else:
+        intake = "未开始"
+    if latest_template and error_count == 0:
+        template = "已通过"
+    elif latest_template:
+        template = "需修正"
+    else:
+        template = "待填表"
+    if status == "uploaded_success":
+        feedback = "已上传"
+    elif latest_template:
+        feedback = "等待上传"
+    else:
+        feedback = "未开始"
+    return [intake, template, feedback]
+
+
+def _project_summary_text(status, latest_template, error_count, next_version, item):
+    if status == "uploaded_success":
+        uploaded_at = item.get("uploaded_at") or ""
+        return f"已上传成功{('：' + uploaded_at) if uploaded_at else ''}"
+    if latest_template:
+        version = _version_label(Path(latest_template).name)
+        if error_count:
+            return f"{version or '模板'} 已生成，自检有 {error_count} 项需处理"
+        return f"{version or '模板'} 已生成，等待人工上传 Amazon"
+    return f"等待生成 {safe_name(item.get('product_name') or '产品')}_v{next_version}"
+
+
+def _format_updated(value):
+    if not value:
+        return "未更新"
+    text = str(value)
+    try:
+        dt = datetime.fromisoformat(text)
+    except ValueError:
+        return text[:16]
+    return dt.strftime("%Y-%m-%d %H:%M")
+
+
+def _write_feedback_fix_report(project_dir, report_paths, added_records, fill_result):
+    filled_file = fill_result.get("filled_file") or {}
+    filled_name = filled_file.get("name") or f"{safe_name(infer_product_name(project_dir, ''))}_修正说明"
+    output_dir = Path(project_dir) / LEGACY_FILLED_TEMPLATE_DIR
+    output_dir.mkdir(parents=True, exist_ok=True)
+    report_path = output_dir / f"{Path(filled_name).stem}_修正说明.md"
+    lines = [
+        f"# {Path(filled_name).stem} 修正说明",
+        "",
+        f"- 生成时间：{datetime.now().isoformat(timespec='seconds')}",
+        f"- 失败报告：{', '.join(path.name for path in report_paths)}",
+        f"- 新模板：{filled_file.get('name') or '未生成'}",
+        f"- 学习记录：{len(added_records)} 条",
+        "",
+        "## 失败报告识别",
+        "",
+    ]
+    if not added_records:
+        lines.append("- 未从报告中识别到结构化错误，已按确认产品资料重新生成下一版模板。")
+    else:
+        for record in added_records:
+            lines.extend([
+                f"- 字段：{record.get('field') or record.get('code') or '未识别'}",
+                f"  - 报错：{record.get('message') or '无'}",
+                f"  - 规则提示：{record.get('rule_hint') or '待归纳'}",
+            ])
+    report_path.write_text("\n".join(lines), encoding="utf-8")
+    return report_path
+
+
+def _copy_success_template(project_dir, template_path):
+    template_path = Path(template_path)
+    if not template_path.exists() or template_path.suffix.lower() not in {".xlsx", ".xlsm"}:
+        return None
+    SUCCESS_TEMPLATES_DIR.mkdir(parents=True, exist_ok=True)
+    product_name = safe_name(infer_product_name(project_dir, ""))
+    target_name = f"{product_name}_{template_path.name}" if product_name not in template_path.stem else template_path.name
+    target_path = _unique_file_path(SUCCESS_TEMPLATES_DIR, target_name)
+    shutil.copy2(template_path, target_path)
+    return target_path
+
+
+def _local_project_file(project_dir, path_value):
+    path = Path(path_value)
+    if not path.is_absolute():
+        path = (ROOT / unquote(str(path_value))).resolve()
+        if not path.exists():
+            path = (Path(project_dir) / unquote(str(path_value))).resolve()
+    else:
+        path = path.resolve()
+    try:
+        path.relative_to(Path(project_dir).resolve())
+    except ValueError as exc:
+        raise ValueError("文件必须在当前项目内。") from exc
+    if not path.exists():
+        raise ValueError("文件不存在。")
+    return path
+
+
+def _project_file_candidate(project_dir, path_value):
+    if not path_value:
+        return None
+    raw = unquote(str(path_value))
+    path = Path(raw)
+    candidates = []
+    if path.is_absolute():
+        candidates.append(path)
+    else:
+        candidates.append(Path(project_dir) / path)
+        candidates.append(ROOT / path)
+    for candidate in candidates:
+        candidate = candidate.resolve()
+        if candidate.exists():
+            return candidate
+    return candidates[0].resolve() if candidates else None
+
+
+def _relative_to_project(project_dir, path):
+    project_dir = Path(project_dir).resolve()
+    path = Path(path).resolve()
+    try:
+        return str(path.relative_to(project_dir))
+    except ValueError:
+        return str(path)
 
 
 def _project_path(payload):
@@ -738,968 +1694,4 @@ def _relative(path):
 
 
 def _html():
-    return """<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>上品工作台</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #f7f7f4;
-      --panel: #ffffff;
-      --panel-2: #f1f5f2;
-      --text: #20231f;
-      --muted: #667065;
-      --line: #d9dfd8;
-      --green: #287457;
-      --blue: #245f8f;
-      --red: #a34037;
-      --yellow: #8a6a18;
-      --shadow: 0 10px 28px rgba(36, 48, 39, .08);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.45;
-    }
-    .app { min-height: 100vh; display: grid; grid-template-columns: 232px 1fr; }
-    aside {
-      background: #26322b;
-      color: #f7f7f4;
-      padding: 22px 16px;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-    }
-    .brand { font-size: 20px; font-weight: 750; margin-bottom: 22px; }
-    nav { display: grid; gap: 8px; }
-    nav button {
-      appearance: none;
-      border: 0;
-      background: transparent;
-      color: #dfe8df;
-      text-align: left;
-      padding: 10px 12px;
-      border-radius: 8px;
-      font: inherit;
-      cursor: pointer;
-    }
-    nav button.active, nav button:hover { background: rgba(255,255,255,.12); color: #fff; }
-    main { padding: 24px; min-width: 0; }
-    .topbar { display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-    h1 { font-size: 24px; margin: 0; letter-spacing: 0; }
-    h2 { font-size: 17px; margin: 0 0 12px; letter-spacing: 0; }
-    .muted { color: var(--muted); }
-    .grid { display: grid; gap: 14px; }
-    .stats { grid-template-columns: repeat(5, minmax(120px, 1fr)); margin-bottom: 16px; }
-    .stat, .panel, .project, .rule {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-    }
-    .stat { padding: 14px; min-height: 82px; }
-    .stat .num { font-size: 26px; font-weight: 760; margin-top: 4px; }
-    .panel { padding: 16px; margin-bottom: 16px; }
-    .panel-header, .section-head {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-    .section-head { margin-top: 6px; }
-    .workspace-grid {
-      display: grid;
-      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
-      gap: 16px;
-      align-items: stretch;
-    }
-    .project-select {
-      width: 100%;
-      min-width: 0;
-      margin-bottom: 12px;
-    }
-    .status-strip {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin: 8px 0 12px;
-    }
-    .current-meta {
-      display: grid;
-      gap: 8px;
-      margin: 12px 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .health-panel {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fbfcfa;
-      padding: 12px;
-      margin: 12px 0;
-      display: grid;
-      gap: 10px;
-    }
-    .health-panel.error {
-      border-color: #e4c0bc;
-      background: #fff7f6;
-    }
-    .health-panel.warning {
-      border-color: #ded1a8;
-      background: #fffaf0;
-    }
-    .health-panel.ok {
-      border-color: #bad7ca;
-      background: #f7fbf8;
-    }
-    .health-title {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      justify-content: space-between;
-      font-weight: 760;
-    }
-    .health-list {
-      display: grid;
-      gap: 8px;
-    }
-    .health-item {
-      border-top: 1px solid rgba(0,0,0,.08);
-      padding-top: 8px;
-    }
-    .health-item:first-child {
-      border-top: 0;
-      padding-top: 0;
-    }
-    .health-item strong {
-      display: block;
-      margin-bottom: 2px;
-    }
-    .health-links {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .create-inline {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 8px;
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-    }
-    .shelf-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .shelf-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      min-height: 190px;
-      padding: 12px;
-      display: grid;
-      align-content: start;
-      gap: 10px;
-    }
-    .shelf-top {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      justify-content: space-between;
-    }
-    .shelf-title { font-weight: 760; line-height: 1.3; }
-    .shelf-count {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 2px 8px;
-      color: var(--muted);
-      font-size: 12px;
-      white-space: nowrap;
-    }
-    .legacy-flag {
-      color: var(--yellow);
-      border-color: #ded1a8;
-      background: #fbf6df;
-    }
-    .file-list {
-      display: grid;
-      gap: 7px;
-      min-height: 42px;
-    }
-    .file-item {
-      border-top: 1px solid var(--line);
-      padding-top: 7px;
-    }
-    .file-item:first-child {
-      border-top: 0;
-      padding-top: 0;
-    }
-    .table-wrap { overflow-x: auto; }
-    .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-    input, select {
-      height: 36px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 0 10px;
-      min-width: 240px;
-      font: inherit;
-      background: #fff;
-    }
-    input[type="file"] {
-      height: auto;
-      padding: 7px 10px;
-      min-width: min(420px, 100%);
-    }
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-    }
-    button.action {
-      height: 36px;
-      border: 1px solid #b8c4ba;
-      background: #fff;
-      border-radius: 8px;
-      padding: 0 12px;
-      font: inherit;
-      cursor: pointer;
-      color: var(--text);
-    }
-    button.action.primary { background: var(--green); color: #fff; border-color: var(--green); }
-    button.action.danger { color: var(--red); border-color: #d8aca7; background: #fff7f6; }
-    button.action.small {
-      height: 30px;
-      padding: 0 9px;
-      font-size: 12px;
-    }
-    button.action:disabled {
-      cursor: not-allowed;
-      opacity: .55;
-    }
-    button.action:hover { filter: brightness(.98); }
-    a.file-link {
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 650;
-    }
-    a.file-link:hover { text-decoration: underline; }
-    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-    th, td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-    th { color: var(--muted); font-weight: 650; background: var(--panel-2); }
-    td { word-break: break-word; }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 12px;
-      border: 1px solid var(--line);
-      background: #f6f7f4;
-      white-space: nowrap;
-    }
-    .uploaded_success { color: var(--green); border-color: #bad7ca; background: #edf8f1; }
-    .ready_for_upload { color: var(--blue); border-color: #bdd4e5; background: #edf5fa; }
-    .needs_manual_fix, .blocked { color: var(--red); border-color: #e4c0bc; background: #fff0ee; }
-    .not_started { color: var(--yellow); border-color: #ded1a8; background: #fbf6df; }
-    .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-    tr.active-row { background: #f7fbf8; }
-    .file-cell { display: grid; gap: 4px; }
-    .file-name { font-weight: 650; }
-    .file-path {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.35;
-      word-break: break-all;
-    }
-    .file-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
-    .file-actions .action {
-      height: 30px;
-      padding: 0 9px;
-      font-size: 12px;
-    }
-    .upload-panel .toolbar { align-items: flex-end; }
-    .field { display: grid; gap: 5px; }
-    .field label { color: var(--muted); font-size: 12px; }
-    .upload-status { min-height: 18px; margin-top: 10px; }
-    .selected-files {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fbfcfa;
-      margin-top: 12px;
-      min-height: 54px;
-      max-height: 150px;
-      overflow: auto;
-      padding: 9px 10px;
-    }
-    .selected-files ul { margin: 0; padding-left: 18px; }
-    .selected-files li { margin: 2px 0; }
-    .result-panel {
-      display: none;
-      border-color: #b8d5c7;
-      background: #f7fbf8;
-    }
-    .result-panel.active { display: block; }
-    .result-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 12px;
-    }
-    .result-card {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      padding: 12px;
-      min-width: 0;
-    }
-    .result-title { font-weight: 700; margin-bottom: 6px; }
-    .small { font-size: 12px; }
-    .rules-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-    .rule { padding: 12px; min-height: 118px; }
-    .rule strong { display: block; margin-bottom: 8px; }
-    pre {
-      white-space: pre-wrap;
-      background: #20231f;
-      color: #eef4ee;
-      padding: 14px;
-      border-radius: 8px;
-      max-height: 520px;
-      overflow: auto;
-      font-size: 12px;
-    }
-    .toast {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      max-width: 460px;
-      background: #20231f;
-      color: #fff;
-      padding: 12px 14px;
-      border-radius: 8px;
-      box-shadow: 0 12px 32px rgba(0,0,0,.24);
-      display: none;
-    }
-    .view { display: none; }
-    .view.active { display: block; }
-    @media (max-width: 920px) {
-      .app { grid-template-columns: 1fr; }
-      aside { height: auto; position: static; }
-      nav { grid-template-columns: repeat(3, 1fr); }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .workspace-grid { grid-template-columns: 1fr; }
-      .result-grid { grid-template-columns: 1fr; }
-      main { padding: 16px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="app">
-    <aside>
-      <div class="brand">上品工作台</div>
-      <nav>
-        <button data-view="projects" class="active">项目</button>
-        <button data-view="rules">规则库</button>
-        <button data-view="report">报告</button>
-      </nav>
-    </aside>
-    <main>
-      <div class="topbar">
-        <div>
-          <h1 id="page-title">项目</h1>
-          <div class="muted small" id="root-path"></div>
-        </div>
-        <button class="action" id="refresh-btn">刷新</button>
-      </div>
-
-      <section id="projects" class="view active">
-        <div class="grid stats">
-          <div class="stat"><div class="muted">全部项目</div><div class="num" id="stat-projects">0</div></div>
-          <div class="stat"><div class="muted">已上传</div><div class="num" id="stat-uploaded">0</div></div>
-          <div class="stat"><div class="muted">待上传</div><div class="num" id="stat-ready">0</div></div>
-          <div class="stat"><div class="muted">待修正</div><div class="num" id="stat-fix">0</div></div>
-          <div class="stat"><div class="muted">未开始</div><div class="num" id="stat-new">0</div></div>
-        </div>
-        <div class="workspace-grid">
-          <div class="panel">
-            <h2>当前项目</h2>
-            <select id="active-project" class="project-select"></select>
-            <div id="active-project-summary"></div>
-            <div class="toolbar">
-              <button class="action primary" id="active-auto-fill-btn">自动填表</button>
-              <button class="action" id="active-mark-uploaded-btn">标记成功</button>
-            </div>
-            <div class="create-inline">
-              <input id="new-project-name" placeholder="新产品名">
-              <button class="action" id="create-project-btn">新建</button>
-            </div>
-          </div>
-          <div class="panel upload-panel" id="upload-panel">
-            <div class="panel-header">
-              <h2>放资料</h2>
-              <button class="action primary" id="upload-files-btn">放入项目</button>
-            </div>
-            <div class="toolbar">
-              <div class="field">
-                <label for="upload-folder">目标资料夹</label>
-                <select id="upload-folder"></select>
-              </div>
-              <div class="field">
-                <label for="upload-files">文件</label>
-                <input id="upload-files" type="file" multiple>
-              </div>
-            </div>
-            <input id="upload-project" class="visually-hidden" aria-hidden="true">
-            <div class="selected-files small" id="selected-files">未选择文件</div>
-            <div class="muted small upload-status" id="upload-status"></div>
-          </div>
-        </div>
-        <div class="section-head">
-          <h2>资料架</h2>
-          <span class="muted small" id="shelf-meta"></span>
-        </div>
-        <div class="shelf-grid" id="shelf-grid"></div>
-        <div class="panel result-panel" id="auto-fill-result">
-          <h2>自动填表结果</h2>
-          <div class="muted small" id="auto-fill-result-meta"></div>
-          <div class="result-grid" id="auto-fill-result-files"></div>
-        </div>
-        <div class="panel">
-          <div class="panel-header">
-            <h2>全部项目</h2>
-            <span class="muted small">选择一行可以切换当前项目</span>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 18%">项目</th>
-                  <th style="width: 10%">状态</th>
-                  <th style="width: 8%">SKU</th>
-                  <th style="width: 24%">最新表格</th>
-                  <th style="width: 18%">下一步</th>
-                  <th style="width: 22%">操作</th>
-                </tr>
-              </thead>
-              <tbody id="project-rows"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section id="rules" class="view">
-        <div class="panel">
-          <h2>成功规则</h2>
-          <div class="toolbar">
-            <button class="action primary" id="learn-success-btn">更新规则</button>
-            <span class="muted small" id="rules-meta"></span>
-          </div>
-        </div>
-        <div class="grid rules-grid" id="rules-grid"></div>
-      </section>
-
-      <section id="report" class="view">
-        <div class="panel">
-          <h2>成功模板规则提炼报告</h2>
-          <div class="muted small" id="report-path"></div>
-          <pre id="report-preview"></pre>
-        </div>
-      </section>
-    </main>
-  </div>
-  <div class="toast" id="toast"></div>
-  <script>
-    const state = { summary: null, rules: null, activeProjectDir: '' };
-
-    function showToast(message) {
-      const box = document.getElementById('toast');
-      box.textContent = message;
-      box.style.display = 'block';
-      clearTimeout(showToast.timer);
-      showToast.timer = setTimeout(() => box.style.display = 'none', 4200);
-    }
-
-    async function api(path, options = {}) {
-      const response = await fetch(path, {
-        headers: { 'Content-Type': 'application/json' },
-        ...options
-      });
-      const data = await response.json();
-      if (!response.ok || data.ok === false) throw new Error(data.error || '请求失败');
-      return data;
-    }
-
-    async function loadAll() {
-      const [summary, rules, report] = await Promise.all([
-        api('/api/summary'),
-        api('/api/rules'),
-        api('/api/report'),
-      ]);
-      state.summary = summary;
-      state.rules = rules;
-      if (!state.activeProjectDir || !summary.projects.some(project => project.project_dir === state.activeProjectDir)) {
-        state.activeProjectDir = pickDefaultProject(summary);
-      }
-      renderSummary(summary);
-      renderRules(rules);
-      renderReport(report);
-    }
-
-    function pickDefaultProject(summary) {
-      const projects = summary.projects || [];
-      const needsWork = projects.find(project => project.status !== 'uploaded_success');
-      return (needsWork || projects[0] || {}).project_dir || '';
-    }
-
-    function getActiveProject() {
-      return (state.summary?.projects || []).find(project => project.project_dir === state.activeProjectDir) || null;
-    }
-
-    function renderSummary(summary) {
-      document.getElementById('root-path').textContent = summary.root;
-      document.getElementById('stat-projects').textContent = summary.totals.projects;
-      document.getElementById('stat-uploaded').textContent = summary.totals.uploaded;
-      document.getElementById('stat-ready').textContent = summary.totals.ready;
-      document.getElementById('stat-fix').textContent = summary.totals.needs_fix + summary.totals.blocked;
-      document.getElementById('stat-new').textContent = summary.totals.not_started;
-
-      const rows = document.getElementById('project-rows');
-      rows.innerHTML = '';
-      for (const project of summary.projects) {
-        const tr = document.createElement('tr');
-        tr.dataset.project = project.project_dir;
-        if (project.project_dir === state.activeProjectDir) tr.className = 'active-row';
-        tr.innerHTML = `
-          <td><strong>${escapeHtml(project.product_name)}</strong><div class="muted small">${escapeHtml(project.folder)}</div></td>
-          <td><span class="badge ${project.status}">${escapeHtml(project.status_label)}</span></td>
-          <td>${escapeHtml(project.sku_count || '-')}</td>
-          <td>${renderFileCell(project.latest_template_file, '还没有生成表格')}</td>
-          <td>${escapeHtml(project.health?.next_action || project.next_step || '-')}</td>
-          <td><div class="row-actions">
-            <button class="action" data-action="pick-upload" data-project="${escapeAttr(project.project_dir)}">放资料</button>
-            <button class="action" data-action="auto-fill" data-project="${escapeAttr(project.project_dir)}">${project.status === 'uploaded_success' ? '重新验证' : '自动填表'}</button>
-            <button class="action" data-action="mark-uploaded" data-project="${escapeAttr(project.project_dir)}" ${project.status === 'uploaded_success' ? 'disabled' : ''}>标记成功</button>
-            <button class="action danger" data-action="delete-project" data-project="${escapeAttr(project.project_dir)}" data-name="${escapeAttr(project.product_name)}">删除</button>
-          </div></td>
-        `;
-        rows.appendChild(tr);
-      }
-      renderProjectPicker(summary);
-      renderUploadOptions(summary);
-      renderActiveProject();
-      renderShelf();
-    }
-
-    function renderProjectPicker(summary) {
-      const select = document.getElementById('active-project');
-      select.innerHTML = '';
-      for (const project of summary.projects) {
-        const option = document.createElement('option');
-        option.value = project.project_dir;
-        option.textContent = `${project.product_name} / ${project.status_label}`;
-        select.appendChild(option);
-      }
-      select.value = state.activeProjectDir;
-      select.disabled = !summary.projects.length;
-    }
-
-    function renderActiveProject() {
-      const project = getActiveProject();
-      const summaryBox = document.getElementById('active-project-summary');
-      const autoFillButton = document.getElementById('active-auto-fill-btn');
-      const markButton = document.getElementById('active-mark-uploaded-btn');
-      const uploadButton = document.getElementById('upload-files-btn');
-      const uploadProject = document.getElementById('upload-project');
-      if (!project) {
-        summaryBox.innerHTML = '<div class="muted">还没有项目。</div>';
-        autoFillButton.disabled = true;
-        markButton.disabled = true;
-        uploadButton.disabled = true;
-        uploadProject.value = '';
-        return;
-      }
-      uploadProject.value = project.project_dir;
-      autoFillButton.disabled = false;
-      markButton.disabled = project.status === 'uploaded_success';
-      uploadButton.disabled = false;
-      summaryBox.innerHTML = `
-        <div class="status-strip">
-          <span class="badge ${project.status}">${escapeHtml(project.status_label)}</span>
-          <span class="muted small">SKU：${escapeHtml(project.sku_count || '-')}</span>
-          <span class="muted small">更新：${escapeHtml(project.updated_at || '-')}</span>
-        </div>
-        <div class="current-meta">
-          <div>${escapeHtml(project.relative_dir || project.folder)}</div>
-          <div>${escapeHtml(project.next_step || '-')}</div>
-        </div>
-        ${renderHealthPanel(project)}
-        ${renderFileCell(project.latest_template_file, '还没有生成表格')}
-      `;
-    }
-
-    function renderHealthPanel(project) {
-      const health = project.health || {};
-      const level = health.level || 'ok';
-      const title = level === 'error' ? '流程有阻塞' : (level === 'warning' ? '流程需确认' : '流程正常');
-      const items = [];
-      for (const text of health.blockers || []) {
-        items.push(`<div class="health-item"><strong>阻塞</strong><div>${escapeHtml(text)}</div></div>`);
-      }
-      for (const text of health.warnings || []) {
-        items.push(`<div class="health-item"><strong>提醒</strong><div>${escapeHtml(text)}</div></div>`);
-      }
-      for (const finding of health.check_findings || []) {
-        items.push(`
-          <div class="health-item">
-            <strong>${escapeHtml(finding.field || '自检错误')} · 行 ${escapeHtml(finding.row || '-')}</strong>
-            <div>${escapeHtml(finding.message || '')}</div>
-            <div class="muted small">${escapeHtml(finding.fix || '')}</div>
-          </div>
-        `);
-      }
-      for (const file of health.stale_sources || []) {
-        items.push(`
-          <div class="health-item">
-            <strong>晚于草稿的资料</strong>
-            <a class="file-link small" href="${escapeAttr(file.download_url)}">${escapeHtml(file.name)}</a>
-            <div class="file-path">${escapeHtml(file.folder_relative)}</div>
-          </div>
-        `);
-      }
-      for (const file of health.suspicious_files || []) {
-        items.push(`
-          <div class="health-item">
-            <strong>疑似错放资料</strong>
-            <a class="file-link small" href="${escapeAttr(file.download_url)}">${escapeHtml(file.name)}</a>
-            <div class="file-path">${escapeHtml(file.folder_relative)}</div>
-          </div>
-        `);
-      }
-      const links = [
-        project.latest_draft_file ? renderMiniFileLink(project.latest_draft_file, '草稿') : '',
-        project.latest_check_report_file ? renderMiniFileLink(project.latest_check_report_file, '自检报告') : '',
-        project.source_template_file ? renderMiniFileLink(project.source_template_file, '原模板') : '',
-      ].filter(Boolean).join('');
-      return `
-        <div class="health-panel ${escapeAttr(level)}">
-          <div class="health-title">
-            <span>${title}</span>
-            <span class="muted small">${escapeHtml(health.next_action || project.next_step || '')}</span>
-          </div>
-          <div class="health-links">${links}</div>
-          <div class="health-list">${items.join('') || '<div class="muted small">没有发现明显阻塞。</div>'}</div>
-        </div>
-      `;
-    }
-
-    function renderMiniFileLink(file, label) {
-      return `<a class="file-link small" href="${escapeAttr(file.download_url)}">${escapeHtml(label)}</a>`;
-    }
-
-    function renderShelf() {
-      const project = getActiveProject();
-      const grid = document.getElementById('shelf-grid');
-      const meta = document.getElementById('shelf-meta');
-      grid.innerHTML = '';
-      if (!project) {
-        meta.textContent = '';
-        grid.innerHTML = '<div class="muted">新建或选择一个项目后会显示资料架。</div>';
-        return;
-      }
-      const folders = project.folders || [];
-      const total = folders.reduce((sum, folder) => sum + (folder.file_count || 0), 0);
-      meta.textContent = `${project.product_name}，共 ${total} 个文件`;
-      for (const folder of folders) {
-        const card = document.createElement('div');
-        card.className = 'shelf-card';
-        const files = (folder.files || []).slice(0, 5);
-        const fileHtml = files.length
-          ? files.map(file => renderShelfFile(file)).join('')
-          : '<div class="muted small">暂无文件</div>';
-        const moreText = (folder.file_count || 0) > files.length
-          ? `<div class="muted small">还有 ${folder.file_count - files.length} 个文件</div>`
-          : '';
-        card.innerHTML = `
-          <div class="shelf-top">
-            <div>
-              <div class="shelf-title">${escapeHtml(folder.name)}</div>
-              ${folder.legacy ? '<span class="badge legacy-flag">旧目录</span>' : ''}
-            </div>
-            <div class="shelf-count">${folder.file_count || 0}</div>
-          </div>
-          <div class="file-list">${fileHtml}${moreText}</div>
-          <button class="action small" data-action="pick-folder" data-folder="${escapeAttr(folder.name)}">放到这里</button>
-        `;
-        grid.appendChild(card);
-      }
-    }
-
-    function renderShelfFile(file) {
-      return `
-        <div class="file-item">
-          <a class="file-link small" href="${escapeAttr(file.download_url)}">${escapeHtml(file.name)}</a>
-          <div class="file-path">${escapeHtml(formatBytes(file.size_bytes || 0))}</div>
-        </div>
-      `;
-    }
-
-    function renderFileCell(file, emptyText) {
-      if (!file || !file.exists) {
-        return `<span class="muted small">${escapeHtml(emptyText || '-')}</span>`;
-      }
-      return `
-        <div class="file-cell">
-          <a class="file-link file-name" href="${escapeAttr(file.download_url)}">${escapeHtml(file.name)}</a>
-          <div class="file-path">${escapeHtml(file.folder_relative)}</div>
-          <div class="file-actions">
-            <button class="action" data-action="reveal-file" data-path="${escapeAttr(file.relative_path)}">定位</button>
-            <a class="file-link small" href="${escapeAttr(file.download_url)}">下载</a>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderResultFile(label, file) {
-      const fileHtml = renderFileCell(file, '没有生成');
-      return `
-        <div class="result-card">
-          <div class="result-title">${escapeHtml(label)}</div>
-          ${fileHtml}
-        </div>
-      `;
-    }
-
-    function renderUploadOptions(summary) {
-      document.getElementById('upload-project').value = state.activeProjectDir;
-
-      const folderSelect = document.getElementById('upload-folder');
-      const selectedFolder = folderSelect.value;
-      folderSelect.innerHTML = '';
-      for (const folder of summary.project_folders || []) {
-        const option = document.createElement('option');
-        option.value = folder;
-        option.textContent = folder;
-        folderSelect.appendChild(option);
-      }
-      if ([...folderSelect.options].some(option => option.value === selectedFolder)) {
-        folderSelect.value = selectedFolder;
-      }
-    }
-
-    function renderRules(rules) {
-      document.getElementById('rules-meta').textContent = rules.exists
-        ? `${rules.template_count} 个样板，${rules.product_type_count} 个 Product Type`
-        : '暂无规则';
-      const grid = document.getElementById('rules-grid');
-      grid.innerHTML = '';
-      for (const item of rules.product_types || []) {
-        const div = document.createElement('div');
-        div.className = 'rule';
-        div.innerHTML = `
-          <strong>${escapeHtml(item.product_type)}</strong>
-          <div>样板：${item.template_count}</div>
-          <div>SKU：${item.sku_count}</div>
-          <div>固定默认值：${item.fixed_default_count}</div>
-          <div>未映射常填字段：${item.unmapped_count}</div>
-        `;
-        grid.appendChild(div);
-      }
-    }
-
-    function renderReport(report) {
-      document.getElementById('report-path').textContent = report.path || '';
-      document.getElementById('report-preview').textContent = report.preview || '暂无报告';
-    }
-
-    async function postAction(path, payload) {
-      const result = await api(path, { method: 'POST', body: JSON.stringify(payload || {}) });
-      showToast(result.message || '已完成');
-      await loadAll();
-      return result;
-    }
-
-    document.addEventListener('click', async (event) => {
-      const nav = event.target.closest('nav button');
-      if (nav) {
-        document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
-        nav.classList.add('active');
-        document.getElementById(nav.dataset.view).classList.add('active');
-        document.getElementById('page-title').textContent = nav.textContent;
-        return;
-      }
-      const action = event.target.dataset.action;
-      if (action === 'pick-upload') {
-        setActiveProject(event.target.dataset.project);
-        document.getElementById('upload-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      if (action === 'pick-folder') {
-        document.getElementById('upload-folder').value = event.target.dataset.folder;
-        document.getElementById('upload-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      if (action === 'auto-fill') {
-        setActiveProject(event.target.dataset.project);
-        await guarded(() => runAutoFill(event.target.dataset.project));
-      }
-      if (action === 'mark-uploaded') {
-        setActiveProject(event.target.dataset.project);
-        await guarded(() => postAction('/api/mark-uploaded', { project_dir: event.target.dataset.project }));
-      }
-      if (action === 'delete-project') {
-        const name = event.target.dataset.name || '这个项目';
-        if (window.confirm(`确定删除「${name}」吗？此操作会删除整个项目文件夹，不能从工作台恢复。`)) {
-          await guarded(() => postAction('/api/delete-project', { project_dir: event.target.dataset.project }));
-        }
-      }
-      if (action === 'reveal-file') {
-        await guarded(() => revealFile(event.target.dataset.path));
-      }
-      const row = event.target.closest('#project-rows tr');
-      if (row && !event.target.closest('button, a')) {
-        setActiveProject(row.dataset.project);
-      }
-    });
-
-    document.getElementById('refresh-btn').addEventListener('click', () => guarded(loadAll));
-    document.getElementById('active-project').addEventListener('change', (event) => setActiveProject(event.target.value));
-    document.getElementById('active-auto-fill-btn').addEventListener('click', () => {
-      const project = getActiveProject();
-      if (project) guarded(() => runAutoFill(project.project_dir));
-    });
-    document.getElementById('active-mark-uploaded-btn').addEventListener('click', () => {
-      const project = getActiveProject();
-      if (project) guarded(() => postAction('/api/mark-uploaded', { project_dir: project.project_dir }));
-    });
-    document.getElementById('learn-success-btn').addEventListener('click', () => guarded(() => postAction('/api/learn-success')));
-    document.getElementById('upload-files-btn').addEventListener('click', () => guarded(uploadFiles));
-    document.getElementById('upload-files').addEventListener('change', renderSelectedFiles);
-    document.getElementById('create-project-btn').addEventListener('click', async () => {
-      const input = document.getElementById('new-project-name');
-      await guarded(() => postAction('/api/projects', { name: input.value }));
-      input.value = '';
-    });
-
-    function setActiveProject(projectDir) {
-      if (!projectDir || state.activeProjectDir === projectDir) {
-        renderActiveProject();
-        renderShelf();
-        renderUploadOptions(state.summary || { project_folders: [] });
-        return;
-      }
-      state.activeProjectDir = projectDir;
-      renderProjectPicker(state.summary || { projects: [] });
-      renderActiveProject();
-      renderShelf();
-      renderUploadOptions(state.summary || { project_folders: [] });
-      highlightProjectRows();
-    }
-
-    function highlightProjectRows() {
-      document.querySelectorAll('#project-rows tr').forEach(row => {
-        row.classList.toggle('active-row', row.dataset.project === state.activeProjectDir);
-      });
-    }
-
-    async function uploadFiles() {
-      const status = document.getElementById('upload-status');
-      const fileInput = document.getElementById('upload-files');
-      const projectDir = document.getElementById('upload-project').value;
-      const folder = document.getElementById('upload-folder').value;
-      if (!projectDir) throw new Error('请选择项目。');
-      if (!folder) throw new Error('请选择资料夹。');
-      if (!fileInput.files.length) throw new Error('请选择文件。');
-
-      const form = new FormData();
-      form.append('project_dir', projectDir);
-      form.append('folder', folder);
-      for (const file of fileInput.files) {
-        form.append('files', file, file.name);
-      }
-      status.textContent = `正在放入 ${fileInput.files.length} 个文件...`;
-      const response = await fetch('/api/upload-files', { method: 'POST', body: form });
-      const result = await response.json();
-      if (!response.ok || result.ok === false) throw new Error(result.error || '上传失败');
-      fileInput.value = '';
-      renderSelectedFiles();
-      status.textContent = (result.files || []).map(file => file.relative_path).join('；');
-      showToast(result.message || '文件已放入项目');
-      await loadAll();
-    }
-
-    async function runAutoFill(projectDir) {
-      const result = await postAction('/api/auto-fill', { project_dir: projectDir });
-      renderAutoFillResult(result);
-      document.getElementById('auto-fill-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    async function revealFile(path) {
-      if (!path) throw new Error('没有可定位的文件。');
-      await postAction('/api/reveal-file', { path });
-    }
-
-    function renderAutoFillResult(result) {
-      const panel = document.getElementById('auto-fill-result');
-      const meta = document.getElementById('auto-fill-result-meta');
-      const files = document.getElementById('auto-fill-result-files');
-      const sku = result.sku_count ?? '-';
-      const errors = result.error_count ?? '-';
-      meta.textContent = `${result.message || '自动填表完成'}；SKU：${sku}；自检错误：${errors}`;
-      files.innerHTML = [
-        renderResultFile('生成的上传表格', result.filled_file),
-        renderResultFile('自检报告', result.report_file),
-      ].join('');
-      panel.classList.add('active');
-    }
-
-    function renderSelectedFiles() {
-      const fileInput = document.getElementById('upload-files');
-      const box = document.getElementById('selected-files');
-      const files = [...fileInput.files];
-      if (!files.length) {
-        box.textContent = '未选择文件';
-        return;
-      }
-      const totalBytes = files.reduce((sum, file) => sum + file.size, 0);
-      const items = files
-        .map(file => `<li>${escapeHtml(file.name)} <span class="muted">(${formatBytes(file.size)})</span></li>`)
-        .join('');
-      box.innerHTML = `<div>${files.length} 个文件，合计 ${formatBytes(totalBytes)}</div><ul>${items}</ul>`;
-    }
-
-    function formatBytes(bytes) {
-      if (bytes < 1024) return `${bytes} B`;
-      if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-      return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
-    }
-
-    async function guarded(fn) {
-      try { await fn(); } catch (error) { showToast(error.message); }
-    }
-
-    function escapeHtml(value) {
-      return String(value ?? '').replace(/[&<>"']/g, char => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-      }[char]));
-    }
-
-    function escapeAttr(value) { return escapeHtml(value); }
-
-    guarded(loadAll);
-  </script>
-</body>
-</html>"""
+    return (Path(__file__).with_name("workbench_frontend.html")).read_text(encoding="utf-8")

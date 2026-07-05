@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>建项与资料提炼预览</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f6f3;
+      --panel: #ffffff;
+      --soft: #f0f4f1;
+      --text: #20231f;
+      --muted: #667065;
+      --line: #d8ded6;
+      --green: #287457;
+      --blue: #2f668a;
+      --amber: #9a6a17;
+      --red: #a13f35;
+      --ink: #27312c;
+      --shadow: 0 14px 36px rgba(35, 48, 40, .08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    button, input, textarea {
+      font: inherit;
+    }
+    button {
+      cursor: pointer;
+    }
+    .page {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .topbar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .small {
+      font-size: 12px;
+    }
+    .stage {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 3px 9px;
+      border: 1px solid #bad4c6;
+      border-radius: 999px;
+      background: #edf8f1;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .intake {
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .input-row {
+      display: grid;
+      grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+    label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      outline: 0;
+    }
+    input[type="text"] {
+      height: 42px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 82px;
+      padding: 10px 12px;
+      resize: vertical;
+    }
+    input[type="text"]:focus, textarea:focus {
+      border-color: #98bda9;
+      box-shadow: 0 0 0 3px rgba(40, 116, 87, .1);
+    }
+    .upload-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .drop {
+      min-height: 138px;
+      border: 1px dashed #b9c7bb;
+      border-radius: 8px;
+      background: #fbfcfa;
+      padding: 12px;
+      display: grid;
+      align-content: start;
+      gap: 10px;
+    }
+    .drop[data-ready="true"] {
+      border-style: solid;
+      border-color: #a8cdbb;
+      background: #f7fbf8;
+    }
+    .drop-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-weight: 720;
+    }
+    .file-pill {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      min-height: 26px;
+      padding: 3px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .drop-list {
+      display: grid;
+      gap: 6px;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-top: 14px;
+    }
+    .btn {
+      min-height: 38px;
+      border: 1px solid #b8c4ba;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      padding: 0 13px;
+    }
+    .btn.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+    .btn.ghost {
+      background: transparent;
+    }
+    .draft {
+      display: none;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 16px;
+      align-items: start;
+    }
+    .draft.is-active {
+      display: grid;
+    }
+    .review {
+      display: grid;
+      gap: 14px;
+      min-width: 0;
+    }
+    .card {
+      padding: 14px;
+      min-width: 0;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .source {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .editable {
+      display: grid;
+      gap: 5px;
+      min-width: 0;
+    }
+    .editable label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      table-layout: fixed;
+      background: #fff;
+    }
+    th, td {
+      padding: 9px 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    tr:last-child td {
+      border-bottom: 0;
+    }
+    th {
+      background: var(--soft);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 12px;
+    }
+    td input {
+      width: 100%;
+      min-width: 0;
+      height: 34px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      background: transparent;
+      padding: 0 7px;
+    }
+    td input:focus {
+      border-color: #98bda9;
+      background: #fff;
+      outline: 0;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 3px 9px;
+    }
+    .side {
+      display: grid;
+      gap: 14px;
+      min-width: 0;
+      position: sticky;
+      top: 16px;
+    }
+    .issue-list {
+      display: grid;
+      gap: 9px;
+    }
+    .issue {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+    }
+    .issue.warning {
+      border-color: #dfcea7;
+      background: #fffaf0;
+    }
+    .issue.danger {
+      border-color: #e0bbb6;
+      background: #fff6f5;
+    }
+    .issue strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+    .confirm-bar {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      background: var(--ink);
+      color: #fff;
+    }
+    .confirm-bar .muted {
+      color: #d5ddd4;
+    }
+    .confirm-bar .btn {
+      border-color: rgba(255,255,255,.32);
+    }
+    @media (max-width: 980px) {
+      .input-row, .draft {
+        grid-template-columns: 1fr;
+      }
+      .upload-grid {
+        grid-template-columns: 1fr;
+      }
+      .side {
+        position: static;
+      }
+    }
+    @media (max-width: 620px) {
+      .page {
+        padding: 16px;
+      }
+      .topbar, .panel-head, .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+      .actions {
+        justify-content: stretch;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <h1>建项与资料提炼</h1>
+        <div class="muted small">V1 小模块预览</div>
+      </div>
+      <span class="stage" id="stage-label">待提炼</span>
+    </header>
+
+    <section class="panel intake">
+      <div class="panel-head">
+        <h2>建项输入</h2>
+        <span class="muted small">产品名 + 三类资料</span>
+      </div>
+      <div class="input-row">
+        <div class="field">
+          <label for="product-name">产品名</label>
+          <input id="product-name" type="text" value="复古玻璃洒水壶">
+        </div>
+        <div class="upload-grid">
+          <div class="drop" data-ready="true">
+            <div class="drop-title">
+              <span>最终价格表</span>
+              <span class="source">Excel</span>
+            </div>
+            <div class="drop-list">
+              <span class="file-pill">玻璃洒水壶_最终价格确认表.xls</span>
+            </div>
+            <div class="muted small">1 个文件</div>
+          </div>
+          <div class="drop" data-ready="true">
+            <div class="drop-title">
+              <span>1688详情页</span>
+              <span class="source">HTML</span>
+            </div>
+            <div class="drop-list">
+              <span class="file-pill">复古透明浮雕玻璃喷壶.html</span>
+            </div>
+            <div class="muted small">1 个文件</div>
+          </div>
+          <div class="drop" data-ready="true">
+            <div class="drop-title">
+              <span>竞品详情页</span>
+              <span class="source">多个 HTML</span>
+            </div>
+            <div class="drop-list">
+              <span class="file-pill">T4U Glass Plant Mister.html</span>
+              <span class="file-pill">Ebristar Glass Plant Mister.html</span>
+            </div>
+            <div class="muted small">2 个文件</div>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn ghost" type="button">清空</button>
+        <button class="btn primary" type="button" id="extract-btn">提炼产品资料</button>
+      </div>
+    </section>
+
+    <section class="draft is-active" id="draft-section" aria-live="polite">
+      <div class="review">
+        <section class="panel card">
+          <div class="section-title">
+            <h2>基础信息</h2>
+            <span class="source">1688 + 系统推断</span>
+          </div>
+          <div class="field-grid">
+            <div class="editable">
+              <label for="category">品类 <span class="source">系统推断</span></label>
+              <input id="category" type="text" value="植物喷雾壶 / 洒水壶">
+            </div>
+            <div class="editable">
+              <label for="material">材质 <span class="source">1688</span></label>
+              <input id="material" type="text" value="浮雕玻璃瓶身，塑料按压泵头">
+            </div>
+            <div class="editable">
+              <label for="colors">颜色 <span class="source">价格表</span></label>
+              <input id="colors" type="text" value="绿色，琥珀色">
+            </div>
+            <div class="editable">
+              <label for="package">包装内容 <span class="source">价格表</span></label>
+              <input id="package" type="text" value="1 个玻璃喷雾壶">
+            </div>
+          </div>
+        </section>
+
+        <section class="panel card">
+          <div class="section-title">
+            <h2>SKU 与价格</h2>
+            <span class="source">最终价格表</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>款式</th>
+                  <th>颜色</th>
+                  <th>采购价</th>
+                  <th>重量</th>
+                  <th>包装尺寸</th>
+                  <th>售价参考</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input value="复古浮雕款"></td>
+                  <td><input value="绿色"></td>
+                  <td><input value="12.80"></td>
+                  <td><input value="260 g"></td>
+                  <td><input value="9 x 9 x 17 cm"></td>
+                  <td><input value="待人工确认"></td>
+                </tr>
+                <tr>
+                  <td><input value="复古浮雕款"></td>
+                  <td><input value="琥珀色"></td>
+                  <td><input value="12.80"></td>
+                  <td><input value="260 g"></td>
+                  <td><input value="9 x 9 x 17 cm"></td>
+                  <td><input value="待人工确认"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel card">
+          <div class="section-title">
+            <h2>规格参数</h2>
+            <span class="source">1688 + 价格表</span>
+          </div>
+          <div class="field-grid">
+            <div class="editable">
+              <label for="capacity">容量 <span class="source">1688</span></label>
+              <input id="capacity" type="text" value="约 200 ml">
+            </div>
+            <div class="editable">
+              <label for="size">单品尺寸 <span class="source">1688</span></label>
+              <input id="size" type="text" value="约 8.5 x 16 cm">
+            </div>
+            <div class="editable">
+              <label for="weight">单品重量 <span class="source">价格表</span></label>
+              <input id="weight" type="text" value="约 260 g">
+            </div>
+            <div class="editable">
+              <label for="scene">适用场景 <span class="source">竞品</span></label>
+              <input id="scene" type="text" value="室内植物，多肉，花卉护理，桌面装饰">
+            </div>
+          </div>
+        </section>
+
+        <section class="panel card">
+          <div class="section-title">
+            <h2>标题与卖点素材</h2>
+            <span class="source">1688 + 竞品</span>
+          </div>
+          <div class="field-grid">
+            <div class="editable">
+              <label for="title-materials">标题素材 <span class="source">竞品</span></label>
+              <textarea id="title-materials">Glass Plant Mister, Vintage Spray Bottle, Fine Mist Sprayer, Indoor Plant Watering Can</textarea>
+            </div>
+            <div class="editable">
+              <label for="selling-points">卖点素材 <span class="source">1688 + 竞品</span></label>
+              <textarea id="selling-points">复古浮雕玻璃外观；细雾喷洒；适合室内植物和多肉；可作为桌面装饰；小容量便于日常护理。</textarea>
+            </div>
+          </div>
+          <div class="chips" aria-label="关键词">
+            <span class="chip">glass plant mister</span>
+            <span class="chip">vintage spray bottle</span>
+            <span class="chip">fine mist sprayer</span>
+            <span class="chip">succulent watering</span>
+          </div>
+        </section>
+      </div>
+
+      <aside class="side">
+        <section class="panel card">
+          <div class="section-title">
+            <h2>待确认问题</h2>
+            <span class="source">3 项</span>
+          </div>
+          <div class="issue-list">
+            <div class="issue warning">
+              <strong>售价参考缺失</strong>
+              <div class="small">价格表里有采购价，但没有最终售价。</div>
+            </div>
+            <div class="issue warning">
+              <strong>容量需要确认</strong>
+              <div class="small">1688 页面写约 200 ml，竞品常见为 200 ml。</div>
+            </div>
+            <div class="issue danger">
+              <strong>避免绝对化表述</strong>
+              <div class="small">卖点里不要使用 best、perfect 等高风险词。</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel confirm-bar">
+          <div>
+            <h2>人工确认</h2>
+            <div class="muted small">确认后，这份产品资料才会进入填模板流程。</div>
+          </div>
+          <button class="btn" type="button">保存修改</button>
+          <button class="btn primary" type="button">确认产品资料</button>
+          <button class="btn ghost" type="button">重新提炼</button>
+        </section>
+      </aside>
+    </section>
+  </div>
+
+  <script>
+    const extractButton = document.getElementById('extract-btn');
+    const draftSection = document.getElementById('draft-section');
+    const stageLabel = document.getElementById('stage-label');
+
+    extractButton.addEventListener('click', () => {
+      draftSection.classList.add('is-active');
+      stageLabel.textContent = '待人工确认';
+      draftSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
+</body>
+</html>

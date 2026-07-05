@@ -1,0 +1,1329 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>上品工作台总预览</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f6f3;
+      --panel: #ffffff;
+      --soft: #f0f4f1;
+      --text: #20231f;
+      --muted: #667065;
+      --line: #d8ded6;
+      --green: #287457;
+      --blue: #2f668a;
+      --amber: #9a6a17;
+      --red: #a13f35;
+      --ink: #27312c;
+      --shadow: 0 14px 36px rgba(35, 48, 40, .08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 286px minmax(0, 1fr);
+    }
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 18px;
+      background: var(--ink);
+      color: #fff;
+    }
+    .brand {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+    .brand h1 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    .brand .muted, .project-meta { color: #d5ddd4; }
+    .project-list { display: grid; gap: 8px; }
+    .project-button {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 8px;
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      padding: 11px;
+      text-align: left;
+    }
+    .project-button.active {
+      border-color: rgba(255,255,255,.46);
+      background: rgba(255,255,255,.16);
+    }
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+    .project-name {
+      font-weight: 760;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+    .project-meta { font-size: 12px; }
+    main {
+      min-width: 0;
+      padding: 24px;
+    }
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+    h2, h3 {
+      margin: 0;
+      letter-spacing: 0;
+    }
+    h2 { font-size: 24px; }
+    h3 { font-size: 17px; }
+    h4 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+    .muted { color: var(--muted); }
+    .small { font-size: 12px; }
+    .status, .tag, .source {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+    .status.uploaded, .status.ok {
+      border: 1px solid #bad4c6;
+      background: #edf8f1;
+      color: var(--green);
+    }
+    .status.waiting, .status.warn {
+      border: 1px solid #dfcea7;
+      background: #fffaf0;
+      color: var(--amber);
+    }
+    .status.error {
+      border: 1px solid #e0bbb6;
+      background: #fff6f5;
+      color: var(--red);
+    }
+    .tag, .source {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      color: var(--muted);
+    }
+    .progress, .module-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .step, .module-tab {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      min-width: 0;
+    }
+    .step { padding: 12px; }
+    .step strong { display: block; margin-bottom: 4px; }
+    .module-tab {
+      min-height: 44px;
+      padding: 0 12px;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .module-tab.active {
+      border-color: var(--green);
+      background: #edf8f1;
+      color: var(--green);
+    }
+    .module-panel { display: none; min-width: 0; }
+    .module-panel.active { display: block; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+    .section {
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .panel-head, .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 16px;
+      align-items: start;
+    }
+    .wide-side {
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    }
+    .stack { display: grid; gap: 14px; min-width: 0; }
+    .side { display: grid; gap: 14px; min-width: 0; position: sticky; top: 16px; }
+    .input-row {
+      display: grid;
+      grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+    .field { display: grid; gap: 6px; }
+    label { color: var(--muted); font-size: 12px; }
+    input[type="text"], textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      outline: 0;
+    }
+    input[type="text"] { height: 42px; padding: 0 12px; }
+    textarea {
+      min-height: 82px;
+      padding: 10px 12px;
+      resize: vertical;
+    }
+    input[type="text"]:focus, textarea:focus {
+      border-color: #98bda9;
+      box-shadow: 0 0 0 3px rgba(40, 116, 87, .1);
+    }
+    .upload-grid, .metric-grid, .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .drop, .template-box, .version-card {
+      border: 1px dashed #b9c7bb;
+      border-radius: 8px;
+      background: #fbfcfa;
+      padding: 12px;
+      display: grid;
+      align-content: start;
+      gap: 10px;
+      min-width: 0;
+    }
+    .drop[data-ready="true"], .template-box[data-ready="true"] {
+      border-style: solid;
+      border-color: #a8cdbb;
+      background: #f7fbf8;
+    }
+    .version-card {
+      border-style: solid;
+      border-color: #dfcea7;
+      background: #fffaf0;
+      padding: 14px;
+    }
+    .drop-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-weight: 720;
+    }
+    .file-pill {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      min-height: 26px;
+      padding: 3px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .drop-list, .issue-list, .rule-list, .timeline { display: grid; gap: 9px; }
+    .field-grid, .info-grid, .summary-grid, .template-meta, .version-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .template-meta, .version-meta, .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .result-band { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .editable, .info-cell, .meta-cell, .summary-item, .metric, .file-output, .issue, .rule, .learning-card, .result-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      min-width: 0;
+    }
+    .editable { display: grid; gap: 5px; border: 0; padding: 0; }
+    .editable label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .metric { min-height: 86px; }
+    .metric .num {
+      margin-top: 4px;
+      font-size: 24px;
+      font-weight: 760;
+    }
+    .file-output {
+      display: grid;
+      gap: 8px;
+      border-color: #bad4c6;
+      background: #f7fbf8;
+      margin-top: 12px;
+    }
+    .issue.warn, .rule.warn { border-color: #dfcea7; background: #fffaf0; }
+    .issue.error, .rule.error { border-color: #e0bbb6; background: #fff6f5; }
+    .issue.ok, .rule.ok { border-color: #bad4c6; background: #f7fbf8; }
+    .info-cell strong, .meta-cell strong, .summary-item strong, .file-output strong, .issue strong, .rule strong, .learning-card strong, .result-card strong {
+      display: block;
+      margin-top: 2px;
+      word-break: break-word;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 3px 9px;
+    }
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 9px 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      word-break: break-word;
+    }
+    tr:last-child td { border-bottom: 0; }
+    th {
+      background: var(--soft);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 12px;
+    }
+    td input {
+      width: 100%;
+      min-width: 0;
+      height: 34px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      background: transparent;
+      padding: 0 7px;
+    }
+    td input:focus {
+      border-color: #98bda9;
+      background: #fff;
+      outline: 0;
+    }
+    .step-row {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      min-width: 0;
+    }
+    .step-row.current { border-color: #dfcea7; background: #fffaf0; }
+    .step-row.success { border-color: #bad4c6; background: #f7fbf8; }
+    .version-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      font-weight: 760;
+    }
+    .confirm-panel {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      background: var(--ink);
+      color: #fff;
+    }
+    .confirm-panel .muted { color: #d5ddd4; }
+    .confirm-panel .btn { border-color: rgba(255,255,255,.32); }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-top: 14px;
+    }
+    .btn {
+      min-height: 38px;
+      border: 1px solid #b8c4ba;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      padding: 0 13px;
+    }
+    .btn.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+    .btn.warn {
+      border-color: var(--amber);
+      background: #fffaf0;
+      color: var(--amber);
+    }
+    .btn.ghost { background: transparent; }
+    .btn:disabled { cursor: not-allowed; opacity: .54; }
+    @media (max-width: 1100px) {
+      .app { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; }
+      .project-list {
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        overflow-x: auto;
+      }
+      .two-col, .wide-side, .input-row { grid-template-columns: 1fr; }
+      .side { position: static; }
+    }
+    @media (max-width: 760px) {
+      main { padding: 16px; }
+      .topbar, .panel-head, .section-title {
+        align-items: flex-start;
+        grid-template-columns: 1fr;
+        flex-direction: column;
+      }
+      .progress, .module-tabs, .upload-grid, .field-grid, .info-grid, .summary-grid, .template-meta, .version-meta, .metric-grid, .learning-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-list { grid-template-columns: 1fr; }
+      .step-row { grid-template-columns: 1fr; }
+      .actions { justify-content: stretch; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <div class="brand">
+        <h1>上品工作台</h1>
+        <div class="muted small">最近项目进度</div>
+      </div>
+      <div class="project-list" id="project-list"></div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <h2 id="active-name"></h2>
+          <div class="muted small" id="active-summary"></div>
+        </div>
+        <span class="status waiting" id="active-status"></span>
+      </header>
+
+      <section class="progress" aria-label="项目流程状态">
+        <div class="step">
+          <strong>1. 建项与资料提炼</strong>
+          <span class="status ok" id="step-intake"></span>
+        </div>
+        <div class="step">
+          <strong>2. Amazon 填表与自检</strong>
+          <span class="status warn" id="step-template"></span>
+        </div>
+        <div class="step">
+          <strong>3. 上传反馈与学习</strong>
+          <span class="status warn" id="step-feedback"></span>
+        </div>
+      </section>
+
+      <nav class="module-tabs" aria-label="模块导航">
+        <button class="module-tab active" type="button" data-module="intake">建项与资料提炼</button>
+        <button class="module-tab" type="button" data-module="template">Amazon 填表与自检</button>
+        <button class="module-tab" type="button" data-module="feedback">上传反馈与学习</button>
+      </nav>
+
+      <section class="module-panel active" data-module-panel="intake">
+        <section class="panel section">
+          <div class="panel-head">
+            <h3>建项输入</h3>
+            <span class="tag">产品名 + 三类资料</span>
+          </div>
+          <div class="input-row">
+            <div class="field">
+              <label for="product-name">产品名</label>
+              <input id="product-name" type="text">
+            </div>
+            <div class="upload-grid" id="source-upload-grid"></div>
+          </div>
+          <div class="actions">
+            <button class="btn ghost" type="button">清空</button>
+            <button class="btn primary" type="button">提炼产品资料</button>
+          </div>
+        </section>
+
+        <section class="two-col">
+          <div class="stack">
+            <section class="panel section">
+              <div class="section-title">
+                <h3>基础信息</h3>
+                <span class="source">1688 + 系统推断</span>
+              </div>
+              <div class="field-grid" id="basic-fields"></div>
+            </section>
+
+            <section class="panel section">
+              <div class="section-title">
+                <h3>SKU 与价格</h3>
+                <span class="source">最终价格表</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>款式</th>
+                      <th>颜色</th>
+                      <th>采购价</th>
+                      <th>重量</th>
+                      <th>包装尺寸</th>
+                      <th>售价参考</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sku-rows"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel section">
+              <div class="section-title">
+                <h3>规格参数</h3>
+                <span class="source">1688 + 价格表</span>
+              </div>
+              <div class="field-grid" id="spec-fields"></div>
+            </section>
+
+            <section class="panel section">
+              <div class="section-title">
+                <h3>标题与卖点素材</h3>
+                <span class="source">1688 + 竞品</span>
+              </div>
+              <div class="field-grid">
+                <div class="editable">
+                  <label for="title-materials">标题素材 <span class="source">竞品</span></label>
+                  <textarea id="title-materials"></textarea>
+                </div>
+                <div class="editable">
+                  <label for="selling-points">卖点素材 <span class="source">1688 + 竞品</span></label>
+                  <textarea id="selling-points"></textarea>
+                </div>
+              </div>
+              <div class="chips" id="keyword-chips"></div>
+            </section>
+          </div>
+
+          <aside class="side">
+            <section class="panel section">
+              <div class="section-title">
+                <h3>待确认问题</h3>
+                <span class="source" id="intake-issue-count"></span>
+              </div>
+              <div class="issue-list" id="intake-issues"></div>
+            </section>
+
+            <section class="panel confirm-panel">
+              <div>
+                <h3>人工确认</h3>
+                <div class="muted small">确认后，这份产品资料才会进入填模板流程。</div>
+              </div>
+              <button class="btn" type="button">保存修改</button>
+              <button class="btn primary" type="button">确认产品资料</button>
+              <button class="btn ghost" type="button">重新提炼</button>
+            </section>
+          </aside>
+        </section>
+      </section>
+
+      <section class="module-panel" data-module-panel="template">
+        <section class="wide-side">
+          <div class="template-box" data-ready="true">
+            <div class="panel-head">
+              <h3>Amazon 模板</h3>
+              <span class="tag" id="template-ext"></span>
+            </div>
+            <div>
+              <strong id="template-source"></strong>
+              <div class="muted small" id="template-path"></div>
+            </div>
+            <div class="template-meta" id="template-meta"></div>
+          </div>
+
+          <div class="panel section" style="margin: 0;">
+            <div class="panel-head">
+              <h3>确认资料摘要</h3>
+              <span class="status ok">已确认</span>
+            </div>
+            <div class="summary-grid" id="confirmed-summary"></div>
+          </div>
+        </section>
+        <div class="actions">
+          <button class="btn ghost" type="button">更换模板</button>
+          <button class="btn primary" type="button" id="fill-action"></button>
+        </div>
+
+        <section class="two-col" style="margin-top: 16px;">
+          <div class="stack">
+            <section class="panel section">
+              <div class="panel-head">
+                <h3>填表结果</h3>
+                <span class="status warn" id="fill-status"></span>
+              </div>
+              <div class="metric-grid result-band" id="fill-metrics"></div>
+              <div class="file-output">
+                <strong id="filled-file"></strong>
+                <span class="muted small">新生成文件，不覆盖原始 Amazon 模板。</span>
+              </div>
+            </section>
+
+            <section class="panel section">
+              <div class="panel-head">
+                <h3>自检结果</h3>
+                <span class="tag">按处理优先级分组</span>
+              </div>
+              <div class="issue-list" id="check-list"></div>
+            </section>
+
+            <section class="panel section">
+              <div class="panel-head">
+                <h3>字段映射预览</h3>
+                <span class="tag">产品资料 → Amazon 字段</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>产品资料字段</th>
+                      <th>确认值</th>
+                      <th>Amazon 字段</th>
+                      <th>写入状态</th>
+                    </tr>
+                  </thead>
+                  <tbody id="mapping-rows"></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+
+          <aside class="side">
+            <section class="panel section">
+              <div class="panel-head">
+                <h3>生成文件</h3>
+                <span class="tag">2 个</span>
+              </div>
+              <div class="rule-list" id="generated-files"></div>
+            </section>
+
+            <section class="panel confirm-panel">
+              <div>
+                <h3>下一步</h3>
+                <div class="muted small" id="template-next"></div>
+              </div>
+              <button class="btn" type="button">重新填表</button>
+              <button class="btn" type="button">下载填好的表格</button>
+              <button class="btn" type="button">查看自检报告</button>
+              <button class="btn primary" type="button" id="upload-confirm-btn">确认可上传</button>
+            </section>
+          </aside>
+        </section>
+      </section>
+
+      <section class="module-panel" data-module-panel="feedback">
+        <section class="wide-side">
+          <div class="version-card">
+            <div class="panel-head">
+              <h3>当前模板</h3>
+              <span class="status warn" id="upload-version-status"></span>
+            </div>
+            <div>
+              <strong id="current-version-file"></strong>
+              <div class="muted small" id="current-version-note"></div>
+            </div>
+            <div class="version-meta" id="version-meta"></div>
+          </div>
+
+          <div class="panel section" style="margin: 0;">
+            <div class="panel-head">
+              <h3>失败报告输入</h3>
+              <span class="tag">Amazon 反馈</span>
+            </div>
+            <div class="drop" id="failure-report-box"></div>
+            <div class="summary-grid" id="failure-summary" style="margin-top: 12px;"></div>
+          </div>
+        </section>
+        <div class="actions">
+          <button class="btn primary" type="button" id="generate-next-version"></button>
+          <button class="btn" type="button">标记上传成功</button>
+        </div>
+
+        <section class="panel section">
+          <div class="panel-head">
+            <h3>上传反馈</h3>
+            <span class="tag">人工上传后的两种结果</span>
+          </div>
+          <div class="field-grid">
+            <div class="issue ok">
+              <div class="panel-head">
+                <h4>上传成功</h4>
+                <span class="status ok">结束循环</span>
+              </div>
+              <div class="muted small">确认当前版本可上传，记录最终成功版本，并把成功模板收录到学习库。</div>
+              <button class="btn primary" type="button" style="margin-top: 10px;">标记当前版本上传成功</button>
+            </div>
+            <div class="issue warn">
+              <div class="panel-head">
+                <h4>上传失败</h4>
+                <span class="status warn">生成下一版</span>
+              </div>
+              <div class="muted small">输入失败分析报告，系统基于上一版模板修正字段，生成 `产品名_v2`、`产品名_v3`。</div>
+              <button class="btn warn" type="button" style="margin-top: 10px;">上传失败报告</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="two-col">
+          <div class="stack">
+            <section class="panel section">
+              <div class="panel-head">
+                <h3>修正结果</h3>
+                <span class="status ok" id="fix-result-status"></span>
+              </div>
+              <div class="version-meta" id="fix-result-meta"></div>
+            </section>
+
+            <section class="panel section">
+              <div class="panel-head">
+                <h3>修正历史</h3>
+                <span class="tag">版本循环</span>
+              </div>
+              <div class="timeline" id="version-timeline"></div>
+            </section>
+
+            <section class="panel section">
+              <div class="panel-head">
+                <h3>失败报告修正明细</h3>
+                <span class="tag">报告 → 模板字段</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>失败项</th>
+                      <th>报告原因</th>
+                      <th>修正字段</th>
+                      <th>修正后值</th>
+                      <th>下一次学习</th>
+                    </tr>
+                  </thead>
+                  <tbody id="fix-rows"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel section">
+              <div class="panel-head">
+                <h3>学习沉淀预览</h3>
+                <span class="tag">成功后写入</span>
+              </div>
+              <div class="learning-grid" id="learning-grid"></div>
+            </section>
+          </div>
+
+          <aside class="side">
+            <section class="panel section">
+              <div class="panel-head">
+                <h3>版本文件</h3>
+                <span class="tag" id="version-file-count"></span>
+              </div>
+              <div class="rule-list" id="version-files"></div>
+            </section>
+
+            <section class="panel confirm-panel">
+              <div>
+                <h3>下一步</h3>
+                <div class="muted small" id="feedback-next"></div>
+              </div>
+              <button class="btn" type="button" id="download-version"></button>
+              <button class="btn" type="button">查看修正说明</button>
+              <button class="btn primary" type="button" id="success-learn"></button>
+              <button class="btn ghost" type="button" id="fail-next"></button>
+            </section>
+          </aside>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const projects = [
+      {
+        id: 'spray-bottle',
+        name: '复古玻璃洒水壶',
+        status: '等待中',
+        updated: '今天 23:20',
+        summary: 'v2 已生成，等待人工上传 Amazon',
+        steps: ['已确认', '有修正', '等待上传'],
+        intake: {
+          productName: '复古玻璃洒水壶',
+          files: [
+            ['最终价格表', 'Excel', ['玻璃洒水壶_最终价格确认表.xls']],
+            ['1688详情页', 'HTML', ['复古透明浮雕玻璃喷壶.html']],
+            ['竞品详情页', '多个 HTML', ['T4U Glass Plant Mister.html', 'Ebristar Glass Plant Mister.html']],
+          ],
+          basic: [
+            ['品类', '植物喷雾壶 / 洒水壶', '系统推断'],
+            ['材质', '浮雕玻璃瓶身，塑料按压泵头', '1688'],
+            ['颜色', '绿色，琥珀色', '价格表'],
+            ['包装内容', '1 个玻璃喷雾壶', '价格表'],
+          ],
+          skus: [
+            ['复古浮雕款', '绿色', '12.80', '260 g', '9 x 9 x 17 cm', '18.99'],
+            ['复古浮雕款', '琥珀色', '12.80', '260 g', '9 x 9 x 17 cm', '18.99'],
+          ],
+          specs: [
+            ['容量', '约 200 ml', '1688'],
+            ['单品尺寸', '约 8.5 x 16 cm', '1688'],
+            ['单品重量', '约 260 g', '价格表'],
+            ['适用场景', '室内植物，多肉，花卉护理，桌面装饰', '竞品'],
+          ],
+          title: 'Glass Plant Mister, Vintage Spray Bottle, Fine Mist Sprayer, Indoor Plant Watering Can',
+          selling: '复古浮雕玻璃外观；细雾喷洒；适合室内植物和多肉；可作为桌面装饰；小容量便于日常护理。',
+          keywords: ['glass plant mister', 'vintage spray bottle', 'fine mist sprayer', 'succulent watering'],
+          issues: [
+            ['warn', '售价已补充但需确认', 'v2 已补写 18.99，人工上传前可再看一眼。'],
+            ['warn', '容量需要确认', '1688 页面写约 200 ml，竞品常见为 200 ml。'],
+            ['error', '避免绝对化表述', '卖点里不要使用 best、perfect 等高风险词。'],
+          ],
+        },
+        template: {
+          ext: 'XLSM',
+          source: 'SPRAY_BOTTLE.xlsm',
+          path: 'data/projects/复古玻璃洒水壶/05_模版原件',
+          productType: 'SPRAY_BOTTLE',
+          sheet: 'Template',
+          skuCount: '2 个',
+          output: '复古玻璃洒水壶_v2.xlsx',
+          status: '有 1 项待验证',
+          metrics: [['写入字段', '44'], ['生成 SKU', '2'], ['必须修正', '0'], ['建议确认', '1']],
+          checks: [
+            ['ok', '价格字段已修正', '2 个子 SKU 已写入 standard_price。'],
+            ['warn', '等待上传验证', 'v2 需要人工上传确认 Amazon 是否接受。'],
+            ['ok', '父子体关系与 SKU 数量', '父 SKU 1 个，子 SKU 2 个，variation_theme 使用 Color。'],
+          ],
+          mappings: [
+            ['产品名', '复古玻璃洒水壶', 'item_name', '已写入'],
+            ['颜色', '绿色 / 琥珀色', 'color_name, variation_theme', '已写入'],
+            ['材质', '浮雕玻璃瓶身，塑料泵头', 'material_type, bullet_point', '部分写入'],
+            ['容量', '约 200 ml', 'capacity, capacity_unit_of_measure', '已修正'],
+            ['售价', '18.99', 'standard_price', '已写入'],
+          ],
+          generated: [['填好的表格', '复古玻璃洒水壶_v2.xlsx'], ['自检报告', '复古玻璃洒水壶_v2_自检报告.md']],
+          next: '人工上传 v2，确认 Amazon 是否接受。',
+          fillAction: '下载 v2 模板',
+          canUpload: true,
+        },
+        feedback: {
+          versionStatus: 'v2 待上传',
+          currentFile: '复古玻璃洒水壶_v2.xlsx',
+          note: '根据 v1 失败报告修正的新模板，等待人工上传 Amazon。',
+          meta: [['产品名', '复古玻璃洒水壶'], ['当前版本', 'v2'], ['下一版', 'v3']],
+          report: '复古玻璃洒水壶_v1_失败报告.xlsx',
+          reportNote: '支持预留：xlsx / csv / txt / html / pdf。',
+          failureSummary: [['识别错误', '2 项'], ['已自动修正', '2 项']],
+          generateAction: 'v2 失败，输入报告生成 v3',
+          fixStatus: 'v2 已生成',
+          fixMeta: [['来源模板', '复古玻璃洒水壶_v1.xlsx'], ['失败报告', '复古玻璃洒水壶_v1_失败报告.xlsx'], ['新模板', '复古玻璃洒水壶_v2.xlsx']],
+          timeline: [
+            ['current', 'v1', '初始填表，上传失败', '失败报告指出 standard_price 为空、capacity_unit 不符合模板枚举。'],
+            ['success', 'v2', '根据失败报告自动修正', '补写售价字段；将容量单位从 milliliters 改为 milliliter；生成修正说明。'],
+            ['', '成功', '等待人工上传 v2 后确认', '如果 v2 失败，继续输入 v2 失败报告并生成 v3；如果成功，则进入学习沉淀。'],
+          ],
+          fixes: [
+            ['standard_price', 'Required field missing', 'standard_price', '从确认产品资料补写 18.99', '加入必填自检'],
+            ['capacity_unit', 'Invalid enumerated value', 'capacity_unit_of_measure', 'milliliter', '记录枚举映射'],
+            ['variation_theme', 'Accepted', '无', '保持 Color', '保留成功样本'],
+          ],
+          learning: [['成功模板样本', 'SPRAY_BOTTLE + 2 SKU'], ['新增错误规则', '价格缺失提前拦截'], ['新增字段规则', 'ml → milliliter']],
+          versionFiles: [
+            ['复古玻璃洒水壶_v1.xlsx', '初始填好的模板。'],
+            ['复古玻璃洒水壶_v1_失败报告.xlsx', '人工上传后返回的失败报告。'],
+            ['复古玻璃洒水壶_v2.xlsx', '根据失败报告修正的新模板。'],
+            ['复古玻璃洒水壶_v2_修正说明.md', '本次修改了哪些字段。'],
+          ],
+          next: '人工上传 v2。成功则学习，失败则继续生成 v3。',
+          download: '下载 v2 模板',
+          success: '标记 v2 上传成功并学习',
+          fail: 'v2 失败，输入报告生成 v3',
+        },
+      },
+      {
+        id: 'garden-gloves',
+        name: '花园艺手套',
+        status: '已上传',
+        updated: '昨天 18:40',
+        summary: 'v4 上传成功，成功模板已进入学习库',
+        steps: ['已确认', '已通过', '已上传'],
+        intake: {
+          productName: '花园艺手套',
+          files: [
+            ['最终价格表', 'Excel', ['园艺手套_正式定价结果.xlsx']],
+            ['1688详情页', 'HTML', ['乳胶发泡印花园艺手套.html']],
+            ['竞品详情页', '多个 HTML', ['COOLJOB Gardening Gloves.html', 'Pleneal Gardening Gloves.html', 'DOFOWORK Gardening Gloves.html']],
+          ],
+          basic: [
+            ['品类', '园艺防护手套', '系统推断'],
+            ['材质', '涤纶针织，乳胶涂层', '1688'],
+            ['颜色', '绿色，紫色', '价格表'],
+            ['包装内容', '6 双园艺手套', '价格表'],
+          ],
+          skus: [
+            ['6 双装', '绿色', '15.20', '420 g', '24 x 15 x 5 cm', '22.99'],
+            ['6 双装', '紫色', '15.20', '420 g', '24 x 15 x 5 cm', '22.99'],
+          ],
+          specs: [
+            ['尺码', 'Medium', '竞品'],
+            ['单品重量', '约 70 g / 双', '价格表'],
+            ['套装数量', '6 双', '价格表'],
+            ['适用场景', '园艺、除草、修剪、庭院工作', '竞品'],
+          ],
+          title: 'Gardening Gloves for Women, Breathable Latex Coated Garden Gloves, 6 Pairs',
+          selling: '透气针织背部；乳胶涂层提升抓握；适合园艺、庭院和轻型户外工作；多双装便于替换。',
+          keywords: ['gardening gloves', 'latex coated gloves', 'yard work gloves', '6 pairs gloves'],
+          issues: [
+            ['ok', '资料已确认', '成功上传版本已收录。'],
+            ['ok', '规则已沉淀', '厚度描述与 product_type 规则已进入学习库。'],
+          ],
+        },
+        template: {
+          ext: 'XLSM',
+          source: 'PROTECTIVE_GLOVE.xlsm',
+          path: 'data/projects/花园艺手套/04_模板原件',
+          productType: 'PROTECTIVE_GLOVE',
+          sheet: 'Template',
+          skuCount: '2 个',
+          output: '花园艺手套_v4.xlsx',
+          status: '自检通过',
+          metrics: [['写入字段', '51'], ['生成 SKU', '2'], ['必须修正', '0'], ['建议确认', '0']],
+          checks: [
+            ['ok', '必填字段通过', '所有必要字段均已写入。'],
+            ['ok', '父子体关系通过', '父 SKU 1 个，子 SKU 2 个，variation_theme 使用 Color。'],
+            ['ok', '上传成功', '最终成功版本：花园艺手套_v4.xlsx。'],
+          ],
+          mappings: [
+            ['产品名', '花园艺手套', 'item_name', '已写入'],
+            ['颜色', '绿色 / 紫色', 'color_name, variation_theme', '已写入'],
+            ['材质', '涤纶针织，乳胶涂层', 'material_type, bullet_point', '已写入'],
+            ['套装数量', '6 双', 'unit_count', '已写入'],
+            ['售价', '22.99', 'standard_price', '已写入'],
+          ],
+          generated: [['成功模板', '花园艺手套_v4.xlsx'], ['自检报告', '花园艺手套_v4_自检报告.md']],
+          next: '该产品已上传成功，可查看学习规则。',
+          fillAction: '下载成功模板',
+          canUpload: true,
+        },
+        feedback: {
+          versionStatus: '上传成功',
+          currentFile: '花园艺手套_v4.xlsx',
+          note: '最终成功版本，已进入学习库。',
+          meta: [['产品名', '花园艺手套'], ['当前版本', 'v4'], ['最终状态', '成功']],
+          report: '无待处理失败报告',
+          reportNote: '成功版本无需继续生成下一版。',
+          failureSummary: [['历史失败', '3 次'], ['成功版本', 'v4']],
+          generateAction: '查看历史失败报告',
+          fixStatus: '学习完成',
+          fixMeta: [['成功模板', '花园艺手套_v4.xlsx'], ['Product Type', 'PROTECTIVE_GLOVE'], ['学习状态', '已收录']],
+          timeline: [
+            ['current', 'v1', '上传失败', '修正 product_type。'],
+            ['current', 'v2', '上传失败', '修正条件必填字段。'],
+            ['current', 'v3', '上传失败', '修正质保与厚度表达。'],
+            ['success', 'v4', '上传成功', '最终成功模板已收录学习库。'],
+          ],
+          fixes: [
+            ['product_type', 'Invalid value', 'product_type', 'PROTECTIVE_GLOVE', '记录 Product Type 规则'],
+            ['condition_required', 'Missing conditional field', '相关条件字段', '按模板要求补写', '加入自检'],
+            ['warranty/thickness', 'Compliance wording', 'bullet_point', '保守表达', '加入风险词规则'],
+          ],
+          learning: [['成功模板样本', 'PROTECTIVE_GLOVE + 2 SKU'], ['字段规则', '厚度描述写入 bullet point'], ['错误规则', 'product_type 不可混用 ACCESSORY']],
+          versionFiles: [
+            ['花园艺手套_v1.xlsx', '初始填好的模板。'],
+            ['花园艺手套_v2.xlsx', '第二版修正。'],
+            ['花园艺手套_v3.xlsx', '第三版修正。'],
+            ['花园艺手套_v4.xlsx', '最终成功版本。'],
+          ],
+          next: '已上传成功，可用于后续同类模板学习。',
+          download: '下载成功模板',
+          success: '查看学习规则',
+          fail: '查看修正历史',
+        },
+      },
+      {
+        id: 'flower-sandals',
+        name: '塑料花朵拖鞋',
+        status: '等待中',
+        updated: '今天 21:05',
+        summary: '产品资料已确认，等待填入 Amazon 模板',
+        steps: ['已确认', '待填表', '未开始'],
+        intake: {
+          productName: '塑料花朵拖鞋',
+          files: [
+            ['最终价格表', 'Excel', ['塑料花朵拖鞋_最终价格确认表.xls']],
+            ['1688详情页', 'HTML', ['水晶鞋装饰花朵配饰.html']],
+            ['竞品详情页', '多个 HTML', ['Jelly Shoes Flat Sandals.html', 'OMGard Jelly Shoes.html']],
+          ],
+          basic: [
+            ['品类', '果冻拖鞋 / 凉鞋', '系统推断'],
+            ['材质', 'PVC / 塑料花朵装饰', '1688'],
+            ['颜色', '白色，透明色', '价格表'],
+            ['包装内容', '1 双拖鞋', '价格表'],
+          ],
+          skus: [
+            ['花朵装饰款', '白色', '18.60', '520 g', '30 x 20 x 10 cm', '待人工确认'],
+            ['花朵装饰款', '透明色', '18.60', '520 g', '30 x 20 x 10 cm', '待人工确认'],
+          ],
+          specs: [
+            ['鞋型', '拖鞋 / 凉鞋', '竞品'],
+            ['单品重量', '约 520 g', '价格表'],
+            ['尺码', '待人工确认', '价格表'],
+            ['适用场景', '夏季、沙滩、日常穿搭', '竞品'],
+          ],
+          title: 'Womens Jelly Sandals, Flower Decor Slip On Slides, Summer Beach Shoes',
+          selling: '果冻感透明鞋身；花朵装饰；适合夏季穿搭和沙滩场景；轻便易穿脱。',
+          keywords: ['jelly sandals', 'flower slides', 'summer beach shoes', 'clear sandals'],
+          issues: [
+            ['warn', '尺码需要确认', '价格表和详情页尺码信息不完整。'],
+            ['warn', '售价缺失', '需要人工补充最终售价后再填表。'],
+          ],
+        },
+        template: {
+          ext: 'XLSM',
+          source: 'SANDAL.xlsm',
+          path: 'data/projects/塑料花朵拖鞋/05_模版原件',
+          productType: 'SANDAL',
+          sheet: 'Template',
+          skuCount: '2 个',
+          output: '尚未生成',
+          status: '等待模板填表',
+          metrics: [['写入字段', '0'], ['生成 SKU', '0'], ['必须修正', '-'], ['建议确认', '2']],
+          checks: [
+            ['warn', '待填表', '需要输入 Amazon 模板后生成 塑料花朵拖鞋_v1.xlsx。'],
+            ['warn', '待自检', '填表后再展示必填字段和风险项。'],
+          ],
+          mappings: [
+            ['产品名', '塑料花朵拖鞋', 'item_name', '待写入'],
+            ['颜色', '白色 / 透明色', 'color_name, variation_theme', '待写入'],
+            ['材质', 'PVC / 塑料花朵装饰', 'material_type, bullet_point', '待写入'],
+            ['尺码', '待人工确认', 'size_name', '需确认'],
+            ['售价', '待人工确认', 'standard_price', '未写入'],
+          ],
+          generated: [['填好的表格', '尚未生成'], ['自检报告', '尚未生成']],
+          next: '先完成 Amazon 模板填表与自检。',
+          fillAction: '填入 Amazon 表格并自检',
+          canUpload: false,
+        },
+        feedback: {
+          versionStatus: '未开始',
+          currentFile: '尚未生成 v1',
+          note: '等待 Amazon 模板填表后生成 塑料花朵拖鞋_v1.xlsx。',
+          meta: [['产品名', '塑料花朵拖鞋'], ['当前版本', '未生成'], ['下一版', 'v1']],
+          report: '无失败报告',
+          reportNote: 'v1 上传失败后再输入失败报告。',
+          failureSummary: [['识别错误', '-'], ['可自动修正', '-']],
+          generateAction: '等待 v1 生成',
+          fixStatus: '未开始',
+          fixMeta: [['来源模板', '尚未生成'], ['失败报告', '无'], ['新模板', '尚未生成']],
+          timeline: [
+            ['', 'v1', '等待生成', '先填入 Amazon 模板并自检。'],
+            ['', '上传反馈', '等待人工上传', 'v1 生成后，人工上传并记录成功或失败。'],
+          ],
+          fixes: [
+            ['无', '尚未上传', '无', '无', '等待反馈'],
+          ],
+          learning: [['未开始', '成功上传后再收录样本'], ['待生成', '失败报告规则会在上传后沉淀'], ['待生成', '成功模板将进入学习库']],
+          versionFiles: [
+            ['尚未生成 v1', '先完成填表与自检。'],
+          ],
+          next: '等待 v1 生成后再进入上传反馈循环。',
+          download: '等待 v1 生成',
+          success: '等待上传反馈',
+          fail: '等待失败报告',
+        },
+      },
+    ];
+
+    let activeId = projects[0].id;
+    let activeModule = 'intake';
+
+    function currentProject() {
+      return projects.find((item) => item.id === activeId) || projects[0];
+    }
+
+    function renderProjectList() {
+      document.getElementById('project-list').innerHTML = projects.map((project) => `
+        <button class="project-button ${project.id === activeId ? 'active' : ''}" type="button" data-project="${project.id}">
+          <div class="project-top">
+            <span class="project-name">${escapeHtml(project.name)}</span>
+            <span class="status ${project.status === '已上传' ? 'uploaded' : 'waiting'}">${escapeHtml(project.status)}</span>
+          </div>
+          <div class="project-meta">${escapeHtml(project.summary)}</div>
+          <div class="project-meta">${escapeHtml(project.updated)}</div>
+        </button>
+      `).join('');
+    }
+
+    function renderProject() {
+      const project = currentProject();
+      document.getElementById('active-name').textContent = project.name;
+      document.getElementById('active-summary').textContent = project.summary;
+      const status = document.getElementById('active-status');
+      status.textContent = project.status;
+      status.className = `status ${project.status === '已上传' ? 'uploaded' : 'waiting'}`;
+      setStep('step-intake', project.steps[0]);
+      setStep('step-template', project.steps[1]);
+      setStep('step-feedback', project.steps[2]);
+      renderProjectList();
+      renderModuleTabs();
+      renderIntake(project);
+      renderTemplate(project);
+      renderFeedback(project);
+    }
+
+    function renderModuleTabs() {
+      document.querySelectorAll('[data-module]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.module === activeModule);
+      });
+      document.querySelectorAll('[data-module-panel]').forEach((panel) => {
+        panel.classList.toggle('active', panel.dataset.modulePanel === activeModule);
+      });
+    }
+
+    function setStep(id, value) {
+      const node = document.getElementById(id);
+      node.textContent = value;
+      node.className = `status ${value.includes('已') || value.includes('通过') ? 'ok' : 'warn'}`;
+    }
+
+    function renderIntake(project) {
+      const data = project.intake;
+      document.getElementById('product-name').value = data.productName;
+      document.getElementById('source-upload-grid').innerHTML = data.files.map(([label, type, files]) => `
+        <div class="drop" data-ready="true">
+          <div class="drop-title">
+            <span>${escapeHtml(label)}</span>
+            <span class="source">${escapeHtml(type)}</span>
+          </div>
+          <div class="drop-list">${files.map((file) => `<span class="file-pill">${escapeHtml(file)}</span>`).join('')}</div>
+          <div class="muted small">${files.length} 个文件</div>
+        </div>
+      `).join('');
+      renderEditableFields('basic-fields', data.basic);
+      renderEditableFields('spec-fields', data.specs);
+      document.getElementById('sku-rows').innerHTML = data.skus.map((row) => `
+        <tr>${row.map((value) => `<td><input value="${escapeAttr(value)}"></td>`).join('')}</tr>
+      `).join('');
+      document.getElementById('title-materials').value = data.title;
+      document.getElementById('selling-points').value = data.selling;
+      document.getElementById('keyword-chips').innerHTML = data.keywords.map((item) => `<span class="chip">${escapeHtml(item)}</span>`).join('');
+      document.getElementById('intake-issue-count').textContent = `${data.issues.length} 项`;
+      document.getElementById('intake-issues').innerHTML = data.issues.map(([level, title, body]) => issueHtml(level, title, body)).join('');
+    }
+
+    function renderEditableFields(id, rows) {
+      document.getElementById(id).innerHTML = rows.map(([label, value, source]) => `
+        <div class="editable">
+          <label>${escapeHtml(label)} <span class="source">${escapeHtml(source)}</span></label>
+          <input type="text" value="${escapeAttr(value)}">
+        </div>
+      `).join('');
+    }
+
+    function renderTemplate(project) {
+      const data = project.template;
+      document.getElementById('template-ext').textContent = data.ext;
+      document.getElementById('template-source').textContent = data.source;
+      document.getElementById('template-path').textContent = data.path;
+      document.getElementById('template-meta').innerHTML = [
+        ['Product Type', data.productType],
+        ['工作表', data.sheet],
+        ['SKU', data.skuCount],
+      ].map(metaHtml).join('');
+      document.getElementById('confirmed-summary').innerHTML = [
+        ['产品名', project.intake.productName],
+        ['颜色', project.intake.basic.find((row) => row[0] === '颜色')?.[1] || '-'],
+        ['材质', project.intake.basic.find((row) => row[0] === '材质')?.[1] || '-'],
+        ['包装内容', project.intake.basic.find((row) => row[0] === '包装内容')?.[1] || '-'],
+      ].map(metaHtml).join('');
+      document.getElementById('fill-action').textContent = data.fillAction;
+      document.getElementById('fill-status').textContent = data.status;
+      document.getElementById('fill-status').className = `status ${data.status.includes('通过') ? 'ok' : 'warn'}`;
+      document.getElementById('fill-metrics').innerHTML = data.metrics.map(([label, value]) => `
+        <div class="metric">
+          <span class="muted small">${escapeHtml(label)}</span>
+          <div class="num">${escapeHtml(value)}</div>
+        </div>
+      `).join('');
+      document.getElementById('filled-file').textContent = data.output;
+      document.getElementById('check-list').innerHTML = data.checks.map(([level, title, body]) => issueHtml(level, title, body)).join('');
+      document.getElementById('mapping-rows').innerHTML = data.mappings.map(([field, value, amazon, status]) => `
+        <tr>
+          <td>${escapeHtml(field)}</td>
+          <td>${escapeHtml(value)}</td>
+          <td>${escapeHtml(amazon)}</td>
+          <td><span class="status ${status.includes('未') || status.includes('需') ? 'warn' : 'ok'}">${escapeHtml(status)}</span></td>
+        </tr>
+      `).join('');
+      document.getElementById('generated-files').innerHTML = data.generated.map(([label, file]) => `
+        <div class="rule ok">
+          <strong>${escapeHtml(label)}</strong>
+          <div class="muted small">${escapeHtml(file)}</div>
+        </div>
+      `).join('');
+      document.getElementById('template-next').textContent = data.next;
+      document.getElementById('upload-confirm-btn').disabled = !data.canUpload;
+    }
+
+    function renderFeedback(project) {
+      const data = project.feedback;
+      document.getElementById('upload-version-status').textContent = data.versionStatus;
+      document.getElementById('upload-version-status').className = `status ${data.versionStatus.includes('成功') ? 'ok' : data.versionStatus.includes('未') ? 'warn' : 'warn'}`;
+      document.getElementById('current-version-file').textContent = data.currentFile;
+      document.getElementById('current-version-note').textContent = data.note;
+      document.getElementById('version-meta').innerHTML = data.meta.map(metaHtml).join('');
+      document.getElementById('failure-report-box').innerHTML = `<strong>${escapeHtml(data.report)}</strong><span class="muted small">${escapeHtml(data.reportNote)}</span>`;
+      document.getElementById('failure-summary').innerHTML = data.failureSummary.map(metaHtml).join('');
+      document.getElementById('generate-next-version').textContent = data.generateAction;
+      document.getElementById('fix-result-status').textContent = data.fixStatus;
+      document.getElementById('fix-result-meta').innerHTML = data.fixMeta.map(metaHtml).join('');
+      document.getElementById('version-timeline').innerHTML = data.timeline.map(([state, version, title, body]) => `
+        <div class="step-row ${escapeHtml(state)}">
+          <span class="version-pill">${escapeHtml(version)}</span>
+          <div>
+            <strong>${escapeHtml(title)}</strong>
+            <div class="muted small">${escapeHtml(body)}</div>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('fix-rows').innerHTML = data.fixes.map((row) => `
+        <tr>${row.map((value) => `<td>${escapeHtml(value)}</td>`).join('')}</tr>
+      `).join('');
+      document.getElementById('learning-grid').innerHTML = data.learning.map(([title, body]) => `
+        <div class="learning-card">
+          <span class="muted small">${escapeHtml(title)}</span>
+          <strong>${escapeHtml(body)}</strong>
+        </div>
+      `).join('');
+      document.getElementById('version-file-count').textContent = `${data.versionFiles.length} 个`;
+      document.getElementById('version-files').innerHTML = data.versionFiles.map(([file, note]) => `
+        <div class="rule">
+          <strong>${escapeHtml(file)}</strong>
+          <div class="muted small">${escapeHtml(note)}</div>
+        </div>
+      `).join('');
+      document.getElementById('feedback-next').textContent = data.next;
+      document.getElementById('download-version').textContent = data.download;
+      document.getElementById('success-learn').textContent = data.success;
+      document.getElementById('fail-next').textContent = data.fail;
+    }
+
+    function metaHtml([label, value]) {
+      return `
+        <div class="meta-cell">
+          <span class="muted small">${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+        </div>
+      `;
+    }
+
+    function issueHtml(level, title, body) {
+      return `
+        <div class="issue ${escapeHtml(level)}">
+          <strong>${escapeHtml(title)}</strong>
+          <div class="muted small">${escapeHtml(body)}</div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[char]));
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value);
+    }
+
+    document.addEventListener('click', (event) => {
+      const moduleButton = event.target.closest('[data-module]');
+      if (moduleButton) {
+        activeModule = moduleButton.dataset.module;
+        renderModuleTabs();
+        return;
+      }
+      const projectButton = event.target.closest('[data-project]');
+      if (!projectButton) return;
+      activeId = projectButton.dataset.project;
+      renderProject();
+    });
+
+    renderProject();
+  </script>
+</body>
+</html>
