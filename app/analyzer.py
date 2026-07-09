@@ -689,7 +689,7 @@ def _guess_item_type_keyword(project_dir, product_name, text):
 
     lowered = f"{product_name}\n{text}".lower()
     if "airtag" in lowered and any(keyword in lowered for keyword in ["collar", "项圈", "宠物", "猫咪", "狗狗"]):
-        return "airtag-cat-collar"
+        return "pet-collars"
     if any(keyword in lowered for keyword in ["cat toy", "q tip for cats", "q-tip", "catnip", "猫玩具", "逗猫", "猫薄荷", "磨牙"]):
         return "cat-toys"
     if "floral" in lowered or "bouquet" in lowered or "flower" in lowered or "花束" in lowered or "卡插" in lowered:
@@ -789,7 +789,7 @@ def analyze_project(project_dir, output_path=None, route_mode=None):
     )
     if airtag_pet_collar:
         category = "pet"
-        item_type_keyword = "airtag-cat-collar"
+        item_type_keyword = "pet-collars"
         if "涤纶" in combined and "硅胶" in combined:
             material = "Polyester and Silicone"
         elif not material or material in {"Cotton", "Cotton and Felt"}:
