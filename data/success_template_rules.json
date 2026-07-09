@@ -1,28 +1,30 @@
 {
   "source_dir": "/Users/cc/Documents/GitHub/shangpin_system/data/success_templates",
-  "template_count": 47,
+  "template_count": 48,
   "skipped_count": 0,
   "product_type_count": 21,
   "product_types": {
     "ANIMAL_COLLAR": {
-      "template_count": 5,
-      "sku_count": 21,
+      "template_count": 6,
+      "sku_count": 23,
       "template_files": [
         "功能项圈第一版.xlsx",
         "功能项圈第二版‘.xlsx",
+        "宠物airtag夜光项圈_v3.xlsm",
         "宠物功能项圈xlsx-v4.xlsx",
         "宠物功能项圈第一版.xlsx",
         "宠物铃铛项圈.xlsx"
       ],
-      "average_field_count": 267.0,
+      "average_field_count": 268.0,
       "always_filled_fields": [
         {
           "field_name": "::record_action",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -36,11 +38,12 @@
         },
         {
           "field_name": "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -53,11 +56,12 @@
         },
         {
           "field_name": "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -70,61 +74,66 @@
         },
         {
           "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 9,
+          "unique_value_count": 10,
           "example_values": [
             "1.Helps relieve anxiety, stress, fear, and hyperactivity for dogs and cats\n2.Waterproof and non-greasy, works continuously for long-lasting effect\n3.Fully adjustable size fits all small, medium, and large pets\n4.Safe, natural ingredients, no side effects for your pet\n5.Easy to use and comfortable for all-day wear",
+            "Built-in silicone holder helps keep an Apple AirTag attached to the collar without a separate case.",
             "Adjustable 65cm collar for dogs and cats.",
             "Adjustable 48cm collar for dogs and cats.",
             "38cm adjustable collar set for cats.",
             "63.5cm adjustable collar set for dogs.",
             "1.Adjustable F Size Design：Fits most small to medium cats and dogs, easy to adjust for a comfortable, secure fit without choking.\n2.Built-in Safety Bell：Comes with a lightweight, clear bell to help you track your pet's location, perfect for indoor and outdoor use.\n3.Premium Durable Material：Made of high-quality nylon fabric, soft, skin-friendly, wear-resistant, and long-lasting for daily use.\n4.Stylish Color Options：Available in Dark Brown, Off-White, Apple Green, and Lake Blue, to match your pet's unique style.\n6.Easy to Use & Clean：Quick-release buckle for easy on/off, simple to wipe clean, ideal for daily walks, travel, and home use.",
-            "1.Adjustable F Size Design：Fits most small to medium cats and dogs, easy to adjust for a comfortable, secure fit without choking.\n2.Built-in Safety Bell：Comes with a lightweight, clear bell to help you track your pet's location, perfect for indoor and outdoor use.\n3.Premium Durable Material：Made of high-quality nylon fabric, soft, skin-friendly, wear-resistant, and long-lasting for daily use.\n4.Stylish Color Options：Available in Dark Brown, Off-White, Apple Green, and Lake Blue, to match your pet's unique style.\n7.Easy to Use & Clean：Quick-release buckle for easy on/off, simple to wipe clean, ideal for daily walks, travel, and home use.",
-            "1.Adjustable F Size Design：Fits most small to medium cats and dogs, easy to adjust for a comfortable, secure fit without choking.\n2.Built-in Safety Bell：Comes with a lightweight, clear bell to help you track your pet's location, perfect for indoor and outdoor use.\n3.Premium Durable Material：Made of high-quality nylon fabric, soft, skin-friendly, wear-resistant, and long-lasting for daily use.\n4.Stylish Color Options：Available in Dark Brown, Off-White, Apple Green, and Lake Blue, to match your pet's unique style.\n8.Easy to Use & Clean：Quick-release buckle for easy on/off, simple to wipe clean, ideal for daily walks, travel, and home use."
+            "1.Adjustable F Size Design：Fits most small to medium cats and dogs, easy to adjust for a comfortable, secure fit without choking.\n2.Built-in Safety Bell：Comes with a lightweight, clear bell to help you track your pet's location, perfect for indoor and outdoor use.\n3.Premium Durable Material：Made of high-quality nylon fabric, soft, skin-friendly, wear-resistant, and long-lasting for daily use.\n4.Stylish Color Options：Available in Dark Brown, Off-White, Apple Green, and Lake Blue, to match your pet's unique style.\n7.Easy to Use & Clean：Quick-release buckle for easy on/off, simple to wipe clean, ideal for daily walks, travel, and home use."
           ]
         },
         {
           "field_name": "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 1,
+          "unique_value_count": 2,
           "example_values": [
-            "Buckle"
+            "Buckle",
+            "Break Away"
           ]
         },
         {
           "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.standardized_values#1",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 5,
+          "unique_value_count": 6,
           "example_values": [
             "White",
             "Grey",
+            "Pink",
             "Brown",
             "Green",
             "Blue"
@@ -132,20 +141,22 @@
         },
         {
           "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 5,
+          "unique_value_count": 6,
           "example_values": [
             "White",
             "Grey",
+            "Pink",
             "Brown",
             "Green",
             "Blue"
@@ -153,11 +164,12 @@
         },
         {
           "field_name": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -170,11 +182,12 @@
         },
         {
           "field_name": "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -187,33 +200,12 @@
         },
         {
           "field_name": "directions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
-            "宠物功能项圈xlsx-v4.xlsx",
-            "宠物功能项圈第一版.xlsx",
-            "宠物铃铛项圈.xlsx"
-          ],
-          "mapped_by_auto_fill": false,
-          "unique_value_count": 6,
-          "example_values": [
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 60 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 61 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 62 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 63 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Adjust to fit your pet’s neck, buckle securely, check fit regularly, wipe clean as needed. For pet use only",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 64 days for best effect.\nStore remaining collars in the box in a cool, dry place."
-          ]
-        },
-        {
-          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
-          "fill_ratio": 1.0,
-          "template_files": [
-            "功能项圈第一版.xlsx",
-            "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -221,9 +213,34 @@
           "mapped_by_auto_fill": false,
           "unique_value_count": 7,
           "example_values": [
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 60 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 61 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 62 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 63 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Adjust to fit your pet’s neck, buckle securely, check fit regularly, wipe clean as needed. For pet use only",
+            "Adjust collar for a comfortable fit. Check regularly and remove if damaged. AirTag is not included.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 64 days for best effect.\nStore remaining collars in the box in a cool, dry place."
+          ]
+        },
+        {
+          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 23,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "功能项圈第一版.xlsx",
+            "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
+            "宠物功能项圈xlsx-v4.xlsx",
+            "宠物功能项圈第一版.xlsx",
+            "宠物铃铛项圈.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 8,
+          "example_values": [
             "1 x Pet Calming Collar",
             "4 x Pet Calming Collar, 1 x Gift Box",
             "Bell",
+            "Safety Clip",
             "1 x Pet Collar",
             "4 x Cat Collar",
             "4 x Dog Collar",
@@ -232,35 +249,37 @@
         },
         {
           "field_name": "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 10,
+          "unique_value_count": 12,
           "example_values": [
             "Adjustable Cat Collar with Bell - F Size, Lightweight Nylon for Cats, Dark Brown/Off-White/Apple Green/Lake Blue",
             "Calming Collar for Dogs & Cats 65cm, Reduce Anxiety & Stress, Waterproof Adjustable Pet Calm Collar",
             "Calming Collar for Dogs & Cats 48cm, Reduce Anxiety & Stress, Waterproof Adjustable Pet Calm Collar",
             "Calming Collar for Cats 38cm, Reduce Anxiety & Stress, Waterproof Adjustable Cat Calm Collar",
             "Calming Collar for Dogs 63.5cm, Reduce Anxiety & Stress, Waterproof Adjustable Dog Calm Collar",
-            "Pet Collar for Dogs & Cats 65cm, Adjustable Waterproof Collar for Daily Wear",
-            "Pet Collar for Dogs & Cats 48cm, Adjustable Waterproof Collar for Daily Wear",
-            "Pet Collar for Cats 38cm, Adjustable Waterproof Collar, 4 Pack"
+            "AirTag Cat Collar with Silicone Holder, Glow in the Dark Breakaway Pet Collar for Cats and Small Dogs, Pink, AirTag Not Included",
+            "AirTag Cat Collar with Silicone Holder, Glow in the Dark Breakaway Pet Collar for Cats and Small Dogs, White, AirTag Not Included",
+            "Pet Collar for Dogs & Cats 65cm, Adjustable Waterproof Collar for Daily Wear"
           ]
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -273,21 +292,23 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 7,
+          "unique_value_count": 8,
           "example_values": [
             "0.79",
             "3",
             "0.8",
+            "0.98",
             "1.18",
             "3.15",
             "2.76",
@@ -296,11 +317,12 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -313,11 +335,12 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -327,8 +350,8 @@
           "example_values": [
             "4.33",
             "15",
-            "6.7",
             "3.15",
+            "6.7",
             "1.97",
             "3.54",
             "4.5"
@@ -336,11 +359,12 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -353,33 +377,36 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 6,
+          "unique_value_count": 7,
           "example_values": [
             "2.76",
             "9",
             "2.8",
             "3.15",
+            "3.54",
             "3.94",
             "3"
           ]
         },
         {
           "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -392,51 +419,56 @@
         },
         {
           "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 5,
+          "unique_value_count": 6,
           "example_values": [
             "0.07",
             "0.11",
             "0.29",
             "0.39",
+            "0.082",
             "0.18"
           ]
         },
         {
           "field_name": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 3,
+          "unique_value_count": 4,
           "example_values": [
             "pet_calming_aids",
             "寵物用品 > 狗用品 > 狗項圈、吊帶和繩索 > 狗項圈 > 狗用基本項圈 (pet-collars)",
+            "宠物用品 > 狗用品 > 狗牵引及项圈 > 狗项圈 > 狗普通项圈 (pet-collars)",
             "flea_tick_collars"
           ]
         },
         {
           "field_name": "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -451,20 +483,22 @@
         },
         {
           "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 7,
+          "unique_value_count": 8,
           "example_values": [
             "Calming Collar",
             "Pet Collar",
+            "AirTag Pet Collar",
             "Flea & Tick Collar",
             "F Size Pet Collar with Bell, Dark Brown",
             "F Size Pet Collar with Bell, Off-White",
@@ -474,35 +508,37 @@
         },
         {
           "field_name": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 9,
+          "unique_value_count": 11,
           "example_values": [
             "Pet-XQ-ReW65",
             "Pet-XQ-ReW48",
             "Pet-XQ-ReG63-4",
             "Pet-XQ-ReG38-4",
+            "CC-PetXQ-Airlight-PINK",
+            "CCC-PetXQ-Airlight-WHITE",
             "Pet-XQ-QC-Grey",
-            "Pet-Ldq-Brown",
-            "Pet-Ldq-White",
-            "Pet-Ldq-Green"
+            "Pet-Ldq-Brown"
           ]
         },
         {
           "field_name": "number_of_boxes[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -515,78 +551,83 @@
         },
         {
           "field_name": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 12,
+          "unique_value_count": 13,
           "example_values": [
             "Calming Collar for Dogs, Reduce Anxiety & Stress, Waterproof Adjustable Pet Calm Collar",
             "Calming Collar for Cats , Reduce Anxiety & Stress, Waterproof Adjustable Pet Calm Collar",
             "Calming Collar for Cats, Reduce Anxiety & Stress, Waterproof Adjustable Cat Calm Collar",
             "Calming Collar for Dogs, Reduce Anxiety & Stress, Waterproof Adjustable Dog Calm Collar",
+            "This glow in the dark AirTag pet collar combines a lightweight polyester strap with a soft silicone holder designed for Apple AirTag. The luminous collar helps make pets easier to spot in low-light settings after exposure to light, while the holder keeps the tracker attached during daily wear. AirTag is not included.",
             "Adjustable waterproof pet collar designed for daily wear. Flexible fit for dogs and cats with a lightweight and easy-to-use design.",
             "Adjustable waterproof cat collar set designed for daily wear. Lightweight collar style with a flexible fit for routine pet use.",
-            "Adjustable waterproof dog collar set designed for daily wear. Lightweight collar style with a flexible fit for routine pet use.",
-            "Flea & Tick Collar for Dogs & Cats, Mosquito Repellent, Waterproof Adjustable Pet Flea Collar"
+            "Adjustable waterproof dog collar set designed for daily wear. Lightweight collar style with a flexible fit for routine pet use."
           ]
         },
         {
           "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 9,
+          "unique_value_count": 10,
           "example_values": [
             "7.99",
             "6.49",
             "5.99",
             "9.99",
             "8.99",
+            "5.49",
             "2.79",
-            "2.59",
-            "4.29"
+            "2.59"
           ]
         },
         {
           "field_name": "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 3,
+          "unique_value_count": 4,
           "example_values": [
             "Daily wear, calming, anxiety relief, indoor & outdoor use",
             "Daily wear, collar accessory, indoor & outdoor use",
-            "Pet safety, daily walking, identification, anti-lost, decoration, training, outdoor activity"
+            "Pet safety, daily walking, identification, anti-lost, decoration, training, outdoor activity",
+            "Outdoor"
           ]
         },
         {
           "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -599,11 +640,12 @@
         },
         {
           "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -616,11 +658,12 @@
         },
         {
           "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -637,84 +680,77 @@
         {
           "field_name": "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value",
           "value": "No",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": true
         },
         {
           "field_name": "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
           "value": "Generic",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": true
         },
         {
-          "field_name": "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
-          "value": "Buckle",
-          "filled_rows": 21,
-          "fill_ratio": 1.0,
-          "mapped_by_auto_fill": false
-        },
-        {
           "field_name": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
           "value": "New",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": true
         },
         {
           "field_name": "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value",
           "value": "China",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": true
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
           "value": "Inches",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": true
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
           "value": "Inches",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": true
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
           "value": "Inches",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": true
         },
         {
           "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
           "value": "Pounds",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": true
         },
         {
           "field_name": "number_of_boxes[marketplace_id=ATVPDKIKX0DER]#1.value",
           "value": "1",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": false
         },
         {
           "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
           "value": "Not Applicable",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": true
         },
         {
           "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
           "value": "Count",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "mapped_by_auto_fill": false
         }
@@ -722,49 +758,31 @@
       "often_filled_unmapped_fields": [
         {
           "field_name": "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 1,
+          "unique_value_count": 2,
           "example_values": [
-            "Buckle"
+            "Buckle",
+            "Break Away"
           ]
         },
         {
           "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.standardized_values#1",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
-            "宠物功能项圈xlsx-v4.xlsx",
-            "宠物功能项圈第一版.xlsx",
-            "宠物铃铛项圈.xlsx"
-          ],
-          "mapped_by_auto_fill": false,
-          "unique_value_count": 5,
-          "example_values": [
-            "White",
-            "Grey",
-            "Brown",
-            "Green",
-            "Blue"
-          ]
-        },
-        {
-          "field_name": "directions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
-          "fill_ratio": 1.0,
-          "template_files": [
-            "功能项圈第一版.xlsx",
-            "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -772,21 +790,22 @@
           "mapped_by_auto_fill": false,
           "unique_value_count": 6,
           "example_values": [
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 60 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 61 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 62 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 63 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Adjust to fit your pet’s neck, buckle securely, check fit regularly, wipe clean as needed. For pet use only",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 64 days for best effect.\nStore remaining collars in the box in a cool, dry place."
+            "White",
+            "Grey",
+            "Pink",
+            "Brown",
+            "Green",
+            "Blue"
           ]
         },
         {
-          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "field_name": "directions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -794,9 +813,34 @@
           "mapped_by_auto_fill": false,
           "unique_value_count": 7,
           "example_values": [
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 60 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 61 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 62 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 63 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Adjust to fit your pet’s neck, buckle securely, check fit regularly, wipe clean as needed. For pet use only",
+            "Adjust collar for a comfortable fit. Check regularly and remove if damaged. AirTag is not included.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 64 days for best effect.\nStore remaining collars in the box in a cool, dry place."
+          ]
+        },
+        {
+          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 23,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "功能项圈第一版.xlsx",
+            "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
+            "宠物功能项圈xlsx-v4.xlsx",
+            "宠物功能项圈第一版.xlsx",
+            "宠物铃铛项圈.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 8,
+          "example_values": [
             "1 x Pet Calming Collar",
             "4 x Pet Calming Collar, 1 x Gift Box",
             "Bell",
+            "Safety Clip",
             "1 x Pet Collar",
             "4 x Cat Collar",
             "4 x Dog Collar",
@@ -805,20 +849,22 @@
         },
         {
           "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 7,
+          "unique_value_count": 8,
           "example_values": [
             "Calming Collar",
             "Pet Collar",
+            "AirTag Pet Collar",
             "Flea & Tick Collar",
             "F Size Pet Collar with Bell, Dark Brown",
             "F Size Pet Collar with Bell, Off-White",
@@ -828,11 +874,12 @@
         },
         {
           "field_name": "number_of_boxes[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -845,30 +892,33 @@
         },
         {
           "field_name": "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 3,
+          "unique_value_count": 4,
           "example_values": [
             "Daily wear, calming, anxiety relief, indoor & outdoor use",
             "Daily wear, collar accessory, indoor & outdoor use",
-            "Pet safety, daily walking, identification, anti-lost, decoration, training, outdoor activity"
+            "Pet safety, daily walking, identification, anti-lost, decoration, training, outdoor activity",
+            "Outdoor"
           ]
         },
         {
           "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -881,11 +931,12 @@
         },
         {
           "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -901,11 +952,12 @@
       "field_summary": [
         {
           "field_name": "::record_action",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -919,11 +971,12 @@
         },
         {
           "field_name": "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -936,11 +989,12 @@
         },
         {
           "field_name": "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -953,61 +1007,66 @@
         },
         {
           "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 9,
+          "unique_value_count": 10,
           "example_values": [
             "1.Helps relieve anxiety, stress, fear, and hyperactivity for dogs and cats\n2.Waterproof and non-greasy, works continuously for long-lasting effect\n3.Fully adjustable size fits all small, medium, and large pets\n4.Safe, natural ingredients, no side effects for your pet\n5.Easy to use and comfortable for all-day wear",
+            "Built-in silicone holder helps keep an Apple AirTag attached to the collar without a separate case.",
             "Adjustable 65cm collar for dogs and cats.",
             "Adjustable 48cm collar for dogs and cats.",
             "38cm adjustable collar set for cats.",
             "63.5cm adjustable collar set for dogs.",
             "1.Adjustable F Size Design：Fits most small to medium cats and dogs, easy to adjust for a comfortable, secure fit without choking.\n2.Built-in Safety Bell：Comes with a lightweight, clear bell to help you track your pet's location, perfect for indoor and outdoor use.\n3.Premium Durable Material：Made of high-quality nylon fabric, soft, skin-friendly, wear-resistant, and long-lasting for daily use.\n4.Stylish Color Options：Available in Dark Brown, Off-White, Apple Green, and Lake Blue, to match your pet's unique style.\n6.Easy to Use & Clean：Quick-release buckle for easy on/off, simple to wipe clean, ideal for daily walks, travel, and home use.",
-            "1.Adjustable F Size Design：Fits most small to medium cats and dogs, easy to adjust for a comfortable, secure fit without choking.\n2.Built-in Safety Bell：Comes with a lightweight, clear bell to help you track your pet's location, perfect for indoor and outdoor use.\n3.Premium Durable Material：Made of high-quality nylon fabric, soft, skin-friendly, wear-resistant, and long-lasting for daily use.\n4.Stylish Color Options：Available in Dark Brown, Off-White, Apple Green, and Lake Blue, to match your pet's unique style.\n7.Easy to Use & Clean：Quick-release buckle for easy on/off, simple to wipe clean, ideal for daily walks, travel, and home use.",
-            "1.Adjustable F Size Design：Fits most small to medium cats and dogs, easy to adjust for a comfortable, secure fit without choking.\n2.Built-in Safety Bell：Comes with a lightweight, clear bell to help you track your pet's location, perfect for indoor and outdoor use.\n3.Premium Durable Material：Made of high-quality nylon fabric, soft, skin-friendly, wear-resistant, and long-lasting for daily use.\n4.Stylish Color Options：Available in Dark Brown, Off-White, Apple Green, and Lake Blue, to match your pet's unique style.\n8.Easy to Use & Clean：Quick-release buckle for easy on/off, simple to wipe clean, ideal for daily walks, travel, and home use."
+            "1.Adjustable F Size Design：Fits most small to medium cats and dogs, easy to adjust for a comfortable, secure fit without choking.\n2.Built-in Safety Bell：Comes with a lightweight, clear bell to help you track your pet's location, perfect for indoor and outdoor use.\n3.Premium Durable Material：Made of high-quality nylon fabric, soft, skin-friendly, wear-resistant, and long-lasting for daily use.\n4.Stylish Color Options：Available in Dark Brown, Off-White, Apple Green, and Lake Blue, to match your pet's unique style.\n7.Easy to Use & Clean：Quick-release buckle for easy on/off, simple to wipe clean, ideal for daily walks, travel, and home use."
           ]
         },
         {
           "field_name": "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 1,
+          "unique_value_count": 2,
           "example_values": [
-            "Buckle"
+            "Buckle",
+            "Break Away"
           ]
         },
         {
           "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.standardized_values#1",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 5,
+          "unique_value_count": 6,
           "example_values": [
             "White",
             "Grey",
+            "Pink",
             "Brown",
             "Green",
             "Blue"
@@ -1015,20 +1074,22 @@
         },
         {
           "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 5,
+          "unique_value_count": 6,
           "example_values": [
             "White",
             "Grey",
+            "Pink",
             "Brown",
             "Green",
             "Blue"
@@ -1036,11 +1097,12 @@
         },
         {
           "field_name": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1053,11 +1115,12 @@
         },
         {
           "field_name": "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1070,33 +1133,12 @@
         },
         {
           "field_name": "directions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
-            "宠物功能项圈xlsx-v4.xlsx",
-            "宠物功能项圈第一版.xlsx",
-            "宠物铃铛项圈.xlsx"
-          ],
-          "mapped_by_auto_fill": false,
-          "unique_value_count": 6,
-          "example_values": [
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 60 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 61 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 62 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 63 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
-            "Adjust to fit your pet’s neck, buckle securely, check fit regularly, wipe clean as needed. For pet use only",
-            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 64 days for best effect.\nStore remaining collars in the box in a cool, dry place."
-          ]
-        },
-        {
-          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
-          "fill_ratio": 1.0,
-          "template_files": [
-            "功能项圈第一版.xlsx",
-            "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1104,9 +1146,34 @@
           "mapped_by_auto_fill": false,
           "unique_value_count": 7,
           "example_values": [
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 60 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 61 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 62 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 63 days for best effect.\nStore remaining collars in the box in a cool, dry place.",
+            "Adjust to fit your pet’s neck, buckle securely, check fit regularly, wipe clean as needed. For pet use only",
+            "Adjust collar for a comfortable fit. Check regularly and remove if damaged. AirTag is not included.",
+            "Open the gift box and take out one calming collar.\nAdjust the collar to fit your pet’s neck comfortably, leaving 2 fingers of space.\nCut off any excess length for safety.\nReplace with a new collar every 64 days for best effect.\nStore remaining collars in the box in a cool, dry place."
+          ]
+        },
+        {
+          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 23,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "功能项圈第一版.xlsx",
+            "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
+            "宠物功能项圈xlsx-v4.xlsx",
+            "宠物功能项圈第一版.xlsx",
+            "宠物铃铛项圈.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 8,
+          "example_values": [
             "1 x Pet Calming Collar",
             "4 x Pet Calming Collar, 1 x Gift Box",
             "Bell",
+            "Safety Clip",
             "1 x Pet Collar",
             "4 x Cat Collar",
             "4 x Dog Collar",
@@ -1115,35 +1182,37 @@
         },
         {
           "field_name": "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 10,
+          "unique_value_count": 12,
           "example_values": [
             "Adjustable Cat Collar with Bell - F Size, Lightweight Nylon for Cats, Dark Brown/Off-White/Apple Green/Lake Blue",
             "Calming Collar for Dogs & Cats 65cm, Reduce Anxiety & Stress, Waterproof Adjustable Pet Calm Collar",
             "Calming Collar for Dogs & Cats 48cm, Reduce Anxiety & Stress, Waterproof Adjustable Pet Calm Collar",
             "Calming Collar for Cats 38cm, Reduce Anxiety & Stress, Waterproof Adjustable Cat Calm Collar",
             "Calming Collar for Dogs 63.5cm, Reduce Anxiety & Stress, Waterproof Adjustable Dog Calm Collar",
-            "Pet Collar for Dogs & Cats 65cm, Adjustable Waterproof Collar for Daily Wear",
-            "Pet Collar for Dogs & Cats 48cm, Adjustable Waterproof Collar for Daily Wear",
-            "Pet Collar for Cats 38cm, Adjustable Waterproof Collar, 4 Pack"
+            "AirTag Cat Collar with Silicone Holder, Glow in the Dark Breakaway Pet Collar for Cats and Small Dogs, Pink, AirTag Not Included",
+            "AirTag Cat Collar with Silicone Holder, Glow in the Dark Breakaway Pet Collar for Cats and Small Dogs, White, AirTag Not Included",
+            "Pet Collar for Dogs & Cats 65cm, Adjustable Waterproof Collar for Daily Wear"
           ]
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1156,21 +1225,23 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 7,
+          "unique_value_count": 8,
           "example_values": [
             "0.79",
             "3",
             "0.8",
+            "0.98",
             "1.18",
             "3.15",
             "2.76",
@@ -1179,11 +1250,12 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1196,11 +1268,12 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1210,8 +1283,8 @@
           "example_values": [
             "4.33",
             "15",
-            "6.7",
             "3.15",
+            "6.7",
             "1.97",
             "3.54",
             "4.5"
@@ -1219,11 +1292,12 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1236,33 +1310,36 @@
         },
         {
           "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 6,
+          "unique_value_count": 7,
           "example_values": [
             "2.76",
             "9",
             "2.8",
             "3.15",
+            "3.54",
             "3.94",
             "3"
           ]
         },
         {
           "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1275,51 +1352,56 @@
         },
         {
           "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 5,
+          "unique_value_count": 6,
           "example_values": [
             "0.07",
             "0.11",
             "0.29",
             "0.39",
+            "0.082",
             "0.18"
           ]
         },
         {
           "field_name": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 3,
+          "unique_value_count": 4,
           "example_values": [
             "pet_calming_aids",
             "寵物用品 > 狗用品 > 狗項圈、吊帶和繩索 > 狗項圈 > 狗用基本項圈 (pet-collars)",
+            "宠物用品 > 狗用品 > 狗牵引及项圈 > 狗项圈 > 狗普通项圈 (pet-collars)",
             "flea_tick_collars"
           ]
         },
         {
           "field_name": "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1334,20 +1416,22 @@
         },
         {
           "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 7,
+          "unique_value_count": 8,
           "example_values": [
             "Calming Collar",
             "Pet Collar",
+            "AirTag Pet Collar",
             "Flea & Tick Collar",
             "F Size Pet Collar with Bell, Dark Brown",
             "F Size Pet Collar with Bell, Off-White",
@@ -1357,35 +1441,37 @@
         },
         {
           "field_name": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 9,
+          "unique_value_count": 11,
           "example_values": [
             "Pet-XQ-ReW65",
             "Pet-XQ-ReW48",
             "Pet-XQ-ReG63-4",
             "Pet-XQ-ReG38-4",
+            "CC-PetXQ-Airlight-PINK",
+            "CCC-PetXQ-Airlight-WHITE",
             "Pet-XQ-QC-Grey",
-            "Pet-Ldq-Brown",
-            "Pet-Ldq-White",
-            "Pet-Ldq-Green"
+            "Pet-Ldq-Brown"
           ]
         },
         {
           "field_name": "number_of_boxes[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1398,78 +1484,83 @@
         },
         {
           "field_name": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 12,
+          "unique_value_count": 13,
           "example_values": [
             "Calming Collar for Dogs, Reduce Anxiety & Stress, Waterproof Adjustable Pet Calm Collar",
             "Calming Collar for Cats , Reduce Anxiety & Stress, Waterproof Adjustable Pet Calm Collar",
             "Calming Collar for Cats, Reduce Anxiety & Stress, Waterproof Adjustable Cat Calm Collar",
             "Calming Collar for Dogs, Reduce Anxiety & Stress, Waterproof Adjustable Dog Calm Collar",
+            "This glow in the dark AirTag pet collar combines a lightweight polyester strap with a soft silicone holder designed for Apple AirTag. The luminous collar helps make pets easier to spot in low-light settings after exposure to light, while the holder keeps the tracker attached during daily wear. AirTag is not included.",
             "Adjustable waterproof pet collar designed for daily wear. Flexible fit for dogs and cats with a lightweight and easy-to-use design.",
             "Adjustable waterproof cat collar set designed for daily wear. Lightweight collar style with a flexible fit for routine pet use.",
-            "Adjustable waterproof dog collar set designed for daily wear. Lightweight collar style with a flexible fit for routine pet use.",
-            "Flea & Tick Collar for Dogs & Cats, Mosquito Repellent, Waterproof Adjustable Pet Flea Collar"
+            "Adjustable waterproof dog collar set designed for daily wear. Lightweight collar style with a flexible fit for routine pet use."
           ]
         },
         {
           "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 9,
+          "unique_value_count": 10,
           "example_values": [
             "7.99",
             "6.49",
             "5.99",
             "9.99",
             "8.99",
+            "5.49",
             "2.79",
-            "2.59",
-            "4.29"
+            "2.59"
           ]
         },
         {
           "field_name": "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 3,
+          "unique_value_count": 4,
           "example_values": [
             "Daily wear, calming, anxiety relief, indoor & outdoor use",
             "Daily wear, collar accessory, indoor & outdoor use",
-            "Pet safety, daily walking, identification, anti-lost, decoration, training, outdoor activity"
+            "Pet safety, daily walking, identification, anti-lost, decoration, training, outdoor activity",
+            "Outdoor"
           ]
         },
         {
           "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1482,11 +1573,12 @@
         },
         {
           "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1499,11 +1591,12 @@
         },
         {
           "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 21,
+          "filled_rows": 23,
           "fill_ratio": 1.0,
           "template_files": [
             "功能项圈第一版.xlsx",
             "功能项圈第二版‘.xlsx",
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx",
             "宠物功能项圈第一版.xlsx",
             "宠物铃铛项圈.xlsx"
@@ -1517,64 +1610,74 @@
         },
         {
           "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value",
-          "filled_rows": 4,
-          "fill_ratio": 0.1905,
+          "filled_rows": 6,
+          "fill_ratio": 0.2609,
           "template_files": [
-            "宠物功能项圈xlsx-v4.xlsx"
-          ],
-          "mapped_by_auto_fill": true,
-          "unique_value_count": 1,
-          "example_values": [
-            "Waterproof design for everyday pet use."
-          ]
-        },
-        {
-          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value",
-          "filled_rows": 4,
-          "fill_ratio": 0.1905,
-          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx"
           ],
           "mapped_by_auto_fill": true,
           "unique_value_count": 2,
           "example_values": [
+            "Waterproof design for everyday pet use.",
+            "Glow in the dark collar material helps make pets easier to spot in low-light settings after exposure to light."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value",
+          "filled_rows": 6,
+          "fill_ratio": 0.2609,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm",
+            "宠物功能项圈xlsx-v4.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "Adjustable collar size fits cats and small pets, with a lightweight strap for daily wear.",
             "Lightweight collar for comfortable daily wear.",
             "Lightweight collar style for comfortable wear."
           ]
         },
         {
           "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value",
-          "filled_rows": 4,
-          "fill_ratio": 0.1905,
+          "filled_rows": 6,
+          "fill_ratio": 0.2609,
           "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 2,
+          "unique_value_count": 3,
           "example_values": [
+            "Breakaway-style collar design helps cats release from pressure during normal use and play.",
             "Flexible fit for home and outdoor activities.",
             "4 pack for home use and replacement needs."
           ]
         },
         {
           "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value",
-          "filled_rows": 4,
-          "fill_ratio": 0.1905,
+          "filled_rows": 6,
+          "fill_ratio": 0.2609,
           "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 2,
+          "unique_value_count": 4,
           "example_values": [
             "Single collar pack for routine pet care.",
-            "Flexible fit for routine indoor and outdoor use."
+            "Flexible fit for routine indoor and outdoor use.",
+            "Pink glow in the dark collar is made for cats and small dogs; Apple AirTag device is not included.",
+            "White glow in the dark collar is made for cats and small dogs; Apple AirTag device is not included."
           ]
         },
         {
           "field_name": "item_length[marketplace_id=ATVPDKIKX0DER]#1.unit",
-          "filled_rows": 4,
-          "fill_ratio": 0.1905,
+          "filled_rows": 6,
+          "fill_ratio": 0.2609,
           "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx"
           ],
           "mapped_by_auto_fill": false,
@@ -1585,14 +1688,16 @@
         },
         {
           "field_name": "item_length[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 4,
-          "fill_ratio": 0.1905,
+          "filled_rows": 6,
+          "fill_ratio": 0.2609,
           "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx"
           ],
           "mapped_by_auto_fill": false,
-          "unique_value_count": 4,
+          "unique_value_count": 5,
           "example_values": [
+            "15.75",
             "25.59",
             "18.9",
             "14.96",
@@ -1601,14 +1706,16 @@
         },
         {
           "field_name": "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 4,
-          "fill_ratio": 0.1905,
+          "filled_rows": 6,
+          "fill_ratio": 0.2609,
           "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm",
             "宠物功能项圈xlsx-v4.xlsx"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 4,
+          "unique_value_count": 5,
           "example_values": [
+            "5.49",
             "2.79",
             "2.59",
             "4.29",
@@ -1616,9 +1723,27 @@
           ]
         },
         {
+          "field_name": "size[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 6,
+          "fill_ratio": 0.2609,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm",
+            "宠物功能项圈xlsx-v4.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 5,
+          "example_values": [
+            "6-7 Inch (AirTag Holder)",
+            "65cm Single Collar",
+            "48cm Single Collar",
+            "38cm 4 Pack",
+            "63.5cm 4 Pack"
+          ]
+        },
+        {
           "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.maximum_seller_allowed_price#1.schedule#1.value_with_tax",
           "filled_rows": 4,
-          "fill_ratio": 0.1905,
+          "fill_ratio": 0.1739,
           "template_files": [
             "宠物功能项圈xlsx-v4.xlsx"
           ],
@@ -1634,7 +1759,7 @@
         {
           "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.minimum_seller_allowed_price#1.schedule#1.value_with_tax",
           "filled_rows": 4,
-          "fill_ratio": 0.1905,
+          "fill_ratio": 0.1739,
           "template_files": [
             "宠物功能项圈xlsx-v4.xlsx"
           ],
@@ -1648,19 +1773,264 @@
           ]
         },
         {
-          "field_name": "size[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
-          "filled_rows": 4,
-          "fill_ratio": 0.1905,
+          "field_name": "animal_collar_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
           "template_files": [
-            "宠物功能项圈xlsx-v4.xlsx"
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Basic Animal Collar"
+          ]
+        },
+        {
+          "field_name": "batteries_included[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
           ],
           "mapped_by_auto_fill": true,
-          "unique_value_count": 4,
+          "unique_value_count": 1,
           "example_values": [
-            "65cm Single Collar",
-            "48cm Single Collar",
-            "38cm 4 Pack",
-            "63.5cm 4 Pack"
+            "No"
+          ]
+        },
+        {
+          "field_name": "care_instructions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Spot Clean"
+          ]
+        },
+        {
+          "field_name": "generic_keyword[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "airtag cat collar glow in the dark pet collar silicone holder breakaway collar cat dog tracker holder"
+          ]
+        },
+        {
+          "field_name": "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "15.75"
+          ]
+        },
+        {
+          "field_name": "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.59"
+          ]
+        },
+        {
+          "field_name": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "item_width[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_width[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.59"
+          ]
+        },
+        {
+          "field_name": "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyester and Silicone"
+          ]
+        },
+        {
+          "field_name": "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "number_of_packs[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "part_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 2,
+          "example_values": [
+            "CC-PetXQ-Airlight-PINK",
+            "CCC-PetXQ-Airlight-WHITE"
+          ]
+        },
+        {
+          "field_name": "pattern[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Hearts"
+          ]
+        },
+        {
+          "field_name": "pet_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Cat"
+          ]
+        },
+        {
+          "field_name": "pet_type[marketplace_id=ATVPDKIKX0DER]#2.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Dog"
+          ]
+        },
+        {
+          "field_name": "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Active"
+          ]
+        },
+        {
+          "field_name": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 2,
+          "fill_ratio": 0.087,
+          "template_files": [
+            "宠物airtag夜光项圈_v3.xlsm"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Glow in the Dark AirTag Holder Collar"
           ]
         }
       ]

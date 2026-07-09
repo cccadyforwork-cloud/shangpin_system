@@ -39,6 +39,13 @@ COPY_FIELD_NAMES = {
 
 
 PRODUCT_TYPE_CONDITIONAL_FIELDS = {
+    "PET_TOY": {
+        "Model Number": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Theme": "theme[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Breed Recommendation": "breed_recommendation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Number of Boxes": "number_of_boxes[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Directions": "directions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    },
     "PROTECTIVE_GLOVE": {
         "Model Name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
         "Style": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",

@@ -1547,6 +1547,438 @@
       },
       "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
       "note": "工作台上传失败报告"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Model Number' is required but missing.",
+      "field": "Model Number (V7)",
+      "sku": "CA-Petchewtoy-fly",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Theme' is required but missing.",
+      "field": "Theme (BK7)",
+      "sku": "CA-Petchewtoy-fly",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Breed Recommendation' is required but missing.",
+      "field": "Breed Recommendation (BR7)",
+      "sku": "CA-Petchewtoy-fly",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'List Price' is required but missing.",
+      "field": "List Price (ER7)",
+      "sku": "CA-Petchewtoy-fly",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "List Price 上传前必须填数字；Haul Price / BZR Price 通常也要同步填写。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Number of Boxes' is required but missing.",
+      "field": "Number of Boxes (GB7)",
+      "sku": "CA-Petchewtoy-fly",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Directions' is required but missing.",
+      "field": "Directions (HV7)",
+      "sku": "CA-Petchewtoy-fly",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Model Number' is required but missing.",
+      "field": "Model Number (V8)",
+      "sku": "CA-Petchewtoy-mouse",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Theme' is required but missing.",
+      "field": "Theme (BK8)",
+      "sku": "CA-Petchewtoy-mouse",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Breed Recommendation' is required but missing.",
+      "field": "Breed Recommendation (BR8)",
+      "sku": "CA-Petchewtoy-mouse",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'List Price' is required but missing.",
+      "field": "List Price (ER8)",
+      "sku": "CA-Petchewtoy-mouse",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "List Price 上传前必须填数字；Haul Price / BZR Price 通常也要同步填写。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Number of Boxes' is required but missing.",
+      "field": "Number of Boxes (GB8)",
+      "sku": "CA-Petchewtoy-mouse",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Directions' is required but missing.",
+      "field": "Directions (HV8)",
+      "sku": "CA-Petchewtoy-mouse",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Model Number' is required but missing.",
+      "field": "Model Number (V9)",
+      "sku": "CA-Petchewtoy-bird",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Theme' is required but missing.",
+      "field": "Theme (BK9)",
+      "sku": "CA-Petchewtoy-bird",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Breed Recommendation' is required but missing.",
+      "field": "Breed Recommendation (BR9)",
+      "sku": "CA-Petchewtoy-bird",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'List Price' is required but missing.",
+      "field": "List Price (ER9)",
+      "sku": "CA-Petchewtoy-bird",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "List Price 上传前必须填数字；Haul Price / BZR Price 通常也要同步填写。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Number of Boxes' is required but missing.",
+      "field": "Number of Boxes (GB9)",
+      "sku": "CA-Petchewtoy-bird",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Directions' is required but missing.",
+      "field": "Directions (HV9)",
+      "sku": "CA-Petchewtoy-bird",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Model Number' is required but missing.",
+      "field": "Model Number (V10)",
+      "sku": "CA-Petchewtoy-ball",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Theme' is required but missing.",
+      "field": "Theme (BK10)",
+      "sku": "CA-Petchewtoy-ball",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Breed Recommendation' is required but missing.",
+      "field": "Breed Recommendation (BR10)",
+      "sku": "CA-Petchewtoy-ball",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'List Price' is required but missing.",
+      "field": "List Price (ER10)",
+      "sku": "CA-Petchewtoy-ball",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "List Price 上传前必须填数字；Haul Price / BZR Price 通常也要同步填写。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Number of Boxes' is required but missing.",
+      "field": "Number of Boxes (GB10)",
+      "sku": "CA-Petchewtoy-ball",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
+    },
+    {
+      "learned_at": "2026-07-10T03:38:37",
+      "product_name": "黄麻猫玩具",
+      "source_path": "/Users/cc/Desktop/黄麻猫玩具_PET_TOY_无品牌走单填写稿-processing-summary.xlsm",
+      "code": "90220",
+      "category": "ERROR",
+      "message": "'Directions' is required but missing.",
+      "field": "Directions (HV10)",
+      "sku": "CA-Petchewtoy-ball",
+      "summary": {
+        "processed": "4",
+        "successful": "0",
+        "unsuccessful": "4",
+        "warnings": "0"
+      },
+      "rule_hint": "条件必填缺失：把该字段加入同 product_type / 同模板的上传前自检清单，后续同类目提前补齐；不要默认套用到所有模板。",
+      "note": "PET_TOY 单链接无品牌路线 processing summary"
     }
   ]
 }
