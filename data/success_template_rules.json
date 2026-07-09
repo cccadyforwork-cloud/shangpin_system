@@ -1,8 +1,8 @@
 {
   "source_dir": "/Users/cc/Documents/GitHub/shangpin_system/data/success_templates",
-  "template_count": 42,
+  "template_count": 47,
   "skipped_count": 0,
-  "product_type_count": 19,
+  "product_type_count": 21,
   "product_types": {
     "ANIMAL_COLLAR": {
       "template_count": 5,
@@ -7746,7 +7746,7 @@
             "运动内衣_已优化.xlsx",
             "运动内衣_已优化1.xlsx"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 2,
           "example_values": [
             "Child",
@@ -7854,7 +7854,7 @@
             "运动内衣_已优化.xlsx",
             "运动内衣_已优化1.xlsx"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 1,
           "example_values": [
             "SIZE"
@@ -7993,7 +7993,7 @@
           "value": "SIZE",
           "filled_rows": 105,
           "fill_ratio": 1.0,
-          "mapped_by_auto_fill": false
+          "mapped_by_auto_fill": true
         }
       ],
       "often_filled_unmapped_fields": [
@@ -8118,22 +8118,6 @@
           ]
         },
         {
-          "field_name": "parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 105,
-          "fill_ratio": 1.0,
-          "template_files": [
-            "运动内衣.xlsx",
-            "运动内衣_已优化.xlsx",
-            "运动内衣_已优化1.xlsx"
-          ],
-          "mapped_by_auto_fill": false,
-          "unique_value_count": 2,
-          "example_values": [
-            "Child",
-            "Parent"
-          ]
-        },
-        {
           "field_name": "strap_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
           "filled_rows": 105,
           "fill_ratio": 1.0,
@@ -8206,43 +8190,6 @@
           "unique_value_count": 1,
           "example_values": [
             "1"
-          ]
-        },
-        {
-          "field_name": "variation_theme#1.name",
-          "filled_rows": 105,
-          "fill_ratio": 1.0,
-          "template_files": [
-            "运动内衣.xlsx",
-            "运动内衣_已优化.xlsx",
-            "运动内衣_已优化1.xlsx"
-          ],
-          "mapped_by_auto_fill": false,
-          "unique_value_count": 1,
-          "example_values": [
-            "SIZE"
-          ]
-        },
-        {
-          "field_name": "child_parent_sku_relationship[marketplace_id=ATVPDKIKX0DER]#1.parent_sku",
-          "filled_rows": 78,
-          "fill_ratio": 0.7429,
-          "template_files": [
-            "运动内衣.xlsx",
-            "运动内衣_已优化.xlsx",
-            "运动内衣_已优化1.xlsx"
-          ],
-          "mapped_by_auto_fill": false,
-          "unique_value_count": 9,
-          "example_values": [
-            "YDBX-7017-PeachPink",
-            "YDBX-7017-ForestGreen",
-            "YDBX-7017-TomatoPurple",
-            "YDBX-7020-Pistachio",
-            "YDBX-7020-RedWine",
-            "YDBX-7020-Mocha",
-            "YDBX-ZW01-White",
-            "YDBX-ZW01-Matcha"
           ]
         },
         {
@@ -8662,7 +8609,7 @@
             "运动内衣_已优化.xlsx",
             "运动内衣_已优化1.xlsx"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 2,
           "example_values": [
             "Child",
@@ -8770,7 +8717,7 @@
             "运动内衣_已优化.xlsx",
             "运动内衣_已优化1.xlsx"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 1,
           "example_values": [
             "SIZE"
@@ -8834,7 +8781,7 @@
             "运动内衣_已优化.xlsx",
             "运动内衣_已优化1.xlsx"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 9,
           "example_values": [
             "YDBX-7017-PeachPink",
@@ -29683,6 +29630,2960 @@
         }
       ]
     },
+    "SANDAL": {
+      "template_count": 3,
+      "sku_count": 9,
+      "template_files": [
+        "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+        "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+        "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+      ],
+      "average_field_count": 296.0,
+      "always_filled_fields": [
+        {
+          "field_name": "::record_action",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Create or Replace (Full Update)"
+          ]
+        },
+        {
+          "field_name": "age_range_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Adult"
+          ]
+        },
+        {
+          "field_name": "batteries_included[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Generic"
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Slip on jelly slide sandals designed for casual summer wear, beach days, poolside use, and daily indoor or outdoor walking."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Decorative flower charms add a playful look while the lightweight plastic upper is easy to pair with casual outfits."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Open slip-on design makes the sandals easy to put on and take off for quick everyday use."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flat sole and flexible plastic construction are suitable for relaxed walking, travel, shower, beach, and pool settings."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Women's size US 7; wipe clean after use and air dry before storage."
+          ]
+        },
+        {
+          "field_name": "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Slip On"
+          ]
+        },
+        {
+          "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.standardized_values#1",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 3,
+          "example_values": [
+            "Gold",
+            "Black",
+            "Clear"
+          ]
+        },
+        {
+          "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "Gold",
+            "Black",
+            "Clear"
+          ]
+        },
+        {
+          "field_name": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "New"
+          ]
+        },
+        {
+          "field_name": "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "China"
+          ]
+        },
+        {
+          "field_name": "embellishment_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flower"
+          ]
+        },
+        {
+          "field_name": "fit_to_size_sentiment[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "True To Size"
+          ]
+        },
+        {
+          "field_name": "footwear_platform_height[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "footwear_platform_height[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.age_group",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Adult"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.gender",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Women"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "7"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_class",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Numeric"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_system",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "US Footwear Size System"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.width",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Medium"
+          ]
+        },
+        {
+          "field_name": "has_multiple_battery_powered_components[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "heel[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flat"
+          ]
+        },
+        {
+          "field_name": "import_designation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Imported"
+          ]
+        },
+        {
+          "field_name": "insole[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyvinyl Chloride (PVC)"
+          ]
+        },
+        {
+          "field_name": "is_this_product_subject_to_buyer_age_restrictions[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "Women's Jelly Slide Sandals with Flower Charms, Plastic Slip On Summer Flats, Size 7, Gold",
+            "Women's Jelly Slide Sandals with Flower Charms, Plastic Slip On Summer Flats, Size 7, Black",
+            "Women's Jelly Slide Sandals with Flower Charms, Plastic Slip On Summer Flats, Size 7, Clear"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1.77"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "11.42"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "7.68"
+          ]
+        },
+        {
+          "field_name": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "slides-sandals"
+          ]
+        },
+        {
+          "field_name": "lifestyle[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Casual"
+          ]
+        },
+        {
+          "field_name": "lining_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Unlined"
+          ]
+        },
+        {
+          "field_name": "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "8.99"
+          ]
+        },
+        {
+          "field_name": "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Generic"
+          ]
+        },
+        {
+          "field_name": "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Plastic"
+          ]
+        },
+        {
+          "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flower Jelly Slide Sandal"
+          ]
+        },
+        {
+          "field_name": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "Sandal-Golden-cc",
+            "Sandal-Black-cc",
+            "Sandal-Transp-cc"
+          ]
+        },
+        {
+          "field_name": "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "outer[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyvinyl Chloride (PVC)"
+          ]
+        },
+        {
+          "field_name": "part_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "Sandal-Golden-cc",
+            "Sandal-Black-cc",
+            "Sandal-Transp-cc"
+          ]
+        },
+        {
+          "field_name": "pattern[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Floral"
+          ]
+        },
+        {
+          "field_name": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "These women's jelly slide sandals feature decorative flower charms and a lightweight plastic slip-on design. They are made for casual summer wear, beach, pool, shower, and relaxed daily use. Color: Gold. Size: US 7.",
+            "These women's jelly slide sandals feature decorative flower charms and a lightweight plastic slip-on design. They are made for casual summer wear, beach, pool, shower, and relaxed daily use. Color: Black. Size: US 7.",
+            "These women's jelly slide sandals feature decorative flower charms and a lightweight plastic slip-on design. They are made for casual summer wear, beach, pool, shower, and relaxed daily use. Color: Clear. Size: US 7."
+          ]
+        },
+        {
+          "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "8.99"
+          ]
+        },
+        {
+          "field_name": "recommended_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Walking"
+          ]
+        },
+        {
+          "field_name": "sole_material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyvinyl Chloride"
+          ]
+        },
+        {
+          "field_name": "strap_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Strapless"
+          ]
+        },
+        {
+          "field_name": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Casual"
+          ]
+        },
+        {
+          "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Not Applicable"
+          ]
+        },
+        {
+          "field_name": "supplier_package_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Sealed Bag"
+          ]
+        },
+        {
+          "field_name": "target_audience[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Women"
+          ]
+        },
+        {
+          "field_name": "target_gender[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Female"
+          ]
+        },
+        {
+          "field_name": "toe_style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Closed Toe"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Count"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "water_resistance_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Water Resistant"
+          ]
+        }
+      ],
+      "fixed_default_fields": [
+        {
+          "field_name": "::record_action",
+          "value": "Create or Replace (Full Update)",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "age_range_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Adult",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "batteries_included[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "No",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "No",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Generic",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Slip on jelly slide sandals designed for casual summer wear, beach days, poolside use, and daily indoor or outdoor walking.",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value",
+          "value": "Decorative flower charms add a playful look while the lightweight plastic upper is easy to pair with casual outfits.",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value",
+          "value": "Open slip-on design makes the sandals easy to put on and take off for quick everyday use.",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value",
+          "value": "Flat sole and flexible plastic construction are suitable for relaxed walking, travel, shower, beach, and pool settings.",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value",
+          "value": "Women's size US 7; wipe clean after use and air dry before storage.",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+          "value": "Slip On",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "New",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "China",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "embellishment_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Flower",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "fit_to_size_sentiment[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "True To Size",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "footwear_platform_height[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "value": "Inches",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "footwear_platform_height[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "0",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.age_group",
+          "value": "Adult",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.gender",
+          "value": "Women",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size",
+          "value": "7",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_class",
+          "value": "Numeric",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_system",
+          "value": "US Footwear Size System",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.width",
+          "value": "Medium",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "has_multiple_battery_powered_components[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "No",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "heel[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+          "value": "Flat",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "import_designation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Imported",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "insole[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+          "value": "Polyvinyl Chloride (PVC)",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "is_this_product_subject_to_buyer_age_restrictions[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "No",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "value": "Inches",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "value": "1.77",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+          "value": "Inches",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+          "value": "11.42",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "value": "Inches",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "value": "7.68",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "1",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "value": "Pounds",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "0.661",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "slides-sandals",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "lifestyle[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Casual",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "lining_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Unlined",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "8.99",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Generic",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Plastic",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Flower Jelly Slide Sandal",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "1",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "outer[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+          "value": "Polyvinyl Chloride (PVC)",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "pattern[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Floral",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
+          "value": "8.99",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "recommended_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Walking",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "sole_material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Polyvinyl Chloride",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "strap_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Strapless",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Casual",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "Not Applicable",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "supplier_package_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "Sealed Bag",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "target_audience[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Women",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "target_gender[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "Female",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "toe_style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Closed Toe",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+          "value": "Count",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "1",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "water_resistance_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "Water Resistant",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        }
+      ],
+      "often_filled_unmapped_fields": [
+        {
+          "field_name": "age_range_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Adult"
+          ]
+        },
+        {
+          "field_name": "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Slip On"
+          ]
+        },
+        {
+          "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.standardized_values#1",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 3,
+          "example_values": [
+            "Gold",
+            "Black",
+            "Clear"
+          ]
+        },
+        {
+          "field_name": "embellishment_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flower"
+          ]
+        },
+        {
+          "field_name": "fit_to_size_sentiment[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "True To Size"
+          ]
+        },
+        {
+          "field_name": "footwear_platform_height[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "footwear_platform_height[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.age_group",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Adult"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.gender",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Women"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "7"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_class",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Numeric"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_system",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "US Footwear Size System"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.width",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Medium"
+          ]
+        },
+        {
+          "field_name": "has_multiple_battery_powered_components[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "heel[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flat"
+          ]
+        },
+        {
+          "field_name": "import_designation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Imported"
+          ]
+        },
+        {
+          "field_name": "insole[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyvinyl Chloride (PVC)"
+          ]
+        },
+        {
+          "field_name": "is_this_product_subject_to_buyer_age_restrictions[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "lifestyle[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Casual"
+          ]
+        },
+        {
+          "field_name": "lining_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Unlined"
+          ]
+        },
+        {
+          "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flower Jelly Slide Sandal"
+          ]
+        },
+        {
+          "field_name": "outer[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyvinyl Chloride (PVC)"
+          ]
+        },
+        {
+          "field_name": "pattern[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Floral"
+          ]
+        },
+        {
+          "field_name": "recommended_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Walking"
+          ]
+        },
+        {
+          "field_name": "sole_material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyvinyl Chloride"
+          ]
+        },
+        {
+          "field_name": "strap_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Strapless"
+          ]
+        },
+        {
+          "field_name": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Casual"
+          ]
+        },
+        {
+          "field_name": "supplier_package_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Sealed Bag"
+          ]
+        },
+        {
+          "field_name": "target_audience[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Women"
+          ]
+        },
+        {
+          "field_name": "target_gender[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Female"
+          ]
+        },
+        {
+          "field_name": "toe_style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Closed Toe"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Count"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "water_resistance_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Water Resistant"
+          ]
+        }
+      ],
+      "field_summary": [
+        {
+          "field_name": "::record_action",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Create or Replace (Full Update)"
+          ]
+        },
+        {
+          "field_name": "age_range_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Adult"
+          ]
+        },
+        {
+          "field_name": "batteries_included[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Generic"
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Slip on jelly slide sandals designed for casual summer wear, beach days, poolside use, and daily indoor or outdoor walking."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Decorative flower charms add a playful look while the lightweight plastic upper is easy to pair with casual outfits."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Open slip-on design makes the sandals easy to put on and take off for quick everyday use."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flat sole and flexible plastic construction are suitable for relaxed walking, travel, shower, beach, and pool settings."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Women's size US 7; wipe clean after use and air dry before storage."
+          ]
+        },
+        {
+          "field_name": "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Slip On"
+          ]
+        },
+        {
+          "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.standardized_values#1",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 3,
+          "example_values": [
+            "Gold",
+            "Black",
+            "Clear"
+          ]
+        },
+        {
+          "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "Gold",
+            "Black",
+            "Clear"
+          ]
+        },
+        {
+          "field_name": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "New"
+          ]
+        },
+        {
+          "field_name": "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "China"
+          ]
+        },
+        {
+          "field_name": "embellishment_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flower"
+          ]
+        },
+        {
+          "field_name": "fit_to_size_sentiment[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "True To Size"
+          ]
+        },
+        {
+          "field_name": "footwear_platform_height[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "footwear_platform_height[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.age_group",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Adult"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.gender",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Women"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "7"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_class",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Numeric"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_system",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "US Footwear Size System"
+          ]
+        },
+        {
+          "field_name": "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.width",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Medium"
+          ]
+        },
+        {
+          "field_name": "has_multiple_battery_powered_components[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "heel[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flat"
+          ]
+        },
+        {
+          "field_name": "import_designation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Imported"
+          ]
+        },
+        {
+          "field_name": "insole[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyvinyl Chloride (PVC)"
+          ]
+        },
+        {
+          "field_name": "is_this_product_subject_to_buyer_age_restrictions[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "Women's Jelly Slide Sandals with Flower Charms, Plastic Slip On Summer Flats, Size 7, Gold",
+            "Women's Jelly Slide Sandals with Flower Charms, Plastic Slip On Summer Flats, Size 7, Black",
+            "Women's Jelly Slide Sandals with Flower Charms, Plastic Slip On Summer Flats, Size 7, Clear"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1.77"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "11.42"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "7.68"
+          ]
+        },
+        {
+          "field_name": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "slides-sandals"
+          ]
+        },
+        {
+          "field_name": "lifestyle[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Casual"
+          ]
+        },
+        {
+          "field_name": "lining_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Unlined"
+          ]
+        },
+        {
+          "field_name": "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "8.99"
+          ]
+        },
+        {
+          "field_name": "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Generic"
+          ]
+        },
+        {
+          "field_name": "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Plastic"
+          ]
+        },
+        {
+          "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Flower Jelly Slide Sandal"
+          ]
+        },
+        {
+          "field_name": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "Sandal-Golden-cc",
+            "Sandal-Black-cc",
+            "Sandal-Transp-cc"
+          ]
+        },
+        {
+          "field_name": "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "outer[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyvinyl Chloride (PVC)"
+          ]
+        },
+        {
+          "field_name": "part_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "Sandal-Golden-cc",
+            "Sandal-Black-cc",
+            "Sandal-Transp-cc"
+          ]
+        },
+        {
+          "field_name": "pattern[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Floral"
+          ]
+        },
+        {
+          "field_name": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 3,
+          "example_values": [
+            "These women's jelly slide sandals feature decorative flower charms and a lightweight plastic slip-on design. They are made for casual summer wear, beach, pool, shower, and relaxed daily use. Color: Gold. Size: US 7.",
+            "These women's jelly slide sandals feature decorative flower charms and a lightweight plastic slip-on design. They are made for casual summer wear, beach, pool, shower, and relaxed daily use. Color: Black. Size: US 7.",
+            "These women's jelly slide sandals feature decorative flower charms and a lightweight plastic slip-on design. They are made for casual summer wear, beach, pool, shower, and relaxed daily use. Color: Clear. Size: US 7."
+          ]
+        },
+        {
+          "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "8.99"
+          ]
+        },
+        {
+          "field_name": "recommended_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Walking"
+          ]
+        },
+        {
+          "field_name": "sole_material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Polyvinyl Chloride"
+          ]
+        },
+        {
+          "field_name": "strap_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Strapless"
+          ]
+        },
+        {
+          "field_name": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Casual"
+          ]
+        },
+        {
+          "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Not Applicable"
+          ]
+        },
+        {
+          "field_name": "supplier_package_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Sealed Bag"
+          ]
+        },
+        {
+          "field_name": "target_audience[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Women"
+          ]
+        },
+        {
+          "field_name": "target_gender[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Female"
+          ]
+        },
+        {
+          "field_name": "toe_style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Closed Toe"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Count"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "water_resistance_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 9,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "塑料花朵拖鞋_v2_compliance_clean.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_2.xlsx",
+            "塑料花朵拖鞋_v2_compliance_clean_3.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Water Resistant"
+          ]
+        }
+      ]
+    },
     "SLIPPER": {
       "template_count": 2,
       "sku_count": 42,
@@ -29771,7 +32672,7 @@
             "SLIPPER 3-折叠拖鞋升级5个颜色.xlsm",
             "拖鞋0607合并xlsm.xlsm"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 2,
           "example_values": [
             "Child",
@@ -29800,7 +32701,7 @@
             "SLIPPER 3-折叠拖鞋升级5个颜色.xlsm",
             "拖鞋0607合并xlsm.xlsm"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 1,
           "example_values": [
             "SIZE/COLOR"
@@ -29965,7 +32866,7 @@
             "SLIPPER 3-折叠拖鞋升级5个颜色.xlsm",
             "拖鞋0607合并xlsm.xlsm"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 2,
           "example_values": [
             "ZD003-5C",
@@ -30042,7 +32943,7 @@
           "value": "Child",
           "filled_rows": 42,
           "fill_ratio": 1.0,
-          "mapped_by_auto_fill": false
+          "mapped_by_auto_fill": true
         },
         {
           "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
@@ -30056,39 +32957,10 @@
           "value": "SIZE/COLOR",
           "filled_rows": 42,
           "fill_ratio": 1.0,
-          "mapped_by_auto_fill": false
+          "mapped_by_auto_fill": true
         }
       ],
       "often_filled_unmapped_fields": [
-        {
-          "field_name": "parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value",
-          "filled_rows": 42,
-          "fill_ratio": 1.0,
-          "template_files": [
-            "SLIPPER 3-折叠拖鞋升级5个颜色.xlsm",
-            "拖鞋0607合并xlsm.xlsm"
-          ],
-          "mapped_by_auto_fill": false,
-          "unique_value_count": 2,
-          "example_values": [
-            "Child",
-            "Parent"
-          ]
-        },
-        {
-          "field_name": "variation_theme#1.name",
-          "filled_rows": 42,
-          "fill_ratio": 1.0,
-          "template_files": [
-            "SLIPPER 3-折叠拖鞋升级5个颜色.xlsm",
-            "拖鞋0607合并xlsm.xlsm"
-          ],
-          "mapped_by_auto_fill": false,
-          "unique_value_count": 1,
-          "example_values": [
-            "SIZE/COLOR"
-          ]
-        },
         {
           "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.standardized_values#1",
           "filled_rows": 41,
@@ -30197,21 +33069,6 @@
           "unique_value_count": 1,
           "example_values": [
             "Medium"
-          ]
-        },
-        {
-          "field_name": "child_parent_sku_relationship[marketplace_id=ATVPDKIKX0DER]#1.parent_sku",
-          "filled_rows": 40,
-          "fill_ratio": 0.9524,
-          "template_files": [
-            "SLIPPER 3-折叠拖鞋升级5个颜色.xlsm",
-            "拖鞋0607合并xlsm.xlsm"
-          ],
-          "mapped_by_auto_fill": false,
-          "unique_value_count": 2,
-          "example_values": [
-            "ZD003-5C",
-            "Slipp-Wes-0607"
           ]
         }
       ],
@@ -30295,7 +33152,7 @@
             "SLIPPER 3-折叠拖鞋升级5个颜色.xlsm",
             "拖鞋0607合并xlsm.xlsm"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 2,
           "example_values": [
             "Child",
@@ -30324,7 +33181,7 @@
             "SLIPPER 3-折叠拖鞋升级5个颜色.xlsm",
             "拖鞋0607合并xlsm.xlsm"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 1,
           "example_values": [
             "SIZE/COLOR"
@@ -30489,7 +33346,7 @@
             "SLIPPER 3-折叠拖鞋升级5个颜色.xlsm",
             "拖鞋0607合并xlsm.xlsm"
           ],
-          "mapped_by_auto_fill": false,
+          "mapped_by_auto_fill": true,
           "unique_value_count": 2,
           "example_values": [
             "ZD003-5C",
@@ -33139,6 +35996,2351 @@
           "unique_value_count": 1,
           "example_values": [
             "Five-Toe"
+          ]
+        }
+      ]
+    },
+    "SPRAY_BOTTLE": {
+      "template_count": 2,
+      "sku_count": 8,
+      "template_files": [
+        "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+        "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+      ],
+      "average_field_count": 252.0,
+      "always_filled_fields": [
+        {
+          "field_name": "::record_action",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Create or Replace (Full Update)"
+          ]
+        },
+        {
+          "field_name": "batteries_included[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "bottle[marketplace_id=ATVPDKIKX0DER]#1.color[language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 4,
+          "example_values": [
+            "Brown",
+            "Purple",
+            "Yellow",
+            "Grey"
+          ]
+        },
+        {
+          "field_name": "bottle_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Spray Bottle"
+          ]
+        },
+        {
+          "field_name": "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Generic"
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Vintage glass plant mister designed for watering succulents, houseplants, flowers, and small indoor garden displays."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Top pump sprayer delivers a fine mist for gentle plant care and decorative daily use."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Embossed glass bottle with antique-style pump adds a decorative look to shelves, desks, and plant corners."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Compact 200 ml capacity is easy to hold, refill, and store between watering tasks."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Suitable for water misting only; hand wash and dry after use to help keep the bottle clean."
+          ]
+        },
+        {
+          "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Milliliters"
+          ]
+        },
+        {
+          "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "200"
+          ]
+        },
+        {
+          "field_name": "care_instructions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Hand Wash Only"
+          ]
+        },
+        {
+          "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "Brown",
+            "Purple",
+            "Yellow",
+            "Grey"
+          ]
+        },
+        {
+          "field_name": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "New"
+          ]
+        },
+        {
+          "field_name": "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "China"
+          ]
+        },
+        {
+          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1 x glass spray bottle"
+          ]
+        },
+        {
+          "field_name": "is_this_product_subject_to_buyer_age_restrictions[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "item_display_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_display_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "Vintage Glass Plant Mister Spray Bottle, 200ml Decorative Water Sprayer for Indoor Plants, Brown",
+            "Vintage Glass Plant Mister Spray Bottle, 200ml Decorative Water Sprayer for Indoor Plants, Purple",
+            "Vintage Glass Plant Mister Spray Bottle, 200ml Decorative Water Sprayer for Indoor Plants, Yellow",
+            "Vintage Glass Plant Mister Spray Bottle, 200ml Decorative Water Sprayer for Indoor Plants, Grey"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "3.74"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "6.5"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "4.53"
+          ]
+        },
+        {
+          "field_name": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_shape[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Round"
+          ]
+        },
+        {
+          "field_name": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "refillable-cosmetic-spray-bottles"
+          ]
+        },
+        {
+          "field_name": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "6.5"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "4.53"
+          ]
+        },
+        {
+          "field_name": "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "5.49"
+          ]
+        },
+        {
+          "field_name": "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Generic"
+          ]
+        },
+        {
+          "field_name": "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Glass"
+          ]
+        },
+        {
+          "field_name": "material_type_free[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Aerosol Free"
+          ]
+        },
+        {
+          "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "HJ-11 200ml"
+          ]
+        },
+        {
+          "field_name": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "Spraybottle-Brown-cc1",
+            "Spraybottle-Purple-cc1",
+            "Spraybottle-Yellow-cc1",
+            "Spraybottle-Grey-cc1"
+          ]
+        },
+        {
+          "field_name": "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "package_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Unit"
+          ]
+        },
+        {
+          "field_name": "part_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "Spraybottle-Brown-cc1",
+            "Spraybottle-Purple-cc1",
+            "Spraybottle-Yellow-cc1",
+            "Spraybottle-Grey-cc1"
+          ]
+        },
+        {
+          "field_name": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "This vintage glass plant mister is a compact 200 ml spray bottle for watering houseplants, succulents, flowers, and small garden displays. The embossed glass body and antique-style top pump create a decorative look while the fine mist helps with gentle daily plant care. Color: Brown.",
+            "This vintage glass plant mister is a compact 200 ml spray bottle for watering houseplants, succulents, flowers, and small garden displays. The embossed glass body and antique-style top pump create a decorative look while the fine mist helps with gentle daily plant care. Color: Purple.",
+            "This vintage glass plant mister is a compact 200 ml spray bottle for watering houseplants, succulents, flowers, and small garden displays. The embossed glass body and antique-style top pump create a decorative look while the fine mist helps with gentle daily plant care. Color: Yellow.",
+            "This vintage glass plant mister is a compact 200 ml spray bottle for watering houseplants, succulents, flowers, and small garden displays. The embossed glass body and antique-style top pump create a decorative look while the fine mist helps with gentle daily plant care. Color: Grey. Supplier style reference: Style 2."
+          ]
+        },
+        {
+          "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "5.49"
+          ]
+        },
+        {
+          "field_name": "recommended_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Water"
+          ]
+        },
+        {
+          "field_name": "reusability[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Reusable"
+          ]
+        },
+        {
+          "field_name": "size[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "200 ml"
+          ]
+        },
+        {
+          "field_name": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Antique"
+          ]
+        },
+        {
+          "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Not Applicable"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Count"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        }
+      ],
+      "fixed_default_fields": [
+        {
+          "field_name": "::record_action",
+          "value": "Create or Replace (Full Update)",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "batteries_included[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "No",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "No",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bottle_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Spray Bottle",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Generic",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Vintage glass plant mister designed for watering succulents, houseplants, flowers, and small indoor garden displays.",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value",
+          "value": "Top pump sprayer delivers a fine mist for gentle plant care and decorative daily use.",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value",
+          "value": "Embossed glass bottle with antique-style pump adds a decorative look to shelves, desks, and plant corners.",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value",
+          "value": "Compact 200 ml capacity is easy to hold, refill, and store between watering tasks.",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value",
+          "value": "Suitable for water misting only; hand wash and dry after use to help keep the bottle clean.",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "value": "Milliliters",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "200",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "care_instructions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Hand Wash Only",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "New",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "China",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "1 x glass spray bottle",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "is_this_product_subject_to_buyer_age_restrictions[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "No",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_display_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "value": "Pounds",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_display_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "0.661",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "value": "Inches",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "value": "3.74",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+          "value": "Inches",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+          "value": "6.5",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "value": "Inches",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "value": "4.53",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "1",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "value": "Pounds",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "0.661",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_shape[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Round",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "refillable-cosmetic-spray-bottles",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "value": "Pounds",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "0.661",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "value": "Inches",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "value": "6.5",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "value": "Inches",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "value": "4.53",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "5.49",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Generic",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Glass",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "material_type_free[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Aerosol Free",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "HJ-11 200ml",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "1",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "package_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "Unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
+          "value": "5.49",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "recommended_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Water",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "reusability[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Reusable",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "size[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "200 ml",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "value": "Antique",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "Not Applicable",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": true
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+          "value": "Count",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "value": "1",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "mapped_by_auto_fill": false
+        }
+      ],
+      "often_filled_unmapped_fields": [
+        {
+          "field_name": "bottle[marketplace_id=ATVPDKIKX0DER]#1.color[language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 4,
+          "example_values": [
+            "Brown",
+            "Purple",
+            "Yellow",
+            "Grey"
+          ]
+        },
+        {
+          "field_name": "bottle_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Spray Bottle"
+          ]
+        },
+        {
+          "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Milliliters"
+          ]
+        },
+        {
+          "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "200"
+          ]
+        },
+        {
+          "field_name": "care_instructions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Hand Wash Only"
+          ]
+        },
+        {
+          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1 x glass spray bottle"
+          ]
+        },
+        {
+          "field_name": "is_this_product_subject_to_buyer_age_restrictions[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "item_display_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_display_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_shape[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Round"
+          ]
+        },
+        {
+          "field_name": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "6.5"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "4.53"
+          ]
+        },
+        {
+          "field_name": "material_type_free[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Aerosol Free"
+          ]
+        },
+        {
+          "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "HJ-11 200ml"
+          ]
+        },
+        {
+          "field_name": "package_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Unit"
+          ]
+        },
+        {
+          "field_name": "recommended_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Water"
+          ]
+        },
+        {
+          "field_name": "reusability[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Reusable"
+          ]
+        },
+        {
+          "field_name": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Antique"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Count"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        }
+      ],
+      "field_summary": [
+        {
+          "field_name": "::record_action",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Create or Replace (Full Update)"
+          ]
+        },
+        {
+          "field_name": "batteries_included[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "bottle[marketplace_id=ATVPDKIKX0DER]#1.color[language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 4,
+          "example_values": [
+            "Brown",
+            "Purple",
+            "Yellow",
+            "Grey"
+          ]
+        },
+        {
+          "field_name": "bottle_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Spray Bottle"
+          ]
+        },
+        {
+          "field_name": "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Generic"
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Vintage glass plant mister designed for watering succulents, houseplants, flowers, and small indoor garden displays."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Top pump sprayer delivers a fine mist for gentle plant care and decorative daily use."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Embossed glass bottle with antique-style pump adds a decorative look to shelves, desks, and plant corners."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Compact 200 ml capacity is easy to hold, refill, and store between watering tasks."
+          ]
+        },
+        {
+          "field_name": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Suitable for water misting only; hand wash and dry after use to help keep the bottle clean."
+          ]
+        },
+        {
+          "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Milliliters"
+          ]
+        },
+        {
+          "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "200"
+          ]
+        },
+        {
+          "field_name": "care_instructions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Hand Wash Only"
+          ]
+        },
+        {
+          "field_name": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "Brown",
+            "Purple",
+            "Yellow",
+            "Grey"
+          ]
+        },
+        {
+          "field_name": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "New"
+          ]
+        },
+        {
+          "field_name": "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "China"
+          ]
+        },
+        {
+          "field_name": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1 x glass spray bottle"
+          ]
+        },
+        {
+          "field_name": "is_this_product_subject_to_buyer_age_restrictions[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "No"
+          ]
+        },
+        {
+          "field_name": "item_display_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_display_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "Vintage Glass Plant Mister Spray Bottle, 200ml Decorative Water Sprayer for Indoor Plants, Brown",
+            "Vintage Glass Plant Mister Spray Bottle, 200ml Decorative Water Sprayer for Indoor Plants, Purple",
+            "Vintage Glass Plant Mister Spray Bottle, 200ml Decorative Water Sprayer for Indoor Plants, Yellow",
+            "Vintage Glass Plant Mister Spray Bottle, 200ml Decorative Water Sprayer for Indoor Plants, Grey"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "3.74"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "6.5"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "4.53"
+          ]
+        },
+        {
+          "field_name": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_shape[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Round"
+          ]
+        },
+        {
+          "field_name": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "refillable-cosmetic-spray-bottles"
+          ]
+        },
+        {
+          "field_name": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Pounds"
+          ]
+        },
+        {
+          "field_name": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "0.661"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "6.5"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Inches"
+          ]
+        },
+        {
+          "field_name": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "4.53"
+          ]
+        },
+        {
+          "field_name": "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "5.49"
+          ]
+        },
+        {
+          "field_name": "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Generic"
+          ]
+        },
+        {
+          "field_name": "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Glass"
+          ]
+        },
+        {
+          "field_name": "material_type_free[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Aerosol Free"
+          ]
+        },
+        {
+          "field_name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "HJ-11 200ml"
+          ]
+        },
+        {
+          "field_name": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "Spraybottle-Brown-cc1",
+            "Spraybottle-Purple-cc1",
+            "Spraybottle-Yellow-cc1",
+            "Spraybottle-Grey-cc1"
+          ]
+        },
+        {
+          "field_name": "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
+          ]
+        },
+        {
+          "field_name": "package_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Unit"
+          ]
+        },
+        {
+          "field_name": "part_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "Spraybottle-Brown-cc1",
+            "Spraybottle-Purple-cc1",
+            "Spraybottle-Yellow-cc1",
+            "Spraybottle-Grey-cc1"
+          ]
+        },
+        {
+          "field_name": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 4,
+          "example_values": [
+            "This vintage glass plant mister is a compact 200 ml spray bottle for watering houseplants, succulents, flowers, and small garden displays. The embossed glass body and antique-style top pump create a decorative look while the fine mist helps with gentle daily plant care. Color: Brown.",
+            "This vintage glass plant mister is a compact 200 ml spray bottle for watering houseplants, succulents, flowers, and small garden displays. The embossed glass body and antique-style top pump create a decorative look while the fine mist helps with gentle daily plant care. Color: Purple.",
+            "This vintage glass plant mister is a compact 200 ml spray bottle for watering houseplants, succulents, flowers, and small garden displays. The embossed glass body and antique-style top pump create a decorative look while the fine mist helps with gentle daily plant care. Color: Yellow.",
+            "This vintage glass plant mister is a compact 200 ml spray bottle for watering houseplants, succulents, flowers, and small garden displays. The embossed glass body and antique-style top pump create a decorative look while the fine mist helps with gentle daily plant care. Color: Grey. Supplier style reference: Style 2."
+          ]
+        },
+        {
+          "field_name": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "5.49"
+          ]
+        },
+        {
+          "field_name": "recommended_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Water"
+          ]
+        },
+        {
+          "field_name": "reusability[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Reusable"
+          ]
+        },
+        {
+          "field_name": "size[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "200 ml"
+          ]
+        },
+        {
+          "field_name": "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Antique"
+          ]
+        },
+        {
+          "field_name": "supplier_declared_dg_hz_regulation[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": true,
+          "unique_value_count": 1,
+          "example_values": [
+            "Not Applicable"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "Count"
+          ]
+        },
+        {
+          "field_name": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+          "filled_rows": 8,
+          "fill_ratio": 1.0,
+          "template_files": [
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1.xlsx",
+            "复古玻璃洒水壶_玻璃洒水壶_v3_sku_suffix1_2.xlsx"
+          ],
+          "mapped_by_auto_fill": false,
+          "unique_value_count": 1,
+          "example_values": [
+            "1"
           ]
         }
       ]

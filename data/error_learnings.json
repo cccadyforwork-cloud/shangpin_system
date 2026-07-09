@@ -1439,6 +1439,114 @@
       },
       "rule_hint": "普通非危险品应填 Not Applicable，不要填 No；如是液体、化学品、喷雾、带电池产品需单独判断。",
       "note": "v1_upload processing summary"
+    },
+    {
+      "learned_at": "2026-07-08T19:56:01",
+      "product_name": "防磨贴3款套装",
+      "source_path": "/Users/cc/Documents/GitHub/shangpin_system/data/projects/20260707_防磨贴3款套装/06_处理报告/防磨贴3款套装_v1-processing-summary_(1).xlsm",
+      "code": "90041",
+      "category": "错误",
+      "message": "We could not process your file due to missing required fields. Please fill out all required fields and resubmit.",
+      "field": "Number of attributes with errors (B7)",
+      "sku": "Pads-SET-3-CC-R",
+      "summary": {
+        "processed": "1",
+        "successful": "0",
+        "unsuccessful": "1",
+        "warnings": "0"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "工作台上传失败报告"
+    },
+    {
+      "learned_at": "2026-07-08T19:56:01",
+      "product_name": "防磨贴3款套装",
+      "source_path": "/Users/cc/Documents/GitHub/shangpin_system/data/projects/20260707_防磨贴3款套装/06_处理报告/防磨贴3款套装_v1-processing-summary_(1).xlsm",
+      "code": "90041",
+      "category": "错误",
+      "message": "product_type#1.value is always required to process your update. Please provide a value and resubmit.",
+      "field": "产品类型 (E7)",
+      "sku": "Pads-SET-3-CC-R",
+      "summary": {
+        "processed": "1",
+        "successful": "0",
+        "unsuccessful": "1",
+        "warnings": "0"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "工作台上传失败报告"
+    },
+    {
+      "learned_at": "2026-07-08T21:22:03",
+      "product_name": "防磨贴3款套装",
+      "source_path": "/Users/cc/Documents/GitHub/shangpin_system/data/projects/20260707_防磨贴3款套装/06_处理报告/防磨贴3款套装_v2-processing-summary.xlsm",
+      "code": "90041",
+      "category": "错误",
+      "message": "We could not process your file due to missing required fields. Please fill out all required fields and resubmit.",
+      "field": "Number of attributes with errors (B7)",
+      "sku": "Pads-SET-3-CC-R",
+      "summary": {
+        "processed": "1",
+        "successful": "0",
+        "unsuccessful": "1",
+        "warnings": "0"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "工作台上传失败报告"
+    },
+    {
+      "learned_at": "2026-07-08T21:22:03",
+      "product_name": "防磨贴3款套装",
+      "source_path": "/Users/cc/Documents/GitHub/shangpin_system/data/projects/20260707_防磨贴3款套装/06_处理报告/防磨贴3款套装_v2-processing-summary.xlsm",
+      "code": "90041",
+      "category": "错误",
+      "message": "product_type#1.value is always required to process your update. Please provide a value and resubmit.",
+      "field": "产品类型 (E7)",
+      "sku": "Pads-SET-3-CC-R",
+      "summary": {
+        "processed": "1",
+        "successful": "0",
+        "unsuccessful": "1",
+        "warnings": "0"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "工作台上传失败报告"
+    },
+    {
+      "learned_at": "2026-07-09T02:50:30",
+      "product_name": "猫玩具三支大棉签",
+      "source_path": "/Users/cc/Documents/GitHub/shangpin_system/data/projects/20260709_猫玩具三支大棉签/06_处理报告/猫玩具三支大棉签_v1-processing-summary.xlsm",
+      "code": "90041",
+      "category": "ERROR",
+      "message": "We could not process your file due to missing required fields. Please fill out all required fields and resubmit.",
+      "field": "Number of attributes with errors (B7)",
+      "sku": "PET-Toy-3MQ-CC",
+      "summary": {
+        "processed": "1",
+        "successful": "0",
+        "unsuccessful": "1",
+        "warnings": "0"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "工作台上传失败报告"
+    },
+    {
+      "learned_at": "2026-07-09T02:50:30",
+      "product_name": "猫玩具三支大棉签",
+      "source_path": "/Users/cc/Documents/GitHub/shangpin_system/data/projects/20260709_猫玩具三支大棉签/06_处理报告/猫玩具三支大棉签_v1-processing-summary.xlsm",
+      "code": "90041",
+      "category": "ERROR",
+      "message": "product_type#1.value is always required to process your update. Please provide a value and resubmit.",
+      "field": "Product Type (E7)",
+      "sku": "PET-Toy-3MQ-CC",
+      "summary": {
+        "processed": "1",
+        "successful": "0",
+        "unsuccessful": "1",
+        "warnings": "0"
+      },
+      "rule_hint": "记录为待归纳规则；下次遇到同字段同错误时补充固定修复动作。",
+      "note": "工作台上传失败报告"
     }
   ]
 }

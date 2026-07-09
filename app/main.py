@@ -312,7 +312,7 @@ def build_parser():
 
     workbench = subparsers.add_parser("workbench", help="启动本地工作台")
     workbench.add_argument("--host", default="127.0.0.1", help="监听地址，默认 127.0.0.1")
-    workbench.add_argument("--port", type=int, default=8765, help="端口，默认 8765")
+    workbench.add_argument("--port", type=int, default=8766, help="端口，默认 8766")
     workbench.add_argument("--no-open", action="store_true", help="只启动服务，不自动打开浏览器")
     workbench.set_defaults(func=cmd_workbench)
 

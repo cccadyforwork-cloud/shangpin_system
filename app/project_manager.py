@@ -85,12 +85,30 @@ def list_project_summaries():
             "latest_template": status.get("latest_template") or status.get("verification_template") or "",
             "source_template": status.get("source_template") or status.get("verification_source_template") or "",
             "latest_check_report": status.get("latest_check_report") or status.get("verification_check_report") or "",
+            "latest_failure_report": status.get("latest_failure_report") or "",
+            "latest_fix_report": status.get("latest_fix_report") or "",
+            "failed_template": status.get("failed_template") or "",
+            "pending_next_version": status.get("pending_next_version") or "",
             "updated_at": status.get("updated_at") or "",
             "uploaded_at": status.get("uploaded_at") or "",
             "notes": status.get("notes") or "",
             "blocked_reason": status.get("blocked_reason") or "",
         })
-    return summaries
+    return sorted(summaries, key=_project_sort_key)
+
+
+def _project_sort_key(item):
+    is_waiting = item.get("status") != "uploaded_success"
+    return (0 if is_waiting else 1, -_updated_timestamp(item.get("updated_at")))
+
+
+def _updated_timestamp(value):
+    if not value:
+        return 0
+    try:
+        return datetime.fromisoformat(str(value)).timestamp()
+    except ValueError:
+        return 0
 
 
 def _name_from_folder(folder_name):

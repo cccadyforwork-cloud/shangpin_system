@@ -15,6 +15,9 @@ INTAKE_HEADERS = [
     "product_type",
     "item_type_keyword",
     "sku",
+    "parent_sku",
+    "parentage_level",
+    "variation_theme",
     "color",
     "size",
     "set_count",
@@ -80,6 +83,9 @@ def create_intake_workbook(path):
         "EXERCISE_BLOCK",
         "storage-bags",
         "DEMO-STORAGE-BAG-001",
+        "",
+        "Child",
+        "",
         "Black",
         "Large",
         1,
@@ -122,9 +128,10 @@ def create_intake_workbook(path):
     notes = wb.create_sheet("填写说明")
     notes.append(["字段", "说明"])
     descriptions = {
-        "route": "填写 Haul Generic 或 Brand。",
+        "route": "填写 Haul Generic、Haul Generic Variation、Haul Generic Set Bundle 或 Brand。",
         "brand": "Generic 路线建议填写 Generic；品牌路线填写真实品牌。",
         "manufacturer": "Generic 路线建议和 Brand 逻辑一致；品牌路线与包装、图片、文案统一。",
+        "parent_sku/parentage_level/variation_theme": "独立 SKU 留空；父子变体填写 Parent/Child、父 SKU 和 Color/Size 等变体主题。",
         "target_price": "内部目标售价，用于判断 Haul 价格风险。",
         "haul_price": "Haul 上传价，若走 Haul 路线建议填写。",
         "package_length_in/package_width_in/package_height_in": "单位为 inches。",

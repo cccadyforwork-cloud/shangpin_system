@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 from .paths import CONFIG_DIR, OUTPUTS_DIR
@@ -15,8 +16,27 @@ TEXT_FIELDS = [
     "description",
     "notes"
 ]
+COPY_FIELDS = [
+    "title",
+    "bullet_1",
+    "bullet_2",
+    "bullet_3",
+    "bullet_4",
+    "bullet_5",
+    "description",
+]
+CJK_RE = re.compile(r"[\u4e00-\u9fff]")
 
 PRICE_FIELDS_ALLOWED_DRAFT_EMPTY = {"list_price", "haul_price"}
+PARENT_OPTIONAL_CORE_FIELDS = {
+    "list_price",
+    "package_length_in",
+    "package_width_in",
+    "package_height_in",
+    "package_weight_lb",
+    "batteries_required",
+    "dangerous_goods",
+}
 
 
 def _load_json(name):
@@ -42,12 +62,75 @@ def _number(value):
         return None
 
 
+def _has_cjk(value):
+    return bool(CJK_RE.search(_text(value)))
+
+
+BAD_COPY_PATTERNS = [
+    ("Generic Product", "标题或描述仍是通用兜底商品名。"),
+    ("Designed for everyday use", "五点仍是通用兜底场景。"),
+    ("home, travel, office", "描述仍是通用兜底场景。"),
+    ("Includes the product shown in the listing photos", "五点没有提炼真实包装内容。"),
+    ("wide range of everyday needs", "五点过泛，没有商品特征。"),
+]
+
+
+def _copy_quality_findings(row, row_number):
+    findings = []
+    title = _text(row.get("title"))
+    copy = " ".join(_text(row.get(field)) for field in COPY_FIELDS)
+    lower_copy = copy.lower()
+    for phrase, reason in BAD_COPY_PATTERNS:
+        if phrase.lower() in lower_copy:
+            findings.append({
+                "severity": "error",
+                "row": row_number,
+                "field": "copy",
+                "message": f"文案质量不合格：{reason}",
+                "fix": "重新按商品类型、1688标题和竞品标题生成标题/五点/描述，不允许使用兜底模板。"
+            })
+    if "videos" in title.lower():
+        findings.append({
+            "severity": "error",
+            "row": row_number,
+            "field": "title",
+            "message": "标题里出现 VIDEOS，疑似从网页噪音误抓。",
+            "fix": "删除网页噪音，改成真实商品标题。"
+        })
+
+    product_context = " ".join(_lower(row.get(field)) for field in [
+        "product_name", "title", "item_type_keyword", "accessories", "notes"
+    ])
+    material = _lower(row.get("material"))
+    category = _lower(row.get("category"))
+    item_type = _lower(row.get("item_type_keyword"))
+    if any(keyword in product_context for keyword in ["cat", "猫", "q-tip", "catnip"]) and (
+        "cookbook" in item_type or "home" == category or material == "metal"
+    ):
+        findings.append({
+            "severity": "error",
+            "row": row_number,
+            "field": "商品理解",
+            "message": "猫玩具资料疑似被网页噪音污染，类目/关键词/材质不匹配。",
+            "fix": "猫玩具应优先按 pet / cat-toys / Cotton and Felt 等宠物玩具方向重写。"
+        })
+    return findings
+
+
 def _has_brand_in_copy(row):
     brand = _text(row.get("brand"))
     if not brand or brand.lower() == "generic":
         return False
     content = " ".join(_text(row.get(field)) for field in TEXT_FIELDS)
     return brand.lower() in content.lower()
+
+
+def _is_parent_row(row):
+    return _lower(row.get("parentage_level")) == "parent"
+
+
+def _is_child_row(row):
+    return _lower(row.get("parentage_level")) == "child"
 
 
 def validate_intake(path):
@@ -73,8 +156,11 @@ def validate_intake(path):
         manufacturer = _text(row.get("manufacturer"))
         category = _lower(row.get("category"))
 
+        is_parent = _is_parent_row(row)
+        is_child = _is_child_row(row)
+
         for field in REQUIRED_CORE_FIELDS:
-            if field in PRICE_FIELDS_ALLOWED_DRAFT_EMPTY:
+            if field in PRICE_FIELDS_ALLOWED_DRAFT_EMPTY or (is_parent and field in PARENT_OPTIONAL_CORE_FIELDS):
                 continue
             if _text(row.get(field)) == "":
                 findings.append({
@@ -85,7 +171,7 @@ def validate_intake(path):
                     "fix": "上传前先补齐这个核心字段。"
                 })
 
-        if _text(row.get("list_price")) == "":
+        if not is_parent and _text(row.get("list_price")) == "":
             findings.append({
                 "severity": "info",
                 "row": row_number,
@@ -93,7 +179,7 @@ def validate_intake(path):
                 "message": "List Price 留空，按当前流程等待人工填写。",
                 "fix": "定价后填写 List Price；Haul Price 后续与 List Price 保持一致。"
             })
-        if _text(row.get("haul_price")) == "":
+        if not is_parent and _text(row.get("haul_price")) == "":
             findings.append({
                 "severity": "info",
                 "row": row_number,
@@ -130,6 +216,60 @@ def validate_intake(path):
                         "message": f"Generic 文案里出现品牌痕迹提示词：{hint}",
                         "fix": "检查标题、五点、描述和图片是否真的适合无品牌路线。"
                     })
+
+        for field in COPY_FIELDS:
+            if _has_cjk(row.get(field)):
+                findings.append({
+                    "severity": "error",
+                    "row": row_number,
+                    "field": field,
+                    "message": f"{field} 中包含中文，不能直接进入 Amazon 文案。",
+                    "fix": "改成自然的跨境英语表达，避免中文、供应商原文或机器直译残留。"
+                })
+        findings.extend(_copy_quality_findings(row, row_number))
+
+        if is_parent:
+            if _text(row.get("parent_sku")):
+                findings.append({
+                    "severity": "error",
+                    "row": row_number,
+                    "field": "parent_sku",
+                    "message": "Parent 行不应填写 parent_sku。",
+                    "fix": "Parent 行只填写自己的 SKU、parentage_level=Parent 和 variation_theme。"
+                })
+            if not _text(row.get("variation_theme")):
+                findings.append({
+                    "severity": "error",
+                    "row": row_number,
+                    "field": "variation_theme",
+                    "message": "Parent 行缺少 variation_theme。",
+                    "fix": "按实际差异填写 Color、Size 或 ColorSize。"
+                })
+        elif is_child:
+            if not _text(row.get("parent_sku")):
+                findings.append({
+                    "severity": "error",
+                    "row": row_number,
+                    "field": "parent_sku",
+                    "message": "Child 行缺少 parent_sku。",
+                    "fix": "填写对应 Parent SKU。"
+                })
+            if not _text(row.get("variation_theme")):
+                findings.append({
+                    "severity": "error",
+                    "row": row_number,
+                    "field": "variation_theme",
+                    "message": "Child 行缺少 variation_theme。",
+                    "fix": "与 Parent 行保持一致，例如 Color。"
+                })
+        elif _text(row.get("parent_sku")) or _text(row.get("variation_theme")):
+            findings.append({
+                "severity": "warning",
+                "row": row_number,
+                "field": "variation",
+                "message": "独立 SKU 行存在父子变体字段。",
+                "fix": "如果不是父子变体路线，请清空 parent_sku、parentage_level 和 variation_theme。"
+            })
 
         if route == "brand":
             if brand.lower() == "generic":

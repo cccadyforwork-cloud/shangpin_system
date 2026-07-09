@@ -19,6 +19,10 @@ FIELD_MAP = {
     "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "title",
     "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "brand",
     "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value": "item_type_keyword",
+    "parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value": "parentage_level",
+    "child_parent_sku_relationship[marketplace_id=ATVPDKIKX0DER]#1.parent_sku": "parent_sku",
+    "child_parent_sku_relationship[marketplace_id=ATVPDKIKX0DER]#1.child_relationship_type": "__variation_relationship",
+    "variation_theme#1.name": "variation_theme",
     "model_number[marketplace_id=ATVPDKIKX0DER]#1.value": "sku",
     "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "manufacturer",
     "main_product_image_locator[marketplace_id=ATVPDKIKX0DER]#1.media_location": "main_image_url",
@@ -92,9 +96,29 @@ def find_template(project_dir):
     return sorted(candidates, key=lambda p: (TEMPLATE_DIRS.index(p.parent.name), p.name))[0]
 
 
+def extract_template_product_type(template_path):
+    template_path = Path(template_path)
+    wb = load_workbook(template_path, data_only=True, read_only=True, keep_vba=template_path.suffix.lower() == ".xlsm")
+    if "Valid Values" in wb.sheetnames:
+        ws = wb["Valid Values"]
+        for row in ws.iter_rows(values_only=True):
+            values = [str(value).strip() if value is not None else "" for value in row]
+            for idx, value in enumerate(values):
+                if value.startswith("Product Type"):
+                    for candidate in values[idx + 1:]:
+                        if candidate and not candidate.startswith("["):
+                            return candidate
+    return ""
+
+
 def _value_for(row, source):
+    is_parent = str(row.get("parentage_level") or "").strip().lower() == "parent"
+    if is_parent and source in {"__package_quantity", "__inches", "__title_inches", "__pounds"}:
+        return ""
     if source == "__listing_action":
         return "Create or Replace (Full Update)"
+    if source == "__variation_relationship":
+        return "Variation" if row.get("parent_sku") else ""
     if source == "__package_quantity":
         return row.get("set_count") or 1
     if source == "__inches":

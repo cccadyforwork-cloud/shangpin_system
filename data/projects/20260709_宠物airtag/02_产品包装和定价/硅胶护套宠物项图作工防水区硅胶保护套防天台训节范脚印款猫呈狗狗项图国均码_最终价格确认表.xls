@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  <Worksheet ss:Name="最终价格确认">
+    <Table><Row><Cell><Data ss:Type="String">SKU</Data></Cell><Cell><Data ss:Type="String">款式标题</Data></Cell><Cell><Data ss:Type="String">长(in)</Data></Cell><Cell><Data ss:Type="String">宽(in)</Data></Cell><Cell><Data ss:Type="String">高(in)</Data></Cell><Cell><Data ss:Type="String">重(lb)</Data></Cell><Cell><Data ss:Type="String">定价</Data></Cell></Row><Row><Cell><Data ss:Type="String">CC-PetXQ-Airlight-PINK</Data></Cell><Cell><Data ss:Type="String">宠物airtag夜光项圈粉色 - 颜色：粉色</Data></Cell><Cell><Data ss:Type="Number">3.15</Data></Cell><Cell><Data ss:Type="Number">3.54</Data></Cell><Cell><Data ss:Type="Number">0.98</Data></Cell><Cell><Data ss:Type="Number">0.082</Data></Cell><Cell><Data ss:Type="Number">5.49</Data></Cell></Row><Row><Cell><Data ss:Type="String">CC-PetXQ-Airlight-WHITE</Data></Cell><Cell><Data ss:Type="String">宠物airtag夜光项圈白色 - 颜色：白色</Data></Cell><Cell><Data ss:Type="Number">3.15</Data></Cell><Cell><Data ss:Type="Number">3.54</Data></Cell><Cell><Data ss:Type="Number">0.98</Data></Cell><Cell><Data ss:Type="Number">0.082</Data></Cell><Cell><Data ss:Type="Number">5.49</Data></Cell></Row></Table>
+  </Worksheet>
+</Workbook>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  <Worksheet ss:Name="最终价格确认">
+    <Table><Row><Cell><Data ss:Type="String">SKU</Data></Cell><Cell><Data ss:Type="String">款式标题</Data></Cell><Cell><Data ss:Type="String">长(in)</Data></Cell><Cell><Data ss:Type="String">宽(in)</Data></Cell><Cell><Data ss:Type="String">高(in)</Data></Cell><Cell><Data ss:Type="String">重(lb)</Data></Cell><Cell><Data ss:Type="String">定价</Data></Cell></Row><Row><Cell><Data ss:Type="String">PET-Toy-3MQ-CC</Data></Cell><Cell><Data ss:Type="String">三支大棉签猫玩具 - 3支一包</Data></Cell><Cell><Data ss:Type="Number">2.76</Data></Cell><Cell><Data ss:Type="Number">3.94</Data></Cell><Cell><Data ss:Type="Number">2.56</Data></Cell><Cell><Data ss:Type="Number">0.024</Data></Cell><Cell><Data ss:Type="Number">5.99</Data></Cell></Row></Table>
+  </Worksheet>
+</Workbook>

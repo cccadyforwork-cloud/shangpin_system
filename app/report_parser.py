@@ -86,47 +86,47 @@ def extract_processing_summary(path):
             continue
 
         joined = " | ".join(compact)
-        if "Errors and Warnings per Error Code" in joined:
+        if "Errors and Warnings per Error Code" in joined or "每个错误代码对应的错误和警告" in joined:
             section = "by_code"
             continue
-        if "Errors and Warnings per SKU" in joined:
+        if "Errors and Warnings per SKU" in joined or "每个 SKU 的错误和警告" in joined:
             section = "by_sku"
             continue
 
-        if "Number of SKUs processed" in compact:
+        if "Number of SKUs processed" in compact or "已处理的 SKU 数量" in compact:
             summary["processed"] = compact[-1]
-        elif "Number of SKUs successful" in compact and "other errors" not in joined:
+        elif ("Number of SKUs successful" in compact or "成功的 SKU 数量" in compact) and "other errors" not in joined and "其他错误" not in joined:
             summary["successful"] = compact[-1]
-        elif "Number of SKUs unsuccessful due to errors" in compact:
+        elif "Number of SKUs unsuccessful due to errors" in compact or "由于错误而失败的 SKU 数量" in compact:
             summary["unsuccessful"] = compact[-1]
-        elif "Number of SKUs with warnings" in compact:
+        elif "Number of SKUs with warnings" in compact or "带有警告的 SKU 数量" in compact:
             summary["warnings"] = compact[-1]
 
         if section == "by_code":
-            if "Error code" in compact and "Error message" in compact:
+            if ("Error code" in compact or "错误代码" in compact) and ("Error message" in compact or "错误消息" in compact):
                 code_header = compact
                 continue
             if code_header and len(compact) >= 5 and compact[1].isdigit():
                 item = dict(zip(code_header, compact))
                 by_code.append({
-                    "code": item.get("Error code", ""),
-                    "category": item.get("Category of error", ""),
-                    "message": item.get("Error message", ""),
-                    "field": item.get("Affected field (Impacted column)", ""),
-                    "count": item.get("Number of errors", "")
+                    "code": _first(item, "Error code", "错误代码"),
+                    "category": _first(item, "Category of error", "错误类别"),
+                    "message": _first(item, "Error message", "错误消息"),
+                    "field": _first(item, "Affected field (Impacted column)", "受影响字段（受影响列）"),
+                    "count": _first(item, "Number of errors", "错误数量")
                 })
 
         if section == "by_sku":
-            if "Error code" in compact and "SKU" in compact:
+            if ("Error code" in compact or "错误代码" in compact) and "SKU" in compact:
                 sku_header = compact
                 continue
             if sku_header and len(compact) >= 6 and compact[1].isdigit():
                 item = dict(zip(sku_header, compact))
                 by_sku.append({
-                    "code": item.get("Error code", ""),
-                    "category": item.get("Category of error", ""),
-                    "message": item.get("Error message", ""),
-                    "field": item.get("Affected field (Impacted cell)", ""),
+                    "code": _first(item, "Error code", "错误代码"),
+                    "category": _first(item, "Category of error", "错误类别"),
+                    "message": _first(item, "Error message", "错误消息"),
+                    "field": _first(item, "Affected field (Impacted cell)", "受影响字段（受影响的单元格）"),
                     "sku": item.get("SKU", "")
                 })
 
@@ -136,3 +136,10 @@ def extract_processing_summary(path):
         "by_code": by_code,
         "by_sku": by_sku
     }
+
+
+def _first(item, *keys):
+    for key in keys:
+        if item.get(key):
+            return item[key]
+    return ""

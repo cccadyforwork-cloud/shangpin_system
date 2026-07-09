@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 from openpyxl import load_workbook
 
@@ -18,6 +19,22 @@ FIELD_NAMES = {
     "item_height_unit": "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
     "item_width": "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value",
     "item_width_unit": "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+    "parentage_level": "parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "parent_sku": "child_parent_sku_relationship[marketplace_id=ATVPDKIKX0DER]#1.parent_sku",
+    "variation_theme": "variation_theme#1.name",
+    "title": "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "description": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+}
+
+CJK_RE = re.compile(r"[\u4e00-\u9fff]")
+COPY_FIELD_NAMES = {
+    "Title": FIELD_NAMES["title"],
+    "Description": FIELD_NAMES["description"],
+    "Bullet 1": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "Bullet 2": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value",
+    "Bullet 3": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value",
+    "Bullet 4": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value",
+    "Bullet 5": "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value",
 }
 
 
@@ -64,6 +81,9 @@ def validate_template_file(path, output_path=None):
     skip_offer_col = field_to_col.get(FIELD_NAMES["skip_offer"])
     list_price_col = field_to_col.get(FIELD_NAMES["list_price"])
     haul_price_col = field_to_col.get(FIELD_NAMES["haul_price"])
+    parentage_col = field_to_col.get(FIELD_NAMES["parentage_level"])
+    parent_sku_col = field_to_col.get(FIELD_NAMES["parent_sku"])
+    variation_theme_col = field_to_col.get(FIELD_NAMES["variation_theme"])
     product_type_col = field_to_col.get("product_type#1.value")
     dimension_pairs = [
         ("Item Depth", field_to_col.get(FIELD_NAMES["item_depth"]), field_to_col.get(FIELD_NAMES["item_depth_unit"])),
@@ -74,6 +94,9 @@ def validate_template_file(path, output_path=None):
 
     for row in data_rows:
         sku = ws.cell(row, sku_col).value
+        parentage = str(ws.cell(row, parentage_col).value or "").strip().lower() if parentage_col else ""
+        is_parent = parentage == "parent"
+        is_child = parentage == "child"
         if condition_col:
             condition = ws.cell(row, condition_col).value
             if condition != "New":
@@ -86,7 +109,7 @@ def validate_template_file(path, output_path=None):
             if skip_offer not in (None, ""):
                 findings.append(error(row, "Skip Offer", f"{sku} 的 Skip Offer 应留空，当前为 `{skip_offer}`。", "不要填写 skip_offer，让报价随价格字段正常生成。"))
 
-        if list_price_col and haul_price_col:
+        if list_price_col and haul_price_col and not is_parent:
             list_price = ws.cell(row, list_price_col).value
             haul_price = ws.cell(row, haul_price_col).value
             if list_price in (None, ""):
@@ -101,6 +124,29 @@ def validate_template_file(path, output_path=None):
                 findings.append(error(row, f"{label} Unit", f"{sku} 的 {label} 有数值但单位为空。", "尺寸数值和单位必须成对填写。"))
             if value in (None, "") and unit not in (None, ""):
                 findings.append(error(row, label, f"{sku} 的 {label} 单位有值但数值为空。", "尺寸数值和单位必须成对填写。"))
+
+        if is_parent:
+            parent_sku = ws.cell(row, parent_sku_col).value if parent_sku_col else None
+            variation_theme = ws.cell(row, variation_theme_col).value if variation_theme_col else None
+            if parent_sku not in (None, ""):
+                findings.append(error(row, "Parent SKU", f"{sku} 是 Parent 行，不应填写 Parent SKU `{parent_sku}`。", "清空 Parent 行的 child_parent_sku_relationship.parent_sku。"))
+            if variation_theme in (None, ""):
+                findings.append(error(row, "Variation Theme", f"{sku} 是 Parent 行，但 Variation Theme 为空。", "Parent 行填写 Color、Size 或 ColorSize。"))
+        if is_child:
+            parent_sku = ws.cell(row, parent_sku_col).value if parent_sku_col else None
+            variation_theme = ws.cell(row, variation_theme_col).value if variation_theme_col else None
+            if parent_sku in (None, ""):
+                findings.append(error(row, "Parent SKU", f"{sku} 是 Child 行，但 Parent SKU 为空。", "Child 行填写对应父 SKU。"))
+            if variation_theme in (None, ""):
+                findings.append(error(row, "Variation Theme", f"{sku} 是 Child 行，但 Variation Theme 为空。", "Child 行 Variation Theme 与 Parent 保持一致。"))
+
+        for label, field_name in COPY_FIELD_NAMES.items():
+            col = field_to_col.get(field_name)
+            if not col:
+                continue
+            value = ws.cell(row, col).value
+            if CJK_RE.search(str(value or "")):
+                findings.append(error(row, label, f"{sku} 的 {label} 包含中文。", "改成自然的跨境英语表达，不要把中文原文写入 Amazon 模板。"))
 
         if product_type_col:
             product_type = ws.cell(row, product_type_col).value

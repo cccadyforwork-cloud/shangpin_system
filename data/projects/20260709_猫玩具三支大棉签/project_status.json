@@ -1,0 +1,25 @@
+{
+  "product_name": "猫玩具三支大棉签",
+  "status": "uploaded_success",
+  "latest_draft": "03_产品详情页/猫玩具三支大棉签_产品资料.xlsx",
+  "updated_at": "2026-07-09T15:11:40",
+  "latest_analysis_report": "/Users/cc/Documents/GitHub/shangpin_system/outputs/20260709_猫玩具三支大棉签_资料提炼报告.md",
+  "selected_route_mode": "single_child",
+  "sku_count": 1,
+  "confirmed_at": "2026-07-09T02:23:36",
+  "source_template": "05_模版原件/PET_TOY.xlsm",
+  "latest_template": "05_填表版本/猫玩具三支大棉签_v4.xlsx",
+  "latest_check_report": "05_填表版本/猫玩具三支大棉签_v4_模板自检报告.md",
+  "written_field_count": 55,
+  "template_error_count": 0,
+  "uploaded_at": "2026-07-09",
+  "notes": "v4 上传成功。PET_TOY 必填学习：除 product_type=PET_TOY 外，item_length_width_height 尺寸组需要完整填写 length/width/height 的数值与单位；本品使用 Length 5.9 Inches, Width 0.8 Inches, Height 0.8 Inches。",
+  "success_version": 4,
+  "success_template": "05_填表版本/猫玩具三支大棉签_v4.xlsx",
+  "learned_rules": [
+    "PET_TOY 模板 Product Type 应填写 PET_TOY，不能留空。",
+    "PET_TOY 上传会要求 item_length_width_height 尺寸组完整：height.value、height.unit、length.value、length.unit、width.value、width.unit。",
+    "猫玩具三支大棉签本次成功值：Length 5.9 Inches, Width 0.8 Inches, Height 0.8 Inches。"
+  ],
+  "renamed_at": "2026-07-09T15:11:40"
+}

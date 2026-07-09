@@ -85,6 +85,7 @@
       color: #fff;
       padding: 11px;
       text-align: left;
+      display: block;
     }
     .project-button.active {
       border-color: rgba(255,255,255,.46);
@@ -97,10 +98,30 @@
       gap: 8px;
       margin-bottom: 5px;
     }
+    .project-title-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      min-width: 0;
+    }
     .project-name {
       font-weight: 760;
       line-height: 1.3;
       word-break: break-word;
+    }
+    .project-rename {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 6px;
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .project-rename:hover {
+      background: rgba(255,255,255,.18);
     }
     .project-meta { font-size: 12px; }
     main {
@@ -210,6 +231,40 @@
       gap: 16px;
       align-items: start;
     }
+    .feedback-shell {
+      display: grid;
+      gap: 16px;
+    }
+    .feedback-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+      gap: 16px;
+      align-items: stretch;
+    }
+    .feedback-top .panel, .feedback-analysis-panel, .feedback-records {
+      margin: 0;
+    }
+    .feedback-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .feedback-actions .btn {
+      width: 100%;
+    }
+    .btn.feedback-download {
+      width: 100%;
+      min-height: 48px;
+      font-size: 15px;
+      font-weight: 740;
+    }
+    .feedback-record-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 320px) minmax(260px, 360px);
+      gap: 14px;
+      align-items: start;
+    }
     .stack { display: grid; gap: 14px; min-width: 0; }
     .side { display: grid; gap: 14px; min-width: 0; position: sticky; top: 16px; }
     .input-row {
@@ -219,6 +274,26 @@
       align-items: stretch;
     }
     .field { display: grid; gap: 6px; }
+    .route-picker {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+    }
+    .route-option {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+      min-height: 42px;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+    .route-option.active {
+      border-color: #287457;
+      background: #eef8f2;
+      color: #174d39;
+      font-weight: 700;
+    }
     label { color: var(--muted); font-size: 12px; }
     input[type="text"], input[type="number"], textarea {
       width: 100%;
@@ -296,7 +371,7 @@
     }
     .template-meta, .version-meta, .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .result-band { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .editable, .info-cell, .meta-cell, .summary-item, .metric, .file-output, .issue, .rule, .learning-card, .result-card {
+    .editable, .info-cell, .meta-cell, .summary-item, .metric, .file-output, .issue, .rule, .learning-card, .result-card, .analysis-text {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fff;
@@ -326,10 +401,34 @@
     .issue.warn, .rule.warn { border-color: #dfcea7; background: #fffaf0; }
     .issue.error, .rule.error { border-color: #e0bbb6; background: #fff6f5; }
     .issue.ok, .rule.ok { border-color: #bad4c6; background: #f7fbf8; }
-    .info-cell strong, .meta-cell strong, .summary-item strong, .file-output strong, .issue strong, .rule strong, .learning-card strong, .result-card strong {
+    .info-cell strong, .meta-cell strong, .summary-item strong, .file-output strong, .issue strong, .rule strong, .learning-card strong, .result-card strong, .analysis-text strong {
       display: block;
       margin-top: 2px;
       word-break: break-word;
+    }
+    .analysis-text {
+      display: grid;
+      gap: 8px;
+      border-color: #dfcea7;
+      background: #fffaf0;
+      font-size: 14px;
+    }
+    .analysis-text p {
+      margin: 0;
+    }
+    .analysis-text ul, .analysis-text ol {
+      margin: 0;
+      padding-left: 22px;
+      display: grid;
+      gap: 7px;
+    }
+    .analysis-text code {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 8px;
+      background: #e9ece9;
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
     .chips {
       display: flex;
@@ -359,6 +458,14 @@
       border-collapse: collapse;
       table-layout: fixed;
     }
+    .sku-table {
+      min-width: 1320px;
+    }
+    .sku-table th:nth-child(1), .sku-table td:nth-child(1) { width: 170px; }
+    .sku-table th:nth-child(2), .sku-table td:nth-child(2) { width: 170px; }
+    .sku-table th:nth-child(3), .sku-table td:nth-child(3),
+    .sku-table th:nth-child(4), .sku-table td:nth-child(4) { width: 92px; }
+    .sku-table th:nth-child(5), .sku-table td:nth-child(5) { width: 130px; }
     th, td {
       padding: 9px 8px;
       border-bottom: 1px solid var(--line);
@@ -487,7 +594,7 @@
         grid-template-columns: repeat(3, minmax(220px, 1fr));
         overflow-x: auto;
       }
-      .two-col, .wide-side, .input-row { grid-template-columns: 1fr; }
+      .two-col, .wide-side, .feedback-top, .feedback-record-grid, .input-row { grid-template-columns: 1fr; }
       .side { position: static; }
     }
     @media (max-width: 760px) {
@@ -503,6 +610,7 @@
       .project-list { grid-template-columns: 1fr; }
       .step-row { grid-template-columns: 1fr; }
       .actions { justify-content: stretch; }
+      .feedback-actions { grid-template-columns: 1fr; }
       .btn { width: 100%; }
     }
   </style>
@@ -570,6 +678,12 @@
               <div class="field">
                 <label for="product-name">产品名</label>
                 <input id="product-name" type="text">
+                <label>上架路线</label>
+                <div class="route-picker" id="route-picker" role="group" aria-label="上架路线">
+                  <button class="route-option active" type="button" data-route-mode="single_child">单链接子体</button>
+                  <button class="route-option" type="button" data-route-mode="variation">多链接变体</button>
+                  <button class="route-option" type="button" data-route-mode="set_bundle">套装售卖</button>
+                </div>
               </div>
               <div class="upload-grid" id="source-upload-grid"></div>
             </div>
@@ -595,10 +709,13 @@
                   <button class="btn" type="button" id="add-sku-btn">新增 SKU</button>
                 </div>
                 <div class="table-wrap">
-                  <table>
+                  <table class="sku-table">
                     <thead>
                       <tr>
                         <th>SKU</th>
+                        <th>父 SKU</th>
+                        <th>层级</th>
+                        <th>变体</th>
                         <th>颜色</th>
                         <th>采购价</th>
                         <th>重量 lb</th>
@@ -686,9 +803,10 @@
           </section>
           <input class="hidden-input" id="template-input" type="file" accept=".xlsx,.xlsm">
           <div class="actions">
-            <button class="btn ghost" type="button" id="template-upload-trigger">更换模板</button>
+            <button class="btn primary" type="button" id="template-upload-trigger">上传 Amazon 模板</button>
             <button class="btn primary" type="button" id="fill-action"></button>
           </div>
+          <div class="muted small" id="template-upload-note" style="margin-top: 8px;"></div>
 
           <section class="two-col" style="margin-top: 16px;">
             <div class="stack">
@@ -757,127 +875,59 @@
         </section>
 
         <section class="module-panel" data-module-panel="feedback">
-          <section class="wide-side">
-            <div class="version-card">
-              <div class="panel-head">
-                <h3>当前模板</h3>
-                <span class="status warn" id="upload-version-status"></span>
-              </div>
-              <div>
-                <strong id="current-version-file"></strong>
-                <div class="muted small" id="current-version-note"></div>
-              </div>
-              <div class="version-meta" id="version-meta"></div>
-            </div>
-
-            <div class="panel section" style="margin: 0;">
-              <div class="panel-head">
-                <h3>失败报告输入</h3>
-                <span class="tag">Amazon 反馈</span>
-              </div>
-              <div class="drop" id="failure-report-box"></div>
-              <input class="hidden-input" id="failure-report-input" type="file" accept=".xlsx,.xlsm,.csv,.tsv,.txt,.md,.html,.htm,.pdf" multiple>
-              <div class="summary-grid" id="failure-summary" style="margin-top: 12px;"></div>
-            </div>
-          </section>
-          <div class="actions">
-            <button class="btn primary" type="button" id="generate-next-version"></button>
-            <button class="btn" type="button" id="mark-uploaded-top">标记上传成功</button>
-          </div>
-
-          <section class="panel section">
-            <div class="panel-head">
-              <h3>上传反馈</h3>
-              <span class="tag">人工上传后的两种结果</span>
-            </div>
-            <div class="field-grid">
-              <div class="issue ok">
+          <section class="feedback-shell">
+            <section class="feedback-top">
+              <div class="panel section">
                 <div class="panel-head">
-                  <h4>上传成功</h4>
-                  <span class="status ok">结束循环</span>
+                  <h3>当前模板 <span id="feedback-current-version"></span></h3>
+                  <span class="status warn" id="upload-version-status"></span>
                 </div>
-                <div class="muted small">确认当前版本可上传，记录最终成功版本，并把成功模板收录到学习库。</div>
-                <button class="btn primary" type="button" id="mark-uploaded-card" style="margin-top: 10px;">标记当前版本上传成功</button>
-              </div>
-              <div class="issue warn">
-                <div class="panel-head">
-                  <h4>上传失败</h4>
-                  <span class="status warn">生成下一版</span>
-                </div>
-                <div class="muted small">输入失败分析报告，系统基于确认资料重新生成下一版模板。</div>
-                <button class="btn warn" type="button" id="upload-failure-card" style="margin-top: 10px;">上传失败报告</button>
-              </div>
-            </div>
-          </section>
-
-          <section class="two-col">
-            <div class="stack">
-              <section class="panel section">
-                <div class="panel-head">
-                  <h3>修正结果</h3>
-                  <span class="status ok" id="fix-result-status"></span>
-                </div>
-                <div class="version-meta" id="fix-result-meta"></div>
-              </section>
-
-              <section class="panel section">
-                <div class="panel-head">
-                  <h3>修正历史</h3>
-                  <span class="tag">版本循环</span>
-                </div>
-                <div class="timeline" id="version-timeline"></div>
-              </section>
-
-              <section class="panel section">
-                <div class="panel-head">
-                  <h3>失败报告修正明细</h3>
-                  <span class="tag">报告 → 模板字段</span>
-                </div>
-                <div class="table-wrap">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>失败项</th>
-                        <th>报告原因</th>
-                        <th>修正字段</th>
-                        <th>修正后值</th>
-                        <th>下一次学习</th>
-                      </tr>
-                    </thead>
-                    <tbody id="fix-rows"></tbody>
-                  </table>
-                </div>
-              </section>
-
-              <section class="panel section">
-                <div class="panel-head">
-                  <h3>学习沉淀预览</h3>
-                  <span class="tag">成功后写入</span>
-                </div>
-                <div class="learning-grid" id="learning-grid"></div>
-              </section>
-            </div>
-
-            <aside class="side">
-              <section class="panel section">
-                <div class="panel-head">
-                  <h3>版本文件</h3>
-                  <span class="tag" id="version-file-count"></span>
-                </div>
-                <div class="rule-list" id="version-files"></div>
-              </section>
-
-              <section class="panel confirm-panel">
                 <div>
-                  <h3>下一步</h3>
-                  <div class="muted small" id="feedback-next"></div>
+                  <strong id="current-version-file"></strong>
+                  <div class="muted small" id="current-version-note"></div>
                 </div>
-                <button class="btn" type="button" id="download-version"></button>
-                <button class="btn" type="button" id="view-feedback-report">查看自检报告</button>
-                <button class="btn primary" type="button" id="success-learn"></button>
-                <button class="btn ghost" type="button" id="fail-next"></button>
-              </section>
-            </aside>
+              </div>
+
+              <div class="panel section">
+                <div class="panel-head">
+                  <h3>失败报告上传 <span id="feedback-report-version"></span></h3>
+                  <span class="tag">Amazon 反馈</span>
+                </div>
+                <div class="drop" id="failure-report-box"></div>
+                <input class="hidden-input" id="failure-report-input" type="file" accept=".xlsx,.xlsm,.csv,.tsv,.txt,.md,.html,.htm,.pdf" multiple>
+                <div class="actions">
+                  <button class="btn primary" type="button" id="failure-report-upload-btn">上传失败报告</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel section feedback-analysis-panel">
+              <div class="panel-head">
+                <h3>当前：<span id="feedback-analysis-version"></span> 模板 / 失败报告解析</h3>
+                <span class="tag">人工确认后生成下一版</span>
+              </div>
+              <div class="analysis-text" id="feedback-analysis"></div>
+              <div class="feedback-actions">
+                <button class="btn primary" type="button" id="generate-next-version">确认并生成下一版</button>
+                <button class="btn ghost" type="button" id="next-version-hint" disabled></button>
+                <button class="btn primary feedback-download" type="button" id="download-current-version">下载当前模板</button>
+              </div>
+              <div class="actions" id="success-action-row">
+                <button class="btn" type="button" id="mark-uploaded-top">标记当前版本上传成功</button>
+              </div>
+            </section>
+
+            <section class="panel section feedback-records">
+              <div class="panel-head">
+                <h3>版本记录</h3>
+                <span class="tag" id="version-file-count"></span>
+              </div>
+              <div class="feedback-record-grid">
+                <div class="timeline" id="version-timeline"></div>
+                <div class="rule-list" id="success-learning"></div>
+                <div class="rule-list" id="version-files"></div>
+              </div>
+            </section>
           </section>
         </section>
       </div>
@@ -889,7 +939,8 @@
   <script>
     const INTAKE_HEADERS = [
       "project_name", "product_name", "route", "brand", "manufacturer", "category",
-      "product_type", "item_type_keyword", "sku", "color", "size", "set_count",
+      "product_type", "item_type_keyword", "sku", "parent_sku", "parentage_level",
+      "variation_theme", "color", "size", "set_count",
       "material", "accessories", "cost", "target_price", "list_price", "haul_price",
       "package_length_in", "package_width_in", "package_height_in", "package_weight_lb",
       "country_of_origin", "batteries_required", "dangerous_goods", "main_image_url",
@@ -901,6 +952,12 @@
     let pendingActiveDir = "";
     let activeModule = "intake";
     let toastTimer = null;
+    let selectedRouteMode = "single_child";
+    const ROUTE_BY_MODE = {
+      single_child: "Haul Generic",
+      variation: "Haul Generic Variation",
+      set_bundle: "Haul Generic Set Bundle",
+    };
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
     function currentProject() {
@@ -960,14 +1017,17 @@
     function renderProjectList() {
       const list = document.getElementById("project-list");
       list.innerHTML = projects.map((project) => `
-        <button class="project-button ${project.id === activeId ? "active" : ""}" type="button" data-project="${escapeAttr(project.id)}">
+        <div class="project-button ${project.id === activeId ? "active" : ""}" data-project="${escapeAttr(project.id)}">
           <div class="project-top">
-            <span class="project-name">${escapeHtml(project.name)}</span>
+            <div class="project-title-row">
+              <span class="project-name">${escapeHtml(project.name)}</span>
+              <button class="project-rename" type="button" title="修改项目名" data-rename-project="${escapeAttr(project.id)}">✎</button>
+            </div>
             <span class="status ${project.status === "已上传" ? "uploaded" : "waiting"}">${escapeHtml(project.status)}</span>
           </div>
           <div class="project-meta">${escapeHtml(project.summary)}</div>
           <div class="project-meta">${escapeHtml(project.updated)}</div>
-        </button>
+        </div>
       `).join("");
     }
 
@@ -984,6 +1044,22 @@
       const node = document.getElementById(id);
       node.textContent = value || "-";
       node.className = `status ${String(value).includes("已") || String(value).includes("通过") ? "ok" : "warn"}`;
+    }
+
+    function modeFromRoute(route) {
+      const value = String(route || "").toLowerCase();
+      if (value.includes("variation")) return "variation";
+      if (value.includes("set bundle")) return "set_bundle";
+      return "single_child";
+    }
+
+    function setRouteMode(mode) {
+      selectedRouteMode = ROUTE_BY_MODE[mode] ? mode : "single_child";
+      document.querySelectorAll("[data-route-mode]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.routeMode === selectedRouteMode);
+      });
+      const routeInput = document.querySelector('[data-intake-field="route"]');
+      if (routeInput) routeInput.value = ROUTE_BY_MODE[selectedRouteMode];
     }
 
     function renderIntake(project) {
@@ -1004,6 +1080,7 @@
       `).join("");
       renderEditableFields("basic-fields", data.basic);
       renderEditableFields("spec-fields", data.specs);
+      setRouteMode(modeFromRoute((data.rows || [])[0]?.route));
       renderSkuRows(data.rows || []);
       document.getElementById("title-materials").value = data.title || "";
       document.getElementById("selling-points").value = data.selling || "";
@@ -1022,7 +1099,7 @@
     }
 
     function renderSkuRows(rows) {
-      const fields = ["sku", "color", "cost", "package_weight_lb", "package_length_in", "package_width_in", "package_height_in", "list_price"];
+      const fields = ["sku", "parent_sku", "parentage_level", "variation_theme", "color", "cost", "package_weight_lb", "package_length_in", "package_width_in", "package_height_in", "list_price"];
       document.getElementById("sku-rows").innerHTML = rows.map((row, rowIndex) => `
         <tr>
           ${fields.map((field) => `<td><input value="${escapeAttr(row[field] || "")}" data-row-field="${escapeAttr(field)}" data-row-index="${rowIndex}"></td>`).join("")}
@@ -1037,6 +1114,12 @@
       document.getElementById("template-ext").textContent = data.ext || "XLSX";
       document.getElementById("template-source").textContent = data.source || "等待上传 Amazon 模板";
       document.getElementById("template-path").textContent = data.path || "";
+      const uploadButton = document.getElementById("template-upload-trigger");
+      uploadButton.textContent = data.sourceFile ? "更换 Amazon 模板" : "上传 Amazon 模板";
+      uploadButton.className = data.sourceFile ? "btn ghost" : "btn primary";
+      document.getElementById("template-upload-note").textContent = data.sourceFile
+        ? "已读取原始 Amazon 模板，可直接填表或更换模板。"
+        : "先上传 Seller Central 下载的 Amazon 原始模板（.xlsx/.xlsm），再生成填表版本。";
       document.getElementById("template-meta").innerHTML = [
         ["Product Type", data.productType],
         ["工作表", data.sheet],
@@ -1084,25 +1167,52 @@
 
     function renderFeedback(project) {
       const data = project.feedback;
+      const currentVersion = (data.meta || []).find(([label]) => label === "当前版本")?.[1] || "";
+      const plannedVersion = data.plannedVersion || (data.meta || []).find(([label]) => label === "下一版")?.[1] || "";
       document.getElementById("upload-version-status").textContent = data.versionStatus;
       document.getElementById("upload-version-status").className = `status ${data.versionStatus.includes("成功") ? "ok" : data.versionStatus.includes("未") ? "warn" : "warn"}`;
+      document.getElementById("feedback-current-version").textContent = currentVersion ? currentVersion : "";
+      document.getElementById("feedback-report-version").textContent = currentVersion ? currentVersion : "";
+      document.getElementById("feedback-analysis-version").textContent = currentVersion || "当前版本";
       document.getElementById("current-version-file").innerHTML = data.currentFileInfo ? fileLink(data.currentFileInfo) : escapeHtml(data.currentFile);
       document.getElementById("current-version-note").textContent = data.note;
-      document.getElementById("version-meta").innerHTML = (data.meta || []).map(metaHtml).join("");
+      document.getElementById("download-current-version").textContent = data.currentFileInfo
+        ? `下载当前模板 ${currentVersion || ""}`.trim()
+        : "等待模板生成";
+      document.getElementById("download-current-version").disabled = !data.currentFileInfo;
+      document.getElementById("download-current-version").hidden = !data.currentFileInfo;
       document.getElementById("failure-report-box").innerHTML = `
         <strong>${escapeHtml(data.report)}</strong>
         <span class="muted small">${escapeHtml(data.reportNote)}</span>
-        <button class="btn warn" type="button" id="failure-report-trigger">选择失败报告</button>
       `;
-      document.getElementById("failure-summary").innerHTML = (data.failureSummary || []).map(metaHtml).join("");
+      document.getElementById("failure-report-upload-btn").disabled = !data.canUploadFeedback;
+      document.getElementById("failure-report-upload-btn").hidden = !data.canUploadFeedback;
       document.getElementById("generate-next-version").textContent = data.generateAction;
-      document.getElementById("generate-next-version").disabled = !data.canUploadFeedback;
+      document.getElementById("generate-next-version").disabled = !data.canConfirmFix;
+      document.getElementById("generate-next-version").hidden = !data.canConfirmFix;
+      document.getElementById("next-version-hint").textContent = data.canConfirmFix
+        ? `下一版：${plannedVersion} 模板创建`
+        : data.canUploadFeedback
+          ? "等待失败报告解析"
+          : data.versionStatus.includes("成功")
+            ? "已上传成功"
+            : "等待 v1 模板";
       document.getElementById("mark-uploaded-top").disabled = !data.canMarkSuccess;
-      document.getElementById("mark-uploaded-card").disabled = !data.canMarkSuccess;
-      document.getElementById("upload-failure-card").disabled = !data.canUploadFeedback;
-      document.getElementById("fix-result-status").textContent = data.fixStatus;
-      document.getElementById("fix-result-status").className = `status ${data.fixStatus.includes("完成") ? "ok" : "warn"}`;
-      document.getElementById("fix-result-meta").innerHTML = (data.fixMeta || []).map(metaHtml).join("");
+      document.getElementById("mark-uploaded-top").hidden = !data.canMarkSuccess;
+      document.getElementById("success-action-row").hidden = !data.canMarkSuccess;
+      const analysis = data.analysisText || {};
+      const details = (analysis.details || []).map(([label, value]) => `
+        <li><strong>${escapeHtml(label)}：</strong><code>${escapeHtml(value || "-")}</code></li>
+      `).join("");
+      const notes = (analysis.notes || []).map((note) => `<li>${inlineCode(note)}</li>`).join("");
+      document.getElementById("feedback-analysis").innerHTML = `
+        <p><strong>${inlineCode(analysis.headline || "等待失败报告后生成解析。")}</strong></p>
+        <p><strong>具体位置：</strong></p>
+        <ul>${details || `<li>等待 Amazon processing summary。</li>`}</ul>
+        ${notes ? `<p><strong>需要注意：</strong></p><ul>${notes}</ul>` : ""}
+        <p><strong>准备怎么改：</strong>${inlineCode(analysis.fix || "确认原因后再生成下一版。")}</p>
+        <p><strong>结论：</strong>${inlineCode(analysis.conclusion || analysis.why || "等待失败报告。")}</p>
+      `;
       document.getElementById("version-timeline").innerHTML = (data.timeline || []).map(([state, version, title, body]) => `
         <div class="step-row ${escapeAttr(state)}">
           <span class="version-pill">${escapeHtml(version)}</span>
@@ -1112,15 +1222,12 @@
           </div>
         </div>
       `).join("");
-      document.getElementById("fix-rows").innerHTML = (data.fixes || []).map((row) => `
-        <tr>${row.map((value) => `<td>${escapeHtml(value)}</td>`).join("")}</tr>
-      `).join("");
-      document.getElementById("learning-grid").innerHTML = (data.learning || []).map(([title, body]) => `
-        <div class="learning-card">
-          <span class="muted small">${escapeHtml(title)}</span>
-          <strong>${escapeHtml(body)}</strong>
+      document.getElementById("success-learning").innerHTML = (data.successLearning || []).map(([state, title, body]) => `
+        <div class="rule ${escapeAttr(state)}">
+          <strong>${escapeHtml(title)}</strong>
+          <div class="muted small">${inlineCode(body || "")}</div>
         </div>
-      `).join("");
+      `).join("") || `<div class="rule warn"><strong>成功学习记录</strong><div class="muted small">上传成功后在这里记录可复用规则。</div></div>`;
       document.getElementById("version-file-count").textContent = `${(data.versionFiles || []).length} 个`;
       document.getElementById("version-files").innerHTML = (data.versionFiles || []).map((file) => `
         <div class="rule">
@@ -1128,14 +1235,6 @@
           <div class="muted small">${escapeHtml(file.relative_path)}</div>
         </div>
       `).join("") || `<div class="rule warn"><strong>尚未生成 v1</strong><div class="muted small">先完成填表与自检。</div></div>`;
-      document.getElementById("feedback-next").textContent = data.next;
-      document.getElementById("download-version").textContent = data.download;
-      document.getElementById("download-version").disabled = !data.currentFileInfo;
-      document.getElementById("view-feedback-report").disabled = !data.reportFile;
-      document.getElementById("success-learn").textContent = data.success;
-      document.getElementById("success-learn").disabled = !data.canMarkSuccess;
-      document.getElementById("fail-next").textContent = data.fail;
-      document.getElementById("fail-next").disabled = !data.canUploadFeedback;
     }
 
     function collectRowsFromForm() {
@@ -1146,6 +1245,7 @@
       baseRows.forEach((row) => {
         row.product_name = productName;
         row.project_name = row.project_name || project.folder;
+        row.route = ROUTE_BY_MODE[selectedRouteMode];
       });
       document.querySelectorAll("[data-intake-field]").forEach((input) => {
         const field = input.dataset.intakeField;
@@ -1182,9 +1282,12 @@
       return {
         project_name: project?.folder || "",
         product_name: project?.name || "",
-        route: "Haul Generic",
+        route: ROUTE_BY_MODE[selectedRouteMode],
         brand: "Generic",
         manufacturer: "Generic",
+        parent_sku: "",
+        parentage_level: "",
+        variation_theme: "",
         country_of_origin: "China",
         batteries_required: "No",
         dangerous_goods: "No",
@@ -1209,6 +1312,23 @@
       await loadWorkbench();
     }
 
+    async function renameProject(projectId) {
+      const project = projects.find((item) => item.id === projectId);
+      if (!project) return;
+      const name = window.prompt("修改项目名", project.name);
+      if (name === null) return;
+      const nextName = name.trim();
+      if (!nextName || nextName === project.name) return;
+      const result = await requestJson("/api/rename-project", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ project_dir: project.project_dir, name: nextName }),
+      });
+      showToast(result.message || "项目名已更新");
+      pendingActiveDir = project.project_dir;
+      await loadWorkbench();
+    }
+
     async function uploadFiles(folder, files) {
       const project = currentProject();
       if (!project) throw new Error("请先建项。");
@@ -1228,7 +1348,7 @@
       const result = await requestJson("/api/analyze-project", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ project_dir: project.project_dir }),
+        body: JSON.stringify({ project_dir: project.project_dir, route_mode: selectedRouteMode }),
       });
       showToast(result.message || "产品资料已提炼");
       await loadWorkbench();
@@ -1280,6 +1400,19 @@
       form.append("project_dir", project.project_dir);
       Array.from(files).forEach((file) => form.append("files", file));
       const result = await requestJson("/api/upload-feedback", { method: "POST", body: form });
+      showToast(result.message || "已生成修正计划");
+      activeModule = "feedback";
+      await loadWorkbench();
+    }
+
+    async function confirmFeedbackFix() {
+      const project = currentProject();
+      if (!project) throw new Error("请先建项。");
+      const result = await requestJson("/api/confirm-feedback-fix", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ project_dir: project.project_dir }),
+      });
       showToast(result.message || "已生成下一版");
       activeModule = "feedback";
       await loadWorkbench();
@@ -1377,6 +1510,10 @@
       return escapeHtml(value);
     }
 
+    function inlineCode(value) {
+      return escapeHtml(value).replace(/`([^`]+)`/g, "<code>$1</code>");
+    }
+
     async function runAction(fn) {
       try {
         await fn();
@@ -1394,6 +1531,13 @@
         return;
       }
 
+      const renameButton = event.target.closest("[data-rename-project]");
+      if (renameButton) {
+        event.stopPropagation();
+        runAction(() => renameProject(renameButton.dataset.renameProject));
+        return;
+      }
+
       const projectButton = event.target.closest("[data-project]");
       if (projectButton) {
         activeId = projectButton.dataset.project;
@@ -1405,6 +1549,12 @@
       const sourceTrigger = event.target.closest("[data-source-trigger]");
       if (sourceTrigger) {
         document.querySelector(`[data-source-input="${CSS.escape(sourceTrigger.dataset.sourceTrigger)}"]`)?.click();
+        return;
+      }
+
+      const routeOption = event.target.closest("[data-route-mode]");
+      if (routeOption) {
+        setRouteMode(routeOption.dataset.routeMode);
         return;
       }
 
@@ -1421,12 +1571,15 @@
       }
       if (event.target.id === "download-filled-btn") openDownload(currentProject()?.template?.latestFile);
       if (event.target.id === "view-check-btn") openDownload(currentProject()?.template?.reportFile);
-      if (event.target.id === "failure-report-trigger" || event.target.id === "generate-next-version" || event.target.id === "upload-failure-card" || event.target.id === "fail-next") {
-        document.getElementById("failure-report-input").click();
+      if (event.target.id === "generate-next-version") {
+        const feedback = currentProject()?.feedback;
+        if (feedback?.canConfirmFix) {
+          runAction(confirmFeedbackFix);
+        }
       }
-      if (event.target.id === "mark-uploaded-top" || event.target.id === "mark-uploaded-card" || event.target.id === "success-learn") runAction(markUploaded);
-      if (event.target.id === "download-version") openDownload(currentProject()?.feedback?.currentFileInfo);
-      if (event.target.id === "view-feedback-report") openDownload(currentProject()?.feedback?.reportFile);
+      if (event.target.id === "failure-report-upload-btn") document.getElementById("failure-report-input").click();
+      if (event.target.id === "download-current-version") openDownload(currentProject()?.feedback?.currentFileInfo);
+      if (event.target.id === "mark-uploaded-top") runAction(markUploaded);
     });
 
     document.addEventListener("change", (event) => {
