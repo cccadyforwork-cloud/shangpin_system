@@ -19,6 +19,10 @@ FIELD_RULE_HINTS = {
     "Brand Name": "Haul Generic 路线 Brand 应为 Generic，并检查 Manufacturer、标题、描述、图片是否一致。",
     "Main Image URL": "主图可以后续上传，但如果模板/类目要求 URL，则必须是公开可访问图片直链。",
     "Item Type Keyword": "必须使用 Browse Data / BTG 中的有效值，并确认与 product_type 和实际商品匹配。",
+    "Product Compliance Certificate": "TOWEL 等类目若 processing-summary 报该字段必填，通常填 Not Applicable；加入同 product_type 自检。",
+    "Compliance - Towel End Use": "TOWEL 在当前 ships_globally 条件下该字段可能不允许提交；无明确要求时留空，不要主动填 Other Towel。",
+    "Compliance Weave Type": "TOWEL 在当前 ships_globally 条件下该字段可能不允许提交；processing-summary 报 90248 时应清空。",
+    "Compliance - Outer Surface Material": "TOWEL 在当前 ships_globally 条件下该字段可能不允许提交；材质信息填 Material/Fabric Type，不要填到该合规字段。",
 }
 
 
