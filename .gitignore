@@ -10,3 +10,14 @@ env/
 .ruff_cache/
 *.log
 
+# Node / generated dependency folders
+node_modules/
+**/node_modules/
+
+# Amazon template fill temporary build artifacts
+outputs/**/.modules.yaml
+outputs/**/.pnpm-workspace-state-v1.json
+outputs/**/build_*.mjs
+outputs/**/*.inspect.ndjson
+outputs/**/template_preview*.png
+
