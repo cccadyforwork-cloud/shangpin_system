@@ -98,7 +98,8 @@ def cmd_fill_template(args):
         args.project_dir,
         draft_path=args.draft,
         template_path=args.template,
-        output_path=args.output
+        output_path=args.output,
+        write_report=args.write_report,
     )
     print(f"已写入模板：{output_path}")
     print(f"使用草稿：{draft_path}")
@@ -126,6 +127,7 @@ def cmd_auto_fill(args):
         template_path=args.template,
         output_path=args.output,
         force=args.force,
+        write_reports=args.write_reports,
     )
     if result["skipped"]:
         status = result["status"]
@@ -145,7 +147,6 @@ def cmd_auto_fill(args):
     print(f"自动填表完成：{result['filled_path']}")
     print(f"使用草稿：{result['draft_path']}")
     print(f"使用模板：{result['template_path']}")
-    print(f"自检报告：{result['report_path']}")
     print(f"项目状态：{result['status_path']}")
     print(f"SKU 数：{result['sku_count']}")
     print(f"写入字段数：{result['written_field_count']}")
@@ -274,6 +275,7 @@ def build_parser():
     fill.add_argument("--draft", help="指定自动提炼草稿 xlsx 路径")
     fill.add_argument("--template", help="指定亚马逊模板 xlsx/xlsm 路径")
     fill.add_argument("-o", "--output", help="输出填好后的模板路径")
+    fill.add_argument("--write-report", action="store_true", help="额外生成写入报告；默认只输出填好的上传表格")
     fill.set_defaults(func=cmd_fill_template)
 
     learn = subparsers.add_parser("learn-report", help="把 processing-summary 报错沉淀到复盘库")
@@ -293,6 +295,7 @@ def build_parser():
     auto_fill.add_argument("--template", help="指定亚马逊模板 xlsx/xlsm 路径")
     auto_fill.add_argument("-o", "--output", help="输出填好后的模板路径")
     auto_fill.add_argument("--force", action="store_true", help="即使项目已标记上传成功也重新生成")
+    auto_fill.add_argument("--write-reports", action="store_true", help="额外生成写入报告和模板自检报告；默认只输出填好的上传表格")
     auto_fill.set_defaults(func=cmd_auto_fill)
 
     mark_uploaded = subparsers.add_parser("mark-uploaded", help="把项目标记为上传成功")

@@ -352,7 +352,56 @@ PRODUCT_TYPE_DISALLOWED_FIELDS = {
 }
 
 
-def validate_template_file(path, output_path=None):
+def _required_fields_from_data_definitions(wb):
+    if "Data Definitions" not in wb.sheetnames:
+        return {}
+    ws = wb["Data Definitions"]
+    required = {}
+    for row in ws.iter_rows(min_row=1, values_only=True):
+        values = [str(value).strip() if value is not None else "" for value in row]
+        if len(values) < 6:
+            continue
+        field_name = values[1]
+        label = values[2] or field_name
+        if field_name and values[5].lower() == "required":
+            required[field_name] = label
+    return required
+
+
+def _is_parent_optional_required_field(field_name):
+    lowered = field_name.lower()
+    return any(token in lowered for token in [
+        "color[",
+        "size[",
+        "list_price",
+        "purchasable_offer",
+        "skip_offer",
+        "main_product_image",
+        "item_package_dimensions",
+        "item_package_weight",
+        "item_depth_width_height",
+        "item_length_width_height",
+        "item_length_width",
+        "item_dimensions",
+        "item_weight",
+        "unit_count",
+        "number_of_items",
+        "number_of_packs",
+        "number_of_boxes",
+        "item_package_quantity",
+        "included_components",
+        "specific_uses_for_product",
+        "recommended_uses_for_product",
+        "indoor_outdoor_usage",
+        "pet_toy_type",
+        "pet_type",
+        "breed_recommendation",
+        "directions",
+        "theme",
+    ])
+
+
+def validate_template_file(path, output_path=None, write_report=True):
     path = Path(path)
     wb = load_workbook(path, data_only=True, read_only=True)
     ws = find_template_sheet(wb)
@@ -382,6 +431,7 @@ def validate_template_file(path, output_path=None):
     parent_sku_col = field_to_col.get(FIELD_NAMES["parent_sku"])
     variation_theme_col = field_to_col.get(FIELD_NAMES["variation_theme"])
     product_type_col = field_to_col.get("product_type#1.value")
+    required_fields = _required_fields_from_data_definitions(wb)
     dimension_pairs = [
         ("Item Depth", field_to_col.get(FIELD_NAMES["item_depth"]), field_to_col.get(FIELD_NAMES["item_depth_unit"])),
         ("Item Height", field_to_col.get(FIELD_NAMES["item_height"]), field_to_col.get(FIELD_NAMES["item_height_unit"])),
@@ -447,9 +497,20 @@ def validate_template_file(path, output_path=None):
 
         if product_type_col:
             product_type = ws.cell(row, product_type_col).value
+            for field_name, label in required_fields.items():
+                col = field_to_col.get(field_name)
+                if not col:
+                    continue
+                if is_parent and _is_parent_optional_required_field(field_name):
+                    continue
+                value = ws.cell(row, col).value
+                if value in (None, ""):
+                    findings.append(error(row, label, f"{sku} 的 {label} 为空。", "该字段在模板 Data Definitions 中标记为 Required，上传前应补齐。"))
             for label, field_name in PRODUCT_TYPE_CONDITIONAL_FIELDS.get(str(product_type), {}).items():
                 col = field_to_col.get(field_name)
                 if not col:
+                    continue
+                if is_parent and _is_parent_optional_required_field(field_name):
                     continue
                 value = ws.cell(row, col).value
                 if value in (None, ""):
@@ -462,11 +523,14 @@ def validate_template_file(path, output_path=None):
                 if value not in (None, ""):
                     findings.append(error(row, label, f"{sku} 的 {label} 当前不应填写，值为 `{value}`。", "TOWEL 当前 ships_globally 条件下该合规字段不允许提交，清空该字段。"))
 
-    if output_path is None:
-        output_path = OUTPUTS_DIR / f"{path.stem}_模板自检报告.md"
+    if write_report:
+        if output_path is None:
+            output_path = OUTPUTS_DIR / f"{path.stem}_模板自检报告.md"
+        else:
+            output_path = Path(output_path)
+        write_template_report(output_path, path, findings, data_rows)
     else:
-        output_path = Path(output_path)
-    write_report(output_path, path, findings, data_rows)
+        output_path = None
     return findings, output_path
 
 
@@ -480,7 +544,7 @@ def error(row, field, message, fix):
     }
 
 
-def write_report(path, checked_file, findings, data_rows):
+def write_template_report(path, checked_file, findings, data_rows):
     errors = sum(1 for item in findings if item["severity"] == "error")
     lines = [
         f"# {Path(checked_file).name} 模板自检报告",

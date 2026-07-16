@@ -1,16 +1,21 @@
 import re
+from copy import deepcopy
 from pathlib import Path
 from shutil import copyfile
 
 from openpyxl import load_workbook
 
-from .paths import DRAFT_DIRS, LEGACY_FILLED_TEMPLATE_DIR, TEMPLATE_DIRS, safe_name
+from .paths import DRAFT_DIRS, TEMPLATE_DIRS, safe_name
 from .success_rule_defaults import load_safe_defaults
 from .template_sheet import find_template_sheet, template_sheet_names_text
+from .template_validator import PRODUCT_TYPE_CONDITIONAL_FIELDS
+from .versioning import versioned_template_path
 from .workbook_io import read_intake_rows
 
 
 DRAFT_PATTERN = "*_自动提炼草稿.xlsx"
+TEMPLATE_EXAMPLE_ROW = 6
+TEMPLATE_DATA_START_ROW = 7
 
 
 FIELD_MAP = {
@@ -123,6 +128,35 @@ COLOR_MAP_VALUES = {
     "透明": "Transparent",
 }
 
+EXPLICIT_SINGLE_ROUTE_KEYWORDS = (
+    "single",
+    "single link",
+    "single-link",
+    "单链接",
+    "独立",
+    "single_child",
+)
+EXPLICIT_BUNDLE_ROUTE_KEYWORDS = (
+    "bundle",
+    "set bundle",
+    "套装售卖",
+    "组合售卖",
+)
+PARENT_CLEAR_FIELDS = {
+    "parent_sku",
+    "color",
+    "size",
+    "cost",
+    "target_price",
+    "list_price",
+    "haul_price",
+    "package_length_in",
+    "package_width_in",
+    "package_height_in",
+    "package_weight_lb",
+    "main_image_url",
+}
+
 
 def find_latest_draft(project_dir):
     project_dir = Path(project_dir)
@@ -204,6 +238,114 @@ def _value_for(row, source):
     if value is None:
         return ""
     return value
+
+
+def _text(value):
+    return str(value or "").strip()
+
+
+def _is_parent_row(row):
+    return _text(row.get("parentage_level")).lower() == "parent"
+
+
+def _is_child_row(row):
+    return _text(row.get("parentage_level")).lower() == "child"
+
+
+def _field_texts(rows, field):
+    values = []
+    for row in rows:
+        if _is_parent_row(row):
+            continue
+        value = _text(row.get(field))
+        if value:
+            values.append(value)
+    return values
+
+
+def _infer_variation_theme(rows):
+    colors = set(_field_texts(rows, "color"))
+    sizes = set(_field_texts(rows, "size"))
+    if len(colors) > 1 and len(sizes) > 1:
+        return "ColorSize"
+    if len(sizes) > 1 and len(colors) <= 1:
+        return "Size"
+    if len(colors) > 1:
+        return "Color"
+    if sizes:
+        return "Size"
+    return "Color"
+
+
+def _sku_base(value):
+    words = re.findall(r"[A-Za-z0-9]+", str(value or "").upper())
+    if words:
+        return "-".join(words[:4])[:24]
+    return safe_name(str(value or "PRODUCT")).upper()[:24] or "PRODUCT"
+
+
+def _parent_sku_for_rows(rows, project_dir):
+    for row in rows:
+        parent_sku = _text(row.get("parent_sku"))
+        if parent_sku:
+            return parent_sku
+    for row in rows:
+        if _is_parent_row(row) and _text(row.get("sku")):
+            return _text(row.get("sku"))
+    product_name = next((_text(row.get("product_name")) for row in rows if _text(row.get("product_name"))), "")
+    return f"{_sku_base(product_name or Path(project_dir).name)}-PARENT"
+
+
+def _should_default_variation(rows):
+    route_text = "\n".join(_text(row.get("route")).lower() for row in rows)
+    if any(keyword in route_text for keyword in EXPLICIT_BUNDLE_ROUTE_KEYWORDS):
+        return False
+    if any(keyword in route_text for keyword in EXPLICIT_SINGLE_ROUTE_KEYWORDS):
+        return False
+    return True
+
+
+def prepare_variation_rows(rows, project_dir):
+    prepared = [dict(row) for row in rows]
+    if not prepared:
+        return prepared
+
+    theme = next((_text(row.get("variation_theme")) for row in prepared if _text(row.get("variation_theme"))), "")
+    theme = theme or _infer_variation_theme(prepared)
+    parent_sku = _parent_sku_for_rows(prepared, project_dir)
+
+    if any(_is_parent_row(row) for row in prepared):
+        for row in prepared:
+            row["variation_theme"] = _text(row.get("variation_theme")) or theme
+            if _is_child_row(row) and not _text(row.get("parent_sku")):
+                row["parent_sku"] = parent_sku
+            if _text(row.get("parent_sku")) and not _text(row.get("parentage_level")):
+                row["parentage_level"] = "Child"
+        return prepared
+
+    if not _should_default_variation(prepared):
+        return prepared
+
+    parent = deepcopy(prepared[0])
+    parent["sku"] = parent_sku
+    parent["parent_sku"] = ""
+    parent["parentage_level"] = "Parent"
+    parent["variation_theme"] = theme
+    parent["route"] = "Haul Generic Variation" if "generic" in _text(parent.get("route")).lower() or not _text(parent.get("route")) else parent.get("route")
+    for field in PARENT_CLEAR_FIELDS:
+        parent[field] = ""
+
+    child_rows = []
+    for index, row in enumerate(prepared, 1):
+        row["parent_sku"] = parent_sku
+        row["parentage_level"] = "Child"
+        row["variation_theme"] = theme
+        if "generic" in _text(row.get("route")).lower() or not _text(row.get("route")):
+            row["route"] = "Haul Generic Variation"
+        if not _text(row.get("sku")):
+            row["sku"] = f"{_sku_base(row.get('product_name') or Path(project_dir).name)}-{index:03d}"
+        child_rows.append(row)
+    return [parent] + child_rows
 
 
 def _row_text(row):
@@ -324,7 +466,139 @@ def _animal_collar_rule_defaults(row):
     return defaults, override_fields
 
 
-def fill_template(project_dir, draft_path=None, template_path=None, output_path=None):
+def _required_fields_from_data_definitions(wb):
+    if "Data Definitions" not in wb.sheetnames:
+        return {}
+    ws = wb["Data Definitions"]
+    required = {}
+    for row in ws.iter_rows(min_row=1, values_only=True):
+        values = [_text(value) for value in row]
+        if len(values) < 6:
+            continue
+        field_name = values[1]
+        label = values[2] or field_name
+        if field_name and values[5].lower() == "required":
+            required[field_name] = label
+    return required
+
+
+def _dimension_value_for_field(field_name, row):
+    if ".unit" in field_name:
+        return "Inches"
+    package_length = row.get("package_length_in")
+    package_width = row.get("package_width_in")
+    package_height = row.get("package_height_in")
+    lowered = field_name.lower()
+    if ".length.value" in lowered or "length_width" in lowered and ".length." in lowered:
+        return package_length
+    if ".width.value" in lowered:
+        return package_width
+    if ".height.value" in lowered:
+        return package_height
+    if ".depth.value" in lowered:
+        return package_height
+    return ""
+
+
+def _stable_field_default(field_name, row):
+    field = field_name.lower()
+    product_name = row.get("product_name") or row.get("title") or "Product"
+    count = _first_positive_int(row.get("set_count"), 1)
+
+    if "model_name" in field:
+        return product_name
+    if "model_number" in field or "part_number" in field:
+        return row.get("sku")
+    if "manufacturer" in field:
+        return row.get("manufacturer") or row.get("brand") or "Generic"
+    if "brand" in field:
+        return row.get("brand") or "Generic"
+    if "material" in field and row.get("material"):
+        return row.get("material")
+    if "color" in field and "standardized_values" in field:
+        return _normalize_color_map(row.get("color"))
+    if field.startswith("number_of_items") or field.startswith("item_package_quantity") or field.startswith("unit_count") and "#1.value" in field:
+        return count
+    if field.startswith("number_of_packs") or field.startswith("number_of_boxes"):
+        return 1
+    if "unit_count" in field and ".type" in field:
+        return "Count"
+    if "included_components" in field:
+        return row.get("accessories") or f"{count} Count"
+    if "specific_uses_for_product" in field:
+        return "Outdoor" if str(row.get("category") or "").lower() in {"garden", "patio", "sports"} else "Everyday Use"
+    if "recommended_uses_for_product" in field:
+        return "Chewing" if str(row.get("product_type") or "").upper() == "PET_TOY" else "Everyday Use"
+    if "breed_recommendation" in field:
+        return "All Breed Sizes"
+    if "pet_toy_type" in field:
+        return "Chew Toy"
+    if "pet_type" in field:
+        return "Cat" if "cat" in _row_text(row).lower() or "猫" in _row_text(row) else "Dog"
+    if "theme" in field:
+        return "Animals" if str(row.get("product_type") or "").upper() == "PET_TOY" else product_name
+    if "indoor_outdoor_usage" in field:
+        return "Indoor"
+    if "directions" in field:
+        return "For supervised pet play only." if str(row.get("product_type") or "").upper() == "PET_TOY" else "Use as directed."
+    if "care_instructions" in field:
+        return "Spot Clean"
+    if "pattern" in field:
+        return "Solid"
+    if "style" in field:
+        return row.get("size") or row.get("color") or product_name
+    if "country_of_origin" in field:
+        return row.get("country_of_origin") or "China"
+    if "batteries_required" in field or "batteries_included" in field:
+        return "No"
+    if "supplier_declared_dg_hz_regulation" in field:
+        return "Not Applicable"
+    if "contains_liquid_contents" in field:
+        return "No"
+    if "condition_type" in field:
+        return "New"
+    if "required_product_compliance_certificate" in field:
+        return "Not Applicable"
+    if "product_tax_code" in field:
+        return "A_GEN_NOTAX"
+    if "item_package_weight" in field or "item_weight" in field or "display_weight" in field:
+        return "Pounds" if ".unit" in field else row.get("package_weight_lb")
+    if any(token in field for token in [
+        "item_package_dimensions",
+        "item_dimensions",
+        "item_length_width_height",
+        "item_length_width",
+        "item_width_height",
+        "item_depth_width_height",
+    ]):
+        return _dimension_value_for_field(field_name, row)
+    return ""
+
+
+def _write_required_defaults(ws, row_index, row_data, field_to_col, required_fields):
+    written = []
+    is_parent = _is_parent_row(row_data)
+    for field_name in required_fields:
+        col = field_to_col.get(field_name)
+        if not col or ws.cell(row_index, col).value not in (None, ""):
+            continue
+        if is_parent and any(token in field_name for token in [
+            "list_price",
+            "purchasable_offer",
+            "item_package_dimensions",
+            "item_package_weight",
+            "main_product_image",
+        ]):
+            continue
+        value = _stable_field_default(field_name, row_data)
+        if value in (None, ""):
+            continue
+        ws.cell(row_index, col).value = value
+        written.append(field_name)
+    return written
+
+
+def fill_template(project_dir, draft_path=None, template_path=None, output_path=None, write_report=False):
     project_dir = Path(project_dir)
     draft_path = Path(draft_path) if draft_path else find_latest_draft(project_dir)
     template_path = Path(template_path) if template_path else find_template(project_dir)
@@ -332,10 +606,11 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
     rows = read_intake_rows(draft_path)
     if not rows:
         raise ValueError(f"草稿没有可写入的数据行：{draft_path}")
+    rows = prepare_variation_rows(rows, project_dir)
 
     if output_path is None:
         product_name = rows[0].get("product_name") or project_dir.name
-        output_path = project_dir / LEGACY_FILLED_TEMPLATE_DIR / f"{safe_name(str(product_name))}_v1_filled.xlsx"
+        output_path = versioned_template_path(project_dir, product_name)
     else:
         output_path = Path(output_path)
 
@@ -353,12 +628,14 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
         if field_name:
             field_to_col[str(field_name).strip()] = col
 
+    required_fields = _required_fields_from_data_definitions(wb)
     clear_template_data(ws)
 
-    start_row = 7
+    start_row = TEMPLATE_DATA_START_ROW
     written_fields = []
     rule_written_fields = []
     category_rule_written_fields = []
+    required_default_fields = []
     for row_index, row_data in enumerate(rows, start_row):
         for field_name, source in FIELD_MAP.items():
             col = field_to_col.get(field_name)
@@ -396,21 +673,29 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
             ws.cell(row_index, col).value = value
             category_rule_written_fields.append(field_name)
 
+        default_targets = dict(required_fields)
+        product_type = str(row_data.get("product_type") or "")
+        for label, field_name in PRODUCT_TYPE_CONDITIONAL_FIELDS.get(product_type, {}).items():
+            default_targets.setdefault(field_name, label)
+        required_default_fields.extend(_write_required_defaults(ws, row_index, row_data, field_to_col, default_targets))
+
     wb.save(output_path)
-    report_path = output_path.with_name(f"{output_path.stem}_写入报告.md")
-    write_fill_report(report_path, output_path, draft_path, template_path, rows, written_fields, rule_written_fields, category_rule_written_fields)
-    return output_path, draft_path, template_path, sorted(set(written_fields + rule_written_fields + category_rule_written_fields))
+    if write_report:
+        report_path = output_path.with_name(f"{output_path.stem}_写入报告.md")
+        write_fill_report(report_path, output_path, draft_path, template_path, rows, written_fields, rule_written_fields, category_rule_written_fields, required_default_fields)
+    return output_path, draft_path, template_path, sorted(set(written_fields + rule_written_fields + category_rule_written_fields + required_default_fields))
 
 
 def clear_template_data(ws):
-    for row in range(7, ws.max_row + 1):
+    for row in range(TEMPLATE_EXAMPLE_ROW + 1, ws.max_row + 1):
         for col in range(1, ws.max_column + 1):
             ws.cell(row, col).value = None
 
 
-def write_fill_report(path, output_path, draft_path, template_path, rows, written_fields, rule_written_fields=None, category_rule_written_fields=None):
+def write_fill_report(path, output_path, draft_path, template_path, rows, written_fields, rule_written_fields=None, category_rule_written_fields=None, required_default_fields=None):
     rule_written_fields = rule_written_fields or []
     category_rule_written_fields = category_rule_written_fields or []
+    required_default_fields = required_default_fields or []
     first = rows[0]
     lines = [
         f"# {Path(output_path).name} 写入报告",
@@ -422,6 +707,7 @@ def write_fill_report(path, output_path, draft_path, template_path, rows, writte
         f"- 写入字段数：{len(set(written_fields))}",
         f"- 成功规则补字段数：{len(set(rule_written_fields))}",
         f"- 类目规则补字段数：{len(set(category_rule_written_fields))}",
+        f"- 必填字段兜底补字段数：{len(set(required_default_fields))}",
         "",
         "## 关键字段",
         "",
@@ -446,5 +732,9 @@ def write_fill_report(path, output_path, draft_path, template_path, rows, writte
     if category_rule_written_fields:
         lines.extend(["", "## 类目规则补写字段", ""])
         for field_name in sorted(set(category_rule_written_fields)):
+            lines.append(f"- `{field_name}`")
+    if required_default_fields:
+        lines.extend(["", "## 必填字段兜底补写字段", ""])
+        for field_name in sorted(set(required_default_fields)):
             lines.append(f"- `{field_name}`")
     Path(path).write_text("\n".join(lines), encoding="utf-8")

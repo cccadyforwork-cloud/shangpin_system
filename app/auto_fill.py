@@ -1,14 +1,15 @@
 from pathlib import Path
 
 from .analyzer import analyze_project
-from .paths import DRAFT_DIRS, LEGACY_FILLED_TEMPLATE_DIR
+from .paths import DRAFT_DIRS
 from .project_status import load_project_status, save_project_status
 from .template_validator import validate_template_file
 from .template_writer import fill_template, find_template
+from .versioning import versioned_template_path
 from .workbook_io import read_intake_rows
 
 
-def auto_fill_project(project_dir, draft_path=None, template_path=None, output_path=None, force=False):
+def auto_fill_project(project_dir, draft_path=None, template_path=None, output_path=None, force=False, write_reports=False):
     project_dir = Path(project_dir)
     status = load_project_status(project_dir)
     if status.get("status") == "uploaded_success" and not force:
@@ -42,8 +43,9 @@ def auto_fill_project(project_dir, draft_path=None, template_path=None, output_p
         draft_path=draft_path,
         template_path=template_path,
         output_path=output_path,
+        write_report=write_reports,
     )
-    findings, report_path = validate_template_file(filled_path)
+    findings, report_path = validate_template_file(filled_path, write_report=write_reports)
     error_count = sum(1 for item in findings if item["severity"] == "error")
     rows = read_intake_rows(used_draft)
 
@@ -53,7 +55,7 @@ def auto_fill_project(project_dir, draft_path=None, template_path=None, output_p
             "verification_draft": _relative(project_dir, used_draft),
             "verification_template": str(filled_path),
             "verification_source_template": _relative(project_dir, used_template),
-            "verification_check_report": _relative(project_dir, report_path),
+            "verification_check_report": _relative(project_dir, report_path) if report_path else None,
             "verification_sku_count": len(rows),
             "verification_written_field_count": len(written_fields),
             "verification_error_count": error_count,
@@ -65,7 +67,7 @@ def auto_fill_project(project_dir, draft_path=None, template_path=None, output_p
             "latest_draft": _relative(project_dir, used_draft),
             "latest_template": _relative(project_dir, filled_path),
             "source_template": _relative(project_dir, used_template),
-            "latest_check_report": _relative(project_dir, report_path),
+            "latest_check_report": _relative(project_dir, report_path) if report_path else None,
             "sku_count": len(rows),
             "written_field_count": len(written_fields),
             "template_error_count": error_count,
@@ -111,12 +113,14 @@ def _ensure_draft(project_dir):
 
 def _default_output_path(project_dir, draft_path):
     project_dir = Path(project_dir)
-    draft_path = Path(draft_path)
-    product_name = draft_path.stem.replace("_自动提炼草稿", "")
-    return project_dir / LEGACY_FILLED_TEMPLATE_DIR / f"{product_name}_autofill.xlsx"
+    rows = read_intake_rows(draft_path)
+    product_name = rows[0].get("product_name") if rows else Path(draft_path).stem.replace("_自动提炼草稿", "")
+    return versioned_template_path(project_dir, product_name or project_dir.name)
 
 
 def _relative(project_dir, path):
+    if not path:
+        return None
     project_dir = Path(project_dir)
     path = Path(path)
     try:

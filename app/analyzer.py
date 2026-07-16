@@ -506,9 +506,7 @@ def _route_strategy(text, route, row_count, set_count, route_mode=None):
         return "variation"
     if any(keyword in route_text for keyword in ["set bundle", "bundle", "套装售卖", "组合售卖"]):
         return "set_bundle"
-    if set_count and row_count == 1:
-        return "set_bundle"
-    return "single_child"
+    return "variation"
 
 
 def _route_name_for_strategy(route, strategy):

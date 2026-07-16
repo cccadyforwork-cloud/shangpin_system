@@ -40,8 +40,12 @@ from .project_status import infer_latest_template, infer_product_name, infer_sku
 from .report_parser import extract_processing_summary
 from .success_templates import RULES_JSON, RULES_REPORT, SUCCESS_TEMPLATES_DIR, learn_success_templates
 from .template_sheet import find_template_sheet
-from .template_writer import FIELD_MAP, extract_template_product_type, find_template
+from .template_writer import FIELD_MAP, extract_template_product_type, find_template, prepare_variation_rows
 from .validator import validate_intake
+from .versioning import next_template_version as shared_next_template_version
+from .versioning import version_label as shared_version_label
+from .versioning import version_number as shared_version_number
+from .versioning import versioned_template_path as shared_versioned_template_path
 from .workbook_io import INTAKE_HEADERS, REQUIRED_CORE_FIELDS, read_intake_rows, write_intake_workbook
 
 
@@ -453,7 +457,7 @@ def _template_module_payload(project_dir, product_name, rows, source_template, l
     elif latest_template:
         checks.append(["ok", "模板自检通过", "未发现当前自检规则覆盖的问题。"])
     else:
-        checks.append(["warn", "待填表", f"上传 Amazon 模板后生成 {safe_name(product_name)}_v{next_version}.xlsx。"])
+        checks.append(["warn", "待填表", f"上传 Amazon 模板后生成 {safe_name(product_name)}_{shared_version_label(next_version)}.xlsx。"])
     if missing:
         checks.append(["warn", "产品资料仍需确认", "缺少：" + "、".join(missing[:6])])
 
@@ -485,7 +489,7 @@ def _template_module_payload(project_dir, product_name, rows, source_template, l
         "mappings": _mapping_preview(first),
         "generated": generated,
         "next": _template_next_text(latest_template, error_count, next_version, product_name),
-        "fillAction": f"生成 {safe_name(product_name)}_v{next_version} 并自检",
+        "fillAction": f"生成 {safe_name(product_name)}_{shared_version_label(next_version)}",
         "canUpload": can_upload,
         "canFill": bool(rows and source_template),
     }
@@ -510,7 +514,7 @@ def _feedback_module_payload(project_dir, product_name, status, latest_template,
     pending_fix_report = _file_info(project_dir, _project_file_candidate(project_dir, item.get("latest_fix_report", ""))) if item.get("latest_fix_report") else None
     latest_failure_report = _file_info(project_dir, _project_file_candidate(project_dir, item.get("latest_failure_report", ""))) if item.get("latest_failure_report") else None
     report_name = (latest_failure_report or (failure_reports[0] if failure_reports else None) or {}).get("name", "无失败报告")
-    latest_template_name = latest_template["name"] if latest_template else f"尚未生成 {safe_name(product_name)}_v1"
+    latest_template_name = latest_template["name"] if latest_template else f"尚未生成 {safe_name(product_name)}_V"
     fix_rows = _learning_rows_for_product(product_name)
     success_learning = _success_learning_rows(item)
     planned_version = item.get("pending_next_version") or next_version
@@ -526,21 +530,21 @@ def _feedback_module_payload(project_dir, product_name, status, latest_template,
         "meta": [
             ["产品名", product_name],
             ["当前版本", current_version or "未生成"],
-            ["下一版", "成功" if uploaded else f"v{planned_version}"],
+            ["下一版", "成功" if uploaded else shared_version_label(planned_version)],
         ],
         "report": report_name,
         "reportFiles": failure_reports,
-        "plannedVersion": "成功" if uploaded else f"v{planned_version}",
-        "reportNote": "看下方解析，确认后生成下一版。" if pending_confirmation else ("上传失败时选择 Amazon Processing Summary。" if latest_template else "先生成 v1 模板。"),
+        "plannedVersion": "成功" if uploaded else shared_version_label(planned_version),
+        "reportNote": "看下方解析，确认后生成下一版。" if pending_confirmation else ("上传失败时选择 Amazon Processing Summary。" if latest_template else "先生成 V 模板。"),
         "analysis": _feedback_analysis_cards(project_dir, latest_failure_report, pending_fix_report, planned_version),
         "analysisText": _feedback_analysis_text(project_dir, latest_failure_report, pending_fix_report, planned_version),
         "failureSummary": [["失败报告", str(len(failure_reports))], ["学习记录", str(len(fix_rows))]],
-        "generateAction": "已上传成功" if uploaded else ("确认并生成下一版" if pending_confirmation else ("上传失败报告" if latest_template else "等待 v1 生成")),
+        "generateAction": "已上传成功" if uploaded else ("确认并生成下一版" if pending_confirmation else ("上传失败报告" if latest_template else "等待 V 生成")),
         "fixStatus": "学习完成" if uploaded else ("待确认" if pending_confirmation else ("待上传" if latest_template else "未开始")),
         "fixMeta": [
             ["来源模板", latest_template_name],
             ["失败报告", report_name],
-            ["新模板", "成功结束" if uploaded else (f"确认后生成 {safe_name(product_name)}_v{planned_version}.xlsx" if pending_confirmation else f"{safe_name(product_name)}_v{planned_version}.xlsx")],
+            ["新模板", "成功结束" if uploaded else (f"确认后生成 {safe_name(product_name)}_{shared_version_label(planned_version)}.xlsx" if pending_confirmation else f"{safe_name(product_name)}_{shared_version_label(planned_version)}.xlsx")],
         ],
         "timeline": timeline,
         "fixes": fix_rows or [["无", "尚未上传失败报告", "无", "无", "等待反馈"]],
@@ -548,7 +552,7 @@ def _feedback_module_payload(project_dir, product_name, status, latest_template,
         "learning": _learning_cards(product_name, uploaded, fix_rows),
         "versionFiles": version_infos,
         "next": _feedback_next_text(uploaded, latest_template, current_version, pending_confirmation, planned_version),
-        "download": "下载当前模板" if latest_template else "等待 v1 生成",
+        "download": "下载当前模板" if latest_template else "等待 V 生成",
         "success": "标记当前版本上传成功并学习" if latest_template else "等待上传反馈",
         "fail": "确认修正并生成下一版" if pending_confirmation else ("上传失败报告" if latest_template else "等待失败报告"),
         "canUploadFeedback": can_upload_feedback,
@@ -628,7 +632,7 @@ def _upload_feedback(project_dir, file_items, note=""):
         raise ValueError("该项目已标记上传成功，不能再上传失败报告。")
     latest_template = _latest_filled_template(project_path, status)
     if not latest_template:
-        raise ValueError("请先生成 v1 模板，再记录上传失败。")
+        raise ValueError("请先生成 V 模板，再记录上传失败。")
     if status.get("status") == "upload_failed_pending_confirmation":
         raise ValueError("已有一份失败修正计划待确认，请先确认生成下一版。")
     real_files = [item for item in file_items if getattr(item, "filename", "") and getattr(item, "file", None)]
@@ -700,7 +704,7 @@ def _confirm_feedback_fix(payload):
     })
     return {
         "ok": True,
-        "message": f"已按修正计划生成 v{version}，请人工上传 Amazon 验证",
+        "message": f"已按修正计划生成 {shared_version_label(version)}，请人工上传 Amazon 验证",
         "fill": fill_result,
         "fix_report": _file_info(project_dir, fix_report) if fix_report else None,
     }
@@ -1148,19 +1152,17 @@ def _normalize_intake_rows(rows, project_dir, product_name):
             continue
         row["project_name"] = row.get("project_name") or Path(project_dir).name
         row["product_name"] = row.get("product_name") or product_name
-        row["route"] = row.get("route") or "Haul Generic"
+        row["route"] = row.get("route") or "Haul Generic Variation"
         row["brand"] = row.get("brand") or "Generic"
         row["manufacturer"] = row.get("manufacturer") or row.get("brand") or "Generic"
         row["sku"] = row.get("sku") or _default_sku(row.get("product_name") or product_name, index)
-        row["parentage_level"] = row.get("parentage_level") or ("Child" if row.get("parent_sku") else "")
-        row["variation_theme"] = row.get("variation_theme") or ("Color" if row.get("parent_sku") else "")
         row["country_of_origin"] = row.get("country_of_origin") or "China"
         row["batteries_required"] = row.get("batteries_required") or "No"
         row["dangerous_goods"] = row.get("dangerous_goods") or "No"
         normalized_rows.append(row)
     if not normalized_rows and product_name:
         normalized_rows.append(_blank_intake_row(project_dir, product_name))
-    return normalized_rows
+    return prepare_variation_rows(normalized_rows, project_dir)
 
 
 def _json_rows(rows):
@@ -1174,7 +1176,7 @@ def _blank_intake_row(project_dir, product_name):
     return {
         "project_name": Path(project_dir).name,
         "product_name": product_name,
-        "route": "Haul Generic",
+        "route": "Haul Generic Variation",
         "brand": "Generic",
         "manufacturer": "Generic",
         "parent_sku": "",
@@ -1238,27 +1240,20 @@ def _template_version_files(project_dir):
 
 
 def _version_number(value):
-    match = re.search(r"(?:^|[_\-\s])v(\d+)", str(value), re.I)
-    return int(match.group(1)) if match else 0
+    return shared_version_number(value)
 
 
 def _version_label(value):
     number = _version_number(value)
-    return f"v{number}" if number else ""
+    return shared_version_label(number) if number else ""
 
 
 def _next_template_version(project_dir):
-    current = [_version_number(path.name) for path in _template_version_files(project_dir)]
-    return (max(current) + 1) if current else 1
+    return shared_next_template_version(project_dir)
 
 
 def _versioned_template_path(project_dir, product_name, version):
-    version_dir = Path(project_dir) / LEGACY_FILLED_TEMPLATE_DIR
-    version_dir.mkdir(parents=True, exist_ok=True)
-    path = version_dir / f"{safe_name(product_name)}_v{version}.xlsx"
-    if not path.exists():
-        return path
-    return _unique_file_path(version_dir, path.name)
+    return shared_versioned_template_path(project_dir, product_name, version)
 
 
 def _intake_issues(rows, rows_error):
@@ -1390,7 +1385,7 @@ def _dimension_text(row):
 
 def _template_next_text(latest_template, error_count, next_version, product_name):
     if not latest_template:
-        return f"生成 {safe_name(product_name)}_v{next_version}.xlsx 后，下载并人工上传 Amazon。"
+        return f"生成 {safe_name(product_name)}_{shared_version_label(next_version)}.xlsx 后，下载并人工上传 Amazon。"
     if error_count:
         return "先查看自检报告并修正；必要时重新生成下一版。"
     return "人工上传当前模板。成功则标记上传成功，失败则上传失败报告生成下一版。"
@@ -1400,28 +1395,28 @@ def _feedback_note(uploaded, latest_template, current_version, pending_confirmat
     if uploaded:
         return "当前版本已确认上传成功，成功模板已进入学习流程。"
     if pending_confirmation:
-        return f"{current_version or '当前版本'} 上传失败，已生成失败原因分析和修正计划；人工确认后生成 v{planned_version}。"
+        return f"{current_version or '当前版本'} 上传失败，已生成失败原因分析和修正计划；人工确认后生成 {shared_version_label(planned_version)}。"
     if latest_template:
         return f"{current_version or '当前版本'} 已生成，等待人工上传 Amazon 后记录成功或失败。"
-    return "等待 Amazon 模板填表后生成 v1。"
+    return "等待 Amazon 模板填表后生成 V。"
 
 
 def _feedback_next_text(uploaded, latest_template, current_version, pending_confirmation=False, planned_version=None):
     if uploaded:
         return "已上传成功，可用于后续同类模板学习。"
     if pending_confirmation:
-        return f"先查看失败原因分析和准备修改的字段；确认无误后生成 v{planned_version}。"
+        return f"先查看失败原因分析和准备修改的字段；确认无误后生成 {shared_version_label(planned_version)}。"
     if latest_template:
         return f"人工上传 {current_version or '当前版本'}。成功则标记上传成功；失败则上传失败报告，先确认修正计划再生成下一版。"
-    return "先完成填表与自检，生成 v1 后再进入上传反馈循环。"
+    return "先完成填表，生成 V 后再进入上传反馈循环。"
 
 
 def _version_timeline(version_infos, uploaded, pending_confirmation=False):
     if not version_infos:
-        return [["", "v1", "等待生成", "先填入 Amazon 模板并自检。"]]
+        return [["", "V", "等待生成", "先填入 Amazon 模板。"]]
     timeline = []
     for index, info in enumerate(version_infos):
-        version = _version_label(info["name"]) or f"v{index + 1}"
+        version = _version_label(info["name"]) or shared_version_label(index + 1)
         is_last = index == len(version_infos) - 1
         state = "success" if uploaded and is_last else ("current" if is_last else "")
         title = "上传成功" if uploaded and is_last else ("当前待上传版本" if is_last else "历史版本")
@@ -1498,7 +1493,7 @@ def _feedback_analysis_cards(project_dir, failure_report, fix_report, planned_ve
         cards.append([
             "warn",
             "准备修改",
-            f"确认失败原因后生成 v{planned_version}，不自动越过人工确认。",
+            f"确认失败原因后生成 {shared_version_label(planned_version)}，不自动越过人工确认。",
         ])
 
     confirm_lines = _markdown_section_lines(fix_report, "人工确认")
@@ -1540,7 +1535,7 @@ def _feedback_analysis_text(project_dir, failure_report, fix_report, planned_ver
     elif primary and "product_type" in (primary.get("message", "") + primary.get("field", "")).lower():
         fix = "补齐正确的 product_type / 产品类型后生成下一版。"
     elif planned_version:
-        fix = f"确认失败原因后生成 v{planned_version}。"
+        fix = f"确认失败原因后生成 {shared_version_label(planned_version)}。"
     else:
         fix = "等待失败原因确认后再生成下一版。"
 
@@ -1770,13 +1765,13 @@ def _project_summary_text(status, latest_template, error_count, next_version, it
     if status == "upload_failed_pending_confirmation":
         version = _version_label(Path(latest_template).name) if latest_template else "当前版本"
         pending_next = item.get("pending_next_version") or next_version
-        return f"{version or '当前版本'} 上传失败，待确认修正后生成 v{pending_next}"
+        return f"{version or '当前版本'} 上传失败，待确认修正后生成 {shared_version_label(pending_next)}"
     if latest_template:
         version = _version_label(Path(latest_template).name)
         if error_count:
             return f"{version or '模板'} 已生成，自检有 {error_count} 项需处理"
         return f"{version or '模板'} 已生成，等待人工上传 Amazon"
-    return f"等待生成 {safe_name(item.get('product_name') or '产品')}_v{next_version}"
+    return f"等待生成 {safe_name(item.get('product_name') or '产品')}_{shared_version_label(next_version)}"
 
 
 def _format_updated(value):
@@ -1792,7 +1787,7 @@ def _format_updated(value):
 
 def _write_feedback_fix_report(project_dir, report_paths, added_records, next_version=None):
     product_name = safe_name(infer_product_name(project_dir, ""))
-    version_label = f"_v{next_version}" if next_version else ""
+    version_label = f"_{shared_version_label(next_version)}" if next_version else ""
     filled_name = f"{product_name}{version_label}_修正计划"
     output_dir = Path(project_dir) / LEGACY_FILLED_TEMPLATE_DIR
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -1803,7 +1798,7 @@ def _write_feedback_fix_report(project_dir, report_paths, added_records, next_ve
         f"- 生成时间：{datetime.now().isoformat(timespec='seconds')}",
         f"- 失败报告：{', '.join(path.name for path in report_paths)}",
         f"- 当前状态：等待人工确认",
-        f"- 准备生成：{product_name}_v{next_version}.xlsx" if next_version else "- 准备生成：下一版模板",
+        f"- 准备生成：{product_name}_{shared_version_label(next_version)}.xlsx" if next_version else "- 准备生成：下一版模板",
         f"- 学习记录：{len(added_records)} 条",
         "",
         "## 失败报告识别",
