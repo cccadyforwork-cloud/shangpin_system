@@ -563,19 +563,19 @@ def _make_copy(product_name, color, size, material, set_count):
     is_cat_qtip = any(keyword in combined for keyword in ["cat q-tip", "cat toy", "猫玩具", "大棉签", "逗猫", "猫薄荷"])
     is_airtag_pet_collar = "airtag" in combined and ("collar" in combined or "项圈" in combined or "宠物" in combined)
     if is_airtag_pet_collar:
-        title = "AirTag Cat Collar with Silicone Holder, Breakaway Pet Collar for Cats and Small Dogs"
+        title = "Tracker Pet Collar, Breakaway Collar with Built-In Holder for Cats and Small Dogs"
         if color:
             title += f", {color}"
-        title += ", AirTag Not Included"
-        bullet_1 = "Built-in silicone holder helps keep an Apple AirTag attached to the collar without a separate case."
+        title += ", Device Not Included"
+        bullet_1 = "Built-In Holder Design: Integrated holder keeps a round tracking device seated on the collar without a separate case, giving pet owners a cleaner setup for daily walks, indoor routines, and travel bags."
         bullet_2 = f"Adjustable collar size {size} is suitable for cats and small pets." if size else "Adjustable collar is suitable for cats and small pets."
         bullet_3 = f"Made with {material or 'polyester and silicone'} for lightweight daily pet wear."
         bullet_4 = "Breakaway-style collar design helps cats release from pressure during normal use and play."
-        bullet_5 = f"{color} collar is made for cats and small dogs; AirTag device is not included." if color else "Made for cats and small dogs; AirTag device is not included."
-        desc = "This AirTag pet collar combines a lightweight collar strap with a silicone holder designed for Apple AirTag. It helps pet owners keep a tracker attached during daily wear while keeping the AirTag device separate from the listing."
+        bullet_5 = f"{color} collar is made for cats and small dogs. Tracking device is not included." if color else "Made for cats and small dogs. Tracking device is not included."
+        desc = "This tracker pet collar combines a lightweight collar strap with a built-in holder for a round tracking device. It helps pet owners keep a tracker attached during daily wear while keeping the tracking device separate from the listing."
     elif is_cat_qtip:
         pack_text = f"{set_count} Pack" if set_count else "3 Pack"
-        title = f"Cat Q-Tip Toy Set, {pack_text} Giant Cotton Swab Cat Toys with Catnip for Indoor Interactive Play and Chewing"
+        title = f"Cat Swab Toy Set, {pack_text} Giant Swab Cat Toys with Catnip for Indoor Interactive Play"
         bullet_1 = "Q-tip shaped cat toys encourage batting, chasing, tossing, and independent indoor play."
         bullet_2 = f"Made with {material or 'soft cotton and felt'} for a lightweight texture cats can paw and carry."
         bullet_3 = "Catnip scent helps attract attention and adds variety to daily play sessions."
@@ -583,7 +583,7 @@ def _make_copy(product_name, color, size, material, set_count):
         bullet_5 = "Long swab shape is easy for cats to grab, kick, chew, and roll across floors."
         desc = f"This {pack_text.lower()} cat Q-tip toy set gives indoor cats a simple way to bat, chase, chew, and kick during daily play. The giant cotton swab shape is lightweight and easy to carry, while the catnip scent helps draw interest for solo play or owner-led interaction."
     elif is_floral_card_holder:
-        title = f"Floral Card Holder Picks, {color}, Metal Flower Bouquet Card Sticks for Gift Cards and Table Centerpieces"
+        title = f"Floral Card Holder Picks, {color}, Flower Bouquet Card Sticks for Gift Cards and Table Centerpieces"
         bullet_1 = "Designed for flower bouquets, gift cards, table centerpieces, party signs, and photo notes."
         bullet_2 = f"Made with {material or 'metal'} for a clean decorative look in floral arrangements."
         bullet_3 = "Slim pick design slides into bouquets, foam, vases, baskets, and display arrangements."

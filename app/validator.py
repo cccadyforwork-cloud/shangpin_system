@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 
 from .paths import CONFIG_DIR, OUTPUTS_DIR
+from .listing_rules import validate_listing_row
 from .workbook_io import REQUIRED_CORE_FIELDS, read_intake_rows
 
 
@@ -226,6 +227,14 @@ def validate_intake(path):
                     "message": f"{field} 中包含中文，不能直接进入 Amazon 文案。",
                     "fix": "改成自然的跨境英语表达，避免中文、供应商原文或机器直译残留。"
                 })
+        for field, message, fix in validate_listing_row(row):
+            findings.append({
+                "severity": "error",
+                "row": row_number,
+                "field": field,
+                "message": message,
+                "fix": fix
+            })
         findings.extend(_copy_quality_findings(row, row_number))
 
         if is_parent:

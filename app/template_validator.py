@@ -4,6 +4,7 @@ import re
 from openpyxl import load_workbook
 
 from .paths import OUTPUTS_DIR
+from .listing_rules import validate_listing_row
 from .template_sheet import find_template_sheet, template_sheet_names_text
 
 
@@ -24,6 +25,7 @@ FIELD_NAMES = {
     "variation_theme": "variation_theme#1.name",
     "title": "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
     "description": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "generic_keyword": "generic_keyword[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
 }
 
 CJK_RE = re.compile(r"[\u4e00-\u9fff]")
@@ -494,6 +496,23 @@ def validate_template_file(path, output_path=None, write_report=True):
             value = ws.cell(row, col).value
             if CJK_RE.search(str(value or "")):
                 findings.append(error(row, label, f"{sku} 的 {label} 包含中文。", "改成自然的跨境英语表达，不要把中文原文写入 Amazon 模板。"))
+
+        listing_row = {}
+        for key in ["title", "description", "generic_keyword"]:
+            field_name = FIELD_NAMES.get(key)
+            col = field_to_col.get(field_name) if field_name else None
+            if col:
+                listing_row[key] = ws.cell(row, col).value
+        for idx in range(1, 6):
+            field_name = COPY_FIELD_NAMES[f"Bullet {idx}"]
+            col = field_to_col.get(field_name)
+            if col:
+                listing_row[f"bullet_{idx}"] = ws.cell(row, col).value
+        material_col = field_to_col.get("material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value")
+        if material_col:
+            listing_row["material"] = ws.cell(row, material_col).value
+        for field, message, fix in validate_listing_row(listing_row):
+            findings.append(error(row, field, f"{sku} 的 {message}", fix))
 
         if product_type_col:
             product_type = ws.cell(row, product_type_col).value
