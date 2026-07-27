@@ -2,6 +2,17 @@
 
 这是把“选品建档 -> 路线判断 -> 资料整理 -> 上传前自检 -> 报告解析”落地成可运行项目的第一版。
 
+## 重要：先读项目规则
+
+任何亚马逊模板填表、自动填表、上传报错修复、Listing 草稿、自检交付，必须先读根目录：
+
+```bash
+PROJECT_RULES.md
+AGENTS.md
+```
+
+实际写入规则以 `app/template_writer.py` 为准，实际自检规则以 `app/template_validator.py` 为准，成功样板默认值过滤以 `app/success_rule_defaults.py` 为准。不要只凭通用亚马逊填表经验操作。
+
 ## 初始化
 
 ```bash
@@ -85,7 +96,7 @@ python3 run.py validate "/完整路径/产品资料.xlsx"
 - Generic/品牌路线是否冲突
 - Haul 价格是否超过配置上限
 - 包装尺寸重量是否完整且大于 0
-- List Price / Haul Price 是否冲突
+- List Price / Haul Price 是否冲突，卖方最低价格是否为 0.1
 - 文案是否出现高风险宣称词
 - 高风险类目关键词
 
@@ -260,7 +271,7 @@ python3 run.py learn-success-templates
 - 只按相同 Product Type 应用。
 - 只补模板里存在、当前为空的字段。
 - 不覆盖产品资料草稿或原字段映射已经写入的内容。
-- 默认会补 Parent/Child 变体关系；不自动编造价格、标题、五点、描述或图片。
+- 默认会补 Parent/Child 变体关系和卖方最低价格 0.1；不自动编造售价、标题、五点、描述或图片。
 
 ## 后续扩展方向
 

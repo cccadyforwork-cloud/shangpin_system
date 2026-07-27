@@ -14,6 +14,7 @@ FIELD_NAMES = {
     "condition": "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
     "list_price": "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
     "haul_price": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
+    "minimum_seller_allowed_price": "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.minimum_seller_allowed_price#1.schedule#1.value_with_tax",
     "item_depth": "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.depth.value",
     "item_depth_unit": "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.depth.unit",
     "item_height": "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
@@ -29,6 +30,15 @@ FIELD_NAMES = {
 }
 
 CJK_RE = re.compile(r"[\u4e00-\u9fff]")
+
+
+def _is_default_minimum_seller_price(value):
+    try:
+        return float(value) == 0.1
+    except (TypeError, ValueError):
+        return False
+
+
 COPY_FIELD_NAMES = {
     "Title": FIELD_NAMES["title"],
     "Description": FIELD_NAMES["description"],
@@ -429,6 +439,7 @@ def validate_template_file(path, output_path=None, write_report=True):
     skip_offer_col = field_to_col.get(FIELD_NAMES["skip_offer"])
     list_price_col = field_to_col.get(FIELD_NAMES["list_price"])
     haul_price_col = field_to_col.get(FIELD_NAMES["haul_price"])
+    minimum_seller_allowed_price_col = field_to_col.get(FIELD_NAMES["minimum_seller_allowed_price"])
     parentage_col = field_to_col.get(FIELD_NAMES["parentage_level"])
     parent_sku_col = field_to_col.get(FIELD_NAMES["parent_sku"])
     variation_theme_col = field_to_col.get(FIELD_NAMES["variation_theme"])
@@ -465,6 +476,10 @@ def validate_template_file(path, output_path=None, write_report=True):
                 findings.append(error(row, "List Price", f"{sku} 的 List Price 为空。", "上传前填写数字价格。"))
             if haul_price in (None, ""):
                 findings.append(error(row, "Haul Price", f"{sku} 的 Haul Price 为空。", "Haul/BZR 价格应与 List Price 同步。"))
+        if minimum_seller_allowed_price_col and not is_parent:
+            minimum_seller_allowed_price = ws.cell(row, minimum_seller_allowed_price_col).value
+            if not _is_default_minimum_seller_price(minimum_seller_allowed_price):
+                findings.append(error(row, "Minimum Seller Allowed Price", f"{sku} 的卖方最低价格不是 0.1，当前为 `{minimum_seller_allowed_price}`。", "当前项目默认填写 0.1 美金。"))
 
         for label, value_col, unit_col in available_dimension_pairs:
             value = ws.cell(row, value_col).value
@@ -581,6 +596,7 @@ def write_template_report(path, checked_file, findings, data_rows):
             "- Item Condition = New",
             "- Skip Offer 留空",
             "- List Price / Haul Price 已填写",
+            "- 卖方最低价格 = 0.1",
             "- 模板包含 Item Depth/Height/Width 字段时，其数值与单位成对填写",
             ""
         ])

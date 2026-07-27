@@ -2,12 +2,14 @@
 
 这份文档用于下次在新设备或新对话里快速复用“亚马逊模板填表”流程。目标是：少走弯路、优先用项目已有经验、避免慢速全量渲染、避开中文路径和文件锁问题。
 
+> 必须先读根目录 `PROJECT_RULES.md`。本文件是流程文档，实际字段写入以 `app/template_writer.py` 为准，模板自检以 `app/template_validator.py` 为准，成功样板默认值过滤以 `app/success_rule_defaults.py` 为准。
+
 ## 新对话启动提示
 
 可以直接把下面这段发给 Codex：
 
 ```text
-我要填亚马逊模板表格。请优先使用项目里现有的填表经验和字段映射，不要先用通用表格引擎全量导入/渲染模板。
+我要填亚马逊模板表格。请先读取 PROJECT_RULES.md、docs/amazon_template_fill_workflow.md、data/reference_docs/亚马逊上传表格_通用自检资料.md，并以 app/template_writer.py / app/template_validator.py 的实际规则为准。不要凭通用亚马逊填表经验直接填写。
 
 流程要求：
 1. 先读取最终价格表，确认 SKU、父体 SKU、子体 SKU、价格、尺寸、重量。
@@ -260,7 +262,7 @@ Get-ChildItem -Force | Where-Object { $_.Name -like '~$*' }
 - 子体 Parent SKU 指向父体
 - Product Type 正确
 - Brand / Manufacturer 是 `Generic`
-- 价格、尺寸、重量与最终价格表一致
+- List Price / Haul Price 与最终价格表一致，卖方最低价格为 `0.1`
 - 必填字段非空
 - 五点描述 5 个单元格非空
 - `Country of Origin = China`

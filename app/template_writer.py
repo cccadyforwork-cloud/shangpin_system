@@ -46,6 +46,7 @@ FIELD_MAP = {
     "part_number[marketplace_id=ATVPDKIKX0DER]#1.value": "sku",
     "list_price[marketplace_id=ATVPDKIKX0DER]#1.value": "list_price",
     "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax": "haul_price",
+    "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.minimum_seller_allowed_price#1.schedule#1.value_with_tax": "__minimum_seller_allowed_price",
     "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.depth.value": "package_height_in",
     "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.depth.unit": "__title_inches",
     "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value": "package_length_in",
@@ -205,7 +206,7 @@ def extract_template_product_type(template_path):
 
 def _value_for(row, source):
     is_parent = str(row.get("parentage_level") or "").strip().lower() == "parent"
-    if is_parent and source in {"__package_quantity", "__inches", "__title_inches", "__pounds"}:
+    if is_parent and source in {"__package_quantity", "__inches", "__title_inches", "__pounds", "__minimum_seller_allowed_price"}:
         return ""
     if source == "__listing_action":
         return "Create or Replace (Full Update)"
@@ -225,6 +226,8 @@ def _value_for(row, source):
         return "Not Applicable"
     if source == "__new_condition":
         return "New"
+    if source == "__minimum_seller_allowed_price":
+        return 0.1
     if source == "__glove":
         return "Glove"
     if source == "__cotton":
@@ -718,6 +721,7 @@ def write_fill_report(path, output_path, draft_path, template_path, rows, writte
         f"- Item Type Keyword：{first.get('item_type_keyword')}",
         f"- List Price：{first.get('list_price') or '留空，等待人工填写'}",
         f"- Haul Price：{first.get('haul_price') or '留空，后续与 List Price 保持一致'}",
+        "- Minimum Seller Allowed Price：0.1",
         f"- Main Image URL：留空",
         "",
         "## 已写入字段",

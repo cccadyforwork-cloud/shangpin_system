@@ -76,7 +76,7 @@ def create_intake_workbook(path):
     ws.append([
         "示例项目",
         "示例收纳袋",
-        "Haul Generic",
+        "Haul Generic Variation",
         "Generic",
         "Generic",
         "home",
