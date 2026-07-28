@@ -25,6 +25,7 @@ FIELD_NAMES = {
     "parent_sku": "child_parent_sku_relationship[marketplace_id=ATVPDKIKX0DER]#1.parent_sku",
     "variation_theme": "variation_theme#1.name",
     "title": "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "item_highlight": "title_differentiation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
     "description": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
     "generic_keyword": "generic_keyword[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
 }
@@ -385,6 +386,12 @@ def _is_parent_optional_required_field(field_name):
     return any(token in lowered for token in [
         "color[",
         "size[",
+        "title_differentiation",
+        "condition_type",
+        "model_number",
+        "model_name",
+        "manufacturer",
+        "part_number",
         "list_price",
         "purchasable_offer",
         "skip_offer",
@@ -436,6 +443,7 @@ def validate_template_file(path, output_path=None, write_report=True):
                 data_rows.append(row)
 
     condition_col = field_to_col.get(FIELD_NAMES["condition"])
+    item_highlight_col = field_to_col.get(FIELD_NAMES["item_highlight"])
     skip_offer_col = field_to_col.get(FIELD_NAMES["skip_offer"])
     list_price_col = field_to_col.get(FIELD_NAMES["list_price"])
     haul_price_col = field_to_col.get(FIELD_NAMES["haul_price"])
@@ -457,11 +465,11 @@ def validate_template_file(path, output_path=None, write_report=True):
         parentage = str(ws.cell(row, parentage_col).value or "").strip().lower() if parentage_col else ""
         is_parent = parentage == "parent"
         is_child = parentage == "child"
-        if condition_col:
+        if condition_col and not is_parent:
             condition = ws.cell(row, condition_col).value
             if condition != "New":
                 findings.append(error(row, "Item Condition", f"{sku} 的 Item Condition 不是 New，当前为 `{condition}`。", "新品统一填写 New。"))
-        else:
+        elif not condition_col:
             findings.append(error(row, "Item Condition", "模板中找不到 Item Condition 字段。", "确认模板是否包含 condition_type 字段。"))
 
         if skip_offer_col:
@@ -478,8 +486,15 @@ def validate_template_file(path, output_path=None, write_report=True):
                 findings.append(error(row, "Haul Price", f"{sku} 的 Haul Price 为空。", "Haul/BZR 价格应与 List Price 同步。"))
         if minimum_seller_allowed_price_col and not is_parent:
             minimum_seller_allowed_price = ws.cell(row, minimum_seller_allowed_price_col).value
-            if not _is_default_minimum_seller_price(minimum_seller_allowed_price):
-                findings.append(error(row, "Minimum Seller Allowed Price", f"{sku} 的卖方最低价格不是 0.1，当前为 `{minimum_seller_allowed_price}`。", "当前项目默认填写 0.1 美金。"))
+            if minimum_seller_allowed_price not in (None, "") and not _is_default_minimum_seller_price(minimum_seller_allowed_price):
+                findings.append(error(row, "Minimum Seller Allowed Price", f"{sku} 的卖方最低价格不是 0.1 或空值，当前为 `{minimum_seller_allowed_price}`。", "父子体 V4 默认留空；若人工填写，只允许 0.1。"))
+
+        if item_highlight_col:
+            title_col = field_to_col.get(FIELD_NAMES["title"])
+            title = str(ws.cell(row, title_col).value or "") if title_col else ""
+            item_highlight = ws.cell(row, item_highlight_col).value
+            if item_highlight not in (None, "") and len(title) > 75:
+                findings.append(error(row, "Item Highlight", f"{sku} 填写了 Item Highlight，但 Item Name 长度为 {len(title)}，超过 75 字符。", "标题按 100-125 字符规则时清空 Item Highlight；只有标题不超过 75 字符时才填写该字段。"))
 
         for label, value_col, unit_col in available_dimension_pairs:
             value = ws.cell(row, value_col).value
@@ -593,10 +608,11 @@ def write_template_report(path, checked_file, findings, data_rows):
             "",
             "已确认：",
             "",
-            "- Item Condition = New",
+            "- 非 Parent 行 Item Condition = New，Parent 行可留空",
             "- Skip Offer 留空",
             "- List Price / Haul Price 已填写",
-            "- 卖方最低价格 = 0.1",
+            "- 卖方最低价格留空或 = 0.1",
+            "- 标题超过 75 字符时 Item Highlight 留空",
             "- 模板包含 Item Depth/Height/Width 字段时，其数值与单位成对填写",
             ""
         ])

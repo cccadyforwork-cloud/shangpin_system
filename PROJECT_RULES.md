@@ -28,7 +28,7 @@ Haul Generic Variation
 - 生成 1 行 Parent 和多行 Child。
 - Parent 行填写 `parentage_level = Parent` 和 `variation_theme`。
 - Child 行填写 `parentage_level = Child`、`parent_sku`、`variation_theme`。
-- Parent 行不填写价格、包装尺寸、包装重量、主图、颜色、尺寸等子体专属字段。
+- Parent 行不填写价格、包装尺寸、包装重量、主图、颜色、尺寸、Item Condition、Model Number、Model Name、Manufacturer、Part Number、Item Highlight 等子体/报价/可售专属字段。
 
 只有用户明确选择或资料中明确写明时，才走：
 
@@ -43,7 +43,6 @@ Haul Generic Variation
 ```text
 list_price[marketplace_id=ATVPDKIKX0DER]#1.value
 purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax
-purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.minimum_seller_allowed_price#1.schedule#1.value_with_tax = 0.1
 ```
 
 项目内字段名：
@@ -53,10 +52,10 @@ list_price
 haul_price
 ```
 
-默认卖方最低价格：
+父子体 V4 默认卖方最低价格：
 
 ```text
-minimum_seller_allowed_price = 0.1
+minimum_seller_allowed_price 留空
 ```
 
 不要默认填写：
@@ -65,7 +64,7 @@ minimum_seller_allowed_price = 0.1
 maximum_seller_allowed_price
 ```
 
-最高价字段即使在成功样板中出现，也属于不安全默认字段，不能自动补。最低价只按项目基础字段固定写 `0.1`，不要从成功样板继承其他最低价。
+最高价字段即使在成功样板中出现，也属于不安全默认字段，不能自动补。最低价默认留空；如用户明确要求或某处理报告验证需要，只允许人工填 `0.1`，不要从成功样板继承其他最低价。
 
 ## 基础写入规则
 
@@ -75,7 +74,7 @@ maximum_seller_allowed_price
 - 标题、品牌、Manufacturer、Item Type Keyword。
 - Parent/Child 变体字段。
 - 描述、五点、材质、颜色、尺寸、件数、包装数量。
-- List Price、Haul/BZR Price、卖方最低价格 0.1。
+- 非 Parent 行 List Price、Haul/BZR Price。
 - 商品尺寸、包装尺寸、包装重量及单位。
 - 原产国、电池、危险品、Condition。
 - 部分类目基础字段，例如 PROTECTIVE_GLOVE 的 glove/coating/palm 字段。
@@ -88,7 +87,7 @@ maximum_seller_allowed_price
 
 ```text
 record_action = Create or Replace (Full Update)
-condition_type = New
+非 Parent 行 condition_type = New，Parent 行留空
 item_package_quantity = set_count 或 1
 尺寸单位 = Inches
 包装重量单位 = Pounds
@@ -160,10 +159,11 @@ Listing 文案必须英文填写。
 
 标题：
 
-- 125 字符以内。
-- 核心关键词靠前。
+- 100-125 字符，尽量贴近 125 字符但不能超。
+- 核心关键词靠前，并覆盖更多相关关键词、长尾词、用途、场景和款式信息。
 - 不堆砌关键词，不全大写。
 - Generic 路线不出现供应商品牌/公司名。
+- 标题按 100-125 字符时，不填写 `Item Highlight` / `title_differentiation`。Amazon 报错 100476 已确认：只要填写 Item Highlight，Item Name 必须 75 字符以内。
 
 五点：
 
@@ -189,9 +189,10 @@ Listing 文案必须英文填写。
 
 最低检查：
 
-- `Item Condition = New`
+- 非 Parent 行 `Item Condition = New`，Parent 行可留空。
 - `Skip Offer` 留空。
-- 非 Parent 行 `List Price`、Haul/BZR `our_price` 和 `minimum_seller_allowed_price = 0.1` 已填写。
+- 非 Parent 行 `List Price` 和 Haul/BZR `our_price` 已填写；`minimum_seller_allowed_price` 默认留空，若人工填写只允许 `0.1`。
+- 标题超过 75 字符时，`Item Highlight` / `title_differentiation` 必须留空。
 - 尺寸数值和单位成对填写。
 - Parent 行不填 Parent SKU；Child 行必须填 Parent SKU。
 - Parent/Child 行必须有 Variation Theme。

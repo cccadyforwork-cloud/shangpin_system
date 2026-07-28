@@ -60,8 +60,12 @@ def validate_listing_row(row):
     if non_us_units:
         findings.append(("copy", f"Listing 文案疑似残留非目标单位：{', '.join(non_us_units[:6])}。", "长度统一换算为 inch，重量统一换算为 lb。"))
 
-    if title and _char_len(title) > rules["title_max_chars"]:
-        findings.append(("title", f"标题长度为 {_char_len(title)} 字符，超过 {rules['title_max_chars']} 字符。", "压缩标题，保留核心关键词、功能和场景。"))
+    if title:
+        title_length = _char_len(title)
+        if title_length < rules["title_min_chars"]:
+            findings.append(("title", f"标题长度为 {title_length} 字符，低于 {rules['title_min_chars']} 字符。", "扩展标题，优先补充核心关键词、长尾词、用途、场景和款式信息，保持自然可读。"))
+        if title_length > rules["title_max_chars"]:
+            findings.append(("title", f"标题长度为 {title_length} 字符，超过 {rules['title_max_chars']} 字符。", "压缩标题，保留核心关键词、长尾词、功能和场景。"))
 
     lowercase_words = set(rules["title_lowercase_words"])
     bad_case_words = [

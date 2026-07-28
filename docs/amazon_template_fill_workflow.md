@@ -136,8 +136,8 @@ WPS 表格常见 COM 名称：
 
 标题：
 
-- 控制在 125 字符以内。
-- 核心关键词靠前，核心关键词之间用英文逗号隔开。
+- 控制在 100-125 字符，尽量贴近 125 字符但不能超。
+- 核心关键词靠前，核心关键词之间用英文逗号隔开，并尽量覆盖更多相关关键词、长尾词、用途、场景和款式信息。
 - 除介词、冠词、连词外，单词首字母大写。
 - 除介词、冠词、连词外，同一单词不要超过两次。
 - 标题不放成分或材质词。
@@ -177,6 +177,7 @@ Product Description：
 - Brand：`Generic`
 - Item Name：可不带具体颜色
 - 通常不填 Parent SKU
+- 不填 Item Condition、Model Number、Model Name、Manufacturer、Part Number、Item Highlight、价格、报价日期、最低/最高价、包装尺寸、包装重量、颜色、尺寸、主图等子体/报价/可售专属字段
 
 子体行：
 
@@ -185,9 +186,10 @@ Product Description：
 - Parent SKU：父体 SKU
 - Child Relationship Type：`Variation`
 - Variation Theme：例如 `Color`
-- Title Differentiation：例如 `Black`
+- Item Highlight / Title Differentiation：标题按 100-125 字符时留空；只有标题不超过 75 字符时才可填写
 - Color：例如 `Black`
 - 价格、尺寸、重量按最终价格表填写
+- `List Price` 和 Haul/BZR `our_price` 必填；`minimum_seller_allowed_price` 默认留空，若处理报告要求再人工填 `0.1`
 
 ## Google Drive 怎么加速
 
@@ -261,8 +263,10 @@ Get-ChildItem -Force | Where-Object { $_.Name -like '~$*' }
 - 父体 SKU / 子体 SKU 正确
 - 子体 Parent SKU 指向父体
 - Product Type 正确
-- Brand / Manufacturer 是 `Generic`
-- List Price / Haul Price 与最终价格表一致，卖方最低价格为 `0.1`
+- Brand 是 `Generic`；子体 Manufacturer 是 `Generic`，父体 Manufacturer 留空
+- 父体 Item Condition / Model Number / Model Name / Manufacturer / Part Number / Item Highlight / 价格 / 包装尺寸重量留空
+- 子体 List Price / Haul Price 与最终价格表一致，卖方最低价格默认留空
+- 标题超过 75 字符时，Item Highlight 留空
 - 必填字段非空
 - 五点描述 5 个单元格非空
 - `Country of Origin = China`

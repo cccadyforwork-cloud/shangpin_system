@@ -46,7 +46,6 @@ FIELD_MAP = {
     "part_number[marketplace_id=ATVPDKIKX0DER]#1.value": "sku",
     "list_price[marketplace_id=ATVPDKIKX0DER]#1.value": "list_price",
     "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax": "haul_price",
-    "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.minimum_seller_allowed_price#1.schedule#1.value_with_tax": "__minimum_seller_allowed_price",
     "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.depth.value": "package_height_in",
     "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.depth.unit": "__title_inches",
     "item_depth_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value": "package_length_in",
@@ -147,6 +146,8 @@ PARENT_CLEAR_FIELDS = {
     "parent_sku",
     "color",
     "size",
+    "manufacturer",
+    "model_name",
     "cost",
     "target_price",
     "list_price",
@@ -156,6 +157,22 @@ PARENT_CLEAR_FIELDS = {
     "package_height_in",
     "package_weight_lb",
     "main_image_url",
+}
+
+PARENT_SKIP_FIELD_NAMES = {
+    "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "part_number[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "title_differentiation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "skip_offer[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax",
+    "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.minimum_seller_allowed_price#1.schedule#1.value_with_tax",
+    "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.maximum_seller_allowed_price#1.schedule#1.value_with_tax",
+    "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.start_at.value",
+    "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.end_at.value",
 }
 
 
@@ -206,7 +223,7 @@ def extract_template_product_type(template_path):
 
 def _value_for(row, source):
     is_parent = str(row.get("parentage_level") or "").strip().lower() == "parent"
-    if is_parent and source in {"__package_quantity", "__inches", "__title_inches", "__pounds", "__minimum_seller_allowed_price"}:
+    if is_parent and source in {"__package_quantity", "__inches", "__title_inches", "__pounds"}:
         return ""
     if source == "__listing_action":
         return "Create or Replace (Full Update)"
@@ -226,8 +243,6 @@ def _value_for(row, source):
         return "Not Applicable"
     if source == "__new_condition":
         return "New"
-    if source == "__minimum_seller_allowed_price":
-        return 0.1
     if source == "__glove":
         return "Glove"
     if source == "__cotton":
@@ -586,6 +601,12 @@ def _write_required_defaults(ws, row_index, row_data, field_to_col, required_fie
         if not col or ws.cell(row_index, col).value not in (None, ""):
             continue
         if is_parent and any(token in field_name for token in [
+            "title_differentiation",
+            "condition_type",
+            "model_number",
+            "model_name",
+            "manufacturer",
+            "part_number",
             "list_price",
             "purchasable_offer",
             "item_package_dimensions",
@@ -643,6 +664,8 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
         for field_name, source in FIELD_MAP.items():
             col = field_to_col.get(field_name)
             if not col:
+                continue
+            if _is_parent_row(row_data) and field_name in PARENT_SKIP_FIELD_NAMES:
                 continue
             value = _value_for(row_data, source)
             if value in (None, ""):
@@ -721,7 +744,7 @@ def write_fill_report(path, output_path, draft_path, template_path, rows, writte
         f"- Item Type Keyword：{first.get('item_type_keyword')}",
         f"- List Price：{first.get('list_price') or '留空，等待人工填写'}",
         f"- Haul Price：{first.get('haul_price') or '留空，后续与 List Price 保持一致'}",
-        "- Minimum Seller Allowed Price：0.1",
+        "- Minimum Seller Allowed Price：默认留空",
         f"- Main Image URL：留空",
         "",
         "## 已写入字段",
