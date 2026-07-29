@@ -45,6 +45,13 @@ COPY_FIELD_NAMES = {
 
 
 PRODUCT_TYPE_CONDITIONAL_FIELDS = {
+    "HEALTH_PERSONAL_CARE": {
+        "Is the Item Heat Sensitive?": "is_heat_sensitive[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Is Product Expirable": "is_expiration_dated_product[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Unit Count": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Unit Count Type": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+        "Contains Liquid Contents?": "contains_liquid_contents[marketplace_id=ATVPDKIKX0DER]#1.value",
+    },
     "ANIMAL_COLLAR": {
         "Item Type Keyword": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
         "Model Number": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
@@ -396,6 +403,9 @@ def _is_parent_optional_required_field(field_name):
         "item_length_width",
         "item_dimensions",
         "item_weight",
+        "is_heat_sensitive",
+        "is_expiration_dated_product",
+        "contains_liquid_contents",
         "unit_count",
         "number_of_items",
         "number_of_packs",
@@ -413,7 +423,7 @@ def _is_parent_optional_required_field(field_name):
     ])
 
 
-def validate_template_file(path, output_path=None, write_report=True):
+def validate_template_file(path, output_path=None, write_report=False):
     path = Path(path)
     wb = load_workbook(path, data_only=True, read_only=True)
     ws = find_template_sheet(wb)

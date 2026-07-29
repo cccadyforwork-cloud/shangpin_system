@@ -16,10 +16,11 @@
 2. 读取 Amazon 模板的 Data Definitions 和 Template 第 5 行字段名，确认必填字段。
 3. 读取 1688 详情和 Amazon 竞品详情，提炼标题、五点、描述、材质、颜色、卖点。
 4. 默认走多变体路线；保留 Template 第 6 行示例行，从第 7 行开始写 Parent/Child 数据。
-5. 优先使用 WPS 表格 COM 或 Excel/WPS 自动化接口写入 Template 页；如果不可用，再用 openpyxl 复制模板并只写目标字段。
-6. 只做字段级校验：父子体、必填字段、价格尺寸、重量、五点描述 5 个单元格、危险品/电池/原产国。
-7. 不要做大范围图片渲染，不要用慢速通用表格引擎处理整本 Amazon 模板，除非我明确要求视觉预览。
-8. 输出文件只保留填写好的上传表格，命名为 `产品名_V.xlsx`；根据错误报告修正后的版本依次为 `产品名_V2.xlsx`、`产品名_V3.xlsx`。
+5. 图片字段默认不处理：不写入、不迁移、不检查图片 URL；带文字、水印、详情页排版或无法确认合规的图片链接一律不要填。
+6. 优先使用 WPS 表格 COM 或 Excel/WPS 自动化接口写入 Template 页；如果不可用，再用 openpyxl 复制模板并只写目标字段。
+7. 只做字段级校验：父子体、必填字段、价格尺寸、重量、五点描述 5 个单元格、危险品/电池/原产国。
+8. 不要做大范围图片渲染，不要用慢速通用表格引擎处理整本 Amazon 模板，除非我明确要求视觉预览。
+9. 输出文件只保留填写好的上传表格，命名为 `产品名_V.xlsx`；根据错误报告修正后的版本依次为 `产品名_V2.xlsx`、`产品名_V3.xlsx`。
 ```
 
 ## 推荐执行顺序
@@ -32,7 +33,7 @@
 - 最终价格确认表 `.xls` / `.xlsx`
 - 1688 商品详情 HTML
 - Amazon 竞品详情 HTML
-- 需要时加入图片 URL 或图片文件
+- 图片文件或 URL 只作为人工素材存放；默认不写入 Amazon 图片字段
 
 2. 建立短路径工作区
 
@@ -71,6 +72,7 @@ Copy-Item -LiteralPath "D:\dpan\桌面\手机握把\*" -Destination C:\sp_work\p
 - Country of Origin：通常填 `China`
 - Batteries Required：无电池填 `No`
 - Dangerous Goods Regulations：普通无危险品填 `Not Applicable`
+- 图片字段：默认留空，不从任何来源继承或写入图片链接
 
 5. 写入方式优先级
 
@@ -177,7 +179,7 @@ Product Description：
 - Brand：`Generic`
 - Item Name：可不带具体颜色
 - 通常不填 Parent SKU
-- 不填 Item Condition、Model Number、Model Name、Manufacturer、Part Number、Item Highlight、价格、报价日期、最低/最高价、包装尺寸、包装重量、颜色、尺寸、主图等子体/报价/可售专属字段
+- 不填 Item Condition、Model Number、Model Name、Manufacturer、Part Number、Item Highlight、价格、报价日期、最低/最高价、包装尺寸、包装重量、颜色、尺寸等子体/报价/可售专属字段；图片字段全路线默认不处理
 
 子体行：
 
