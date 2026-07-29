@@ -28,6 +28,8 @@ FIELD_NAMES = {
     "item_highlight": "title_differentiation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
     "description": "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
     "generic_keyword": "generic_keyword[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "contains_battery_or_cell": "contains_battery_or_cell[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "dog_breed_size": "dog_breed_size[marketplace_id=ATVPDKIKX0DER]#1.value",
 }
 
 CJK_RE = re.compile(r"[\u4e00-\u9fff]")
@@ -453,6 +455,8 @@ def validate_template_file(path, output_path=None, write_report=False):
     parentage_col = field_to_col.get(FIELD_NAMES["parentage_level"])
     parent_sku_col = field_to_col.get(FIELD_NAMES["parent_sku"])
     variation_theme_col = field_to_col.get(FIELD_NAMES["variation_theme"])
+    contains_battery_or_cell_col = field_to_col.get(FIELD_NAMES["contains_battery_or_cell"])
+    dog_breed_size_col = field_to_col.get(FIELD_NAMES["dog_breed_size"])
     product_type_col = field_to_col.get("product_type#1.value")
     required_fields = _required_fields_from_data_definitions(wb)
     dimension_pairs = [
@@ -478,6 +482,16 @@ def validate_template_file(path, output_path=None, write_report=False):
             skip_offer = ws.cell(row, skip_offer_col).value
             if skip_offer not in (None, ""):
                 findings.append(error(row, "Skip Offer", f"{sku} 的 Skip Offer 应留空，当前为 `{skip_offer}`。", "不要填写 skip_offer，让报价随价格字段正常生成。"))
+
+        if contains_battery_or_cell_col:
+            contains_battery_or_cell = ws.cell(row, contains_battery_or_cell_col).value
+            if contains_battery_or_cell == "No":
+                findings.append(error(row, "Contains Battery or Cell", f"{sku} 的 Contains Battery or Cell 不能填 No。", "该字段有效值是 Battery 或 Cell；非电池商品按当前规则留空。"))
+
+        if dog_breed_size_col:
+            dog_breed_size = ws.cell(row, dog_breed_size_col).value
+            if dog_breed_size == "All Breed Sizes":
+                findings.append(error(row, "Dog Breed Size", f"{sku} 的 Dog Breed Size 不能填 All Breed Sizes。", "ANIMAL_COLLAR 模板有效值为 Extra Small、Small、Medium、Large、Giant、All；通用值填 All。"))
 
         if list_price_col and haul_price_col and not is_parent:
             list_price = ws.cell(row, list_price_col).value
