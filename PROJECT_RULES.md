@@ -64,7 +64,7 @@ minimum_seller_allowed_price 留空
 maximum_seller_allowed_price
 ```
 
-最高价字段即使在成功样板中出现，也属于不安全默认字段，不能自动补。最低价默认留空；如用户明确要求或某处理报告验证需要，只允许人工填 `0.1`，不要从成功样板继承其他最低价。
+最高价字段即使在成功样板中出现，也属于不安全默认字段，不能自动补。最低价默认留空，不要从成功样板继承最低价。
 
 ## 基础写入规则
 
@@ -191,7 +191,7 @@ Listing 文案必须英文填写。
 
 - 非 Parent 行 `Item Condition = New`，Parent 行可留空。
 - `Skip Offer` 留空。
-- 非 Parent 行 `List Price` 和 Haul/BZR `our_price` 已填写；`minimum_seller_allowed_price` 默认留空，若人工填写只允许 `0.1`。
+- 非 Parent 行 `List Price` 和 Haul/BZR `our_price` 已填写；`minimum_seller_allowed_price` 默认留空，不做人工填写值限制。
 - 标题超过 75 字符时，`Item Highlight` / `title_differentiation` 必须留空。
 - 尺寸数值和单位成对填写。
 - Parent 行不填 Parent SKU；Child 行必须填 Parent SKU。

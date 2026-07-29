@@ -189,7 +189,7 @@ Product Description：
 - Item Highlight / Title Differentiation：标题按 100-125 字符时留空；只有标题不超过 75 字符时才可填写
 - Color：例如 `Black`
 - 价格、尺寸、重量按最终价格表填写
-- `List Price` 和 Haul/BZR `our_price` 必填；`minimum_seller_allowed_price` 默认留空，若处理报告要求再人工填 `0.1`
+- `List Price` 和 Haul/BZR `our_price` 必填；`minimum_seller_allowed_price` 默认留空，不做人工填写值限制
 
 ## Google Drive 怎么加速
 

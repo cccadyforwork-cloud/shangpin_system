@@ -33,13 +33,6 @@ FIELD_NAMES = {
 CJK_RE = re.compile(r"[\u4e00-\u9fff]")
 
 
-def _is_default_minimum_seller_price(value):
-    try:
-        return float(value) == 0.1
-    except (TypeError, ValueError):
-        return False
-
-
 COPY_FIELD_NAMES = {
     "Title": FIELD_NAMES["title"],
     "Description": FIELD_NAMES["description"],
@@ -447,7 +440,6 @@ def validate_template_file(path, output_path=None, write_report=True):
     skip_offer_col = field_to_col.get(FIELD_NAMES["skip_offer"])
     list_price_col = field_to_col.get(FIELD_NAMES["list_price"])
     haul_price_col = field_to_col.get(FIELD_NAMES["haul_price"])
-    minimum_seller_allowed_price_col = field_to_col.get(FIELD_NAMES["minimum_seller_allowed_price"])
     parentage_col = field_to_col.get(FIELD_NAMES["parentage_level"])
     parent_sku_col = field_to_col.get(FIELD_NAMES["parent_sku"])
     variation_theme_col = field_to_col.get(FIELD_NAMES["variation_theme"])
@@ -484,11 +476,6 @@ def validate_template_file(path, output_path=None, write_report=True):
                 findings.append(error(row, "List Price", f"{sku} 的 List Price 为空。", "上传前填写数字价格。"))
             if haul_price in (None, ""):
                 findings.append(error(row, "Haul Price", f"{sku} 的 Haul Price 为空。", "Haul/BZR 价格应与 List Price 同步。"))
-        if minimum_seller_allowed_price_col and not is_parent:
-            minimum_seller_allowed_price = ws.cell(row, minimum_seller_allowed_price_col).value
-            if minimum_seller_allowed_price not in (None, "") and not _is_default_minimum_seller_price(minimum_seller_allowed_price):
-                findings.append(error(row, "Minimum Seller Allowed Price", f"{sku} 的卖方最低价格不是 0.1 或空值，当前为 `{minimum_seller_allowed_price}`。", "父子体 V4 默认留空；若人工填写，只允许 0.1。"))
-
         if item_highlight_col:
             title_col = field_to_col.get(FIELD_NAMES["title"])
             title = str(ws.cell(row, title_col).value or "") if title_col else ""
@@ -611,7 +598,7 @@ def write_template_report(path, checked_file, findings, data_rows):
             "- 非 Parent 行 Item Condition = New，Parent 行可留空",
             "- Skip Offer 留空",
             "- List Price / Haul Price 已填写",
-            "- 卖方最低价格留空或 = 0.1",
+            "- 卖方最低价格默认留空，不限制人工填写值",
             "- 标题超过 75 字符时 Item Highlight 留空",
             "- 模板包含 Item Depth/Height/Width 字段时，其数值与单位成对填写",
             ""
