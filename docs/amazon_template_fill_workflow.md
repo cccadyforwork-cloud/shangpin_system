@@ -139,10 +139,17 @@ WPS 表格常见 COM 名称：
 标题：
 
 - 控制在 100-125 字符，尽量贴近 125 字符但不能超。
+- 2026-07-27 起 Amazon 官方非媒体类标题方向为 75 字符以内；项目当前仍按可上传的 100-125 字符生成长标题，超过 75 字符时 `Item Highlight` / `title_differentiation` 必须留空。
 - 核心关键词靠前，核心关键词之间用英文逗号隔开，并尽量覆盖更多相关关键词、长尾词、用途、场景和款式信息。
 - 除介词、冠词、连词外，单词首字母大写。
 - 除介词、冠词、连词外，同一单词不要超过两次。
-- 标题不放成分或材质词。
+- 标题允许资料可证明的普通材质词作为卖点，例如 `Velvet`、`Plastic`、`Silicone`。但材质安全/等级/环保/不含某物等合规宣称不要写进标题，例如 `Food Grade`、`Medical Grade`、`BPA Free`、`Phthalate Free`、`Lead Free`、`Latex Free`、`Flame Retardant`、`Waterproof`、`Biodegradable`、`Eco Friendly`、`Organic`、`Recycled`。
+- 标题禁用 Amazon 高风险特殊字符：`!`、`$`、`?`、`_`、`{`、`}`、`^`、`¬`、`¦`；除明确属于品牌名外不要使用。
+- 标题不使用装饰字符或网页噪音，例如 `~`、`#`、`<`、`>`、`*`、`|`、`;`、重复标点、HTML 标签、换行、制表符、连续多空格、中文或全角标点。
+- 标题不写促销、平台背书、物流或售后信息，例如 `Free Shipping`、`Sale`、`Discount`、`Best Seller`、`Amazon Choice`、`Warranty`、`Refund`、`Fast Delivery`。
+- 标题不写医疗、护理、清洁、防护或结果型功效表达，例如 `Dental`、`Teeth Cleaning`、`Oral Care`、`Plaque`、`Tartar`、`Health`、`Therapy`、`Treat`、`Cure`、`Prevent`、`Antibacterial`、`Disinfect`、`UV Protection`。
+- 标题不写食用/摄入暗示或绝对化成分宣称，例如 `Flavor`、`Edible`、`Digestible`、`Food Grade`、`Non-Toxic`、`Natural`、`100% Natural`、`All Natural`、`Pure`、`Chemical Free`、`Safe`、`Hypoallergenic`。非食品商品表达气味用 `Scent`。
+- 标题只表达商品类型、款式/形状、适用对象、使用场景和可感知属性；凡涉及“身体、皮肤、牙齿、空气、环境更健康/更干净/更安全”的结果型表达，默认不写进标题。
 
 父子体标题：
 
@@ -150,7 +157,7 @@ WPS 表格常见 COM 名称：
 - Parent 标题不带具体单一颜色、尺寸或款式；多颜色变体写 `Multiple Colors Available`，多尺寸或多款式变体写 `Multiple Styles Available`。
 - Child 标题使用通用标题骨架，并追加自己的颜色、尺寸或款式属性；Child 标题不写 `Multiple Colors Available`、`Multiple Styles Available` 等 Parent 总结词。
 - 多件装或套装在 Parent 和 Child 标题中都要说明，并放在标题首位，例如 `50 Pcs`、`2 Set`。
-- 父子体标题生成后仍按当前标题规则自检：100-125 字符、Title Case、关键词自然覆盖、不超字符上限、不含禁用词和材质词。
+- 父子体标题生成后仍按当前标题规则自检：100-125 字符、Title Case、关键词自然覆盖、不超字符上限、不含禁用词和敏感材质宣称。
 
 Generic Keywords：
 

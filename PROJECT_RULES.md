@@ -187,9 +187,18 @@ Listing 文案必须英文填写。
 标题：
 
 - 100-125 字符，尽量贴近 125 字符但不能超。
+- 2026-07-27 起 Amazon 官方非媒体类标题方向为 75 字符以内；项目当前仍按可上传的 100-125 字符生成长标题，但超过 75 字符时必须把 `Item Highlight` / `title_differentiation` 留空，并关注后续短标题迁移。
 - 核心关键词靠前，并覆盖更多相关关键词、长尾词、用途、场景和款式信息。
 - 不堆砌关键词，不全大写。
+- 除介词、冠词、连词外，同一单词不要超过两次。
 - Generic 路线不出现供应商品牌/公司名。
+- 禁用 Amazon 标题高风险字符：`!`、`$`、`?`、`_`、`{`、`}`、`^`、`¬`、`¦`。除明确属于品牌名外，不出现在标题中。
+- 标题不使用装饰或网页噪音字符/结构，例如 `~`、`#`、`<`、`>`、`*`、`|`、`;`、重复标点、HTML 标签、换行、制表符、连续多空格、中文或全角标点。
+- 标题不写促销、平台背书、物流或售后表达，例如 `Free Shipping`、`Sale`、`Discount`、`Best Seller`、`Amazon Choice`、`Warranty`、`Refund`、`Fast Delivery`。
+- 标题避免医疗、护理、清洁、防护、结果型功效或健康改善表达，例如 `Dental`、`Teeth Cleaning`、`Oral Care`、`Plaque`、`Tartar`、`Health`、`Therapy`、`Treat`、`Cure`、`Prevent`、`Antibacterial`、`Disinfect`、`UV Protection`。
+- 标题避免食用/摄入暗示和绝对化成分宣称，例如 `Flavor`、`Edible`、`Digestible`、`Food Grade`、`Non-Toxic`、`Natural`、`100% Natural`、`All Natural`、`Pure`、`Chemical Free`、`Safe`、`Hypoallergenic`。普通非食品商品表达气味用 `Scent`。
+- 标题允许资料可证明的普通材质词作为卖点，例如 `Velvet`、`Plastic`、`Silicone`。但材质安全/等级/环保/不含某物等合规宣称不要写进标题，例如 `Food Grade`、`Medical Grade`、`BPA Free`、`Phthalate Free`、`Lead Free`、`Latex Free`、`Flame Retardant`、`Waterproof`、`Biodegradable`、`Eco Friendly`、`Organic`、`Recycled`。
+- 标题只描述商品类型、款式/形状、适用对象、使用场景和可感知属性；凡涉及“让身体、皮肤、牙齿、空气、环境更健康/更干净/更安全”的结果型表达，默认不写进标题。
 - 标题按 100-125 字符时，不填写 `Item Highlight` / `title_differentiation`。Amazon 报错 100476 已确认：只要填写 Item Highlight，Item Name 必须 75 字符以内。
 
 父子体标题：
@@ -198,7 +207,7 @@ Listing 文案必须英文填写。
 - 父体标题去掉具体颜色、尺寸等单一子体属性；多颜色变体加入 `Multiple Colors Available`，多尺寸或多款式变体加入 `Multiple Styles Available`。
 - 子体标题基于通用标题生成，并追加自己的颜色、尺寸或款式属性；子体标题不能包含 `Multiple Colors Available`、`Multiple Styles Available` 等父体总结词。
 - 多件装或套装如果在 `set_count` 或原标题中可识别，父体和子体标题都必须把数量/套装前缀放在首位，例如 `50 Pcs`、`2 Set`。
-- 父子体标题仍必须遵守现有标题长度、关键词覆盖、Title Case、禁用词和材质词规则，不能超过当前配置的标题字符上限。
+- 父子体标题仍必须遵守现有标题长度、关键词覆盖、Title Case、禁用词和敏感材质宣称规则，不能超过当前配置的标题字符上限。
 
 五点：
 
