@@ -144,6 +144,7 @@ manufacturer = Generic
 - `COSMETIC_CASE`
 - `CLEANING_BRUSH`
 - `PET_TOY`
+- `PLANTER`
 - `TOWEL`
 - `PROTECTIVE_GLOVE`
 
@@ -153,6 +154,12 @@ ANIMAL_COLLAR 注意：
 
 - `dog_breed_size` 模板有效值是 `Extra Small`、`Small`、`Medium`、`Large`、`Giant`、`All`。
 - 不要填 `All Breed Sizes`；通用犬种尺寸用 `All`，明确小型宠物/小型犬时用 `Small`。
+
+PLANTER 注意：
+
+- 当前上传实测 `Model Name`、`Special Features`、`Mounting Type`、`Product Compliance Certificate` 会成为条件必填。
+- 普通换盆垫/园艺操作垫可用 `Special Features = Foldable`、`Mounting Type = Tabletop`、`Product Compliance Certificate = Not Applicable`。
+- 若 Amazon warning 提示 `item_length_width_height` 不适用于当前类目，应清空该组商品展开尺寸字段，只保留包装尺寸字段。
 
 ## 成功样板规则
 

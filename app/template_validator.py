@@ -137,6 +137,12 @@ COPY_FIELD_NAMES = {
 
 
 PRODUCT_TYPE_CONDITIONAL_FIELDS = {
+    "PLANTER": {
+        "Model Name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Special Features": "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Mounting Type": "mounting_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Product Compliance Certificate": "required_product_compliance_certificate[marketplace_id=ATVPDKIKX0DER]#1.value",
+    },
     "HEALTH_PERSONAL_CARE": {
         "Is the Item Heat Sensitive?": "is_heat_sensitive[marketplace_id=ATVPDKIKX0DER]#1.value",
         "Is Product Expirable": "is_expiration_dated_product[marketplace_id=ATVPDKIKX0DER]#1.value",
@@ -484,6 +490,9 @@ def _is_parent_optional_required_field(field_name):
         "model_name",
         "manufacturer",
         "part_number",
+        "special_feature",
+        "mounting_type",
+        "required_product_compliance_certificate",
         "list_price",
         "purchasable_offer",
         "skip_offer",

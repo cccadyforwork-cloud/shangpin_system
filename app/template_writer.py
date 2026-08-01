@@ -551,6 +551,10 @@ def _stable_field_default(field_name, row):
         return "Outdoor" if str(row.get("category") or "").lower() in {"garden", "patio", "sports"} else "Everyday Use"
     if "recommended_uses_for_product" in field:
         return "Chewing" if str(row.get("product_type") or "").upper() == "PET_TOY" else "Everyday Use"
+    if "special_feature" in field:
+        return "Foldable"
+    if "mounting_type" in field:
+        return "Tabletop"
     if "dog_breed_size" in field:
         return "All"
     if "breed_recommendation" in field:
