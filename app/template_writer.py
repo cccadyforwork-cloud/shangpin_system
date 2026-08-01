@@ -9,6 +9,7 @@ from .paths import DRAFT_DIRS, TEMPLATE_DIRS, safe_name
 from .success_rule_defaults import load_safe_defaults
 from .template_sheet import find_template_sheet, template_sheet_names_text
 from .template_validator import PRODUCT_TYPE_CONDITIONAL_FIELDS
+from .variation_title_rules import apply_variation_title_rules
 from .versioning import versioned_template_path
 from .workbook_io import read_intake_rows
 
@@ -339,7 +340,7 @@ def prepare_variation_rows(rows, project_dir):
                 row["parent_sku"] = parent_sku
             if _text(row.get("parent_sku")) and not _text(row.get("parentage_level")):
                 row["parentage_level"] = "Child"
-        return prepared
+        return apply_variation_title_rules(prepared)
 
     if not _should_default_variation(prepared):
         return prepared
@@ -363,7 +364,7 @@ def prepare_variation_rows(rows, project_dir):
         if not _text(row.get("sku")):
             row["sku"] = f"{_sku_base(row.get('product_name') or Path(project_dir).name)}-{index:03d}"
         child_rows.append(row)
-    return [parent] + child_rows
+    return apply_variation_title_rules([parent] + child_rows)
 
 
 def _row_text(row):

@@ -142,6 +142,14 @@ WPS 表格常见 COM 名称：
 - 除介词、冠词、连词外，同一单词不要超过两次。
 - 标题不放成分或材质词。
 
+父子体标题：
+
+- Parent 标题不继承第一条 Child 标题，而是从当前 Child 标题中提取共同商品关键词，生成能覆盖全部子体的总结性标题。
+- Parent 标题不带具体单一颜色、尺寸或款式；多颜色变体写 `Multiple Colors Available`，多尺寸或多款式变体写 `Multiple Styles Available`。
+- Child 标题使用通用标题骨架，并追加自己的颜色、尺寸或款式属性；Child 标题不写 `Multiple Colors Available`、`Multiple Styles Available` 等 Parent 总结词。
+- 多件装或套装在 Parent 和 Child 标题中都要说明，并放在标题首位，例如 `50 Pcs`、`2 Set`。
+- 父子体标题生成后仍按当前标题规则自检：100-125 字符、Title Case、关键词自然覆盖、不超字符上限、不含禁用词和材质词。
+
 Generic Keywords：
 
 - 如果模板包含 `generic_keyword` 字段，控制在 220 字符以内。
@@ -175,7 +183,7 @@ Product Description：
 - Parentage Level：`Parent`
 - Variation Theme：例如 `Color`
 - Brand：`Generic`
-- Item Name：可不带具体颜色
+- Item Name：基于子体标题生成通用总结标题，不继承第一条子体标题，不带具体单一颜色/尺寸/款式；多颜色写 `Multiple Colors Available`，多款式写 `Multiple Styles Available`
 - 通常不填 Parent SKU
 - 不填 Item Condition、Model Number、Model Name、Manufacturer、Part Number、Item Highlight、价格、报价日期、最低/最高价、包装尺寸、包装重量、颜色、尺寸、主图等子体/报价/可售专属字段
 
@@ -188,6 +196,7 @@ Product Description：
 - Variation Theme：例如 `Color`
 - Item Highlight / Title Differentiation：标题按 100-125 字符时留空；只有标题不超过 75 字符时才可填写
 - Color：例如 `Black`
+- Item Name：基于通用标题骨架追加自身颜色、尺寸或款式属性，不写 Parent 的总结词或多色/多款式可选词
 - 价格、尺寸、重量按最终价格表填写
 - `List Price` 和 Haul/BZR `our_price` 必填；`minimum_seller_allowed_price` 默认留空，不做人工填写值限制
 

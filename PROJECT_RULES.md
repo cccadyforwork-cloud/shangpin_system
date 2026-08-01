@@ -13,7 +13,7 @@
 5. `app/template_validator.py`
 6. `app/success_rule_defaults.py`
 
-代码优先级高于文档：实际写入以 `app/template_writer.py` 为准，实际自检以 `app/template_validator.py` 为准，成功样板默认值过滤以 `app/success_rule_defaults.py` 为准。
+代码优先级高于文档：实际写入以 `app/template_writer.py` 为准，父子体标题生成和标题专项自检以 `app/variation_title_rules.py` 为准，实际自检以 `app/template_validator.py` 为准，成功样板默认值过滤以 `app/success_rule_defaults.py` 为准。
 
 ## 当前默认路线
 
@@ -164,6 +164,14 @@ Listing 文案必须英文填写。
 - 不堆砌关键词，不全大写。
 - Generic 路线不出现供应商品牌/公司名。
 - 标题按 100-125 字符时，不填写 `Item Highlight` / `title_differentiation`。Amazon 报错 100476 已确认：只要填写 Item Highlight，Item Name 必须 75 字符以内。
+
+父子体标题：
+
+- 父体标题不再继承第一条子体标题，系统会基于现有子体标题生成可覆盖全部子体的通用总结标题。
+- 父体标题去掉具体颜色、尺寸等单一子体属性；多颜色变体加入 `Multiple Colors Available`，多尺寸或多款式变体加入 `Multiple Styles Available`。
+- 子体标题基于通用标题生成，并追加自己的颜色、尺寸或款式属性；子体标题不能包含 `Multiple Colors Available`、`Multiple Styles Available` 等父体总结词。
+- 多件装或套装如果在 `set_count` 或原标题中可识别，父体和子体标题都必须把数量/套装前缀放在首位，例如 `50 Pcs`、`2 Set`。
+- 父子体标题仍必须遵守现有标题长度、关键词覆盖、Title Case、禁用词和材质词规则，不能超过当前配置的标题字符上限。
 
 五点：
 
