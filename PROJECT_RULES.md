@@ -231,6 +231,7 @@ Listing 文案必须英文填写。
 - 尺寸数值和单位成对填写。
 - Parent 行不填 Parent SKU；Child 行必须填 Parent SKU。
 - Parent/Child 行必须有 Variation Theme。
+- 枚举字段必须与当前模板 `Valid Values` 完全一致，包括大小写、斜杠和空格；不能把 Amazon 枚举值按人类习惯改写。重点核对 `variation_theme#1.name`、`parentage_level`、`child_relationship_type` 等字段，例如 PET_TOY 模板可能要求 `COLOR`，不是 `Color`。
 - 标题、描述、五点不能含中文。
 - `Data Definitions` 标 Required 的字段非空。
 - 当前 Product Type 的条件字段非空。
@@ -254,6 +255,7 @@ python3 run.py parse-report "processing-summary.xlsm"
 - 先记录错误码、错误字段、受影响 SKU。
 - 不直接修改 processing-summary 当上传文件。
 - 回到源模板修字段。
+- 如果报错字段是枚举值字段，先回到同一份模板的 `Valid Values` 页确认精确可接受值，再修源模板；不要只按语义判断字段值正确。
 - 修复后的规则若属于某 Product Type 或某路线，必须补入整体自检或自动填表规则。
 - 单品特殊情况只保留在单品学习记录，不泛化。
 

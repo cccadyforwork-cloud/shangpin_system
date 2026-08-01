@@ -25,6 +25,7 @@ Current high-level defaults:
 - Dimensions use `Inches`; package weight uses `Pounds`.
 - Ordinary non-battery / non-dangerous goods products use `batteries_required = No`, `batteries_included = No`, and `supplier_declared_dg_hz_regulation = Not Applicable`.
 - For `PLANTER`, fill conditionally required `Model Name`, `Special Features`, `Mounting Type`, and `Product Compliance Certificate`; clear non-applicable `item_length_width_height` fields when Amazon ignores them.
+- Controlled enum fields must match the template `Valid Values` exactly, including case and slash formatting. Check fields such as `variation_theme#1.name`, `parentage_level`, and relationship type against the current template before delivery; for example, a PET_TOY template may require `COLOR`, not `Color`.
 - Always run the project template self-check before delivery when a filled template is produced, but do not generate or send self-check report files unless explicitly requested.
 
 If these instructions conflict with a direct user instruction in the current conversation, follow the user instruction, but explicitly call out the deviation from the project default.

@@ -52,7 +52,7 @@ Copy-Item -LiteralPath "D:\dpan\桌面\手机握把\*" -Destination C:\sp_work\p
 
 - `Template` 页第 5 行：字段名
 - `Data Definitions`：必填字段
-- `Valid Values` / `Browse Data`：Product Type、Item Type Keyword、有效值
+- `Valid Values` / `Browse Data`：Product Type、Item Type Keyword、有效值；枚举字段必须复制当前模板的精确值，包括大小写、斜杠和空格
 
 本项目已有经验：
 
@@ -183,7 +183,7 @@ Product Description：
 
 - SKU：父体 SKU
 - Parentage Level：`Parent`
-- Variation Theme：例如 `Color`
+- Variation Theme：必须按当前模板 `Valid Values` 精确填写，例如 PET_TOY 可能要求 `COLOR`，不要凭语义写成 `Color`
 - Brand：`Generic`
 - Item Name：基于子体标题生成通用总结标题，不继承第一条子体标题，不带具体单一颜色/尺寸/款式；多颜色写 `Multiple Colors Available`，多款式写 `Multiple Styles Available`
 - 通常不填 Parent SKU
@@ -195,7 +195,7 @@ Product Description：
 - Parentage Level：`Child`
 - Parent SKU：父体 SKU
 - Child Relationship Type：`Variation`
-- Variation Theme：例如 `Color`
+- Variation Theme：与 Parent 保持一致，并且必须是当前模板 `Valid Values` 中的精确枚举值
 - Item Highlight / Title Differentiation：标题按 100-125 字符时留空；只有标题不超过 75 字符时才可填写
 - Color：例如 `Black`
 - Item Name：基于通用标题骨架追加自身颜色、尺寸或款式属性，不写 Parent 的总结词或多色/多款式可选词
