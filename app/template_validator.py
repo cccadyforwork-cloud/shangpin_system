@@ -39,6 +39,8 @@ FIELD_NAMES = {
     "size": "size[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
     "number_of_items": "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value",
     "item_package_quantity": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "contains_battery_or_cell": "contains_battery_or_cell[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "dog_breed_size": "dog_breed_size[marketplace_id=ATVPDKIKX0DER]#1.value",
 }
 
 CJK_RE = re.compile(r"[\u4e00-\u9fff]")
@@ -135,6 +137,13 @@ COPY_FIELD_NAMES = {
 
 
 PRODUCT_TYPE_CONDITIONAL_FIELDS = {
+    "HEALTH_PERSONAL_CARE": {
+        "Is the Item Heat Sensitive?": "is_heat_sensitive[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Is Product Expirable": "is_expiration_dated_product[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Unit Count": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Unit Count Type": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+        "Contains Liquid Contents?": "contains_liquid_contents[marketplace_id=ATVPDKIKX0DER]#1.value",
+    },
     "ANIMAL_COLLAR": {
         "Item Type Keyword": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
         "Model Number": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
@@ -486,6 +495,9 @@ def _is_parent_optional_required_field(field_name):
         "item_length_width",
         "item_dimensions",
         "item_weight",
+        "is_heat_sensitive",
+        "is_expiration_dated_product",
+        "contains_liquid_contents",
         "unit_count",
         "number_of_items",
         "number_of_packs",
@@ -503,7 +515,7 @@ def _is_parent_optional_required_field(field_name):
     ])
 
 
-def validate_template_file(path, output_path=None, write_report=True):
+def validate_template_file(path, output_path=None, write_report=False):
     path = Path(path)
     wb = load_workbook(path, data_only=True, read_only=True)
     ws = find_template_sheet(wb)
@@ -538,6 +550,8 @@ def validate_template_file(path, output_path=None, write_report=True):
     size_col = field_to_col.get(FIELD_NAMES["size"])
     number_of_items_col = field_to_col.get(FIELD_NAMES["number_of_items"])
     item_package_quantity_col = field_to_col.get(FIELD_NAMES["item_package_quantity"])
+    contains_battery_or_cell_col = field_to_col.get(FIELD_NAMES["contains_battery_or_cell"])
+    dog_breed_size_col = field_to_col.get(FIELD_NAMES["dog_breed_size"])
     product_type_col = field_to_col.get("product_type#1.value")
     required_fields = _required_fields_from_data_definitions(wb)
     dimension_pairs = [
@@ -578,6 +592,16 @@ def validate_template_file(path, output_path=None, write_report=True):
             skip_offer = ws.cell(row, skip_offer_col).value
             if skip_offer not in (None, ""):
                 findings.append(error(row, "Skip Offer", f"{sku} 的 Skip Offer 应留空，当前为 `{skip_offer}`。", "不要填写 skip_offer，让报价随价格字段正常生成。"))
+
+        if contains_battery_or_cell_col:
+            contains_battery_or_cell = ws.cell(row, contains_battery_or_cell_col).value
+            if contains_battery_or_cell == "No":
+                findings.append(error(row, "Contains Battery or Cell", f"{sku} 的 Contains Battery or Cell 不能填 No。", "该字段有效值是 Battery 或 Cell；非电池商品按当前规则留空。"))
+
+        if dog_breed_size_col:
+            dog_breed_size = ws.cell(row, dog_breed_size_col).value
+            if dog_breed_size == "All Breed Sizes":
+                findings.append(error(row, "Dog Breed Size", f"{sku} 的 Dog Breed Size 不能填 All Breed Sizes。", "ANIMAL_COLLAR 模板有效值为 Extra Small、Small、Medium、Large、Giant、All；通用值填 All。"))
 
         if list_price_col and haul_price_col and not is_parent:
             list_price = ws.cell(row, list_price_col).value

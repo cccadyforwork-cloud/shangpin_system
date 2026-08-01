@@ -34,7 +34,7 @@ Haul Generic Variation
 
 - `Haul Generic`：单链接子体，不建立 Parent/Child。
 - `Haul Generic Set Bundle`：套装售卖，不建立 Parent/Child，数量字段按套装数量填写。
-- `Brand`：品牌路线，Brand / Manufacturer / 文案 / 图片 / 包装必须一致。
+- `Brand`：品牌路线，Brand / Manufacturer / 文案 / 包装必须一致；图片字段仍默认不处理。
 
 ## 价格字段规则
 
@@ -81,6 +81,13 @@ maximum_seller_allowed_price
 
 只有模板第 5 行存在对应字段列，且数据或默认值非空时才写入。
 
+图片字段默认不写入：
+
+- 不填 `main_product_image_locator`、`main_offer_image_locator`、`swatch_product_image_locator` 或其他 `image` / `media_location` 图片 URL 字段。
+- 不从源表、成功样板、1688、供应商资料、竞品页面或草稿里继承图片链接。
+- 带文字、水印、详情页排版、中文说明、促销信息或无法确认合规的图片链接一律不要填。
+- 只有用户在当前任务中明确要求处理图片字段，并提供已确认合规的公开图片 URL 时，才按用户要求单独处理。
+
 ## 固定默认值
 
 当前默认值：
@@ -96,6 +103,14 @@ batteries_required = No
 batteries_included = No
 supplier_declared_dg_hz_regulation = Not Applicable
 ```
+
+非电池商品不要填写：
+
+```text
+contains_battery_or_cell
+```
+
+该字段有效值是 `Battery` / `Cell`，不能填 `No`；普通非电池产品按默认留空。
 
 Generic 路线：
 
@@ -133,6 +148,11 @@ manufacturer = Generic
 - `PROTECTIVE_GLOVE`
 
 这些规则只对对应 Product Type 生效，不能泛化到所有模板。
+
+ANIMAL_COLLAR 注意：
+
+- `dog_breed_size` 模板有效值是 `Extra Small`、`Small`、`Medium`、`Large`、`Giant`、`All`。
+- 不要填 `All Breed Sizes`；通用犬种尺寸用 `All`，明确小型宠物/小型犬时用 `Small`。
 
 ## 成功样板规则
 
@@ -212,10 +232,13 @@ Listing 文案必须英文填写。
 常用命令：
 
 ```bash
-python3 run.py auto-fill "data/projects/日期_产品名" --write-reports
+python3 run.py auto-fill "data/projects/日期_产品名"
 python3 run.py check-template "data/projects/日期_产品名/05_填表版本/产品名_v1.xlsx"
+python3 run.py check-template "data/projects/日期_产品名/05_填表版本/产品名_v1.xlsx" --write-report
 python3 run.py parse-report "processing-summary.xlsm"
 ```
+
+默认不生成写入报告或模板自检报告；只有需要落地报告文件时才加 `--write-report` / `--write-reports` 或指定 `-o/--output`。
 
 ## 报错复盘规则
 
@@ -230,3 +253,7 @@ python3 run.py parse-report "processing-summary.xlsm"
 ## 新任务开场要求
 
 新开任务时，如果内容涉及填表或修表，先说明已经读取项目规则，再开始操作。没有读取上述规则时，不要直接填 Amazon 表格。
+
+用户不需要在每次任务里重复发送填表规则。只要任务涉及 Amazon 模板填表、修表、自检、报错处理或 Listing 草稿，Codex 默认按本文件、`AGENTS.md` 和实际代码里的最新规则启动。
+
+修改任何长期默认规则、字段写入规则、自检规则或报告生成行为时，必须同步更新 `AGENTS.md` 的入口摘要，避免新任务继续读取旧默认值。

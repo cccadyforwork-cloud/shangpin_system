@@ -32,7 +32,6 @@ FIELD_MAP = {
     "variation_theme#1.name": "variation_theme",
     "model_number[marketplace_id=ATVPDKIKX0DER]#1.value": "sku",
     "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "manufacturer",
-    "main_product_image_locator[marketplace_id=ATVPDKIKX0DER]#1.media_location": "main_image_url",
     "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "description",
     "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "bullet_1",
     "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value": "bullet_2",
@@ -542,12 +541,18 @@ def _stable_field_default(field_name, row):
         return 1
     if "unit_count" in field and ".type" in field:
         return "Count"
+    if "is_heat_sensitive" in field:
+        return "No"
+    if "is_expiration_dated_product" in field:
+        return "No"
     if "included_components" in field:
         return row.get("accessories") or f"{count} Count"
     if "specific_uses_for_product" in field:
         return "Outdoor" if str(row.get("category") or "").lower() in {"garden", "patio", "sports"} else "Everyday Use"
     if "recommended_uses_for_product" in field:
         return "Chewing" if str(row.get("product_type") or "").upper() == "PET_TOY" else "Everyday Use"
+    if "dog_breed_size" in field:
+        return "All"
     if "breed_recommendation" in field:
         return "All Breed Sizes"
     if "pet_toy_type" in field:
