@@ -73,6 +73,24 @@ def _unique_values(items, key):
     return values
 
 
+def _valid_values_row(wb, label_prefix):
+    if "Valid Values" not in wb.sheetnames:
+        return set()
+    ws = wb["Valid Values"]
+    for row in ws.iter_rows(values_only=True):
+        values = [_text(value) for value in row]
+        if any(value.startswith(label_prefix) for value in values):
+            return {value for value in values if value and not value.startswith(label_prefix)}
+    return set()
+
+
+def _variation_theme_values(wb, product_type):
+    product_type = _text(product_type)
+    if not product_type:
+        return set()
+    return _valid_values_row(wb, f"Variation Theme Name - [ {product_type} ]")
+
+
 def _requires_package_prefix(info):
     prefix = package_prefix_for_row({
         "set_count": info.get("package_quantity") or info.get("number_of_items"),
@@ -363,6 +381,7 @@ PRODUCT_TYPE_CONDITIONAL_FIELDS = {
         "Material": "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
         "Number of Items": "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value",
         "Item Package Quantity": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Subject Character": "subject_character[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
         "Color": "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
         "Size": "size[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
         "Part Number": "part_number[marketplace_id=ATVPDKIKX0DER]#1.value",
@@ -570,6 +589,7 @@ def validate_template_file(path, output_path=None, write_report=False):
     ]
     available_dimension_pairs = [pair for pair in dimension_pairs if pair[1] and pair[2]]
     row_infos = {}
+    variation_theme_values_by_product_type = {}
 
     for row in data_rows:
         row_infos[row] = {
@@ -676,6 +696,14 @@ def validate_template_file(path, output_path=None, write_report=False):
 
         if product_type_col:
             product_type = ws.cell(row, product_type_col).value
+            product_type_text = _text(product_type)
+            if product_type_text not in variation_theme_values_by_product_type:
+                variation_theme_values_by_product_type[product_type_text] = _variation_theme_values(wb, product_type_text)
+            allowed_variation_themes = variation_theme_values_by_product_type[product_type_text]
+            if variation_theme_col and allowed_variation_themes:
+                variation_theme = ws.cell(row, variation_theme_col).value
+                if variation_theme not in (None, "") and _text(variation_theme) not in allowed_variation_themes:
+                    findings.append(error(row, "Variation Theme", f"{sku} 的 Variation Theme `{variation_theme}` 不在当前模板 Valid Values 中。", "按当前模板 Valid Values 精确填写，包括大小写、斜杠和空格，例如 COLOR。"))
             for field_name, label in required_fields.items():
                 col = field_to_col.get(field_name)
                 if not col:

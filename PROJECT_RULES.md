@@ -150,6 +150,10 @@ manufacturer = Generic
 
 这些规则只对对应 Product Type 生效，不能泛化到所有模板。
 
+PET_TOY 注意：
+
+- 当前上传实测 `Subject Character` 会成为条件必填；普通猫玩具可按产品主体填写 `Cat`。
+
 ANIMAL_COLLAR 注意：
 
 - `dog_breed_size` 模板有效值是 `Extra Small`、`Small`、`Medium`、`Large`、`Giant`、`All`。
