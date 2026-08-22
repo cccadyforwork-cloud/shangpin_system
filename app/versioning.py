@@ -4,20 +4,22 @@ from pathlib import Path
 from .paths import LEGACY_FILLED_TEMPLATE_DIR, safe_name
 
 
-VERSION_RE = re.compile(r"(?:^|[_\-\s])v(\d*)", re.I)
-
-
 def version_number(value):
-    match = VERSION_RE.search(str(value))
+    stem = Path(str(value)).stem
+    match = re.search(r"(?:^|[_\-\s])v(\d*)$", stem, re.I)
+    if match:
+        number = match.group(1)
+        return int(number) if number else 1
+    match = re.search(r"v(\d+)$", stem, re.I)
     if not match:
         return 0
     number = match.group(1)
-    return int(number) if number else 1
+    return int(number)
 
 
 def version_label(number):
     number = int(number or 1)
-    return "V" if number <= 1 else f"V{number}"
+    return f"V{number}"
 
 
 def next_template_version(project_dir):
@@ -40,7 +42,7 @@ def versioned_template_path(project_dir, product_name, version=None, suffix=".xl
     version_dir = Path(project_dir) / LEGACY_FILLED_TEMPLATE_DIR
     version_dir.mkdir(parents=True, exist_ok=True)
     version = next_template_version(project_dir) if version is None else int(version)
-    base_name = f"{safe_name(str(product_name))}_{version_label(version)}{suffix}"
+    base_name = f"{safe_name(str(product_name))}{version_label(version)}{suffix}"
     path = version_dir / base_name
     if not path.exists():
         return path

@@ -522,6 +522,7 @@ def _stable_field_default(field_name, row):
     field = field_name.lower()
     product_name = row.get("product_name") or row.get("title") or "Product"
     count = _first_positive_int(row.get("set_count"), 1)
+    product_type = str(row.get("product_type") or "").strip().upper()
 
     if "model_name" in field:
         return product_name
@@ -531,8 +532,14 @@ def _stable_field_default(field_name, row):
         return row.get("manufacturer") or row.get("brand") or "Generic"
     if "brand" in field:
         return row.get("brand") or "Generic"
+    if "department[" in field and product_type == "SPORT_RACKET":
+        return "Unisex-Adult"
     if "material" in field and row.get("material"):
         return row.get("material")
+    if "material" in field and product_type == "SPORT_RACKET":
+        return "Rubber"
+    if field.startswith("frame[") and "material" in field and product_type == "SPORT_RACKET":
+        return "Plastic"
     if "color" in field and "standardized_values" in field:
         return _normalize_color_map(row.get("color"))
     if field.startswith("number_of_items") or field.startswith("item_package_quantity") or field.startswith("unit_count") and "#1.value" in field:
@@ -547,6 +554,25 @@ def _stable_field_default(field_name, row):
         return "No"
     if "included_components" in field:
         return row.get("accessories") or f"{count} Count"
+    if "sport_type" in field and product_type == "SPORT_RACKET":
+        sports = ["Tennis", "Badminton", "Pickleball", "Racquetball", "Squash"]
+        match = re.search(r"#(\d+)\.value$", field_name)
+        index = int(match.group(1)) - 1 if match else 0
+        return sports[index] if 0 <= index < len(sports) else ""
+    if "skill_level" in field and product_type == "SPORT_RACKET":
+        return "All"
+    if "grip[" in field and ".size[" in field and product_type == "SPORT_RACKET":
+        return row.get("grip_size") or "4 inches"
+    if "grip[" in field and ".type[" in field and product_type == "SPORT_RACKET":
+        return row.get("grip_type") or "Overgrip"
+    if "hand_orientation" in field and product_type == "SPORT_RACKET":
+        return "Ambidextrous"
+    if "racket_performance_specialty" in field and product_type == "SPORT_RACKET":
+        return "Control"
+    if "import_designation" in field and product_type == "SPORT_RACKET":
+        return "Imported"
+    if "warranty_description" in field and product_type == "SPORT_RACKET":
+        return "No Warranty"
     if "specific_uses_for_product" in field:
         return "Outdoor" if str(row.get("category") or "").lower() in {"garden", "patio", "sports"} else "Everyday Use"
     if "recommended_uses_for_product" in field:
