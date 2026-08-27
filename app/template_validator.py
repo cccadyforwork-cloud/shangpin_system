@@ -155,6 +155,11 @@ COPY_FIELD_NAMES = {
 
 
 PRODUCT_TYPE_CONDITIONAL_FIELDS = {
+    "GARLAND": {
+        "Model Name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Included Components": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Required Assembly": "is_assembly_required[marketplace_id=ATVPDKIKX0DER]#1.value",
+    },
     "SPORT_RACKET": {
         "Item Type Keyword": "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value",
         "Model Number": "model_number[marketplace_id=ATVPDKIKX0DER]#1.value",
@@ -564,6 +569,7 @@ def _is_parent_optional_required_field(field_name):
         "item_length_width",
         "item_dimensions",
         "item_weight",
+        "is_assembly_required",
         "is_heat_sensitive",
         "is_expiration_dated_product",
         "contains_liquid_contents",

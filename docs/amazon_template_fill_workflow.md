@@ -295,6 +295,7 @@ Get-ChildItem -Force | Where-Object { $_.Name -like '~$*' }
 不要做慢速大范围渲染。交付前只校验关键字段：
 
 - 文件能被 WPS/Excel 打开
+- 首次生成 V1 后，必须用 WPS/Excel 实际打开 `Template` 页，让模板动态条件格式重新计算；逐段检查新增红框，补齐后覆盖同一个 V1。这个交付前内部修正不递增为 V2，只有已交付文件或错误报告后的修正版才递增版本。
 - `Template` 页第 7 行起有数据
 - 父体 SKU / 子体 SKU 正确
 - 子体 Parent SKU 指向父体
@@ -308,6 +309,12 @@ Get-ChildItem -Force | Where-Object { $_.Name -like '~$*' }
 - `Country of Origin = China`
 - `Batteries Required = No`
 - `Dangerous Goods Regulations = Not Applicable`
+
+`GARLAND` 还要确认每个 Child 行的动态必填字段均已填写：
+
+- `Model Name`
+- `Included Components`
+- `Required Assembly`
 
 ## 速度目标
 
