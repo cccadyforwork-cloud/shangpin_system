@@ -1,0 +1,60 @@
+{
+  "batch_name": "20260831_glass_beads_9_colors",
+  "output_dir": "/Users/cc/Documents/GitHub/shangpin_system/outputs/批量快速上品_20260831",
+  "tasks": [
+    {
+      "name": "水晶玻璃珠9色6毫米",
+      "product_name": "Glass Beads",
+      "template": "/Users/cc/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_w8kup0qd3ph512_efbd/temp/drag/CRAFT_BEAD.xlsm",
+      "competitor": "/Users/cc/Desktop/Amazon.com_ 100 Pcs Crystal Glass Beads for Jewelry Making Bulk Faceted Gemstone Rondelle Loose Beads for Bracelet DIY Crafts 6 mm(Green) _ Arts, Crafts & Sewing.html",
+      "copy_reference": "/Users/cc/Documents/GitHub/shangpin_system/outputs/批量快速上品_20260831/水晶玻璃珠绿色6毫米V1.xlsm",
+      "output_name": "水晶玻璃珠9色6毫米V2",
+      "price": 1.95,
+      "weight_grams": 80,
+      "parent_sku": "CA-GLASSBEADS",
+      "variation_theme": "COLOR",
+      "base_title": "Faceted Glass Beads for Jewelry Making, Rondelle Loose Spacers for Bracelets, Necklaces, Earrings and DIY Crafts",
+      "size": "6 MM",
+      "material": "Glass",
+      "set_count": 100,
+      "variants": [
+        {
+          "sku": "CA-GLASSBEADS-BLUE6MM",
+          "color": "Blue"
+        },
+        {
+          "sku": "CA-GLASSBEADS-GOLD6MM",
+          "color": "Gold"
+        },
+        {
+          "sku": "CA-GLASSBEADS-GREEN6MM",
+          "color": "Green"
+        },
+        {
+          "sku": "CA-GLASSBEADS-LIGHTGOLD6MM",
+          "color": "Light Gold"
+        },
+        {
+          "sku": "CA-GLASSBEADS-LIGHTBLUE6MM",
+          "color": "Light Blue"
+        },
+        {
+          "sku": "CA-GLASSBEADS-PINK6MM",
+          "color": "Pink"
+        },
+        {
+          "sku": "CA-GLASSBEADS-PURPLE6MM",
+          "color": "Purple"
+        },
+        {
+          "sku": "CA-GLASSBEADS-RED6MM",
+          "color": "Red"
+        },
+        {
+          "sku": "CA-GLASSBEADS-WHITE6MM",
+          "color": "White"
+        }
+      ]
+    }
+  ]
+}

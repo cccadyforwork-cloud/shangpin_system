@@ -1,0 +1,23 @@
+{
+  "batch_name": "示例批次",
+  "output_dir": "../outputs/批量快速上品",
+  "tasks": [
+    {
+      "name": "水晶玻璃珠绿色6毫米",
+      "product_name": "Glass Beads",
+      "template": "../待处理/玻璃珠/CRAFT_BEAD.xlsm",
+      "competitor": "../待处理/玻璃珠/Amazon竞品.html",
+      "output_name": "水晶玻璃珠绿色6毫米V1",
+      "price": 1.95,
+      "weight_grams": 80,
+      "parent_sku": "CA-GLASSBEADS",
+      "child_sku": "CA-GLASSBEADS-GREEN6MM",
+      "variation_theme": "COLOR",
+      "base_title": "Faceted Glass Beads for Jewelry Making, Rondelle Loose Spacers for Bracelets, Necklaces, Earrings and DIY Crafts",
+      "color": "Green",
+      "size": "6 MM",
+      "material": "Glass",
+      "set_count": 100
+    }
+  ]
+}

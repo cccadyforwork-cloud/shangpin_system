@@ -36,6 +36,16 @@ Haul Generic Variation
 - `Haul Generic Set Bundle`：套装售卖，不建立 Parent/Child，数量字段按套装数量填写。
 - `Brand`：品牌路线，Brand / Manufacturer / 文案 / 包装必须一致；图片字段仍默认不处理。
 
+批量快速上品是独立的显式路线，不改变上述默认路线。只有用户明确说“批量快速上品路线”时，才调用：
+
+```text
+python3 run.py batch-fast-prelist <批量任务JSON>
+```
+
+该路线允许只参考竞品、先上品后采购，但仍必须遵守模板 Valid Values、图片留空、Generic 父子体、物流档位、项目模板自检和 WPS 条件格式复核。当单个竞品 HTML 含完整的单一颜色变体选择器时，批量快速路线默认提取全部颜色并生成 1 个 Parent + 全部 Child；不写入竞品 ASIN。显式 `variants` 优先，多维变体不自动展开。详细口径见 `docs/batch_fast_prelisting.md`。
+
+批量快速路线的价格默认取竞品页面当前 `priceToPay`，清单中显式 `price` 可人工覆盖。当有 `copy_reference` 时，按 SKU 对比新旧表格：新增 SKU 保持 `Create or Replace (Full Update)`，只有已存在且字段发生变化的 SKU 才改为 `Edit (Partial Update)`，无字段变化则不改 Action。正式 `auto-fill` 不受影响。
+
 ## 输出文件命名规则
 
 填好的 Amazon 上传表默认按中文商品名 + 款式/颜色 + 版本号命名，版本号前不加下划线：

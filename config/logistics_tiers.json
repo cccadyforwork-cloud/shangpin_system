@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "units": {
+    "dimensions": "Inches",
+    "weight": "Pounds"
+  },
+  "tiers": [
+    {
+      "id": "le_4_oz",
+      "label": "≤4 oz",
+      "max_weight_grams": 113.398,
+      "package_cm": [10, 10, 2],
+      "default_weight_grams": 100
+    },
+    {
+      "id": "4_8_oz",
+      "label": "4–8 oz",
+      "max_weight_grams": 226.796,
+      "package_cm": [15, 10, 4],
+      "default_weight_grams": 200
+    },
+    {
+      "id": "8_12_oz",
+      "label": "8–12 oz",
+      "max_weight_grams": 340.194,
+      "package_cm": [18, 12, 5],
+      "default_weight_grams": 300
+    },
+    {
+      "id": "12_16_oz",
+      "label": "12–16 oz",
+      "max_weight_grams": 453.592,
+      "package_cm": [22, 15, 6],
+      "default_weight_grams": 430
+    },
+    {
+      "id": "1_1_25_lb",
+      "label": "1–1.25 lb",
+      "max_weight_grams": 566.99,
+      "package_cm": [24, 15, 7],
+      "default_weight_grams": 510
+    }
+  ]
+}

@@ -4,6 +4,10 @@
 
 > 必须先读根目录 `PROJECT_RULES.md`。本文件是流程文档，实际字段写入以 `app/template_writer.py` 为准，模板自检以 `app/template_validator.py` 为准，成功样板默认值过滤以 `app/success_rule_defaults.py` 为准。
 
+只参考竞品并批量生成 V1 时，必须由用户明确选择“批量快速上品路线”，再按 `docs/batch_fast_prelisting.md` 使用独立的 `batch-fast-prelist` 入口；不要把快速路线默认值并入正式 `auto-fill` 流程。快速路线遇到单一颜色维度的完整竞品变体选择器时，默认从一个页面生成整套父子体；竞品 ASIN 不写入模板。多维变体要求人工明确变体组合。
+
+批量快速路线默认从页面 `priceToPay` 取当前售价。有参考旧表时，按 SKU 比较字段：新增 SKU 继续使用 `Create or Replace (Full Update)`，只有已存在且字段发生变化的行改为 `Edit (Partial Update)`。
+
 ## 新对话启动提示
 
 可以直接把下面这段发给 Codex：

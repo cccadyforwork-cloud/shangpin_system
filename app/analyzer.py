@@ -739,7 +739,7 @@ def _extract_product_type_from_templates(project_dir):
     return ""
 
 
-def analyze_project(project_dir, output_path=None, route_mode=None):
+def analyze_project(project_dir, output_path=None, route_mode=None, write_report=True):
     project_dir = Path(project_dir)
     sources = _collect_sources(project_dir)
     combined = "\n".join(text for _path, text in sources)
@@ -914,8 +914,9 @@ def analyze_project(project_dir, output_path=None, route_mode=None):
         output_path = project_dir / PRODUCT_DETAIL_DIR / f"{safe_name(project_dir.name)}_自动提炼草稿.xlsx"
     write_intake_workbook(output_path, rows)
 
-    report_path = OUTPUTS_DIR / f"{safe_name(project_dir.name)}_资料提炼报告.md"
-    _write_analysis_report(report_path, project_dir, sources, rows, combined)
+    report_path = OUTPUTS_DIR / f"{safe_name(project_dir.name)}_资料提炼报告.md" if write_report else None
+    if report_path:
+        _write_analysis_report(report_path, project_dir, sources, rows, combined)
     return output_path, report_path
 
 

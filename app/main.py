@@ -3,6 +3,7 @@ from pathlib import Path
 
 from .analyzer import analyze_project
 from .auto_fill import auto_fill_project
+from .batch_fast_prelisting import run_batch_fast_prelisting
 from .error_learning import learn_reports
 from .paths import TEMPLATES_DIR, ensure_base_dirs
 from .project_manager import create_project, list_project_summaries, list_projects
@@ -161,6 +162,19 @@ def cmd_auto_fill(args):
         print("结论：还需要先处理自检报告里的字段。")
 
 
+def cmd_batch_fast_prelist(args):
+    result = run_batch_fast_prelisting(args.manifest, output_dir=args.output_dir)
+    print(f"批量快速上品完成：{result['output_dir']}")
+    print(f"任务：{result['task_count']}")
+    print(f"待 WPS 复核：{result['success_count']}")
+    print(f"待人工修正：{result['needs_fix_count']}")
+    print(f"失败：{result['failed_count']}")
+    for item in result["results"]:
+        print(f"[{item['status']}] {item['name']} - {item['message']}")
+        if item.get("output"):
+            print(f"  输出：{item['output']}")
+
+
 def cmd_mark_uploaded(args):
     project_dir = Path(args.project_dir)
     template_path = Path(args.template) if args.template else infer_latest_template(project_dir)
@@ -302,6 +316,11 @@ def build_parser():
     auto_fill.add_argument("--force", action="store_true", help="即使项目已标记上传成功也重新生成")
     auto_fill.add_argument("--write-reports", action="store_true", help="额外生成写入报告和模板自检报告；默认只输出填好的上传表格")
     auto_fill.set_defaults(func=cmd_auto_fill)
+
+    batch_fast = subparsers.add_parser("batch-fast-prelist", help="隔离执行竞品参考的批量快速上品路线")
+    batch_fast.add_argument("manifest", help="批量任务 JSON 清单")
+    batch_fast.add_argument("--output-dir", help="覆盖清单中的输出目录")
+    batch_fast.set_defaults(func=cmd_batch_fast_prelist)
 
     mark_uploaded = subparsers.add_parser("mark-uploaded", help="把项目标记为上传成功")
     mark_uploaded.add_argument("project_dir", help="项目文件夹路径")
