@@ -1,6 +1,6 @@
 # 批量快速上品路线
 
-这是一条独立、显式触发的竞品参考路线，目标是快速生成可进入 WPS 复核的 Amazon V1 模板。它不会改变现有 `auto-fill`、单品正式上品路线或成功样板规则。
+这是一条独立、显式触发的竞品参考路线，目标是快速生成可进入人工复核的 Amazon V1 模板。它不会改变现有 `auto-fill`、单品正式上品路线或成功样板规则。
 
 ## 适用范围
 
@@ -52,11 +52,24 @@ python3 run.py batch-fast-prelist path/to/batch.json --output-dir outputs/本次
 
 每个任务独立处理：
 
-- `ready_for_wps`：项目模板自检为 0，下一步用 WPS 打开 Template 页重算条件格式。
-- `needs_manual_fix`：已生成文件，但项目模板自检仍有问题。
+- `ready_for_review`：项目模板自检为 0，且程序计算出的当前红框字段为 0，可进入人工复核。
+- `needs_manual_fix`：已生成文件，但项目模板自检有问题，或仍存在已触发的红框字段。
+- `needs_wps`：模板包含扫描器尚未支持的条件格式公式，需要用 WPS/Excel 兜底复核。
 - `failed`：输入、模板或文件结构错误；不会阻断其他任务。
 
 默认不生成写入报告、模板自检报告或资料提炼报告。
+
+快速工作台按商品保存轻量输出版本记录。首次输出为 V1；少量报错商品生成 V2/V3 后，由系统自动同步并将最高版本设为当前输出，页面不提供人工上传输出文档的入口。旧版仅保留下载入口，不在工作台记录 processing summary。批量下载每款商品只打包当前最新版。
+
+工作台的共享台账与业务文件位于 `data/batch_fast_workbench/`，台账只保存仓库相对路径。准备通过 Git 交给同事前，运行 `python3 run.py package-batch-workbench-data`，将外部清单、竞品 HTML、源模板和全部输出版本复制到该目录。命令出现缺失引用时不要提交；同事拉取相同提交后即可直接查看这些数据。
+
+也可以单独扫描一份已填模板：
+
+```bash
+python3 run.py check-red-fields path/to/filled-template.xlsm
+```
+
+扫描器按每个实际 Parent/Child 数据行计算模板条件格式的优先级和联动条件，不会把所有空白字段都当成必填。补入一个字段可能触发下一层条件，因此每次写入后都应重新扫描，直到红框为 0。当前支持快速路线模板使用的 `AND`、`OR`、`NOT`、`IF`、`COUNTIF`、`LEN` 和 `ISNUMBER` 条件；无法计算的公式不会被当作通过，而会将任务标记为 `needs_wps`。
 
 ## 物流档位
 
@@ -72,9 +85,9 @@ python3 run.py batch-fast-prelist path/to/batch.json --output-dir outputs/本次
 
 ## 交付前
 
-即使状态为 `ready_for_wps`，仍必须逐个：
+状态为 `ready_for_review` 时仍应逐个：
 
-1. 用 WPS/Excel 打开输出文件。
-2. 进入 Template 页等待条件格式重算。
-3. 补齐新出现的 Child 红色必填格并覆盖同一个 V1。
-4. 再运行项目 `check-template`，确认 0 个问题后上传。
+1. 人工抽查标题、五点、描述、价格、SKU、父子关系以及无法从竞品确认的实物属性。
+2. 确认程序输出同时为项目自检 0、红框 0、未支持公式 0。
+3. 新 Product Type、模板结构变化、程序提示 `needs_wps`，或 Amazon 后台报错时，再用 WPS/Excel 打开 Template 页重算条件格式。
+4. 修正后覆盖同一个 V1，再运行 `check-template` 和 `check-red-fields`，确认均通过后上传。

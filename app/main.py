@@ -4,6 +4,7 @@ from pathlib import Path
 from .analyzer import analyze_project
 from .auto_fill import auto_fill_project
 from .batch_fast_prelisting import run_batch_fast_prelisting
+from .batch_fast_workbench import package_shared_data
 from .error_learning import learn_reports
 from .paths import TEMPLATES_DIR, ensure_base_dirs
 from .project_manager import create_project, list_project_summaries, list_projects
@@ -11,6 +12,7 @@ from .project_status import infer_latest_template, infer_product_name, infer_sku
 from .report_parser import parse_processing_summary
 from .success_templates import learn_success_templates
 from .template_inspector import inspect_template
+from .template_red_field_scanner import scan_template_red_fields
 from .template_validator import validate_template_file
 from .template_writer import fill_template
 from .validator import validate_intake, write_validation_report
@@ -166,13 +168,24 @@ def cmd_batch_fast_prelist(args):
     result = run_batch_fast_prelisting(args.manifest, output_dir=args.output_dir)
     print(f"批量快速上品完成：{result['output_dir']}")
     print(f"任务：{result['task_count']}")
-    print(f"待 WPS 复核：{result['success_count']}")
+    print(f"可人工复核：{result['success_count']}")
     print(f"待人工修正：{result['needs_fix_count']}")
+    print(f"需 WPS 兜底：{result['needs_wps_count']}")
     print(f"失败：{result['failed_count']}")
     for item in result["results"]:
         print(f"[{item['status']}] {item['name']} - {item['message']}")
         if item.get("output"):
             print(f"  输出：{item['output']}")
+
+
+def cmd_check_red_fields(args):
+    findings, unresolved = scan_template_red_fields(args.template)
+    print(f"红框字段：{len(findings)}")
+    for item in findings:
+        print(f"[{item['coordinate']}] {item['sku']} - {item['label']} ({item['field_name']})")
+    print(f"未支持的条件公式：{len(unresolved)}")
+    for item in unresolved:
+        print(f"[{item['coordinate']}] {item['message']} - {item['formula']}")
 
 
 def cmd_mark_uploaded(args):
@@ -213,6 +226,20 @@ def cmd_learn_success_templates(args):
 
 def cmd_workbench(args):
     run_workbench(host=args.host, port=args.port, open_browser=not args.no_open)
+
+
+def cmd_batch_workbench(args):
+    run_workbench(host=args.host, port=args.port, open_browser=not args.no_open, start_path="/batch-fast")
+
+
+def cmd_package_batch_workbench(_args):
+    result = package_shared_data()
+    print(f"已整理共享业务文件：{result['copied']} 个新复制文件")
+    print(f"工作台账本：{result['ledger']}")
+    if result["missing"]:
+        print(f"缺失引用：{len(result['missing'])}")
+        for path in result["missing"]:
+            print(f"  {path}")
 
 
 def _status_label(status):
@@ -308,6 +335,10 @@ def build_parser():
     check_template.add_argument("--write-report", action="store_true", help="额外生成模板自检报告；默认只在终端输出结果")
     check_template.set_defaults(func=cmd_check_template)
 
+    check_red = subparsers.add_parser("check-red-fields", help="无须打开 WPS，扫描模板当前会显示的红框字段")
+    check_red.add_argument("template", help="已填好的 xlsx/xlsm 上传模板")
+    check_red.set_defaults(func=cmd_check_red_fields)
+
     auto_fill = subparsers.add_parser("auto-fill", help="自动提炼草稿、写入模板并执行模板自检")
     auto_fill.add_argument("project_dir", help="项目文件夹路径")
     auto_fill.add_argument("--draft", help="指定产品资料草稿 xlsx 路径")
@@ -342,6 +373,15 @@ def build_parser():
     workbench.add_argument("--port", type=int, default=8766, help="端口，默认 8766")
     workbench.add_argument("--no-open", action="store_true", help="只启动服务，不自动打开浏览器")
     workbench.set_defaults(func=cmd_workbench)
+
+    batch_workbench = subparsers.add_parser("batch-workbench", help="启动独立的批量快速上品工作台")
+    batch_workbench.add_argument("--host", default="127.0.0.1", help="监听地址，默认 127.0.0.1")
+    batch_workbench.add_argument("--port", type=int, default=8767, help="端口，默认 8767")
+    batch_workbench.add_argument("--no-open", action="store_true", help="只启动服务，不自动打开浏览器")
+    batch_workbench.set_defaults(func=cmd_batch_workbench)
+
+    package_batch = subparsers.add_parser("package-batch-workbench-data", help="把快速上品工作台业务文件整理进 Git 仓库")
+    package_batch.set_defaults(func=cmd_package_batch_workbench)
 
     return parser
 

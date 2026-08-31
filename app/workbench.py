@@ -16,6 +16,14 @@ from openpyxl.utils import get_column_letter
 
 from .analyzer import analyze_project
 from .auto_fill import auto_fill_project
+from .batch_fast_workbench import (
+    attach_file as attach_batch_fast_file,
+    build_output_archive as build_batch_fast_output_archive,
+    import_sheets as import_batch_fast_sheets,
+    payload as batch_fast_payload,
+    referenced_file as batch_fast_referenced_file,
+    update_row as update_batch_fast_row,
+)
 from .error_learning import learn_reports
 from .paths import (
     COMPETITOR_DIR,
@@ -84,10 +92,10 @@ SOURCE_REVIEW_FOLDERS = {
 LEGACY_SOURCE_FOLDERS = {"02_原始图片", "03_竞品参考", "04_模板原件", "07_上架备注"}
 
 
-def run_workbench(host="127.0.0.1", port=8766, open_browser=True):
+def run_workbench(host="127.0.0.1", port=8766, open_browser=True, start_path="/"):
     ensure_base_dirs()
     server = ThreadingHTTPServer((host, port), _handler())
-    url = f"http://{host}:{port}"
+    url = f"http://{host}:{port}{start_path}"
     print(f"上品工作台已启动：{url}")
     print("按 Ctrl+C 停止。")
     if open_browser:
@@ -104,13 +112,29 @@ def _handler():
     class WorkbenchHandler(BaseHTTPRequestHandler):
         def do_HEAD(self):
             parsed = urlparse(self.path)
-            if parsed.path in {"/", "/api/summary", "/api/workbench", "/api/rules", "/api/report"}:
+            if parsed.path in {"/", "/batch-fast", "/batch-fast/version-preview", "/api/summary", "/api/workbench", "/api/rules", "/api/report", "/api/batch-fast"}:
                 self.send_response(200)
-                self.send_header("Content-Type", "text/html; charset=utf-8" if parsed.path == "/" else "application/json; charset=utf-8")
+                html_page = parsed.path in {"/", "/batch-fast", "/batch-fast/version-preview"}
+                self.send_header("Content-Type", "text/html; charset=utf-8" if html_page else "application/json; charset=utf-8")
                 self.end_headers()
             elif parsed.path == "/file":
                 path = _served_file_path(parsed.query)
                 if path.exists() and path.is_file():
+                    self.send_response(200)
+                    self.send_header("Content-Type", _download_content_type(path))
+                    self.send_header("Content-Length", str(path.stat().st_size))
+                    self.end_headers()
+                else:
+                    self.send_response(404)
+                    self.end_headers()
+            elif parsed.path in {"/batch-fast/file", "/batch-fast/download"}:
+                if parsed.path == "/batch-fast/download":
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/zip")
+                    self.end_headers()
+                    return
+                path = batch_fast_referenced_file(_query_path(parsed.query))
+                if path and path.exists() and path.is_file():
                     self.send_response(200)
                     self.send_header("Content-Type", _download_content_type(path))
                     self.send_header("Content-Length", str(path.stat().st_size))
@@ -126,6 +150,10 @@ def _handler():
             parsed = urlparse(self.path)
             if parsed.path == "/":
                 self._send_html(_html())
+            elif parsed.path == "/batch-fast":
+                self._send_html(_batch_fast_html())
+            elif parsed.path == "/batch-fast/version-preview":
+                self._send_html(_batch_fast_version_preview_html())
             elif parsed.path == "/api/summary":
                 self._send_json(_summary_payload())
             elif parsed.path == "/api/workbench":
@@ -134,8 +162,24 @@ def _handler():
                 self._send_json(_rules_payload())
             elif parsed.path == "/api/report":
                 self._send_json(_report_payload())
+            elif parsed.path == "/api/batch-fast":
+                self._send_json(batch_fast_payload())
             elif parsed.path == "/file":
                 self._send_file(_served_file_path(parsed.query))
+            elif parsed.path == "/batch-fast/file":
+                path = batch_fast_referenced_file(_query_path(parsed.query))
+                if path is None:
+                    self._send_json({"error": "file_not_allowed"}, status=403)
+                else:
+                    self._send_file(path)
+            elif parsed.path == "/batch-fast/download":
+                batch_id = parse_qs(parsed.query).get("batch_id", [""])[0]
+                try:
+                    filename, data, _count = build_batch_fast_output_archive(batch_id)
+                except ValueError as exc:
+                    self._send_json({"ok": False, "error": str(exc)}, status=404)
+                    return
+                self._send_bytes(data, "application/zip", filename)
             else:
                 self._send_json({"error": "not_found"}, status=404)
 
@@ -146,6 +190,8 @@ def _handler():
                     result = self._handle_file_upload()
                 elif parsed.path == "/api/upload-feedback":
                     result = self._handle_feedback_upload()
+                elif parsed.path == "/api/batch-fast/upload":
+                    result = self._handle_batch_fast_upload()
                 else:
                     payload = self._read_json()
                     if parsed.path == "/api/projects":
@@ -170,6 +216,18 @@ def _handler():
                         result = _reveal_file(payload)
                     elif parsed.path == "/api/learn-success":
                         result = _learn_success()
+                    elif parsed.path == "/api/batch-fast/import":
+                        import_batch_fast_sheets(payload.get("paths") or None)
+                        result = batch_fast_payload()
+                    elif parsed.path == "/api/batch-fast/save":
+                        update_batch_fast_row(payload.get("batch_id", ""), payload.get("row_id", ""), payload.get("fields") or {})
+                        result = batch_fast_payload()
+                    elif parsed.path == "/api/batch-fast/open":
+                        path = batch_fast_referenced_file(payload.get("path", ""))
+                        if path is None or not path.exists() or not path.is_file():
+                            raise ValueError("文件不存在或不在当前清单中。")
+                        subprocess.run(["open", str(path)], check=False)
+                        result = {"ok": True, "path": str(path)}
                     else:
                         self._send_json({"error": "not_found"}, status=404)
                         return
@@ -190,6 +248,20 @@ def _handler():
             files = _form_files(form)
             note = form.getfirst("note", "")
             return _upload_feedback(project_dir, files, note=note)
+
+        def _handle_batch_fast_upload(self):
+            form = self._read_multipart_form()
+            if "file" not in form:
+                raise ValueError("请选择要上传的文件。")
+            file_item = form["file"]
+            target, _row = attach_batch_fast_file(
+                form.getfirst("batch_id", ""),
+                form.getfirst("row_id", ""),
+                form.getfirst("field", ""),
+                file_item.filename or "",
+                file_item.file,
+            )
+            return {"ok": True, "path": str(target), "data": batch_fast_payload()}
 
         def _read_multipart_form(self):
             content_type = self.headers.get("Content-Type", "")
@@ -241,6 +313,14 @@ def _handler():
             self.end_headers()
             with path.open("rb") as source:
                 shutil.copyfileobj(source, self.wfile)
+
+        def _send_bytes(self, data, content_type, filename):
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(data)))
+            self.send_header("Content-Disposition", f"attachment; filename*=UTF-8''{quote(filename)}")
+            self.end_headers()
+            self.wfile.write(data)
 
     return WorkbenchHandler
 
@@ -385,6 +465,14 @@ def _intake_module_payload(project_dir, product_name, rows, draft_file, rows_err
         "rows": _json_rows(rows or [first]),
         "files": [
             {
+                "key": "template",
+                "label": "Amazon 原始模板",
+                "type": "XLSX / XLSM",
+                "folder": TEMPLATE_SOURCE_DIR,
+                "accept": ".xlsx,.xlsm",
+                "files": _folder_file_infos(project_dir, [TEMPLATE_SOURCE_DIR, LEGACY_TEMPLATE_SOURCE_DIR], suffixes={".xlsx", ".xlsm"}),
+            },
+            {
                 "key": "price",
                 "label": "最终价格表",
                 "type": "Excel",
@@ -410,11 +498,7 @@ def _intake_module_payload(project_dir, product_name, rows, draft_file, rows_err
             },
         ],
         "basic": [
-            {"label": "路线", "field": "route", "value": first.get("route") or "Haul Generic Variation", "source": "系统推断", "scope": "all"},
-            {"label": "Brand", "field": "brand", "value": first.get("brand") or "Generic", "source": "路线", "scope": "all"},
-            {"label": "Manufacturer", "field": "manufacturer", "value": first.get("manufacturer") or "Generic", "source": "路线", "scope": "all"},
             {"label": "品类", "field": "category", "value": first.get("category") or first.get("product_type") or "", "source": "系统推断", "scope": "all"},
-            {"label": "Product Type", "field": "product_type", "value": first.get("product_type") or "", "source": "模板", "scope": "all"},
             {"label": "材质", "field": "material", "value": first.get("material") or "", "source": "1688", "scope": "all"},
             {"label": "包装内容", "field": "accessories", "value": first.get("accessories") or first.get("set_count") or "", "source": "价格表", "scope": "all"},
         ],
@@ -423,8 +507,6 @@ def _intake_module_payload(project_dir, product_name, rows, draft_file, rows_err
             {"label": "单品尺寸 width", "field": "package_width_in", "value": first.get("package_width_in") or "", "source": "价格表", "scope": "all"},
             {"label": "单品尺寸 height", "field": "package_height_in", "value": first.get("package_height_in") or "", "source": "价格表", "scope": "all"},
             {"label": "重量 lb", "field": "package_weight_lb", "value": first.get("package_weight_lb") or "", "source": "价格表", "scope": "all"},
-            {"label": "产地", "field": "country_of_origin", "value": first.get("country_of_origin") or "China", "source": "默认", "scope": "all"},
-            {"label": "危险品", "field": "dangerous_goods", "value": first.get("dangerous_goods") or "No", "source": "人工确认", "scope": "all"},
         ],
         "title": first.get("title") or "",
         "selling": _selling_text(first),
@@ -2208,6 +2290,10 @@ def _served_file_path(query):
     return _local_file_path(params.get("path", [""])[0])
 
 
+def _query_path(query):
+    return parse_qs(query).get("path", [""])[0]
+
+
 def _download_content_type(path):
     suffix = path.suffix.lower()
     if suffix in {".xlsx", ".xlsm", ".xls"}:
@@ -2228,3 +2314,11 @@ def _relative(path):
 
 def _html():
     return (Path(__file__).with_name("workbench_frontend.html")).read_text(encoding="utf-8")
+
+
+def _batch_fast_html():
+    return (Path(__file__).with_name("batch_fast_workbench_frontend.html")).read_text(encoding="utf-8")
+
+
+def _batch_fast_version_preview_html():
+    return (Path(__file__).with_name("batch_fast_version_preview.html")).read_text(encoding="utf-8")

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>批量快速上品路线</title>
+  <style>
+    :root { --ink:#172033; --muted:#667085; --line:#d9dee8; --soft:#f5f7fa; --page:#eef1f5; --panel:#fff; --button:#fff; --hover:#fbfdff; --blue:#2f6fed; --green:#16835d; --shadow:0 8px 28px rgba(20,31,55,.08); color-scheme:light; }
+    :root[data-theme="dark"] { --ink:#e9eef8; --muted:#98a5bb; --line:#2b3548; --soft:#182131; --page:#0c111b; --panel:#121a27; --button:#1a2435; --hover:#172234; --blue:#6d9cff; --green:#53c99a; --shadow:0 12px 34px rgba(0,0,0,.28); color-scheme:dark; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--page); font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; transition:background .2s,color .2s; }
+    button, select { font:inherit; }
+    .shell { max-width:1480px; margin:0 auto; padding:28px; }
+    .top { display:flex; justify-content:space-between; gap:20px; align-items:flex-start; margin-bottom:20px; }
+    h1 { font-size:26px; margin:0 0 7px; letter-spacing:-.02em; }
+    .sub { margin:0; color:var(--muted); }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; }
+    .btn { border:1px solid var(--line); background:var(--button); color:var(--ink); border-radius:8px; padding:9px 14px; cursor:pointer; text-decoration:none; white-space:nowrap; }
+    .btn:hover { border-color:#9aa7bb; }
+    .btn.primary { border-color:var(--blue); background:var(--blue); color:#fff; }
+    .btn.small { padding:6px 10px; font-size:13px; }
+    .btn[disabled], .btn.disabled { opacity:.42; pointer-events:none; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); overflow:hidden; }
+    .summary { display:flex; gap:24px; padding:15px 18px; border-bottom:1px solid var(--line); background:var(--hover); color:var(--muted); flex-wrap:wrap; }
+    .summary strong { color:var(--ink); margin-left:5px; }
+    .tabs { display:flex; gap:4px; padding:12px 14px 0; overflow:auto; border-bottom:1px solid var(--line); }
+    .tab { border:0; border-bottom:3px solid transparent; background:transparent; padding:10px 15px; color:var(--muted); cursor:pointer; white-space:nowrap; }
+    .tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:650; }
+    .table-wrap { overflow:auto; }
+    table { border-collapse:collapse; width:100%; min-width:1050px; }
+    th, td { padding:13px 14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); text-align:left; vertical-align:middle; }
+    th:last-child, td:last-child { border-right:0; }
+    th { background:var(--soft); color:#465066; font-size:13px; font-weight:650; }
+    tr:last-child td { border-bottom:0; }
+    tbody tr:hover { background:var(--hover); }
+    .product { display:flex; flex-direction:column; gap:3px; min-width:175px; }
+    .product a { color:var(--ink); font-weight:650; text-decoration:none; }
+    .product a:hover { color:var(--blue); text-decoration:underline; }
+    .path { color:var(--muted); font-size:12px; max-width:270px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .file-actions { display:flex; align-items:center; gap:7px; flex-wrap:wrap; min-width:170px; }
+    .drop-zone { min-height:40px; margin:-6px; padding:6px; border:1px dashed transparent; border-radius:8px; transition:border-color .15s,background .15s; }
+    .drop-zone.dragging { border-color:var(--blue); background:color-mix(in srgb, var(--blue) 12%, transparent); }
+    .drop-hint { width:100%; color:var(--muted); font-size:11px; }
+    .file-name { max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .version-badge { display:inline-flex; padding:2px 7px; border-radius:999px; color:var(--green); background:color-mix(in srgb,var(--green) 13%,transparent); font-size:11px; font-weight:700; }
+    .output-current { display:flex; width:100%; align-items:center; gap:7px; }
+    .old-versions { display:flex; gap:7px; flex-wrap:wrap; min-width:150px; }
+    .old-version { display:inline-flex; align-items:center; gap:6px; }
+    .ok { color:var(--green); }
+    select { border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 27px 7px 9px; color:var(--ink); }
+    .theme-switch { display:flex; padding:3px; border:1px solid var(--line); border-radius:9px; background:var(--panel); }
+    .theme-switch button { border:0; border-radius:6px; padding:6px 10px; background:transparent; color:var(--muted); cursor:pointer; }
+    .theme-switch button.active { color:#fff; background:var(--blue); }
+    .empty { padding:50px; text-align:center; color:var(--muted); }
+    .toast { position:fixed; right:24px; bottom:24px; max-width:380px; padding:11px 15px; color:#fff; background:#172033; border-radius:8px; box-shadow:var(--shadow); opacity:0; transform:translateY(8px); pointer-events:none; transition:.2s; }
+    .toast.show { opacity:1; transform:none; }
+    input[type=file] { display:none; }
+    @media (max-width:760px) { .shell{padding:16px}.top{display:block}.actions{margin-top:14px} }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="top">
+      <div>
+        <h1>批量快速上品路线</h1>
+        <p class="sub">独立记录竞品 HTML、原始模板和最终输出文档，不影响默认上品路线。</p>
+      </div>
+      <div class="actions">
+        <div class="theme-switch" aria-label="页面主题">
+          <button data-theme-choice="light">浅色</button>
+          <button data-theme-choice="dark">深夜</button>
+        </div>
+        <a class="btn disabled" id="download-batch" href="#">批量下载输出</a>
+        <button class="btn" id="refresh">刷新</button>
+        <button class="btn primary" id="sync">从桌面 Excel 同步</button>
+      </div>
+    </div>
+    <section class="panel">
+      <div class="summary" id="summary"></div>
+      <div class="tabs" id="tabs"></div>
+      <div class="table-wrap" id="content"><div class="empty">正在读取清单…</div></div>
+    </section>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script>
+    const state = { data:null, active:null };
+    const $ = (selector) => document.querySelector(selector);
+    const esc = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const fileUrl = (path) => `/batch-fast/file?path=${encodeURIComponent(path)}`;
+    function setTheme(theme) {
+      const selected=theme==='dark'?'dark':'light';
+      document.documentElement.dataset.theme=selected;
+      document.querySelectorAll('[data-theme-choice]').forEach(button=>button.classList.toggle('active',button.dataset.themeChoice===selected));
+      localStorage.setItem('batch-fast-theme',selected);
+    }
+    function toast(message) { const el=$('#toast'); el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),2200); }
+    async function api(path, options={}) { const res=await fetch(path, options); const data=await res.json(); if(!res.ok || data.ok===false) throw new Error(data.error || '操作失败'); return data; }
+    async function load() { state.data=await api('/api/batch-fast'); if(!state.active || !state.data.batches.some(b=>b.id===state.active)) state.active=state.data.batches[0]?.id || null; render(); }
+    function render() {
+      const d=state.data, t=d.totals;
+      $('#summary').innerHTML=`<span>产品<strong>${t.rows}</strong></span><span>竞品 HTML<strong>${t.html}</strong></span><span>原始模板<strong>${t.templates}</strong></span><span>输出文档<strong>${t.outputs}</strong></span><span>更新<strong>${esc(d.updated_at || '-')}</strong></span>`;
+      $('#tabs').innerHTML=d.batches.map(b=>`<button class="tab ${b.id===state.active?'active':''}" data-tab="${esc(b.id)}">${esc(b.name)} <span>(${b.rows.length})</span></button>`).join('');
+      const batch=d.batches.find(b=>b.id===state.active);
+      const outputCount=batch ? batch.rows.filter(row=>row.files.output_file.exists).length : 0;
+      const download=$('#download-batch');
+      download.textContent=outputCount ? `批量下载输出（${outputCount}）` : '批量下载输出';
+      download.href=outputCount ? `/batch-fast/download?batch_id=${encodeURIComponent(batch.id)}` : '#';
+      download.classList.toggle('disabled',!outputCount);
+      $('#content').innerHTML=batch ? table(batch) : '<div class="empty">尚未导入批次</div>';
+    }
+    function table(batch) {
+      return `<table><thead><tr><th>商品</th><th>竞品 HTML</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th></tr></thead><tbody>${batch.rows.map(row=>rowHtml(batch,row)).join('')}</tbody></table>`;
+    }
+    function rowHtml(batch,row) {
+      const html=row.files.competitor_html, source=row.files.source_template, output=row.files.output_file;
+      return `<tr data-batch="${esc(batch.id)}" data-row="${esc(row.id)}">
+        <td><div class="product"><a href="${esc(row.link)}" target="_blank" rel="noreferrer">${esc(row.asin || row.id)}</a><span class="path">Excel 第 ${row.row_number} 行</span></div></td>
+        <td>${html.exists?fileCell(html,false):'<span class="path">未保存</span>'}</td>
+        <td>${fileCell(source,true,'source_template')}</td>
+        <td>${outputCell(row)}</td>
+        <td>${oldVersionsCell(row)}</td>
+        <td><select class="status">${state.data.statuses.map(s=>`<option ${s===row.status?'selected':''}>${esc(s)}</option>`).join('')}</select></td>
+      </tr>`;
+    }
+    function outputCell(row) {
+      const file=row.files.output_file;
+      const current=(row.output_versions || []).find(item=>item.current) || row.output_versions?.[0];
+      if(!file.exists) return `<div class="file-actions"><span class="path">等待生成并自动同步</span><span class="btn small disabled">下载到本地</span></div>`;
+      return `<div class="file-actions"><div class="output-current"><span class="version-badge">${esc(current?.label || '当前')}</span><span class="file-name ok" title="${esc(file.path)}">${esc(file.name)}</span></div><button class="btn small open-file" data-path="${esc(file.path)}">打开</button><a class="btn small" download href="${fileUrl(file.path)}">下载到本地</a></div>`;
+    }
+    function oldVersionsCell(row) {
+      const versions=(row.output_versions || []).filter(item=>!item.current && item.file.exists);
+      if(!versions.length) return '<span class="path">—</span>';
+      return `<div class="old-versions">${versions.map(item=>`<span class="old-version"><strong>${esc(item.label)}</strong><a class="btn small" download href="${fileUrl(item.file.path)}">下载旧版</a></span>`).join('')}</div>`;
+    }
+    function fileCell(file,uploadable,field,download=false) {
+      const zoneClass=uploadable?' drop-zone':'';
+      const zoneAttr=uploadable?` data-upload-field="${field}"`:'';
+      if(file.exists) return `<div class="file-actions${zoneClass}"${zoneAttr}><span class="file-name ok" title="${esc(file.path)}">${esc(file.name)}</span><button class="btn small open-file" data-path="${esc(file.path)}">打开</button>${download?`<a class="btn small" download href="${fileUrl(file.path)}">下载到本地</a>`:''}${uploadable?`<button class="btn small upload" data-field="${field}">替换</button>`:''}</div>`;
+      return `<div class="file-actions${zoneClass}"${zoneAttr}><span class="path">暂无文件</span>${download?'<span class="btn small disabled">下载到本地</span>':''}${uploadable?`<button class="btn small upload" data-field="${field}">上传文件</button><span class="drop-hint">也可将 Excel 拖到这里</span>`:''}</div>`;
+    }
+    document.addEventListener('click', async (event) => {
+      const theme=event.target.closest('[data-theme-choice]'); if(theme){setTheme(theme.dataset.themeChoice);return;}
+      const tab=event.target.closest('[data-tab]'); if(tab){state.active=tab.dataset.tab;render();return;}
+      if(event.target.id==='refresh'){await load();toast('已刷新');return;}
+      if(event.target.id==='sync'){try{await api('/api/batch-fast/import',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await load();toast('已从三张桌面表格同步');}catch(e){toast(e.message)}return;}
+      const open=event.target.closest('.open-file'); if(open){try{await api('/api/batch-fast/open',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:open.dataset.path})});toast('已在电脑中打开');}catch(e){toast(e.message)}return;}
+      const upload=event.target.closest('.upload'); if(upload){chooseFile(upload.closest('tr'),upload.dataset.field);}
+    });
+    document.addEventListener('change', async (event) => {
+      if(!event.target.matches('.status')) return;
+      const row=event.target.closest('tr');
+      try { await api('/api/batch-fast/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,fields:{status:event.target.value}})}); toast('状态已保存'); }
+      catch(e){toast(e.message);await load();}
+    });
+    document.addEventListener('dragover', (event) => {
+      if(!event.dataTransfer?.types.includes('Files')) return;
+      event.preventDefault();
+      document.querySelectorAll('.drop-zone.dragging').forEach(zone=>zone.classList.remove('dragging'));
+      event.target.closest('.drop-zone')?.classList.add('dragging');
+    });
+    document.addEventListener('dragleave', (event) => {
+      const zone=event.target.closest('.drop-zone');
+      if(zone && !zone.contains(event.relatedTarget)) zone.classList.remove('dragging');
+    });
+    document.addEventListener('drop', async (event) => {
+      if(!event.dataTransfer?.files?.length) return;
+      event.preventDefault();
+      const zone=event.target.closest('.drop-zone');
+      document.querySelectorAll('.drop-zone.dragging').forEach(item=>item.classList.remove('dragging'));
+      if(!zone){toast('请拖到“原始模板”区域');return;}
+      await uploadFile(zone.closest('tr'),zone.dataset.uploadField,event.dataTransfer.files[0]);
+    });
+    function chooseFile(row,field){
+      const input=document.createElement('input'); input.type='file'; input.accept='.xlsx,.xlsm,.xls';
+      input.onchange=async()=>{if(input.files[0])await uploadFile(row,field,input.files[0]);};
+      input.click();
+    }
+    async function uploadFile(row,field,file){
+      if(!/\.(xlsx|xlsm|xls)$/i.test(file.name)){toast('只支持 xlsx、xlsm、xls 文件');return;}
+      const form=new FormData();form.append('batch_id',row.dataset.batch);form.append('row_id',row.dataset.row);form.append('field',field);form.append('file',file);
+      try{await api('/api/batch-fast/upload',{method:'POST',body:form});await load();toast('文件已保存');}catch(e){toast(e.message)}
+    }
+    setTheme(localStorage.getItem('batch-fast-theme') || 'light');
+    load().catch(e=>{$('#content').innerHTML=`<div class="empty">${esc(e.message)}</div>`});
+  </script>
+</body>
+</html>

@@ -12,6 +12,7 @@ from openpyxl import load_workbook
 from .analyzer import analyze_project
 from .paths import COMPETITOR_DIR, CONFIG_DIR, PRODUCT_DETAIL_DIR, TEMPLATE_SOURCE_DIR, safe_name
 from .template_validator import validate_template_file
+from .template_red_field_scanner import scan_template_red_fields
 from .template_writer import fill_template
 from .workbook_io import read_intake_rows, write_intake_workbook
 
@@ -70,9 +71,10 @@ def run_batch_fast_prelisting(manifest_path, output_dir=None):
         "manifest": manifest_path,
         "output_dir": output_dir,
         "task_count": len(tasks),
-        "success_count": sum(1 for item in results if item["status"] == "ready_for_wps"),
+        "success_count": sum(1 for item in results if item["status"] == "ready_for_review"),
         "failed_count": sum(1 for item in results if item["status"] == "failed"),
         "needs_fix_count": sum(1 for item in results if item["status"] == "needs_manual_fix"),
+        "needs_wps_count": sum(1 for item in results if item["status"] == "needs_wps"),
         "results": results,
     }
 
@@ -128,16 +130,32 @@ def _run_one_task(task, index, base_dir, output_dir):
         )
         _apply_batch_overlay(filled_path, task, tier, reference_fields, reference_rows)
         findings, _ = validate_template_file(filled_path, write_report=False)
+        red_fields, unresolved_red_rules = scan_template_red_fields(filled_path)
         _check_zip_structure(filled_path)
 
     error_count = len(findings)
+    if error_count:
+        status = "needs_manual_fix"
+        message = findings[0]["message"]
+    elif unresolved_red_rules:
+        status = "needs_wps"
+        message = f"有 {len(unresolved_red_rules)} 个条件格式公式暂不能计算，请用 WPS 复核。"
+    elif red_fields:
+        status = "needs_manual_fix"
+        first = red_fields[0]
+        message = f"检测到 {len(red_fields)} 个红框字段；首项：{first['sku']} / {first['label']}。"
+    else:
+        status = "ready_for_review"
+        message = "项目自检与红框扫描均通过，可进入人工复核。"
     return {
         "index": index,
         "name": name,
-        "status": "ready_for_wps" if error_count == 0 else "needs_manual_fix",
+        "status": status,
         "error_count": error_count,
+        "red_field_count": len(red_fields),
+        "unresolved_red_rule_count": len(unresolved_red_rules),
         "output": str(filled_path),
-        "message": "项目自检通过，请用 WPS 打开 Template 页重算条件格式。" if error_count == 0 else findings[0]["message"],
+        "message": message,
     }
 
 

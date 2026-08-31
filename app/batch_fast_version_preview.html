@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>输出版本记录 · 简化预览</title>
+  <style>
+    :root { --ink:#172033; --muted:#667085; --line:#d9dee8; --soft:#f5f7fa; --page:#eef1f5; --panel:#fff; --button:#fff; --hover:#fbfdff; --blue:#2f6fed; --green:#16835d; --orange:#b66313; --shadow:0 8px 28px rgba(20,31,55,.08); color-scheme:light; }
+    :root[data-theme="dark"] { --ink:#e9eef8; --muted:#98a5bb; --line:#2b3548; --soft:#182131; --page:#0c111b; --panel:#121a27; --button:#1a2435; --hover:#172234; --blue:#6d9cff; --green:#53c99a; --orange:#f0a75e; --shadow:0 12px 34px rgba(0,0,0,.28); color-scheme:dark; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--page); font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
+    button { font:inherit; }
+    .shell { max-width:1480px; margin:0 auto; padding:28px; }
+    .top { display:flex; justify-content:space-between; gap:20px; align-items:flex-start; margin-bottom:18px; }
+    h1 { font-size:26px; margin:0 0 7px; letter-spacing:-.02em; }
+    .sub { margin:0; color:var(--muted); }
+    .preview-tag { display:inline-flex; margin-left:8px; padding:3px 8px; border-radius:999px; background:#fff2d8; color:#93520e; font-size:12px; vertical-align:middle; }
+    :root[data-theme="dark"] .preview-tag { background:#3b2a17; color:#f0b873; }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .btn { border:1px solid var(--line); background:var(--button); color:var(--ink); border-radius:8px; padding:9px 14px; cursor:pointer; text-decoration:none; white-space:nowrap; }
+    .btn:hover { border-color:#9aa7bb; }
+    .btn.primary { border-color:var(--blue); background:var(--blue); color:#fff; }
+    .btn.small { padding:6px 10px; font-size:13px; }
+    .theme-switch { display:flex; padding:3px; border:1px solid var(--line); border-radius:9px; background:var(--panel); }
+    .theme-switch button { border:0; border-radius:6px; padding:6px 10px; background:transparent; color:var(--muted); cursor:pointer; }
+    .theme-switch button.active { color:#fff; background:var(--blue); }
+    .explain { margin-bottom:18px; padding:14px 16px; border:1px solid color-mix(in srgb,var(--blue) 28%,var(--line)); border-radius:10px; background:color-mix(in srgb,var(--blue) 7%,var(--panel)); color:var(--muted); }
+    .explain strong { color:var(--blue); margin-right:8px; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); overflow:hidden; }
+    .summary { display:flex; gap:25px; padding:15px 18px; border-bottom:1px solid var(--line); background:var(--hover); color:var(--muted); flex-wrap:wrap; }
+    .summary strong { color:var(--ink); margin-left:5px; }
+    .tabs { display:flex; gap:4px; padding:12px 14px 0; border-bottom:1px solid var(--line); overflow:auto; }
+    .tab { border:0; border-bottom:3px solid transparent; background:transparent; padding:10px 15px; color:var(--muted); white-space:nowrap; }
+    .tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:650; }
+    .table-wrap { overflow:auto; }
+    table { border-collapse:collapse; width:100%; min-width:1080px; }
+    th, td { padding:14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); text-align:left; vertical-align:middle; }
+    th:last-child, td:last-child { border-right:0; }
+    tr:last-child td { border-bottom:0; }
+    th { background:var(--soft); color:#465066; font-size:13px; font-weight:650; }
+    :root[data-theme="dark"] th { color:#bdc7d8; }
+    tbody tr:hover { background:var(--hover); }
+    .product { display:flex; flex-direction:column; gap:3px; min-width:205px; }
+    .product strong { font-size:14px; }
+    .path { color:var(--muted); font-size:12px; }
+    .file { display:flex; flex-direction:column; gap:7px; min-width:265px; }
+    .file-head { display:flex; align-items:center; gap:8px; }
+    .file-name { color:var(--green); font-weight:620; }
+    .file-actions { display:flex; gap:7px; align-items:center; flex-wrap:wrap; }
+    .badge { display:inline-flex; align-items:center; width:max-content; padding:3px 8px; border-radius:999px; font-size:12px; font-weight:650; }
+    .badge.current { background:color-mix(in srgb,var(--green) 14%,transparent); color:var(--green); }
+    .badge.wait { background:color-mix(in srgb,var(--orange) 13%,transparent); color:var(--orange); }
+    .old-version { min-width:185px; }
+    .old-link { display:flex; gap:8px; align-items:center; color:var(--muted); }
+    .old-link strong { color:var(--ink); }
+    .none { color:var(--muted); }
+    .footnote { margin:15px 2px 0; color:var(--muted); font-size:12px; }
+    @media (max-width:800px) { .shell{padding:16px}.top{display:block}.actions{margin-top:14px} }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div>
+        <h1>批量快速上品路线 <span class="preview-tag">简化版预览</span></h1>
+        <p class="sub">默认生成 V1；只有出现报错的少数商品，才追加 V2 或 V3。</p>
+      </div>
+      <div class="actions">
+        <div class="theme-switch" aria-label="页面主题"><button data-theme-choice="light">浅色</button><button data-theme-choice="dark">深夜</button></div>
+        <a class="btn" href="/batch-fast">返回现有工作台</a>
+        <button class="btn primary" type="button">批量下载最新版（3）</button>
+      </div>
+    </header>
+
+    <section class="explain"><strong>简化口径</strong>工作台不保存报错报告。正常商品只显示 V1；修正后上传 V2 时，V2 自动成为当前文件，V1 缩成一个“旧版下载”入口。批量下载始终只取当前文件。</section>
+
+    <section class="panel">
+      <div class="summary"><span>产品<strong>3</strong></span><span>当前输出<strong>3</strong></span><span>仍为 V1<strong>2</strong></span><span>已修正为 V2<strong>1</strong></span></div>
+      <div class="tabs"><button class="tab active">2店批量上品 <span>(3)</span></button><button class="tab">1店批量上品图图</button><button class="tab">1店批量上品凯旋</button></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>商品</th><th>当前输出文档</th><th>旧版</th><th>状态</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div class="product"><strong>B0GTTY46VR</strong><span class="path">园艺工具磨刀器2件套</span></div></td>
+              <td><div class="file"><div class="file-head"><span class="badge current">V2 当前</span><span class="file-name">园艺工具磨刀器2件套V2.xlsm</span></div><div class="file-actions"><button class="btn small">打开</button><button class="btn small">下载</button></div></div></td>
+              <td class="old-version"><div class="old-link"><strong>V1</strong><button class="btn small">下载旧版</button></div></td>
+              <td><span class="badge wait">待复核</span></td>
+            </tr>
+            <tr>
+              <td><div class="product"><strong>B0GRH26ZBY</strong><span class="path">磁性登山扣挂钩2件套</span></div></td>
+              <td><div class="file"><div class="file-head"><span class="badge current">V1 当前</span><span class="file-name">磁性登山扣挂钩2件套V1.xlsm</span></div><div class="file-actions"><button class="btn small">打开</button><button class="btn small">下载</button></div></div></td>
+              <td class="old-version"><span class="none">—</span></td>
+              <td><span class="badge current">待上传</span></td>
+            </tr>
+            <tr>
+              <td><div class="product"><strong>B0GVJDVHM3</strong><span class="path">尼龙画笔套装30件</span></div></td>
+              <td><div class="file"><div class="file-head"><span class="badge current">V1 当前</span><span class="file-name">尼龙画笔套装30件V1.xlsm</span></div><div class="file-actions"><button class="btn small">打开</button><button class="btn small">下载</button></div></div></td>
+              <td class="old-version"><span class="none">—</span></td>
+              <td><span class="badge current">待上传</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <p class="footnote">这是界面设计预览，不会上传文件、修改状态或写入现有台账。</p>
+  </main>
+  <script>
+    function setTheme(theme){
+      const selected=theme==='dark'?'dark':'light';
+      document.documentElement.dataset.theme=selected;
+      document.querySelectorAll('[data-theme-choice]').forEach(button=>button.classList.toggle('active',button.dataset.themeChoice===selected));
+      localStorage.setItem('batch-fast-theme',selected);
+    }
+    document.addEventListener('click',event=>{const button=event.target.closest('[data-theme-choice]');if(button)setTheme(button.dataset.themeChoice);});
+    setTheme(localStorage.getItem('batch-fast-theme') || 'light');
+  </script>
+</body>
+</html>
