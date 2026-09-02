@@ -174,8 +174,9 @@ def _handler():
                     self._send_file(path)
             elif parsed.path == "/batch-fast/download":
                 batch_id = parse_qs(parsed.query).get("batch_id", [""])[0]
+                store_id = parse_qs(parsed.query).get("store_id", [""])[0]
                 try:
-                    filename, data, _count = build_batch_fast_output_archive(batch_id)
+                    filename, data, _count = build_batch_fast_output_archive(batch_id, store_id=store_id or None)
                 except ValueError as exc:
                     self._send_json({"ok": False, "error": str(exc)}, status=404)
                     return

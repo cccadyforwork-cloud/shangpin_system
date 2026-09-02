@@ -9,7 +9,7 @@
     :root[data-theme="dark"] { --ink:#e9eef8; --muted:#98a5bb; --line:#2b3548; --soft:#182131; --page:#0c111b; --panel:#121a27; --button:#1a2435; --hover:#172234; --blue:#6d9cff; --green:#53c99a; --shadow:0 12px 34px rgba(0,0,0,.28); color-scheme:dark; }
     * { box-sizing:border-box; }
     body { margin:0; color:var(--ink); background:var(--page); font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; transition:background .2s,color .2s; }
-    button, select { font:inherit; }
+    button, select, input { font:inherit; }
     .shell { max-width:1480px; margin:0 auto; padding:28px; }
     .top { display:flex; justify-content:space-between; gap:20px; align-items:flex-start; margin-bottom:20px; }
     h1 { font-size:26px; margin:0 0 7px; letter-spacing:-.02em; }
@@ -26,6 +26,10 @@
     .tabs { display:flex; gap:4px; padding:12px 14px 0; overflow:auto; border-bottom:1px solid var(--line); }
     .tab { border:0; border-bottom:3px solid transparent; background:transparent; padding:10px 15px; color:var(--muted); cursor:pointer; white-space:nowrap; }
     .tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:650; }
+    .store-tabs { display:none; gap:8px; padding:12px 14px; border-bottom:1px solid var(--line); background:var(--hover); }
+    .store-tabs.visible { display:flex; }
+    .store-tab { border:1px solid var(--line); border-radius:8px; padding:7px 18px; background:var(--button); color:var(--muted); cursor:pointer; }
+    .store-tab.active { border-color:var(--blue); background:var(--blue); color:#fff; font-weight:650; }
     .table-wrap { overflow:auto; }
     table { border-collapse:collapse; width:100%; min-width:1050px; }
     th, td { padding:13px 14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); text-align:left; vertical-align:middle; }
@@ -48,6 +52,8 @@
     .old-version { display:inline-flex; align-items:center; gap:6px; }
     .ok { color:var(--green); }
     select { border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 27px 7px 9px; color:var(--ink); }
+    .note { width:130px; border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 9px; color:var(--ink); }
+    .note::placeholder { color:var(--muted); }
     .theme-switch { display:flex; padding:3px; border:1px solid var(--line); border-radius:9px; background:var(--panel); }
     .theme-switch button { border:0; border-radius:6px; padding:6px 10px; background:transparent; color:var(--muted); cursor:pointer; }
     .theme-switch button.active { color:#fff; background:var(--blue); }
@@ -78,12 +84,13 @@
     <section class="panel">
       <div class="summary" id="summary"></div>
       <div class="tabs" id="tabs"></div>
+      <div class="store-tabs" id="store-tabs"></div>
       <div class="table-wrap" id="content"><div class="empty">正在读取清单…</div></div>
     </section>
   </main>
   <div class="toast" id="toast"></div>
   <script>
-    const state = { data:null, active:null };
+    const state = { data:null, active:null, activeStore:null };
     const $ = (selector) => document.querySelector(selector);
     const esc = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
     const fileUrl = (path) => `/batch-fast/file?path=${encodeURIComponent(path)}`;
@@ -99,17 +106,24 @@
     function render() {
       const d=state.data, t=d.totals;
       $('#summary').innerHTML=`<span>产品<strong>${t.rows}</strong></span><span>竞品 HTML<strong>${t.html}</strong></span><span>原始模板<strong>${t.templates}</strong></span><span>输出文档<strong>${t.outputs}</strong></span><span>更新<strong>${esc(d.updated_at || '-')}</strong></span>`;
-      $('#tabs').innerHTML=d.batches.map(b=>`<button class="tab ${b.id===state.active?'active':''}" data-tab="${esc(b.id)}">${esc(b.name)} <span>(${b.rows.length})</span></button>`).join('');
+      $('#tabs').innerHTML=d.batches.map(b=>{const count=b.stores?.length?b.rows.filter(row=>row.store_id===b.stores[0]).length:b.rows.length;return `<button class="tab ${b.id===state.active?'active':''}" data-tab="${esc(b.id)}">${esc(b.name)} <span>(${count})</span></button>`;}).join('');
       const batch=d.batches.find(b=>b.id===state.active);
-      const outputCount=batch ? batch.rows.filter(row=>row.files.output_file.exists).length : 0;
+      const stores=batch?.stores || [];
+      if(stores.length && !stores.includes(state.activeStore)) state.activeStore=stores[0];
+      if(!stores.length) state.activeStore=null;
+      const storeTabs=$('#store-tabs');
+      storeTabs.classList.toggle('visible',stores.length>0);
+      storeTabs.innerHTML=stores.map(store=>`<button class="store-tab ${store===state.activeStore?'active':''}" data-store="${esc(store)}">${esc(store)}</button>`).join('');
+      const visibleRows=batch ? batch.rows.filter(row=>!stores.length || row.store_id===state.activeStore) : [];
+      const outputCount=visibleRows.filter(row=>row.files.output_file.exists).length;
       const download=$('#download-batch');
       download.textContent=outputCount ? `批量下载输出（${outputCount}）` : '批量下载输出';
-      download.href=outputCount ? `/batch-fast/download?batch_id=${encodeURIComponent(batch.id)}` : '#';
+      download.href=outputCount ? `/batch-fast/download?batch_id=${encodeURIComponent(batch.id)}${state.activeStore?`&store_id=${encodeURIComponent(state.activeStore)}`:''}` : '#';
       download.classList.toggle('disabled',!outputCount);
-      $('#content').innerHTML=batch ? table(batch) : '<div class="empty">尚未导入批次</div>';
+      $('#content').innerHTML=batch ? table({...batch,rows:visibleRows}) : '<div class="empty">尚未导入批次</div>';
     }
     function table(batch) {
-      return `<table><thead><tr><th>商品</th><th>竞品 HTML</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th></tr></thead><tbody>${batch.rows.map(row=>rowHtml(batch,row)).join('')}</tbody></table>`;
+      return `<table><thead><tr><th>商品</th><th>竞品 HTML</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th><th>备注</th></tr></thead><tbody>${batch.rows.map(row=>rowHtml(batch,row)).join('')}</tbody></table>`;
     }
     function rowHtml(batch,row) {
       const html=row.files.competitor_html, source=row.files.source_template, output=row.files.output_file;
@@ -120,6 +134,7 @@
         <td>${outputCell(row)}</td>
         <td>${oldVersionsCell(row)}</td>
         <td><select class="status">${state.data.statuses.map(s=>`<option ${s===row.status?'selected':''}>${esc(s)}</option>`).join('')}</select></td>
+        <td><input class="note" type="text" value="${esc(row.note || '')}" placeholder="可填写备注"></td>
       </tr>`;
     }
     function outputCell(row) {
@@ -141,16 +156,18 @@
     }
     document.addEventListener('click', async (event) => {
       const theme=event.target.closest('[data-theme-choice]'); if(theme){setTheme(theme.dataset.themeChoice);return;}
-      const tab=event.target.closest('[data-tab]'); if(tab){state.active=tab.dataset.tab;render();return;}
+      const tab=event.target.closest('[data-tab]'); if(tab){state.active=tab.dataset.tab;state.activeStore=null;render();return;}
+      const store=event.target.closest('[data-store]'); if(store){state.activeStore=store.dataset.store;render();return;}
       if(event.target.id==='refresh'){await load();toast('已刷新');return;}
       if(event.target.id==='sync'){try{await api('/api/batch-fast/import',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await load();toast('已从三张桌面表格同步');}catch(e){toast(e.message)}return;}
       const open=event.target.closest('.open-file'); if(open){try{await api('/api/batch-fast/open',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:open.dataset.path})});toast('已在电脑中打开');}catch(e){toast(e.message)}return;}
       const upload=event.target.closest('.upload'); if(upload){chooseFile(upload.closest('tr'),upload.dataset.field);}
     });
     document.addEventListener('change', async (event) => {
-      if(!event.target.matches('.status')) return;
+      if(!event.target.matches('.status, .note')) return;
       const row=event.target.closest('tr');
-      try { await api('/api/batch-fast/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,fields:{status:event.target.value}})}); toast('状态已保存'); }
+      const field=event.target.matches('.status')?'status':'note';
+      try { await api('/api/batch-fast/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,fields:{[field]:event.target.value}})}); toast(field==='status'?'状态已保存':'备注已保存'); }
       catch(e){toast(e.message);await load();}
     });
     document.addEventListener('dragover', (event) => {

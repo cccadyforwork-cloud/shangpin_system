@@ -7,6 +7,8 @@ from app.batch_fast_prelisting import (
     _child_sku,
     _fast_copy_fallback,
     _output_filename,
+    _parent_required_overlay_fields,
+    _parent_sku,
     _resolve_task_price,
     _row_changed,
     extract_competitor_price,
@@ -30,9 +32,46 @@ class BatchFastPrelistingTest(unittest.TestCase):
         self.assertEqual(tier["package_in"], [5.91, 3.94, 1.57])
         self.assertEqual(tier["weight_lb"], 0.44)
 
+    def test_pet_toy_parent_gets_item_measurements_only(self):
+        tier = resolve_logistics_tier(tier_id="le_4_oz")
+        fields = _parent_required_overlay_fields("PET_TOY", tier)
+        self.assertEqual(fields["item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.value"], 3.94)
+        self.assertEqual(fields["item_weight[marketplace_id=ATVPDKIKX0DER]#1.value"], 0.22)
+        self.assertFalse(any("item_package_dimensions" in field for field in fields))
+        self.assertFalse(any("item_package_weight" in field for field in fields))
+        self.assertEqual(_parent_required_overlay_fields("HAT", tier), {})
+
     def test_short_sku_generation(self):
-        task = {"parent_sku": "CA-GLASSBEADS", "color": "Green", "size": "6 MM"}
-        self.assertEqual(_child_sku(task, {}, 1), "CA-GLASSBEADS-GREEN6MM")
+        task = {"product_name": "glass BEADS extra words", "color": "Green", "variation_theme": "COLOR"}
+        self.assertEqual(_parent_sku(task), "CA-GlassBeads")
+        self.assertEqual(_child_sku(task, {}, 1), "CA-GlassBeads-Green")
+
+    def test_number_of_items_sku_uses_lowercase_unit_suffix(self):
+        task = {"product_name": "tool SHARPENER", "set_count": 2, "variation_theme": "NUMBER_OF_ITEMS"}
+        self.assertEqual(_child_sku(task, {}, 1), "CA-ToolSharpener-2pcs")
+
+    def test_size_sku_uses_lowercase_measurement_unit(self):
+        task = {
+            "product_name": "storage hook",
+            "size": "6 MM",
+            "variation_theme": "SIZE",
+        }
+
+        self.assertEqual(_child_sku(task, {}, 1), "CA-StorageHook-6mm")
+
+    def test_non_unit_variant_sku_remains_title_case(self):
+        task = {
+            "product_name": "glass beads",
+            "color": "Dark Green",
+            "variation_theme": "COLOR",
+        }
+
+        self.assertEqual(_child_sku(task, {}, 1), "CA-GlassBeads-DarkGreen")
+
+    def test_explicit_sku_remains_an_override(self):
+        task = {"product_name": "glass beads", "parent_sku": "CUSTOM-P", "child_sku": "CUSTOM-C"}
+        self.assertEqual(_parent_sku(task), "CUSTOM-P")
+        self.assertEqual(_child_sku(task, {}, 1), "CUSTOM-C")
 
     def test_output_name_cannot_escape_output_directory(self):
         filename = _output_filename({"output_name": "../危险文件.xlsx"}, "fallback", ".xlsm")
@@ -46,6 +85,9 @@ class BatchFastPrelistingTest(unittest.TestCase):
             "material": "Glass",
             "set_count": 100,
         })
+        self.assertEqual(len(copy["description"].split("\n\n")), 4)
+        self.assertGreaterEqual(len(copy["description"]), 1500)
+        self.assertLessEqual(len(copy["description"]), 1800)
         self.assertEqual(validate_listing_row(copy), [])
 
     def test_extracts_complete_single_color_twister_without_asins(self):

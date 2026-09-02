@@ -513,6 +513,7 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
     }
     sku_col = field_to_col.get("contribution_sku#1.value")
     parentage_col = field_to_col.get("parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value")
+    product_type_col = field_to_col.get("product_type#1.value")
     extra_fields = task.get("extra_fields") or {}
     dimension_fields = _dimension_overlay_fields(tier)
     protected_blank_tokens = (
@@ -537,6 +538,11 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
             if any(token in lowered for token in protected_blank_tokens):
                 ws.cell(row, col).value = None
         if is_parent:
+            product_type = str(ws.cell(row, product_type_col).value or "").strip().upper() if product_type_col else ""
+            for field_name, value in _parent_required_overlay_fields(product_type, tier).items():
+                col = field_to_col.get(field_name)
+                if col and value not in (None, ""):
+                    ws.cell(row, col).value = value
             action_col = field_to_col.get("::record_action")
             if action_col and requested_action:
                 ws.cell(row, action_col).value = requested_action
@@ -611,11 +617,33 @@ def _dimension_overlay_fields(tier):
     return fields
 
 
+def _parent_required_overlay_fields(product_type, tier):
+    if str(product_type or "").strip().upper() != "PET_TOY":
+        return {}
+    length, width, height = tier["package_in"]
+    weight = tier["weight_lb"]
+    return {
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.value": length,
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.unit": "Inches",
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value": width,
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit": "Inches",
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value": height,
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit": "Inches",
+        "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value": weight,
+        "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit": "Pounds",
+    }
+
+
 def _parent_sku(task):
     value = str(task.get("parent_sku") or "").strip()
     if value:
         return value
-    base = _sku_token(task.get("sku_base") or task.get("name") or task.get("output_name"))
+    base = _product_sku_token(
+        task.get("sku_base")
+        or task.get("product_name")
+        or task.get("name")
+        or task.get("output_name")
+    )
     return f"CA-{base}"
 
 
@@ -623,16 +651,57 @@ def _child_sku(task, variant, index):
     explicit = str(variant.get("sku") or (task.get("child_sku") if index == 1 else "") or "").strip()
     if explicit:
         return explicit
-    parts = [_parent_sku(task)]
-    color = _sku_token(variant.get("color") or task.get("color"))
-    size = _sku_token(variant.get("size") or task.get("size"))
-    suffix = f"{color}{size}" or f"V{index}"
-    parts.append(suffix)
-    return "-".join(parts)
+    suffix = _variant_sku_suffix(task, variant, index)
+    return f"{_parent_sku(task)}-{suffix}"
 
 
-def _sku_token(value):
-    return "".join(re.findall(r"[A-Z0-9]+", str(value or "").upper()))[:30] or "PRODUCT"
+def _product_sku_token(value):
+    words = re.findall(r"[A-Za-z0-9]+", str(value or ""))[:2]
+    token = "".join(_sku_title_word(word) for word in words)
+    return token[:20] or "Product"
+
+
+def _variant_sku_suffix(task, variant, index):
+    theme = str(task.get("variation_theme") or "").upper()
+    color = variant.get("color") or task.get("color")
+    size = variant.get("size") or task.get("size")
+    set_count = variant.get("set_count") or task.get("set_count")
+    set_name = variant.get("set_name") or task.get("set_name")
+
+    if "NUMBER_OF_ITEMS" in theme or "ITEM_PACKAGE_QUANTITY" in theme:
+        value = f"{set_count} Pcs" if set_count not in (None, "") else ""
+    elif theme in {"COLOR", "COLOR_NAME"}:
+        value = color
+    elif theme in {"SIZE", "SIZE_NAME"}:
+        value = size
+    elif "SET_NAME" in theme and "/" not in theme:
+        value = set_name or size or color
+    else:
+        value = " ".join(str(item) for item in (color, size) if item not in (None, ""))
+    token = "".join(
+        _sku_title_word(word, lowercase_units=True)
+        for word in re.findall(r"[A-Za-z0-9]+", str(value or ""))
+    )
+    return token[:16] or f"Option{index}"
+
+
+SKU_UNIT_TOKENS = {
+    "pc", "pcs", "set", "sets",
+    "mm", "cm", "m",
+    "in", "inch", "inches",
+    "oz", "lb", "lbs",
+    "g", "kg",
+    "ml", "l",
+}
+
+
+def _sku_title_word(word, lowercase_units=False):
+    text = str(word or "")
+    if text.isdigit():
+        return text
+    if lowercase_units and text.lower() in SKU_UNIT_TOKENS:
+        return text.lower()
+    return text[:1].upper() + text[1:].lower()
 
 
 def _normalize_size(value):
@@ -701,7 +770,13 @@ def _fast_description(subject, color, size, material, count):
     while len("\n\n".join(paragraphs)) < 1500:
         shortest = min(range(4), key=lambda index: len(paragraphs[index]))
         paragraphs[shortest] += padding
-    return "\n\n".join(paragraphs)
+    description = "\n\n".join(paragraphs)
+    if len(description) > 1800:
+        prefix = "\n\n".join(paragraphs[:3]) + "\n\n"
+        remaining = 1800 - len(prefix)
+        final_paragraph = paragraphs[3][:remaining].rsplit(" ", 1)[0].rstrip(" .") + "."
+        description = prefix + final_paragraph
+    return description
 
 
 def _output_filename(task, name, template_suffix):

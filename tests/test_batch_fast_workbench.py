@@ -6,7 +6,17 @@ from pathlib import Path
 
 from openpyxl import Workbook
 
-from app.batch_fast_workbench import attach_file, build_output_archive, import_sheets, payload, referenced_file, update_row
+from app.batch_fast_workbench import (
+    attach_file,
+    build_output_archive,
+    import_sheets,
+    load_ledger,
+    package_shared_data,
+    payload,
+    referenced_file,
+    save_ledger,
+    update_row,
+)
 
 
 class BatchFastWorkbenchTests(unittest.TestCase):
@@ -30,11 +40,12 @@ class BatchFastWorkbenchTests(unittest.TestCase):
     def test_import_update_and_reimport_preserve_row_state(self):
         data = import_sheets([self.sheet], self.ledger)
         batch_id = data["batches"][0]["id"]
-        update_row(batch_id, "B0ABCDEFGH", {"status": "待复核"}, self.ledger)
+        update_row(batch_id, "B0ABCDEFGH", {"status": "待复核", "note": "预估价格"}, self.ledger)
         import_sheets([self.sheet], self.ledger)
         rendered = payload(self.ledger)
         row = rendered["batches"][0]["rows"][0]
         self.assertEqual("待复核", row["status"])
+        self.assertEqual("预估价格", row["note"])
         self.assertTrue(row["files"]["competitor_html"]["exists"])
 
     def test_upload_output_and_secure_file_resolution(self):
@@ -115,6 +126,44 @@ class BatchFastWorkbenchTests(unittest.TestCase):
         with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
             self.assertEqual([v2.name], archive.namelist())
             self.assertEqual(b"version two", archive.read(v2.name))
+
+    def test_store_views_share_competitor_but_keep_downstream_files_independent(self):
+        data = import_sheets([self.sheet], self.ledger)
+        batch = data["batches"][0]
+        batch["stores"] = ["1店", "2店"]
+        batch["rows"][0]["store_id"] = "1店"
+        save_ledger(data, self.ledger)
+
+        data = import_sheets([self.sheet], self.ledger)
+        rows = data["batches"][0]["rows"]
+        store_1 = next(row for row in rows if row["store_id"] == "1店")
+        store_2 = next(row for row in rows if row["store_id"] == "2店")
+        self.assertEqual(store_1["link"], store_2["link"])
+        self.assertEqual(store_1["competitor_html"], store_2["competitor_html"])
+        self.assertEqual("", store_2["source_template"])
+        self.assertEqual("", store_2["output_file"])
+        self.assertEqual("待处理", store_2["status"])
+        self.assertEqual(1, payload(self.ledger)["totals"]["rows"])
+
+        packaged = package_shared_data(self.ledger, self.files, self.root / "source_sheets")
+        self.assertEqual([], packaged["missing"])
+        packaged_rows = load_ledger(self.ledger)["batches"][0]["rows"]
+        self.assertEqual(packaged_rows[0]["competitor_html"], packaged_rows[1]["competitor_html"])
+
+        attach_file(
+            batch["id"],
+            store_2["id"],
+            "output_file",
+            "二店输出V1.xlsm",
+            io.BytesIO(b"store two"),
+            self.ledger,
+            self.files,
+        )
+        filename, archive_bytes, count = build_output_archive(batch["id"], self.ledger, store_id="2店")
+        self.assertEqual("2店批量上品_2店_输出文档.zip", filename)
+        self.assertEqual(1, count)
+        with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
+            self.assertEqual(["二店输出V1.xlsm"], archive.namelist())
 
 
 if __name__ == "__main__":

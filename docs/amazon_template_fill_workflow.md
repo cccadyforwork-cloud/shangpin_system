@@ -205,6 +205,7 @@ Product Description：
 - Item Name：基于子体标题生成通用总结标题，不继承第一条子体标题，不带具体单一颜色/尺寸/款式；多颜色写 `Multiple Colors Available`，多款式写 `Multiple Styles Available`
 - 通常不填 Parent SKU
 - 不填 Item Condition、Model Number、Model Name、Manufacturer、Part Number、Item Highlight、价格、报价日期、最低/最高价、包装尺寸、包装重量、颜色、尺寸等子体/报价/可售专属字段；图片字段全路线默认不处理
+- `PET_TOY` 例外：后台 `99022` 已确认 Parent 行需填写商品长、宽、高及对应单位和 Item Weight；包装尺寸、包装重量仍留空
 
 子体行：
 

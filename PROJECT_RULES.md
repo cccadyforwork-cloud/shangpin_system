@@ -46,6 +46,8 @@ python3 run.py batch-fast-prelist <批量任务JSON>
 
 批量快速路线的价格顺序为：清单中显式 `price` 作为人工覆盖；否则先取保存竞品 HTML 中的当前 `priceToPay`；HTML 缺价时必须检查 Amazon 在线页面，有价则以 `online_price` 记录；在线页面也显示缺货或无价时，才允许以 `estimated_price` 记录预估价。不得把 discount 金额或推荐商品价格当成当前商品售价。当有 `copy_reference` 时，按 SKU 对比新旧表格：新增 SKU 保持 `Create or Replace (Full Update)`，只有已存在且字段发生变化的 SKU 才改为 `Edit (Partial Update)`，无字段变化则不改 Action。正式 `auto-fill` 不受影响。
 
+批量快速路线未显式提供 SKU 时，使用 `CA-产品名-变体属性`：产品名最多取 `product_name` 前两个英文单词，每个单词首字母大写、其余小写，两个单词直接拼接且中间不加横线；变体属性中的数量或计量单位统一小写，例如 Parent `CA-ToolSharpener`，Child `CA-ToolSharpener-2pcs`、`CA-StorageHook-6mm`。普通属性仍按首字母大写拼接，例如 `CA-GlassBeads-DarkGreen`。显式 `parent_sku` / `child_sku` / variant `sku` 仍作为人工覆盖。正式 `auto-fill` 的 SKU 逻辑不受影响。
+
 批量快速路线未显式提供 `base_title` 时，标题以竞品页面的 Product Title 为底稿，保持标题前部和中部关键词顺序，只在标题末尾添加或删除 3–5 个英文单词，避免整段原样复制。显式 `base_title` 仍作为人工覆盖；标题长度、禁用词、变体属性和其他现有自检规则继续生效，正式 `auto-fill` 不受影响。
 
 ## 输出文件命名规则
@@ -187,6 +189,7 @@ manufacturer = Generic
 PET_TOY 注意：
 
 - 当前上传实测 `Subject Character` 会成为条件必填；普通猫玩具可按产品主体填写 `Cat`。
+- 后台错误 `99022` 已确认 `PET_TOY` Parent 行也必须填写商品 `item_length_width_height` 的长、宽、高及对应单位，以及 `item_weight` 数值与单位；只补商品尺寸/重量，Parent 的包装尺寸和包装重量仍留空。
 
 ANIMAL_COLLAR 注意：
 

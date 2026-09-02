@@ -527,6 +527,19 @@ PRODUCT_TYPE_DISALLOWED_FIELDS = {
     }
 }
 
+PRODUCT_TYPE_PARENT_REQUIRED_FIELDS = {
+    "PET_TOY": {
+        "Height base to top": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+        "Height Unit": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+        "Length longer horizontal edge": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+        "Length Unit": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+        "Width shorter horizontal edge": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+        "Width Unit": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+        "Item Weight": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Item Weight Unit": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+    }
+}
+
 
 def _required_fields_from_data_definitions(wb):
     if "Data Definitions" not in wb.sheetnames:
@@ -756,6 +769,11 @@ def validate_template_file(path, output_path=None, write_report=False):
         if product_type_col:
             product_type = ws.cell(row, product_type_col).value
             product_type_text = _text(product_type)
+            if is_parent:
+                for label, field_name in PRODUCT_TYPE_PARENT_REQUIRED_FIELDS.get(product_type_text, {}).items():
+                    col = field_to_col.get(field_name)
+                    if col and ws.cell(row, col).value in (None, ""):
+                        findings.append(error(row, label, f"{sku} 的 {label} 为空。", f"{product_type_text} Parent 行经后台报错确认必须补齐该字段。"))
             if product_type_text not in variation_theme_values_by_product_type:
                 variation_theme_values_by_product_type[product_type_text] = _variation_theme_values(wb, product_type_text)
             allowed_variation_themes = variation_theme_values_by_product_type[product_type_text]
