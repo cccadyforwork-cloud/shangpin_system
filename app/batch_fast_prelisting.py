@@ -4,6 +4,7 @@ import re
 import tempfile
 import zipfile
 from copy import deepcopy
+from itertools import combinations
 from pathlib import Path
 from shutil import copyfile
 
@@ -84,6 +85,9 @@ def _run_one_task(task, index, base_dir, output_dir):
     name = str(task.get("name") or task.get("output_name") or f"任务{index}").strip()
     template_path = _required_path(task, "template", base_dir)
     competitor_paths = _competitor_paths(task, base_dir)
+    competitor_title = extract_competitor_title(competitor_paths)
+    if competitor_title:
+        task["_competitor_base_title"] = rewrite_competitor_title_tail(competitor_title)
     if not task.get("variants") and task.get("expand_competitor_variants", True):
         detected_variants = extract_competitor_variants(competitor_paths)
         if detected_variants:
@@ -200,6 +204,63 @@ def extract_competitor_price(paths):
     return None
 
 
+def extract_competitor_title(paths):
+    for path in paths:
+        text = Path(path).read_text(encoding="utf-8", errors="ignore")
+        match = re.search(
+            r'<[^>]+\bid=["\']productTitle["\'][^>]*>(.*?)</[^>]+>',
+            text,
+            re.I | re.S,
+        )
+        if not match:
+            match = re.search(r"<title[^>]*>(.*?)</title>", text, re.I | re.S)
+        if not match:
+            continue
+        title = re.sub(r"<[^>]+>", " ", match.group(1))
+        title = html_lib.unescape(re.sub(r"\s+", " ", title)).strip()
+        title = re.sub(r"\s*:\s*Amazon\.com\b.*$", "", title, flags=re.I).strip()
+        if title:
+            return title
+    return ""
+
+
+def rewrite_competitor_title_tail(title, min_chars=100, max_chars=125):
+    """Keep the competitor title body and alter only 3–5 trailing words."""
+    title = re.sub(r"\s+", " ", str(title or "")).strip(" ,")
+    if not title:
+        return ""
+
+    additions = (
+        "for Everyday Use",
+        "for Everyday Project Use",
+        "for Organized Everyday Project Use",
+    )
+    for phrase in additions:
+        candidate = f"{title}, {phrase}"
+        if min_chars <= len(candidate) <= max_chars:
+            return candidate
+
+    words = title.split()
+    tail_start = max(0, len(words) - 8)
+    deletion_candidates = []
+    for count in range(3, 6):
+        if len(words) <= count:
+            break
+        for removed in combinations(range(tail_start, len(words)), count):
+            removed = set(removed)
+            candidate = " ".join(word for index, word in enumerate(words) if index not in removed).rstrip(" ,-/")
+            if min_chars <= len(candidate) <= max_chars:
+                deletion_candidates.append((count, -len(candidate), candidate))
+    if deletion_candidates:
+        return min(deletion_candidates)[2]
+
+    if len(title) < min_chars:
+        candidate = f"{title}, {additions[-1]}"
+        if len(candidate) <= max_chars:
+            return candidate
+    return " ".join(words[:-5]).rstrip(" ,-/") if len(words) > 5 else title
+
+
 def _normalize_competitor_color(value):
     color = re.sub(r"\s+", " ", str(value or "")).strip()
     known_typos = {
@@ -212,9 +273,16 @@ def _resolve_task_price(task, competitor_paths):
     if task.get("price") not in (None, ""):
         return _positive_number(task.get("price"), "price")
     competitor_price = extract_competitor_price(competitor_paths)
-    if competitor_price is None:
-        raise ValueError("竞品 HTML 没有识别到当前售价，请在批量清单填写 price。")
-    return competitor_price
+    if competitor_price is not None:
+        return competitor_price
+    if task.get("online_price") not in (None, ""):
+        return _positive_number(task.get("online_price"), "online_price")
+    if task.get("estimated_price") not in (None, ""):
+        return _positive_number(task.get("estimated_price"), "estimated_price")
+    raise ValueError(
+        "竞品 HTML 没有识别到当前售价；请先检查在线页面并填写 online_price，"
+        "在线页面也无价时再填写 estimated_price。"
+    )
 
 
 def _apply_fast_overrides(rows, task, name, price, tier, template_path, copy_defaults=None):
@@ -243,7 +311,12 @@ def _apply_fast_overrides(rows, task, name, price, tier, template_path, copy_def
         row["material"] = variant.get("material") or task.get("material") or row.get("material")
         row["set_count"] = variant.get("set_count") or task.get("set_count") or row.get("set_count") or 1
         row["item_type_keyword"] = task.get("item_type_keyword") or copy_defaults.get("item_type_keyword") or row.get("item_type_keyword")
-        row["title"] = variant.get("base_title") or task.get("base_title") or row.get("title")
+        row["title"] = (
+            variant.get("base_title")
+            or task.get("base_title")
+            or task.get("_competitor_base_title")
+            or row.get("title")
+        )
         for field in ["bullet_1", "bullet_2", "bullet_3", "bullet_4", "bullet_5", "description"]:
             row[field] = variant.get(field) or task.get(field) or copy_defaults.get(field) or row.get(field)
         row["list_price"] = variant.get("price") or price
@@ -440,6 +513,7 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
     }
     sku_col = field_to_col.get("contribution_sku#1.value")
     parentage_col = field_to_col.get("parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value")
+    product_type_col = field_to_col.get("product_type#1.value")
     extra_fields = task.get("extra_fields") or {}
     dimension_fields = _dimension_overlay_fields(tier)
     protected_blank_tokens = (
@@ -464,6 +538,11 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
             if any(token in lowered for token in protected_blank_tokens):
                 ws.cell(row, col).value = None
         if is_parent:
+            product_type = str(ws.cell(row, product_type_col).value or "").strip().upper() if product_type_col else ""
+            for field_name, value in _parent_required_overlay_fields(product_type, tier).items():
+                col = field_to_col.get(field_name)
+                if col and value not in (None, ""):
+                    ws.cell(row, col).value = value
             action_col = field_to_col.get("::record_action")
             if action_col and requested_action:
                 ws.cell(row, action_col).value = requested_action
@@ -538,11 +617,33 @@ def _dimension_overlay_fields(tier):
     return fields
 
 
+def _parent_required_overlay_fields(product_type, tier):
+    if str(product_type or "").strip().upper() != "PET_TOY":
+        return {}
+    length, width, height = tier["package_in"]
+    weight = tier["weight_lb"]
+    return {
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.value": length,
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.unit": "Inches",
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value": width,
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit": "Inches",
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value": height,
+        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit": "Inches",
+        "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value": weight,
+        "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit": "Pounds",
+    }
+
+
 def _parent_sku(task):
     value = str(task.get("parent_sku") or "").strip()
     if value:
         return value
-    base = _sku_token(task.get("sku_base") or task.get("name") or task.get("output_name"))
+    base = _product_sku_token(
+        task.get("sku_base")
+        or task.get("product_name")
+        or task.get("name")
+        or task.get("output_name")
+    )
     return f"CA-{base}"
 
 
@@ -550,16 +651,57 @@ def _child_sku(task, variant, index):
     explicit = str(variant.get("sku") or (task.get("child_sku") if index == 1 else "") or "").strip()
     if explicit:
         return explicit
-    parts = [_parent_sku(task)]
-    color = _sku_token(variant.get("color") or task.get("color"))
-    size = _sku_token(variant.get("size") or task.get("size"))
-    suffix = f"{color}{size}" or f"V{index}"
-    parts.append(suffix)
-    return "-".join(parts)
+    suffix = _variant_sku_suffix(task, variant, index)
+    return f"{_parent_sku(task)}-{suffix}"
 
 
-def _sku_token(value):
-    return "".join(re.findall(r"[A-Z0-9]+", str(value or "").upper()))[:30] or "PRODUCT"
+def _product_sku_token(value):
+    words = re.findall(r"[A-Za-z0-9]+", str(value or ""))[:2]
+    token = "".join(_sku_title_word(word) for word in words)
+    return token[:20] or "Product"
+
+
+def _variant_sku_suffix(task, variant, index):
+    theme = str(task.get("variation_theme") or "").upper()
+    color = variant.get("color") or task.get("color")
+    size = variant.get("size") or task.get("size")
+    set_count = variant.get("set_count") or task.get("set_count")
+    set_name = variant.get("set_name") or task.get("set_name")
+
+    if "NUMBER_OF_ITEMS" in theme or "ITEM_PACKAGE_QUANTITY" in theme:
+        value = f"{set_count} Pcs" if set_count not in (None, "") else ""
+    elif theme in {"COLOR", "COLOR_NAME"}:
+        value = color
+    elif theme in {"SIZE", "SIZE_NAME"}:
+        value = size
+    elif "SET_NAME" in theme and "/" not in theme:
+        value = set_name or size or color
+    else:
+        value = " ".join(str(item) for item in (color, size) if item not in (None, ""))
+    token = "".join(
+        _sku_title_word(word, lowercase_units=True)
+        for word in re.findall(r"[A-Za-z0-9]+", str(value or ""))
+    )
+    return token[:16] or f"Option{index}"
+
+
+SKU_UNIT_TOKENS = {
+    "pc", "pcs", "set", "sets",
+    "mm", "cm", "m",
+    "in", "inch", "inches",
+    "oz", "lb", "lbs",
+    "g", "kg",
+    "ml", "l",
+}
+
+
+def _sku_title_word(word, lowercase_units=False):
+    text = str(word or "")
+    if text.isdigit():
+        return text
+    if lowercase_units and text.lower() in SKU_UNIT_TOKENS:
+        return text.lower()
+    return text[:1].upper() + text[1:].lower()
 
 
 def _normalize_size(value):
@@ -628,7 +770,13 @@ def _fast_description(subject, color, size, material, count):
     while len("\n\n".join(paragraphs)) < 1500:
         shortest = min(range(4), key=lambda index: len(paragraphs[index]))
         paragraphs[shortest] += padding
-    return "\n\n".join(paragraphs)
+    description = "\n\n".join(paragraphs)
+    if len(description) > 1800:
+        prefix = "\n\n".join(paragraphs[:3]) + "\n\n"
+        remaining = 1800 - len(prefix)
+        final_paragraph = paragraphs[3][:remaining].rsplit(" ", 1)[0].rstrip(" .") + "."
+        description = prefix + final_paragraph
+    return description
 
 
 def _output_filename(task, name, template_suffix):

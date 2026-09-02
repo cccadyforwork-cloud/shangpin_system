@@ -1,10 +1,10 @@
 {
-  "version": 2,
-  "updated_at": "2026-09-01T06:48:29+08:00",
+  "version": 3,
+  "updated_at": "2026-09-03T04:15:18+08:00",
   "batches": [
     {
-      "id": "2店批量上品",
-      "name": "2店批量上品",
+      "id": "cady选品",
+      "name": "cady选品",
       "source_sheet": "data/batch_fast_workbench/source_sheets/2店批量上品.xlsx",
       "rows": [
         {
@@ -22,7 +22,8 @@
               "path": "data/batch_fast_workbench/files/2店批量上品/B0GT5KBSNR/output_file/水晶玻璃珠绿色6毫米V1.xlsm",
               "added_at": ""
             }
-          ]
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GTTY46VR",
@@ -39,7 +40,8 @@
               "path": "data/batch_fast_workbench/files/2店批量上品/B0GTTY46VR/output_file/园艺工具磨刀器2件套V1.xlsm",
               "added_at": ""
             }
-          ]
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GRH26ZBY",
@@ -56,7 +58,8 @@
               "path": "data/batch_fast_workbench/files/2店批量上品/B0GRH26ZBY/output_file/磁性登山扣挂钩2件套V1.xlsm",
               "added_at": ""
             }
-          ]
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GVJDVHM3",
@@ -73,7 +76,8 @@
               "path": "data/batch_fast_workbench/files/2店批量上品/B0GVJDVHM3/output_file/尼龙画笔套装30件V1.xlsm",
               "added_at": ""
             }
-          ]
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0FKM11PJW",
@@ -81,10 +85,17 @@
           "row_number": 6,
           "link": "https://www.amazon.com/dp/B0FKM11PJW?ie=UTF8&ASIN=B0FKM11PJW&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FKM11PJW/competitor_html/B0FKM11PJW.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FKM11PJW/source_template/HANGING_ORNAMENT.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FKM11PJW/output_file/彩色水晶太阳捕手挂饰1件V1.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FKM11PJW/output_file/彩色水晶太阳捕手挂饰1件V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GVYVJ5L6",
@@ -92,10 +103,22 @@
           "row_number": 7,
           "link": "https://www.amazon.com/dp/B0GVYVJ5L6?ie=UTF8&ASIN=B0GVYVJ5L6&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYVJ5L6/competitor_html/B0GVYVJ5L6.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GVYVJ5L6/source_template/PET_TOY.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GVYVJ5L6/output_file/铃铛毛线猫球1件V2.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GVYVJ5L6/output_file/铃铛毛线猫球1件V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GVYVJ5L6/output_file/铃铛毛线猫球1件V2.xlsm",
+              "added_at": "2026-09-02T20:02:48+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GVYMH961",
@@ -103,10 +126,22 @@
           "row_number": 8,
           "link": "https://www.amazon.com/dp/B0GVYMH961?ie=UTF8&ASIN=B0GVYMH961&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYMH961/competitor_html/B0GVYMH961.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GVYMH961/source_template/PET_TOY_(1).xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GVYMH961/output_file/彩色弹簧猫玩具2件V2.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GVYMH961/output_file/彩色弹簧猫玩具2件V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GVYMH961/output_file/彩色弹簧猫玩具2件V2.xlsm",
+              "added_at": "2026-09-02T20:02:48+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GS96JL5V",
@@ -114,10 +149,17 @@
           "row_number": 9,
           "link": "https://www.amazon.com/dp/B0GS96JL5V?ie=UTF8&ASIN=B0GS96JL5V&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GS96JL5V/competitor_html/B0GS96JL5V.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GS96JL5V/source_template/MULTITOOL.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GS96JL5V/output_file/钥匙扣多功能工具3件V1.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GS96JL5V/output_file/钥匙扣多功能工具3件V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GGBQ81WS",
@@ -125,10 +167,17 @@
           "row_number": 10,
           "link": "https://www.amazon.com/dp/B0GGBQ81WS?ie=UTF8&ASIN=B0GGBQ81WS&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GGBQ81WS/competitor_html/B0GGBQ81WS.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GGBQ81WS/source_template/HAT.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GGBQ81WS/output_file/缎面睡帽3件V1.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GGBQ81WS/output_file/缎面睡帽3件V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0G5YYHCCW",
@@ -136,10 +185,17 @@
           "row_number": 11,
           "link": "https://www.amazon.com/dp/B0G5YYHCCW?ie=UTF8&ASIN=B0G5YYHCCW&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0G5YYHCCW/competitor_html/B0G5YYHCCW.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0G5YYHCCW/source_template/NAIL_CLIPPER.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0G5YYHCCW/output_file/橙色宽口防飞溅指甲剪V1.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0G5YYHCCW/output_file/橙色宽口防飞溅指甲剪V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GQGJBRQF",
@@ -147,10 +203,17 @@
           "row_number": 12,
           "link": "https://www.amazon.com/dp/B0GQGJBRQF?ie=UTF8&ASIN=B0GQGJBRQF&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GQGJBRQF/competitor_html/B0GQGJBRQF.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GQGJBRQF/source_template/DRILL_BITS.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GQGJBRQF/output_file/黑色断丝取出器6件套V1.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GQGJBRQF/output_file/黑色断丝取出器6件套V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GWMGBYFZ",
@@ -158,10 +221,22 @@
           "row_number": 13,
           "link": "https://www.amazon.com/dp/B0GWMGBYFZ?ie=UTF8&ASIN=B0GWMGBYFZ&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GWMGBYFZ/competitor_html/B0GWMGBYFZ.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GWMGBYFZ/source_template/PET_TOY_(2).xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GWMGBYFZ/output_file/浅蓝色幼犬磨牙玩具2件V2.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GWMGBYFZ/output_file/浅蓝色幼犬磨牙玩具2件V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GWMGBYFZ/output_file/浅蓝色幼犬磨牙玩具2件V2.xlsm",
+              "added_at": "2026-09-02T20:02:48+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0FCLS24NK",
@@ -169,10 +244,17 @@
           "row_number": 14,
           "link": "https://www.amazon.com/dp/B0FCLS24NK?ie=UTF8&ASIN=B0FCLS24NK&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/competitor_html/B0FCLS24NK.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/source_template/CLOTHES_HANGER.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/output_file/四色衣架连接扣30件V1.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/output_file/四色衣架连接扣30件V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0FF9PTS3X",
@@ -180,10 +262,18 @@
           "row_number": 15,
           "link": "https://www.amazon.com/dp/B0FF9PTS3X?ie=UTF8&ASIN=B0FF9PTS3X&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FF9PTS3X/competitor_html/B0FF9PTS3X.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FF9PTS3X/source_template/COIN_PURSE_POUCH.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FF9PTS3X/output_file/战术钥匙扣零钱包V1.xlsm",
+          "status": "已上传",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FF9PTS3X/output_file/战术钥匙扣零钱包V1.xlsm",
+              "added_at": "2026-09-02T00:26:23+08:00"
+            }
+          ],
+          "note": "预估价格",
+          "store_id": "2店"
         },
         {
           "id": "B0GR5F9PCB",
@@ -194,7 +284,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "2店"
         },
         {
           "id": "B0FRLBGNNB",
@@ -202,10 +293,17 @@
           "row_number": 17,
           "link": "https://www.amazon.com/dp/B0FRLBGNNB?ie=UTF8&ASIN=B0FRLBGNNB&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FRLBGNNB/competitor_html/B0FRLBGNNB.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FRLBGNNB/source_template/FASTENER_DRIVE_BIT.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FRLBGNNB/output_file/翼形螺母批头2件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FRLBGNNB/output_file/翼形螺母批头2件V1.xlsm",
+              "added_at": "2026-09-03T02:01:40+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GSF2RJTT",
@@ -216,7 +314,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "2店"
         },
         {
           "id": "B0FCFLPGFV",
@@ -224,10 +323,17 @@
           "row_number": 19,
           "link": "https://www.amazon.com/dp/B0FCFLPGFV?ie=UTF8&ASIN=B0FCFLPGFV&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FCFLPGFV/competitor_html/B0FCFLPGFV.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FCFLPGFV/source_template/LABEL.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FCFLPGFV/output_file/彩色钥匙标签30件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FCFLPGFV/output_file/彩色钥匙标签30件V1.xlsm",
+              "added_at": "2026-09-03T02:01:40+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0FFH8YLHP",
@@ -235,10 +341,17 @@
           "row_number": 20,
           "link": "https://www.amazon.com/dp/B0FFH8YLHP?ie=UTF8&ASIN=B0FFH8YLHP&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FFH8YLHP/competitor_html/B0FFH8YLHP.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FFH8YLHP/source_template/LOCK.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FFH8YLHP/output_file/三位密码迷你挂锁2件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FFH8YLHP/output_file/三位密码迷你挂锁2件V1.xlsm",
+              "added_at": "2026-09-03T02:01:40+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0FF4FSWCG",
@@ -246,10 +359,17 @@
           "row_number": 21,
           "link": "https://www.amazon.com/dp/B0FF4FSWCG?ie=UTF8&ASIN=B0FF4FSWCG&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FF4FSWCG/competitor_html/B0FF4FSWCG.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FF4FSWCG/source_template/GIFT_WRAP.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FF4FSWCG/output_file/白色抽绳欧根纱袋50件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FF4FSWCG/output_file/白色抽绳欧根纱袋50件V1.xlsm",
+              "added_at": "2026-09-03T02:01:40+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0FKTD8P4T",
@@ -257,10 +377,17 @@
           "row_number": 22,
           "link": "https://www.amazon.com/dp/B0FKTD8P4T?ie=UTF8&ASIN=B0FKTD8P4T&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FKTD8P4T/competitor_html/B0FKTD8P4T.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FKTD8P4T/source_template/TOWEL.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FKTD8P4T/output_file/彩色超细纤维清洁巾5件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FKTD8P4T/output_file/彩色超细纤维清洁巾5件V1.xlsm",
+              "added_at": "2026-09-03T02:01:40+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GVYMLWC7",
@@ -268,10 +395,17 @@
           "row_number": 23,
           "link": "https://www.amazon.com/dp/B0GVYMLWC7?ie=UTF8&ASIN=B0GVYMLWC7&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/competitor_html/B0GVYMLWC7.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/source_template/PET_TOY_(3).xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/output_file/兔子磨牙草球1件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/output_file/兔子磨牙草球1件V1.xlsm",
+              "added_at": "2026-09-03T02:32:32+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0FH2FQHBX",
@@ -279,10 +413,17 @@
           "row_number": 24,
           "link": "https://www.amazon.com/dp/B0FH2FQHBX?ie=UTF8&ASIN=B0FH2FQHBX&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FH2FQHBX/competitor_html/B0FH2FQHBX.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FH2FQHBX/source_template/KEYCHAIN.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FH2FQHBX/output_file/黑色应急口哨钥匙扣1件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FH2FQHBX/output_file/黑色应急口哨钥匙扣1件V1.xlsm",
+              "added_at": "2026-09-03T02:32:32+08:00"
+            }
+          ],
+          "store_id": "2店"
         },
         {
           "id": "B0GR4PKKRR",
@@ -290,10 +431,18 @@
           "row_number": 25,
           "link": "https://www.amazon.com/dp/B0GR4PKKRR?ie=UTF8&ASIN=B0GR4PKKRR&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/competitor_html/B0GR4PKKRR.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/source_template/UTILITY_MAGNET.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/output_file/长方形钕磁铁3件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/output_file/长方形钕磁铁3件V1.xlsm",
+              "added_at": "2026-09-03T02:32:32+08:00"
+            }
+          ],
+          "note": "预估价格",
+          "store_id": "2店"
         },
         {
           "id": "B0GQT8GC2M",
@@ -301,10 +450,18 @@
           "row_number": 26,
           "link": "https://www.amazon.com/dp/B0GQT8GC2M?ie=UTF8&ASIN=B0GQT8GC2M&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GQT8GC2M/competitor_html/B0GQT8GC2M.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GQT8GC2M/source_template/SCREWDRIVER.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GQT8GC2M/output_file/精密螺丝刀套装11件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GQT8GC2M/output_file/精密螺丝刀套装11件V1.xlsm",
+              "added_at": "2026-09-03T02:32:32+08:00"
+            }
+          ],
+          "note": "预估价格",
+          "store_id": "2店"
         },
         {
           "id": "B0F4XK857G",
@@ -312,10 +469,18 @@
           "row_number": 27,
           "link": "https://www.amazon.com/dp/B0F4XK857G?ie=UTF8&ASIN=B0F4XK857G&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0F4XK857G/competitor_html/B0F4XK857G.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0F4XK857G/source_template/HARDWARE_CLAMP_VISE.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0F4XK857G/output_file/绿色植物支撑夹20件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0F4XK857G/output_file/绿色植物支撑夹20件V1.xlsm",
+              "added_at": "2026-09-03T02:32:32+08:00"
+            }
+          ],
+          "note": "预估价格",
+          "store_id": "2店"
         },
         {
           "id": "B0GQYM4Y1D",
@@ -323,10 +488,18 @@
           "row_number": 28,
           "link": "https://www.amazon.com/dp/B0GQYM4Y1D?ie=UTF8&ASIN=B0GQYM4Y1D&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GQYM4Y1D/competitor_html/B0GQYM4Y1D.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GQYM4Y1D/source_template/DECORATIVE_MAGNET.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GQYM4Y1D/output_file/蓝色冰箱磁铁40件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GQYM4Y1D/output_file/蓝色冰箱磁铁40件V1.xlsm",
+              "added_at": "2026-09-03T03:23:33+08:00"
+            }
+          ],
+          "note": "预估价格",
+          "store_id": "2店"
         },
         {
           "id": "B0FRMFLJ9R",
@@ -334,10 +507,18 @@
           "row_number": 29,
           "link": "https://www.amazon.com/dp/B0FRMFLJ9R?ie=UTF8&ASIN=B0FRMFLJ9R&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FRMFLJ9R/competitor_html/B0FRMFLJ9R.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FRMFLJ9R/source_template/BOOKMARK.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FRMFLJ9R/output_file/透明趣味书签1件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0FRMFLJ9R/output_file/透明趣味书签1件V1.xlsm",
+              "added_at": "2026-09-03T03:23:33+08:00"
+            }
+          ],
+          "note": "预估价格",
+          "store_id": "2店"
         },
         {
           "id": "B0GHS8G18R",
@@ -345,10 +526,18 @@
           "row_number": 30,
           "link": "https://www.amazon.com/dp/B0GHS8G18R?ie=UTF8&ASIN=B0GHS8G18R&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GHS8G18R/competitor_html/B0GHS8G18R.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GHS8G18R/source_template/ITEM_CONTAINER.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GHS8G18R/output_file/黄色折叠收纳筐1件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GHS8G18R/output_file/黄色折叠收纳筐1件V1.xlsm",
+              "added_at": "2026-09-03T03:23:33+08:00"
+            }
+          ],
+          "note": "预估价格",
+          "store_id": "2店"
         },
         {
           "id": "B0GGYPSFNJ",
@@ -356,10 +545,18 @@
           "row_number": 31,
           "link": "https://www.amazon.com/dp/B0GGYPSFNJ?ie=UTF8&ASIN=B0GGYPSFNJ&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/competitor_html/B0GGYPSFNJ.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/source_template/SCISSORS.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/output_file/白色多用途剪刀1件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/output_file/白色多用途剪刀1件V1.xlsm",
+              "added_at": "2026-09-03T03:23:33+08:00"
+            }
+          ],
+          "note": "预估价格",
+          "store_id": "2店"
         },
         {
           "id": "B0GR9H12MJ",
@@ -367,10 +564,18 @@
           "row_number": 32,
           "link": "https://www.amazon.com/dp/B0GR9H12MJ?ie=UTF8&ASIN=B0GR9H12MJ&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/competitor_html/B0GR9H12MJ.html",
-          "source_template": "",
-          "output_file": "",
-          "status": "待处理",
-          "output_versions": []
+          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/source_template/TWEEZER.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/output_file/银色精密镊子6件V1.xlsm",
+          "status": "待复核",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/output_file/银色精密镊子6件V1.xlsm",
+              "added_at": "2026-09-03T03:23:33+08:00"
+            }
+          ],
+          "note": "预估价格",
+          "store_id": "2店"
         },
         {
           "id": "B0GSVJYRKD",
@@ -381,7 +586,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "2店"
         },
         {
           "id": "B0GT4DC8K8",
@@ -392,7 +598,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "2店"
         },
         {
           "id": "B0GS5JGTDB",
@@ -403,7 +610,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "2店"
         },
         {
           "id": "B0GWM1BPKM",
@@ -414,7 +622,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "2店"
         },
         {
           "id": "B0GS9WWQ2B",
@@ -425,13 +634,486 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GT5KBSNR--2店",
+          "asin": "B0GT5KBSNR",
+          "row_number": 2,
+          "link": "https://www.amazon.com/dp/B0GT5KBSNR?ie=UTF8&ASIN=B0GT5KBSNR&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GT5KBSNR/competitor_html/B0GT5KBSNR.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GTTY46VR--2店",
+          "asin": "B0GTTY46VR",
+          "row_number": 3,
+          "link": "https://www.amazon.com/dp/B0GTTY46VR?ie=UTF8&ASIN=B0GTTY46VR&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GTTY46VR/competitor_html/B0GTTY46VR.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GRH26ZBY--2店",
+          "asin": "B0GRH26ZBY",
+          "row_number": 4,
+          "link": "https://www.amazon.com/dp/B0GRH26ZBY?ie=UTF8&ASIN=B0GRH26ZBY&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GRH26ZBY/competitor_html/B0GRH26ZBY.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GVJDVHM3--2店",
+          "asin": "B0GVJDVHM3",
+          "row_number": 5,
+          "link": "https://www.amazon.com/dp/B0GVJDVHM3?ie=UTF8&ASIN=B0GVJDVHM3&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVJDVHM3/competitor_html/B0GVJDVHM3.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FKM11PJW--2店",
+          "asin": "B0FKM11PJW",
+          "row_number": 6,
+          "link": "https://www.amazon.com/dp/B0FKM11PJW?ie=UTF8&ASIN=B0FKM11PJW&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FKM11PJW/competitor_html/B0FKM11PJW.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GVYVJ5L6--2店",
+          "asin": "B0GVYVJ5L6",
+          "row_number": 7,
+          "link": "https://www.amazon.com/dp/B0GVYVJ5L6?ie=UTF8&ASIN=B0GVYVJ5L6&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYVJ5L6/competitor_html/B0GVYVJ5L6.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GVYMH961--2店",
+          "asin": "B0GVYMH961",
+          "row_number": 8,
+          "link": "https://www.amazon.com/dp/B0GVYMH961?ie=UTF8&ASIN=B0GVYMH961&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYMH961/competitor_html/B0GVYMH961.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GS96JL5V--2店",
+          "asin": "B0GS96JL5V",
+          "row_number": 9,
+          "link": "https://www.amazon.com/dp/B0GS96JL5V?ie=UTF8&ASIN=B0GS96JL5V&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GS96JL5V/competitor_html/B0GS96JL5V.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GGBQ81WS--2店",
+          "asin": "B0GGBQ81WS",
+          "row_number": 10,
+          "link": "https://www.amazon.com/dp/B0GGBQ81WS?ie=UTF8&ASIN=B0GGBQ81WS&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GGBQ81WS/competitor_html/B0GGBQ81WS.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0G5YYHCCW--2店",
+          "asin": "B0G5YYHCCW",
+          "row_number": 11,
+          "link": "https://www.amazon.com/dp/B0G5YYHCCW?ie=UTF8&ASIN=B0G5YYHCCW&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0G5YYHCCW/competitor_html/B0G5YYHCCW.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GQGJBRQF--2店",
+          "asin": "B0GQGJBRQF",
+          "row_number": 12,
+          "link": "https://www.amazon.com/dp/B0GQGJBRQF?ie=UTF8&ASIN=B0GQGJBRQF&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GQGJBRQF/competitor_html/B0GQGJBRQF.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GWMGBYFZ--2店",
+          "asin": "B0GWMGBYFZ",
+          "row_number": 13,
+          "link": "https://www.amazon.com/dp/B0GWMGBYFZ?ie=UTF8&ASIN=B0GWMGBYFZ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GWMGBYFZ/competitor_html/B0GWMGBYFZ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FCLS24NK--2店",
+          "asin": "B0FCLS24NK",
+          "row_number": 14,
+          "link": "https://www.amazon.com/dp/B0FCLS24NK?ie=UTF8&ASIN=B0FCLS24NK&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/competitor_html/B0FCLS24NK.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FF9PTS3X--2店",
+          "asin": "B0FF9PTS3X",
+          "row_number": 15,
+          "link": "https://www.amazon.com/dp/B0FF9PTS3X?ie=UTF8&ASIN=B0FF9PTS3X&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FF9PTS3X/competitor_html/B0FF9PTS3X.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GR5F9PCB--2店",
+          "asin": "B0GR5F9PCB",
+          "row_number": 16,
+          "link": "https://www.amazon.com/dp/B0GR5F9PCB?ie=UTF8&ASIN=B0GR5F9PCB&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GR5F9PCB/competitor_html/B0GR5F9PCB.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FRLBGNNB--2店",
+          "asin": "B0FRLBGNNB",
+          "row_number": 17,
+          "link": "https://www.amazon.com/dp/B0FRLBGNNB?ie=UTF8&ASIN=B0FRLBGNNB&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FRLBGNNB/competitor_html/B0FRLBGNNB.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GSF2RJTT--2店",
+          "asin": "B0GSF2RJTT",
+          "row_number": 18,
+          "link": "https://www.amazon.com/dp/B0GSF2RJTT?ie=UTF8&ASIN=B0GSF2RJTT&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GSF2RJTT/competitor_html/B0GSF2RJTT.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FCFLPGFV--2店",
+          "asin": "B0FCFLPGFV",
+          "row_number": 19,
+          "link": "https://www.amazon.com/dp/B0FCFLPGFV?ie=UTF8&ASIN=B0FCFLPGFV&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FCFLPGFV/competitor_html/B0FCFLPGFV.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FFH8YLHP--2店",
+          "asin": "B0FFH8YLHP",
+          "row_number": 20,
+          "link": "https://www.amazon.com/dp/B0FFH8YLHP?ie=UTF8&ASIN=B0FFH8YLHP&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FFH8YLHP/competitor_html/B0FFH8YLHP.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FF4FSWCG--2店",
+          "asin": "B0FF4FSWCG",
+          "row_number": 21,
+          "link": "https://www.amazon.com/dp/B0FF4FSWCG?ie=UTF8&ASIN=B0FF4FSWCG&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FF4FSWCG/competitor_html/B0FF4FSWCG.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FKTD8P4T--2店",
+          "asin": "B0FKTD8P4T",
+          "row_number": 22,
+          "link": "https://www.amazon.com/dp/B0FKTD8P4T?ie=UTF8&ASIN=B0FKTD8P4T&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FKTD8P4T/competitor_html/B0FKTD8P4T.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GVYMLWC7--2店",
+          "asin": "B0GVYMLWC7",
+          "row_number": 23,
+          "link": "https://www.amazon.com/dp/B0GVYMLWC7?ie=UTF8&ASIN=B0GVYMLWC7&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/competitor_html/B0GVYMLWC7.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FH2FQHBX--2店",
+          "asin": "B0FH2FQHBX",
+          "row_number": 24,
+          "link": "https://www.amazon.com/dp/B0FH2FQHBX?ie=UTF8&ASIN=B0FH2FQHBX&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FH2FQHBX/competitor_html/B0FH2FQHBX.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GR4PKKRR--2店",
+          "asin": "B0GR4PKKRR",
+          "row_number": 25,
+          "link": "https://www.amazon.com/dp/B0GR4PKKRR?ie=UTF8&ASIN=B0GR4PKKRR&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/competitor_html/B0GR4PKKRR.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GQT8GC2M--2店",
+          "asin": "B0GQT8GC2M",
+          "row_number": 26,
+          "link": "https://www.amazon.com/dp/B0GQT8GC2M?ie=UTF8&ASIN=B0GQT8GC2M&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GQT8GC2M/competitor_html/B0GQT8GC2M.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0F4XK857G--2店",
+          "asin": "B0F4XK857G",
+          "row_number": 27,
+          "link": "https://www.amazon.com/dp/B0F4XK857G?ie=UTF8&ASIN=B0F4XK857G&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0F4XK857G/competitor_html/B0F4XK857G.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GQYM4Y1D--2店",
+          "asin": "B0GQYM4Y1D",
+          "row_number": 28,
+          "link": "https://www.amazon.com/dp/B0GQYM4Y1D?ie=UTF8&ASIN=B0GQYM4Y1D&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GQYM4Y1D/competitor_html/B0GQYM4Y1D.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FRMFLJ9R--2店",
+          "asin": "B0FRMFLJ9R",
+          "row_number": 29,
+          "link": "https://www.amazon.com/dp/B0FRMFLJ9R?ie=UTF8&ASIN=B0FRMFLJ9R&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FRMFLJ9R/competitor_html/B0FRMFLJ9R.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GHS8G18R--2店",
+          "asin": "B0GHS8G18R",
+          "row_number": 30,
+          "link": "https://www.amazon.com/dp/B0GHS8G18R?ie=UTF8&ASIN=B0GHS8G18R&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GHS8G18R/competitor_html/B0GHS8G18R.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GGYPSFNJ--2店",
+          "asin": "B0GGYPSFNJ",
+          "row_number": 31,
+          "link": "https://www.amazon.com/dp/B0GGYPSFNJ?ie=UTF8&ASIN=B0GGYPSFNJ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/competitor_html/B0GGYPSFNJ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GR9H12MJ--2店",
+          "asin": "B0GR9H12MJ",
+          "row_number": 32,
+          "link": "https://www.amazon.com/dp/B0GR9H12MJ?ie=UTF8&ASIN=B0GR9H12MJ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/competitor_html/B0GR9H12MJ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GSVJYRKD--2店",
+          "asin": "B0GSVJYRKD",
+          "row_number": 33,
+          "link": "https://www.amazon.com/dp/B0GSVJYRKD?ie=UTF8&ASIN=B0GSVJYRKD&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GSVJYRKD/competitor_html/B0GSVJYRKD.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GT4DC8K8--2店",
+          "asin": "B0GT4DC8K8",
+          "row_number": 34,
+          "link": "https://www.amazon.com/dp/B0GT4DC8K8?ie=UTF8&ASIN=B0GT4DC8K8&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GT4DC8K8/competitor_html/B0GT4DC8K8.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GS5JGTDB--2店",
+          "asin": "B0GS5JGTDB",
+          "row_number": 35,
+          "link": "https://www.amazon.com/dp/B0GS5JGTDB?ie=UTF8&ASIN=B0GS5JGTDB&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GS5JGTDB/competitor_html/B0GS5JGTDB.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GWM1BPKM--2店",
+          "asin": "B0GWM1BPKM",
+          "row_number": 36,
+          "link": "https://www.amazon.com/dp/B0GWM1BPKM?ie=UTF8&ASIN=B0GWM1BPKM&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GWM1BPKM/competitor_html/B0GWM1BPKM.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GS9WWQ2B--2店",
+          "asin": "B0GS9WWQ2B",
+          "row_number": 37,
+          "link": "https://www.amazon.com/dp/B0GS9WWQ2B?ie=UTF8&ASIN=B0GS9WWQ2B&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GS9WWQ2B/competitor_html/B0GS9WWQ2B.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "1店"
         }
+      ],
+      "stores": [
+        "2店",
+        "1店"
       ]
     },
     {
-      "id": "1店批量上品图图",
-      "name": "1店批量上品图图",
+      "id": "图图选品",
+      "name": "图图选品",
       "source_sheet": "data/batch_fast_workbench/source_sheets/1店批量上品图图.xlsx",
       "rows": [
         {
@@ -443,7 +1125,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G439QMK5",
@@ -454,7 +1137,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GS4KXCMZ",
@@ -465,7 +1149,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FFN23Y2W",
@@ -476,7 +1161,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FCFLKPFT",
@@ -487,7 +1173,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FD3MBPNK",
@@ -498,7 +1185,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FMRJKG2Q",
@@ -509,7 +1197,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0F5WD29N7",
@@ -520,7 +1209,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FFMF3PP9",
@@ -531,7 +1221,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G25HXW4F",
@@ -542,7 +1233,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GQX7289P",
@@ -553,7 +1245,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GRV1H6DK",
@@ -564,7 +1257,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FHQ7JMG5",
@@ -575,7 +1269,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GTTY46VR",
@@ -586,7 +1281,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GXV9Y8XJ",
@@ -597,7 +1293,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G43WD55L",
@@ -608,7 +1305,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GWM8CKT5",
@@ -619,7 +1317,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GQT4L7M5",
@@ -630,7 +1329,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G5YYHCCW",
@@ -641,7 +1341,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GS1SDN26",
@@ -652,7 +1353,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FL21FY2J",
@@ -663,7 +1365,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FF9M9FLY",
@@ -674,7 +1377,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DPFWD1R5",
@@ -685,7 +1389,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DPFFWYKZ",
@@ -696,7 +1401,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DLKZ7DLC",
@@ -707,7 +1413,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DLSNWDKQ",
@@ -718,7 +1425,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DLNYQH9Q",
@@ -729,7 +1437,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DK939XWR",
@@ -740,7 +1449,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GV7ZC1TL",
@@ -751,7 +1461,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DMDKRKTP",
@@ -762,7 +1473,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GY9BK35F",
@@ -773,7 +1485,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DK6RWPLD",
@@ -784,7 +1497,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FRM86DND",
@@ -795,7 +1509,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G38RHZHC",
@@ -806,13 +1521,460 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FRMFMPC7--2店",
+          "asin": "B0FRMFMPC7",
+          "row_number": 2,
+          "link": "https://www.amazon.com/dp/B0FRMFMPC7?ie=UTF8&ASIN=B0FRMFMPC7&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FRMFMPC7/competitor_html/B0FRMFMPC7.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G439QMK5--2店",
+          "asin": "B0G439QMK5",
+          "row_number": 3,
+          "link": "https://www.amazon.com/dp/B0G439QMK5?ie=UTF8&ASIN=B0G439QMK5&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0G439QMK5/competitor_html/B0G439QMK5.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GS4KXCMZ--2店",
+          "asin": "B0GS4KXCMZ",
+          "row_number": 4,
+          "link": "https://www.amazon.com/dp/B0GS4KXCMZ?ie=UTF8&ASIN=B0GS4KXCMZ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GS4KXCMZ/competitor_html/B0GS4KXCMZ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FFN23Y2W--2店",
+          "asin": "B0FFN23Y2W",
+          "row_number": 5,
+          "link": "https://www.amazon.com/dp/B0FFN23Y2W?ie=UTF8&ASIN=B0FFN23Y2W&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FFN23Y2W/competitor_html/B0FFN23Y2W.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FCFLKPFT--2店",
+          "asin": "B0FCFLKPFT",
+          "row_number": 6,
+          "link": "https://www.amazon.com/dp/B0FCFLKPFT?ie=UTF8&ASIN=B0FCFLKPFT&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FCFLKPFT/competitor_html/B0FCFLKPFT.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FD3MBPNK--2店",
+          "asin": "B0FD3MBPNK",
+          "row_number": 7,
+          "link": "https://www.amazon.com/dp/B0FD3MBPNK?ie=UTF8&ASIN=B0FD3MBPNK&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FD3MBPNK/competitor_html/B0FD3MBPNK.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FMRJKG2Q--2店",
+          "asin": "B0FMRJKG2Q",
+          "row_number": 8,
+          "link": "https://www.amazon.com/dp/B0FMRJKG2Q?ie=UTF8&ASIN=B0FMRJKG2Q&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FMRJKG2Q/competitor_html/B0FMRJKG2Q.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0F5WD29N7--2店",
+          "asin": "B0F5WD29N7",
+          "row_number": 9,
+          "link": "https://www.amazon.com/dp/B0F5WD29N7?ie=UTF8&ASIN=B0F5WD29N7&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0F5WD29N7/competitor_html/B0F5WD29N7.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FFMF3PP9--2店",
+          "asin": "B0FFMF3PP9",
+          "row_number": 10,
+          "link": "https://www.amazon.com/dp/B0FFMF3PP9?ie=UTF8&ASIN=B0FFMF3PP9&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FFMF3PP9/competitor_html/B0FFMF3PP9.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G25HXW4F--2店",
+          "asin": "B0G25HXW4F",
+          "row_number": 11,
+          "link": "https://www.amazon.com/dp/B0G25HXW4F?ie=UTF8&ASIN=B0G25HXW4F&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0G25HXW4F/competitor_html/B0G25HXW4F.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GQX7289P--2店",
+          "asin": "B0GQX7289P",
+          "row_number": 12,
+          "link": "https://www.amazon.com/dp/B0GQX7289P?ie=UTF8&ASIN=B0GQX7289P&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GQX7289P/competitor_html/B0GQX7289P.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GRV1H6DK--2店",
+          "asin": "B0GRV1H6DK",
+          "row_number": 13,
+          "link": "https://www.amazon.com/dp/B0GRV1H6DK?ie=UTF8&ASIN=B0GRV1H6DK&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GRV1H6DK/competitor_html/B0GRV1H6DK.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FHQ7JMG5--2店",
+          "asin": "B0FHQ7JMG5",
+          "row_number": 14,
+          "link": "https://www.amazon.com/dp/B0FHQ7JMG5?ie=UTF8&ASIN=B0FHQ7JMG5&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FHQ7JMG5/competitor_html/B0FHQ7JMG5.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GTTY46VR--2店",
+          "asin": "B0GTTY46VR",
+          "row_number": 15,
+          "link": "https://www.amazon.com/dp/B0GTTY46VR?ie=UTF8&ASIN=B0GTTY46VR&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GTTY46VR/competitor_html/B0GTTY46VR.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GXV9Y8XJ--2店",
+          "asin": "B0GXV9Y8XJ",
+          "row_number": 16,
+          "link": "https://www.amazon.com/dp/B0GXV9Y8XJ?ie=UTF8&ASIN=B0GXV9Y8XJ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GXV9Y8XJ/competitor_html/B0GXV9Y8XJ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G43WD55L--2店",
+          "asin": "B0G43WD55L",
+          "row_number": 17,
+          "link": "https://www.amazon.com/dp/B0G43WD55L?ie=UTF8&ASIN=B0G43WD55L&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0G43WD55L/competitor_html/B0G43WD55L.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GWM8CKT5--2店",
+          "asin": "B0GWM8CKT5",
+          "row_number": 18,
+          "link": "https://www.amazon.com/dp/B0GWM8CKT5?ie=UTF8&ASIN=B0GWM8CKT5&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GWM8CKT5/competitor_html/B0GWM8CKT5.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GQT4L7M5--2店",
+          "asin": "B0GQT4L7M5",
+          "row_number": 19,
+          "link": "https://www.amazon.com/dp/B0GQT4L7M5?ie=UTF8&ASIN=B0GQT4L7M5&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GQT4L7M5/competitor_html/B0GQT4L7M5.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G5YYHCCW--2店",
+          "asin": "B0G5YYHCCW",
+          "row_number": 20,
+          "link": "https://www.amazon.com/dp/B0G5YYHCCW?ie=UTF8&ASIN=B0G5YYHCCW&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0G5YYHCCW/competitor_html/B0G5YYHCCW.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GS1SDN26--2店",
+          "asin": "B0GS1SDN26",
+          "row_number": 21,
+          "link": "https://www.amazon.com/dp/B0GS1SDN26?ie=UTF8&ASIN=B0GS1SDN26&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GS1SDN26/competitor_html/B0GS1SDN26.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FL21FY2J--2店",
+          "asin": "B0FL21FY2J",
+          "row_number": 22,
+          "link": "https://www.amazon.com/dp/B0FL21FY2J?ie=UTF8&ASIN=B0FL21FY2J&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FL21FY2J/competitor_html/B0FL21FY2J.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FF9M9FLY--2店",
+          "asin": "B0FF9M9FLY",
+          "row_number": 23,
+          "link": "https://www.amazon.com/dp/B0FF9M9FLY?ie=UTF8&ASIN=B0FF9M9FLY&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FF9M9FLY/competitor_html/B0FF9M9FLY.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DPFWD1R5--2店",
+          "asin": "B0DPFWD1R5",
+          "row_number": 24,
+          "link": "https://www.amazon.com/dp/B0DPFWD1R5?ie=UTF8&ASIN=B0DPFWD1R5&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0DPFWD1R5/competitor_html/B0DPFWD1R5.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DPFFWYKZ--2店",
+          "asin": "B0DPFFWYKZ",
+          "row_number": 25,
+          "link": "https://www.amazon.com/dp/B0DPFFWYKZ?ie=UTF8&ASIN=B0DPFFWYKZ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0DPFFWYKZ/competitor_html/B0DPFFWYKZ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DLKZ7DLC--2店",
+          "asin": "B0DLKZ7DLC",
+          "row_number": 26,
+          "link": "https://www.amazon.com/dp/B0DLKZ7DLC?ie=UTF8&ASIN=B0DLKZ7DLC&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0DLKZ7DLC/competitor_html/B0DLKZ7DLC.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DLSNWDKQ--2店",
+          "asin": "B0DLSNWDKQ",
+          "row_number": 27,
+          "link": "https://www.amazon.com/dp/B0DLSNWDKQ?ie=UTF8&ASIN=B0DLSNWDKQ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0DLSNWDKQ/competitor_html/B0DLSNWDKQ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DLNYQH9Q--2店",
+          "asin": "B0DLNYQH9Q",
+          "row_number": 28,
+          "link": "https://www.amazon.com/dp/B0DLNYQH9Q?ie=UTF8&ASIN=B0DLNYQH9Q&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0DLNYQH9Q/competitor_html/B0DLNYQH9Q.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DK939XWR--2店",
+          "asin": "B0DK939XWR",
+          "row_number": 29,
+          "link": "https://www.amazon.com/dp/B0DK939XWR?ie=UTF8&ASIN=B0DK939XWR&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0DK939XWR/competitor_html/B0DK939XWR.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GV7ZC1TL--2店",
+          "asin": "B0GV7ZC1TL",
+          "row_number": 30,
+          "link": "https://www.amazon.com/dp/B0GV7ZC1TL?ie=UTF8&ASIN=B0GV7ZC1TL&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GV7ZC1TL/competitor_html/B0GV7ZC1TL.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DMDKRKTP--2店",
+          "asin": "B0DMDKRKTP",
+          "row_number": 31,
+          "link": "https://www.amazon.com/dp/B0DMDKRKTP?ie=UTF8&ASIN=B0DMDKRKTP&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0DMDKRKTP/competitor_html/B0DMDKRKTP.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GY9BK35F--2店",
+          "asin": "B0GY9BK35F",
+          "row_number": 32,
+          "link": "https://www.amazon.com/dp/B0GY9BK35F?ie=UTF8&ASIN=B0GY9BK35F&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0GY9BK35F/competitor_html/B0GY9BK35F.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DK6RWPLD--2店",
+          "asin": "B0DK6RWPLD",
+          "row_number": 33,
+          "link": "https://www.amazon.com/dp/B0DK6RWPLD?ie=UTF8&ASIN=B0DK6RWPLD&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0DK6RWPLD/competitor_html/B0DK6RWPLD.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FRM86DND--2店",
+          "asin": "B0FRM86DND",
+          "row_number": 34,
+          "link": "https://www.amazon.com/dp/B0FRM86DND?ie=UTF8&ASIN=B0FRM86DND&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0FRM86DND/competitor_html/B0FRM86DND.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G38RHZHC--2店",
+          "asin": "B0G38RHZHC",
+          "row_number": 35,
+          "link": "https://www.amazon.com/dp/B0G38RHZHC?ie=UTF8&ASIN=B0G38RHZHC&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品图图/B0G38RHZHC/competitor_html/B0G38RHZHC.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
         }
+      ],
+      "stores": [
+        "1店",
+        "2店"
       ]
     },
     {
-      "id": "1店批量上品凯旋",
-      "name": "1店批量上品凯旋",
+      "id": "凯旋选品",
+      "name": "凯旋选品",
       "source_sheet": "data/batch_fast_workbench/source_sheets/1店批量上品凯旋.xlsx",
       "rows": [
         {
@@ -824,7 +1986,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FF8RWFVN",
@@ -835,7 +1998,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0F3TRNXNT",
@@ -846,7 +2010,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FKGG6W2Z",
@@ -857,7 +2022,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G29KR1BW",
@@ -868,7 +2034,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G43HWB62",
@@ -879,7 +2046,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FKMDN787",
@@ -890,7 +2058,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GXB7CQBR",
@@ -901,7 +2070,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GFDPD48Y",
@@ -912,7 +2082,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GS5FK6M9",
@@ -923,7 +2094,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GSG4ZLGK",
@@ -934,7 +2106,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GS9J54H7",
@@ -945,7 +2118,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GVYQZSDQ",
@@ -956,7 +2130,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GR8DS3PQ",
@@ -967,7 +2142,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0F47Z8LRP",
@@ -978,7 +2154,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GRGR3NMF",
@@ -989,7 +2166,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G43R2S8D",
@@ -1000,7 +2178,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GX9XJRWK",
@@ -1011,7 +2190,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G523TRYG",
@@ -1022,7 +2202,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GWMGBYFZ",
@@ -1033,7 +2214,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FHW2VVKG",
@@ -1044,7 +2226,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0FHJLR938",
@@ -1055,7 +2238,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0F8ZHRJPQ",
@@ -1066,7 +2250,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DRNJTNXW",
@@ -1077,7 +2262,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DN6T4G5T",
@@ -1088,7 +2274,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G5S4FR5G",
@@ -1099,7 +2286,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G48HL7KV",
@@ -1110,7 +2298,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DMS763TQ",
@@ -1121,7 +2310,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DT6J17B1",
@@ -1132,7 +2322,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0G33Y24FZ",
@@ -1143,7 +2334,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DPWVBQMF",
@@ -1154,7 +2346,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0DP4GXTV7",
@@ -1165,7 +2358,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0GRVH638B",
@@ -1176,7 +2370,8 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
         },
         {
           "id": "B0F9W98VVZ",
@@ -1187,8 +2382,455 @@
           "source_template": "",
           "output_file": "",
           "status": "待处理",
-          "output_versions": []
+          "output_versions": [],
+          "store_id": "1店"
+        },
+        {
+          "id": "B0G41NSD1B--2店",
+          "asin": "B0G41NSD1B",
+          "row_number": 2,
+          "link": "https://www.amazon.com/dp/B0G41NSD1B?ie=UTF8&ASIN=B0G41NSD1B&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0G41NSD1B/competitor_html/B0G41NSD1B.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FF8RWFVN--2店",
+          "asin": "B0FF8RWFVN",
+          "row_number": 3,
+          "link": "https://www.amazon.com/dp/B0FF8RWFVN?ie=UTF8&ASIN=B0FF8RWFVN&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0FF8RWFVN/competitor_html/B0FF8RWFVN.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0F3TRNXNT--2店",
+          "asin": "B0F3TRNXNT",
+          "row_number": 4,
+          "link": "https://www.amazon.com/dp/B0F3TRNXNT?ie=UTF8&ASIN=B0F3TRNXNT&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0F3TRNXNT/competitor_html/B0F3TRNXNT.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FKGG6W2Z--2店",
+          "asin": "B0FKGG6W2Z",
+          "row_number": 5,
+          "link": "https://www.amazon.com/dp/B0FKGG6W2Z?ie=UTF8&ASIN=B0FKGG6W2Z&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0FKGG6W2Z/competitor_html/B0FKGG6W2Z.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G29KR1BW--2店",
+          "asin": "B0G29KR1BW",
+          "row_number": 6,
+          "link": "https://www.amazon.com/dp/B0G29KR1BW?ie=UTF8&ASIN=B0G29KR1BW&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0G29KR1BW/competitor_html/B0G29KR1BW.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G43HWB62--2店",
+          "asin": "B0G43HWB62",
+          "row_number": 7,
+          "link": "https://www.amazon.com/dp/B0G43HWB62?ie=UTF8&ASIN=B0G43HWB62&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0G43HWB62/competitor_html/B0G43HWB62.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FKMDN787--2店",
+          "asin": "B0FKMDN787",
+          "row_number": 8,
+          "link": "https://www.amazon.com/dp/B0FKMDN787?ie=UTF8&ASIN=B0FKMDN787&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0FKMDN787/competitor_html/B0FKMDN787.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GXB7CQBR--2店",
+          "asin": "B0GXB7CQBR",
+          "row_number": 9,
+          "link": "https://www.amazon.com/dp/B0GXB7CQBR?ie=UTF8&ASIN=B0GXB7CQBR&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GXB7CQBR/competitor_html/B0GXB7CQBR.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GFDPD48Y--2店",
+          "asin": "B0GFDPD48Y",
+          "row_number": 10,
+          "link": "https://www.amazon.com/dp/B0GFDPD48Y?ie=UTF8&ASIN=B0GFDPD48Y&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GFDPD48Y/competitor_html/B0GFDPD48Y.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GS5FK6M9--2店",
+          "asin": "B0GS5FK6M9",
+          "row_number": 11,
+          "link": "https://www.amazon.com/dp/B0GS5FK6M9?ie=UTF8&ASIN=B0GS5FK6M9&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GS5FK6M9/competitor_html/B0GS5FK6M9.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GSG4ZLGK--2店",
+          "asin": "B0GSG4ZLGK",
+          "row_number": 12,
+          "link": "https://www.amazon.com/dp/B0GSG4ZLGK?ie=UTF8&ASIN=B0GSG4ZLGK&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GSG4ZLGK/competitor_html/B0GSG4ZLGK.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GS9J54H7--2店",
+          "asin": "B0GS9J54H7",
+          "row_number": 13,
+          "link": "https://www.amazon.com/dp/B0GS9J54H7?ie=UTF8&ASIN=B0GS9J54H7&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GS9J54H7/competitor_html/B0GS9J54H7.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GVYQZSDQ--2店",
+          "asin": "B0GVYQZSDQ",
+          "row_number": 14,
+          "link": "https://www.amazon.com/dp/B0GVYQZSDQ?ie=UTF8&ASIN=B0GVYQZSDQ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GVYQZSDQ/competitor_html/B0GVYQZSDQ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GR8DS3PQ--2店",
+          "asin": "B0GR8DS3PQ",
+          "row_number": 15,
+          "link": "https://www.amazon.com/dp/B0GR8DS3PQ?ie=UTF8&ASIN=B0GR8DS3PQ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GR8DS3PQ/competitor_html/B0GR8DS3PQ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0F47Z8LRP--2店",
+          "asin": "B0F47Z8LRP",
+          "row_number": 16,
+          "link": "https://www.amazon.com/dp/B0F47Z8LRP?ie=UTF8&ASIN=B0F47Z8LRP&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0F47Z8LRP/competitor_html/B0F47Z8LRP.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GRGR3NMF--2店",
+          "asin": "B0GRGR3NMF",
+          "row_number": 17,
+          "link": "https://www.amazon.com/dp/B0GRGR3NMF?ie=UTF8&ASIN=B0GRGR3NMF&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GRGR3NMF/competitor_html/B0GRGR3NMF.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G43R2S8D--2店",
+          "asin": "B0G43R2S8D",
+          "row_number": 18,
+          "link": "https://www.amazon.com/dp/B0G43R2S8D?ie=UTF8&ASIN=B0G43R2S8D&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0G43R2S8D/competitor_html/B0G43R2S8D.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GX9XJRWK--2店",
+          "asin": "B0GX9XJRWK",
+          "row_number": 19,
+          "link": "https://www.amazon.com/dp/B0GX9XJRWK?ie=UTF8&ASIN=B0GX9XJRWK&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GX9XJRWK/competitor_html/B0GX9XJRWK.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G523TRYG--2店",
+          "asin": "B0G523TRYG",
+          "row_number": 20,
+          "link": "https://www.amazon.com/dp/B0G523TRYG?ie=UTF8&ASIN=B0G523TRYG&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0G523TRYG/competitor_html/B0G523TRYG.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GWMGBYFZ--2店",
+          "asin": "B0GWMGBYFZ",
+          "row_number": 21,
+          "link": "https://www.amazon.com/dp/B0GWMGBYFZ?ie=UTF8&ASIN=B0GWMGBYFZ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GWMGBYFZ/competitor_html/B0GWMGBYFZ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FHW2VVKG--2店",
+          "asin": "B0FHW2VVKG",
+          "row_number": 22,
+          "link": "https://www.amazon.com/dp/B0FHW2VVKG?ie=UTF8&ASIN=B0FHW2VVKG&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0FHW2VVKG/competitor_html/B0FHW2VVKG.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FHJLR938--2店",
+          "asin": "B0FHJLR938",
+          "row_number": 23,
+          "link": "https://www.amazon.com/dp/B0FHJLR938?ie=UTF8&ASIN=B0FHJLR938&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0FHJLR938/competitor_html/B0FHJLR938.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0F8ZHRJPQ--2店",
+          "asin": "B0F8ZHRJPQ",
+          "row_number": 24,
+          "link": "https://www.amazon.com/dp/B0F8ZHRJPQ?ie=UTF8&ASIN=B0F8ZHRJPQ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0F8ZHRJPQ/competitor_html/B0F8ZHRJPQ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DRNJTNXW--2店",
+          "asin": "B0DRNJTNXW",
+          "row_number": 25,
+          "link": "https://www.amazon.com/dp/B0DRNJTNXW?ie=UTF8&ASIN=B0DRNJTNXW&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0DRNJTNXW/competitor_html/B0DRNJTNXW.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DN6T4G5T--2店",
+          "asin": "B0DN6T4G5T",
+          "row_number": 26,
+          "link": "https://www.amazon.com/dp/B0DN6T4G5T?ie=UTF8&ASIN=B0DN6T4G5T&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0DN6T4G5T/competitor_html/B0DN6T4G5T.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G5S4FR5G--2店",
+          "asin": "B0G5S4FR5G",
+          "row_number": 27,
+          "link": "https://www.amazon.com/dp/B0G5S4FR5G?ie=UTF8&ASIN=B0G5S4FR5G&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0G5S4FR5G/competitor_html/B0G5S4FR5G.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G48HL7KV--2店",
+          "asin": "B0G48HL7KV",
+          "row_number": 28,
+          "link": "https://www.amazon.com/dp/B0G48HL7KV?ie=UTF8&ASIN=B0G48HL7KV&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0G48HL7KV/competitor_html/B0G48HL7KV.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DMS763TQ--2店",
+          "asin": "B0DMS763TQ",
+          "row_number": 29,
+          "link": "https://www.amazon.com/dp/B0DMS763TQ?ie=UTF8&ASIN=B0DMS763TQ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0DMS763TQ/competitor_html/B0DMS763TQ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DT6J17B1--2店",
+          "asin": "B0DT6J17B1",
+          "row_number": 30,
+          "link": "https://www.amazon.com/dp/B0DT6J17B1?ie=UTF8&ASIN=B0DT6J17B1&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0DT6J17B1/competitor_html/B0DT6J17B1.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G33Y24FZ--2店",
+          "asin": "B0G33Y24FZ",
+          "row_number": 31,
+          "link": "https://www.amazon.com/dp/B0G33Y24FZ?ie=UTF8&ASIN=B0G33Y24FZ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0G33Y24FZ/competitor_html/B0G33Y24FZ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DPWVBQMF--2店",
+          "asin": "B0DPWVBQMF",
+          "row_number": 32,
+          "link": "https://www.amazon.com/dp/B0DPWVBQMF?ie=UTF8&ASIN=B0DPWVBQMF&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0DPWVBQMF/competitor_html/B0DPWVBQMF.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DP4GXTV7--2店",
+          "asin": "B0DP4GXTV7",
+          "row_number": 33,
+          "link": "https://www.amazon.com/dp/B0DP4GXTV7?ie=UTF8&ASIN=B0DP4GXTV7&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0DP4GXTV7/competitor_html/B0DP4GXTV7.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GRVH638B--2店",
+          "asin": "B0GRVH638B",
+          "row_number": 34,
+          "link": "https://www.amazon.com/dp/B0GRVH638B?ie=UTF8&ASIN=B0GRVH638B&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0GRVH638B/competitor_html/B0GRVH638B.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0F9W98VVZ--2店",
+          "asin": "B0F9W98VVZ",
+          "row_number": 35,
+          "link": "https://www.amazon.com/dp/B0F9W98VVZ?ie=UTF8&ASIN=B0F9W98VVZ&s=bazaar",
+          "competitor_html": "data/batch_fast_workbench/files/1店批量上品凯旋/B0F9W98VVZ/competitor_html/B0F9W98VVZ.html",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "note": "",
+          "store_id": "2店"
         }
+      ],
+      "stores": [
+        "1店",
+        "2店"
       ]
     }
   ],

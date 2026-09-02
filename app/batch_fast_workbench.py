@@ -17,7 +17,7 @@ FILES_DIR = WORKBENCH_DIR / "files"
 SOURCE_SHEETS_DIR = WORKBENCH_DIR / "source_sheets"
 
 FILE_FIELDS = {"competitor_html", "source_template", "output_file"}
-EDITABLE_FIELDS = FILE_FIELDS | {"status"}
+EDITABLE_FIELDS = FILE_FIELDS | {"status", "note"}
 STATUS_VALUES = ("待处理", "已有模板", "生成中", "待复核", "可上传", "已上传", "需修正")
 ALLOWED_SUFFIXES = {".html", ".htm", ".xlsx", ".xlsm", ".xls"}
 
@@ -161,6 +161,8 @@ def payload(ledger_path=LEDGER_PATH):
     totals = {"rows": 0, "html": 0, "templates": 0, "outputs": 0}
     for batch in data.get("batches", []):
         rendered_rows = []
+        stores = batch.get("stores") or []
+        primary_store = stores[0] if stores else ""
         for row in batch.get("rows", []):
             _normalize_output_versions(row)
             rendered = dict(row)
@@ -178,8 +180,9 @@ def payload(ledger_path=LEDGER_PATH):
                 })
             rendered["output_versions"] = versions
             rendered_rows.append(rendered)
-            totals["rows"] += 1
-            totals["html"] += int(rendered["files"]["competitor_html"]["exists"])
+            is_primary_product = not primary_store or row.get("store_id") == primary_store
+            totals["rows"] += int(is_primary_product)
+            totals["html"] += int(is_primary_product and rendered["files"]["competitor_html"]["exists"])
             totals["templates"] += int(rendered["files"]["source_template"]["exists"])
             totals["outputs"] += int(rendered["files"]["output_file"]["exists"])
         batches.append({**batch, "rows": rendered_rows})
@@ -213,7 +216,7 @@ def referenced_file(path_value, ledger_path=LEDGER_PATH, files_dir=FILES_DIR):
     return candidate if str(candidate) in allowed else None
 
 
-def build_output_archive(batch_id, ledger_path=LEDGER_PATH):
+def build_output_archive(batch_id, ledger_path=LEDGER_PATH, store_id=None):
     """Build an in-memory ZIP containing every available output in one batch."""
     data = ensure_ledger(ledger_path)
     batch = next((item for item in data.get("batches", []) if item.get("id") == batch_id), None)
@@ -221,6 +224,8 @@ def build_output_archive(batch_id, ledger_path=LEDGER_PATH):
         raise ValueError("找不到批次。")
     files = []
     for row in batch.get("rows", []):
+        if store_id and row.get("store_id") != store_id:
+            continue
         raw = str(row.get("output_file") or "").strip()
         path = _resolve_stored_path(raw) if raw else None
         if path and path.exists() and path.is_file() and path.suffix.lower() in {".xlsx", ".xlsm", ".xls"}:
@@ -233,7 +238,8 @@ def build_output_archive(batch_id, ledger_path=LEDGER_PATH):
     with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for path in files:
             archive.write(path, arcname=_unique_archive_name(path.name, used_names))
-    filename = f"{safe_name(batch.get('name') or batch_id)}_输出文档.zip"
+    store_label = f"_{safe_name(store_id)}" if store_id else ""
+    filename = f"{safe_name(batch.get('name') or batch_id)}{store_label}_输出文档.zip"
     return filename, buffer.getvalue(), len(files)
 
 
@@ -243,13 +249,19 @@ def package_shared_data(ledger_path=LEDGER_PATH, files_dir=FILES_DIR, source_she
     copied = 0
     missing = []
     for batch in data.get("batches", []):
+        stores = batch.get("stores") or []
+        primary_store = stores[0] if stores else ""
+        shared_competitors = {}
         source_value = batch.get("source_sheet", "")
         if source_value:
             source = _resolve_stored_path(source_value)
             target = Path(source_sheets_dir) / safe_name(source.name)
             if source.is_file():
-                copied += _copy_shared_file(source, target)
-                batch["source_sheet"] = _store_path(target)
+                if _path_is_within(source, source_sheets_dir):
+                    batch["source_sheet"] = _store_path(source)
+                else:
+                    copied += _copy_shared_file(source, target)
+                    batch["source_sheet"] = _store_path(target)
             else:
                 missing.append(str(source))
 
@@ -258,11 +270,22 @@ def package_shared_data(ledger_path=LEDGER_PATH, files_dir=FILES_DIR, source_she
                 raw = str(row.get(field) or "").strip()
                 if not raw:
                     continue
+                product_id = str(row.get("asin") or row.get("id") or "")
+                if field == "competitor_html" and primary_store and row.get("store_id") != primary_store:
+                    shared_path = shared_competitors.get(product_id)
+                    if shared_path:
+                        row[field] = shared_path
+                        continue
                 source = _resolve_stored_path(raw)
                 target = Path(files_dir) / safe_name(batch["id"]) / safe_name(row["id"]) / field / safe_name(source.name)
                 if source.is_file():
-                    copied += _copy_shared_file(source, target)
-                    row[field] = _store_path(target)
+                    if _path_is_within(source, files_dir):
+                        row[field] = _store_path(source)
+                    else:
+                        copied += _copy_shared_file(source, target)
+                        row[field] = _store_path(target)
+                    if field == "competitor_html":
+                        shared_competitors[product_id] = row[field]
                 else:
                     missing.append(str(source))
 
@@ -272,8 +295,11 @@ def package_shared_data(ledger_path=LEDGER_PATH, files_dir=FILES_DIR, source_she
                 source = _resolve_stored_path(item["path"])
                 target = Path(files_dir) / safe_name(batch["id"]) / safe_name(row["id"]) / "output_file" / safe_name(source.name)
                 if source.is_file():
-                    copied += _copy_shared_file(source, target)
-                    packaged_versions.append({**item, "path": _store_path(target)})
+                    if _path_is_within(source, files_dir):
+                        packaged_versions.append({**item, "path": _store_path(source)})
+                    else:
+                        copied += _copy_shared_file(source, target)
+                        packaged_versions.append({**item, "path": _store_path(target)})
                 else:
                     missing.append(str(source))
             row["output_versions"] = packaged_versions
@@ -282,6 +308,14 @@ def package_shared_data(ledger_path=LEDGER_PATH, files_dir=FILES_DIR, source_she
     data["version"] = max(int(data.get("version") or 1), 2)
     save_ledger(data, ledger_path)
     return {"copied": copied, "missing": sorted(set(missing)), "ledger": str(Path(ledger_path).resolve())}
+
+
+def _path_is_within(path, directory):
+    try:
+        Path(path).resolve().relative_to(Path(directory).resolve())
+        return True
+    except ValueError:
+        return False
 
 
 def _copy_shared_file(source, target):
@@ -307,13 +341,19 @@ def _unique_archive_name(filename, used_names):
 
 def _batch_from_sheet(path, previous=None):
     previous = previous or {}
-    previous_rows = {row.get("id"): row for row in previous.get("rows", [])}
+    stores = [str(item).strip() for item in previous.get("stores", []) if str(item).strip()]
+    primary_store = stores[0] if stores else ""
+    previous_rows = {
+        (str(row.get("store_id") or primary_store), str(row.get("asin") or row.get("id") or "")): row
+        for row in previous.get("rows", [])
+    }
     wb = load_workbook(path, read_only=True, data_only=True, keep_vba=path.suffix.lower() == ".xlsm")
     ws = wb.active
     headers = {str(ws.cell(1, col).value or "").strip(): col for col in range(1, ws.max_column + 1)}
     link_col = headers.get("LINK", 1)
     html_col = headers.get("竞品HTML")
     template_col = headers.get("模版表格")
+    note_col = headers.get("备注")
     rows = []
     for row_number in range(2, ws.max_row + 1):
         link = str(ws.cell(row_number, link_col).value or "").strip()
@@ -321,9 +361,10 @@ def _batch_from_sheet(path, previous=None):
             continue
         match = re.search(r"/dp/([A-Z0-9]{10})", link, re.I)
         row_id = match.group(1).upper() if match else f"ROW-{row_number}"
-        previous_row = previous_rows.get(row_id, {})
+        previous_row = previous_rows.get((primary_store, row_id), {})
         competitor_html = str(ws.cell(row_number, html_col).value or "").strip() if html_col else ""
         source_template = str(ws.cell(row_number, template_col).value or "").strip() if template_col else ""
+        note = str(ws.cell(row_number, note_col).value or "").strip() if note_col else ""
         if (
             Path(competitor_html).suffix.lower() not in {".html", ".htm"}
             or not _resolve_stored_path(competitor_html).is_file()
@@ -334,7 +375,7 @@ def _batch_from_sheet(path, previous=None):
             or not _resolve_stored_path(source_template).is_file()
         ):
             source_template = ""
-        rows.append({
+        rendered_row = {
             "id": row_id,
             "asin": row_id if match else "",
             "row_number": row_number,
@@ -344,13 +385,44 @@ def _batch_from_sheet(path, previous=None):
             "output_file": previous_row.get("output_file", ""),
             "output_versions": previous_row.get("output_versions", []),
             "status": previous_row.get("status", "待处理"),
-        })
-    return {
+            "note": note or previous_row.get("note", ""),
+        }
+        if primary_store:
+            rendered_row["store_id"] = primary_store
+        rows.append(rendered_row)
+
+    primary_rows = list(rows)
+    for store_id in stores[1:]:
+        for primary_row in primary_rows:
+            product_id = str(primary_row.get("asin") or primary_row["id"])
+            previous_row = previous_rows.get((store_id, product_id), {})
+            rows.append({
+                "id": previous_row.get("id") or _store_row_id(product_id, store_id),
+                "asin": primary_row.get("asin", ""),
+                "row_number": primary_row["row_number"],
+                "link": primary_row["link"],
+                "competitor_html": primary_row.get("competitor_html", ""),
+                "source_template": _path_with_suffix(previous_row.get("source_template", ""), {".xlsx", ".xlsm", ".xls"}),
+                "output_file": previous_row.get("output_file", ""),
+                "output_versions": previous_row.get("output_versions", []),
+                "status": previous_row.get("status", "待处理"),
+                "note": previous_row.get("note", ""),
+                "store_id": store_id,
+            })
+
+    batch = {
         "id": previous.get("id") or safe_name(path.stem).lower(),
         "name": previous.get("name") or path.stem,
         "source_sheet": _store_path(path),
         "rows": rows,
     }
+    if stores:
+        batch["stores"] = stores
+    return batch
+
+
+def _store_row_id(product_id, store_id):
+    return f"{product_id}--{safe_name(store_id)}"
 
 
 def _find_row(data, batch_id, row_id):
