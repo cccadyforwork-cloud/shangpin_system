@@ -44,7 +44,7 @@ python3 run.py batch-fast-prelist <批量任务JSON>
 
 该路线允许只参考竞品、先上品后采购，但仍必须遵守模板 Valid Values、图片留空、Generic 父子体、物流档位、项目模板自检和 WPS 条件格式复核。当单个竞品 HTML 含完整的单一颜色变体选择器时，批量快速路线默认提取全部颜色并生成 1 个 Parent + 全部 Child；不写入竞品 ASIN。显式 `variants` 优先，多维变体不自动展开。详细口径见 `docs/batch_fast_prelisting.md`。
 
-批量快速路线的价格默认取竞品页面当前 `priceToPay`，清单中显式 `price` 可人工覆盖。当有 `copy_reference` 时，按 SKU 对比新旧表格：新增 SKU 保持 `Create or Replace (Full Update)`，只有已存在且字段发生变化的 SKU 才改为 `Edit (Partial Update)`，无字段变化则不改 Action。正式 `auto-fill` 不受影响。
+批量快速路线的价格顺序为：清单中显式 `price` 作为人工覆盖；否则先取保存竞品 HTML 中的当前 `priceToPay`；HTML 缺价时必须检查 Amazon 在线页面，有价则以 `online_price` 记录；在线页面也显示缺货或无价时，才允许以 `estimated_price` 记录预估价。不得把 discount 金额或推荐商品价格当成当前商品售价。当有 `copy_reference` 时，按 SKU 对比新旧表格：新增 SKU 保持 `Create or Replace (Full Update)`，只有已存在且字段发生变化的 SKU 才改为 `Edit (Partial Update)`，无字段变化则不改 Action。正式 `auto-fill` 不受影响。
 
 批量快速路线未显式提供 `base_title` 时，标题以竞品页面的 Product Title 为底稿，保持标题前部和中部关键词顺序，只在标题末尾添加或删除 3–5 个英文单词，避免整段原样复制。显式 `base_title` 仍作为人工覆盖；标题长度、禁用词、变体属性和其他现有自检规则继续生效，正式 `auto-fill` 不受影响。
 

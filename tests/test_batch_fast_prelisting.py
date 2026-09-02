@@ -7,6 +7,7 @@ from app.batch_fast_prelisting import (
     _child_sku,
     _fast_copy_fallback,
     _output_filename,
+    _resolve_task_price,
     _row_changed,
     extract_competitor_price,
     extract_competitor_title,
@@ -85,6 +86,27 @@ class BatchFastPrelistingTest(unittest.TestCase):
             path = Path(temp_dir) / "competitor.html"
             path.write_text(html, encoding="utf-8")
             self.assertEqual(extract_competitor_price([path]), 1.95)
+
+    def test_price_resolution_prefers_saved_html_before_online_and_estimate(self):
+        html = '''
+        <span class="aok-offscreen">$1.95</span>
+        <span class="a-price priceToPay"><span class="a-offscreen"></span></span>
+        '''
+        with TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "competitor.html"
+            path.write_text(html, encoding="utf-8")
+            price = _resolve_task_price(
+                {"online_price": 2.62, "estimated_price": 2.99},
+                [path],
+            )
+            self.assertEqual(price, 1.95)
+
+    def test_price_resolution_uses_online_then_estimated_price(self):
+        with TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "competitor.html"
+            path.write_text("<html><body>Currently unavailable.</body></html>", encoding="utf-8")
+            self.assertEqual(_resolve_task_price({"online_price": 2.62, "estimated_price": 2.99}, [path]), 2.62)
+            self.assertEqual(_resolve_task_price({"estimated_price": 2.99}, [path]), 2.99)
 
     def test_extracts_amazon_product_title_before_page_title(self):
         html = '''

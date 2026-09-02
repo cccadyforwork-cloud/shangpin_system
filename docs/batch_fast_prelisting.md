@@ -21,7 +21,7 @@
 - `product_name`：用于生成英文 Listing 的简短英文商品名。
 - `template`：Amazon 原始 `.xlsx` / `.xlsm` 模板。
 - `competitor` 或 `competitors`：一个或多个竞品 HTML。
-- `price`：可选。显式填写时作为人工覆盖；留空时从竞品 HTML 的当前 `priceToPay` 提取 List Price 和 Haul/BZR Price。不把 Amazon discount 金额当成售价。
+- `price`：可选人工覆盖。未填写时先取竞品 HTML 的当前 `priceToPay`。HTML 缺价时先打开 Amazon 在线页面核对，页面有价时填入 `online_price`；在线页面也缺货或无价时才填入 `estimated_price`。系统按 `price` → HTML `priceToPay` → `online_price` → `estimated_price` 的顺序决定 List Price 和 Haul/BZR Price，不把 discount 金额或推荐商品价格当成当前售价。
 - `weight_grams` 或 `logistics_tier`：页面重量或指定物流档位。
 - `parent_sku`、`child_sku`：推荐显式提供，保持团队短 SKU 规则稳定。
 - `color`、`size`、`material`、`set_count`：已知的基础属性。

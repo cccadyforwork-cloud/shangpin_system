@@ -273,9 +273,16 @@ def _resolve_task_price(task, competitor_paths):
     if task.get("price") not in (None, ""):
         return _positive_number(task.get("price"), "price")
     competitor_price = extract_competitor_price(competitor_paths)
-    if competitor_price is None:
-        raise ValueError("竞品 HTML 没有识别到当前售价，请在批量清单填写 price。")
-    return competitor_price
+    if competitor_price is not None:
+        return competitor_price
+    if task.get("online_price") not in (None, ""):
+        return _positive_number(task.get("online_price"), "online_price")
+    if task.get("estimated_price") not in (None, ""):
+        return _positive_number(task.get("estimated_price"), "estimated_price")
+    raise ValueError(
+        "竞品 HTML 没有识别到当前售价；请先检查在线页面并填写 online_price，"
+        "在线页面也无价时再填写 estimated_price。"
+    )
 
 
 def _apply_fast_overrides(rows, task, name, price, tier, template_path, copy_defaults=None):
