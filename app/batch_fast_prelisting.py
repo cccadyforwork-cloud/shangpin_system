@@ -4,6 +4,7 @@ import re
 import tempfile
 import zipfile
 from copy import deepcopy
+from itertools import combinations
 from pathlib import Path
 from shutil import copyfile
 
@@ -84,6 +85,9 @@ def _run_one_task(task, index, base_dir, output_dir):
     name = str(task.get("name") or task.get("output_name") or f"任务{index}").strip()
     template_path = _required_path(task, "template", base_dir)
     competitor_paths = _competitor_paths(task, base_dir)
+    competitor_title = extract_competitor_title(competitor_paths)
+    if competitor_title:
+        task["_competitor_base_title"] = rewrite_competitor_title_tail(competitor_title)
     if not task.get("variants") and task.get("expand_competitor_variants", True):
         detected_variants = extract_competitor_variants(competitor_paths)
         if detected_variants:
@@ -200,6 +204,63 @@ def extract_competitor_price(paths):
     return None
 
 
+def extract_competitor_title(paths):
+    for path in paths:
+        text = Path(path).read_text(encoding="utf-8", errors="ignore")
+        match = re.search(
+            r'<[^>]+\bid=["\']productTitle["\'][^>]*>(.*?)</[^>]+>',
+            text,
+            re.I | re.S,
+        )
+        if not match:
+            match = re.search(r"<title[^>]*>(.*?)</title>", text, re.I | re.S)
+        if not match:
+            continue
+        title = re.sub(r"<[^>]+>", " ", match.group(1))
+        title = html_lib.unescape(re.sub(r"\s+", " ", title)).strip()
+        title = re.sub(r"\s*:\s*Amazon\.com\b.*$", "", title, flags=re.I).strip()
+        if title:
+            return title
+    return ""
+
+
+def rewrite_competitor_title_tail(title, min_chars=100, max_chars=125):
+    """Keep the competitor title body and alter only 3–5 trailing words."""
+    title = re.sub(r"\s+", " ", str(title or "")).strip(" ,")
+    if not title:
+        return ""
+
+    additions = (
+        "for Everyday Use",
+        "for Everyday Project Use",
+        "for Organized Everyday Project Use",
+    )
+    for phrase in additions:
+        candidate = f"{title}, {phrase}"
+        if min_chars <= len(candidate) <= max_chars:
+            return candidate
+
+    words = title.split()
+    tail_start = max(0, len(words) - 8)
+    deletion_candidates = []
+    for count in range(3, 6):
+        if len(words) <= count:
+            break
+        for removed in combinations(range(tail_start, len(words)), count):
+            removed = set(removed)
+            candidate = " ".join(word for index, word in enumerate(words) if index not in removed).rstrip(" ,-/")
+            if min_chars <= len(candidate) <= max_chars:
+                deletion_candidates.append((count, -len(candidate), candidate))
+    if deletion_candidates:
+        return min(deletion_candidates)[2]
+
+    if len(title) < min_chars:
+        candidate = f"{title}, {additions[-1]}"
+        if len(candidate) <= max_chars:
+            return candidate
+    return " ".join(words[:-5]).rstrip(" ,-/") if len(words) > 5 else title
+
+
 def _normalize_competitor_color(value):
     color = re.sub(r"\s+", " ", str(value or "")).strip()
     known_typos = {
@@ -243,7 +304,12 @@ def _apply_fast_overrides(rows, task, name, price, tier, template_path, copy_def
         row["material"] = variant.get("material") or task.get("material") or row.get("material")
         row["set_count"] = variant.get("set_count") or task.get("set_count") or row.get("set_count") or 1
         row["item_type_keyword"] = task.get("item_type_keyword") or copy_defaults.get("item_type_keyword") or row.get("item_type_keyword")
-        row["title"] = variant.get("base_title") or task.get("base_title") or row.get("title")
+        row["title"] = (
+            variant.get("base_title")
+            or task.get("base_title")
+            or task.get("_competitor_base_title")
+            or row.get("title")
+        )
         for field in ["bullet_1", "bullet_2", "bullet_3", "bullet_4", "bullet_5", "description"]:
             row[field] = variant.get(field) or task.get(field) or copy_defaults.get(field) or row.get(field)
         row["list_price"] = variant.get("price") or price

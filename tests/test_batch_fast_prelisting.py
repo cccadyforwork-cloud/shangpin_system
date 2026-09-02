@@ -9,8 +9,10 @@ from app.batch_fast_prelisting import (
     _output_filename,
     _row_changed,
     extract_competitor_price,
+    extract_competitor_title,
     extract_competitor_variants,
     resolve_logistics_tier,
+    rewrite_competitor_title_tail,
 )
 from app.listing_rules import validate_listing_row
 
@@ -83,6 +85,40 @@ class BatchFastPrelistingTest(unittest.TestCase):
             path = Path(temp_dir) / "competitor.html"
             path.write_text(html, encoding="utf-8")
             self.assertEqual(extract_competitor_price([path]), 1.95)
+
+    def test_extracts_amazon_product_title_before_page_title(self):
+        html = '''
+        <title>Fallback Title : Amazon.com: Home</title>
+        <span id="productTitle">Original Product Keywords for Home Craft Projects and Daily Organization</span>
+        '''
+        with TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "competitor.html"
+            path.write_text(html, encoding="utf-8")
+            self.assertEqual(
+                extract_competitor_title([path]),
+                "Original Product Keywords for Home Craft Projects and Daily Organization",
+            )
+
+    def test_competitor_title_adds_only_three_to_five_tail_words(self):
+        source = "Compact Storage Hooks for Closet Shelves Travel Bags and Everyday Home Organization"
+        rewritten = rewrite_competitor_title_tail(source)
+        self.assertTrue(rewritten.startswith(source))
+        added_words = rewritten[len(source):].strip(" ,").split()
+        self.assertGreaterEqual(len(added_words), 3)
+        self.assertLessEqual(len(added_words), 5)
+
+    def test_long_competitor_title_deletes_only_three_to_five_tail_words(self):
+        source = " ".join(f"Keyword{index}" for index in range(1, 19))
+        rewritten = rewrite_competitor_title_tail(source)
+        source_words = source.split()
+        rewritten_words = rewritten.split()
+        self.assertGreaterEqual(len(source_words) - len(rewritten_words), 3)
+        self.assertLessEqual(len(source_words) - len(rewritten_words), 5)
+        self.assertEqual(rewritten_words[:10], source_words[:10])
+        source_iter = iter(source_words)
+        self.assertTrue(all(any(candidate == word for candidate in source_iter) for word in rewritten_words))
+        self.assertGreaterEqual(len(rewritten), 100)
+        self.assertLessEqual(len(rewritten), 125)
 
     def test_row_change_detection_ignores_action_only(self):
         ws = Workbook().active

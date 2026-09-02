@@ -46,6 +46,8 @@ python3 run.py batch-fast-prelist <批量任务JSON>
 
 批量快速路线的价格默认取竞品页面当前 `priceToPay`，清单中显式 `price` 可人工覆盖。当有 `copy_reference` 时，按 SKU 对比新旧表格：新增 SKU 保持 `Create or Replace (Full Update)`，只有已存在且字段发生变化的 SKU 才改为 `Edit (Partial Update)`，无字段变化则不改 Action。正式 `auto-fill` 不受影响。
 
+批量快速路线未显式提供 `base_title` 时，标题以竞品页面的 Product Title 为底稿，保持标题前部和中部关键词顺序，只在标题末尾添加或删除 3–5 个英文单词，避免整段原样复制。显式 `base_title` 仍作为人工覆盖；标题长度、禁用词、变体属性和其他现有自检规则继续生效，正式 `auto-fill` 不受影响。
+
 ## 输出文件命名规则
 
 填好的 Amazon 上传表默认按中文商品名 + 款式/颜色 + 版本号命名，版本号前不加下划线：
