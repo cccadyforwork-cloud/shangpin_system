@@ -73,6 +73,7 @@
         <p class="sub">独立记录竞品 HTML、原始模板和最终输出文档，不影响默认上品路线。</p>
       </div>
       <div class="actions">
+        <a class="btn" href="./">返回上品工作台</a>
         <div class="theme-switch" aria-label="页面主题">
           <button data-theme-choice="light">浅色</button>
           <button data-theme-choice="dark">深夜</button>
@@ -94,7 +95,8 @@
     const state = { data:null, active:null, activeStore:null };
     const $ = (selector) => document.querySelector(selector);
     const esc = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-    const fileUrl = (path) => `/batch-fast/file?path=${encodeURIComponent(path)}`;
+    const productPrefix = location.pathname.startsWith('/product/') ? '/product' : '';
+    const fileUrl = (path) => `${productPrefix}/batch-fast/file?path=${encodeURIComponent(path)}`;
     function setTheme(theme) {
       const selected=theme==='dark'?'dark':'light';
       document.documentElement.dataset.theme=selected;
@@ -119,7 +121,7 @@
       const outputCount=visibleRows.filter(row=>row.files.output_file.exists).length;
       const download=$('#download-batch');
       download.textContent=outputCount ? `批量下载输出（${outputCount}）` : '批量下载输出';
-      download.href=outputCount ? `/batch-fast/download?batch_id=${encodeURIComponent(batch.id)}${state.activeStore?`&store_id=${encodeURIComponent(state.activeStore)}`:''}` : '#';
+      download.href=outputCount ? `${productPrefix}/batch-fast/download?batch_id=${encodeURIComponent(batch.id)}${state.activeStore?`&store_id=${encodeURIComponent(state.activeStore)}`:''}` : '#';
       download.classList.toggle('disabled',!outputCount);
       $('#content').innerHTML=batch ? table({...batch,rows:visibleRows}) : '<div class="empty">尚未导入批次</div>';
     }

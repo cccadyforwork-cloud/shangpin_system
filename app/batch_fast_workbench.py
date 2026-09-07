@@ -424,6 +424,7 @@ def _batch_from_sheet(path, previous=None):
     }
     if stores:
         batch["stores"] = stores
+    wb.close()
     return batch
 
 
