@@ -17,8 +17,9 @@ FILES_DIR = WORKBENCH_DIR / "files"
 SOURCE_SHEETS_DIR = WORKBENCH_DIR / "source_sheets"
 
 FILE_FIELDS = {"competitor_html", "source_template", "output_file"}
-EDITABLE_FIELDS = FILE_FIELDS | {"status", "note"}
+EDITABLE_FIELDS = FILE_FIELDS | {"status", "purchase_status", "note"}
 STATUS_VALUES = ("待处理", "已有模板", "生成中", "待复核", "可上传", "已上传", "需修正")
+PURCHASE_STATUS_VALUES = ("已采购", "未采购")
 ALLOWED_SUFFIXES = {".html", ".htm", ".xlsx", ".xlsm", ".xls"}
 
 
@@ -120,6 +121,8 @@ def update_row(batch_id, row_id, fields, ledger_path=LEDGER_PATH):
         text = str(value or "").strip()
         if key == "status" and text not in STATUS_VALUES:
             raise ValueError("状态值不正确。")
+        if key == "purchase_status" and text not in PURCHASE_STATUS_VALUES:
+            raise ValueError("采购状态值不正确。")
         if key == "output_file":
             if text:
                 _register_output_version(row, text)
@@ -190,6 +193,7 @@ def payload(ledger_path=LEDGER_PATH):
         "ok": True,
         "updated_at": data.get("updated_at", ""),
         "statuses": list(STATUS_VALUES),
+        "purchase_statuses": list(PURCHASE_STATUS_VALUES),
         "totals": totals,
         "batches": batches,
     }
@@ -385,6 +389,7 @@ def _batch_from_sheet(path, previous=None):
             "output_file": previous_row.get("output_file", ""),
             "output_versions": previous_row.get("output_versions", []),
             "status": previous_row.get("status", "待处理"),
+            "purchase_status": previous_row.get("purchase_status", ""),
             "note": note or previous_row.get("note", ""),
         }
         if primary_store:
@@ -406,6 +411,7 @@ def _batch_from_sheet(path, previous=None):
                 "output_file": previous_row.get("output_file", ""),
                 "output_versions": previous_row.get("output_versions", []),
                 "status": previous_row.get("status", "待处理"),
+                "purchase_status": previous_row.get("purchase_status", ""),
                 "note": previous_row.get("note", ""),
                 "store_id": store_id,
             })

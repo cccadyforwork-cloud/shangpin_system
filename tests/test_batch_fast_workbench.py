@@ -40,11 +40,17 @@ class BatchFastWorkbenchTests(unittest.TestCase):
     def test_import_update_and_reimport_preserve_row_state(self):
         data = import_sheets([self.sheet], self.ledger)
         batch_id = data["batches"][0]["id"]
-        update_row(batch_id, "B0ABCDEFGH", {"status": "待复核", "note": "预估价格"}, self.ledger)
+        update_row(
+            batch_id,
+            "B0ABCDEFGH",
+            {"status": "待复核", "purchase_status": "已采购", "note": "预估价格"},
+            self.ledger,
+        )
         import_sheets([self.sheet], self.ledger)
         rendered = payload(self.ledger)
         row = rendered["batches"][0]["rows"][0]
         self.assertEqual("待复核", row["status"])
+        self.assertEqual("已采购", row["purchase_status"])
         self.assertEqual("预估价格", row["note"])
         self.assertTrue(row["files"]["competitor_html"]["exists"])
 
@@ -143,6 +149,7 @@ class BatchFastWorkbenchTests(unittest.TestCase):
         self.assertEqual("", store_2["source_template"])
         self.assertEqual("", store_2["output_file"])
         self.assertEqual("待处理", store_2["status"])
+        self.assertEqual("", store_2["purchase_status"])
         self.assertEqual(1, payload(self.ledger)["totals"]["rows"])
 
         packaged = package_shared_data(self.ledger, self.files, self.root / "source_sheets")

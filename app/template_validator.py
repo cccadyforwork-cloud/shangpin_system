@@ -537,7 +537,21 @@ PRODUCT_TYPE_PARENT_REQUIRED_FIELDS = {
         "Width Unit": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
         "Item Weight": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
         "Item Weight Unit": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
-    }
+    },
+    "TOWEL": {
+        "Item Length Longer Edge": "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+        "Item Length Unit": "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+        "Item Width Shorter Edge": "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+        "Item Width Unit": "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+        "Item Weight": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Item Weight Unit": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+    },
+    "GIFT_WRAP": {
+        "Unit Count": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Unit Count Type": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+        "Item Weight": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Item Weight Unit": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+    },
 }
 
 

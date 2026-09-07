@@ -1,0 +1,197 @@
+{
+  "output_dir": "../../../outputs/2店批量快速上品6-15",
+  "tasks": [
+    {
+      "name": "彩色水晶太阳捕手挂饰1件",
+      "product_name": "Sun Catcher",
+      "template": "../files/2店批量上品/B0FKM11PJW/source_template/HANGING_ORNAMENT.xlsm",
+      "competitor": "../files/2店批量上品/B0FKM11PJW/competitor_html/B0FKM11PJW.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 1,
+      "color": "Multicolor",
+      "material": "Glass",
+      "extra_fields": {
+        "target_audience[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Adult",
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Sun Catcher",
+        "fabric_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Glass",
+        "occasion_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Christmas",
+        "item_shape[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Snowflake",
+        "theme[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Snowflake",
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": 1,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "Count",
+        "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "1 Sun Catcher"
+      },
+      "base_title": "Crystal Sun Catcher Hanging Ornament, Colorful Snowflake Pendant for Window, Car, Garden, Cafe and Home Decoration"
+    },
+    {
+      "name": "铃铛毛线猫球1件",
+      "product_name": "Yarn Ball",
+      "template": "../files/2店批量上品/B0GVYVJ5L6/source_template/PET_TOY.xlsm",
+      "competitor": "../files/2店批量上品/B0GVYVJ5L6/competitor_html/B0GVYVJ5L6.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 1,
+      "color": "Assorted",
+      "material": "Yarn",
+      "size": "One Size",
+      "extra_fields": {
+        "subject_character[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Cat"
+      },
+      "base_title": "Yarn Cat Ball with Bell, Interactive Rolling Toy for Indoor Kittens and Cats, Assorted Color, One Count"
+    },
+    {
+      "name": "彩色弹簧猫玩具2件",
+      "product_name": "Spring Ball",
+      "template": "../files/2店批量上品/B0GVYMH961/source_template/PET_TOY_(1).xlsm",
+      "competitor": "../files/2店批量上品/B0GVYMH961/competitor_html/B0GVYMH961.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 2,
+      "color": "Multicolor",
+      "material": "Plastic",
+      "size": "One Size",
+      "extra_fields": {
+        "subject_character[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Cat"
+      },
+      "base_title": "Stretchable Spring Ball Cat Toys, Colorful Rolling Coil Mouse Toys for Indoor Kittens, Interactive Play, Two Count"
+    },
+    {
+      "name": "钥匙扣多功能工具3件",
+      "product_name": "Pocket Multitool",
+      "template": "../files/2店批量上品/B0GS96JL5V/source_template/MULTITOOL.xlsm",
+      "competitor": "../files/2店批量上品/B0GS96JL5V/competitor_html/B0GS96JL5V.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 3,
+      "color": "Silver",
+      "material": "Metal",
+      "extra_fields": {
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Pocket Multitool",
+        "number_of_pieces[marketplace_id=ATVPDKIKX0DER]#1.value": 3,
+        "power_source_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "hand_powered",
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": 3,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "Count",
+        "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "3 Pocket Multitools",
+        "number_of_boxes[marketplace_id=ATVPDKIKX0DER]#1.value": 1
+      },
+      "base_title": "Pocket Multitool Keychain Set, Compact Metal Wrench, Screwdriver, Ruler and Bottle Opener for Daily Tasks, Three Count"
+    },
+    {
+      "name": "缎面睡帽3件",
+      "product_name": "Satin Bonnet",
+      "template": "../files/2店批量上品/B0GGBQ81WS/source_template/HAT.xlsm",
+      "competitor": "../files/2店批量上品/B0GGBQ81WS/competitor_html/B0GGBQ81WS.html",
+      "logistics_tier": "4_8_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 3,
+      "color": "Assorted",
+      "material": "Satin",
+      "extra_fields": {
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Satin Bonnet",
+        "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Sleep Bonnet",
+        "department[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Womens",
+        "target_gender[marketplace_id=ATVPDKIKX0DER]#1.value": "Female",
+        "age_range_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Adult",
+        "headwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_system": "US",
+        "headwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_class": "Alpha",
+        "headwear_size[marketplace_id=ATVPDKIKX0DER]#1.size": "One Size",
+        "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Standard",
+        "fabric_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Satin",
+        "care_instructions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Hand Wash Only",
+        "seasons[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "All",
+        "import_designation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Imported"
+      },
+      "base_title": "Satin Sleep Bonnet Set with Wide Soft Band, Large Night Caps for Women with Curly Hair and Braids, Three Count"
+    },
+    {
+      "name": "橙色宽口防飞溅指甲剪",
+      "product_name": "Nail Clipper",
+      "template": "../files/2店批量上品/B0G5YYHCCW/source_template/NAIL_CLIPPER.xlsm",
+      "competitor": "../files/2店批量上品/B0G5YYHCCW/competitor_html/B0G5YYHCCW.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "COLOR",
+      "color": "Orange",
+      "material": "Stainless Steel",
+      "extra_fields": {
+        "target_audience[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Elderly",
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": 1,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "Count",
+        "blade[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value": "Stainless Steel"
+      },
+      "base_title": "Wide Jaw Nail Clipper with Slanted Curved Blade, Stainless Steel Fingernail and Toenail Trimmer for Men and Women"
+    },
+    {
+      "name": "黑色断丝取出器6件套",
+      "product_name": "Screw Extractor",
+      "template": "../files/2店批量上品/B0GQGJBRQF/source_template/DRILL_BITS.xlsm",
+      "competitor": "../files/2店批量上品/B0GQGJBRQF/competitor_html/B0GQGJBRQF.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "COLOR",
+      "set_count": 6,
+      "color": "Black",
+      "material": "High Speed Steel",
+      "extra_fields": {
+        "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "6 Screw Extractor Bits",
+        "tool_flute[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value": "Spiral"
+      },
+      "base_title": "Damaged Screw Extractor Set, High Speed Steel Drill Bit Kit for Stripped and Broken Screw Removal, Six Pieces"
+    },
+    {
+      "name": "浅蓝色幼犬磨牙玩具2件",
+      "product_name": "Dog Toy",
+      "template": "../files/2店批量上品/B0GWMGBYFZ/source_template/PET_TOY_(2).xlsm",
+      "competitor": "../files/2店批量上品/B0GWMGBYFZ/competitor_html/B0GWMGBYFZ.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 2,
+      "color": "Light Blue",
+      "material": "Rubber",
+      "extra_fields": {
+        "subject_character[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Dog"
+      },
+      "base_title": "Puppy Chew Toy Set, Light Blue Interactive Toys for Small Dogs, Soft Textured Pieces for Indoor Play, Two Count"
+    },
+    {
+      "name": "四色衣架连接扣30件",
+      "product_name": "Hanger Connector",
+      "template": "../files/2店批量上品/B0FCLS24NK/source_template/CLOTHES_HANGER.xlsm",
+      "competitor": "../files/2店批量上品/B0FCLS24NK/competitor_html/B0FCLS24NK.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 30,
+      "color": "Assorted",
+      "material": "Plastic",
+      "extra_fields": {
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Hanger Connector",
+        "generic_keyword[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "hanger connector hooks closet space saver clips",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Space Saving",
+        "number_of_pieces[marketplace_id=ATVPDKIKX0DER]#1.value": 30,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": 30,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "Count",
+        "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value": 1.57,
+        "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit": "Inches",
+        "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value": 0.79,
+        "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit": "Inches",
+        "required_product_compliance_certificate[marketplace_id=ATVPDKIKX0DER]#1.value": "Not Applicable"
+      },
+      "base_title": "Hanger Connector Hooks and Clips, Space Saving Closet Organizer Accessories for Plastic Hangers, Four Colors, Thirty Count"
+    },
+    {
+      "name": "战术钥匙扣零钱包",
+      "product_name": "Coin Purse",
+      "template": "../files/2店批量上品/B0FF9PTS3X/source_template/COIN_PURSE_POUCH.xlsm",
+      "competitor": "../files/2店批量上品/B0FF9PTS3X/competitor_html/B0FF9PTS3X.html",
+      "price": 2.11,
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "COLOR",
+      "material": "Polyester",
+      "extra_fields": {
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Coin Purse",
+        "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Tactical",
+        "department[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Unisex"
+      },
+      "base_title": "Tactical Coin Purse with Keychain Clip, Mini Zipper Pouch for Coins, Car Keys, Earphones and Small Everyday Accessories"
+    }
+  ]
+}

@@ -539,7 +539,7 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
                 ws.cell(row, col).value = None
         if is_parent:
             product_type = str(ws.cell(row, product_type_col).value or "").strip().upper() if product_type_col else ""
-            for field_name, value in _parent_required_overlay_fields(product_type, tier).items():
+            for field_name, value in _parent_required_overlay_fields(product_type, tier, task).items():
                 col = field_to_col.get(field_name)
                 if col and value not in (None, ""):
                     ws.cell(row, col).value = value
@@ -617,21 +617,42 @@ def _dimension_overlay_fields(tier):
     return fields
 
 
-def _parent_required_overlay_fields(product_type, tier):
-    if str(product_type or "").strip().upper() != "PET_TOY":
-        return {}
+def _parent_required_overlay_fields(product_type, tier, task=None):
+    product_type = str(product_type or "").strip().upper()
+    task = task or {}
     length, width, height = tier["package_in"]
     weight = tier["weight_lb"]
-    return {
-        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.value": length,
-        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.unit": "Inches",
-        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value": width,
-        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit": "Inches",
-        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value": height,
-        "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit": "Inches",
-        "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value": weight,
-        "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit": "Pounds",
-    }
+    if product_type == "PET_TOY":
+        return {
+            "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.value": length,
+            "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.unit": "Inches",
+            "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value": width,
+            "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit": "Inches",
+            "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value": height,
+            "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit": "Inches",
+            "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value": weight,
+            "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit": "Pounds",
+        }
+    if product_type == "TOWEL":
+        size_values = [float(value) for value in re.findall(r"\d+(?:\.\d+)?", str(task.get("size") or ""))]
+        ready_length = size_values[0] if len(size_values) >= 2 else length
+        ready_width = size_values[1] if len(size_values) >= 2 else width
+        return {
+            "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.length.value": ready_length,
+            "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.length.unit": "Inches",
+            "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.width.value": ready_width,
+            "item_length_width[marketplace_id=ATVPDKIKX0DER]#1.width.unit": "Inches",
+            "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value": weight,
+            "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit": "Pounds",
+        }
+    if product_type == "GIFT_WRAP":
+        return {
+            "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": task.get("set_count") or 1,
+            "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "Count",
+            "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value": weight,
+            "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit": "Pounds",
+        }
+    return {}
 
 
 def _parent_sku(task):

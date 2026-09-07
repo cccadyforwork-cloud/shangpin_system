@@ -10,7 +10,7 @@
     * { box-sizing:border-box; }
     body { margin:0; color:var(--ink); background:var(--page); font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; transition:background .2s,color .2s; }
     button, select, input { font:inherit; }
-    .shell { max-width:1480px; margin:0 auto; padding:28px; }
+    .shell { max-width:1640px; margin:0 auto; padding:20px; }
     .top { display:flex; justify-content:space-between; gap:20px; align-items:flex-start; margin-bottom:20px; }
     h1 { font-size:26px; margin:0 0 7px; letter-spacing:-.02em; }
     .sub { margin:0; color:var(--muted); }
@@ -31,28 +31,29 @@
     .store-tab { border:1px solid var(--line); border-radius:8px; padding:7px 18px; background:var(--button); color:var(--muted); cursor:pointer; }
     .store-tab.active { border-color:var(--blue); background:var(--blue); color:#fff; font-weight:650; }
     .table-wrap { overflow:auto; }
-    table { border-collapse:collapse; width:100%; min-width:1050px; }
+    table { border-collapse:collapse; width:100%; min-width:1250px; table-layout:fixed; }
     th, td { padding:13px 14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); text-align:left; vertical-align:middle; }
     th:last-child, td:last-child { border-right:0; }
     th { background:var(--soft); color:#465066; font-size:13px; font-weight:650; }
     tr:last-child td { border-bottom:0; }
     tbody tr:hover { background:var(--hover); }
-    .product { display:flex; flex-direction:column; gap:3px; min-width:175px; }
+    .product { display:flex; flex-direction:column; gap:3px; min-width:0; }
     .product a { color:var(--ink); font-weight:650; text-decoration:none; }
     .product a:hover { color:var(--blue); text-decoration:underline; }
     .path { color:var(--muted); font-size:12px; max-width:270px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .file-actions { display:flex; align-items:center; gap:7px; flex-wrap:wrap; min-width:170px; }
+    .file-actions { display:flex; align-items:center; gap:7px; flex-wrap:wrap; min-width:0; }
     .drop-zone { min-height:40px; margin:-6px; padding:6px; border:1px dashed transparent; border-radius:8px; transition:border-color .15s,background .15s; }
     .drop-zone.dragging { border-color:var(--blue); background:color-mix(in srgb, var(--blue) 12%, transparent); }
     .drop-hint { width:100%; color:var(--muted); font-size:11px; }
-    .file-name { max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .file-name { display:block; min-width:0; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .version-badge { display:inline-flex; padding:2px 7px; border-radius:999px; color:var(--green); background:color-mix(in srgb,var(--green) 13%,transparent); font-size:11px; font-weight:700; }
     .output-current { display:flex; width:100%; align-items:center; gap:7px; }
     .old-versions { display:flex; gap:7px; flex-wrap:wrap; min-width:150px; }
     .old-version { display:inline-flex; align-items:center; gap:6px; }
     .ok { color:var(--green); }
-    select { border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 27px 7px 9px; color:var(--ink); }
-    .note { width:130px; border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 9px; color:var(--ink); }
+    select { width:100%; min-width:0; border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 27px 7px 9px; color:var(--ink); }
+    select.done { border-color:color-mix(in srgb,var(--green) 55%,var(--line)); background:color-mix(in srgb,var(--green) 14%,var(--button)); color:var(--green); font-weight:650; }
+    .note { width:100%; min-width:0; border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 9px; color:var(--ink); }
     .note::placeholder { color:var(--muted); }
     .theme-switch { display:flex; padding:3px; border:1px solid var(--line); border-radius:9px; background:var(--panel); }
     .theme-switch button { border:0; border-radius:6px; padding:6px 10px; background:transparent; color:var(--muted); cursor:pointer; }
@@ -123,9 +124,12 @@
       $('#content').innerHTML=batch ? table({...batch,rows:visibleRows}) : '<div class="empty">尚未导入批次</div>';
     }
     function table(batch) {
-      return `<table><thead><tr><th>商品</th><th>竞品 HTML</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th><th>备注</th></tr></thead><tbody>${batch.rows.map(row=>rowHtml(batch,row)).join('')}</tbody></table>`;
+      const showPurchase=batch.id==='cady选品' && state.activeStore==='2店';
+      const widths=showPurchase?[13,13,16,20,11,10,9,8]:[14,14,17,22,12,10,11];
+      const columns=`<colgroup>${widths.map(width=>`<col style="width:${width}%">`).join('')}</colgroup>`;
+      return `<table>${columns}<thead><tr><th>商品</th><th>竞品 HTML</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th>${showPurchase?'<th>采购状态</th>':''}<th>备注</th></tr></thead><tbody>${batch.rows.map(row=>rowHtml(batch,row,showPurchase)).join('')}</tbody></table>`;
     }
-    function rowHtml(batch,row) {
+    function rowHtml(batch,row,showPurchase) {
       const html=row.files.competitor_html, source=row.files.source_template, output=row.files.output_file;
       return `<tr data-batch="${esc(batch.id)}" data-row="${esc(row.id)}">
         <td><div class="product"><a href="${esc(row.link)}" target="_blank" rel="noreferrer">${esc(row.asin || row.id)}</a><span class="path">Excel 第 ${row.row_number} 行</span></div></td>
@@ -133,7 +137,8 @@
         <td>${fileCell(source,true,'source_template')}</td>
         <td>${outputCell(row)}</td>
         <td>${oldVersionsCell(row)}</td>
-        <td><select class="status">${state.data.statuses.map(s=>`<option ${s===row.status?'selected':''}>${esc(s)}</option>`).join('')}</select></td>
+        <td><select class="status ${row.status==='已上传'?'done':''}">${state.data.statuses.map(s=>`<option ${s===row.status?'selected':''}>${esc(s)}</option>`).join('')}</select></td>
+        ${showPurchase?`<td><select class="purchase-status ${row.purchase_status==='已采购'?'done':''}">${state.data.purchase_statuses.map(s=>`<option ${s===(row.purchase_status || '未采购')?'selected':''}>${esc(s)}</option>`).join('')}</select></td>`:''}
         <td><input class="note" type="text" value="${esc(row.note || '')}" placeholder="可填写备注"></td>
       </tr>`;
     }
@@ -164,10 +169,10 @@
       const upload=event.target.closest('.upload'); if(upload){chooseFile(upload.closest('tr'),upload.dataset.field);}
     });
     document.addEventListener('change', async (event) => {
-      if(!event.target.matches('.status, .note')) return;
+      if(!event.target.matches('.status, .purchase-status, .note')) return;
       const row=event.target.closest('tr');
-      const field=event.target.matches('.status')?'status':'note';
-      try { await api('/api/batch-fast/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,fields:{[field]:event.target.value}})}); toast(field==='status'?'状态已保存':'备注已保存'); }
+      const field=event.target.matches('.status')?'status':event.target.matches('.purchase-status')?'purchase_status':'note';
+      try { await api('/api/batch-fast/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,fields:{[field]:event.target.value}})}); if(field!=='note') event.target.classList.toggle('done',event.target.value==='已上传' || event.target.value==='已采购'); toast(field==='status'?'状态已保存':field==='purchase_status'?'采购状态已保存':'备注已保存'); }
       catch(e){toast(e.message);await load();}
     });
     document.addEventListener('dragover', (event) => {

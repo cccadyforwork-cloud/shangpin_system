@@ -1,0 +1,117 @@
+{
+  "output_dir": "../../../outputs/cady2店快速上品20260905",
+  "tasks": [
+    {
+      "name": "水晶玻璃珠6毫米100件",
+      "product_name": "Glass Beads",
+      "template": "../files/cady选品/B0GT5KBSNR/source_template/CRAFT_BEAD_20260905_054311.xlsm",
+      "competitor": "../files/2店批量上品/B0GT5KBSNR/competitor_html/B0GT5KBSNR.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "COLOR",
+      "set_count": 100,
+      "size": "6 MM",
+      "material": "Glass",
+      "base_title": "100 Pcs Crystal Glass Beads for Jewelry Making, Faceted Gemstone Rondelle Loose Beads for Bracelets and DIY Crafts",
+      "extra_fields": {
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Glass Beads",
+        "item_shape[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Rondelle",
+        "number_of_pieces[marketplace_id=ATVPDKIKX0DER]#1.value": 100,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": 100,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "Count",
+        "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "100 Glass Beads"
+      }
+    },
+    {
+      "name": "黑色三合一USB-C读卡器1件",
+      "product_name": "Card Reader",
+      "template": "../files/cady选品/B0GSVJYRKD/source_template/MEMORY_CARD_READER.xlsm",
+      "competitor": "../files/2店批量上品/B0GSVJYRKD/competitor_html/B0GSVJYRKD.html",
+      "estimated_price": 2.99,
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 1,
+      "color": "Black",
+      "size": "One Size",
+      "material": "Plastic",
+      "base_title": "3-In-1 USB-C SD and Micro SD Card Reader for USB-C Smartphones, Tablets, Cameras and OTG Devices, Fast Data Transfer",
+      "extra_fields": {
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "USB-C Card Reader",
+        "media_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "SD Card",
+        "connectivity_technology[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "USB Type C",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Plug and Play",
+        "compatible_devices[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Smartphone",
+        "data_transfer_rate[marketplace_id=ATVPDKIKX0DER]#1.value": 480,
+        "data_transfer_rate[marketplace_id=ATVPDKIKX0DER]#1.unit": "Megabits per Second",
+        "warranty_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "No Warranty",
+        "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "1 USB-C Card Reader",
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": 1,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "Count"
+      }
+    },
+    {
+      "name": "绿色不锈钢水果去芯器1件",
+      "product_name": "Fruit Corer",
+      "template": "../files/cady选品/B0GT4DC8K8/source_template/CORE_PIT_REMOVER.xlsm",
+      "competitor": "../files/2店批量上品/B0GT4DC8K8/competitor_html/B0GT4DC8K8.html",
+      "estimated_price": 1.99,
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 1,
+      "color": "Green",
+      "size": "One Size",
+      "material": "Stainless Steel",
+      "base_title": "Fruit Corer Tool, Stainless Steel Serrated Blade for Easy Coring, Simple to Operate and Clean, for Baking and Kitchen Prep",
+      "extra_fields": {
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Fruit Corer Tool",
+        "blade[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value": "Stainless Steel",
+        "handle[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value": "Stainless Steel",
+        "care_instructions[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Hand Wash Only",
+        "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "1 Fruit Corer",
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": 1,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "Count"
+      }
+    },
+    {
+      "name": "黑色双面泡棉胶垫30件",
+      "product_name": "Adhesive Pads",
+      "template": "../files/cady选品/B0GS5JGTDB/source_template/ADHESIVE_TAPES.xlsm",
+      "competitor": "../files/2店批量上品/B0GS5JGTDB/competitor_html/B0GS5JGTDB.html",
+      "estimated_price": 1.99,
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 30,
+      "color": "Black",
+      "size": "1.97 By 1.18 Inches",
+      "material": "Foam",
+      "base_title": "30 Pcs Double Sided Adhesive Pads, Foam Mounting Tape, 1.97 By 1.18 Inch Precut Black Rectangle Pads for Walls, Car and Office",
+      "extra_fields": {
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Double Sided Adhesive Pads",
+        "adhesive_format[marketplace_id=ATVPDKIKX0DER]#1.value": "Pad",
+        "item_shape[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Rectangular",
+        "recommended_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Indoor",
+        "surface_recommendation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Drywall",
+        "is_expiration_dated_product[marketplace_id=ATVPDKIKX0DER]#1.value": "No",
+        "number_of_pieces[marketplace_id=ATVPDKIKX0DER]#1.value": 30,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": 30,
+        "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "Count",
+        "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "30 Adhesive Pads"
+      }
+    },
+    {
+      "name": "猫薄荷抱枕玩具1件",
+      "product_name": "Catnip Pillow",
+      "template": "../files/cady选品/B0GWM1BPKM/source_template/PET_TOY.xlsm",
+      "competitor": "../files/2店批量上品/B0GWM1BPKM/competitor_html/B0GWM1BPKM.html",
+      "logistics_tier": "le_4_oz",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "set_count": 1,
+      "color": "Assorted",
+      "size": "One Size",
+      "material": "Fabric",
+      "base_title": "1 Pack Catnip Pillow Kicker Toy, Interactive Cat Toy for Indoor Scratching and Chewing, for Kittens and Adult Cats",
+      "extra_fields": {
+        "subject_character[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Cat"
+      }
+    }
+  ]
+}

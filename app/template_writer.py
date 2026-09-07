@@ -587,6 +587,8 @@ def _stable_field_default(field_name, row):
         return "All Breed Sizes"
     if "pet_toy_type" in field:
         return "Chew Toy"
+    if "subject_character" in field and product_type == "PET_TOY":
+        return "Cat" if "cat" in _row_text(row).lower() or "猫" in _row_text(row) else "Dog"
     if "pet_type" in field:
         return "Cat" if "cat" in _row_text(row).lower() or "猫" in _row_text(row) else "Dog"
     if "theme" in field:

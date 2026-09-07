@@ -41,6 +41,16 @@ class BatchFastPrelistingTest(unittest.TestCase):
         self.assertFalse(any("item_package_weight" in field for field in fields))
         self.assertEqual(_parent_required_overlay_fields("HAT", tier), {})
 
+    def test_towel_and_gift_wrap_parent_backend_requirements(self):
+        tier = resolve_logistics_tier(tier_id="4_8_oz")
+        towel = _parent_required_overlay_fields("TOWEL", tier, {"size": "9.84 By 9.84 Inches"})
+        self.assertEqual(towel["item_length_width[marketplace_id=ATVPDKIKX0DER]#1.length.value"], 9.84)
+        self.assertEqual(towel["item_length_width[marketplace_id=ATVPDKIKX0DER]#1.width.value"], 9.84)
+        self.assertEqual(towel["item_weight[marketplace_id=ATVPDKIKX0DER]#1.value"], 0.44)
+        gift_wrap = _parent_required_overlay_fields("GIFT_WRAP", tier, {"set_count": 50})
+        self.assertEqual(gift_wrap["unit_count[marketplace_id=ATVPDKIKX0DER]#1.value"], 50)
+        self.assertEqual(gift_wrap["item_weight[marketplace_id=ATVPDKIKX0DER]#1.value"], 0.44)
+
     def test_short_sku_generation(self):
         task = {"product_name": "glass BEADS extra words", "color": "Green", "variation_theme": "COLOR"}
         self.assertEqual(_parent_sku(task), "CA-GlassBeads")

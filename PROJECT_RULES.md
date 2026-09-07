@@ -191,6 +191,12 @@ PET_TOY 注意：
 - 当前上传实测 `Subject Character` 会成为条件必填；普通猫玩具可按产品主体填写 `Cat`。
 - 后台错误 `99022` 已确认 `PET_TOY` Parent 行也必须填写商品 `item_length_width_height` 的长、宽、高及对应单位，以及 `item_weight` 数值与单位；只补商品尺寸/重量，Parent 的包装尺寸和包装重量仍留空。
 
+TOWEL / GIFT_WRAP 注意：
+
+- 后台错误 `99022` 已确认 `TOWEL` Parent 行必须填写成品状态的 `item_length_width` 长、宽及单位，以及 `item_weight` 数值和单位；成品尺寸优先使用商品实际尺寸。
+- 后台错误 `99022` 已确认 `GIFT_WRAP` Parent 行必须填写 `unit_count` 数值/类型和 `item_weight` 数值/单位。
+- 上述 Parent 行仍不填写包装尺寸和包装重量。
+
 ANIMAL_COLLAR 注意：
 
 - `dog_breed_size` 模板有效值是 `Extra Small`、`Small`、`Medium`、`Large`、`Giant`、`All`。

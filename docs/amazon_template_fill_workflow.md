@@ -206,6 +206,8 @@ Product Description：
 - 通常不填 Parent SKU
 - 不填 Item Condition、Model Number、Model Name、Manufacturer、Part Number、Item Highlight、价格、报价日期、最低/最高价、包装尺寸、包装重量、颜色、尺寸等子体/报价/可售专属字段；图片字段全路线默认不处理
 - `PET_TOY` 例外：后台 `99022` 已确认 Parent 行需填写商品长、宽、高及对应单位和 Item Weight；包装尺寸、包装重量仍留空
+- `TOWEL` 例外：后台 `99022` 已确认 Parent 行需填写成品长、宽及对应单位和 Item Weight；优先使用商品实际成品尺寸，包装尺寸、包装重量仍留空
+- `GIFT_WRAP` 例外：后台 `99022` 已确认 Parent 行需填写 Unit Count / Unit Count Type 和 Item Weight；包装尺寸、包装重量仍留空
 
 子体行：
 
