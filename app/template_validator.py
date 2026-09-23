@@ -155,6 +155,10 @@ COPY_FIELD_NAMES = {
 
 
 PRODUCT_TYPE_CONDITIONAL_FIELDS = {
+    "EARRING": {
+        "Stone Creation Method": "stones[marketplace_id=ATVPDKIKX0DER]#1.creation_method[language_tag=en_US].value",
+        "Stone Treatment Method": "stones[marketplace_id=ATVPDKIKX0DER]#1.treatment_method[language_tag=en_US].value",
+    },
     "GARLAND": {
         "Model Name": "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
         "Included Components": "included_components[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
@@ -616,6 +620,7 @@ def _is_parent_optional_required_field(field_name):
         "theme",
         "department",
         "material",
+        "stones[",
         "frame[",
         "pattern",
         "skill_level",

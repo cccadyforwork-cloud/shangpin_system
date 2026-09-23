@@ -5,6 +5,7 @@ from openpyxl import Workbook
 
 from app.batch_fast_prelisting import (
     _child_sku,
+    competitor_variant_review_note,
     _fast_copy_fallback,
     _output_filename,
     _parent_required_overlay_fields,
@@ -83,6 +84,15 @@ class BatchFastPrelistingTest(unittest.TestCase):
         self.assertEqual(_parent_sku(task), "CUSTOM-P")
         self.assertEqual(_child_sku(task, {}, 1), "CUSTOM-C")
 
+    def test_store_one_skus_always_use_ttca_prefix(self):
+        generated = {"store_id": "1店", "product_name": "glass beads", "color": "Green", "variation_theme": "COLOR"}
+        self.assertEqual(_parent_sku(generated), "TTCA-GlassBeads")
+        self.assertEqual(_child_sku(generated, {}, 1), "TTCA-GlassBeads-Green")
+
+        explicit = {"store_id": "1店", "parent_sku": "CA-CustomParent", "child_sku": "CUSTOM-CHILD"}
+        self.assertEqual(_parent_sku(explicit), "TTCA-CustomParent")
+        self.assertEqual(_child_sku(explicit, {}, 1), "TTCA-CUSTOM-CHILD")
+
     def test_output_name_cannot_escape_output_directory(self):
         filename = _output_filename({"output_name": "../危险文件.xlsx"}, "fallback", ".xlsm")
         self.assertEqual(filename, "危险文件V1.xlsx")
@@ -127,6 +137,19 @@ class BatchFastPrelistingTest(unittest.TestCase):
             path = Path(temp_dir) / "competitor.html"
             path.write_text(html, encoding="utf-8")
             self.assertEqual(extract_competitor_variants([path]), [])
+            self.assertEqual(competitor_variant_review_note([path]), "变体主题待人工审核")
+
+    def test_size_labels_under_color_twister_require_manual_review(self):
+        html = '''
+        <input name="twisterDimKeys" value="color_name"/>
+        <li id="color_name_0" title="Click to select 5 Pack-11.8*11.8in"></li>
+        <li id="color_name_1" title="Click to select 5 Pack-9.84*9.84in"></li>
+        '''
+        with TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "competitor.html"
+            path.write_text(html, encoding="utf-8")
+            self.assertEqual(extract_competitor_variants([path]), [])
+            self.assertEqual(competitor_variant_review_note([path]), "变体主题待人工审核")
 
     def test_extracts_current_price_not_discount_amount(self):
         html = '''

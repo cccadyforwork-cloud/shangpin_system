@@ -21,10 +21,13 @@
 - `product_name`：用于生成英文 Listing 的简短英文商品名。
 - `template`：Amazon 原始 `.xlsx` / `.xlsm` 模板。
 - `competitor` 或 `competitors`：一个或多个竞品 HTML。
+- `store_id`：工作台店铺标识。填写 `1店` 时，系统强制所有 Parent/Child SKU 使用 `TTCA-` 前缀；其他店铺沿用 `CA-` 前缀。
 - `price`：可选人工覆盖。未填写时先取竞品 HTML 的当前 `priceToPay`。HTML 缺价时先打开 Amazon 在线页面核对，页面有价时填入 `online_price`；在线页面也缺货或无价时才填入 `estimated_price`。系统按 `price` → HTML `priceToPay` → `online_price` → `estimated_price` 的顺序决定 List Price 和 Haul/BZR Price，不把 discount 金额或推荐商品价格当成当前售价。
 - `weight_grams` 或 `logistics_tier`：页面重量或指定物流档位。
-- `parent_sku`、`child_sku`：可选人工覆盖。留空时按快速路线短 SKU 规则自动生成：`CA-产品名-变体属性`。产品名最多取 `product_name` 的前两个英文单词，各单词首字母大写、其余小写，两个单词直接拼接且中间不加横线；变体属性中的数量或计量单位统一小写，例如 Parent `CA-ToolSharpener`、Child `CA-ToolSharpener-2pcs` 或 `CA-StorageHook-6mm`。颜色等普通属性仍按首字母大写拼接，例如 `CA-GlassBeads-DarkGreen`。
+- `parent_sku`、`child_sku`：可选人工覆盖。留空时按快速路线短 SKU 规则自动生成：`前缀-产品名-变体属性`。`1店` 的前缀固定为 `TTCA`，其他店铺默认 `CA`；`1店` 中即使显式提供 SKU，也会统一校正为 `TTCA-` 开头。产品名最多取 `product_name` 的前两个英文单词，各单词首字母大写、其余小写，两个单词直接拼接且中间不加横线；变体属性中的数量或计量单位统一小写，例如 Parent `TTCA-ToolSharpener`、Child `TTCA-ToolSharpener-2pcs`。颜色等普通属性仍按首字母大写拼接，例如 `TTCA-GlassBeads-DarkGreen`。
 - `color`、`size`、`material`、`set_count`：已知的基础属性。
+- `extra_fields`：按模板第 5 行字段名补充 Child 行字段；只在当前任务显式提供时写入。
+- `parent_extra_fields`：按模板第 5 行字段名补充 Parent 行字段；用于模板动态规则要求 Parent 也填写的少数字段。
 - `variation_theme`：建议按当前模板 Valid Values 显式填写。
 - `base_title`：可选人工覆盖。不填写时，系统读取竞品页面 Product Title，保留前部和中部关键词顺序，仅在末尾添加或删除 3–5 个英文单词；随后继续应用 100–125 字符、禁用词和父子体变体标题规则。显式填写时应是不含具体颜色和尺寸的英文标题骨架。
 
@@ -60,6 +63,8 @@ python3 run.py batch-fast-prelist path/to/batch.json --output-dir outputs/本次
 默认不生成写入报告、模板自检报告或资料提炼报告。
 
 快速工作台按商品保存轻量输出版本记录。首次输出为 V1；少量报错商品生成 V2/V3 后，由系统自动同步并将最高版本设为当前输出，页面不提供人工上传输出文档的入口。旧版仅保留下载入口，不在工作台记录 processing summary。批量下载每款商品只打包当前最新版。工作台另有可编辑并持久保存的“备注”列；凡输出采用清单中的 `estimated_price` 兜底，备注统一填写“预估价格”。
+
+竞品变体存在不确定性时必须进入人工审核。典型情况是 Amazon 技术字段为 `color_name`，但选项文字实际包含尺寸或规格（例如 `5 Pack-11.8*11.8in`），或者页面同时包含多个变体维度。系统不得把这类选项静默当作颜色展开，应返回 `needs_variant_review`，并在同步工作台时把备注写为 `变体主题待人工审核`；人工明确提供 `variants` 后视为已确认。若同时存在其他备注，使用中文分号合并；仅使用预估价时仍保持备注精确为 `预估价格`。
 
 工作台的共享台账与业务文件位于 `data/batch_fast_workbench/`，台账只保存仓库相对路径。准备通过 Git 交给同事前，运行 `python3 run.py package-batch-workbench-data`，将外部清单、竞品 HTML、源模板和全部输出版本复制到该目录。命令出现缺失引用时不要提交；同事拉取相同提交后即可直接查看这些数据。
 

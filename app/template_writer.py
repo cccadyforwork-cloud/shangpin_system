@@ -532,6 +532,10 @@ def _stable_field_default(field_name, row):
         return row.get("manufacturer") or row.get("brand") or "Generic"
     if "brand" in field:
         return row.get("brand") or "Generic"
+    if "creation_method" in field and product_type == "EARRING":
+        return "Unknown"
+    if "treatment_method" in field and product_type == "EARRING":
+        return "Not Treated"
     if "department[" in field and product_type == "SPORT_RACKET":
         return "Unisex-Adult"
     if "material" in field and row.get("material"):
@@ -645,6 +649,7 @@ def _write_required_defaults(ws, row_index, row_data, field_to_col, required_fie
             "model_name",
             "manufacturer",
             "part_number",
+            "stones[",
             "list_price",
             "purchasable_offer",
             "item_package_dimensions",

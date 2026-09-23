@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updated_at": "2026-09-08T04:31:36+08:00",
+  "updated_at": "2026-09-12T20:21:01+08:00",
   "batches": [
     {
       "id": "cady选品",
@@ -178,26 +178,6 @@
           "store_id": "2店"
         },
         {
-          "id": "B0FCLS24NK",
-          "asin": "B0FCLS24NK",
-          "row_number": 10,
-          "link": "https://www.amazon.com/dp/B0FCLS24NK?ie=UTF8&ASIN=B0FCLS24NK&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/competitor_html/B0FCLS24NK.html",
-          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/source_template/CLOTHES_HANGER.xlsm",
-          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/output_file/四色衣架连接扣30件V1.xlsm",
-          "output_versions": [
-            {
-              "version": 1,
-              "path": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/output_file/四色衣架连接扣30件V1.xlsm",
-              "added_at": "2026-09-02T00:26:23+08:00"
-            }
-          ],
-          "status": "已上传",
-          "purchase_status": "未采购",
-          "note": "",
-          "store_id": "2店"
-        },
-        {
           "id": "B0FF9PTS3X",
           "asin": "B0FF9PTS3X",
           "row_number": 11,
@@ -309,7 +289,7 @@
           "link": "https://www.amazon.com/dp/B0FKTD8P4T?ie=UTF8&ASIN=B0FKTD8P4T&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FKTD8P4T/competitor_html/B0FKTD8P4T.html",
           "source_template": "data/batch_fast_workbench/files/2店批量上品/B0FKTD8P4T/source_template/TOWEL.xlsm",
-          "output_file": "data/batch_fast_workbench/files/cady选品/B0FKTD8P4T/output_file/彩色超细纤维清洁巾5件V2.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0FKTD8P4T/output_file/彩色超细纤维清洁巾5件V3.xlsx",
           "output_versions": [
             {
               "version": 1,
@@ -320,30 +300,15 @@
               "version": 2,
               "path": "data/batch_fast_workbench/files/cady选品/B0FKTD8P4T/output_file/彩色超细纤维清洁巾5件V2.xlsm",
               "added_at": "2026-09-05T01:43:18+08:00"
+            },
+            {
+              "version": 3,
+              "path": "data/batch_fast_workbench/files/cady选品/B0FKTD8P4T/output_file/彩色超细纤维清洁巾5件V3.xlsx",
+              "added_at": "2026-09-12T20:21:01+08:00"
             }
           ],
           "status": "已上传",
           "purchase_status": "已采购",
-          "note": "",
-          "store_id": "2店"
-        },
-        {
-          "id": "B0GVYMLWC7",
-          "asin": "B0GVYMLWC7",
-          "row_number": 17,
-          "link": "https://www.amazon.com/dp/B0GVYMLWC7?ie=UTF8&ASIN=B0GVYMLWC7&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/competitor_html/B0GVYMLWC7.html",
-          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/source_template/PET_TOY_(3).xlsm",
-          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/output_file/兔子磨牙草球1件V1.xlsm",
-          "output_versions": [
-            {
-              "version": 1,
-              "path": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/output_file/兔子磨牙草球1件V1.xlsm",
-              "added_at": "2026-09-03T02:32:32+08:00"
-            }
-          ],
-          "status": "已上传",
-          "purchase_status": "未采购",
           "note": "",
           "store_id": "2店"
         },
@@ -365,26 +330,6 @@
           "status": "已上传",
           "purchase_status": "已采购",
           "note": "",
-          "store_id": "2店"
-        },
-        {
-          "id": "B0GR4PKKRR",
-          "asin": "B0GR4PKKRR",
-          "row_number": 19,
-          "link": "https://www.amazon.com/dp/B0GR4PKKRR?ie=UTF8&ASIN=B0GR4PKKRR&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/competitor_html/B0GR4PKKRR.html",
-          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/source_template/UTILITY_MAGNET.xlsm",
-          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/output_file/长方形钕磁铁3件V1.xlsm",
-          "output_versions": [
-            {
-              "version": 1,
-              "path": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/output_file/长方形钕磁铁3件V1.xlsm",
-              "added_at": "2026-09-03T02:32:32+08:00"
-            }
-          ],
-          "status": "已上传",
-          "purchase_status": "未采购",
-          "note": "预估价格",
           "store_id": "2店"
         },
         {
@@ -443,7 +388,7 @@
             }
           ],
           "status": "已上传",
-          "purchase_status": "未采购",
+          "purchase_status": "已采购",
           "note": "预估价格",
           "store_id": "2店"
         },
@@ -479,46 +424,6 @@
             {
               "version": 1,
               "path": "data/batch_fast_workbench/files/2店批量上品/B0GHS8G18R/output_file/黄色折叠收纳筐1件V1.xlsm",
-              "added_at": "2026-09-03T03:23:33+08:00"
-            }
-          ],
-          "status": "已上传",
-          "purchase_status": "已采购",
-          "note": "预估价格",
-          "store_id": "2店"
-        },
-        {
-          "id": "B0GGYPSFNJ",
-          "asin": "B0GGYPSFNJ",
-          "row_number": 25,
-          "link": "https://www.amazon.com/dp/B0GGYPSFNJ?ie=UTF8&ASIN=B0GGYPSFNJ&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/competitor_html/B0GGYPSFNJ.html",
-          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/source_template/SCISSORS.xlsm",
-          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/output_file/白色多用途剪刀1件V1.xlsm",
-          "output_versions": [
-            {
-              "version": 1,
-              "path": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/output_file/白色多用途剪刀1件V1.xlsm",
-              "added_at": "2026-09-03T03:23:33+08:00"
-            }
-          ],
-          "status": "已上传",
-          "purchase_status": "未采购",
-          "note": "预估价格",
-          "store_id": "2店"
-        },
-        {
-          "id": "B0GR9H12MJ",
-          "asin": "B0GR9H12MJ",
-          "row_number": 26,
-          "link": "https://www.amazon.com/dp/B0GR9H12MJ?ie=UTF8&ASIN=B0GR9H12MJ&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/competitor_html/B0GR9H12MJ.html",
-          "source_template": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/source_template/TWEEZER.xlsm",
-          "output_file": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/output_file/银色精密镊子6件V1.xlsm",
-          "output_versions": [
-            {
-              "version": 1,
-              "path": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/output_file/银色精密镊子6件V1.xlsm",
               "added_at": "2026-09-03T03:23:33+08:00"
             }
           ],
@@ -568,26 +473,6 @@
           "store_id": "2店"
         },
         {
-          "id": "B0GS5JGTDB",
-          "asin": "B0GS5JGTDB",
-          "row_number": 29,
-          "link": "https://www.amazon.com/dp/B0GS5JGTDB?ie=UTF8&ASIN=B0GS5JGTDB&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GS5JGTDB/competitor_html/B0GS5JGTDB.html",
-          "source_template": "data/batch_fast_workbench/files/cady选品/B0GS5JGTDB/source_template/ADHESIVE_TAPES.xlsm",
-          "output_file": "data/batch_fast_workbench/files/cady选品/B0GS5JGTDB/output_file/黑色双面泡棉胶垫30件V1.xlsm",
-          "output_versions": [
-            {
-              "version": 1,
-              "path": "data/batch_fast_workbench/files/cady选品/B0GS5JGTDB/output_file/黑色双面泡棉胶垫30件V1.xlsm",
-              "added_at": "2026-09-05T05:55:10+08:00"
-            }
-          ],
-          "status": "已上传",
-          "purchase_status": "未采购",
-          "note": "预估价格",
-          "store_id": "2店"
-        },
-        {
           "id": "B0GWM1BPKM",
           "asin": "B0GWM1BPKM",
           "row_number": 30,
@@ -633,10 +518,16 @@
           "row_number": 3,
           "link": "https://www.amazon.com/dp/B0GRH26ZBY?ie=UTF8&ASIN=B0GRH26ZBY&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GRH26ZBY/competitor_html/B0GRH26ZBY.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0GRH26ZBY--2店/source_template/STORAGE_HOOK.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0GRH26ZBY--2店/output_file/磁性登山扣挂钩2件套V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0GRH26ZBY--2店/output_file/磁性登山扣挂钩2件套V1.xlsm",
+              "added_at": "2026-09-09T02:59:34+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -647,10 +538,16 @@
           "row_number": 4,
           "link": "https://www.amazon.com/dp/B0FKM11PJW?ie=UTF8&ASIN=B0FKM11PJW&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FKM11PJW/competitor_html/B0FKM11PJW.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0FKM11PJW--2店/source_template/HANGING_ORNAMENT.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0FKM11PJW--2店/output_file/彩色水晶太阳捕手挂饰1件V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0FKM11PJW--2店/output_file/彩色水晶太阳捕手挂饰1件V1.xlsm",
+              "added_at": "2026-09-09T02:59:34+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -661,10 +558,16 @@
           "row_number": 5,
           "link": "https://www.amazon.com/dp/B0GVYVJ5L6?ie=UTF8&ASIN=B0GVYVJ5L6&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYVJ5L6/competitor_html/B0GVYVJ5L6.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0GVYVJ5L6--2店/source_template/PET_TOY.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0GVYVJ5L6--2店/output_file/铃铛毛线猫球1件V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0GVYVJ5L6--2店/output_file/铃铛毛线猫球1件V1.xlsm",
+              "added_at": "2026-09-09T02:59:34+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -675,10 +578,16 @@
           "row_number": 6,
           "link": "https://www.amazon.com/dp/B0GVYMH961?ie=UTF8&ASIN=B0GVYMH961&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYMH961/competitor_html/B0GVYMH961.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0GVYMH961--2店/source_template/PET_TOY.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0GVYMH961--2店/output_file/彩色弹簧猫玩具2件V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0GVYMH961--2店/output_file/彩色弹簧猫玩具2件V1.xlsm",
+              "added_at": "2026-09-09T02:59:34+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -689,10 +598,16 @@
           "row_number": 7,
           "link": "https://www.amazon.com/dp/B0GS96JL5V?ie=UTF8&ASIN=B0GS96JL5V&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GS96JL5V/competitor_html/B0GS96JL5V.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0GS96JL5V--2店/source_template/KEYCHAIN.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0GS96JL5V--2店/output_file/钥匙扣多功能工具3件V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0GS96JL5V--2店/output_file/钥匙扣多功能工具3件V1.xlsm",
+              "added_at": "2026-09-09T02:59:34+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -703,10 +618,16 @@
           "row_number": 8,
           "link": "https://www.amazon.com/dp/B0GGBQ81WS?ie=UTF8&ASIN=B0GGBQ81WS&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GGBQ81WS/competitor_html/B0GGBQ81WS.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0GGBQ81WS--2店/source_template/HAT.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0GGBQ81WS--2店/output_file/缎面睡帽3件V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0GGBQ81WS--2店/output_file/缎面睡帽3件V1.xlsm",
+              "added_at": "2026-09-09T04:43:30+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -717,24 +638,16 @@
           "row_number": 9,
           "link": "https://www.amazon.com/dp/B0GQGJBRQF?ie=UTF8&ASIN=B0GQGJBRQF&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GQGJBRQF/competitor_html/B0GQGJBRQF.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "",
-          "store_id": "1店"
-        },
-        {
-          "id": "B0FCLS24NK--2店",
-          "asin": "B0FCLS24NK",
-          "row_number": 10,
-          "link": "https://www.amazon.com/dp/B0FCLS24NK?ie=UTF8&ASIN=B0FCLS24NK&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FCLS24NK/competitor_html/B0FCLS24NK.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0GQGJBRQF--2店/source_template/DRILL_BITS.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0GQGJBRQF--2店/output_file/黑色断丝取出器6件套V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0GQGJBRQF--2店/output_file/黑色断丝取出器6件套V1.xlsm",
+              "added_at": "2026-09-09T04:43:30+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -745,10 +658,16 @@
           "row_number": 11,
           "link": "https://www.amazon.com/dp/B0FF9PTS3X?ie=UTF8&ASIN=B0FF9PTS3X&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FF9PTS3X/competitor_html/B0FF9PTS3X.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0FF9PTS3X--2店/source_template/COIN_PURSE_POUCH.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0FF9PTS3X--2店/output_file/战术钥匙扣零钱包V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0FF9PTS3X--2店/output_file/战术钥匙扣零钱包V1.xlsm",
+              "added_at": "2026-09-09T04:43:30+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -759,10 +678,16 @@
           "row_number": 12,
           "link": "https://www.amazon.com/dp/B0FRLBGNNB?ie=UTF8&ASIN=B0FRLBGNNB&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FRLBGNNB/competitor_html/B0FRLBGNNB.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0FRLBGNNB--2店/source_template/FASTENER_DRIVE_BIT.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0FRLBGNNB--2店/output_file/翼形螺母批头2件V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0FRLBGNNB--2店/output_file/翼形螺母批头2件V1.xlsm",
+              "added_at": "2026-09-09T04:43:30+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -773,10 +698,16 @@
           "row_number": 13,
           "link": "https://www.amazon.com/dp/B0FCFLPGFV?ie=UTF8&ASIN=B0FCFLPGFV&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FCFLPGFV/competitor_html/B0FCFLPGFV.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0FCFLPGFV--2店/source_template/LABEL_KEYCHAIN.xlsm",
+          "output_file": "data/batch_fast_workbench/files/cady选品/B0FCFLPGFV--2店/output_file/彩色钥匙标签30件V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/cady选品/B0FCFLPGFV--2店/output_file/彩色钥匙标签30件V1.xlsm",
+              "added_at": "2026-09-09T04:43:30+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -787,10 +718,10 @@
           "row_number": 14,
           "link": "https://www.amazon.com/dp/B0FFH8YLHP?ie=UTF8&ASIN=B0FFH8YLHP&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FFH8YLHP/competitor_html/B0FFH8YLHP.html",
-          "source_template": "",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0FFH8YLHP--2店/source_template/LOCK.xlsm",
           "output_file": "",
           "output_versions": [],
-          "status": "待处理",
+          "status": "已有模板",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -801,10 +732,10 @@
           "row_number": 15,
           "link": "https://www.amazon.com/dp/B0FF4FSWCG?ie=UTF8&ASIN=B0FF4FSWCG&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FF4FSWCG/competitor_html/B0FF4FSWCG.html",
-          "source_template": "",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0FF4FSWCG--2店/source_template/GIFT_WRAP.xlsm",
           "output_file": "",
           "output_versions": [],
-          "status": "待处理",
+          "status": "已有模板",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -815,24 +746,10 @@
           "row_number": 16,
           "link": "https://www.amazon.com/dp/B0FKTD8P4T?ie=UTF8&ASIN=B0FKTD8P4T&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FKTD8P4T/competitor_html/B0FKTD8P4T.html",
-          "source_template": "",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0FKTD8P4T--2店/source_template/TOWEL.xlsm",
           "output_file": "",
           "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "",
-          "store_id": "1店"
-        },
-        {
-          "id": "B0GVYMLWC7--2店",
-          "asin": "B0GVYMLWC7",
-          "row_number": 17,
-          "link": "https://www.amazon.com/dp/B0GVYMLWC7?ie=UTF8&ASIN=B0GVYMLWC7&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GVYMLWC7/competitor_html/B0GVYMLWC7.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "status": "已有模板",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -843,24 +760,10 @@
           "row_number": 18,
           "link": "https://www.amazon.com/dp/B0FH2FQHBX?ie=UTF8&ASIN=B0FH2FQHBX&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0FH2FQHBX/competitor_html/B0FH2FQHBX.html",
-          "source_template": "",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0FH2FQHBX--2店/source_template/KEYCHAIN.xlsm",
           "output_file": "",
           "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "",
-          "store_id": "1店"
-        },
-        {
-          "id": "B0GR4PKKRR--2店",
-          "asin": "B0GR4PKKRR",
-          "row_number": 19,
-          "link": "https://www.amazon.com/dp/B0GR4PKKRR?ie=UTF8&ASIN=B0GR4PKKRR&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GR4PKKRR/competitor_html/B0GR4PKKRR.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "status": "已有模板",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -871,10 +774,10 @@
           "row_number": 20,
           "link": "https://www.amazon.com/dp/B0GQT8GC2M?ie=UTF8&ASIN=B0GQT8GC2M&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GQT8GC2M/competitor_html/B0GQT8GC2M.html",
-          "source_template": "",
+          "source_template": "data/batch_fast_workbench/files/cady选品/B0GQT8GC2M--2店/source_template/SCREWDRIVER.xlsm",
           "output_file": "",
           "output_versions": [],
-          "status": "待处理",
+          "status": "已有模板",
           "purchase_status": "",
           "note": "",
           "store_id": "1店"
@@ -936,34 +839,6 @@
           "store_id": "1店"
         },
         {
-          "id": "B0GGYPSFNJ--2店",
-          "asin": "B0GGYPSFNJ",
-          "row_number": 25,
-          "link": "https://www.amazon.com/dp/B0GGYPSFNJ?ie=UTF8&ASIN=B0GGYPSFNJ&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GGYPSFNJ/competitor_html/B0GGYPSFNJ.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "",
-          "store_id": "1店"
-        },
-        {
-          "id": "B0GR9H12MJ--2店",
-          "asin": "B0GR9H12MJ",
-          "row_number": 26,
-          "link": "https://www.amazon.com/dp/B0GR9H12MJ?ie=UTF8&ASIN=B0GR9H12MJ&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GR9H12MJ/competitor_html/B0GR9H12MJ.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "",
-          "store_id": "1店"
-        },
-        {
           "id": "B0GSVJYRKD--2店",
           "asin": "B0GSVJYRKD",
           "row_number": 27,
@@ -983,20 +858,6 @@
           "row_number": 28,
           "link": "https://www.amazon.com/dp/B0GT4DC8K8?ie=UTF8&ASIN=B0GT4DC8K8&s=bazaar",
           "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GT4DC8K8/competitor_html/B0GT4DC8K8.html",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "",
-          "store_id": "1店"
-        },
-        {
-          "id": "B0GS5JGTDB--2店",
-          "asin": "B0GS5JGTDB",
-          "row_number": 29,
-          "link": "https://www.amazon.com/dp/B0GS5JGTDB?ie=UTF8&ASIN=B0GS5JGTDB&s=bazaar",
-          "competitor_html": "data/batch_fast_workbench/files/2店批量上品/B0GS5JGTDB/competitor_html/B0GS5JGTDB.html",
           "source_template": "",
           "output_file": "",
           "output_versions": [],

@@ -27,6 +27,7 @@ from .batch_fast_workbench import (
 from .error_learning import learn_reports
 from .paths import (
     COMPETITOR_DIR,
+    CONFIG_DIR,
     DRAFT_DIRS,
     LEGACY_COMPETITOR_DIR,
     LEGACY_FILLED_TEMPLATE_DIR,
@@ -209,6 +210,12 @@ def _handler():
                         result = _auto_fill(payload)
                     elif parsed.path == "/api/mark-uploaded":
                         result = _mark_uploaded(payload)
+                    elif parsed.path == "/api/update-status":
+                        result = _update_upload_status(payload)
+                    elif parsed.path == "/api/version-note":
+                        result = _save_version_note(payload)
+                    elif parsed.path == "/api/project-note":
+                        result = _save_project_note(payload)
                     elif parsed.path == "/api/confirm-feedback-fix":
                         result = _confirm_feedback_fix(payload)
                     elif parsed.path == "/api/delete-project":
@@ -358,6 +365,7 @@ def _summary_payload():
             "updated_at": item["updated_at"][:10] if item["updated_at"] else "",
             "uploaded_at": item.get("uploaded_at", ""),
             "notes": item.get("notes", ""),
+            "workbench_note": item.get("workbench_note", ""),
             "blocked_reason": item["blocked_reason"],
             "project_dir": str(project_dir),
             "relative_dir": _relative(project_dir),
@@ -425,8 +433,9 @@ def _workbench_project_payload(project_dir, item):
         "relative_dir": _relative(project_dir),
         "name": product_name,
         "folder": project_dir.name,
-        "status": "已上传" if uploaded else "等待中",
+        "status": STATUS_LABELS.get(status, status),
         "status_code": status,
+        "workbench_note": item.get("workbench_note") or "",
         "updated": _format_updated(item.get("updated_at")),
         "summary": _project_summary_text(status, latest_template, error_count, next_version, item),
         "steps": _project_steps(status, rows, latest_template, error_count),
@@ -474,14 +483,6 @@ def _intake_module_payload(project_dir, product_name, rows, draft_file, rows_err
                 "files": _folder_file_infos(project_dir, [TEMPLATE_SOURCE_DIR, LEGACY_TEMPLATE_SOURCE_DIR], suffixes={".xlsx", ".xlsm"}),
             },
             {
-                "key": "price",
-                "label": "最终价格表",
-                "type": "Excel",
-                "folder": PACKAGING_PRICING_DIR,
-                "accept": ".xlsx,.xlsm,.xls,.csv",
-                "files": _folder_file_infos(project_dir, [PACKAGING_PRICING_DIR], suffixes={".xlsx", ".xlsm", ".xls", ".csv"}),
-            },
-            {
                 "key": "detail",
                 "label": "1688详情页",
                 "type": "HTML",
@@ -489,15 +490,8 @@ def _intake_module_payload(project_dir, product_name, rows, draft_file, rows_err
                 "accept": ".html,.htm,.txt",
                 "files": _folder_file_infos(project_dir, [PRODUCT_DETAIL_DIR, PURCHASE_DIR], suffixes={".html", ".htm", ".txt"}),
             },
-            {
-                "key": "competitor",
-                "label": "竞品详情页",
-                "type": "多个 HTML",
-                "folder": COMPETITOR_DIR,
-                "accept": ".html,.htm,.txt",
-                "files": _folder_file_infos(project_dir, [COMPETITOR_DIR, LEGACY_COMPETITOR_DIR], suffixes={".html", ".htm", ".txt"}),
-            },
         ],
+        "logisticsOptions": _workbench_logistics_options(),
         "basic": [
             {"label": "品类", "field": "category", "value": first.get("category") or first.get("product_type") or "", "source": "系统推断", "scope": "all"},
             {"label": "材质", "field": "material", "value": first.get("material") or "", "source": "1688", "scope": "all"},
@@ -550,6 +544,20 @@ def _template_module_payload(project_dir, product_name, rows, source_template, l
     if latest_report:
         generated.append({"label": "自检报告", "file": latest_report})
 
+    version_notes = item.get("version_notes") if isinstance(item.get("version_notes"), dict) else {}
+    versions = []
+    for path in reversed(_template_version_files(project_dir)):
+        info = _file_info(project_dir, path)
+        if not info:
+            continue
+        label = _version_label(info["name"]) or info["name"]
+        versions.append({
+            "version": label,
+            "file": info,
+            "note": version_notes.get(label) or ("初始模板" if label == "V1" else ""),
+            "current": bool(latest_template and info.get("path") == latest_template.get("path")),
+        })
+
     return {
         "ext": (source_template["name"].rsplit(".", 1)[-1].upper() if source_template and "." in source_template["name"] else "XLSX"),
         "source": source_name,
@@ -575,7 +583,32 @@ def _template_module_payload(project_dir, product_name, rows, source_template, l
         "fillAction": f"生成 {safe_name(product_name)}{shared_version_label(next_version)}",
         "canUpload": can_upload,
         "canFill": bool(rows and source_template),
+        "uploadStatus": item.get("status") or "not_started",
+        "uploadStatusLabel": STATUS_LABELS.get(item.get("status") or "not_started", "未开始"),
+        "versions": versions,
     }
+
+
+def _workbench_logistics_options():
+    path = CONFIG_DIR / "logistics_tiers.json"
+    if not path.exists():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    tiers = {str(item.get("id")): item for item in data.get("tiers", [])}
+    options = []
+    for item in data.get("workbench_fee_options", [])[:4]:
+        tier = tiers.get(str(item.get("tier_id"))) or {}
+        package_cm = tier.get("package_cm") or []
+        options.append({
+            "id": str(item.get("id") or ""),
+            "label": str(item.get("label") or ""),
+            "fee": item.get("fee_usd"),
+            "packageLengthIn": round(float(package_cm[0]) / 2.54, 2) if len(package_cm) > 0 else "",
+            "packageWidthIn": round(float(package_cm[1]) / 2.54, 2) if len(package_cm) > 1 else "",
+            "packageHeightIn": round(float(package_cm[2]) / 2.54, 2) if len(package_cm) > 2 else "",
+            "packageWeightLb": round(float(tier.get("default_weight_grams")) / 453.592, 2) if tier.get("default_weight_grams") else "",
+        })
+    return options
 
 
 def _feedback_module_payload(project_dir, product_name, status, latest_template, latest_report, version_files, failure_reports, next_version, item):
@@ -989,6 +1022,12 @@ def _fill_template_version(payload):
 
     filled_file = _file_info(project_dir, result.get("filled_path"))
     report_file = _file_info(project_dir, result.get("report_path"))
+    current_status = load_project_status(project_dir)
+    version_notes = current_status.get("version_notes") if isinstance(current_status.get("version_notes"), dict) else {}
+    version_label = shared_version_label(version)
+    if version_label not in version_notes:
+        version_notes[version_label] = "初始模板" if version == 1 else ""
+        save_project_status(project_dir, {"version_notes": version_notes})
     return {
         "ok": True,
         "message": _auto_fill_message(result),
@@ -1056,13 +1095,54 @@ def _mark_uploaded(payload):
     }
 
 
+def _update_upload_status(payload):
+    project_dir = _project_path(payload)
+    status = str(payload.get("status") or "").strip()
+    allowed = {"not_started", "ready_for_upload", "needs_manual_fix", "uploaded_success"}
+    if status not in allowed:
+        raise ValueError("上传状态不正确。")
+    save_project_status(project_dir, {
+        "status": status,
+        "uploaded_at": None,
+    })
+    return {
+        "ok": True,
+        "message": f"上传状态已更新为 {STATUS_LABELS.get(status, status)}",
+        "status": status,
+    }
+
+
+def _save_version_note(payload):
+    project_dir = _project_path(payload)
+    version = str(payload.get("version") or "").strip().upper()
+    if not re.fullmatch(r"V\d+", version):
+        raise ValueError("版本号不正确。")
+    note = str(payload.get("note") or "").strip()
+    status = load_project_status(project_dir)
+    version_notes = status.get("version_notes") if isinstance(status.get("version_notes"), dict) else {}
+    if note:
+        version_notes[version] = note
+    else:
+        version_notes.pop(version, None)
+    save_project_status(project_dir, {"version_notes": version_notes})
+    return {"ok": True, "message": f"{version} 修改记录已保存"}
+
+
+def _save_project_note(payload):
+    project_dir = _project_path(payload)
+    note = str(payload.get("note") or "").strip()
+    save_project_status(project_dir, {"workbench_note": note or None})
+    return {"ok": True, "message": "产品备注已保存", "note": note}
+
+
 def _delete_project(payload):
     project_dir = _project_path(payload)
     deleted_path = delete_project(project_dir)
     return {
         "ok": True,
-        "message": f"项目已删除：{deleted_path.name}",
+        "message": f"产品已移入归档：{deleted_path.name}",
         "project_dir": str(deleted_path),
+        "recoverable": True,
     }
 
 

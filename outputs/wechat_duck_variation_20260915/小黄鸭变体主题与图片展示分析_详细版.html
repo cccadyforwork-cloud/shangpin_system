@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>小黄鸭变体主题与图片展示分析</title>
+<style>
+  *{box-sizing:border-box} body{margin:0;width:1080px;background:linear-gradient(180deg,#fff7d0 0,#fffdf7 24%,#f3f6fa 100%);color:#17243d;font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .page{padding:42px 62px 58px}.hero{height:570px;border-radius:38px;padding:48px 44px;background:linear-gradient(135deg,#17243d,#294267);color:#fff;position:relative;overflow:hidden;box-shadow:0 16px 38px rgba(23,36,61,.16)}
+  .hero:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;right:-120px;top:-170px;background:#ffd633}.tag{display:inline-block;padding:10px 24px;border-radius:24px;background:#ffc72c;color:#17243d;font-size:24px;font-weight:800}.hero h1{font-size:64px;line-height:1.25;margin:72px 0 24px;letter-spacing:1px}.hero p{font-size:29px;line-height:1.65;color:#dbe7f8;margin:0}.duck{position:absolute;right:80px;bottom:65px;width:142px;height:116px;border-radius:52% 52% 48% 48%;background:#ffd633}.duck:before,.duck:after{content:"";position:absolute;top:46px;width:35px;height:24px;background:#ffd633}.duck:before{left:-24px;transform:rotate(28deg);border-radius:24px 5px}.duck:after{right:-24px;transform:rotate(-28deg);border-radius:5px 24px}.eye{position:absolute;top:38px;width:9px;height:9px;border-radius:50%;background:#17243d}.e1{left:43px}.e2{right:43px}.beak{position:absolute;left:57px;top:57px;width:28px;height:18px;background:#f59e0b;transform:rotate(45deg);border-radius:4px}
+  section{margin-top:74px}.kicker{font-size:24px;letter-spacing:3px;color:#ad7600;font-weight:800;margin-bottom:17px}.title{font-size:42px;line-height:1.35;margin:0 0 28px}.card{background:#fff;border-radius:31px;padding:38px 42px;box-shadow:0 12px 30px rgba(23,36,61,.11)}.dark{background:#17243d;color:#fff}.lead{font-size:31px;line-height:1.62;color:#31405a;margin:0}.dark .lead{color:#edf3ff}.strong{font-weight:800;color:#17243d}.dark .strong{color:#fff}.highlight{background:#fff0a6;border-radius:18px;padding:24px 28px;font-size:30px;line-height:1.55;font-weight:800;margin-top:28px}.warning{background:#fff4df;border-left:8px solid #f59e0b;border-radius:14px;padding:23px 27px;font-size:27px;line-height:1.6;margin-top:25px}.chips{display:flex;gap:17px;flex-wrap:wrap;margin:25px 0}.chip{padding:17px 23px;border-radius:18px;background:#fff;color:#17243d;font-size:24px;font-weight:800;box-shadow:inset 0 0 0 1px #e5eaf1}.arrow{font-size:35px;color:#f4b400;font-weight:900}.flow{display:grid;grid-template-columns:1fr 55px 1fr 55px 1fr;align-items:center;margin-top:26px}.flowbox{min-height:142px;padding:22px;border-radius:20px;background:#fff;color:#17243d;text-align:center;font-size:25px;line-height:1.5;font-weight:700;display:flex;align-items:center;justify-content:center}.flowarrow{text-align:center;color:#ffc72c;font-size:42px;font-weight:900}
+  table{width:100%;border-collapse:separate;border-spacing:0;font-size:25px;overflow:hidden;border-radius:20px;border:1px solid #e2e8f0}th{background:#17243d;color:#fff;text-align:left;padding:22px 20px;font-weight:700}td{background:#fff;padding:23px 20px;border-bottom:1px solid #e5eaf1;vertical-align:top;line-height:1.5}tr:last-child td{border-bottom:0}.yes{color:#16794a;font-weight:800}.no{color:#c2410c;font-weight:800}.code{font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-weight:800;font-size:23px}.yellow-pill{display:inline-block;background:#ffd633;border-radius:25px;padding:8px 18px;font-weight:800}.number-list{display:grid;gap:25px}.item{display:grid;grid-template-columns:66px 1fr;gap:23px;align-items:start}.num{width:58px;height:58px;border-radius:50%;background:#ffc72c;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900}.item h3{font-size:29px;margin:2px 0 7px}.item p{font-size:26px;line-height:1.6;color:#526078;margin:0}.dark .item p{color:#dce7f8}.divider{height:1px;background:#e5eaf1;margin:30px 0}.formula{font-size:30px;line-height:1.7;text-align:center;font-weight:900;background:#17243d;color:#fff;border-radius:24px;padding:29px}.formula em{font-style:normal;color:#ffd633}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}.mini{padding:30px;border-radius:24px;background:#fff;border:1px solid #e4e9f0}.mini h3{font-size:29px;margin:0 0 18px}.mini p,.mini li{font-size:25px;line-height:1.62;color:#46556d}.mini ul{padding-left:30px;margin:0}.check{display:grid;grid-template-columns:34px 1fr;gap:17px;margin:18px 0;font-size:26px;line-height:1.55}.tick{color:#168653;font-weight:900}.cross{color:#d34a24;font-weight:900}.small{font-size:22px;line-height:1.6;color:#718096}.footer{margin-top:62px;border-top:1px solid #d8dee8;padding-top:30px}.footer p{font-size:22px;line-height:1.6;color:#718096;margin:8px 0}
+</style>
+</head>
+<body><main class="page">
+  <header class="hero">
+    <span class="tag">AMAZON 变体与图片诊断</span>
+    <h1>小黄鸭三款子体<br>主题选择与图片展示分析</h1>
+    <p>站立单个 · 坐姿单个 · 坐姿 2 个装<br>根据上传表格、前台保存页面和项目现行规则整理</p>
+    <div class="duck"><i class="eye e1"></i><i class="eye e2"></i><i class="beak"></i></div>
+  </header>
+
+  <section>
+    <div class="kicker">01 · 先说结论</div><h2 class="title">想让三个子体各自展示图片，主题应选 SET_NAME</h2>
+    <div class="card"><p class="lead"><span class="strong">SET_NAME 最符合商品的真实差异。</span>三个子体都是黄色，它们的区别是“姿势＋数量”，并不是颜色。</p><div class="highlight">正确组合：SET_NAME 主题＋每个 Child 独立图片＋正确 ASIN 对应关系</div><div class="warning"><b>但要注意：</b>改成 SET_NAME 只是让变体逻辑正确，不会自动清除 Amazon 目录里已经存在的 1688 旧图。</div></div>
+  </section>
+
+  <section>
+    <div class="kicker">02 · 当前前台实际情况</div><h2 class="title">线上关系仍然是 COLOR，所以三款都被放在“Color”下</h2>
+    <div class="card dark"><p class="lead">右侧保存页面的底层变体键是 <b>color_name</b>，前台显示：</p><div class="chips"><span class="chip">Yellow - Standing</span><span class="chip">Yellow - Sitting</span><span class="chip">2 Pcs Yellow</span></div><p class="lead">这些文字表达的是姿势和数量，但 Amazon 却会按“颜色选项”理解。由于 COLOR 属于视觉维度，它还会更强地参与主图和色块图的切换。</p></div>
+  </section>
+
+  <section>
+    <div class="kicker">03 · 三种主题方案对比</div><h2 class="title">为什么 SET_NAME 比 COLOR 或 NUMBER_OF_ITEMS 更合适</h2>
+    <table><thead><tr><th>主题方案</th><th>前台含义</th><th>对这三款的判断</th></tr></thead><tbody>
+      <tr><td class="code">COLOR</td><td>买家选颜色，通常会联动图片</td><td><span class="no">不推荐</span><br>三款都是 Yellow，姿势和数量不是颜色</td></tr>
+      <tr><td class="code">NUMBER_OF_ITEMS</td><td>买家只选数量</td><td><span class="no">不足够</span><br>站立和坐姿都是 1 Pc，无法区分</td></tr>
+      <tr><td class="code">SET_NAME / NUMBER_OF_ITEMS</td><td>买家分别选款式和数量</td><td><span class="no">暂不推荐</span><br>目前没有 Standing 2 Pcs，会形成不完整组合</td></tr>
+      <tr><td class="code">SET_NAME</td><td>一个选项同时说明款式和数量</td><td><span class="yes">最合适</span><br>三款都能用一个清楚的选项文字表达</td></tr>
+    </tbody></table>
+  </section>
+
+  <section>
+    <div class="kicker">04 · 推荐字段填法</div><h2 class="title">把“款式”和“颜色”各归各位</h2>
+    <table><thead><tr><th>子体</th><th>Set Name</th><th>Color</th><th>Number of Items</th></tr></thead><tbody>
+      <tr><td><b>站立单个</b></td><td class="code">Standing - 1 Pc</td><td><span class="yellow-pill">Yellow</span></td><td>1</td></tr>
+      <tr><td><b>坐姿单个</b></td><td class="code">Sitting - 1 Pc</td><td><span class="yellow-pill">Yellow</span></td><td>1</td></tr>
+      <tr><td><b>坐姿两个装</b></td><td class="code">Sitting - 2 Pcs</td><td><span class="yellow-pill">Yellow</span></td><td>2</td></tr>
+    </tbody></table>
+    <div class="card" style="margin-top:25px"><div class="check"><span class="tick">✓</span><span>Parent 的 Set Name、Color、价格和图片字段留空。</span></div><div class="check"><span class="tick">✓</span><span>Parent 和所有 Child 的 Variation Theme 统一使用 <b>SET_NAME</b>。</span></div><div class="check"><span class="tick">✓</span><span>三个 Child 的 Color 都是 <b>Yellow</b>，不再把 Standing、Sitting 或 2 Pcs 填进 Color。</span></div><div class="check"><span class="tick">✓</span><span>Parent 标题使用通用总结文案，可写 <b>Multiple Styles Available</b>。</span></div></div>
+  </section>
+
+  <section>
+    <div class="kicker">05 · SET_NAME 对图片的真实作用</div><h2 class="title">它能修正变体逻辑，但不是“图片强制器”</h2>
+    <div class="two-col"><div class="mini"><h3 class="yes">SET_NAME 能解决</h3><ul><li>前台不再把姿势、数量叫做 Color</li><li>每个选项能直接显示完整款式</li><li>减少同色子体被错当不同颜色的混乱</li><li>变体结构更符合买家理解</li></ul></div><div class="mini"><h3 class="no">SET_NAME 不会自动解决</h3><ul><li>不会自动删除旧 ASIN 上的 1688 图</li><li>不会代替每个 Child 上传主图</li><li>不会修正错误的 SKU→ASIN 匹配</li><li>不保证部分更新会重建旧父子关系</li></ul></div></div>
+  </section>
+
+  <section>
+    <div class="kicker">06 · 2PCS 旧图的完整原因链</div><h2 class="title">“COLOR 主题”是诱因，不是唯一原因</h2>
+    <div class="card dark"><div class="flow"><div class="flowbox">新增 2pcs SKU<br>可能匹配到<br>已有 ASIN</div><div class="flowarrow">→</div><div class="flowbox">上传表的<br>主图/附图/<br>Swatch 全部为空</div><div class="flowarrow">→</div><div class="flowbox">Amazon 继续使用<br>目录中已抓取的<br>1688 旧图</div></div><div class="flow" style="grid-template-columns:1fr 55px 1fr 55px 1fr"><div class="flowbox">2pcs 使用<br>Edit<br>(Partial Update)</div><div class="flowarrow">→</div><div class="flowbox">核心目录内容<br>可能没被<br>完整重建</div><div class="flowarrow">→</div><div class="flowbox">COLOR 又将该图<br>作为视觉选项<br>继续展示</div></div></div>
+    <div class="highlight" style="text-align:center">COLOR 影响“图片如何随选项切换”；ASIN 目录决定“到底有哪张图可显示”。</div>
+  </section>
+
+  <section>
+    <div class="kicker">07 · 修复前先判断 ASIN 状态</div><h2 class="title">新建的 ASIN 和误匹配旧 ASIN，处理方式不同</h2>
+    <div class="two-col"><div class="mini"><h3>情况 A：2pcs 是全新 ASIN</h3><div class="check"><span class="tick">✓</span><span>新 SKU 用 <b>Create or Replace (Full Update)</b></span></div><div class="check"><span class="tick">✓</span><span>确认 Product ID 未误用旧商品的条码</span></div><div class="check"><span class="tick">✓</span><span>在 2pcs Child ASIN 下提交真实的 2 个装主图</span></div><div class="check"><span class="tick">✓</span><span>再建立 SET_NAME 父子关系</span></div></div><div class="mini"><h3>情况 B：2pcs 匹配到旧 ASIN</h3><div class="check"><span class="cross">✕</span><span>只改 Variation Theme 无法清除旧图</span></div><div class="check"><span class="tick">✓</span><span>先在后台确认 SKU 对应的 ASIN</span></div><div class="check"><span class="tick">✓</span><span>提交正确的商品图片贡献</span></div><div class="check"><span class="tick">✓</span><span>如果仍被旧图压制，向 Amazon 提交目录图片修正</span></div></div></div>
+  </section>
+
+  <section>
+    <div class="kicker">08 · 建议实际操作顺序</div><h2 class="title">先修正数据关系，再修图片</h2>
+    <div class="card"><div class="number-list">
+      <div class="item"><span class="num">1</span><div><h3>修正主题与选项</h3><p>Variation Theme 改为 SET_NAME；Color 统一为 Yellow；Set Name 改为 Standing - 1 Pc、Sitting - 1 Pc、Sitting - 2 Pcs。</p></div></div>
+      <div class="item"><span class="num">2</span><div><h3>确认 2pcs 的 SKU→ASIN 映射</h3><p>先查看后台实际绑定的 ASIN，确认是新 ASIN，还是匹配了带 1688 旧图的旧目录。</p></div></div>
+      <div class="item"><span class="num">3</span><div><h3>修正更新动作</h3><p>若 2pcs 是新增 SKU，该行用 Create or Replace (Full Update)，不要继续使用 Edit (Partial Update)。</p></div></div>
+      <div class="item"><span class="num">4</span><div><h3>给每个 Child 分别提交图片</h3><p>站立、坐姿和 2 个装都要在各自 Child ASIN 下有对应主图；不要只给 Parent 上传图片。</p></div></div>
+      <div class="item"><span class="num">5</span><div><h3>上传后查处理报告</h3><p>确认三个 Child 都指向同一 Parent，主题都是 SET_NAME，没有变体或图片类报错。</p></div></div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="kicker">09 · 上线后核对清单</div><h2 class="title">不要只看“上传成功”</h2>
+    <div class="card dark"><div class="check"><span class="tick">✓</span><span>前台选项标签不再是 Color，而是对应的 Set Name/款式选项。</span></div><div class="check"><span class="tick">✓</span><span>点击 Standing - 1 Pc 时，主图只显示站立单个。</span></div><div class="check"><span class="tick">✓</span><span>点击 Sitting - 1 Pc 时，主图只显示坐姿单个。</span></div><div class="check"><span class="tick">✓</span><span>点击 Sitting - 2 Pcs 时，主图明确展示两个商品。</span></div><div class="check"><span class="tick">✓</span><span>2pcs SKU 未再跳转到带旧 1688 图的错误 ASIN。</span></div><div class="check"><span class="tick">✓</span><span>切换子体后，标题、价格、图片和数量信息对应同一个 Child。</span></div></div>
+  </section>
+
+  <section>
+    <div class="kicker">10 · 容易误解的两句话</div><h2 class="title">最后再把边界说清楚</h2>
+    <div class="card"><p class="lead"><span class="no">误解：</span>“只要换成 SET_NAME，每个子体就一定会显示自己的图。”</p><div class="divider"></div><p class="lead"><span class="yes">正确：</span>SET_NAME 负责把变体区分表达正确；每个 Child 的 ASIN 和图片贡献，才决定它最终显示哪张图。</p></div>
+    <div class="formula" style="margin-top:28px"><em>SET_NAME</em> ＋ 独立 Child ASIN ＋ 独立主图 ＋ 正确更新方式<br>＝ 三个子体正确选择与图片展示</div>
+  </section>
+
+  <footer class="footer"><p>资料来源：《副本小黄鸭模板.xlsx》、Amazon 保存页面、项目现行变体规则。</p><p>用途：微信分享与团队内部复盘 · 2026-09-15</p></footer>
+</main></body></html>

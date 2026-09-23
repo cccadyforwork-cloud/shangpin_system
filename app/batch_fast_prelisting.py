@@ -20,6 +20,7 @@ from .workbook_io import read_intake_rows, write_intake_workbook
 
 LOGISTICS_TIERS_PATH = CONFIG_DIR / "logistics_tiers.json"
 FAST_ROUTE = "Haul Generic Variation"
+VARIANT_REVIEW_NOTE = "变体主题待人工审核"
 REFERENCE_SAFE_FIELDS = {
     "package_level[marketplace_id=ATVPDKIKX0DER]#1.value",
     "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
@@ -76,6 +77,7 @@ def run_batch_fast_prelisting(manifest_path, output_dir=None):
         "failed_count": sum(1 for item in results if item["status"] == "failed"),
         "needs_fix_count": sum(1 for item in results if item["status"] == "needs_manual_fix"),
         "needs_wps_count": sum(1 for item in results if item["status"] == "needs_wps"),
+        "needs_variant_review_count": sum(1 for item in results if item["status"] == "needs_variant_review"),
         "results": results,
     }
 
@@ -88,11 +90,14 @@ def _run_one_task(task, index, base_dir, output_dir):
     competitor_title = extract_competitor_title(competitor_paths)
     if competitor_title:
         task["_competitor_base_title"] = rewrite_competitor_title_tail(competitor_title)
+    variant_review_note = ""
     if not task.get("variants") and task.get("expand_competitor_variants", True):
-        detected_variants = extract_competitor_variants(competitor_paths)
-        if detected_variants:
-            task["variants"] = detected_variants
-            task.pop("child_sku", None)
+        variant_review_note = competitor_variant_review_note(competitor_paths)
+        if not variant_review_note:
+            detected_variants = extract_competitor_variants(competitor_paths)
+            if detected_variants:
+                task["variants"] = detected_variants
+                task.pop("child_sku", None)
     price = _resolve_task_price(task, competitor_paths)
     tier = resolve_logistics_tier(task.get("logistics_tier"), task.get("weight_grams"))
     copy_defaults = _reference_copy(task.get("copy_reference"), base_dir)
@@ -148,6 +153,9 @@ def _run_one_task(task, index, base_dir, output_dir):
         status = "needs_manual_fix"
         first = red_fields[0]
         message = f"检测到 {len(red_fields)} 个红框字段；首项：{first['sku']} / {first['label']}。"
+    elif variant_review_note:
+        status = "needs_variant_review"
+        message = f"{variant_review_note}；已停止自动展开，请人工确认变体主题和全部子体。"
     else:
         status = "ready_for_review"
         message = "项目自检与红框扫描均通过，可进入人工复核。"
@@ -159,6 +167,7 @@ def _run_one_task(task, index, base_dir, output_dir):
         "red_field_count": len(red_fields),
         "unresolved_red_rule_count": len(unresolved_red_rules),
         "output": str(filled_path),
+        "workbench_note": variant_review_note,
         "message": message,
     }
 
@@ -173,21 +182,56 @@ def extract_competitor_variants(paths):
     seen = set()
     for path in paths:
         text = Path(path).read_text(encoding="utf-8", errors="ignore")
-        key_match = re.search(r'name=["\']twisterDimKeys["\']\s+value=["\']([^"\']+)', text, re.I)
-        if not key_match or key_match.group(1).strip() != "color_name":
+        if _twister_dimension_keys(text) != ["color_name"]:
             continue
-        pattern = re.compile(
-            r'<li\b[^>]*\bid=["\']color_name_\d+["\'][^>]*\btitle=["\']Click to select ([^"\']+)["\'][^>]*>',
-            re.I,
-        )
-        for match in pattern.finditer(text):
-            color = _normalize_competitor_color(html_lib.unescape(match.group(1)))
+        labels = _twister_option_labels(text, "color_name")
+        if any(_looks_like_measurement_variant(label) for label in labels):
+            continue
+        for label in labels:
+            color = _normalize_competitor_color(label)
             key = color.casefold()
             if not color or key in seen:
                 continue
             seen.add(key)
             variants.append({"color": color})
     return variants
+
+
+def competitor_variant_review_note(paths):
+    """Flag twisters whose technical dimension conflicts with buyer-facing labels."""
+    for path in paths:
+        text = Path(path).read_text(encoding="utf-8", errors="ignore")
+        keys = _twister_dimension_keys(text)
+        if len(keys) > 1:
+            return VARIANT_REVIEW_NOTE
+        if keys == ["color_name"]:
+            labels = _twister_option_labels(text, "color_name")
+            if labels and any(_looks_like_measurement_variant(label) for label in labels):
+                return VARIANT_REVIEW_NOTE
+    return ""
+
+
+def _twister_dimension_keys(text):
+    match = re.search(r'name=["\']twisterDimKeys["\']\s+value=["\']([^"\']+)', text, re.I)
+    if not match:
+        return []
+    return [item.strip().lower() for item in match.group(1).split(",") if item.strip()]
+
+
+def _twister_option_labels(text, dimension):
+    pattern = re.compile(
+        rf'<li\b[^>]*\bid=["\']{re.escape(dimension)}_\d+["\'][^>]*\btitle=["\']Click to select ([^"\']+)["\'][^>]*>',
+        re.I,
+    )
+    return [html_lib.unescape(match.group(1)).strip() for match in pattern.finditer(text)]
+
+
+def _looks_like_measurement_variant(value):
+    text = html_lib.unescape(str(value or "")).strip()
+    return bool(
+        re.search(r"\d+(?:\.\d+)?\s*(?:mm|cm|in(?:ch(?:es)?)?|ft|feet)\b", text, re.I)
+        or re.search(r"\d+(?:\.\d+)?\s*[*x×]\s*\d+(?:\.\d+)?", text, re.I)
+    )
 
 
 def extract_competitor_price(paths):
@@ -515,6 +559,7 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
     parentage_col = field_to_col.get("parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value")
     product_type_col = field_to_col.get("product_type#1.value")
     extra_fields = task.get("extra_fields") or {}
+    parent_extra_fields = task.get("parent_extra_fields") or {}
     dimension_fields = _dimension_overlay_fields(tier)
     protected_blank_tokens = (
         "image",
@@ -539,7 +584,10 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
                 ws.cell(row, col).value = None
         if is_parent:
             product_type = str(ws.cell(row, product_type_col).value or "").strip().upper() if product_type_col else ""
-            for field_name, value in _parent_required_overlay_fields(product_type, tier, task).items():
+            for field_name, value in {
+                **_parent_required_overlay_fields(product_type, tier, task),
+                **parent_extra_fields,
+            }.items():
                 col = field_to_col.get(field_name)
                 if col and value not in (None, ""):
                     ws.cell(row, col).value = value
@@ -658,22 +706,31 @@ def _parent_required_overlay_fields(product_type, tier, task=None):
 def _parent_sku(task):
     value = str(task.get("parent_sku") or "").strip()
     if value:
-        return value
+        return _apply_store_sku_prefix(task, value)
     base = _product_sku_token(
         task.get("sku_base")
         or task.get("product_name")
         or task.get("name")
         or task.get("output_name")
     )
-    return f"CA-{base}"
+    prefix = "TTCA" if str(task.get("store_id") or "").strip() == "1店" else "CA"
+    return f"{prefix}-{base}"
 
 
 def _child_sku(task, variant, index):
     explicit = str(variant.get("sku") or (task.get("child_sku") if index == 1 else "") or "").strip()
     if explicit:
-        return explicit
+        return _apply_store_sku_prefix(task, explicit)
     suffix = _variant_sku_suffix(task, variant, index)
     return f"{_parent_sku(task)}-{suffix}"
+
+
+def _apply_store_sku_prefix(task, value):
+    value = str(value or "").strip()
+    if str(task.get("store_id") or "").strip() != "1店":
+        return value
+    value = re.sub(r"^(?:TTCA|CA)-", "", value, flags=re.I)
+    return f"TTCA-{value}"
 
 
 def _product_sku_token(value):

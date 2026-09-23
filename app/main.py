@@ -170,6 +170,7 @@ def cmd_batch_fast_prelist(args):
     print(f"任务：{result['task_count']}")
     print(f"可人工复核：{result['success_count']}")
     print(f"待人工修正：{result['needs_fix_count']}")
+    print(f"待确认变体：{result['needs_variant_review_count']}")
     print(f"需 WPS 兜底：{result['needs_wps_count']}")
     print(f"失败：{result['failed_count']}")
     for item in result["results"]:

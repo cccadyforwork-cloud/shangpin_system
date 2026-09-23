@@ -2,7 +2,7 @@ from datetime import datetime
 from pathlib import Path
 import shutil
 
-from .paths import PRODUCT_DETAIL_DIR, PROJECTS_DIR, PROJECT_FOLDERS, ensure_base_dirs, safe_name
+from .paths import DATA_DIR, PRODUCT_DETAIL_DIR, PROJECTS_DIR, PROJECT_FOLDERS, ensure_base_dirs, safe_name
 from .project_status import load_project_status
 from .workbook_io import create_intake_workbook
 
@@ -66,8 +66,16 @@ def delete_project(project_dir):
         raise ValueError("项目不存在。")
     if not path.is_dir():
         raise ValueError("项目路径不是文件夹。")
-    shutil.rmtree(path)
-    return path
+    archive_dir = DATA_DIR / "archived_project_records" / "deleted_from_workbench"
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    archived_path = archive_dir / f"{timestamp}_{path.name}"
+    sequence = 2
+    while archived_path.exists():
+        archived_path = archive_dir / f"{timestamp}_{path.name}_{sequence}"
+        sequence += 1
+    shutil.move(str(path), str(archived_path))
+    return archived_path
 
 
 def list_project_summaries():
@@ -92,6 +100,7 @@ def list_project_summaries():
             "updated_at": status.get("updated_at") or "",
             "uploaded_at": status.get("uploaded_at") or "",
             "notes": status.get("notes") or "",
+            "workbench_note": status.get("workbench_note") or "",
             "blocked_reason": status.get("blocked_reason") or "",
         })
     return sorted(summaries, key=_project_sort_key)

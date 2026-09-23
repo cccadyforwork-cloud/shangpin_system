@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="3820" viewBox="0 0 1080 3820">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF8D8"/>
+      <stop offset="0.28" stop-color="#FFFDF5"/>
+      <stop offset="1" stop-color="#F4F7FB"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17243D"/>
+      <stop offset="1" stop-color="#263B60"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#15213A" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .zh { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; }
+      .title { font-size: 64px; font-weight: 800; fill: #FFFFFF; letter-spacing: 1px; }
+      .subtitle { font-size: 29px; font-weight: 400; fill: #DCE7FB; }
+      .section-kicker { font-size: 24px; font-weight: 700; fill: #B07800; letter-spacing: 3px; }
+      .section-title { font-size: 42px; font-weight: 800; fill: #17243D; }
+      .body { font-size: 29px; font-weight: 400; fill: #334155; }
+      .body-bold { font-size: 29px; font-weight: 700; fill: #17243D; }
+      .small { font-size: 23px; font-weight: 400; fill: #64748B; }
+      .chip { font-size: 25px; font-weight: 700; fill: #17243D; }
+      .code { font-family: "SFMono-Regular", Menlo, Consolas, monospace; font-size: 25px; font-weight: 700; fill: #17243D; }
+      .white { fill: #FFFFFF; }
+      .yellow { fill: #FFC72C; }
+    </style>
+  </defs>
+
+  <rect width="1080" height="3820" fill="url(#bg)"/>
+  <circle cx="1010" cy="155" r="210" fill="#FFD94F" opacity="0.9"/>
+  <circle cx="965" cy="320" r="86" fill="#FFB800" opacity="0.25"/>
+
+  <!-- Hero -->
+  <rect x="42" y="42" width="996" height="560" rx="38" fill="url(#hero)" filter="url(#shadow)"/>
+  <rect x="84" y="88" width="250" height="48" rx="24" fill="#FFC72C"/>
+  <text x="209" y="121" text-anchor="middle" class="zh chip">AMAZON 变体诊断</text>
+  <text x="84" y="226" class="zh title">小黄鸭三款子体</text>
+  <text x="84" y="306" class="zh title">主题与图片展示分析</text>
+  <text x="84" y="382" class="zh subtitle">站立单个 · 坐姿单个 · 坐姿 2 个装</text>
+  <text x="84" y="438" class="zh subtitle">根据上传表格、右侧链接展示和项目规则整理</text>
+  <g transform="translate(825 387)">
+    <ellipse cx="72" cy="66" rx="62" ry="56" fill="#FFD632"/>
+    <circle cx="55" cy="55" r="6" fill="#17243D"/>
+    <circle cx="89" cy="55" r="6" fill="#17243D"/>
+    <path d="M59 76 Q72 88 85 76" fill="none" stroke="#17243D" stroke-width="6" stroke-linecap="round"/>
+    <path d="M10 68 Q-15 55 0 40 Q18 44 27 56" fill="#FFD632"/>
+    <path d="M134 68 Q159 55 144 40 Q126 44 117 56" fill="#FFD632"/>
+    <path d="M60 64 L72 58 L84 64 L72 72 Z" fill="#F59E0B"/>
+  </g>
+
+  <!-- Outcome -->
+  <rect x="62" y="650" width="956" height="360" rx="32" fill="#FFFFFF" filter="url(#shadow)"/>
+  <text x="104" y="716" class="zh section-kicker">01 · 核心结论</text>
+  <text x="104" y="780" class="zh section-title">三款产品应优先选 SET_NAME</text>
+  <rect x="104" y="824" width="250" height="58" rx="29" fill="#FFF0A6"/>
+  <text x="229" y="862" text-anchor="middle" class="zh code">SET_NAME</text>
+  <text x="378" y="863" class="zh body-bold">真实区分：姿势＋数量</text>
+  <text x="104" y="925" class="zh body">三款都是黄色，差异并不是颜色。用 COLOR 会把</text>
+  <text x="104" y="968" class="zh body">“Standing / Sitting / 2 Pcs”误当成视觉颜色选项。</text>
+
+  <!-- Why -->
+  <text x="72" y="1098" class="zh section-kicker">02 · 为什么当前 COLOR 不合适</text>
+  <text x="72" y="1162" class="zh section-title">右侧页面把三款都放在“Color”下</text>
+
+  <rect x="62" y="1208" width="956" height="410" rx="30" fill="#17243D"/>
+  <text x="104" y="1270" class="zh small white">当前前台选项</text>
+  <text x="104" y="1332" class="zh body-bold white">Color:</text>
+  <g>
+    <rect x="104" y="1370" width="270" height="72" rx="18" fill="#FFFFFF" opacity="0.96"/>
+    <text x="239" y="1416" text-anchor="middle" class="zh chip">Yellow - Standing</text>
+    <rect x="396" y="1370" width="270" height="72" rx="18" fill="#FFFFFF" opacity="0.96"/>
+    <text x="531" y="1416" text-anchor="middle" class="zh chip">Yellow - Sitting</text>
+    <rect x="688" y="1370" width="250" height="72" rx="18" fill="#FFFFFF" opacity="0.96"/>
+    <text x="813" y="1416" text-anchor="middle" class="zh chip">2 Pcs Yellow</text>
+  </g>
+  <text x="104" y="1504" class="zh body white">问题：姿势和数量不是颜色，且 2 Pcs 没说明是坐姿。</text>
+  <text x="104" y="1550" class="zh body white">COLOR 是视觉维度，更容易将选项与图片切换绑定。</text>
+
+  <!-- Recommended setup -->
+  <text x="72" y="1716" class="zh section-kicker">03 · 推荐填写</text>
+  <text x="72" y="1780" class="zh section-title">一个选项说清“姿势＋数量”</text>
+  <rect x="62" y="1828" width="956" height="532" rx="32" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="88" y="1854" width="904" height="74" rx="18" fill="#17243D"/>
+  <text x="120" y="1901" class="zh small white">子体</text>
+  <text x="356" y="1901" class="zh small white">SET NAME</text>
+  <text x="790" y="1901" class="zh small white">COLOR</text>
+  <line x1="88" y1="2058" x2="992" y2="2058" stroke="#E5EAF1" stroke-width="2"/>
+  <line x1="88" y1="2184" x2="992" y2="2184" stroke="#E5EAF1" stroke-width="2"/>
+  <text x="120" y="2010" class="zh body-bold">站立单个</text>
+  <text x="356" y="2010" class="zh code">Standing - 1 Pc</text>
+  <rect x="790" y="1968" width="152" height="54" rx="27" fill="#FFD632"/>
+  <text x="866" y="2004" text-anchor="middle" class="zh chip">Yellow</text>
+  <text x="120" y="2136" class="zh body-bold">坐姿单个</text>
+  <text x="356" y="2136" class="zh code">Sitting - 1 Pc</text>
+  <rect x="790" y="2094" width="152" height="54" rx="27" fill="#FFD632"/>
+  <text x="866" y="2130" text-anchor="middle" class="zh chip">Yellow</text>
+  <text x="120" y="2262" class="zh body-bold">坐姿两个装</text>
+  <text x="356" y="2262" class="zh code">Sitting - 2 Pcs</text>
+  <rect x="790" y="2220" width="152" height="54" rx="27" fill="#FFD632"/>
+  <text x="866" y="2256" text-anchor="middle" class="zh chip">Yellow</text>
+  <text x="104" y="2324" class="zh small">Parent 的 Set Name 和 Color 留空；三个 Child 使用同一 SET_NAME 主题。</text>
+
+  <!-- Image issue -->
+  <text x="72" y="2470" class="zh section-kicker">04 · 2PCS 图片为什么被旧图覆盖</text>
+  <text x="72" y="2534" class="zh section-title">不是只有主题一个原因</text>
+  <rect x="62" y="2580" width="956" height="548" rx="32" fill="#FFFFFF" filter="url(#shadow)"/>
+  <g>
+    <circle cx="132" cy="2670" r="38" fill="#FFC72C"/><text x="132" y="2681" text-anchor="middle" class="zh body-bold">1</text>
+    <text x="194" y="2664" class="zh body-bold">COLOR 会强化视觉图片切换</text>
+    <text x="194" y="2706" class="zh body">同为黄色却用姿势/数量做“颜色”，容易混图。</text>
+    <circle cx="132" cy="2798" r="38" fill="#FFC72C"/><text x="132" y="2809" text-anchor="middle" class="zh body-bold">2</text>
+    <text x="194" y="2792" class="zh body-bold">2pcs 这行没有提交任何图片 URL</text>
+    <text x="194" y="2834" class="zh body">Amazon 没收到新图片贡献，会继续用目录旧图。</text>
+    <circle cx="132" cy="2926" r="38" fill="#FFC72C"/><text x="132" y="2937" text-anchor="middle" class="zh body-bold">3</text>
+    <text x="194" y="2920" class="zh body-bold">新增 2pcs 使用了 Edit (Partial Update)</text>
+    <text x="194" y="2962" class="zh body">部分更新可能保留旧目录内容，不适合新 SKU 首次建档。</text>
+  </g>
+  <rect x="104" y="3020" width="872" height="74" rx="18" fill="#FFF4BE"/>
+  <text x="540" y="3068" text-anchor="middle" class="zh body-bold">COLOR 是诱因；旧 ASIN 目录图＋未提交新图是直接原因</text>
+
+  <!-- Fix path -->
+  <text x="72" y="3242" class="zh section-kicker">05 · 正确修复路径</text>
+  <text x="72" y="3306" class="zh section-title">主题、子体和图片要一起修</text>
+  <rect x="62" y="3352" width="956" height="330" rx="32" fill="#17243D"/>
+  <text x="108" y="3418" class="zh body-bold white">01　变体主题改为 SET_NAME，Color 统一为 Yellow</text>
+  <text x="108" y="3484" class="zh body-bold white">02　确认每个 Child SKU 对应独立、正确的 ASIN</text>
+  <text x="108" y="3550" class="zh body-bold white">03　新增 2pcs 用 Create or Replace (Full Update)</text>
+  <text x="108" y="3616" class="zh body-bold white">04　在 2pcs Child ASIN 下单独提交正确主图</text>
+
+  <!-- Footer -->
+  <text x="72" y="3740" class="zh small">最终组合：SET_NAME 主题＋每个 Child 独立图片＋正确 ASIN 对应关系</text>
+  <text x="72" y="3782" class="zh small">资料来源：小黄鸭上传表格、Amazon 保存页面、项目现行变体规则 · 2026-09-15</text>
+</svg>

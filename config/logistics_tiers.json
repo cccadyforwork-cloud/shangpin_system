@@ -4,6 +4,32 @@
     "dimensions": "Inches",
     "weight": "Pounds"
   },
+  "workbench_fee_options": [
+    {
+      "id": "le_4_oz_price_le_3",
+      "label": "4 oz 及以下且售价 ≤ $3",
+      "fee_usd": 0.5,
+      "tier_id": "le_4_oz"
+    },
+    {
+      "id": "le_4_oz_price_gt_3",
+      "label": "4 oz 及以下且售价 > $3",
+      "fee_usd": 0.88,
+      "tier_id": "le_4_oz"
+    },
+    {
+      "id": "4_8_oz",
+      "label": "4–8 oz",
+      "fee_usd": 1.77,
+      "tier_id": "4_8_oz"
+    },
+    {
+      "id": "8_12_oz",
+      "label": "8–12 oz",
+      "fee_usd": 2.6,
+      "tier_id": "8_12_oz"
+    }
+  ],
   "tiers": [
     {
       "id": "le_4_oz",
