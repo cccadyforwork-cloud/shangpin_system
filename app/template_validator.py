@@ -41,6 +41,16 @@ FIELD_NAMES = {
     "item_package_quantity": "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value",
     "contains_battery_or_cell": "contains_battery_or_cell[marketplace_id=ATVPDKIKX0DER]#1.value",
     "dog_breed_size": "dog_breed_size[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "metal_weight_unit": "metals[marketplace_id=ATVPDKIKX0DER]#1.metal_weight.unit",
+    "fabric_type": "fabric_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "target_gender": "target_gender[marketplace_id=ATVPDKIKX0DER]#1.value",
+    "age_range": "age_range_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    "bottoms_size_system": "bottoms_size[marketplace_id=ATVPDKIKX0DER]#1.size_system",
+    "bottoms_size_class": "bottoms_size[marketplace_id=ATVPDKIKX0DER]#1.size_class",
+    "bottoms_size": "bottoms_size[marketplace_id=ATVPDKIKX0DER]#1.size",
+    "apparel_size_system": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.size_system",
+    "apparel_size_class": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.size_class",
+    "apparel_size": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.size",
 }
 
 CJK_RE = re.compile(r"[\u4e00-\u9fff]")
@@ -532,6 +542,13 @@ PRODUCT_TYPE_DISALLOWED_FIELDS = {
 }
 
 PRODUCT_TYPE_PARENT_REQUIRED_FIELDS = {
+    "BRACELET": {
+        "Item Length End to End": "item_length[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Item Weight": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Item Length": "item_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+        "Item Width": "item_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+        "Item Height": "item_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+    },
     "PET_TOY": {
         "Height base to top": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
         "Height Unit": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
@@ -671,6 +688,16 @@ def validate_template_file(path, output_path=None, write_report=False):
     item_package_quantity_col = field_to_col.get(FIELD_NAMES["item_package_quantity"])
     contains_battery_or_cell_col = field_to_col.get(FIELD_NAMES["contains_battery_or_cell"])
     dog_breed_size_col = field_to_col.get(FIELD_NAMES["dog_breed_size"])
+    metal_weight_unit_col = field_to_col.get(FIELD_NAMES["metal_weight_unit"])
+    fabric_type_col = field_to_col.get(FIELD_NAMES["fabric_type"])
+    target_gender_col = field_to_col.get(FIELD_NAMES["target_gender"])
+    age_range_col = field_to_col.get(FIELD_NAMES["age_range"])
+    bottoms_size_system_col = field_to_col.get(FIELD_NAMES["bottoms_size_system"])
+    bottoms_size_class_col = field_to_col.get(FIELD_NAMES["bottoms_size_class"])
+    bottoms_size_col = field_to_col.get(FIELD_NAMES["bottoms_size"])
+    apparel_size_system_col = field_to_col.get(FIELD_NAMES["apparel_size_system"])
+    apparel_size_class_col = field_to_col.get(FIELD_NAMES["apparel_size_class"])
+    apparel_size_col = field_to_col.get(FIELD_NAMES["apparel_size"])
     product_type_col = field_to_col.get("product_type#1.value")
     required_fields = _required_fields_from_data_definitions(wb)
     dimension_pairs = [
@@ -681,6 +708,7 @@ def validate_template_file(path, output_path=None, write_report=False):
     available_dimension_pairs = [pair for pair in dimension_pairs if pair[1] and pair[2]]
     row_infos = {}
     variation_theme_values_by_product_type = {}
+    metal_weight_unit_values_by_product_type = {}
 
     for row in data_rows:
         row_infos[row] = {
@@ -722,6 +750,16 @@ def validate_template_file(path, output_path=None, write_report=False):
             dog_breed_size = ws.cell(row, dog_breed_size_col).value
             if dog_breed_size == "All Breed Sizes":
                 findings.append(error(row, "Dog Breed Size", f"{sku} 的 Dog Breed Size 不能填 All Breed Sizes。", "ANIMAL_COLLAR 模板有效值为 Extra Small、Small、Medium、Large、Giant、All；通用值填 All。"))
+
+        if fabric_type_col:
+            fabric_type = _text(ws.cell(row, fabric_type_col).value)
+            if fabric_type and not re.search(r"\d+(?:\.\d+)?\s*%", fabric_type):
+                findings.append(error(
+                    row,
+                    "Fabric Type",
+                    f"{sku} 的 Fabric Type `{fabric_type}` 未包含成分百分比。",
+                    "按真实材质填写百分比，例如 100% Polyester；多种面料应分别写明比例。",
+                ))
 
         if list_price_col and haul_price_col and not is_parent:
             list_price = ws.cell(row, list_price_col).value
@@ -788,6 +826,56 @@ def validate_template_file(path, output_path=None, write_report=False):
         if product_type_col:
             product_type = ws.cell(row, product_type_col).value
             product_type_text = _text(product_type)
+            if product_type_text == "SHORTS" and is_child and all([
+                target_gender_col,
+                age_range_col,
+                bottoms_size_system_col,
+                bottoms_size_class_col,
+                bottoms_size_col,
+            ]):
+                size_context = tuple(_text(ws.cell(row, col).value) for col in (
+                    bottoms_size_system_col,
+                    target_gender_col,
+                    age_range_col,
+                    bottoms_size_class_col,
+                ))
+                bottoms_size = _text(ws.cell(row, bottoms_size_col).value)
+                size_aliases = {"M": "Medium", "2XL": "XX-Large (xx_l)"}
+                if size_context == ("US", "Male", "Adult", "Alpha") and bottoms_size in size_aliases:
+                    findings.append(error(
+                        row,
+                        "Bottoms Size Value",
+                        f"{sku} 的 Bottoms Size Value `{bottoms_size}` 不是当前 US/Male/Adult/Alpha 组合的模板枚举值。",
+                        f"改为模板精确值 `{size_aliases[bottoms_size]}`。",
+                    ))
+            if product_type_text == "UNDERPANTS" and is_child and all([
+                target_gender_col,
+                age_range_col,
+                apparel_size_system_col,
+                apparel_size_class_col,
+                apparel_size_col,
+            ]):
+                size_context = tuple(_text(ws.cell(row, col).value) for col in (
+                    apparel_size_system_col,
+                    target_gender_col,
+                    age_range_col,
+                    apparel_size_class_col,
+                ))
+                apparel_size = _text(ws.cell(row, apparel_size_col).value)
+                size_aliases = {
+                    "S": "Small",
+                    "M": "Medium",
+                    "L": "Large",
+                    "XL": "X-Large",
+                    "2XL": "XX-Large (xx_l)",
+                }
+                if size_context == ("US", "Female", "Adult", "Alpha") and apparel_size in size_aliases:
+                    findings.append(error(
+                        row,
+                        "Apparel Size Value",
+                        f"{sku} 的 Apparel Size Value `{apparel_size}` 不是当前 US/Female/Adult/Alpha 组合的模板枚举值。",
+                        f"改为模板精确值 `{size_aliases[apparel_size]}`。",
+                    ))
             if is_parent:
                 for label, field_name in PRODUCT_TYPE_PARENT_REQUIRED_FIELDS.get(product_type_text, {}).items():
                     col = field_to_col.get(field_name)
@@ -800,6 +888,22 @@ def validate_template_file(path, output_path=None, write_report=False):
                 variation_theme = ws.cell(row, variation_theme_col).value
                 if variation_theme not in (None, "") and _text(variation_theme) not in allowed_variation_themes:
                     findings.append(error(row, "Variation Theme", f"{sku} 的 Variation Theme `{variation_theme}` 不在当前模板 Valid Values 中。", "按当前模板 Valid Values 精确填写，包括大小写、斜杠和空格，例如 COLOR。"))
+            if product_type_text not in metal_weight_unit_values_by_product_type:
+                metal_weight_unit_values_by_product_type[product_type_text] = _valid_values_row(
+                    wb,
+                    f"Metal Weight Unit - [ {product_type_text} ]",
+                )
+            allowed_metal_weight_units = metal_weight_unit_values_by_product_type[product_type_text]
+            if metal_weight_unit_col and allowed_metal_weight_units:
+                metal_weight_unit = ws.cell(row, metal_weight_unit_col).value
+                if metal_weight_unit not in (None, "") and _text(metal_weight_unit) not in allowed_metal_weight_units:
+                    allowed_text = "、".join(sorted(allowed_metal_weight_units))
+                    findings.append(error(
+                        row,
+                        "Metal Weight Unit",
+                        f"{sku} 的 Metal Weight Unit `{metal_weight_unit}` 不在当前模板 Valid Values 中。",
+                        f"按当前模板 Valid Values 精确填写；当前允许值：{allowed_text}。",
+                    ))
             for field_name, label in required_fields.items():
                 col = field_to_col.get(field_name)
                 if not col:

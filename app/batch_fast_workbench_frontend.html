@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>批量快速上品路线</title>
+  <title>批量抄品工作台</title>
   <style>
     :root { --ink:#172033; --muted:#667085; --line:#d9dee8; --soft:#f5f7fa; --page:#eef1f5; --panel:#fff; --button:#fff; --hover:#fbfdff; --blue:#2f6fed; --green:#16835d; --shadow:0 8px 28px rgba(20,31,55,.08); color-scheme:light; }
     :root[data-theme="dark"] { --ink:#e9eef8; --muted:#98a5bb; --line:#2b3548; --soft:#182131; --page:#0c111b; --panel:#121a27; --button:#1a2435; --hover:#172234; --blue:#6d9cff; --green:#53c99a; --shadow:0 12px 34px rgba(0,0,0,.28); color-scheme:dark; }
@@ -23,6 +23,15 @@
     .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); overflow:hidden; }
     .summary { display:flex; gap:24px; padding:15px 18px; border-bottom:1px solid var(--line); background:var(--hover); color:var(--muted); flex-wrap:wrap; }
     .summary strong { color:var(--ink); margin-left:5px; }
+    .image-progress-overview { display:grid; grid-template-columns:repeat(4,minmax(180px,1fr)); gap:10px; padding:12px 14px; border-bottom:1px solid var(--line); background:var(--panel); }
+    .progress-block { min-width:0; padding:10px; border:1px solid var(--line); border-radius:9px; background:var(--hover); }
+    .progress-title { display:flex; justify-content:space-between; gap:8px; margin-bottom:7px; font-size:12px; font-weight:700; }
+    .progress-count { color:var(--muted); }
+    .progress-list { display:flex; max-height:112px; gap:5px; flex-wrap:wrap; overflow:auto; }
+    .progress-chip { display:inline-flex; max-width:100%; padding:3px 7px; border-radius:999px; background:var(--soft); color:var(--muted); font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .progress-block.generated .progress-title { color:var(--green); }
+    .progress-block.generating .progress-title { color:#a06b16; }
+    .progress-block.failed .progress-title { color:#b5483f; }
     .tabs { display:flex; gap:4px; padding:12px 14px 0; overflow:auto; border-bottom:1px solid var(--line); }
     .tab { border:0; border-bottom:3px solid transparent; background:transparent; padding:10px 15px; color:var(--muted); cursor:pointer; white-space:nowrap; }
     .tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:650; }
@@ -40,6 +49,7 @@
     .product { display:flex; flex-direction:column; gap:3px; min-width:0; }
     .product a { color:var(--ink); font-weight:650; text-decoration:none; }
     .product a:hover { color:var(--blue); text-decoration:underline; }
+    .source-link { display:block; max-width:100%; margin:2px 0; overflow:hidden; color:var(--blue); text-overflow:ellipsis; white-space:nowrap; }
     .path { color:var(--muted); font-size:12px; max-width:270px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .file-actions { display:flex; align-items:center; gap:7px; flex-wrap:wrap; min-width:0; }
     .drop-zone { min-height:40px; margin:-6px; padding:6px; border:1px dashed transparent; border-radius:8px; transition:border-color .15s,background .15s; }
@@ -55,6 +65,12 @@
     select.done { border-color:color-mix(in srgb,var(--green) 55%,var(--line)); background:color-mix(in srgb,var(--green) 14%,var(--button)); color:var(--green); font-weight:650; }
     .note { width:100%; min-width:0; border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 9px; color:var(--ink); }
     .note::placeholder { color:var(--muted); }
+    .image-groups { display:flex; flex-direction:column; gap:9px; }
+    .image-group { display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding:8px; border:1px solid var(--line); border-radius:8px; background:var(--hover); }
+    .image-group-label { color:var(--ink); font-size:12px; font-weight:700; }
+    .image-status { color:var(--muted); font-size:12px; }
+    .image-status.ready { color:var(--green); font-weight:650; }
+    .image-error { max-width:220px; color:#b5483f; font-size:11px; line-height:1.35; }
     .theme-switch { display:flex; padding:3px; border:1px solid var(--line); border-radius:9px; background:var(--panel); }
     .theme-switch button { border:0; border-radius:6px; padding:6px 10px; background:transparent; color:var(--muted); cursor:pointer; }
     .theme-switch button.active { color:#fff; background:var(--blue); }
@@ -62,18 +78,20 @@
     .toast { position:fixed; right:24px; bottom:24px; max-width:380px; padding:11px 15px; color:#fff; background:#172033; border-radius:8px; box-shadow:var(--shadow); opacity:0; transform:translateY(8px); pointer-events:none; transition:.2s; }
     .toast.show { opacity:1; transform:none; }
     input[type=file] { display:none; }
-    @media (max-width:760px) { .shell{padding:16px}.top{display:block}.actions{margin-top:14px} }
+    @media (max-width:1000px) { .image-progress-overview{grid-template-columns:repeat(2,minmax(180px,1fr))} }
+    @media (max-width:760px) { .shell{padding:16px}.top{display:block}.actions{margin-top:14px}.image-progress-overview{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
   <main class="shell">
     <div class="top">
       <div>
-        <h1>批量快速上品路线</h1>
-        <p class="sub">独立记录竞品 HTML、原始模板和最终输出文档，不影响默认上品路线。</p>
+        <h1 id="workbench-title">批量抄品工作台</h1>
+        <p class="sub" id="workbench-subtitle">以 Amazon 竞品为参考，独立记录竞品 HTML、原始模板和最终输出文档。</p>
       </div>
       <div class="actions">
-        <a class="btn" href="./">返回上品工作台</a>
+        <a class="btn" href="./">默认上品工作台</a>
+        <a class="btn" id="other-workbench" href="/refurb-batch">退货翻新批量上品工作台</a>
         <div class="theme-switch" aria-label="页面主题">
           <button data-theme-choice="light">浅色</button>
           <button data-theme-choice="dark">深夜</button>
@@ -85,6 +103,7 @@
     </div>
     <section class="panel">
       <div class="summary" id="summary"></div>
+      <div class="image-progress-overview" id="image-progress-overview" hidden></div>
       <div class="tabs" id="tabs"></div>
       <div class="store-tabs" id="store-tabs"></div>
       <div class="table-wrap" id="content"><div class="empty">正在读取清单…</div></div>
@@ -92,11 +111,14 @@
   </main>
   <div class="toast" id="toast"></div>
   <script>
+    const isRefurb=location.pathname.startsWith('/refurb-batch');
+    const routeBase=isRefurb?'/refurb-batch':'/batch-fast';
+    const apiBase=isRefurb?'/api/refurb-batch':'/api/batch-fast';
     const state = { data:null, active:null, activeStore:null };
     const $ = (selector) => document.querySelector(selector);
     const esc = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
     const productPrefix = location.pathname.startsWith('/product/') ? '/product' : '';
-    const fileUrl = (path) => `${productPrefix}/batch-fast/file?path=${encodeURIComponent(path)}`;
+    const fileUrl = (path) => `${productPrefix}${routeBase}/file?path=${encodeURIComponent(path)}`;
     function setTheme(theme) {
       const selected=theme==='dark'?'dark':'light';
       document.documentElement.dataset.theme=selected;
@@ -105,7 +127,7 @@
     }
     function toast(message) { const el=$('#toast'); el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),2200); }
     async function api(path, options={}) { const res=await fetch(path, options); const data=await res.json(); if(!res.ok || data.ok===false) throw new Error(data.error || '操作失败'); return data; }
-    async function load() { state.data=await api('/api/batch-fast'); if(!state.active || !state.data.batches.some(b=>b.id===state.active)) state.active=state.data.batches[0]?.id || null; render(); }
+    async function load() { state.data=await api(apiBase); if(!state.active || !state.data.batches.some(b=>b.id===state.active)) state.active=state.data.batches[0]?.id || null; render(); }
     function render() {
       const d=state.data, t=d.totals;
       $('#summary').innerHTML=`<span>产品<strong>${t.rows}</strong></span><span>竞品 HTML<strong>${t.html}</strong></span><span>原始模板<strong>${t.templates}</strong></span><span>输出文档<strong>${t.outputs}</strong></span><span>更新<strong>${esc(d.updated_at || '-')}</strong></span>`;
@@ -118,31 +140,88 @@
       storeTabs.classList.toggle('visible',stores.length>0);
       storeTabs.innerHTML=stores.map(store=>`<button class="store-tab ${store===state.activeStore?'active':''}" data-store="${esc(store)}">${esc(store)}</button>`).join('');
       const visibleRows=batch ? batch.rows.filter(row=>!stores.length || row.store_id===state.activeStore) : [];
+      renderImageProgress(visibleRows);
       const outputCount=visibleRows.filter(row=>row.files.output_file.exists).length;
       const download=$('#download-batch');
       download.textContent=outputCount ? `批量下载输出（${outputCount}）` : '批量下载输出';
-      download.href=outputCount ? `${productPrefix}/batch-fast/download?batch_id=${encodeURIComponent(batch.id)}${state.activeStore?`&store_id=${encodeURIComponent(state.activeStore)}`:''}` : '#';
+      download.href=outputCount ? `${productPrefix}${routeBase}/download?batch_id=${encodeURIComponent(batch.id)}${state.activeStore?`&store_id=${encodeURIComponent(state.activeStore)}`:''}` : '#';
       download.classList.toggle('disabled',!outputCount);
       $('#content').innerHTML=batch ? table({...batch,rows:visibleRows}) : '<div class="empty">尚未导入批次</div>';
     }
+    function renderImageProgress(rows) {
+      const overview=$('#image-progress-overview');
+      if(!isRefurb){overview.hidden=true;overview.innerHTML='';return;}
+      const buckets={notFetched:[],fetched:[],generating:[],generated:[],failed:[]};
+      rows.forEach(row=>(row.image_groups?.length?row.image_groups:[row.image_group || {}]).forEach(group=>{
+        const suffix=group.label && group.label!=='图组'?`-${group.label}`:'';
+        const item=`${row.product_name || row.asin || row.id}${suffix}`;
+        if(group.status==='生成失败'){buckets.failed.push(item);return;}
+        if(group.zip?.exists || group.status==='已生成'){buckets.generated.push(item);return;}
+        if(group.status==='生成中'){buckets.generating.push(item);return;}
+        if(group.reference_count){buckets.fetched.push(item);return;}
+        buckets.notFetched.push(item);
+      }));
+      const specs=[
+        ['未获取原图','notFetched',''],
+        ['已获取待生成','fetched',''],
+        ['正在生成','generating','generating'],
+        ['已生成','generated','generated'],
+      ];
+      if(buckets.failed.length) specs.splice(3,0,['生成失败','failed','failed']);
+      overview.hidden=false;
+      overview.innerHTML=specs.map(([title,key,className])=>`<div class="progress-block ${className}"><div class="progress-title"><span>${title}</span><span class="progress-count">${buckets[key].length}</span></div><div class="progress-list">${buckets[key].length?buckets[key].map(item=>`<span class="progress-chip" title="${esc(item)}">${esc(item)}</span>`).join(''):'<span class="path">无</span>'}</div></div>`).join('');
+    }
     function table(batch) {
       const showPurchase=batch.id==='cady选品' && state.activeStore==='2店';
-      const widths=showPurchase?[13,13,16,20,11,10,9,8]:[14,14,17,22,12,10,11];
+      const widths=isRefurb?[12,13,15,18,9,9,12,12]:(showPurchase?[13,13,16,20,11,10,9,8]:[14,14,17,22,12,10,11]);
       const columns=`<colgroup>${widths.map(width=>`<col style="width:${width}%">`).join('')}</colgroup>`;
-      return `<table>${columns}<thead><tr><th>商品</th><th>竞品 HTML</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th>${showPurchase?'<th>采购状态</th>':''}<th>备注</th></tr></thead><tbody>${batch.rows.map(row=>rowHtml(batch,row,showPurchase)).join('')}</tbody></table>`;
+      const referenceLabel=isRefurb?'亚马逊原链接':'竞品 HTML';
+      return `<table>${columns}<thead><tr><th>商品</th><th>${referenceLabel}</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th>${showPurchase?'<th>采购状态</th>':''}<th>备注</th>${isRefurb?'<th>新图组</th>':''}</tr></thead><tbody>${batch.rows.map((row,index)=>rowHtml(batch,row,showPurchase,index+1)).join('')}</tbody></table>`;
     }
-    function rowHtml(batch,row,showPurchase) {
+    function rowHtml(batch,row,showPurchase,rowNumber) {
       const html=row.files.competitor_html, source=row.files.source_template, output=row.files.output_file;
+      const mergedPath=row.variant_values?.length
+        ? `${esc(row.attribute_label || '变体')} ${row.variant_values.map(esc).join(' / ')} · Excel 第 ${(row.row_numbers || [row.row_number]).map(esc).join('、')} 行`
+        : `${row.asin?`${esc(row.asin)} · `:''}Excel 第 ${esc(row.row_number)} 行`;
+      const productCell=isRefurb
+        ? `<div class="product"><strong>${esc(rowNumber)}.${esc(row.product_name || row.asin || row.id)}</strong><span class="path">${mergedPath}</span></div>`
+        : `<div class="product"><a href="${esc(row.link)}" target="_blank" rel="noreferrer">${esc(row.product_name || row.asin || row.id)}</a><span class="path">${row.product_name && row.asin?`${esc(row.asin)} · `:''}Excel 第 ${row.row_number} 行</span></div>`;
+      const referenceCell=isRefurb
+        ? (row.source_links || [{url:row.link,label:''}]).map(item=>`<a class="source-link" href="${esc(item.url)}" target="_blank" rel="noreferrer" title="${esc(item.url)}">${item.label?`${esc(item.label)}：`:''}${esc(item.url)}</a>`).join('')
+        : (html.exists?fileCell(html,false):'<span class="path">未保存</span>');
+      const templateCell=isRefurb && row.source_template_files?.length>1
+        ? `<div class="file-actions drop-zone" data-upload-field="source_template">${row.source_template_files.map(item=>`<span class="file-actions"><span class="file-name ok" title="${esc(item.file.path)}">${item.label?`${esc(item.label)}：`:''}${esc(item.file.name)}</span><button class="btn small open-file" data-path="${esc(item.file.path)}">打开</button></span>`).join('')}<button class="btn small upload" data-field="source_template">替换主模板</button></div>`
+        : fileCell(source,true,'source_template');
       return `<tr data-batch="${esc(batch.id)}" data-row="${esc(row.id)}">
-        <td><div class="product"><a href="${esc(row.link)}" target="_blank" rel="noreferrer">${esc(row.asin || row.id)}</a><span class="path">Excel 第 ${row.row_number} 行</span></div></td>
-        <td>${html.exists?fileCell(html,false):'<span class="path">未保存</span>'}</td>
-        <td>${fileCell(source,true,'source_template')}</td>
+        <td>${productCell}</td>
+        <td>${referenceCell}</td>
+        <td>${templateCell}</td>
         <td>${outputCell(row)}</td>
         <td>${oldVersionsCell(row)}</td>
         <td><select class="status ${row.status==='已上传'?'done':''}">${state.data.statuses.map(s=>`<option ${s===row.status?'selected':''}>${esc(s)}</option>`).join('')}</select></td>
         ${showPurchase?`<td><select class="purchase-status ${row.purchase_status==='已采购'?'done':''}">${state.data.purchase_statuses.map(s=>`<option ${s===(row.purchase_status || '未采购')?'selected':''}>${esc(s)}</option>`).join('')}</select></td>`:''}
         <td><input class="note" type="text" value="${esc(row.note || '')}" placeholder="可填写备注"></td>
+        ${isRefurb?`<td>${imageGroupCell(row)}</td>`:''}
       </tr>`;
+    }
+    function imageGroupCell(row) {
+      const groups=row.image_groups?.length?row.image_groups:[row.image_group || {}];
+      const cards=groups.map(group=>{
+        const label=groups.length>1 || group.label?`<span class="image-group-label">${esc(group.label || '图组')}</span>`:'';
+        const key=esc(group.key || 'default');
+        const fetchLabel=group.reference_count?'重新获取原产品图组':'获取原产品图组';
+        const fetchButton=`<button class="btn small fetch-reference-images" data-image-group="${key}">${fetchLabel}</button>`;
+        if(group.generated_count || group.zip?.exists) return `<div class="image-group">${label}<span class="image-status ready">已生成 ${group.generated_count || 0} 张</span>${fetchButton}<button class="btn small primary export-images-desktop" data-image-group="${key}">下载图组到桌面</button><button class="btn small generate-images" data-image-group="${key}">重新生成新图组</button></div>`;
+        if(group.status==='生成中') return `<div class="image-group">${label}<span class="image-status">生成中，请稍后刷新</span></div>`;
+        const detail=group.reference_count?`已获取原图 ${group.reference_count} 张`:'尚未获取原产品图组';
+        const canGenerate=Boolean(group.reference_count && state.data.image_api_configured);
+        const generateTitle=!group.reference_count?'请先获取原产品图组':(!state.data.image_api_configured?'工作台服务尚未配置生图接口':'');
+        const button=`<button class="btn small primary generate-images" data-image-group="${key}" ${canGenerate?'':`disabled title="${esc(generateTitle)}"`}>生成新图组</button>`;
+        const apiHint=group.reference_count && !state.data.image_api_configured?'<span class="image-error">未配置生图接口</span>':'';
+        const error=group.error?`<span class="image-error" title="${esc(group.error)}">${esc(group.error)}</span>`:'';
+        return `<div class="image-group">${label}<span class="image-status">${detail}</span>${fetchButton}${button}${apiHint}${error}</div>`;
+      }).join('');
+      return `<div class="image-groups">${cards}</div>`;
     }
     function outputCell(row) {
       const file=row.files.output_file;
@@ -166,15 +245,18 @@
       const tab=event.target.closest('[data-tab]'); if(tab){state.active=tab.dataset.tab;state.activeStore=null;render();return;}
       const store=event.target.closest('[data-store]'); if(store){state.activeStore=store.dataset.store;render();return;}
       if(event.target.id==='refresh'){await load();toast('已刷新');return;}
-      if(event.target.id==='sync'){try{await api('/api/batch-fast/import',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await load();toast('已从三张桌面表格同步');}catch(e){toast(e.message)}return;}
-      const open=event.target.closest('.open-file'); if(open){try{await api('/api/batch-fast/open',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:open.dataset.path})});toast('已在电脑中打开');}catch(e){toast(e.message)}return;}
+      if(event.target.id==='sync'){try{await api(`${apiBase}/import`,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await load();toast(isRefurb?'已同步 Cady 退货翻新表格':'已从三张桌面表格同步');}catch(e){toast(e.message)}return;}
+      const open=event.target.closest('.open-file'); if(open){try{await api(`${apiBase}/open`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:open.dataset.path})});toast('已在电脑中打开');}catch(e){toast(e.message)}return;}
       const upload=event.target.closest('.upload'); if(upload){chooseFile(upload.closest('tr'),upload.dataset.field);}
+      const fetchReferences=event.target.closest('.fetch-reference-images'); if(fetchReferences){const row=fetchReferences.closest('tr');const originalText=fetchReferences.textContent;fetchReferences.disabled=true;fetchReferences.textContent='正在获取…';try{const result=await api(`${apiBase}/fetch-reference-images`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,image_group_key:fetchReferences.dataset.imageGroup || 'default'})});await load();toast(`已获取 ${result.count || 0} 张原产品图`);}catch(e){fetchReferences.disabled=false;fetchReferences.textContent=originalText;toast(e.message)}return;}
+      const exportImages=event.target.closest('.export-images-desktop'); if(exportImages){const row=exportImages.closest('tr');const originalText=exportImages.textContent;exportImages.disabled=true;exportImages.textContent='正在下载…';try{const result=await api(`${apiBase}/export-images-to-desktop`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,image_group_key:exportImages.dataset.imageGroup || 'default'})});exportImages.disabled=false;exportImages.textContent=originalText;toast(`已下载 ${result.count || 0} 张图片到桌面`);}catch(e){exportImages.disabled=false;exportImages.textContent=originalText;toast(e.message)}return;}
+      const generate=event.target.closest('.generate-images'); if(generate){const row=generate.closest('tr');try{await api(`${apiBase}/generate-images`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,image_group_key:generate.dataset.imageGroup || 'default'})});await load();toast('图组已开始生成');}catch(e){toast(e.message)}return;}
     });
     document.addEventListener('change', async (event) => {
       if(!event.target.matches('.status, .purchase-status, .note')) return;
       const row=event.target.closest('tr');
       const field=event.target.matches('.status')?'status':event.target.matches('.purchase-status')?'purchase_status':'note';
-      try { await api('/api/batch-fast/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,fields:{[field]:event.target.value}})}); if(field!=='note') event.target.classList.toggle('done',event.target.value==='已上传' || event.target.value==='已采购'); toast(field==='status'?'状态已保存':field==='purchase_status'?'采购状态已保存':'备注已保存'); }
+      try { await api(`${apiBase}/save`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,fields:{[field]:event.target.value}})}); if(field!=='note') event.target.classList.toggle('done',event.target.value==='已上传' || event.target.value==='已采购'); toast(field==='status'?'状态已保存':field==='purchase_status'?'采购状态已保存':'备注已保存'); }
       catch(e){toast(e.message);await load();}
     });
     document.addEventListener('dragover', (event) => {
@@ -203,10 +285,24 @@
     async function uploadFile(row,field,file){
       if(!/\.(xlsx|xlsm|xls)$/i.test(file.name)){toast('只支持 xlsx、xlsm、xls 文件');return;}
       const form=new FormData();form.append('batch_id',row.dataset.batch);form.append('row_id',row.dataset.row);form.append('field',field);form.append('file',file);
-      try{await api('/api/batch-fast/upload',{method:'POST',body:form});await load();toast('文件已保存');}catch(e){toast(e.message)}
+      try{await api(`${apiBase}/upload`,{method:'POST',body:form});await load();toast('文件已保存');}catch(e){toast(e.message)}
+    }
+    if(isRefurb){
+      document.title='退货翻新批量上品工作台';
+      $('#workbench-title').textContent='退货翻新批量上品工作台';
+      $('#workbench-subtitle').textContent='Cady 专用，全部上传至 1店；独立记录参考资料、原始模板和最终输出文档。';
+      $('#other-workbench').textContent='批量抄品工作台';
+      $('#other-workbench').href='/batch-fast';
+      $('#sync').textContent='从退货翻新 Excel 同步';
     }
     setTheme(localStorage.getItem('batch-fast-theme') || 'light');
     load().catch(e=>{$('#content').innerHTML=`<div class="empty">${esc(e.message)}</div>`});
+    let autoRefreshBusy=false;
+    if(isRefurb) setInterval(async()=>{
+      if(document.hidden || autoRefreshBusy || document.activeElement?.matches('input,select')) return;
+      autoRefreshBusy=true;
+      try{await load();}catch(_error){}finally{autoRefreshBusy=false;}
+    },15000);
   </script>
 </body>
 </html>

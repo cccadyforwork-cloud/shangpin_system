@@ -1,0 +1,22 @@
+{
+  "product_name": "AB彩扁碟珠6",
+  "store_ops_source_project_id": "P-a12991517256",
+  "store_ops_source_revision": 19,
+  "status": "ready_for_upload",
+  "updated_at": "2026-10-06T13:35:05",
+  "latest_draft": "03_产品详情页/AB彩扁碟珠6_产品资料.xlsx",
+  "latest_analysis_report": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261006_AB彩扁碟珠6_资料提炼报告.md",
+  "selected_route_mode": "variation",
+  "sku_count": 4,
+  "source_template": "05_模版原件/CRAFT_BEAD.xlsm",
+  "confirmed_at": "2026-10-06T04:58:27",
+  "latest_template": "05_填表版本/AB彩扁碟珠6V2.xlsx",
+  "written_field_count": 37,
+  "template_error_count": 0,
+  "version_notes": {
+    "V1": "初始模板",
+    "V2": ""
+  },
+  "store_ops_generated_at": "2026-10-06T04:58:34",
+  "store_ops_generated_revision": 19
+}

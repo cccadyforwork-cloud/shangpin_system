@@ -5,6 +5,7 @@ from .analyzer import analyze_project
 from .auto_fill import auto_fill_project
 from .batch_fast_prelisting import run_batch_fast_prelisting
 from .batch_fast_workbench import package_shared_data
+from .refurb_batch_workbench import package_shared_data as package_refurb_shared_data
 from .error_learning import learn_reports
 from .paths import TEMPLATES_DIR, ensure_base_dirs
 from .project_manager import create_project, list_project_summaries, list_projects
@@ -233,9 +234,23 @@ def cmd_batch_workbench(args):
     run_workbench(host=args.host, port=args.port, open_browser=not args.no_open, start_path="/batch-fast")
 
 
+def cmd_refurb_workbench(args):
+    run_workbench(host=args.host, port=args.port, open_browser=not args.no_open, start_path="/refurb-batch")
+
+
 def cmd_package_batch_workbench(_args):
     result = package_shared_data()
     print(f"已整理共享业务文件：{result['copied']} 个新复制文件")
+    print(f"工作台账本：{result['ledger']}")
+    if result["missing"]:
+        print(f"缺失引用：{len(result['missing'])}")
+        for path in result["missing"]:
+            print(f"  {path}")
+
+
+def cmd_package_refurb_workbench(_args):
+    result = package_refurb_shared_data()
+    print(f"已整理退货翻新共享业务文件：{result['copied']} 个新复制文件")
     print(f"工作台账本：{result['ledger']}")
     if result["missing"]:
         print(f"缺失引用：{len(result['missing'])}")
@@ -375,14 +390,23 @@ def build_parser():
     workbench.add_argument("--no-open", action="store_true", help="只启动服务，不自动打开浏览器")
     workbench.set_defaults(func=cmd_workbench)
 
-    batch_workbench = subparsers.add_parser("batch-workbench", help="启动独立的批量快速上品工作台")
+    batch_workbench = subparsers.add_parser("batch-workbench", help="启动独立的批量抄品工作台")
     batch_workbench.add_argument("--host", default="127.0.0.1", help="监听地址，默认 127.0.0.1")
     batch_workbench.add_argument("--port", type=int, default=8767, help="端口，默认 8767")
     batch_workbench.add_argument("--no-open", action="store_true", help="只启动服务，不自动打开浏览器")
     batch_workbench.set_defaults(func=cmd_batch_workbench)
 
+    refurb_workbench = subparsers.add_parser("refurb-workbench", help="启动 Cady 1店退货翻新批量上品工作台")
+    refurb_workbench.add_argument("--host", default="127.0.0.1", help="监听地址，默认 127.0.0.1")
+    refurb_workbench.add_argument("--port", type=int, default=8768, help="端口，默认 8768")
+    refurb_workbench.add_argument("--no-open", action="store_true", help="只启动服务，不自动打开浏览器")
+    refurb_workbench.set_defaults(func=cmd_refurb_workbench)
+
     package_batch = subparsers.add_parser("package-batch-workbench-data", help="把快速上品工作台业务文件整理进 Git 仓库")
     package_batch.set_defaults(func=cmd_package_batch_workbench)
+
+    package_refurb = subparsers.add_parser("package-refurb-workbench-data", help="把退货翻新工作台业务文件整理进 Git 仓库")
+    package_refurb.set_defaults(func=cmd_package_refurb_workbench)
 
     return parser
 

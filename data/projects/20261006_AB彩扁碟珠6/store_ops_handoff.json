@@ -1,0 +1,62 @@
+{
+  "source_project_id": "P-a12991517256",
+  "source_project_revision": 19,
+  "project_name": "AB彩扁碟珠6",
+  "product_name": "AB彩扁碟珠6",
+  "owner": "Cady",
+  "store": "1店",
+  "parent_sku": "TTCA-DiscBeads",
+  "children": [
+    {
+      "sku": "TTCA-DiscBeads-Gold-100",
+      "product_name": "AB彩扁碟珠6金色100",
+      "list_price": 2.4,
+      "haul_price": 2.4,
+      "cost_cny": 2.99,
+      "shipping_fee_usd": 0.5,
+      "source_record_id": "quick-659bd2c200e2",
+      "source_row_sha256": "1b1eec87ef9fd38738a9be44717a00f447696e6c75116aaddf25818b2e443123"
+    },
+    {
+      "sku": "TTCA-DiscBeads-Pink-100",
+      "product_name": "AB彩扁碟珠6粉色100",
+      "list_price": 2.4,
+      "haul_price": 2.4,
+      "cost_cny": 2.99,
+      "shipping_fee_usd": 0.5,
+      "source_record_id": "quick-659bd2c200e2",
+      "source_row_sha256": "9632820b9300906c8cb8678c4dafd2e1b443b289e0093fc95bf566a5c8fd8cc9"
+    },
+    {
+      "sku": "TTCA-DiscBeads-Green-100",
+      "product_name": "AB彩扁碟珠6绿色100",
+      "list_price": 2.25,
+      "haul_price": 2.25,
+      "cost_cny": 2.42,
+      "shipping_fee_usd": 0.5,
+      "source_record_id": "quick-659bd2c200e2",
+      "source_row_sha256": "5b913dda498dc9b910a907cf4ea8d6c569c213b18ef579925ae66fdcfea354e1"
+    }
+  ],
+  "purchase_source": {
+    "event_id": "E-0e55c813533f",
+    "project_revision": 17,
+    "purchase_link": "https://detail.1688.com/offer/618189299686.html",
+    "offer_id": "618189299686",
+    "supplier_name": "义乌市涛声饰品有限公司",
+    "resolved_supplier_name": "义乌市涛声饰品有限公司",
+    "source_kind": "saved_1688_html",
+    "source_sha256": "c52cf722764166a4ee9580ae65466a25ab38d8b066dffd93f1da8eb507ebfb06",
+    "fetched_at": "2026-10-05T19:17:06+00:00",
+    "override_reason": null
+  },
+  "pricing_source": {
+    "version_id": "PR-4c0b2a18671d",
+    "pricing_model": "per_sku",
+    "record_id": "quick-659bd2c200e2",
+    "row_sha256": "1b1eec87ef9fd38738a9be44717a00f447696e6c75116aaddf25818b2e443123",
+    "updated_at": "2026-10-05T18:31:59+00:00"
+  },
+  "received_at": "2026-10-06T13:35:04",
+  "source_html": "03_产品详情页/diy配件_透明AB彩扁珠车轮珠3-8mm_菱形水晶散珠串珠挂绳珠串珠_-_阿里巴巴.html"
+}

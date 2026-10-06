@@ -1,0 +1,23 @@
+{
+  "output_dir": "outputs",
+  "tasks": [
+    {
+      "name": "清洁果蔬",
+      "product_name": "Cleaning Brush",
+      "template": "../files/cady退货翻新/B0GXYZZVLG/source_template/FOOD_SHAKER.xlsm",
+      "competitors": ["reference/row48_1.html"],
+      "output_name": "清洁果蔬白灰色4件装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-CleaningBrush",
+      "variation_theme": "COLOR/NUMBER_OF_ITEMS",
+      "material": "Plastic",
+      "set_count": 4,
+      "estimated_price": 1.99,
+      "color": "White and Grey",
+      "variants": [
+        {"sku": "TTCA-CleaningBrush-WhiteGrey-4pcs", "color": "White and Grey", "set_count": 4}
+      ]
+    }
+  ]
+}

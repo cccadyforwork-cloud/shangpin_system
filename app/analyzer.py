@@ -119,6 +119,10 @@ CJK_RE = re.compile(r"[\u4e00-\u9fff]")
 
 
 ENGLISH_PRODUCT_NAMES = [
+    ("AB彩扁碟珠", "AB Crystal Rondelle Beads"),
+    ("彩扁碟珠", "AB Crystal Rondelle Beads"),
+    ("车轮珠", "AB Crystal Rondelle Beads"),
+    ("扁珠", "AB Crystal Rondelle Beads"),
     ("宠物airtag", "AirTag Pet Collar"),
     ("AirTag硅胶护套宠物项圈", "AirTag Pet Collar"),
     ("Airtag硅胶护套宠物项圈", "AirTag Pet Collar"),
@@ -559,10 +563,64 @@ def _make_copy(product_name, color, size, material, set_count):
     title = f"{subject}{set_text}" + (f", {tail}" if tail else "")
     combined = f"{product_name}\n{subject}".lower()
     is_yoga = "yoga" in subject.lower() or "瑜伽" in subject
+    is_rondelle_beads = "rondelle bead" in subject.lower() or any(keyword in combined for keyword in ["扁碟珠", "车轮珠", "散珠", "串珠"])
     is_floral_card_holder = "floral card holder" in subject.lower() or "花束卡片夹" in subject
     is_cat_qtip = any(keyword in combined for keyword in ["cat q-tip", "cat toy", "猫玩具", "大棉签", "逗猫", "猫薄荷"])
     is_airtag_pet_collar = "airtag" in combined and ("collar" in combined or "项圈" in combined or "宠物" in combined)
-    if is_airtag_pet_collar:
+    if is_rondelle_beads:
+        pack_text = f"{set_count} Count" if set_count else "Bead Set"
+        size_text = size or "3-8 mm"
+        title = "AB Crystal Rondelle Beads, Faceted Spacer Beads for Jewelry Making and DIY Crafts"
+        bullet_1 = (
+            "Faceted AB Bead Finish: These rondelle beads have multiple angled surfaces and an AB color effect "
+            "that changes in appearance with light and viewing angle. Use the selected color as a repeating "
+            "detail or as an accent between larger beads."
+        )
+        bullet_2 = (
+            f"Rondelle Spacer Bead Shape: The listed {size_text} size and flattened profile can be planned "
+            "for bracelets, necklaces, earrings, charms, and other bead-stringing projects. Check the selected "
+            "size against your design and companion beads."
+        )
+        bullet_3 = (
+            f"Count For Craft Planning: This selected option contains {pack_text.lower()} for arranging "
+            "matching sections, repeating patterns, and small accent details across handmade jewelry. "
+            "Review the color and size variation before ordering."
+        )
+        bullet_4 = (
+            "Threading And Layout Options: Arrange these loose beads alongside other suitable components "
+            "to create alternating colors, spacer sections, or clustered details. Choose stringing supplies "
+            "separately for the intended design."
+        )
+        bullet_5 = (
+            "Selected Color Variation: The product family offers individual color choices so a maker can "
+            "choose one appearance for a planned strand or compare options. "
+            "The listing reflects the selected variation, not a mixed-color assortment."
+        )
+        desc = "\n\n".join([
+            f"Product Overview: These AB crystal rondelle beads are loose, faceted spacer beads for jewelry "
+            f"making and other bead-stringing projects. The selected {size_text} size gives each piece a compact "
+            "flattened profile that can sit between larger components or repeat along a strand. The AB finish "
+            "changes in appearance as light and viewing angle change, adding a reflective accent without "
+            "changing the basic bead shape.",
+            f"Package And Variation: This option contains {pack_text.lower()} in the selected color. The "
+            "quantity can be divided among several small projects or arranged as a repeated sequence in "
+            "one design. Review the chosen variation and the count "
+            "before ordering, especially when coordinating with beads that are already in a project. "
+            "Other beads, finished jewelry, stringing cord, tools, and display items are not included "
+            "unless separately identified in the listing.",
+            "Design Uses: Rondelle beads can serve as spacers, repeated accents, or transitions between "
+            "beads of different shapes in handmade jewelry. These loose beads "
+            "can also be considered for keychain accents, charms, and decorative bead strands when the "
+            "selected size and opening fit the planned materials. Choose wire, cord, findings, and other "
+            "supplies separately for the design being assembled.",
+            "Handling And Planning: Keep the selected beads together while sorting colors and counting "
+            "components for a project. Compare the stated size with any existing beads, thread, or wire "
+            "before beginning assembly. Small loose components are easier to account for when placed "
+            "in a tray or container during a craft session. This "
+            "description covers the supplied bead option and ordinary craft applications without "
+            "including unrelated accessories or finished jewelry."
+        ])
+    elif is_airtag_pet_collar:
         title = "Tracker Pet Collar, Breakaway Collar with Built-In Holder for Cats and Small Dogs"
         if color:
             title += f", {color}"
@@ -605,6 +663,11 @@ def _make_copy(product_name, color, size, material, set_count):
         bullet_5 = "Easy to carry, store, and use for a wide range of everyday needs."
         desc = f"{subject} is designed for everyday use with a simple, practical structure. It works well for home, travel, office, and general organization needs."
     return title, [bullet_1, bullet_2, bullet_3, bullet_4, bullet_5], desc
+
+
+def make_copy_for_row(product_name, color="", size="", material="", set_count=""):
+    """Rebuild listing copy after confirmed S1 variant attributes are applied."""
+    return _make_copy(product_name, color, size, material, set_count)
 
 
 def _make_parent_copy(product_name, material, set_count):

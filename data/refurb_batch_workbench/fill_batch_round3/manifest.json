@@ -1,0 +1,989 @@
+{
+  "batch_name": "Cady退货翻新第三批",
+  "output_dir": "../outputs",
+  "tasks": [
+    {
+      "name": "内裤-蝴蝶",
+      "product_name": "Butterfly Underwear",
+      "template": "../files/cady退货翻新/ROW-22/source_template/UNDERPANTS.xlsm",
+      "competitors": [
+        "reference/row22_1.html"
+      ],
+      "output_name": "内裤蝴蝶S码M码V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-ButterflyUnderwear",
+      "variation_theme": "SIZE",
+      "material": "Polyamide and Spandex",
+      "set_count": 3,
+      "estimated_price": 2.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-ButterflyUnderwear-S",
+          "size": "S",
+          "set_count": 3
+        },
+        {
+          "sku": "TTCA-ButterflyUnderwear-M",
+          "size": "M",
+          "set_count": 3
+        }
+      ]
+    },
+    {
+      "name": "内裤-棉",
+      "product_name": "Cotton Underwear",
+      "template": "../files/cady退货翻新/ROW-23/source_template/UNDERPANTS.xlsm",
+      "competitors": [
+        "reference/row23_1.html"
+      ],
+      "output_name": "内裤棉M码5件装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-CottonUnderwear",
+      "variation_theme": "SIZE/NUMBER_OF_ITEMS",
+      "material": "Cotton",
+      "set_count": 5,
+      "estimated_price": 2.99,
+      "color": "Multicolor",
+      "size": "M",
+      "variants": [
+        {
+          "sku": "TTCA-CottonUnderwear-M-5pcs",
+          "size": "M",
+          "set_count": 5
+        }
+      ]
+    },
+    {
+      "name": "面罩",
+      "product_name": "Camo Mask",
+      "template": "../files/cady退货翻新/B0GWMRF1L7/source_template/HAT.xlsm",
+      "competitors": [
+        "reference/row37_1.html"
+      ],
+      "output_name": "面罩迷彩全脸款V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-CamoMask",
+      "variation_theme": "COLOR",
+      "material": "Polyester",
+      "set_count": 3,
+      "estimated_price": 3.49,
+      "variants": [
+        {
+          "sku": "TTCA-CamoMask-GreenCamo",
+          "color": "Green Camo",
+          "set_count": 3
+        },
+        {
+          "sku": "TTCA-CamoMask-BlueCamo",
+          "color": "Blue Camo",
+          "set_count": 3
+        }
+      ]
+    },
+    {
+      "name": "面罩",
+      "product_name": "Neck Gaiter",
+      "template": "../files/cady退货翻新/ROW-38/source_template/HAT.xlsm",
+      "competitors": [
+        "reference/row38_1.html"
+      ],
+      "output_name": "面罩围脖款V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-NeckGaiter",
+      "variation_theme": "COLOR",
+      "material": "Polyester",
+      "set_count": 3,
+      "estimated_price": 3.49,
+      "variants": [
+        {
+          "sku": "TTCA-NeckGaiter-DarkSet",
+          "color": "Dark Set",
+          "set_count": 3
+        },
+        {
+          "sku": "TTCA-NeckGaiter-LightSet",
+          "color": "Light Set",
+          "set_count": 3
+        }
+      ]
+    },
+    {
+      "name": "马桶垫",
+      "product_name": "Toilet Cover",
+      "template": "../files/cady退货翻新/B0GWM7MSX6/source_template/TOILET_SEAT.xlsm",
+      "competitors": [
+        "reference/row41_1.html"
+      ],
+      "output_name": "马桶垫V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-ToiletCover",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Polyester",
+      "set_count": 1,
+      "estimated_price": 1.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-ToiletCover-1pc",
+          "set_count": 1
+        }
+      ]
+    },
+    {
+      "name": "袜子",
+      "product_name": "Ankle Socks",
+      "template": "../files/cady退货翻新/B0GWP6YKNN/source_template/SOCKS.xlsm",
+      "competitors": [
+        "reference/row42_1.html"
+      ],
+      "output_name": "袜子5双装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-AnkleSocks",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Cotton Blend",
+      "set_count": 5,
+      "estimated_price": 2.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-AnkleSocks-5pairs",
+          "set_count": 5
+        }
+      ]
+    },
+    {
+      "name": "冰袖",
+      "product_name": "Cooling Sleeve",
+      "template": "../files/cady退货翻新/B0GVJP23VT/source_template/ARM_SLEEVE.xlsm",
+      "competitors": [
+        "reference/row44_1.html"
+      ],
+      "output_name": "冰袖冰川款V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-CoolingSleeve",
+      "variation_theme": "COLOR",
+      "material": "Polyester",
+      "set_count": 2,
+      "estimated_price": 1.99,
+      "color": "Glacier",
+      "variants": [
+        {
+          "sku": "TTCA-CoolingSleeve-Glacier",
+          "color": "Glacier",
+          "set_count": 2
+        }
+      ],
+      "base_title": "Cooling Arm Sleeves for Men and Women, Ice Silk Sports Arm Covers for Cycling, Running and Outdoor Activities"
+    },
+    {
+      "name": "保鲜盒",
+      "product_name": "Bento Box",
+      "template": "../files/cady退货翻新/B0H2LL95CG/source_template/FOOD_STORAGE_CONTAINER.xlsm",
+      "competitors": [
+        "reference/row47_1.html"
+      ],
+      "output_name": "保鲜盒2件装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-BentoBox",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Plastic",
+      "set_count": 2,
+      "estimated_price": 2.49,
+      "color": "Clear",
+      "variants": [
+        {
+          "sku": "TTCA-BentoBox-2pcs",
+          "set_count": 2
+        }
+      ]
+    },
+    {
+      "name": "清洁果蔬",
+      "product_name": "Cleaning Brush",
+      "template": "../files/cady退货翻新/B0GXYZZVLG/source_template/FOOD_STORAGE_CONTAINER.xlsm",
+      "competitors": [
+        "reference/row48_1.html"
+      ],
+      "output_name": "清洁果蔬4件装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-CleaningBrush",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Plastic",
+      "set_count": 4,
+      "estimated_price": 1.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-CleaningBrush-4pcs",
+          "set_count": 4
+        }
+      ]
+    },
+    {
+      "name": "冰块托盘",
+      "product_name": "Ice Tray",
+      "template": "../files/cady退货翻新/B0H2GX1GTC/source_template/ICE_CUBE_TRAY.xlsm",
+      "competitors": [
+        "reference/row49_1.html"
+      ],
+      "output_name": "冰块托盘V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-IceTray",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Silicone",
+      "set_count": 1,
+      "estimated_price": 2.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-IceTray-1pc",
+          "set_count": 1
+        }
+      ]
+    },
+    {
+      "name": "冰袖",
+      "product_name": "Gradient Sleeve",
+      "template": "../files/cady退货翻新/B0GVJPSDPN/source_template/ARM_SLEEVE_(1).xlsm",
+      "competitors": [
+        "reference/row50_1.html"
+      ],
+      "output_name": "冰袖渐变色V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-GradientSleeve",
+      "variation_theme": "COLOR",
+      "material": "Polyester",
+      "set_count": 2,
+      "estimated_price": 2.99,
+      "variants": [
+        {
+          "sku": "TTCA-GradientSleeve-PinkYellow",
+          "color": "Pink Yellow",
+          "set_count": 2
+        },
+        {
+          "sku": "TTCA-GradientSleeve-BluePink",
+          "color": "Blue Pink",
+          "set_count": 2
+        },
+        {
+          "sku": "TTCA-GradientSleeve-BlueYellow",
+          "color": "Blue Yellow",
+          "set_count": 2
+        }
+      ],
+      "base_title": "2 Pairs Gradient Cooling Arm Sleeves, Ice Silk Sports Arm Covers for Cycling, Running and Outdoor Activities"
+    },
+    {
+      "name": "镊子",
+      "product_name": "Tweezer Set",
+      "template": "../files/cady退货翻新/ROW-53/source_template/TWEEZER.xlsm",
+      "competitors": [
+        "reference/row53_1.html"
+      ],
+      "output_name": "镊子4件套V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-TweezerSet",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Stainless Steel",
+      "set_count": 4,
+      "estimated_price": 2.99,
+      "color": "Silver",
+      "variants": [
+        {
+          "sku": "TTCA-TweezerSet-4pcs",
+          "set_count": 4
+        }
+      ]
+    },
+    {
+      "name": "针线包",
+      "product_name": "Sewing Kit",
+      "template": "../files/cady退货翻新/B0H1MFBMCW/source_template/SEWING_TOOL_SET.xlsm",
+      "competitors": [
+        "reference/row71_1.html"
+      ],
+      "output_name": "针线包27件套V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-SewingKit",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Metal and Polyester",
+      "set_count": 27,
+      "estimated_price": 2.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-SewingKit-27pcs",
+          "set_count": 27
+        }
+      ]
+    },
+    {
+      "name": "骑行短裤",
+      "product_name": "Cycling Shorts",
+      "template": "../files/cady退货翻新/B0GVQHT8WS/source_template/SHORTS.xlsm",
+      "competitors": [
+        "reference/row72_1.html"
+      ],
+      "output_name": "骑行短裤M码2XL码V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-CyclingShorts",
+      "variation_theme": "SIZE",
+      "material": "Polyester",
+      "set_count": 5,
+      "estimated_price": 4.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-CyclingShorts-M",
+          "size": "M",
+          "set_count": 5
+        },
+        {
+          "sku": "TTCA-CyclingShorts-2XL",
+          "size": "2XL",
+          "set_count": 5
+        }
+      ]
+    },
+    {
+      "name": "充磁消磁器",
+      "product_name": "Magnetizer Tool",
+      "template": "../files/cady退货翻新/B0GXB8V5BG/source_template/SCREWDRIVER.xlsm",
+      "competitors": [
+        "reference/row78_1.html"
+      ],
+      "output_name": "充磁消磁器绿色V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-MagnetizerTool",
+      "variation_theme": "COLOR",
+      "material": "Plastic and Steel",
+      "set_count": 1,
+      "estimated_price": 1.99,
+      "color": "Green",
+      "variants": [
+        {
+          "sku": "TTCA-MagnetizerTool-Green",
+          "color": "Green"
+        }
+      ]
+    },
+    {
+      "name": "9PCS英制球形内六角扳手中长",
+      "product_name": "Hex Key",
+      "template": "../files/cady退货翻新/B0GXVL887H/source_template/WRENCH.xlsm",
+      "competitors": [
+        "reference/row79_1.html"
+      ],
+      "output_name": "英制球形内六角扳手9件套V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-HexKey",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Chrome Vanadium Steel",
+      "set_count": 9,
+      "estimated_price": 4.99,
+      "color": "Green",
+      "variants": [
+        {
+          "sku": "TTCA-HexKey-9pcs",
+          "set_count": 9
+        }
+      ]
+    },
+    {
+      "name": "23PCS电讯维修批组套",
+      "product_name": "Repair Kit",
+      "template": "../files/cady退货翻新/B0GXB3K6XF/source_template/SCREWDRIVER_(1).xlsm",
+      "competitors": [
+        "reference/row81_1.html"
+      ],
+      "output_name": "电讯维修批组套23件套V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-RepairKit",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Steel and Plastic",
+      "set_count": 23,
+      "estimated_price": 3.99,
+      "color": "Green",
+      "variants": [
+        {
+          "sku": "TTCA-RepairKit-23pcs",
+          "set_count": 23
+        }
+      ]
+    },
+    {
+      "name": "蝴蝶结",
+      "product_name": "Hair Tie",
+      "template": "../files/cady退货翻新/B0GXXGTKQD/source_template/HAIR_TIE.xlsm",
+      "competitors": [
+        "reference/row82_1.html"
+      ],
+      "output_name": "蝴蝶结金色银色V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-HairTie",
+      "variation_theme": "COLOR/SET_NAME",
+      "material": "Metal",
+      "set_count": 1,
+      "estimated_price": 1.99,
+      "variants": [
+        {
+          "sku": "TTCA-HairTie-DoubleArc-Gold",
+          "color": "Gold",
+          "set_name": "Double Arc"
+        },
+        {
+          "sku": "TTCA-HairTie-Bow-Silver",
+          "color": "Silver",
+          "set_name": "Bow"
+        },
+        {
+          "sku": "TTCA-HairTie-Bow-Gold",
+          "color": "Gold",
+          "set_name": "Bow"
+        },
+        {
+          "sku": "TTCA-HairTie-DoubleArc-Silver",
+          "color": "Silver",
+          "set_name": "Double Arc"
+        }
+      ]
+    },
+    {
+      "name": "短袜",
+      "product_name": "Sport Socks",
+      "template": "../files/cady退货翻新/B0GTZCB863/source_template/SOCKS.xlsm",
+      "competitors": [
+        "reference/row86_1.html"
+      ],
+      "output_name": "短袜5双装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-SportSocks",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Polyester Blend",
+      "set_count": 5,
+      "estimated_price": 2.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-SportSocks-5pairs",
+          "set_count": 5
+        }
+      ]
+    },
+    {
+      "name": "过滤网",
+      "product_name": "Mesh Strainer",
+      "template": "../files/cady退货翻新/B0H1QNWQ3Q/source_template/FOOD_STRAINER.xlsm",
+      "competitors": [
+        "reference/row87_1.html"
+      ],
+      "output_name": "过滤网200目V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-MeshStrainer",
+      "variation_theme": "SIZE",
+      "material": "Nylon and Plastic",
+      "set_count": 1,
+      "estimated_price": 1.99,
+      "color": "White",
+      "size": "200 Mesh",
+      "variants": [
+        {
+          "sku": "TTCA-MeshStrainer-200mesh",
+          "size": "200 Mesh"
+        }
+      ]
+    },
+    {
+      "name": "船袜",
+      "product_name": "Boat Socks",
+      "template": "../files/cady退货翻新/B0GTZ8SXFZ/source_template/SOCKS.xlsm",
+      "competitors": [
+        "reference/row88_1.html"
+      ],
+      "output_name": "船袜7双装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-BoatSocks",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Polyester Blend",
+      "set_count": 7,
+      "estimated_price": 2.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-BoatSocks-7pairs",
+          "set_count": 7
+        }
+      ]
+    },
+    {
+      "name": "防滑贴",
+      "product_name": "Rug Gripper",
+      "template": "../files/cady退货翻新/B0GXYT47SB/source_template/RUG_PAD.xlsm",
+      "competitors": [
+        "reference/row91_1.html"
+      ],
+      "output_name": "防滑贴16件装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-RugGripper",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Polyurethane",
+      "set_count": 16,
+      "estimated_price": 1.99,
+      "color": "Black",
+      "variants": [
+        {
+          "sku": "TTCA-RugGripper-16pcs",
+          "set_count": 16
+        }
+      ]
+    },
+    {
+      "name": "直尺",
+      "product_name": "Marking Ruler",
+      "template": "../files/cady退货翻新/B0H1RC5THC/source_template/RULER.xlsm",
+      "competitors": [
+        "reference/row92_1.html"
+      ],
+      "output_name": "直尺红色V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-MarkingRuler",
+      "variation_theme": "COLOR",
+      "material": "Aluminum",
+      "set_count": 1,
+      "estimated_price": 2.99,
+      "color": "Red",
+      "size": "30 CM",
+      "variants": [
+        {
+          "sku": "TTCA-MarkingRuler-Red",
+          "color": "Red",
+          "size": "30 CM"
+        }
+      ]
+    },
+    {
+      "name": "拉力带",
+      "product_name": "Exercise Band",
+      "template": "../files/cady退货翻新/B0H1H8B7RQ/source_template/EXERCISE_BAND.xlsm",
+      "competitors": [
+        "reference/row93_1.html"
+      ],
+      "output_name": "拉力带V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-ExerciseBand",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Rubber",
+      "set_count": 1,
+      "estimated_price": 4.99,
+      "color": "Multicolor",
+      "base_title": "Resistance Band for Pull Up Assistance, Stretching, Strength Training, Mobility and Fitness Workouts, Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-ExerciseBand-1pc",
+          "set_count": 1
+        }
+      ]
+    },
+    {
+      "name": "皮革打孔器",
+      "product_name": "Leather Punch",
+      "template": "../files/cady退货翻新/B0H1HS69WZ/source_template/HOLE_PUNCH.xlsm",
+      "competitors": [
+        "reference/row94_1.html"
+      ],
+      "output_name": "皮革打孔器V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-LeatherPunch",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Steel",
+      "set_count": 1,
+      "estimated_price": 4.99,
+      "color": "Red",
+      "variants": [
+        {
+          "sku": "TTCA-LeatherPunch-1pc",
+          "set_count": 1
+        }
+      ]
+    },
+    {
+      "name": "开瓶器",
+      "product_name": "Bottle Opener",
+      "template": "../files/cady退货翻新/B0GZV4KW2X/source_template/BOTTLE_OPENER.xlsm",
+      "competitors": [
+        "reference/row95_1.html"
+      ],
+      "output_name": "开瓶器3件装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-BottleOpener",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Plastic and Metal",
+      "set_count": 3,
+      "estimated_price": 1.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-BottleOpener-3pcs",
+          "set_count": 3
+        }
+      ]
+    },
+    {
+      "name": "磁吸手机支架",
+      "product_name": "Magnetic Mount",
+      "template": "../files/cady退货翻新/B0H3N5X2JQ/source_template/PORTABLE_ELECTRONIC_DEVICE_MOUNT.xlsm",
+      "competitors": [
+        "reference/row96_1.html"
+      ],
+      "output_name": "磁吸手机支架V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-MagneticMount",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Plastic and Metal",
+      "set_count": 1,
+      "estimated_price": 2.99,
+      "color": "Black",
+      "variants": [
+        {
+          "sku": "TTCA-MagneticMount-1pc",
+          "set_count": 1
+        }
+      ]
+    },
+    {
+      "name": "洗鞋袋",
+      "product_name": "Shoe Bag",
+      "template": "../files/cady退货翻新/B0H1CWS9BY/source_template/STORAGE_BAG_20260924_034424.xlsm",
+      "competitors": [
+        "reference/row97_1.html"
+      ],
+      "output_name": "洗鞋袋黄色V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-ShoeBag",
+      "variation_theme": "COLOR",
+      "material": "Polyester",
+      "set_count": 1,
+      "estimated_price": 2.99,
+      "color": "Yellow",
+      "variants": [
+        {
+          "sku": "TTCA-ShoeBag-Yellow",
+          "color": "Yellow"
+        }
+      ]
+    },
+    {
+      "name": "鞋子清洗袋",
+      "product_name": "Laundry Bag",
+      "template": "../files/cady退货翻新/B0H1FQ4P14/source_template/STORAGE_BAG.xlsm",
+      "competitors": [
+        "reference/row101_1.html"
+      ],
+      "output_name": "鞋子清洗袋白色V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-LaundryBag",
+      "variation_theme": "COLOR",
+      "material": "Polyester",
+      "set_count": 1,
+      "estimated_price": 2.99,
+      "color": "White",
+      "variants": [
+        {
+          "sku": "TTCA-LaundryBag-White",
+          "color": "White"
+        }
+      ]
+    },
+    {
+      "name": "搭扣",
+      "product_name": "Snap Hook",
+      "template": "../files/cady退货翻新/B0GVS9PFFJ/source_template/BUCKLE_CARABINER.xlsm",
+      "competitors": [
+        "reference/row106_1.html"
+      ],
+      "output_name": "搭扣20件装40毫米V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-SnapHook",
+      "variation_theme": "COLOR/SIZE/NUMBER_OF_ITEMS",
+      "material": "Metal",
+      "set_count": 20,
+      "estimated_price": 2.99,
+      "color": "Silver",
+      "size": "40 MM",
+      "variants": [
+        {
+          "sku": "TTCA-SnapHook-20pcs-40mm",
+          "color": "Silver",
+          "size": "40 MM",
+          "set_count": 20
+        }
+      ]
+    },
+    {
+      "name": "手机防水袋",
+      "product_name": "Phone Pouch",
+      "template": "../files/cady退货翻新/B0GWQN7PV7/source_template/CELLULAR_PHONE_CASE.xlsm",
+      "competitors": [
+        "reference/row110_1.html"
+      ],
+      "output_name": "手机防水袋黑色白色V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-PhonePouch",
+      "variation_theme": "COLOR",
+      "material": "PVC",
+      "set_count": 1,
+      "estimated_price": 2.99,
+      "variants": [
+        {
+          "sku": "TTCA-PhonePouch-White",
+          "color": "White"
+        },
+        {
+          "sku": "TTCA-PhonePouch-Black",
+          "color": "Black"
+        }
+      ],
+      "base_title": "Floating Phone Pouch with Clear Touch Screen, Dry Bag Case for Beach, Swimming, Boating and Travel"
+    },
+    {
+      "name": "狗玩具",
+      "product_name": "Dog Toy",
+      "template": "../files/cady退货翻新/B0H14FXJZN/source_template/PET_TOY.xlsm",
+      "competitors": [
+        "reference/row112_1.html"
+      ],
+      "output_name": "狗玩具组合款V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-DogToy",
+      "variation_theme": "SET_NAME",
+      "material": "Cotton",
+      "set_count": 1,
+      "estimated_price": 3.49,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-DogToy-BallSet-2pcs",
+          "set_name": "2 Piece Ball Set",
+          "set_count": 2,
+          "price": 2.99
+        },
+        {
+          "sku": "TTCA-DogToy-MixedSet-3pcs",
+          "set_name": "3 Piece Mixed Set",
+          "set_count": 3,
+          "price": 3.99
+        },
+        {
+          "sku": "TTCA-DogToy-RopeKnot-1pc",
+          "set_name": "1 Piece Long Rope Knot",
+          "set_count": 1,
+          "price": 4.91
+        }
+      ],
+      "extra_fields": {
+        "subject_character[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Dog"
+      },
+      "parent_extra_fields": {
+        "subject_character[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Dog"
+      }
+    },
+    {
+      "name": "樱桃挂饰",
+      "product_name": "Cherry Charm",
+      "template": "../files/cady退货翻新/B0GWMFQCCF/source_template/KEYCHAIN.xlsm",
+      "competitors": [
+        "reference/row115_1.html"
+      ],
+      "output_name": "樱桃挂饰红色V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-CherryCharm",
+      "variation_theme": "COLOR",
+      "material": "Faux Leather and Metal",
+      "set_count": 1,
+      "estimated_price": 1.99,
+      "color": "Red",
+      "variants": [
+        {
+          "sku": "TTCA-CherryCharm-Red",
+          "color": "Red"
+        }
+      ]
+    },
+    {
+      "name": "手链",
+      "product_name": "Crystal Bracelet",
+      "template": "../files/cady退货翻新/B0GXYRXTFX/source_template/BRACELET.xlsm",
+      "competitors": [
+        "reference/row116_1.html"
+      ],
+      "output_name": "手链珍珠款V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-CrystalBracelet",
+      "variation_theme": "COLOR",
+      "material": "Crystal and Imitation Pearl",
+      "set_count": 1,
+      "estimated_price": 2.99,
+      "color": "Pearl",
+      "variants": [
+        {
+          "sku": "TTCA-CrystalBracelet-Pearl",
+          "color": "Pearl"
+        }
+      ]
+    },
+    {
+      "name": "蚊香支架",
+      "product_name": "Incense Holder",
+      "template": "../files/cady退货翻新/B0H3VBSMBX/source_template/INCENSE_HOLDER.xlsm",
+      "competitors": [
+        "reference/row117_1.html"
+      ],
+      "output_name": "蚊香支架V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-IncenseHolder",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Stainless Steel",
+      "set_count": 1,
+      "estimated_price": 2.99,
+      "color": "Silver",
+      "variants": [
+        {
+          "sku": "TTCA-IncenseHolder-1pc",
+          "set_count": 1
+        }
+      ]
+    },
+    {
+      "name": "衣角扣子",
+      "product_name": "Scarf Ring",
+      "template": "../files/cady退货翻新/B0H27RWJ6F/source_template/APPAREL_PIN.xlsm",
+      "competitors": [
+        "reference/row118_1.html"
+      ],
+      "output_name": "衣角扣子3件装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-ScarfRing",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "Metal",
+      "set_count": 3,
+      "estimated_price": 2.49,
+      "color": "Silver",
+      "variants": [
+        {
+          "sku": "TTCA-ScarfRing-3pcs",
+          "set_count": 3
+        }
+      ]
+    },
+    {
+      "name": "卡皮巴拉钥匙扣",
+      "product_name": "Capybara Keychain",
+      "template": "../files/cady退货翻新/B0H2HSQTGJ/source_template/KEYCHAIN.xlsm",
+      "competitors": [
+        "reference/row119_1.html"
+      ],
+      "output_name": "卡皮巴拉钥匙扣3件装V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-CapybaraKeychain",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "material": "PVC",
+      "set_count": 3,
+      "estimated_price": 2.99,
+      "color": "Multicolor",
+      "variants": [
+        {
+          "sku": "TTCA-CapybaraKeychain-3pcs",
+          "set_count": 3
+        }
+      ]
+    },
+    {
+      "name": "钥匙扣",
+      "product_name": "Resin Keychain",
+      "template": "../files/cady退货翻新/B0GZVK79NP/source_template/KEYCHAIN.xlsm",
+      "competitors": [
+        "reference/row122_1.html"
+      ],
+      "output_name": "钥匙扣木色V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-ResinKeychain",
+      "variation_theme": "COLOR",
+      "material": "Resin, Faux Leather and Metal",
+      "set_count": 1,
+      "estimated_price": 1.99,
+      "color": "Wood",
+      "variants": [
+        {
+          "sku": "TTCA-ResinKeychain-Wood",
+          "color": "Wood"
+        }
+      ]
+    },
+    {
+      "name": "方形烘培纸",
+      "product_name": "Baking Paper",
+      "template": "../files/cady退货翻新/B0H3V57TCY/source_template/BAKING_PAPER.xlsm",
+      "competitors": [
+        "reference/row124_1.html"
+      ],
+      "output_name": "方形烘焙纸50张V1",
+      "logistics_tier": "le_4_oz",
+      "store_id": "1店",
+      "parent_sku": "TTCA-BakingPaper",
+      "variation_theme": "SIZE/NUMBER_OF_ITEMS",
+      "material": "Paper",
+      "set_count": 50,
+      "online_price": 1.45,
+      "color": "Brown",
+      "size": "8 x 6 Inches",
+      "variants": [
+        {
+          "sku": "TTCA-BakingPaper-50pcs",
+          "size": "8 x 6 Inches",
+          "set_count": 50
+        }
+      ],
+      "base_title": "50 Pcs Square Parchment Paper Sheets, 8 x 6 Inch Nonstick Baking Liners for Air Fryer, Oven and Cooking"
+    }
+  ]
+}

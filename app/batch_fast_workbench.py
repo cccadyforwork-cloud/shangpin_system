@@ -354,10 +354,19 @@ def _batch_from_sheet(path, previous=None):
     wb = load_workbook(path, read_only=True, data_only=True, keep_vba=path.suffix.lower() == ".xlsm")
     ws = wb.active
     headers = {str(ws.cell(1, col).value or "").strip(): col for col in range(1, ws.max_column + 1)}
-    link_col = headers.get("LINK", 1)
-    html_col = headers.get("竞品HTML")
-    template_col = headers.get("模版表格")
-    note_col = headers.get("备注")
+    folded_headers = {name.casefold(): col for name, col in headers.items()}
+
+    def header_col(*names):
+        return next((headers[name] for name in names if name in headers), None) or next(
+            (folded_headers[name.casefold()] for name in names if name.casefold() in folded_headers),
+            None,
+        )
+
+    link_col = header_col("LINK", "链接", "参考链接") or 1
+    product_name_col = header_col("品名", "产品名", "商品名称", "Product Name")
+    html_col = header_col("竞品HTML")
+    template_col = header_col("模版表格", "模板表格")
+    note_col = header_col("备注")
     rows = []
     for row_number in range(2, ws.max_row + 1):
         link = str(ws.cell(row_number, link_col).value or "").strip()
@@ -382,6 +391,7 @@ def _batch_from_sheet(path, previous=None):
         rendered_row = {
             "id": row_id,
             "asin": row_id if match else "",
+            "product_name": str(ws.cell(row_number, product_name_col).value or "").strip() if product_name_col else previous_row.get("product_name", ""),
             "row_number": row_number,
             "link": link,
             "competitor_html": competitor_html or _path_with_suffix(previous_row.get("competitor_html", ""), {".html", ".htm"}),
@@ -404,6 +414,7 @@ def _batch_from_sheet(path, previous=None):
             rows.append({
                 "id": previous_row.get("id") or _store_row_id(product_id, store_id),
                 "asin": primary_row.get("asin", ""),
+                "product_name": primary_row.get("product_name", ""),
                 "row_number": primary_row["row_number"],
                 "link": primary_row["link"],
                 "competitor_html": primary_row.get("competitor_html", ""),

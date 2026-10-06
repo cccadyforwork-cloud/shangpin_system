@@ -86,6 +86,16 @@ class ListingRulesTest(unittest.TestCase):
 
         self.assertIn("敏感材质或合规宣称", messages)
 
+    def test_confirmed_competitor_brand_is_blocked_in_generic_copy(self):
+        title = (
+            "Rubberbanditz Resistance Bands, Pull Up Assistance Exercise Band for "
+            "Stretching, Strength Training and Mobility, Multicolor"
+        )
+
+        messages = "\n".join(_title_findings(title))
+
+        self.assertIn("高风险或禁用词", messages)
+
 
 if __name__ == "__main__":
     unittest.main()

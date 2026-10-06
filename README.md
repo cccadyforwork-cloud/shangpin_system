@@ -89,7 +89,9 @@ http://127.0.0.1:8766
 python3 run.py workbench --no-open
 ```
 
-## 批量快速上品工作台
+运营系统对接用的独立入口为 `POST /api/guarded-intake-merge`。它只接受显式项目 ID、状态文件与产品资料的 SHA-256、完整 SKU 清单，以及 `list_price`、`haul_price`、`cost`、`supplier_link` 的补空值项；请求必须明确 `approved: true`。任一来源变化、SKU 不符或目标字段已有值时拒绝，不会覆盖人工内容。成功时保留一份独立的原文件备份，不改变项目状态，也不生成或上传 Amazon 模板。原有人工“保存资料”入口继续存在；本接口仅在合成项目上验证，真实商品写回尚未由运营系统开放，跨进程同时修改同一项目时仍须避免并发。
+
+## 批量抄品工作台
 
 这条路线使用独立页面和独立台账，不改变默认工作台与 `auto-fill` 路线：
 
@@ -106,6 +108,22 @@ python3 run.py package-batch-workbench-data
 ```
 
 该命令会把台账引用的清单、竞品 HTML、源模板和 V1/V2/V3 输出复制进仓库，并报告缺失引用。业务数据可能包含竞品页面或内部文件，只应推送到访问权限符合团队要求的仓库。
+
+## 退货翻新批量上品工作台
+
+退货翻新商品使用独立工作台和独立台账，固定由 Cady 负责并上传到 `1店`：
+
+```bash
+python3 run.py refurb-workbench
+```
+
+默认打开 `http://127.0.0.1:8768/refurb-batch`。统一服务以默认上品工作台为入口，可从其左上角切换到批量抄品工作台或退货翻新批量上品工作台。默认同步文件为 `~/Desktop/退货翻新批量上品/退货翻新批量上品.xlsx`。
+
+共享台账和业务文件保存在 `data/refurb_batch_workbench/`。提交新增外部文件前执行：
+
+```bash
+python3 run.py package-refurb-workbench-data
+```
 
 ## 上传前自检
 

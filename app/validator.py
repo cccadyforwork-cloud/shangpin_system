@@ -30,6 +30,7 @@ CJK_RE = re.compile(r"[\u4e00-\u9fff]")
 
 PRICE_FIELDS_ALLOWED_DRAFT_EMPTY = {"list_price", "haul_price"}
 PARENT_OPTIONAL_CORE_FIELDS = {
+    "manufacturer",
     "list_price",
     "package_length_in",
     "package_width_in",

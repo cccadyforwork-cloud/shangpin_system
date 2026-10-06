@@ -1,0 +1,357 @@
+[
+  {
+    "index": 1,
+    "name": "内裤-蝴蝶",
+    "file": "内裤蝴蝶S码M码V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 2,
+    "name": "内裤-棉",
+    "file": "内裤棉M码5件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 3,
+    "name": "面罩",
+    "file": "面罩迷彩全脸款V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 4,
+    "name": "面罩",
+    "file": "面罩围脖款V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 5,
+    "name": "马桶垫",
+    "file": "马桶垫V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 6,
+    "name": "袜子",
+    "file": "袜子5双装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 7,
+    "name": "冰袖",
+    "file": "冰袖冰川款V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 8,
+    "name": "保鲜盒",
+    "file": "保鲜盒2件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 9,
+    "name": "清洁果蔬",
+    "file": "清洁果蔬4件装V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 77,
+        "coordinate": "BY8",
+        "label": "Capacity",
+        "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "sku": "TTCA-CleaningBrush-4pcs",
+        "formula": "IF(PTList0,reqPTList0capacitymarketplace_idATVPDKIKX0DER1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 78,
+        "coordinate": "BZ8",
+        "label": "Capacity Unit",
+        "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.unit",
+        "sku": "TTCA-CleaningBrush-4pcs",
+        "formula": "IF(PTList0,reqPTList0capacitymarketplace_idATVPDKIKX0DER1.unit,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 205,
+        "coordinate": "GW8",
+        "label": "Item Volume",
+        "field_name": "item_volume[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "sku": "TTCA-CleaningBrush-4pcs",
+        "formula": "IF(PTList0,reqPTList0item_volumemarketplace_idATVPDKIKX0DER1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 206,
+        "coordinate": "GX8",
+        "label": "Item Volume Unit",
+        "field_name": "item_volume[marketplace_id=ATVPDKIKX0DER]#1.unit",
+        "sku": "TTCA-CleaningBrush-4pcs",
+        "formula": "IF(PTList0,reqPTList0item_volumemarketplace_idATVPDKIKX0DER1.unit,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "index": 10,
+    "name": "冰块托盘",
+    "file": "冰块托盘V1.xlsm",
+    "findings": [
+      "TTCA-IceTray-1pc 的 Listing 文案包含高风险或禁用词：mold。"
+    ],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 11,
+    "name": "冰袖",
+    "file": "冰袖渐变色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 12,
+    "name": "镊子",
+    "file": "镊子4件套V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 13,
+    "name": "针线包",
+    "file": "针线包27件套V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 14,
+    "name": "骑行短裤",
+    "file": "骑行短裤M码2XL码V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 15,
+    "name": "充磁消磁器",
+    "file": "充磁消磁器绿色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 16,
+    "name": "9PCS英制球形内六角扳手中长",
+    "file": "英制球形内六角扳手9件套V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 17,
+    "name": "23PCS电讯维修批组套",
+    "file": "电讯维修批组套23件套V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 18,
+    "name": "蝴蝶结",
+    "file": "蝴蝶结金色银色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 19,
+    "name": "短袜",
+    "file": "短袜5双装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 20,
+    "name": "过滤网",
+    "file": "过滤网200目V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 21,
+    "name": "船袜",
+    "file": "船袜7双装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 22,
+    "name": "防滑贴",
+    "file": "防滑贴16件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 23,
+    "name": "直尺",
+    "file": "直尺红色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 24,
+    "name": "拉力带",
+    "file": "拉力带V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 25,
+    "name": "皮革打孔器",
+    "file": "皮革打孔器V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 26,
+    "name": "开瓶器",
+    "file": "开瓶器3件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 27,
+    "name": "磁吸手机支架",
+    "file": "磁吸手机支架V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 28,
+    "name": "洗鞋袋",
+    "file": "洗鞋袋黄色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 29,
+    "name": "鞋子清洗袋",
+    "file": "鞋子清洗袋白色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 30,
+    "name": "搭扣",
+    "file": "搭扣20件装40毫米V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 31,
+    "name": "手机防水袋",
+    "file": "手机防水袋黑色白色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 32,
+    "name": "狗玩具",
+    "file": "狗玩具组合款V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 33,
+    "name": "樱桃挂饰",
+    "file": "樱桃挂饰红色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 34,
+    "name": "手链",
+    "file": "手链珍珠款V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 35,
+    "name": "蚊香支架",
+    "file": "蚊香支架V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 36,
+    "name": "衣角扣子",
+    "file": "衣角扣子3件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 37,
+    "name": "卡皮巴拉钥匙扣",
+    "file": "卡皮巴拉钥匙扣3件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 38,
+    "name": "钥匙扣",
+    "file": "钥匙扣木色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "index": 39,
+    "name": "方形烘培纸",
+    "file": "方形烘焙纸50张V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  }
+]

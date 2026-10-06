@@ -1,5 +1,7 @@
 import cgi
 import base64
+import hashlib
+import io
 import json
 import re
 import shutil
@@ -13,8 +15,9 @@ from urllib.parse import parse_qs, quote, unquote, urlparse
 
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
+from PIL import Image
 
-from .analyzer import analyze_project
+from .analyzer import analyze_project, make_copy_for_row
 from .auto_fill import auto_fill_project
 from .batch_fast_workbench import (
     attach_file as attach_batch_fast_file,
@@ -24,7 +27,21 @@ from .batch_fast_workbench import (
     referenced_file as batch_fast_referenced_file,
     update_row as update_batch_fast_row,
 )
+from .refurb_batch_workbench import (
+    attach_reference_screenshot as attach_refurb_reference_screenshot,
+    attach_file as attach_refurb_batch_file,
+    build_all_image_groups_archive as build_refurb_all_image_groups_archive,
+    build_output_archive as build_refurb_batch_output_archive,
+    export_generated_images_to_desktop as export_refurb_images_to_desktop,
+    fetch_reference_images as fetch_refurb_reference_images,
+    import_sheets as import_refurb_batch_sheets,
+    payload as refurb_batch_payload,
+    referenced_file as refurb_batch_referenced_file,
+    start_image_generation as start_refurb_image_generation,
+    update_row as update_refurb_batch_row,
+)
 from .error_learning import learn_reports
+from .guarded_intake import GuardedIntakeConflict, guarded_merge_intake, project_intake_lock
 from .paths import (
     COMPETITOR_DIR,
     CONFIG_DIR,
@@ -49,6 +66,7 @@ from .project_status import infer_latest_template, infer_product_name, infer_sku
 from .report_parser import extract_processing_summary
 from .success_templates import RULES_JSON, RULES_REPORT, SUCCESS_TEMPLATES_DIR, learn_success_templates
 from .template_sheet import find_template_sheet
+from .template_validator import _variation_theme_values
 from .template_writer import FIELD_MAP, extract_template_product_type, find_template, prepare_variation_rows
 from .validator import validate_intake
 from .versioning import next_template_version as shared_next_template_version
@@ -67,7 +85,10 @@ STATUS_LABELS = {
     "not_started": "未开始",
 }
 
+STORE_OPS_HANDOFF_FILE = "store_ops_handoff.json"
+
 PARENT_OPTIONAL_CORE_FIELDS = {
+    "manufacturer",
     "list_price",
     "package_length_in",
     "package_width_in",
@@ -113,9 +134,9 @@ def _handler():
     class WorkbenchHandler(BaseHTTPRequestHandler):
         def do_HEAD(self):
             parsed = urlparse(self.path)
-            if parsed.path in {"/", "/batch-fast", "/batch-fast/version-preview", "/api/summary", "/api/workbench", "/api/rules", "/api/report", "/api/batch-fast"}:
+            if parsed.path in {"/", "/batch-fast", "/refurb-batch", "/batch-fast/version-preview", "/api/summary", "/api/workbench", "/api/rules", "/api/report", "/api/batch-fast", "/api/refurb-batch"}:
                 self.send_response(200)
-                html_page = parsed.path in {"/", "/batch-fast", "/batch-fast/version-preview"}
+                html_page = parsed.path in {"/", "/batch-fast", "/refurb-batch", "/batch-fast/version-preview"}
                 self.send_header("Content-Type", "text/html; charset=utf-8" if html_page else "application/json; charset=utf-8")
                 self.end_headers()
             elif parsed.path == "/file":
@@ -128,13 +149,14 @@ def _handler():
                 else:
                     self.send_response(404)
                     self.end_headers()
-            elif parsed.path in {"/batch-fast/file", "/batch-fast/download"}:
-                if parsed.path == "/batch-fast/download":
+            elif parsed.path in {"/batch-fast/file", "/batch-fast/download", "/refurb-batch/file", "/refurb-batch/download", "/refurb-batch/image-groups-download"}:
+                if parsed.path in {"/batch-fast/download", "/refurb-batch/download", "/refurb-batch/image-groups-download"}:
                     self.send_response(200)
                     self.send_header("Content-Type", "application/zip")
                     self.end_headers()
                     return
-                path = batch_fast_referenced_file(_query_path(parsed.query))
+                resolver = refurb_batch_referenced_file if parsed.path.startswith("/refurb-batch") else batch_fast_referenced_file
+                path = resolver(_query_path(parsed.query))
                 if path and path.exists() and path.is_file():
                     self.send_response(200)
                     self.send_header("Content-Type", _download_content_type(path))
@@ -153,6 +175,8 @@ def _handler():
                 self._send_html(_html())
             elif parsed.path == "/batch-fast":
                 self._send_html(_batch_fast_html())
+            elif parsed.path == "/refurb-batch":
+                self._send_html(_batch_fast_html())
             elif parsed.path == "/batch-fast/version-preview":
                 self._send_html(_batch_fast_version_preview_html())
             elif parsed.path == "/api/summary":
@@ -165,6 +189,8 @@ def _handler():
                 self._send_json(_report_payload())
             elif parsed.path == "/api/batch-fast":
                 self._send_json(batch_fast_payload())
+            elif parsed.path == "/api/refurb-batch":
+                self._send_json(refurb_batch_payload())
             elif parsed.path == "/file":
                 self._send_file(_served_file_path(parsed.query))
             elif parsed.path == "/batch-fast/file":
@@ -182,6 +208,30 @@ def _handler():
                     self._send_json({"ok": False, "error": str(exc)}, status=404)
                     return
                 self._send_bytes(data, "application/zip", filename)
+            elif parsed.path == "/refurb-batch/file":
+                path = refurb_batch_referenced_file(_query_path(parsed.query))
+                if path is None:
+                    self._send_json({"error": "file_not_allowed"}, status=403)
+                else:
+                    self._send_file(path)
+            elif parsed.path == "/refurb-batch/download":
+                batch_id = parse_qs(parsed.query).get("batch_id", [""])[0]
+                try:
+                    filename, data, _count = build_refurb_batch_output_archive(batch_id)
+                except ValueError as exc:
+                    self._send_json({"ok": False, "error": str(exc)}, status=404)
+                    return
+                self._send_bytes(data, "application/zip", filename)
+            elif parsed.path == "/refurb-batch/image-groups-download":
+                query = parse_qs(parsed.query)
+                try:
+                    filename, data, _count = build_refurb_all_image_groups_archive(
+                        query.get("batch_id", [""])[0], query.get("row_id", [""])[0]
+                    )
+                except ValueError as exc:
+                    self._send_json({"ok": False, "error": str(exc)}, status=404)
+                    return
+                self._send_bytes(data, "application/zip", filename)
             else:
                 self._send_json({"error": "not_found"}, status=404)
 
@@ -194,32 +244,42 @@ def _handler():
                     result = self._handle_feedback_upload()
                 elif parsed.path == "/api/batch-fast/upload":
                     result = self._handle_batch_fast_upload()
+                elif parsed.path == "/api/refurb-batch/upload":
+                    result = self._handle_refurb_batch_upload()
+                elif parsed.path == "/api/refurb-batch/reference-screenshot":
+                    result = self._handle_refurb_reference_screenshot()
                 else:
                     payload = self._read_json()
                     if parsed.path == "/api/projects":
                         result = _create_project(payload)
                     elif parsed.path == "/api/rename-project":
-                        result = _rename_project(payload)
+                        result = _locked_project_call(payload, _rename_project)
                     elif parsed.path == "/api/analyze-project":
-                        result = _analyze_project(payload)
+                        result = _locked_project_call(payload, _analyze_project)
                     elif parsed.path == "/api/save-intake":
-                        result = _save_intake(payload)
+                        result = _locked_project_call(payload, _save_intake)
+                    elif parsed.path == "/api/guarded-intake-merge":
+                        result = guarded_merge_intake(payload)
+                    elif parsed.path == "/api/store-ops/bootstrap":
+                        result = _store_ops_bootstrap(payload)
+                    elif parsed.path == "/api/store-ops/generate":
+                        result = _locked_project_call(payload, _store_ops_generate)
                     elif parsed.path == "/api/fill-template":
-                        result = _fill_template_version(payload)
+                        result = _locked_project_call(payload, _fill_template_version)
                     elif parsed.path == "/api/auto-fill":
-                        result = _auto_fill(payload)
+                        result = _locked_project_call(payload, _auto_fill)
                     elif parsed.path == "/api/mark-uploaded":
-                        result = _mark_uploaded(payload)
+                        result = _locked_project_call(payload, _mark_uploaded)
                     elif parsed.path == "/api/update-status":
-                        result = _update_upload_status(payload)
+                        result = _locked_project_call(payload, _update_upload_status)
                     elif parsed.path == "/api/version-note":
-                        result = _save_version_note(payload)
+                        result = _locked_project_call(payload, _save_version_note)
                     elif parsed.path == "/api/project-note":
-                        result = _save_project_note(payload)
+                        result = _locked_project_call(payload, _save_project_note)
                     elif parsed.path == "/api/confirm-feedback-fix":
-                        result = _confirm_feedback_fix(payload)
+                        result = _locked_project_call(payload, _confirm_feedback_fix)
                     elif parsed.path == "/api/delete-project":
-                        result = _delete_project(payload)
+                        result = _locked_project_call(payload, _delete_project)
                     elif parsed.path == "/api/reveal-file":
                         result = _reveal_file(payload)
                     elif parsed.path == "/api/learn-success":
@@ -236,10 +296,43 @@ def _handler():
                             raise ValueError("文件不存在或不在当前清单中。")
                         subprocess.run(["open", str(path)], check=False)
                         result = {"ok": True, "path": str(path)}
+                    elif parsed.path == "/api/refurb-batch/import":
+                        import_refurb_batch_sheets(payload.get("paths") or None)
+                        result = refurb_batch_payload()
+                    elif parsed.path == "/api/refurb-batch/save":
+                        update_refurb_batch_row(payload.get("batch_id", ""), payload.get("row_id", ""), payload.get("fields") or {})
+                        result = refurb_batch_payload()
+                    elif parsed.path == "/api/refurb-batch/open":
+                        path = refurb_batch_referenced_file(payload.get("path", ""))
+                        if path is None or not path.exists() or not path.is_file():
+                            raise ValueError("文件不存在或不在当前清单中。")
+                        subprocess.run(["open", str(path)], check=False)
+                        result = {"ok": True, "path": str(path)}
+                    elif parsed.path == "/api/refurb-batch/generate-images":
+                        result = start_refurb_image_generation(
+                            payload.get("batch_id", ""),
+                            payload.get("row_id", ""),
+                            payload.get("image_group_key", "default"),
+                        )
+                    elif parsed.path == "/api/refurb-batch/fetch-reference-images":
+                        result = fetch_refurb_reference_images(
+                            payload.get("batch_id", ""),
+                            payload.get("row_id", ""),
+                            payload.get("image_group_key", "default"),
+                        )
+                    elif parsed.path == "/api/refurb-batch/export-images-to-desktop":
+                        result = export_refurb_images_to_desktop(
+                            payload.get("batch_id", ""),
+                            payload.get("row_id", ""),
+                            payload.get("image_group_key", "default"),
+                        )
+                        subprocess.run(["open", result["path"]], check=False)
                     else:
                         self._send_json({"error": "not_found"}, status=404)
                         return
                 self._send_json(result)
+            except GuardedIntakeConflict as exc:
+                self._send_json({"ok": False, "error": str(exc)}, status=409)
             except Exception as exc:
                 self._send_json({"ok": False, "error": str(exc)}, status=500)
 
@@ -248,14 +341,16 @@ def _handler():
             project_dir = form.getfirst("project_dir", "")
             folder = form.getfirst("folder", "")
             files = _form_files(form)
-            return _upload_files(project_dir, folder, files)
+            with project_intake_lock(_project_path({"project_dir": project_dir})):
+                return _upload_files(project_dir, folder, files)
 
         def _handle_feedback_upload(self):
             form = self._read_multipart_form()
             project_dir = form.getfirst("project_dir", "")
             files = _form_files(form)
             note = form.getfirst("note", "")
-            return _upload_feedback(project_dir, files, note=note)
+            with project_intake_lock(_project_path({"project_dir": project_dir})):
+                return _upload_feedback(project_dir, files, note=note)
 
         def _handle_batch_fast_upload(self):
             form = self._read_multipart_form()
@@ -270,6 +365,59 @@ def _handler():
                 file_item.file,
             )
             return {"ok": True, "path": str(target), "data": batch_fast_payload()}
+
+        def _handle_refurb_batch_upload(self):
+            form = self._read_multipart_form()
+            if "file" not in form:
+                raise ValueError("请选择要上传的文件。")
+            file_item = form["file"]
+            target, _row = attach_refurb_batch_file(
+                form.getfirst("batch_id", ""),
+                form.getfirst("row_id", ""),
+                form.getfirst("field", ""),
+                file_item.filename or "",
+                file_item.file,
+            )
+            return {"ok": True, "path": str(target), "data": refurb_batch_payload()}
+
+        def _handle_refurb_reference_screenshot(self):
+            form = self._read_multipart_form()
+            files = _form_files(form)
+            if not files:
+                raise ValueError("没有收到参考截图。")
+            saved = []
+            for file_item in files:
+                source = file_item.file
+                crop_values = [form.getfirst(name, "") for name in ("x", "y", "width", "height", "viewport_width", "viewport_height")]
+                if all(value != "" for value in crop_values):
+                    raw = source.read()
+                    image = Image.open(io.BytesIO(raw))
+                    x, y, width, height, viewport_width, viewport_height = [float(value) for value in crop_values]
+                    if width <= 0 or height <= 0 or viewport_width <= 0 or viewport_height <= 0:
+                        raise ValueError("截图裁切区域不正确。")
+                    scale_x = image.width / viewport_width
+                    scale_y = image.height / viewport_height
+                    box = (
+                        max(0, round(x * scale_x)),
+                        max(0, round(y * scale_y)),
+                        min(image.width, round((x + width) * scale_x)),
+                        min(image.height, round((y + height) * scale_y)),
+                    )
+                    if box[2] <= box[0] or box[3] <= box[1]:
+                        raise ValueError("截图裁切区域为空。")
+                    cropped = image.crop(box).convert("RGB")
+                    source = io.BytesIO()
+                    cropped.save(source, format="PNG")
+                    source.seek(0)
+                target, _row = attach_refurb_reference_screenshot(
+                    form.getfirst("batch_id", ""),
+                    form.getfirst("row_id", ""),
+                    file_item.filename or "reference.png",
+                    source,
+                    form.getfirst("image_group_key", "default"),
+                )
+                saved.append(str(target))
+            return {"ok": True, "paths": saved, "data": refurb_batch_payload()}
 
         def _read_multipart_form(self):
             content_type = self.headers.get("Content-Type", "")
@@ -411,6 +559,7 @@ def _workbench_payload():
 
 def _workbench_project_payload(project_dir, item):
     item = {**item, **load_project_status(project_dir)}
+    store_ops_handoff = _load_store_ops_handoff(project_dir)
     status = item.get("status") or "not_started"
     product_name = item.get("product_name") or infer_product_name(project_dir, "")
     rows, draft_file, rows_error = _latest_intake_rows(project_dir, item)
@@ -436,6 +585,14 @@ def _workbench_project_payload(project_dir, item):
         "status": STATUS_LABELS.get(status, status),
         "status_code": status,
         "workbench_note": item.get("workbench_note") or "",
+        "storeOps": {
+            "sourceProjectId": store_ops_handoff.get("source_project_id") or "",
+            "sourceProjectRevision": store_ops_handoff.get("source_project_revision"),
+            "generatedRevision": item.get("store_ops_generated_revision"),
+            "parentSku": store_ops_handoff.get("parent_sku") or "",
+            "childCount": len(store_ops_handoff.get("children") or []),
+            "sourceHtmlCopied": bool(store_ops_handoff.get("source_html")),
+        },
         "updated": _format_updated(item.get("updated_at")),
         "summary": _project_summary_text(status, latest_template, error_count, next_version, item),
         "steps": _project_steps(status, rows, latest_template, error_count),
@@ -902,6 +1059,283 @@ def _create_project(payload):
         "message": "项目已创建",
         "project_dir": str(project_dir),
         "intake_path": str(intake_path),
+    }
+
+
+def _store_ops_handoff_path(project_dir):
+    return Path(project_dir) / STORE_OPS_HANDOFF_FILE
+
+
+def _load_store_ops_handoff(project_dir):
+    path = _store_ops_handoff_path(project_dir)
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def _find_store_ops_project(source_project_id):
+    source_project_id = str(source_project_id or "").strip()
+    if not source_project_id:
+        return None
+    for item in list_project_summaries():
+        project_dir = Path(item["project_dir"])
+        handoff = _load_store_ops_handoff(project_dir)
+        if handoff.get("source_project_id") == source_project_id:
+            return project_dir
+    return None
+
+
+def _sha256_file(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as source:
+        for chunk in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _find_store_ops_source_html(purchase_source):
+    purchase_source = purchase_source if isinstance(purchase_source, dict) else {}
+    requested_hash = str(purchase_source.get("source_sha256") or "").strip().lower()
+    explicit_path = str(purchase_source.get("source_html_path") or "").strip()
+    candidates = []
+    if explicit_path:
+        candidates.append(Path(explicit_path).expanduser())
+    for root in (Path.home() / "Desktop", Path.home() / "Downloads"):
+        if not root.exists():
+            continue
+        try:
+            candidates.extend(path for path in root.rglob("*") if path.is_file() and path.suffix.lower() in {".html", ".htm"})
+        except OSError:
+            continue
+    seen = set()
+    for path in candidates:
+        try:
+            resolved = path.resolve()
+            if resolved in seen or not resolved.is_file():
+                continue
+            seen.add(resolved)
+            if requested_hash and _sha256_file(resolved).lower() != requested_hash:
+                continue
+            return resolved
+        except OSError:
+            continue
+    return None
+
+
+def _copy_store_ops_source_html(project_dir, purchase_source):
+    source = _find_store_ops_source_html(purchase_source)
+    if source is None:
+        return None
+    target_dir = Path(project_dir) / PRODUCT_DETAIL_DIR
+    target_dir.mkdir(parents=True, exist_ok=True)
+    target = target_dir / _safe_upload_filename(source.name)
+    if target.exists():
+        try:
+            if _sha256_file(target) == _sha256_file(source):
+                return target
+        except OSError:
+            pass
+        target = _unique_file_path(target_dir, target.name)
+    shutil.copy2(source, target)
+    return target
+
+
+def _store_ops_bootstrap(payload):
+    source_project_id = str(payload.get("source_project_id") or "").strip()
+    product_name = str(payload.get("product_name") or payload.get("project_name") or "").strip()
+    parent_sku = str(payload.get("parent_sku") or "").strip()
+    children = payload.get("children") if isinstance(payload.get("children"), list) else []
+    if not source_project_id or not product_name:
+        raise ValueError("S1 交接缺少项目编号或产品名。")
+    if not parent_sku:
+        raise ValueError("S1 交接缺少父体 SKU。")
+    if not children or any(not str(item.get("sku") or "").strip() for item in children if isinstance(item, dict)):
+        raise ValueError("S1 交接缺少完整的子体 SKU。")
+
+    project_dir = _find_store_ops_project(source_project_id)
+    created = project_dir is None
+    if created:
+        project_dir, _intake_path = create_project(product_name)
+
+    prior = _load_store_ops_handoff(project_dir)
+    handoff = {
+        **prior,
+        "source_project_id": source_project_id,
+        "source_project_revision": payload.get("source_project_revision"),
+        "project_name": str(payload.get("project_name") or product_name),
+        "product_name": product_name,
+        "owner": str(payload.get("owner") or "").strip(),
+        "store": str(payload.get("store") or "").strip(),
+        "parent_sku": parent_sku,
+        "children": children,
+        "purchase_source": payload.get("purchase_source") if isinstance(payload.get("purchase_source"), dict) else {},
+        "pricing_source": payload.get("pricing_source") if isinstance(payload.get("pricing_source"), dict) else {},
+        "received_at": datetime.now().isoformat(timespec="seconds"),
+    }
+    source_html = _copy_store_ops_source_html(project_dir, handoff["purchase_source"])
+    if source_html:
+        handoff["source_html"] = _relative_to_project(project_dir, source_html)
+    handoff_path = _store_ops_handoff_path(project_dir)
+    handoff_path.write_text(json.dumps(handoff, ensure_ascii=False, indent=2), encoding="utf-8")
+    status_update = {
+        "product_name": product_name,
+        "store_ops_source_project_id": source_project_id,
+        "store_ops_source_revision": payload.get("source_project_revision"),
+    }
+    if created or prior.get("source_project_revision") != payload.get("source_project_revision"):
+        status_update.update({"status": "not_started", "blocked_reason": None})
+    save_project_status(project_dir, status_update)
+    return {
+        "ok": True,
+        "message": "已新建并接入 S1 项目" if created else "已同步 S1 最新确认数据",
+        "created": created,
+        "project_dir": str(project_dir),
+        "project_id": _relative(project_dir),
+        "source_project_id": source_project_id,
+        "source_html_copied": bool(source_html or handoff.get("source_html")),
+        "project": _workbench_project_payload(project_dir, next(
+            item for item in list_project_summaries() if Path(item["project_dir"]).resolve() == Path(project_dir).resolve()
+        )),
+    }
+
+
+def _bridge_number(value):
+    if value in (None, ""):
+        return ""
+    try:
+        return str(float(value)).rstrip("0").rstrip(".")
+    except (TypeError, ValueError):
+        return str(value).strip()
+
+
+def _bridge_variant_value(child, field):
+    value = str(child.get(field) or "").strip()
+    if value:
+        return value
+    text = " ".join(str(child.get(key) or "") for key in ("product_name", "variant_label", "sku"))
+    if field == "color":
+        colors = [
+            ("gold", "Gold"), ("金色", "Gold"), ("pink", "Pink"), ("粉色", "Pink"),
+            ("green", "Green"), ("绿色", "Green"), ("blue", "Blue"), ("蓝色", "Blue"),
+            ("red", "Red"), ("红色", "Red"), ("black", "Black"), ("黑色", "Black"),
+            ("white", "White"), ("白色", "White"), ("purple", "Purple"), ("紫色", "Purple"),
+        ]
+        lowered = text.lower()
+        return next((label for token, label in colors if token in lowered), "")
+    if field == "size":
+        match = re.search(r"(?<!\d)(\d+(?:\.\d+)?)\s*(?:mm|毫米)(?!\w)", text, re.I)
+        if not match:
+            match = re.search(r"珠\s*(\d+(?:\.\d+)?)", text)
+        return f"{match.group(1)} mm" if match else ""
+    if field == "set_count":
+        match = re.search(r"(?<!\d)(\d+)\s*(?:pcs?|count|颗|粒)?\s*$", text, re.I)
+        return match.group(1) if match else ""
+    return ""
+
+
+def _store_ops_generate(payload):
+    project_dir = _project_path(payload)
+    handoff = _load_store_ops_handoff(project_dir)
+    source_project_id = str(payload.get("source_project_id") or "").strip()
+    if not handoff or handoff.get("source_project_id") != source_project_id:
+        raise ValueError("没有找到与当前运营项目对应的 S1 交接数据。")
+    template_path = _find_source_template(project_dir)
+    if not template_path:
+        raise ValueError("请先上传从 Amazon 后台下载的原始模板。")
+    source_html = _project_file_candidate(project_dir, handoff.get("source_html", ""))
+    if not source_html or not source_html.exists():
+        source_html = _copy_store_ops_source_html(project_dir, handoff.get("purchase_source"))
+    if not source_html:
+        raise ValueError("未找到 S1 已确认的 1688 详情页原始资料，请先回 S1 重新识别采购链接。")
+
+    analyzed = _analyze_project({"project_dir": str(project_dir), "route_mode": "variation"})
+    analyzed_rows = analyzed.get("rows") or []
+    base = next((row for row in analyzed_rows if str(row.get("parentage_level") or "").lower() != "parent"), None)
+    if base is None:
+        raise ValueError("上品工具未能从 1688 详情页提炼产品资料。")
+
+    product_name = str(handoff.get("product_name") or "").strip()
+    parent_sku = str(handoff.get("parent_sku") or "").strip()
+    product_type = extract_template_product_type(template_path)
+    template_book = load_workbook(template_path, data_only=True, read_only=True)
+    try:
+        theme_values = _variation_theme_values(template_book, product_type)
+    finally:
+        template_book.close()
+    children = handoff.get("children") or []
+    color_count = len({str(_bridge_variant_value(child, "color")).lower() for child in children if _bridge_variant_value(child, "color")})
+    size_count = len({str(_bridge_variant_value(child, "size")).lower() for child in children if _bridge_variant_value(child, "size")})
+    preferred_theme = "COLOR/SIZE" if color_count > 1 and size_count > 1 else "SIZE" if size_count > 1 else "COLOR"
+    variation_theme = next((value for value in theme_values if value.casefold() == preferred_theme.casefold()), None)
+    if not variation_theme:
+        raise ValueError(f"当前 Amazon 模板不支持 {preferred_theme} 变体主题，请在上品工具内确认可用的变体方式。")
+    purchase_source = handoff.get("purchase_source") or {}
+    supplier_link = str(purchase_source.get("purchase_link") or "").strip()
+    options = _workbench_logistics_options()
+    rows = []
+    for child in children:
+        row = dict(base)
+        fee = child.get("shipping_fee_usd")
+        price = child.get("list_price")
+        option = next((item for item in options if _bridge_number(item.get("fee")) == _bridge_number(fee)), None)
+        row.update({
+            "project_name": Path(project_dir).name,
+            "product_name": product_name,
+            "route": "Haul Generic Variation",
+            "sku": str(child.get("sku") or "").strip(),
+            "parent_sku": parent_sku,
+            "parentage_level": "Child",
+            "variation_theme": variation_theme,
+            "color": _bridge_variant_value(child, "color"),
+            "size": _bridge_variant_value(child, "size") or str(base.get("size") or "").strip(),
+            "set_count": _bridge_variant_value(child, "set_count") or str(base.get("set_count") or "").strip(),
+            "cost": _bridge_number(child.get("cost_cny")),
+            "list_price": _bridge_number(price),
+            "haul_price": _bridge_number(child.get("haul_price") if child.get("haul_price") not in (None, "") else price),
+            "logistics_tier": option.get("id") if option else str(child.get("logistics_tier") or ""),
+            "shipping_fee_usd": _bridge_number(fee),
+            "supplier_link": supplier_link,
+            "notes": f"来自店铺运营系统 {source_project_id}，S1 修订 {handoff.get('source_project_revision') or '-'}。",
+        })
+        title, bullets, description = make_copy_for_row(
+            product_name,
+            row.get("color"),
+            row.get("size"),
+            row.get("material"),
+            row.get("set_count"),
+        )
+        if title:
+            row["title"] = title
+            for index, bullet in enumerate(bullets, 1):
+                row[f"bullet_{index}"] = bullet
+            row["description"] = description
+        if option:
+            row.update({
+                "package_length_in": _bridge_number(option.get("packageLengthIn")),
+                "package_width_in": _bridge_number(option.get("packageWidthIn")),
+                "package_height_in": _bridge_number(option.get("packageHeightIn")),
+                "package_weight_lb": _bridge_number(option.get("packageWeightLb")),
+            })
+        rows.append(row)
+
+    saved = _save_intake({"project_dir": str(project_dir), "product_name": product_name, "rows": rows})
+    filled = _fill_template_version({"project_dir": str(project_dir), "product_name": product_name})
+    save_project_status(project_dir, {
+        "store_ops_generated_at": datetime.now().isoformat(timespec="seconds"),
+        "store_ops_source_revision": handoff.get("source_project_revision"),
+        "store_ops_generated_revision": handoff.get("source_project_revision"),
+    })
+    return {
+        "ok": True,
+        "message": "S1 数据已带入，上传表已生成并完成自检。",
+        "source_project_id": source_project_id,
+        "project_id": _relative(project_dir),
+        "intake": saved,
+        "fill": filled,
     }
 
 
@@ -2084,6 +2518,12 @@ def _project_path(payload):
     if not path.exists():
         raise ValueError("项目不存在。")
     return path
+
+
+def _locked_project_call(payload, action):
+    """Serialize existing workbench writers with the guarded merge in this process."""
+    with project_intake_lock(_project_path(payload)):
+        return action(payload)
 
 
 def _auto_fill_message(result):

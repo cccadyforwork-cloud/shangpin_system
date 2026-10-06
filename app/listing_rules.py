@@ -42,7 +42,7 @@ def _title_words(title):
 
 
 def _is_title_cased_word(word):
-    return word.isupper() or word[:1].isupper()
+    return word.lower() == "mm" or word.isupper() or word[:1].isupper()
 
 
 def _paragraphs(value):

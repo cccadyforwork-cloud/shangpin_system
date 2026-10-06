@@ -1,0 +1,634 @@
+[
+  {
+    "name": "内裤-蝴蝶",
+    "file": "内裤蝴蝶S码M码V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 48,
+        "coordinate": "AV8",
+        "label": "Apparel Size Body Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.body_type",
+        "sku": "TTCA-ButterflyUnderwear-S",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.body_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 9,
+        "column": 48,
+        "coordinate": "AV9",
+        "label": "Apparel Size Body Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.body_type",
+        "sku": "TTCA-ButterflyUnderwear-M",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.body_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 49,
+        "coordinate": "AW8",
+        "label": "Apparel Size Height Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.height_type",
+        "sku": "TTCA-ButterflyUnderwear-S",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.height_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 9,
+        "column": 49,
+        "coordinate": "AW9",
+        "label": "Apparel Size Height Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.height_type",
+        "sku": "TTCA-ButterflyUnderwear-M",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.height_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 56,
+        "coordinate": "BD8",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-ButterflyUnderwear-S",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 9,
+        "column": 56,
+        "coordinate": "BD9",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-ButterflyUnderwear-M",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "内裤-棉",
+    "file": "内裤棉M码5件装V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 48,
+        "coordinate": "AV8",
+        "label": "Apparel Size Body Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.body_type",
+        "sku": "TTCA-CottonUnderwear-M-5pcs",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.body_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 49,
+        "coordinate": "AW8",
+        "label": "Apparel Size Height Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.height_type",
+        "sku": "TTCA-CottonUnderwear-M-5pcs",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.height_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 56,
+        "coordinate": "BD8",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-CottonUnderwear-M-5pcs",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "面罩",
+    "file": "面罩迷彩全脸款V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 53,
+        "coordinate": "BA8",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-CamoMask-GreenCamo",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 9,
+        "column": 53,
+        "coordinate": "BA9",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-CamoMask-BlueCamo",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "面罩",
+    "file": "面罩围脖款V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 53,
+        "coordinate": "BA8",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-NeckGaiter-DarkSet",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 9,
+        "column": 53,
+        "coordinate": "BA9",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-NeckGaiter-LightSet",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "马桶垫",
+    "file": "马桶垫V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "袜子",
+    "file": "袜子5双装V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 47,
+        "coordinate": "AU8",
+        "label": "Apparel Size Body Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.body_type",
+        "sku": "TTCA-AnkleSocks-5pairs",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.body_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 48,
+        "coordinate": "AV8",
+        "label": "Apparel Size Height Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.height_type",
+        "sku": "TTCA-AnkleSocks-5pairs",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.height_type,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "冰袖",
+    "file": "冰袖冰川款V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 45,
+        "coordinate": "AS8",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-CoolingSleeve-Glacier",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "保鲜盒",
+    "file": "保鲜盒2件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "清洁果蔬",
+    "file": "清洁果蔬4件装V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 77,
+        "coordinate": "BY8",
+        "label": "Capacity",
+        "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "sku": "TTCA-CleaningBrush-4pcs",
+        "formula": "IF(PTList0,reqPTList0capacitymarketplace_idATVPDKIKX0DER1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 78,
+        "coordinate": "BZ8",
+        "label": "Capacity Unit",
+        "field_name": "capacity[marketplace_id=ATVPDKIKX0DER]#1.unit",
+        "sku": "TTCA-CleaningBrush-4pcs",
+        "formula": "IF(PTList0,reqPTList0capacitymarketplace_idATVPDKIKX0DER1.unit,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 205,
+        "coordinate": "GW8",
+        "label": "Item Volume",
+        "field_name": "item_volume[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "sku": "TTCA-CleaningBrush-4pcs",
+        "formula": "IF(PTList0,reqPTList0item_volumemarketplace_idATVPDKIKX0DER1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 206,
+        "coordinate": "GX8",
+        "label": "Item Volume Unit",
+        "field_name": "item_volume[marketplace_id=ATVPDKIKX0DER]#1.unit",
+        "sku": "TTCA-CleaningBrush-4pcs",
+        "formula": "IF(PTList0,reqPTList0item_volumemarketplace_idATVPDKIKX0DER1.unit,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "冰块托盘",
+    "file": "冰块托盘V1.xlsm",
+    "findings": [
+      "TTCA-IceTray-1pc 的 标题长度为 126 字符，超过 125 字符。"
+    ],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "冰袖",
+    "file": "冰袖渐变色V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 45,
+        "coordinate": "AS8",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-GradientSleeve-PinkYellow",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 9,
+        "column": 45,
+        "coordinate": "AS9",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-GradientSleeve-BluePink",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 10,
+        "column": 45,
+        "coordinate": "AS10",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-GradientSleeve-BlueYellow",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "镊子",
+    "file": "镊子4件套V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "针线包",
+    "file": "针线包27件套V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "骑行短裤",
+    "file": "骑行短裤M码2XL码V1.xlsm",
+    "findings": [
+      "TTCA-CyclingShorts 的 标题长度为 130 字符，超过 125 字符。",
+      "TTCA-CyclingShorts-M 的 标题长度为 126 字符，超过 125 字符。",
+      "TTCA-CyclingShorts-2XL 的 标题长度为 128 字符，超过 125 字符。"
+    ],
+    "red": [
+      {
+        "row": 8,
+        "column": 54,
+        "coordinate": "BB8",
+        "label": "Bottoms Body Type",
+        "field_name": "bottoms_size[marketplace_id=ATVPDKIKX0DER]#1.body_type",
+        "sku": "TTCA-CyclingShorts-M",
+        "formula": "IF(PTList0,for_minPTList0bottoms_sizemarketplace_idATVPDKIKX0DER1.body_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 9,
+        "column": 54,
+        "coordinate": "BB9",
+        "label": "Bottoms Body Type",
+        "field_name": "bottoms_size[marketplace_id=ATVPDKIKX0DER]#1.body_type",
+        "sku": "TTCA-CyclingShorts-2XL",
+        "formula": "IF(PTList0,for_minPTList0bottoms_sizemarketplace_idATVPDKIKX0DER1.body_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 55,
+        "coordinate": "BC8",
+        "label": "Bottoms Height Type",
+        "field_name": "bottoms_size[marketplace_id=ATVPDKIKX0DER]#1.height_type",
+        "sku": "TTCA-CyclingShorts-M",
+        "formula": "IF(PTList0,for_minPTList0bottoms_sizemarketplace_idATVPDKIKX0DER1.height_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 9,
+        "column": 55,
+        "coordinate": "BC9",
+        "label": "Bottoms Height Type",
+        "field_name": "bottoms_size[marketplace_id=ATVPDKIKX0DER]#1.height_type",
+        "sku": "TTCA-CyclingShorts-2XL",
+        "formula": "IF(PTList0,for_minPTList0bottoms_sizemarketplace_idATVPDKIKX0DER1.height_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 63,
+        "coordinate": "BK8",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-CyclingShorts-M",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      },
+      {
+        "row": 9,
+        "column": 63,
+        "coordinate": "BK9",
+        "label": "Special Size",
+        "field_name": "special_size_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "sku": "TTCA-CyclingShorts-2XL",
+        "formula": "IF(PTList0,reqPTList0special_size_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "充磁消磁器",
+    "file": "充磁消磁器绿色V1.xlsm",
+    "findings": [
+      "TTCA-MagnetizerTool 的 标题长度为 129 字符，超过 125 字符。"
+    ],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "9PCS英制球形内六角扳手中长",
+    "file": "英制球形内六角扳手9件套V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "23PCS电讯维修批组套",
+    "file": "电讯维修批组套23件套V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "蝴蝶结",
+    "file": "蝴蝶结金色银色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "短袜",
+    "file": "短袜5双装V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 47,
+        "coordinate": "AU8",
+        "label": "Apparel Size Body Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.body_type",
+        "sku": "TTCA-SportSocks-5pairs",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.body_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 48,
+        "coordinate": "AV8",
+        "label": "Apparel Size Height Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.height_type",
+        "sku": "TTCA-SportSocks-5pairs",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.height_type,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "过滤网",
+    "file": "过滤网200目V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "船袜",
+    "file": "船袜7双装V1.xlsm",
+    "findings": [],
+    "red": [
+      {
+        "row": 8,
+        "column": 47,
+        "coordinate": "AU8",
+        "label": "Apparel Size Body Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.body_type",
+        "sku": "TTCA-BoatSocks-7pairs",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.body_type,0)",
+        "kind": "required"
+      },
+      {
+        "row": 8,
+        "column": 48,
+        "coordinate": "AV8",
+        "label": "Apparel Size Height Type",
+        "field_name": "apparel_size[marketplace_id=ATVPDKIKX0DER]#1.height_type",
+        "sku": "TTCA-BoatSocks-7pairs",
+        "formula": "IF(PTList0,for_minPTList0apparel_sizemarketplace_idATVPDKIKX0DER1.height_type,0)",
+        "kind": "required"
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "name": "防滑贴",
+    "file": "防滑贴16件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "直尺",
+    "file": "直尺红色V1.xlsm",
+    "findings": [
+      "TTCA-MarkingRuler-Red 的 标题长度为 140 字符，超过 125 字符。"
+    ],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "拉力带",
+    "file": "拉力带V1.xlsm",
+    "findings": [
+      "TTCA-ExerciseBand 的 标题长度为 126 字符，超过 125 字符。"
+    ],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "皮革打孔器",
+    "file": "皮革打孔器V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "开瓶器",
+    "file": "开瓶器3件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "磁吸手机支架",
+    "file": "磁吸手机支架V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "洗鞋袋",
+    "file": "洗鞋袋黄色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "鞋子清洗袋",
+    "file": "鞋子清洗袋白色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "搭扣",
+    "file": "搭扣20件装40毫米V1.xlsm",
+    "findings": [
+      "TTCA-SnapHook 的 Fabric Type 为空。",
+      "TTCA-SnapHook-20pcs-40mm 的 Fabric Type 为空。"
+    ],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "手机防水袋",
+    "file": "手机防水袋黑色白色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "狗玩具",
+    "file": "狗玩具组合款V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "樱桃挂饰",
+    "file": "樱桃挂饰红色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "手链",
+    "file": "手链珍珠款V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "蚊香支架",
+    "file": "蚊香支架V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "衣角扣子",
+    "file": "衣角扣子3件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "卡皮巴拉钥匙扣",
+    "file": "卡皮巴拉钥匙扣3件装V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "钥匙扣",
+    "file": "钥匙扣木色V1.xlsm",
+    "findings": [],
+    "red": [],
+    "unresolved": []
+  },
+  {
+    "name": "方形烘培纸",
+    "file": "方形烘焙纸50张V1.xlsm",
+    "findings": [
+      "TTCA-BakingPaper-50pcs 的 标题长度为 127 字符，超过 125 字符。",
+      "TTCA-BakingPaper-50pcs 是款式/尺寸变体 Child，但标题未包含自身属性 `8 x 6 Inches`。"
+    ],
+    "red": [],
+    "unresolved": []
+  }
+]
