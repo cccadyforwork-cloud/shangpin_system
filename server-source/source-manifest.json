@@ -1,0 +1,368 @@
+{
+  "module": "product",
+  "repository": "cccadyforwork-cloud/shangpin_system",
+  "captured_at_utc": "2026-10-09T12:15:02.840675+00:00",
+  "source": "read-only live-source allowlist; no deploy or business data",
+  "files": [
+    {
+      "path": "apps/product/app/__init__.py",
+      "server_path": "/opt/company-tools/apps/product/app/__init__.py",
+      "server_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "repository_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/analyzer.py",
+      "server_path": "/opt/company-tools/apps/product/app/analyzer.py",
+      "server_sha256": "db350aab026d8da2d779bad0850c8fc78cf47eea989cf63e8dcded6384563015",
+      "repository_sha256": "db350aab026d8da2d779bad0850c8fc78cf47eea989cf63e8dcded6384563015",
+      "bytes": 40552,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/auto_fill.py",
+      "server_path": "/opt/company-tools/apps/product/app/auto_fill.py",
+      "server_sha256": "fd0ae18fc0100c246f9e3a3d390324fec96fff9aac2a5e0e4a8e2dfce4bbc9af",
+      "repository_sha256": "fd0ae18fc0100c246f9e3a3d390324fec96fff9aac2a5e0e4a8e2dfce4bbc9af",
+      "bytes": 5183,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/automation_workbench.py",
+      "server_path": "/opt/company-tools/apps/product/app/automation_workbench.py",
+      "server_sha256": "a2fda7f932982d8e286b6880dd12fa63f9cd0c15e1e72153ae7f8bd99130336b",
+      "repository_sha256": "a2fda7f932982d8e286b6880dd12fa63f9cd0c15e1e72153ae7f8bd99130336b",
+      "bytes": 24071,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/automation_workbench_frontend.html",
+      "server_path": "/opt/company-tools/apps/product/app/automation_workbench_frontend.html",
+      "server_sha256": "db3ad61096a8bbd09c8fd0bd469cf67fd82fa5fa901ef3cd3d3997dc524f5c24",
+      "repository_sha256": "db3ad61096a8bbd09c8fd0bd469cf67fd82fa5fa901ef3cd3d3997dc524f5c24",
+      "bytes": 20065,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/batch_fast_prelisting.py",
+      "server_path": "/opt/company-tools/apps/product/app/batch_fast_prelisting.py",
+      "server_sha256": "32e528131d2f169ac17f646cc3fba7e215e8ac0bbd1fa175991f53452855533c",
+      "repository_sha256": "32e528131d2f169ac17f646cc3fba7e215e8ac0bbd1fa175991f53452855533c",
+      "bytes": 38264,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/batch_fast_version_preview.html",
+      "server_path": "/opt/company-tools/apps/product/app/batch_fast_version_preview.html",
+      "server_sha256": "1e309a55454a8f6b632659ef197e890220d40326406cf9ec49909164fa0e5cb6",
+      "repository_sha256": "1e309a55454a8f6b632659ef197e890220d40326406cf9ec49909164fa0e5cb6",
+      "bytes": 9127,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/batch_fast_workbench.py",
+      "server_path": "/opt/company-tools/apps/product/app/batch_fast_workbench.py",
+      "server_sha256": "3c7f7494a0fa41062b477340fe4746501f9561d95303827660107664bf92fbaa",
+      "repository_sha256": "3c7f7494a0fa41062b477340fe4746501f9561d95303827660107664bf92fbaa",
+      "bytes": 22341,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/batch_fast_workbench_frontend.html",
+      "server_path": "/opt/company-tools/apps/product/app/batch_fast_workbench_frontend.html",
+      "server_sha256": "4eafe60ba9ba894e1906c7a82812b11999281259bfa070cee5df2117543b8fa9",
+      "repository_sha256": "4eafe60ba9ba894e1906c7a82812b11999281259bfa070cee5df2117543b8fa9",
+      "bytes": 22315,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/codex_workbench.py",
+      "server_path": "/opt/company-tools/apps/product/app/codex_workbench.py",
+      "server_sha256": "e4fcfa862cabde71993204bf14461b0e1ec0eb916edf5454ce1fc5b14083dae0",
+      "repository_sha256": "e4fcfa862cabde71993204bf14461b0e1ec0eb916edf5454ce1fc5b14083dae0",
+      "bytes": 24872,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/error_learning.py",
+      "server_path": "/opt/company-tools/apps/product/app/error_learning.py",
+      "server_sha256": "a146aa81e67e64f337e5c0f2c4326442479e20bc3e295f67d4c73f3d9a1dd5d6",
+      "repository_sha256": "a146aa81e67e64f337e5c0f2c4326442479e20bc3e295f67d4c73f3d9a1dd5d6",
+      "bytes": 6650,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/experience_pool.py",
+      "server_path": "/opt/company-tools/apps/product/app/experience_pool.py",
+      "server_sha256": "60bf22b81de6aae9c14e476e176304e254ce62a2ccb16a2dbdc239312a94b2a5",
+      "repository_sha256": "60bf22b81de6aae9c14e476e176304e254ce62a2ccb16a2dbdc239312a94b2a5",
+      "bytes": 12311,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/listing_rules.py",
+      "server_path": "/opt/company-tools/apps/product/app/listing_rules.py",
+      "server_sha256": "fc6bb491d62465a4a0debab8b88cb3dd1a7fe153e970c253f98095086487c8b6",
+      "repository_sha256": "fc6bb491d62465a4a0debab8b88cb3dd1a7fe153e970c253f98095086487c8b6",
+      "bytes": 10370,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/main.py",
+      "server_path": "/opt/company-tools/apps/product/app/main.py",
+      "server_sha256": "eb5508e101579da2dceac7336b14c8ed217897bcd1d4751aab18190beb134f34",
+      "repository_sha256": "eb5508e101579da2dceac7336b14c8ed217897bcd1d4751aab18190beb134f34",
+      "bytes": 17792,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/paths.py",
+      "server_path": "/opt/company-tools/apps/product/app/paths.py",
+      "server_sha256": "740b3d9b56e98704c53fbf0d82fd8a749c15a225d49300552bc2559d7b2b0495",
+      "repository_sha256": "740b3d9b56e98704c53fbf0d82fd8a749c15a225d49300552bc2559d7b2b0495",
+      "bytes": 1249,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/product_listing_home.html",
+      "server_path": "/opt/company-tools/apps/product/app/product_listing_home.html",
+      "server_sha256": "0fc75088ce592328df407851005d74a64826dcfe52097fc3b672d31b36fd089b",
+      "repository_sha256": "0fc75088ce592328df407851005d74a64826dcfe52097fc3b672d31b36fd089b",
+      "bytes": 1663,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/project_manager.py",
+      "server_path": "/opt/company-tools/apps/product/app/project_manager.py",
+      "server_sha256": "d994bd8b62a45e9ab5b677db4858a864a4142af7524f6cbd19b769a7128e15df",
+      "repository_sha256": "d994bd8b62a45e9ab5b677db4858a864a4142af7524f6cbd19b769a7128e15df",
+      "bytes": 4390,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/project_status.py",
+      "server_path": "/opt/company-tools/apps/product/app/project_status.py",
+      "server_sha256": "2aef52a5e07ac871ae2712ea085b00cdccbd590182d2a79e8e063d016d375878",
+      "repository_sha256": "2aef52a5e07ac871ae2712ea085b00cdccbd590182d2a79e8e063d016d375878",
+      "bytes": 3638,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/report_parser.py",
+      "server_path": "/opt/company-tools/apps/product/app/report_parser.py",
+      "server_sha256": "f9bf58f67891273b4535e4b8bd4629ab412d7904d3b60e15522edf68e2ff2f2e",
+      "repository_sha256": "f9bf58f67891273b4535e4b8bd4629ab412d7904d3b60e15522edf68e2ff2f2e",
+      "bytes": 5634,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/success_rule_defaults.py",
+      "server_path": "/opt/company-tools/apps/product/app/success_rule_defaults.py",
+      "server_sha256": "8f3cbc75e5fe303a2babf3a822a190b4f4ea083013380a3c554e0cb7d9dd01a1",
+      "repository_sha256": "8f3cbc75e5fe303a2babf3a822a190b4f4ea083013380a3c554e0cb7d9dd01a1",
+      "bytes": 2998,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/success_templates.py",
+      "server_path": "/opt/company-tools/apps/product/app/success_templates.py",
+      "server_sha256": "fabe635d03c015dbec74fe0ec325ba8e8cd111d8e2ad98fb5731f3ae2349820a",
+      "repository_sha256": "fabe635d03c015dbec74fe0ec325ba8e8cd111d8e2ad98fb5731f3ae2349820a",
+      "bytes": 12397,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/template_inspector.py",
+      "server_path": "/opt/company-tools/apps/product/app/template_inspector.py",
+      "server_sha256": "a18184043279c68c1056d37da92045927bccee84da330058531744ad11650105",
+      "repository_sha256": "a18184043279c68c1056d37da92045927bccee84da330058531744ad11650105",
+      "bytes": 5014,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/template_red_field_scanner.py",
+      "server_path": "/opt/company-tools/apps/product/app/template_red_field_scanner.py",
+      "server_sha256": "d2ccecd60382910a50697706260027bb950f3dfa46cfbc182eaa3fbdc2e245bd",
+      "repository_sha256": "d2ccecd60382910a50697706260027bb950f3dfa46cfbc182eaa3fbdc2e245bd",
+      "bytes": 13357,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/template_sheet.py",
+      "server_path": "/opt/company-tools/apps/product/app/template_sheet.py",
+      "server_sha256": "43d48e5e2f16a5476bbe0a8afe3f0e0328e9356582c47acc2178af78394f8c69",
+      "repository_sha256": "43d48e5e2f16a5476bbe0a8afe3f0e0328e9356582c47acc2178af78394f8c69",
+      "bytes": 308,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/template_validator.py",
+      "server_path": "/opt/company-tools/apps/product/app/template_validator.py",
+      "server_sha256": "46d0a0a1a4b5340c4e836c64c2d08d7ce05b6f74fcbc0854ee1ec144aa55a5b8",
+      "repository_sha256": "46d0a0a1a4b5340c4e836c64c2d08d7ce05b6f74fcbc0854ee1ec144aa55a5b8",
+      "bytes": 57981,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/template_writer.py",
+      "server_path": "/opt/company-tools/apps/product/app/template_writer.py",
+      "server_sha256": "d243bc41d625555e11dc47868d2d71e907b6c35fb3d5bc370c3e340fec02b83e",
+      "repository_sha256": "d243bc41d625555e11dc47868d2d71e907b6c35fb3d5bc370c3e340fec02b83e",
+      "bytes": 35209,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/validator.py",
+      "server_path": "/opt/company-tools/apps/product/app/validator.py",
+      "server_sha256": "875cf140adbad62700287def0d7793a5e12a4274c273a07b54776434026fd3bc",
+      "repository_sha256": "875cf140adbad62700287def0d7793a5e12a4274c273a07b54776434026fd3bc",
+      "bytes": 16116,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/variation_title_rules.py",
+      "server_path": "/opt/company-tools/apps/product/app/variation_title_rules.py",
+      "server_sha256": "d6017e30d3dd89d12a69186f83ca206b42929e97cbf1934f256073f927a0862b",
+      "repository_sha256": "d6017e30d3dd89d12a69186f83ca206b42929e97cbf1934f256073f927a0862b",
+      "bytes": 8247,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/versioning.py",
+      "server_path": "/opt/company-tools/apps/product/app/versioning.py",
+      "server_sha256": "c6ce442610284b0019454561b4e92d92dbf2392fa0db8a63279f7d48e52b013c",
+      "repository_sha256": "c6ce442610284b0019454561b4e92d92dbf2392fa0db8a63279f7d48e52b013c",
+      "bytes": 1679,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/workbench.py",
+      "server_path": "/opt/company-tools/apps/product/app/workbench.py",
+      "server_sha256": "4eef177719e82fe371ad945731ebc3fe85b495b46d5fbf01fd2e411e1e2b5fd8",
+      "repository_sha256": "4eef177719e82fe371ad945731ebc3fe85b495b46d5fbf01fd2e411e1e2b5fd8",
+      "bytes": 105328,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/workbench_frontend.html",
+      "server_path": "/opt/company-tools/apps/product/app/workbench_frontend.html",
+      "server_sha256": "4625f387c20461f569412dc5aebdcbdab8904d4d581aee58a1b6b86c1569fc36",
+      "repository_sha256": "4625f387c20461f569412dc5aebdcbdab8904d4d581aee58a1b6b86c1569fc36",
+      "bytes": 86964,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/app/workbook_io.py",
+      "server_path": "/opt/company-tools/apps/product/app/workbook_io.py",
+      "server_sha256": "6d68690f409859cfe5b3eb6e49291f9d8ad19b3303ff734f7a3f9bb3c02c20eb",
+      "repository_sha256": "6d68690f409859cfe5b3eb6e49291f9d8ad19b3303ff734f7a3f9bb3c02c20eb",
+      "bytes": 5806,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/scripts/build_batch_fast_wechat_guide.py",
+      "server_path": "/opt/company-tools/apps/product/scripts/build_batch_fast_wechat_guide.py",
+      "server_sha256": "c30c9f353096a71287f06aa57f413d1618f942fa8b9e49334803ef5d70a37b40",
+      "repository_sha256": "c30c9f353096a71287f06aa57f413d1618f942fa8b9e49334803ef5d70a37b40",
+      "bytes": 13238,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/scripts/codex_worker_gateway.py",
+      "server_path": "/opt/company-tools/apps/product/scripts/codex_worker_gateway.py",
+      "server_sha256": "e0ecadb58a43889f5a8322b4834136d9ef4e3ad6f1ba1bc4ad7260c73646d973",
+      "repository_sha256": "e0ecadb58a43889f5a8322b4834136d9ef4e3ad6f1ba1bc4ad7260c73646d973",
+      "bytes": 2210,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/scripts/import_experience_pool.py",
+      "server_path": "/opt/company-tools/apps/product/scripts/import_experience_pool.py",
+      "server_sha256": "462388209b655b7ea13f941a9b2e60f313c93b250bb11ffe8bbec2748d9df4ea",
+      "repository_sha256": "462388209b655b7ea13f941a9b2e60f313c93b250bb11ffe8bbec2748d9df4ea",
+      "bytes": 766,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/tools/fill_coffee_cleaning_brush_template.py",
+      "server_path": "/opt/company-tools/apps/product/tools/fill_coffee_cleaning_brush_template.py",
+      "server_sha256": "844d76f182c00354d3a8d458eb27208972582d9211f61ea7c0b8c8f41c75c237",
+      "repository_sha256": "844d76f182c00354d3a8d458eb27208972582d9211f61ea7c0b8c8f41c75c237",
+      "bytes": 8746,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/tools/fill_huangma_pet_toy_template.py",
+      "server_path": "/opt/company-tools/apps/product/tools/fill_huangma_pet_toy_template.py",
+      "server_sha256": "058e9ce45322b4832e72b96f46db5c289cf0e5855d75cf60816d901e39023b40",
+      "repository_sha256": "058e9ce45322b4832e72b96f46db5c289cf0e5855d75cf60816d901e39023b40",
+      "bytes": 8971,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/tools/fill_pet_airtag_collar_template.py",
+      "server_path": "/opt/company-tools/apps/product/tools/fill_pet_airtag_collar_template.py",
+      "server_sha256": "a2dbeb72e020a87dae6cb18538cbcd33fced94f7646f02b95472d796342ce149",
+      "repository_sha256": "a2dbeb72e020a87dae6cb18538cbcd33fced94f7646f02b95472d796342ce149",
+      "bytes": 9078,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/tools/fill_shaker_bottle_template.py",
+      "server_path": "/opt/company-tools/apps/product/tools/fill_shaker_bottle_template.py",
+      "server_sha256": "914cf3ae06ebf07fc45c89e223489dd63e5cd7300d551d834e3d631c72b5e914",
+      "repository_sha256": "914cf3ae06ebf07fc45c89e223489dd63e5cd7300d551d834e3d631c72b5e914",
+      "bytes": 9011,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/tools/fill_sports_cooling_towel_template.py",
+      "server_path": "/opt/company-tools/apps/product/tools/fill_sports_cooling_towel_template.py",
+      "server_sha256": "e1cb22c074126d5764b41c648a6216cc7f7babc186769903ff8198d46b2ccf14",
+      "repository_sha256": "e1cb22c074126d5764b41c648a6216cc7f7babc186769903ff8198d46b2ccf14",
+      "bytes": 8129,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/tools/fill_waterproof_washbag_template.py",
+      "server_path": "/opt/company-tools/apps/product/tools/fill_waterproof_washbag_template.py",
+      "server_sha256": "7dd0b1b55decfab99d4b023261d1af78b51d892f04df47f71a5dd8563f347857",
+      "repository_sha256": "7dd0b1b55decfab99d4b023261d1af78b51d892f04df47f71a5dd8563f347857",
+      "bytes": 9066,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/tools/fill_wooden_wobbler_cat_toy_template.py",
+      "server_path": "/opt/company-tools/apps/product/tools/fill_wooden_wobbler_cat_toy_template.py",
+      "server_sha256": "60a2a938ee2007f575c80b58493dbaa130a4297829ccd90b764283f6fcd64009",
+      "repository_sha256": "60a2a938ee2007f575c80b58493dbaa130a4297829ccd90b764283f6fcd64009",
+      "bytes": 9108,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/tools/update_repot_mat_variants.py",
+      "server_path": "/opt/company-tools/apps/product/tools/update_repot_mat_variants.py",
+      "server_sha256": "eccf18ce4a37182abdc48248678e97e33aaed187d77234adba225bd41ac640aa",
+      "repository_sha256": "eccf18ce4a37182abdc48248678e97e33aaed187d77234adba225bd41ac640aa",
+      "bytes": 16986,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/run.py",
+      "server_path": "/opt/company-tools/apps/product/run.py",
+      "server_sha256": "ba4100c319dc97014d7e66e52a26447d514eca4ccd47d00ccc859af6d1e7c3f9",
+      "repository_sha256": "ba4100c319dc97014d7e66e52a26447d514eca4ccd47d00ccc859af6d1e7c3f9",
+      "bytes": 66,
+      "security_normalization": null
+    },
+    {
+      "path": "apps/product/requirements.txt",
+      "server_path": "/opt/company-tools/apps/product/requirements.txt",
+      "server_sha256": "1ae51782510685128be3cd047b1bbc17325e090a403f8fb17a1a898229ecd166",
+      "repository_sha256": "1ae51782510685128be3cd047b1bbc17325e090a403f8fb17a1a898229ecd166",
+      "bytes": 29,
+      "security_normalization": null
+    }
+  ]
+}
