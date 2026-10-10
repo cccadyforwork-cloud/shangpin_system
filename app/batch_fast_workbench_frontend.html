@@ -90,7 +90,7 @@
         <p class="sub" id="workbench-subtitle">以 Amazon 竞品为参考，独立记录竞品 HTML、原始模板和最终输出文档。</p>
       </div>
       <div class="actions">
-        <a class="btn" href="./">默认上品工作台</a>
+        <button class="btn" id="return-workbench" type="button">默认上品工作台</button>
         <a class="btn" id="other-workbench" href="/refurb-batch">退货翻新批量上品工作台</a>
         <div class="theme-switch" aria-label="页面主题">
           <button data-theme-choice="light">浅色</button>
@@ -241,6 +241,7 @@
       return `<div class="file-actions${zoneClass}"${zoneAttr}><span class="path">暂无文件</span>${download?'<span class="btn small disabled">下载到本地</span>':''}${uploadable?`<button class="btn small upload" data-field="${field}">上传文件</button><span class="drop-hint">也可将 Excel 拖到这里</span>`:''}</div>`;
     }
     document.addEventListener('click', async (event) => {
+      if(event.target.closest('#return-workbench')){window.location.assign('/');return;}
       const theme=event.target.closest('[data-theme-choice]'); if(theme){setTheme(theme.dataset.themeChoice);return;}
       const tab=event.target.closest('[data-tab]'); if(tab){state.active=tab.dataset.tab;state.activeStore=null;render();return;}
       const store=event.target.closest('[data-store]'); if(store){state.activeStore=store.dataset.store;render();return;}
