@@ -84,6 +84,7 @@ STATUS_LABELS = {
     "blocked": "卡住",
     "not_started": "未开始",
 }
+WORKBENCH_OWNERS = ("ccady", "图图", "凯旋")
 
 STORE_OPS_HANDOFF_FILE = "store_ops_handoff.json"
 
@@ -276,6 +277,8 @@ def _handler():
                         result = _locked_project_call(payload, _save_version_note)
                     elif parsed.path == "/api/project-note":
                         result = _locked_project_call(payload, _save_project_note)
+                    elif parsed.path == "/api/project-owner":
+                        result = _locked_project_call(payload, _save_project_owner)
                     elif parsed.path == "/api/confirm-feedback-fix":
                         result = _locked_project_call(payload, _confirm_feedback_fix)
                     elif parsed.path == "/api/delete-project":
@@ -584,6 +587,7 @@ def _workbench_project_payload(project_dir, item):
         "folder": project_dir.name,
         "status": STATUS_LABELS.get(status, status),
         "status_code": status,
+        "owner": item.get("workbench_owner") if item.get("workbench_owner") in WORKBENCH_OWNERS else "ccady",
         "workbench_note": item.get("workbench_note") or "",
         "storeOps": {
             "sourceProjectId": store_ops_handoff.get("source_project_id") or "",
@@ -1048,9 +1052,11 @@ def _create_project(payload):
     name = str(payload.get("name", "")).strip()
     if not name:
         raise ValueError("请填写产品名。")
+    owner = _validated_workbench_owner(payload.get("owner") or "ccady")
     project_dir, intake_path = create_project(name)
     save_project_status(project_dir, {
         "product_name": name,
+        "workbench_owner": owner,
         "status": "not_started",
         "latest_draft": _relative_to_project(project_dir, intake_path),
     })
@@ -1058,6 +1064,7 @@ def _create_project(payload):
         "ok": True,
         "message": "项目已创建",
         "project_dir": str(project_dir),
+        "owner": owner,
         "intake_path": str(intake_path),
     }
 
@@ -1567,6 +1574,20 @@ def _save_project_note(payload):
     note = str(payload.get("note") or "").strip()
     save_project_status(project_dir, {"workbench_note": note or None})
     return {"ok": True, "message": "产品备注已保存", "note": note}
+
+
+def _validated_workbench_owner(value):
+    owner = str(value or "").strip()
+    if owner not in WORKBENCH_OWNERS:
+        raise ValueError("负责人只能选择 ccady、图图或凯旋。")
+    return owner
+
+
+def _save_project_owner(payload):
+    project_dir = _project_path(payload)
+    owner = _validated_workbench_owner(payload.get("owner"))
+    save_project_status(project_dir, {"workbench_owner": owner})
+    return {"ok": True, "message": f"负责人已改为 {owner}", "owner": owner}
 
 
 def _delete_project(payload):

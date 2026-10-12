@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>批量抄品工作台</title>
   <style>
-    :root { --ink:#172033; --muted:#667085; --line:#d9dee8; --soft:#f5f7fa; --page:#eef1f5; --panel:#fff; --button:#fff; --hover:#fbfdff; --blue:#2f6fed; --green:#16835d; --shadow:0 8px 28px rgba(20,31,55,.08); color-scheme:light; }
-    :root[data-theme="dark"] { --ink:#e9eef8; --muted:#98a5bb; --line:#2b3548; --soft:#182131; --page:#0c111b; --panel:#121a27; --button:#1a2435; --hover:#172234; --blue:#6d9cff; --green:#53c99a; --shadow:0 12px 34px rgba(0,0,0,.28); color-scheme:dark; }
+    :root { --ink:#172033; --muted:#667085; --line:#d9dee8; --soft:#f5f7fa; --page:#eef1f5; --panel:#fff; --button:#fff; --hover:#fbfdff; --blue:#2f6fed; --blue-contrast:#fff; --green:#16835d; --table-heading:#465066; --warning:#906014; --error:#b5483f; --shadow:0 8px 28px rgba(20,31,55,.08); color-scheme:light; }
+    :root[data-theme="dark"] { --ink:#e9eef8; --muted:#aab7ca; --line:#344158; --soft:#202b3d; --page:#0c111b; --panel:#121a27; --button:#1a2435; --hover:#172234; --blue:#6d9cff; --blue-contrast:#101a2d; --green:#53c99a; --table-heading:#d2dbea; --warning:#f3bd68; --error:#ff9d96; --shadow:0 12px 34px rgba(0,0,0,.28); color-scheme:dark; }
     * { box-sizing:border-box; }
     body { margin:0; color:var(--ink); background:var(--page); font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; transition:background .2s,color .2s; }
     button, select, input { font:inherit; }
@@ -17,7 +17,7 @@
     .actions { display:flex; gap:10px; flex-wrap:wrap; }
     .btn { border:1px solid var(--line); background:var(--button); color:var(--ink); border-radius:8px; padding:9px 14px; cursor:pointer; text-decoration:none; white-space:nowrap; }
     .btn:hover { border-color:#9aa7bb; }
-    .btn.primary { border-color:var(--blue); background:var(--blue); color:#fff; }
+    .btn.primary { border-color:var(--blue); background:var(--blue); color:var(--blue-contrast); }
     .btn.small { padding:6px 10px; font-size:13px; }
     .btn[disabled], .btn.disabled { opacity:.42; pointer-events:none; }
     .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); overflow:hidden; }
@@ -30,20 +30,20 @@
     .progress-list { display:flex; max-height:112px; gap:5px; flex-wrap:wrap; overflow:auto; }
     .progress-chip { display:inline-flex; max-width:100%; padding:3px 7px; border-radius:999px; background:var(--soft); color:var(--muted); font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .progress-block.generated .progress-title { color:var(--green); }
-    .progress-block.generating .progress-title { color:#a06b16; }
-    .progress-block.failed .progress-title { color:#b5483f; }
+    .progress-block.generating .progress-title { color:var(--warning); }
+    .progress-block.failed .progress-title { color:var(--error); }
     .tabs { display:flex; gap:4px; padding:12px 14px 0; overflow:auto; border-bottom:1px solid var(--line); }
     .tab { border:0; border-bottom:3px solid transparent; background:transparent; padding:10px 15px; color:var(--muted); cursor:pointer; white-space:nowrap; }
     .tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:650; }
     .store-tabs { display:none; gap:8px; padding:12px 14px; border-bottom:1px solid var(--line); background:var(--hover); }
     .store-tabs.visible { display:flex; }
     .store-tab { border:1px solid var(--line); border-radius:8px; padding:7px 18px; background:var(--button); color:var(--muted); cursor:pointer; }
-    .store-tab.active { border-color:var(--blue); background:var(--blue); color:#fff; font-weight:650; }
+    .store-tab.active { border-color:var(--blue); background:var(--blue); color:var(--blue-contrast); font-weight:650; }
     .table-wrap { overflow:auto; }
     table { border-collapse:collapse; width:100%; min-width:1250px; table-layout:fixed; }
     th, td { padding:13px 14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); text-align:left; vertical-align:middle; }
     th:last-child, td:last-child { border-right:0; }
-    th { background:var(--soft); color:#465066; font-size:13px; font-weight:650; }
+    th { background:var(--soft); color:var(--table-heading); font-size:13px; font-weight:650; }
     tr:last-child td { border-bottom:0; }
     tbody tr:hover { background:var(--hover); }
     .product { display:flex; flex-direction:column; gap:3px; min-width:0; }
@@ -70,10 +70,10 @@
     .image-group-label { color:var(--ink); font-size:12px; font-weight:700; }
     .image-status { color:var(--muted); font-size:12px; }
     .image-status.ready { color:var(--green); font-weight:650; }
-    .image-error { max-width:220px; color:#b5483f; font-size:11px; line-height:1.35; }
+    .image-error { max-width:220px; color:var(--error); font-size:11px; line-height:1.35; }
     .theme-switch { display:flex; padding:3px; border:1px solid var(--line); border-radius:9px; background:var(--panel); }
     .theme-switch button { border:0; border-radius:6px; padding:6px 10px; background:transparent; color:var(--muted); cursor:pointer; }
-    .theme-switch button.active { color:#fff; background:var(--blue); }
+    .theme-switch button.active { color:var(--blue-contrast); background:var(--blue); }
     .empty { padding:50px; text-align:center; color:var(--muted); }
     .toast { position:fixed; right:24px; bottom:24px; max-width:380px; padding:11px 15px; color:#fff; background:#172033; border-radius:8px; box-shadow:var(--shadow); opacity:0; transform:translateY(8px); pointer-events:none; transition:.2s; }
     .toast.show { opacity:1; transform:none; }
@@ -92,9 +92,9 @@
       <div class="actions">
         <button class="btn" id="return-workbench" type="button">默认上品工作台</button>
         <a class="btn" id="other-workbench" href="/refurb-batch">退货翻新批量上品工作台</a>
-        <div class="theme-switch" aria-label="页面主题">
-          <button data-theme-choice="light">浅色</button>
-          <button data-theme-choice="dark">深夜</button>
+        <div class="theme-switch" role="group" aria-label="页面主题">
+          <button type="button" data-theme-choice="light" aria-pressed="false">浅色</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">深色</button>
         </div>
         <a class="btn disabled" id="download-batch" href="#">批量下载输出</a>
         <button class="btn" id="refresh">刷新</button>
@@ -122,8 +122,8 @@
     function setTheme(theme) {
       const selected=theme==='dark'?'dark':'light';
       document.documentElement.dataset.theme=selected;
-      document.querySelectorAll('[data-theme-choice]').forEach(button=>button.classList.toggle('active',button.dataset.themeChoice===selected));
-      localStorage.setItem('batch-fast-theme',selected);
+      document.querySelectorAll('[data-theme-choice]').forEach(button=>{const active=button.dataset.themeChoice===selected;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
+      localStorage.setItem('shangpin-workbench-theme',selected);
     }
     function toast(message) { const el=$('#toast'); el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),2200); }
     async function api(path, options={}) { const res=await fetch(path, options); const data=await res.json(); if(!res.ok || data.ok===false) throw new Error(data.error || '操作失败'); return data; }
@@ -296,7 +296,7 @@
       $('#other-workbench').href='/batch-fast';
       $('#sync').textContent='从退货翻新 Excel 同步';
     }
-    setTheme(localStorage.getItem('batch-fast-theme') || 'light');
+    setTheme(localStorage.getItem('shangpin-workbench-theme') || localStorage.getItem('batch-fast-theme') || 'light');
     load().catch(e=>{$('#content').innerHTML=`<div class="empty">${esc(e.message)}</div>`});
     let autoRefreshBusy=false;
     if(isRefurb) setInterval(async()=>{

@@ -162,7 +162,8 @@ def install(repo, module):
                    '--module', module, '--repo', str(Path(repo).resolve()).replace('\\', '/'),
                    '--kind', hook, '--']
         target = hooks / hook
-        target.write_text('#!/bin/sh\nexec ' + ' '.join(map(shlex.quote, command)) + ' "$@"\n', encoding='utf-8', newline='\n')
+        with target.open('w', encoding='utf-8', newline='\n') as hook_file:
+            hook_file.write('#!/bin/sh\nexec ' + ' '.join(map(shlex.quote, command)) + ' "$@"\n')
         target.chmod(0o755)
     output(repo, 'config', '--local', 'core.hooksPath', str(hooks).replace('\\', '/'))
     output(repo, 'config', '--local', 'pull.ff', 'only')
