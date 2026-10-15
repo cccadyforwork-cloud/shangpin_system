@@ -9,6 +9,7 @@ env/
 .mypy_cache/
 .ruff_cache/
 *.log
+.guarded_intake.lock
 
 # Node / generated dependency folders
 node_modules/
@@ -20,4 +21,3 @@ outputs/**/.pnpm-workspace-state-v1.json
 outputs/**/build_*.mjs
 outputs/**/*.inspect.ndjson
 outputs/**/template_preview*.png
-
