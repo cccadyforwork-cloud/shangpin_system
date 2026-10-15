@@ -1,0 +1,32 @@
+{
+  "product_name": "下喷式油壶",
+  "workbench_owner": "ccady",
+  "status": "ready_for_upload",
+  "latest_draft": "03_产品详情页/下喷式油壶_产品资料.xlsx",
+  "updated_at": "2026-10-12T18:57:29",
+  "workbench_note": "V1 上传反馈：父体缺 Unit Count、本体高和宽，已在 V2 按单只、本体 149×45.3 mm 修正。绿色子体已写入成功，但平台提示 100521 审核中，最多等待 48 小时。V2 待重新上传验证；装箱 16×5×5.5 cm、100 g（重量仍为档位默认）。",
+  "source_template": "05_模版原件/SPRAY_BOTTLE.xlsm",
+  "sku_count": 2,
+  "intake_review_pending": false,
+  "confirmed_item_weight_grams": 82,
+  "package_measurement_source": "user_provided_dimensions_tier_default_weight",
+  "confirmed_at": "2026-10-12T14:45:43",
+  "latest_template": "05_填表版本/下喷式油壶V2.xlsx",
+  "written_field_count": 42,
+  "template_error_count": 0,
+  "version_notes": {
+    "V1": "单只绿色款；父子 SKU 已确认。装箱尺寸更新为 16×5×5.5 cm、装箱重仍用档位默认 100 g；本体高 149 mm、直径 45.3 mm；单品净重 82 g。",
+    "V2": "依据 V1 processing-summary 修正父体 99022：Unit Count=1 Count、本体高=5.87 Inches、本体宽=1.78 Inches；绿色子体 100521 等待平台审核。"
+  },
+  "template_red_field_count": 0,
+  "confirmed_package_dimensions_cm": [
+    16,
+    5,
+    5.5
+  ],
+  "confirmed_item_height_mm": 149,
+  "confirmed_item_diameter_mm": 45.3,
+  "latest_failure_report": "06_处理报告/下喷式油壶V1-processing-summary.xlsm",
+  "latest_fix_report": "06_处理报告/下喷式油壶V1_报错修正说明.md",
+  "failed_template": "05_填表版本/下喷式油壶V1.xlsx"
+}

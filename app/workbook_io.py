@@ -46,7 +46,11 @@ INTAKE_HEADERS = [
     "bullet_4",
     "bullet_5",
     "description",
-    "notes"
+    "notes",
+    "unit_count",
+    "item_height_in",
+    "item_width_in",
+    "item_weight_lb",
 ]
 
 

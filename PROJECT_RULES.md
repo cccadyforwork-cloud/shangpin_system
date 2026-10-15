@@ -197,6 +197,11 @@ TOWEL / GIFT_WRAP 注意：
 - 后台错误 `99022` 已确认 `GIFT_WRAP` Parent 行必须填写 `unit_count` 数值/类型和 `item_weight` 数值/单位。
 - 上述 Parent 行仍不填写包装尺寸和包装重量。
 
+SPRAY_BOTTLE 注意：
+
+- 当前 SPRAY_BOTTLE 模板的后台 `99022` 已确认 Parent 行需要 `unit_count` 数值/类型，以及 `item_width_height` 的商品高度、宽度数值/单位。采用已确认的单只商品尺寸，不拿装箱尺寸代替；Parent 包装尺寸和包装重量仍留空。
+- 这些字段应保存在产品资料表的 `unit_count`、`item_height_in`、`item_width_in`、`item_weight_lb`，重新生成版本时沿用确认值。`item_weight` 虽未在本次反馈列为缺失项，仍按已确认的单品净重填写。
+
 ANIMAL_COLLAR 注意：
 
 - `dog_breed_size` 模板有效值是 `Extra Small`、`Small`、`Medium`、`Large`、`Giant`、`All`。

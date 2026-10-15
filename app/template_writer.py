@@ -39,6 +39,14 @@ FIELD_MAP = {
     "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value": "bullet_4",
     "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value": "bullet_5",
     "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "material",
+    "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value": "unit_count",
+    "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value": "__item_count_type",
+    "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value": "item_height_in",
+    "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit": "__item_height_unit",
+    "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value": "item_width_in",
+    "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit": "__item_width_unit",
+    "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value": "item_weight_lb",
+    "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit": "__item_weight_unit",
     "number_of_items[marketplace_id=ATVPDKIKX0DER]#1.value": "set_count",
     "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value": "__package_quantity",
     "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "color",
@@ -231,6 +239,14 @@ def _value_for(row, source):
         return "Variation" if row.get("parent_sku") else ""
     if source == "__package_quantity":
         return row.get("set_count") or 1
+    if source == "__item_count_type":
+        return "Count" if row.get("unit_count") not in (None, "") else ""
+    if source == "__item_height_unit":
+        return "Inches" if row.get("item_height_in") not in (None, "") else ""
+    if source == "__item_width_unit":
+        return "Inches" if row.get("item_width_in") not in (None, "") else ""
+    if source == "__item_weight_unit":
+        return "Pounds" if row.get("item_weight_lb") not in (None, "") else ""
     if source == "__inches":
         return "Inches"
     if source == "__title_inches":

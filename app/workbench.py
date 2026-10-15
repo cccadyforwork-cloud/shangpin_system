@@ -84,7 +84,9 @@ STATUS_LABELS = {
     "blocked": "卡住",
     "not_started": "未开始",
 }
-WORKBENCH_OWNERS = ("ccady", "图图", "凯旋")
+WORKBENCH_OWNERS = ("cccady", "图图", "凯旋")
+LEGACY_WORKBENCH_OWNER_ALIASES = {"ccady": "cccady"}
+WORKBENCH_STORES = ("1店", "2店")
 
 STORE_OPS_HANDOFF_FILE = "store_ops_handoff.json"
 
@@ -279,6 +281,8 @@ def _handler():
                         result = _locked_project_call(payload, _save_project_note)
                     elif parsed.path == "/api/project-owner":
                         result = _locked_project_call(payload, _save_project_owner)
+                    elif parsed.path == "/api/project-store":
+                        result = _locked_project_call(payload, _save_project_store)
                     elif parsed.path == "/api/confirm-feedback-fix":
                         result = _locked_project_call(payload, _confirm_feedback_fix)
                     elif parsed.path == "/api/delete-project":
@@ -288,7 +292,10 @@ def _handler():
                     elif parsed.path == "/api/learn-success":
                         result = _learn_success()
                     elif parsed.path == "/api/batch-fast/import":
-                        import_batch_fast_sheets(payload.get("paths") or None)
+                        import_batch_fast_sheets(
+                            payload.get("paths") or None,
+                            selection_id=payload.get("selection_id") or None,
+                        )
                         result = batch_fast_payload()
                     elif parsed.path == "/api/batch-fast/save":
                         update_batch_fast_row(payload.get("batch_id", ""), payload.get("row_id", ""), payload.get("fields") or {})
@@ -587,7 +594,8 @@ def _workbench_project_payload(project_dir, item):
         "folder": project_dir.name,
         "status": STATUS_LABELS.get(status, status),
         "status_code": status,
-        "owner": item.get("workbench_owner") if item.get("workbench_owner") in WORKBENCH_OWNERS else "ccady",
+        "owner": _display_workbench_owner(item.get("workbench_owner")),
+        "store": _display_workbench_store(item.get("workbench_store")),
         "workbench_note": item.get("workbench_note") or "",
         "storeOps": {
             "sourceProjectId": store_ops_handoff.get("source_project_id") or "",
@@ -635,6 +643,22 @@ def _intake_module_payload(project_dir, product_name, rows, draft_file, rows_err
         "reportFile": item.get("latest_draft_file"),
         "rows": _json_rows(rows or [first]),
         "files": [
+            {
+                "key": "purchase",
+                "label": "采购与 S1 资料",
+                "type": "文档 / 表格 / PDF",
+                "folder": PURCHASE_DIR,
+                "accept": ".md,.txt,.csv,.tsv,.xlsx,.xlsm,.xls,.pdf",
+                "files": _folder_file_infos(project_dir, [PURCHASE_DIR], suffixes={".md", ".txt", ".csv", ".tsv", ".xlsx", ".xlsm", ".xls", ".pdf"}),
+            },
+            {
+                "key": "pricing",
+                "label": "包装与定价资料",
+                "type": "表格 / 文档 / PDF",
+                "folder": PACKAGING_PRICING_DIR,
+                "accept": ".csv,.tsv,.xlsx,.xlsm,.xls,.md,.txt,.pdf",
+                "files": _folder_file_infos(project_dir, [PACKAGING_PRICING_DIR], suffixes={".csv", ".tsv", ".xlsx", ".xlsm", ".xls", ".md", ".txt", ".pdf"}),
+            },
             {
                 "key": "template",
                 "label": "Amazon 原始模板",
@@ -1052,11 +1076,13 @@ def _create_project(payload):
     name = str(payload.get("name", "")).strip()
     if not name:
         raise ValueError("请填写产品名。")
-    owner = _validated_workbench_owner(payload.get("owner") or "ccady")
+    owner = _validated_workbench_owner(payload.get("owner") or "cccady")
+    store = _validated_workbench_store(payload.get("store") or "1店")
     project_dir, intake_path = create_project(name)
     save_project_status(project_dir, {
         "product_name": name,
         "workbench_owner": owner,
+        "workbench_store": store,
         "status": "not_started",
         "latest_draft": _relative_to_project(project_dir, intake_path),
     })
@@ -1065,6 +1091,7 @@ def _create_project(payload):
         "message": "项目已创建",
         "project_dir": str(project_dir),
         "owner": owner,
+        "store": store,
         "intake_path": str(intake_path),
     }
 
@@ -1578,9 +1605,28 @@ def _save_project_note(payload):
 
 def _validated_workbench_owner(value):
     owner = str(value or "").strip()
+    owner = LEGACY_WORKBENCH_OWNER_ALIASES.get(owner, owner)
     if owner not in WORKBENCH_OWNERS:
-        raise ValueError("负责人只能选择 ccady、图图或凯旋。")
+        raise ValueError("负责人只能选择 cccady、图图或凯旋。")
     return owner
+
+
+def _display_workbench_owner(value):
+    owner = str(value or "").strip()
+    owner = LEGACY_WORKBENCH_OWNER_ALIASES.get(owner, owner)
+    return owner if owner in WORKBENCH_OWNERS else "cccady"
+
+
+def _validated_workbench_store(value):
+    store = str(value or "").strip()
+    if store not in WORKBENCH_STORES:
+        raise ValueError("店铺只能选择 1店或2店。")
+    return store
+
+
+def _display_workbench_store(value):
+    store = str(value or "").strip()
+    return store if store in WORKBENCH_STORES else "1店"
 
 
 def _save_project_owner(payload):
@@ -1588,6 +1634,13 @@ def _save_project_owner(payload):
     owner = _validated_workbench_owner(payload.get("owner"))
     save_project_status(project_dir, {"workbench_owner": owner})
     return {"ok": True, "message": f"负责人已改为 {owner}", "owner": owner}
+
+
+def _save_project_store(payload):
+    project_dir = _project_path(payload)
+    store = _validated_workbench_store(payload.get("store"))
+    save_project_status(project_dir, {"workbench_store": store})
+    return {"ok": True, "message": f"店铺已改为 {store}", "store": store}
 
 
 def _delete_project(payload):
@@ -2152,6 +2205,9 @@ def _feedback_analysis_text(project_dir, failure_report, fix_report, planned_ver
         fix = _clean_inline_text(plan_lines[0])
     elif primary and "product_type" in (primary.get("message", "") + primary.get("field", "")).lower():
         fix = "补齐正确的 product_type / 产品类型后生成下一版。"
+    elif report_path and (report_version := _report_template_version(report_path.name)) and _version_number((_latest_filled_template(project_dir) or Path("")).name) > report_version:
+        current_version = _version_label((_latest_filled_template(project_dir) or Path("")).name)
+        fix = f"已在 {current_version} 修正；上传当前版本后查看新的处理报告。"
     elif planned_version:
         fix = f"确认失败原因后生成 {shared_version_label(planned_version)}。"
     else:
@@ -2164,7 +2220,7 @@ def _feedback_analysis_text(project_dir, failure_report, fix_report, planned_ver
             ["报错码", primary.get("code") or "-"],
             ["报错信息", primary.get("message") or "-"],
             ["报告定位", context.get("reported_cell") or primary.get("field") or "-"],
-            ["当前值", context.get("current_value") or "空"],
+            ["当前版本值", context.get("current_value") or "空"],
             ["对应字段", context.get("field_name") or _field_name_from_error(primary) or "-"],
         ])
     if context.get("actual_cell") and context.get("actual_cell") != context.get("reported_cell"):
@@ -2172,17 +2228,18 @@ def _feedback_analysis_text(project_dir, failure_report, fix_report, planned_ver
 
     notes = []
     valid_type = context.get("template_product_type")
-    if valid_type:
+    product_type_error = primary and "product_type" in f"{primary.get('field', '')} {primary.get('message', '')}".lower()
+    if valid_type and product_type_error:
         notes.append(f"这个模板里的有效产品类型目前看是 `{valid_type}`。")
     title = product_context.get("title")
     item_type = product_context.get("item_type_keyword")
     if title or item_type:
         notes.append(f"商品资料显示商品是 `{title or '未识别标题'}`，产品类型关键词填了 `{item_type or '空'}`。")
-    if valid_type and (title or item_type):
+    if valid_type and product_type_error and (title or item_type):
         notes.append(f"需要判断 `{valid_type}` 这个模板/类目是否真的适合这个商品；如果类目不匹配，补完产品类型后还可能继续报类目或属性不匹配。")
 
     conclusion = why
-    if valid_type:
+    if valid_type and product_type_error:
         conclusion = f"直接原因是产品类型为空；更大的风险是当前模板是 `{valid_type}`，可能和商品类目不匹配。"
 
     return {
@@ -2197,7 +2254,7 @@ def _feedback_analysis_text(project_dir, failure_report, fix_report, planned_ver
 
 
 def _feedback_headline(context, primary):
-    field_label = context.get("field_label") or "产品类型"
+    field_label = context.get("field_label") or _field_label_from_error(primary or {})
     cell = context.get("reported_cell") or context.get("actual_cell") or ""
     if cell:
         return f"报错核心是：{cell} 缺少必填字段 {field_label}。"
@@ -2212,7 +2269,7 @@ def _feedback_error_context(project_dir, error):
         return context
     reported_cell = _cell_ref_from_text(error.get("field", ""))
     if reported_cell:
-        context["reported_cell"] = f"模板!{reported_cell}"
+        context["reported_cell"] = f"处理报告!{reported_cell}"
 
     field_name = _field_name_from_error(error)
     context["field_name"] = field_name
@@ -2227,16 +2284,19 @@ def _feedback_error_context(project_dir, error):
         if ws is None:
             return context
         context["template_product_type"] = _template_product_type(ws)
-        if field_name:
+        reported_label = _field_label_from_error(error)
+        if field_name or reported_label != "未识别字段":
             for col in range(1, ws.max_column + 1):
-                if str(ws.cell(5, col).value or "").strip() == field_name:
+                machine_name = str(ws.cell(5, col).value or "").strip()
+                display_name = _cell_text(ws.cell(4, col).value)
+                if machine_name == field_name or display_name == reported_label:
                     cell = f"模板!{get_column_letter(col)}7"
                     value = ws.cell(7, col).value
                     context["actual_cell"] = cell
                     context["current_value"] = _cell_text(value)
-                    label = _cell_text(ws.cell(4, col).value)
-                    if label:
-                        context["field_label"] = label
+                    context["field_name"] = machine_name
+                    if display_name:
+                        context["field_label"] = display_name
                     break
         if "current_value" not in context and reported_cell:
             value = ws[reported_cell].value
@@ -2270,6 +2330,9 @@ def _field_label_from_error(error):
     text = f"{error.get('field', '')} {error.get('message', '')}"
     if "产品类型" in text or "product_type" in text.lower():
         return "产品类型"
+    label = re.sub(r"\s*\([A-Z]{1,3}[0-9]+\)\s*$", "", str(error.get("field", ""))).strip()
+    if label and label != "Number of attributes with errors":
+        return label
     return "未识别字段"
 
 
@@ -2312,11 +2375,19 @@ def _primary_feedback_error(errors):
 
 def _plain_error_reason(message):
     text = str(message or "")
+    match = re.search(r"attribute '([^']+)' does not have enough values", text, re.I)
+    if match:
+        return f"Amazon 报告显示 {match.group(1)} 缺少必填值。"
     if "product_type" in text and "required" in text:
         return "Amazon 要求 product_type / 产品类型必填，v1 没有填。"
     if "missing required fields" in text.lower():
         return "Amazon 认为模板缺少必填字段。"
     return text
+
+
+def _report_template_version(filename):
+    match = re.search(r"v(\d+)(?=[-_ ]|$)", Path(filename).stem, re.I)
+    return int(match.group(1)) if match else 0
 
 
 def _clean_inline_text(value):

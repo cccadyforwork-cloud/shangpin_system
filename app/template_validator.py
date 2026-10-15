@@ -542,6 +542,16 @@ PRODUCT_TYPE_DISALLOWED_FIELDS = {
 }
 
 PRODUCT_TYPE_PARENT_REQUIRED_FIELDS = {
+    "SPRAY_BOTTLE": {
+        "Unit Count": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Unit Count Type": "unit_count[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+        "Item Height Top to Bottom": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+        "Item Height Unit": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+        "Item Width Side to Side": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+        "Item Width Unit": "item_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+        "Item Weight": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Item Weight Unit": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.unit",
+    },
     "BRACELET": {
         "Item Length End to End": "item_length[marketplace_id=ATVPDKIKX0DER]#1.value",
         "Item Weight": "item_weight[marketplace_id=ATVPDKIKX0DER]#1.value",
@@ -820,6 +830,8 @@ def validate_template_file(path, output_path=None, write_report=False):
         material_col = field_to_col.get("material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value")
         if material_col:
             listing_row["material"] = ws.cell(row, material_col).value
+        if color_col:
+            listing_row["color"] = ws.cell(row, color_col).value
         for field, message, fix in validate_listing_row(listing_row):
             findings.append(error(row, field, f"{sku} 的 {message}", fix))
 

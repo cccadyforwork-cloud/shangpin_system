@@ -84,14 +84,25 @@ def ensure_ledger(path=LEDGER_PATH):
     return import_sheets(sources, path) if sources else data
 
 
-def import_sheets(paths=None, ledger_path=LEDGER_PATH):
-    paths = list(paths or default_source_sheets())
+def import_sheets(paths=None, ledger_path=LEDGER_PATH, selection_id=None):
     data = load_ledger(ledger_path)
+    if selection_id:
+        if paths is None:
+            paths = [
+                _resolve_stored_path(batch.get("source_sheet", ""))
+                for batch in data.get("batches", [])
+                if str(batch.get("selection_id") or "") == str(selection_id)
+                and batch.get("source_sheet")
+            ]
+        paths = list(paths or default_source_sheets())
+        return _import_selection_sheets(paths, data, str(selection_id), ledger_path)
+    paths = list(paths or default_source_sheets())
     previous_by_source = {
         str(_resolve_stored_path(batch.get("source_sheet", ""))): batch
         for batch in data.get("batches", [])
         if batch.get("source_sheet")
     }
+    batches_without_source = [batch for batch in data.get("batches", []) if not batch.get("source_sheet")]
     batches = []
     imported = []
     seen_sources = set()
@@ -106,10 +117,55 @@ def import_sheets(paths=None, ledger_path=LEDGER_PATH):
     for source_key, batch in previous_by_source.items():
         if source_key not in seen_sources:
             batches.append(batch)
-    data["batches"] = batches
+    data["batches"] = batches + batches_without_source
     data["last_imported"] = imported
     save_ledger(data, ledger_path)
     return data
+
+
+def _import_selection_sheets(paths, data, selection_id, ledger_path):
+    selection_batches = [
+        batch for batch in data.get("batches", [])
+        if str(batch.get("selection_id") or "") == selection_id
+    ]
+    if not selection_batches:
+        raise ValueError("找不到当前日期批次。")
+
+    previous_by_owner = {
+        str(batch.get("owner") or batch.get("name") or ""): batch
+        for batch in selection_batches
+    }
+    replacements = {}
+    imported = []
+    seen_sources = set()
+    for raw_path in paths:
+        source = Path(raw_path).expanduser().resolve()
+        source_key = str(source)
+        if source_key in seen_sources or not source.exists() or source.suffix.lower() not in {".xlsx", ".xlsm"}:
+            continue
+        owner = _owner_from_source_sheet(source)
+        previous = previous_by_owner.get(owner)
+        if previous is None:
+            continue
+        replacements[previous["id"]] = _batch_from_sheet(source, previous)
+        imported.append(source_key)
+        seen_sources.add(source_key)
+
+    if not replacements:
+        raise ValueError("没有找到可同步到当前日期批次的 Excel。")
+    data["batches"] = [replacements.get(batch.get("id"), batch) for batch in data.get("batches", [])]
+    data["last_imported"] = imported
+    save_ledger(data, ledger_path)
+    return data
+
+
+def _owner_from_source_sheet(path):
+    name = Path(path).stem
+    if "图图" in name:
+        return "图图选品"
+    if "凯旋" in name:
+        return "凯旋选品"
+    return "cady选品"
 
 
 def update_row(batch_id, row_id, fields, ledger_path=LEDGER_PATH):
@@ -364,6 +420,7 @@ def _batch_from_sheet(path, previous=None):
 
     link_col = header_col("LINK", "链接", "参考链接") or 1
     product_name_col = header_col("品名", "产品名", "商品名称", "Product Name")
+    competitor_links_col = header_col("竞品链接", "子体链接", "子ASIN链接")
     html_col = header_col("竞品HTML")
     template_col = header_col("模版表格", "模板表格")
     note_col = header_col("备注")
@@ -378,6 +435,19 @@ def _batch_from_sheet(path, previous=None):
         competitor_html = str(ws.cell(row_number, html_col).value or "").strip() if html_col else ""
         source_template = str(ws.cell(row_number, template_col).value or "").strip() if template_col else ""
         note = str(ws.cell(row_number, note_col).value or "").strip() if note_col else ""
+        competitor_links = []
+        if competitor_links_col:
+            for raw_link in str(ws.cell(row_number, competitor_links_col).value or "").splitlines():
+                child_link = raw_link.strip()
+                if not child_link:
+                    continue
+                child_match = re.search(r"/dp/([A-Z0-9]{10})", child_link, re.I)
+                competitor_links.append({
+                    "asin": child_match.group(1).upper() if child_match else "",
+                    "url": child_link,
+                })
+        if not competitor_links:
+            competitor_links = previous_row.get("competitor_links", [])
         if (
             Path(competitor_html).suffix.lower() not in {".html", ".htm"}
             or not _resolve_stored_path(competitor_html).is_file()
@@ -394,6 +464,7 @@ def _batch_from_sheet(path, previous=None):
             "product_name": str(ws.cell(row_number, product_name_col).value or "").strip() if product_name_col else previous_row.get("product_name", ""),
             "row_number": row_number,
             "link": link,
+            "competitor_links": competitor_links,
             "competitor_html": competitor_html or _path_with_suffix(previous_row.get("competitor_html", ""), {".html", ".htm"}),
             "source_template": source_template or _path_with_suffix(previous_row.get("source_template", ""), {".xlsx", ".xlsm", ".xls"}),
             "output_file": previous_row.get("output_file", ""),
@@ -417,6 +488,7 @@ def _batch_from_sheet(path, previous=None):
                 "product_name": primary_row.get("product_name", ""),
                 "row_number": primary_row["row_number"],
                 "link": primary_row["link"],
+                "competitor_links": primary_row.get("competitor_links", []),
                 "competitor_html": primary_row.get("competitor_html", ""),
                 "source_template": _path_with_suffix(previous_row.get("source_template", ""), {".xlsx", ".xlsm", ".xls"}),
                 "output_file": previous_row.get("output_file", ""),
@@ -433,6 +505,9 @@ def _batch_from_sheet(path, previous=None):
         "source_sheet": _store_path(path),
         "rows": rows,
     }
+    for key in ("selection_id", "selection_name", "selection_date", "owner"):
+        if previous.get(key):
+            batch[key] = previous[key]
     if stores:
         batch["stores"] = stores
     wb.close()

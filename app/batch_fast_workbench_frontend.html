@@ -21,6 +21,16 @@
     .btn.small { padding:6px 10px; font-size:13px; }
     .btn[disabled], .btn.disabled { opacity:.42; pointer-events:none; }
     .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); overflow:hidden; }
+    .selection-nav { margin-bottom:16px; padding:16px; background:var(--panel); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); }
+    .selection-heading { display:flex; align-items:baseline; justify-content:space-between; gap:14px; margin-bottom:12px; }
+    .selection-heading strong { font-size:16px; }
+    .selection-heading span { color:var(--muted); font-size:12px; }
+    .selection-tabs { display:flex; gap:10px; overflow:auto; }
+    .selection-tab { min-width:190px; padding:12px 14px; border:1px solid var(--line); border-radius:9px; background:var(--button); color:var(--ink); text-align:left; cursor:pointer; }
+    .selection-tab:hover { border-color:#9aa7bb; }
+    .selection-tab.active { border-color:var(--blue); background:color-mix(in srgb,var(--blue) 10%,var(--button)); box-shadow:inset 0 0 0 1px var(--blue); }
+    .selection-tab-name { display:block; font-weight:700; }
+    .selection-tab-meta { display:block; margin-top:4px; color:var(--muted); font-size:12px; }
     .summary { display:flex; gap:24px; padding:15px 18px; border-bottom:1px solid var(--line); background:var(--hover); color:var(--muted); flex-wrap:wrap; }
     .summary strong { color:var(--ink); margin-left:5px; }
     .image-progress-overview { display:grid; grid-template-columns:repeat(4,minmax(180px,1fr)); gap:10px; padding:12px 14px; border-bottom:1px solid var(--line); background:var(--panel); }
@@ -98,9 +108,13 @@
         </div>
         <a class="btn disabled" id="download-batch" href="#">批量下载输出</a>
         <button class="btn" id="refresh">刷新</button>
-        <button class="btn primary" id="sync">从桌面 Excel 同步</button>
+        <button class="btn primary" id="sync" hidden>从桌面 Excel 同步</button>
       </div>
     </div>
+    <section class="selection-nav" id="selection-nav">
+      <div class="selection-heading"><strong>选品批次</strong><span>按日期进入，历史批次和新批次互不覆盖</span></div>
+      <div class="selection-tabs" id="selection-tabs"></div>
+    </section>
     <section class="panel">
       <div class="summary" id="summary"></div>
       <div class="image-progress-overview" id="image-progress-overview" hidden></div>
@@ -114,7 +128,7 @@
     const isRefurb=location.pathname.startsWith('/refurb-batch');
     const routeBase=isRefurb?'/refurb-batch':'/batch-fast';
     const apiBase=isRefurb?'/api/refurb-batch':'/api/batch-fast';
-    const state = { data:null, active:null, activeStore:null };
+    const state = { data:null, activeSelection:null, active:null, activeStore:null };
     const $ = (selector) => document.querySelector(selector);
     const esc = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
     const productPrefix = location.pathname.startsWith('/product/') ? '/product' : '';
@@ -127,12 +141,56 @@
     }
     function toast(message) { const el=$('#toast'); el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),2200); }
     async function api(path, options={}) { const res=await fetch(path, options); const data=await res.json(); if(!res.ok || data.ok===false) throw new Error(data.error || '操作失败'); return data; }
-    async function load() { state.data=await api(apiBase); if(!state.active || !state.data.batches.some(b=>b.id===state.active)) state.active=state.data.batches[0]?.id || null; render(); }
+    function selectionId(batch){return batch.selection_id || 'legacy';}
+    function selectionGroups(){
+      const groups=[];
+      (state.data?.batches || []).forEach(batch=>{
+        const id=selectionId(batch);
+        let group=groups.find(item=>item.id===id);
+        if(!group){group={id,name:batch.selection_name || '历史选品',date:batch.selection_date || '',batches:[]};groups.push(group);}
+        group.batches.push(batch);
+      });
+      return groups;
+    }
+    function selectionTotals(batches){
+      const totals={rows:0,html:0,templates:0,outputs:0};
+      batches.forEach(batch=>{
+        const stores=batch.stores || [],primaryStore=stores[0] || '';
+        (batch.rows || []).forEach(row=>{
+          const primary=!primaryStore || row.store_id===primaryStore;
+          totals.rows+=Number(primary);
+          totals.html+=Number(primary && row.files.competitor_html.exists);
+          totals.templates+=Number(row.files.source_template.exists);
+          totals.outputs+=Number(row.files.output_file.exists);
+        });
+      });
+      return totals;
+    }
+    async function load() {
+      state.data=await api(apiBase);
+      if(isRefurb){
+        if(!state.active || !state.data.batches.some(b=>b.id===state.active)) state.active=state.data.batches[0]?.id || null;
+      }else{
+        const groups=selectionGroups();
+        if(!state.activeSelection || !groups.some(group=>group.id===state.activeSelection)) state.activeSelection=groups[0]?.id || null;
+        const batches=groups.find(group=>group.id===state.activeSelection)?.batches || [];
+        if(!state.active || !batches.some(batch=>batch.id===state.active)) state.active=batches[0]?.id || null;
+      }
+      render();
+    }
     function render() {
-      const d=state.data, t=d.totals;
-      $('#summary').innerHTML=`<span>产品<strong>${t.rows}</strong></span><span>竞品 HTML<strong>${t.html}</strong></span><span>原始模板<strong>${t.templates}</strong></span><span>输出文档<strong>${t.outputs}</strong></span><span>更新<strong>${esc(d.updated_at || '-')}</strong></span>`;
-      $('#tabs').innerHTML=d.batches.map(b=>{const count=b.stores?.length?b.rows.filter(row=>row.store_id===b.stores[0]).length:b.rows.length;return `<button class="tab ${b.id===state.active?'active':''}" data-tab="${esc(b.id)}">${esc(b.name)} <span>(${count})</span></button>`;}).join('');
-      const batch=d.batches.find(b=>b.id===state.active);
+      const d=state.data,groups=isRefurb?[]:selectionGroups();
+      const currentGroup=groups.find(group=>group.id===state.activeSelection);
+      const visibleBatches=isRefurb?d.batches:(currentGroup?.batches || []);
+      const selectionNav=$('#selection-nav');
+      selectionNav.hidden=isRefurb;
+      if(!isRefurb){
+        $('#selection-tabs').innerHTML=groups.map(group=>{const count=selectionTotals(group.batches).rows;return `<button class="selection-tab ${group.id===state.activeSelection?'active':''}" data-selection="${esc(group.id)}"><span class="selection-tab-name">${esc(group.name)}</span><span class="selection-tab-meta">${count} 个产品 · ${group.batches.length} 位负责人</span></button>`;}).join('');
+      }
+      const t=isRefurb?d.totals:selectionTotals(visibleBatches);
+      $('#summary').innerHTML=`${currentGroup?`<span>当前批次<strong>${esc(currentGroup.name)}</strong></span>`:''}<span>产品<strong>${t.rows}</strong></span><span>竞品 HTML<strong>${t.html}</strong></span><span>原始模板<strong>${t.templates}</strong></span><span>输出文档<strong>${t.outputs}</strong></span><span>更新<strong>${esc(d.updated_at || '-')}</strong></span>`;
+      $('#tabs').innerHTML=visibleBatches.map(b=>{const count=b.stores?.length?b.rows.filter(row=>row.store_id===b.stores[0]).length:b.rows.length;return `<button class="tab ${b.id===state.active?'active':''}" data-tab="${esc(b.id)}">${esc(b.name)} <span>(${count})</span></button>`;}).join('');
+      const batch=visibleBatches.find(b=>b.id===state.active);
       const stores=batch?.stores || [];
       if(stores.length && !stores.includes(state.activeStore)) state.activeStore=stores[0];
       if(!stores.length) state.activeStore=null;
@@ -147,6 +205,7 @@
       download.href=outputCount ? `${productPrefix}${routeBase}/download?batch_id=${encodeURIComponent(batch.id)}${state.activeStore?`&store_id=${encodeURIComponent(state.activeStore)}`:''}` : '#';
       download.classList.toggle('disabled',!outputCount);
       $('#content').innerHTML=batch ? table({...batch,rows:visibleRows}) : '<div class="empty">尚未导入批次</div>';
+      if(!isRefurb) $('#sync').textContent=currentGroup?`同步 ${currentGroup.name} Excel`:'从桌面 Excel 同步';
     }
     function renderImageProgress(rows) {
       const overview=$('#image-progress-overview');
@@ -172,11 +231,13 @@
       overview.innerHTML=specs.map(([title,key,className])=>`<div class="progress-block ${className}"><div class="progress-title"><span>${title}</span><span class="progress-count">${buckets[key].length}</span></div><div class="progress-list">${buckets[key].length?buckets[key].map(item=>`<span class="progress-chip" title="${esc(item)}">${esc(item)}</span>`).join(''):'<span class="path">无</span>'}</div></div>`).join('');
     }
     function table(batch) {
-      const showPurchase=batch.id==='cady选品' && state.activeStore==='2店';
+      const showPurchase=(batch.owner || batch.name)==='cady选品' && state.activeStore==='2店';
       const widths=isRefurb?[12,13,15,18,9,9,12,12]:(showPurchase?[13,13,16,20,11,10,9,8]:[14,14,17,22,12,10,11]);
       const columns=`<colgroup>${widths.map(width=>`<col style="width:${width}%">`).join('')}</colgroup>`;
       const referenceLabel=isRefurb?'亚马逊原链接':'竞品 HTML';
-      return `<table>${columns}<thead><tr><th>商品</th><th>${referenceLabel}</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th>${showPurchase?'<th>采购状态</th>':''}<th>备注</th>${isRefurb?'<th>新图组</th>':''}</tr></thead><tbody>${batch.rows.map((row,index)=>rowHtml(batch,row,showPurchase,index+1)).join('')}</tbody></table>`;
+      const columnCount=7+Number(showPurchase)+Number(isRefurb);
+      const rows=batch.rows.length?batch.rows.map((row,index)=>rowHtml(batch,row,showPurchase,index+1)).join(''):`<tr><td class="empty" colspan="${columnCount}">当前负责人暂无商品，导入本批选品清单后会显示在这里。</td></tr>`;
+      return `<table>${columns}<thead><tr><th>商品</th><th>${referenceLabel}</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th>${showPurchase?'<th>采购状态</th>':''}<th>备注</th>${isRefurb?'<th>新图组</th>':''}</tr></thead><tbody>${rows}</tbody></table>`;
     }
     function rowHtml(batch,row,showPurchase,rowNumber) {
       const html=row.files.competitor_html, source=row.files.source_template, output=row.files.output_file;
@@ -186,9 +247,14 @@
       const productCell=isRefurb
         ? `<div class="product"><strong>${esc(rowNumber)}.${esc(row.product_name || row.asin || row.id)}</strong><span class="path">${mergedPath}</span></div>`
         : `<div class="product"><a href="${esc(row.link)}" target="_blank" rel="noreferrer">${esc(row.product_name || row.asin || row.id)}</a><span class="path">${row.product_name && row.asin?`${esc(row.asin)} · `:''}Excel 第 ${row.row_number} 行</span></div>`;
+      const competitorLinks=(row.competitor_links || []).map((item,index)=>{
+        const link=typeof item==='string'?{url:item,label:''}:item;
+        const label=link.asin?`${link.asin}.html`:(link.label || `子体${index+1}.html`);
+        return `<a class="source-link" href="${esc(link.url)}" target="_blank" rel="noreferrer" title="${esc(link.url)}">${esc(label)}</a>`;
+      }).join('');
       const referenceCell=isRefurb
         ? (row.source_links || [{url:row.link,label:''}]).map(item=>`<a class="source-link" href="${esc(item.url)}" target="_blank" rel="noreferrer" title="${esc(item.url)}">${item.label?`${esc(item.label)}：`:''}${esc(item.url)}</a>`).join('')
-        : (html.exists?fileCell(html,false):'<span class="path">未保存</span>');
+        : `<div class="product">${competitorLinks || `<a class="source-link" href="${esc(row.link)}" target="_blank" rel="noreferrer">${esc(row.link)}</a>`}${html.exists?fileCell(html,false):'<span class="path">竞品 HTML 未保存</span>'}</div>`;
       const templateCell=isRefurb && row.source_template_files?.length>1
         ? `<div class="file-actions drop-zone" data-upload-field="source_template">${row.source_template_files.map(item=>`<span class="file-actions"><span class="file-name ok" title="${esc(item.file.path)}">${item.label?`${esc(item.label)}：`:''}${esc(item.file.name)}</span><button class="btn small open-file" data-path="${esc(item.file.path)}">打开</button></span>`).join('')}<button class="btn small upload" data-field="source_template">替换主模板</button></div>`
         : fileCell(source,true,'source_template');
@@ -243,10 +309,11 @@
     document.addEventListener('click', async (event) => {
       if(event.target.closest('#return-workbench')){window.location.assign('/');return;}
       const theme=event.target.closest('[data-theme-choice]'); if(theme){setTheme(theme.dataset.themeChoice);return;}
+      const selection=event.target.closest('[data-selection]'); if(selection){state.activeSelection=selection.dataset.selection;state.active=null;state.activeStore=null;const group=selectionGroups().find(item=>item.id===state.activeSelection);state.active=group?.batches[0]?.id || null;render();return;}
       const tab=event.target.closest('[data-tab]'); if(tab){state.active=tab.dataset.tab;state.activeStore=null;render();return;}
       const store=event.target.closest('[data-store]'); if(store){state.activeStore=store.dataset.store;render();return;}
       if(event.target.id==='refresh'){await load();toast('已刷新');return;}
-      if(event.target.id==='sync'){try{await api(`${apiBase}/import`,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await load();toast(isRefurb?'已同步 Cady 退货翻新表格':'已从三张桌面表格同步');}catch(e){toast(e.message)}return;}
+      if(event.target.id==='sync'){try{await api(`${apiBase}/import`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(isRefurb?{}:{selection_id:state.activeSelection})});await load();toast(isRefurb?'已同步 Cady 退货翻新表格':`已同步 ${selectionGroups().find(group=>group.id===state.activeSelection)?.name || '当前批次'}`);}catch(e){toast(e.message)}return;}
       const open=event.target.closest('.open-file'); if(open){try{await api(`${apiBase}/open`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:open.dataset.path})});toast('已在电脑中打开');}catch(e){toast(e.message)}return;}
       const upload=event.target.closest('.upload'); if(upload){chooseFile(upload.closest('tr'),upload.dataset.field);}
       const fetchReferences=event.target.closest('.fetch-reference-images'); if(fetchReferences){const row=fetchReferences.closest('tr');const originalText=fetchReferences.textContent;fetchReferences.disabled=true;fetchReferences.textContent='正在获取…';try{const result=await api(`${apiBase}/fetch-reference-images`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,image_group_key:fetchReferences.dataset.imageGroup || 'default'})});await load();toast(`已获取 ${result.count || 0} 张原产品图`);}catch(e){fetchReferences.disabled=false;fetchReferences.textContent=originalText;toast(e.message)}return;}
@@ -294,6 +361,7 @@
       $('#workbench-subtitle').textContent='Cady 专用，全部上传至 1店；独立记录参考资料、原始模板和最终输出文档。';
       $('#other-workbench').textContent='批量抄品工作台';
       $('#other-workbench').href='/batch-fast';
+      $('#sync').hidden=false;
       $('#sync').textContent='从退货翻新 Excel 同步';
     }
     setTheme(localStorage.getItem('shangpin-workbench-theme') || localStorage.getItem('batch-fast-theme') || 'light');

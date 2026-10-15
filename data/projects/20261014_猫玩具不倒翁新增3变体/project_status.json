@@ -1,0 +1,18 @@
+{
+  "product_name": "猫玩具不倒翁新增3变体",
+  "workbench_owner": "cccady",
+  "workbench_store": "1店",
+  "status": "ready_for_upload",
+  "latest_draft": "03_产品详情页/猫玩具不倒翁新增3变体_产品资料.xlsx",
+  "updated_at": "2026-10-14T20:51:37",
+  "source_template": "05_模版原件/1店+猫玩具不倒翁.xlsm",
+  "workbench_note": "店铺：1店；负责人：cccady。现有结构：Parent TTCA-Pettoy-Wobble；Child TTCA-Pettoy-Feather（Multicolor）和 TTCA-Pettoy-Sisal（Natural）；Variation Theme = COLOR。已新增 TTCA-PETTOY-STAR、TTCA-PETTOY-LOVE、TTCA-PETTOY-ORANGE 三个 Child，完成后共 5 个子体。五个子体的 List Price 与 1店 Haul Price 已按最终确认统一为 3.44 USD。新增资料已归档；STAR、LOVE、ORANGE 的款式、成本与供应商规格图已完成匹配。",
+  "latest_template": "05_填表版本/猫玩具不倒翁新增3变体V1.xlsm",
+  "latest_check_report": "06_处理报告/猫玩具不倒翁新增3变体V1_模板自检报告.md",
+  "sku_count": 6,
+  "template_error_count": 0,
+  "template_red_field_count": 0,
+  "version_notes": {
+    "V1": "1店；负责人 cccady。保留 Parent 与原有 Feather、Sisal 子体，新增 STAR、LOVE、ORANGE 三个 COLOR 子体；五个子体的 List Price 与 1店 Haul Price 统一为 3.44 USD。原始 xlsm 保留不动。"
+  }
+}

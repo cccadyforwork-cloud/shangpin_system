@@ -1,10 +1,1167 @@
 {
-  "version": 3,
-  "updated_at": "2026-09-23T22:04:01+08:00",
+  "version": 5,
+  "updated_at": "2026-10-15T11:44:17+08:00",
   "batches": [
+    {
+      "id": "2026-10-14-cady",
+      "name": "cccady选品（第一批）",
+      "selection_id": "2026-10-14",
+      "selection_name": "10.14周三选品",
+      "selection_date": "2026-10-14",
+      "owner": "cady选品",
+      "source_sheet": "data/batch_fast_workbench/source_sheets/2026-10-14/10.14第一批_cccady.xlsx",
+      "stores": [
+        "1店",
+        "2店"
+      ],
+      "rows": [
+        {
+          "id": "B0GDQM14G7",
+          "asin": "B0GDQM14G7",
+          "product_name": "USB-A转Type-C编织快充线",
+          "row_number": 2,
+          "link": "https://www.amazon.com/dp/B0GDQM14G7",
+          "competitor_links": [
+            {
+              "asin": "B0GDQL1ZJP",
+              "url": "https://www.amazon.com/Charger-Charging-Compatible-Smartphones-Tablets/dp/B0GDQL1ZJP/?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=8xSq7&pd_rd_wg=oUcWD&pd_rd_r=be14921a-71a8-4c36-a212-4ec53f57f328&content-id=amzn1.sym.c1e8fffb-dcad-4a3e-a0a0-a771be3a7399&ref_=Haul_HP_D_ASLIST_2dollar100926_NA_N&pos=ib"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0G516T322",
+          "asin": "B0G516T322",
+          "product_name": "猫粮挤压分配器",
+          "row_number": 3,
+          "link": "https://www.amazon.com/dp/B0G516T322",
+          "competitor_links": [
+            {
+              "asin": "B0G516T322",
+              "url": "https://www.amazon.com/dp/B0G516T322?ie=UTF8&ASIN=B0G516T322&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0HGFRL717",
+          "asin": "B0HGFRL717",
+          "product_name": "7加仑土豆种植袋",
+          "row_number": 4,
+          "link": "https://www.amazon.com/dp/B0HGFRL717",
+          "competitor_links": [
+            {
+              "asin": "B0GN92GVTH",
+              "url": "https://www.amazon.com/dp/B0GN92GVTH?ie=UTF8&ASIN=B0GN92GVTH&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0DT45VRZP",
+          "asin": "B0DT45VRZP",
+          "product_name": "叠放式量杯量勺套装",
+          "row_number": 5,
+          "link": "https://www.amazon.com/dp/B0DT45VRZP",
+          "competitor_links": [
+            {
+              "asin": "B0DT45VRZP",
+              "url": "https://www.amazon.com/dp/B0DT45VRZP?ie=UTF8&ASIN=B0DT45VRZP&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0HJV7GPBN",
+          "asin": "B0HJV7GPBN",
+          "product_name": "3D花束茶杯弹出贺卡（3款）",
+          "row_number": 6,
+          "link": "https://www.amazon.com/dp/B0HJV7GPBN",
+          "competitor_links": [
+            {
+              "asin": "B0HGFFX2L8",
+              "url": "https://www.amazon.com/dp/B0HGFFX2L8?ie=UTF8&ASIN=B0HGFFX2L8&s=bazaar"
+            },
+            {
+              "asin": "B0HFNK8PJJ",
+              "url": "https://www.amazon.com/dp/B0HFNK8PJJ?ie=UTF8&ASIN=B0HFNK8PJJ&s=bazaar"
+            },
+            {
+              "asin": "B0H6JYJYB4",
+              "url": "https://www.amazon.com/dp/B0H6JYJYB4?ie=UTF8&ASIN=B0H6JYJYB4&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原资料含3个子ASIN",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GG97R1K1",
+          "asin": "B0GG97R1K1",
+          "product_name": "3D紫色蝴蝶礼盒贺卡",
+          "row_number": 7,
+          "link": "https://www.amazon.com/dp/B0GG97R1K1",
+          "competitor_links": [
+            {
+              "asin": "B0GG97R1K1",
+              "url": "https://www.amazon.com/dp/B0GG97R1K1?ie=UTF8&ASIN=B0GG97R1K1&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0HBJYC6C7",
+          "asin": "B0HBJYC6C7",
+          "product_name": "3D圣诞马车贺卡",
+          "row_number": 8,
+          "link": "https://www.amazon.com/dp/B0HBJYC6C7",
+          "competitor_links": [
+            {
+              "asin": "B0HBJYC6C7",
+              "url": "https://www.amazon.com/dp/B0HBJYC6C7?ie=UTF8&ASIN=B0HBJYC6C7&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GKF7GKV9",
+          "asin": "B0GKF7GKV9",
+          "product_name": "3D生日弹出贺卡",
+          "row_number": 9,
+          "link": "https://www.amazon.com/dp/B0GKF7GKV9",
+          "competitor_links": [
+            {
+              "asin": "B0GKF7GKV9",
+              "url": "https://www.amazon.com/dp/B0GKF7GKV9?ie=UTF8&ASIN=B0GKF7GKV9&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0HC31QF6F",
+          "asin": "B0HC31QF6F",
+          "product_name": "2027搞怪狗狗挂历",
+          "row_number": 10,
+          "link": "https://www.amazon.com/dp/B0HC31QF6F",
+          "competitor_links": [
+            {
+              "asin": "B0HC31QF6F",
+              "url": "https://www.amazon.com/dp/B0HC31QF6F?ie=UTF8&ASIN=B0HC31QF6F&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0G1YWHD65",
+          "asin": "B0G1YWHD65",
+          "product_name": "太阳月亮图案金属收纳盒",
+          "row_number": 11,
+          "link": "https://www.amazon.com/dp/B0G1YWHD65",
+          "competitor_links": [
+            {
+              "asin": "B0G1YWHD65",
+              "url": "https://www.amazon.com/dp/B0G1YWHD65?ie=UTF8&ASIN=B0G1YWHD65&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GDQM14G7--2店",
+          "asin": "B0GDQM14G7",
+          "product_name": "USB-A转Type-C编织快充线",
+          "row_number": 2,
+          "link": "https://www.amazon.com/dp/B0GDQM14G7",
+          "competitor_links": [
+            {
+              "asin": "B0GDQL1ZJP",
+              "url": "https://www.amazon.com/Charger-Charging-Compatible-Smartphones-Tablets/dp/B0GDQL1ZJP/?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=8xSq7&pd_rd_wg=oUcWD&pd_rd_r=be14921a-71a8-4c36-a212-4ec53f57f328&content-id=amzn1.sym.c1e8fffb-dcad-4a3e-a0a0-a771be3a7399&ref_=Haul_HP_D_ASLIST_2dollar100926_NA_N&pos=ib"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G516T322--2店",
+          "asin": "B0G516T322",
+          "product_name": "猫粮挤压分配器",
+          "row_number": 3,
+          "link": "https://www.amazon.com/dp/B0G516T322",
+          "competitor_links": [
+            {
+              "asin": "B0G516T322",
+              "url": "https://www.amazon.com/dp/B0G516T322?ie=UTF8&ASIN=B0G516T322&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0HGFRL717--2店",
+          "asin": "B0HGFRL717",
+          "product_name": "7加仑土豆种植袋",
+          "row_number": 4,
+          "link": "https://www.amazon.com/dp/B0HGFRL717",
+          "competitor_links": [
+            {
+              "asin": "B0GN92GVTH",
+              "url": "https://www.amazon.com/dp/B0GN92GVTH?ie=UTF8&ASIN=B0GN92GVTH&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DT45VRZP--2店",
+          "asin": "B0DT45VRZP",
+          "product_name": "叠放式量杯量勺套装",
+          "row_number": 5,
+          "link": "https://www.amazon.com/dp/B0DT45VRZP",
+          "competitor_links": [
+            {
+              "asin": "B0DT45VRZP",
+              "url": "https://www.amazon.com/dp/B0DT45VRZP?ie=UTF8&ASIN=B0DT45VRZP&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0HJV7GPBN--2店",
+          "asin": "B0HJV7GPBN",
+          "product_name": "3D花束茶杯弹出贺卡（3款）",
+          "row_number": 6,
+          "link": "https://www.amazon.com/dp/B0HJV7GPBN",
+          "competitor_links": [
+            {
+              "asin": "B0HGFFX2L8",
+              "url": "https://www.amazon.com/dp/B0HGFFX2L8?ie=UTF8&ASIN=B0HGFFX2L8&s=bazaar"
+            },
+            {
+              "asin": "B0HFNK8PJJ",
+              "url": "https://www.amazon.com/dp/B0HFNK8PJJ?ie=UTF8&ASIN=B0HFNK8PJJ&s=bazaar"
+            },
+            {
+              "asin": "B0H6JYJYB4",
+              "url": "https://www.amazon.com/dp/B0H6JYJYB4?ie=UTF8&ASIN=B0H6JYJYB4&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原资料含3个子ASIN",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GG97R1K1--2店",
+          "asin": "B0GG97R1K1",
+          "product_name": "3D紫色蝴蝶礼盒贺卡",
+          "row_number": 7,
+          "link": "https://www.amazon.com/dp/B0GG97R1K1",
+          "competitor_links": [
+            {
+              "asin": "B0GG97R1K1",
+              "url": "https://www.amazon.com/dp/B0GG97R1K1?ie=UTF8&ASIN=B0GG97R1K1&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0HBJYC6C7--2店",
+          "asin": "B0HBJYC6C7",
+          "product_name": "3D圣诞马车贺卡",
+          "row_number": 8,
+          "link": "https://www.amazon.com/dp/B0HBJYC6C7",
+          "competitor_links": [
+            {
+              "asin": "B0HBJYC6C7",
+              "url": "https://www.amazon.com/dp/B0HBJYC6C7?ie=UTF8&ASIN=B0HBJYC6C7&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GKF7GKV9--2店",
+          "asin": "B0GKF7GKV9",
+          "product_name": "3D生日弹出贺卡",
+          "row_number": 9,
+          "link": "https://www.amazon.com/dp/B0GKF7GKV9",
+          "competitor_links": [
+            {
+              "asin": "B0GKF7GKV9",
+              "url": "https://www.amazon.com/dp/B0GKF7GKV9?ie=UTF8&ASIN=B0GKF7GKV9&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0HC31QF6F--2店",
+          "asin": "B0HC31QF6F",
+          "product_name": "2027搞怪狗狗挂历",
+          "row_number": 10,
+          "link": "https://www.amazon.com/dp/B0HC31QF6F",
+          "competitor_links": [
+            {
+              "asin": "B0HC31QF6F",
+              "url": "https://www.amazon.com/dp/B0HC31QF6F?ie=UTF8&ASIN=B0HC31QF6F&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G1YWHD65--2店",
+          "asin": "B0G1YWHD65",
+          "product_name": "太阳月亮图案金属收纳盒",
+          "row_number": 11,
+          "link": "https://www.amazon.com/dp/B0G1YWHD65",
+          "competitor_links": [
+            {
+              "asin": "B0G1YWHD65",
+              "url": "https://www.amazon.com/dp/B0G1YWHD65?ie=UTF8&ASIN=B0G1YWHD65&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14-tutu",
+      "name": "图图选品（第二批）",
+      "selection_id": "2026-10-14",
+      "selection_name": "10.14周三选品",
+      "selection_date": "2026-10-14",
+      "owner": "图图选品",
+      "source_sheet": "data/batch_fast_workbench/source_sheets/2026-10-14/10.14第二批_图图.xlsx",
+      "stores": [
+        "1店",
+        "2店"
+      ],
+      "rows": [
+        {
+          "id": "B0FXM8G7YM",
+          "asin": "B0FXM8G7YM",
+          "product_name": "遮瑕化妆刷",
+          "row_number": 2,
+          "link": "https://www.amazon.com/dp/B0FXM8G7YM",
+          "competitor_links": [
+            {
+              "asin": "B0DR3246G8",
+              "url": "https://www.amazon.com/dp/B0DR3246G8?ie=UTF8&ASIN=B0DR3246G8&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FXXMWG9K",
+          "asin": "B0FXXMWG9K",
+          "product_name": "圣诞腊肠狗挂件",
+          "row_number": 3,
+          "link": "https://www.amazon.com/dp/B0FXXMWG9K",
+          "competitor_links": [
+            {
+              "asin": "B0FQP9R6HH",
+              "url": "https://www.amazon.com/dp/B0FQP9R6HH?ie=UTF8&ASIN=B0FQP9R6HH&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0DQKG4JWD",
+          "asin": "B0DQKG4JWD",
+          "product_name": "多功能冰箱保鲜收纳盒",
+          "row_number": 4,
+          "link": "https://www.amazon.com/dp/B0DQKG4JWD",
+          "competitor_links": [
+            {
+              "asin": "B0DQKG4JWD",
+              "url": "https://www.amazon.com/dp/B0DQKG4JWD?ie=UTF8&ASIN=B0DQKG4JWD&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0HGXD9RM6",
+          "asin": "B0HGXD9RM6",
+          "product_name": "网格超细纤维清洁布",
+          "row_number": 5,
+          "link": "https://www.amazon.com/dp/B0HGXD9RM6",
+          "competitor_links": [
+            {
+              "asin": "B0FB8TCNY2",
+              "url": "https://www.amazon.com/dp/B0FB8TCNY2?ie=UTF8&ASIN=B0FB8TCNY2&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0G4THG12T",
+          "asin": "B0G4THG12T",
+          "product_name": "3D圣诞老人驯鹿贺卡",
+          "row_number": 6,
+          "link": "https://www.amazon.com/dp/B0G4THG12T",
+          "competitor_links": [
+            {
+              "asin": "B0FXMHSHP7",
+              "url": "https://www.amazon.com/dp/B0FXMHSHP7?ie=UTF8&ASIN=B0FXMHSHP7&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0G3X66FJ3",
+          "asin": "B0G3X66FJ3",
+          "product_name": "3D生日气球蛋糕贺卡",
+          "row_number": 7,
+          "link": "https://www.amazon.com/dp/B0G3X66FJ3",
+          "competitor_links": [
+            {
+              "asin": "B0G3X66FJ3",
+              "url": "https://www.amazon.com/dp/B0G3X66FJ3?ie=UTF8&ASIN=B0G3X66FJ3&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0HBK49CKG",
+          "asin": "B0HBK49CKG",
+          "product_name": "3D圣诞老人马车贺卡",
+          "row_number": 8,
+          "link": "https://www.amazon.com/dp/B0HBK49CKG",
+          "competitor_links": [
+            {
+              "asin": "B0HBK49CKG",
+              "url": "https://www.amazon.com/dp/B0HBK49CKG?ie=UTF8&ASIN=B0HBK49CKG&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0HBKCLJCD",
+          "asin": "B0HBKCLJCD",
+          "product_name": "3D圣诞雪橇马车贺卡",
+          "row_number": 9,
+          "link": "https://www.amazon.com/dp/B0HBKCLJCD",
+          "competitor_links": [
+            {
+              "asin": "B0HBKCLJCD",
+              "url": "https://www.amazon.com/dp/B0HBKCLJCD?ie=UTF8&ASIN=B0HBKCLJCD&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0FXM8G7YM--2店",
+          "asin": "B0FXM8G7YM",
+          "product_name": "遮瑕化妆刷",
+          "row_number": 2,
+          "link": "https://www.amazon.com/dp/B0FXM8G7YM",
+          "competitor_links": [
+            {
+              "asin": "B0DR3246G8",
+              "url": "https://www.amazon.com/dp/B0DR3246G8?ie=UTF8&ASIN=B0DR3246G8&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0FXXMWG9K--2店",
+          "asin": "B0FXXMWG9K",
+          "product_name": "圣诞腊肠狗挂件",
+          "row_number": 3,
+          "link": "https://www.amazon.com/dp/B0FXXMWG9K",
+          "competitor_links": [
+            {
+              "asin": "B0FQP9R6HH",
+              "url": "https://www.amazon.com/dp/B0FQP9R6HH?ie=UTF8&ASIN=B0FQP9R6HH&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DQKG4JWD--2店",
+          "asin": "B0DQKG4JWD",
+          "product_name": "多功能冰箱保鲜收纳盒",
+          "row_number": 4,
+          "link": "https://www.amazon.com/dp/B0DQKG4JWD",
+          "competitor_links": [
+            {
+              "asin": "B0DQKG4JWD",
+              "url": "https://www.amazon.com/dp/B0DQKG4JWD?ie=UTF8&ASIN=B0DQKG4JWD&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0HGXD9RM6--2店",
+          "asin": "B0HGXD9RM6",
+          "product_name": "网格超细纤维清洁布",
+          "row_number": 5,
+          "link": "https://www.amazon.com/dp/B0HGXD9RM6",
+          "competitor_links": [
+            {
+              "asin": "B0FB8TCNY2",
+              "url": "https://www.amazon.com/dp/B0FB8TCNY2?ie=UTF8&ASIN=B0FB8TCNY2&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G4THG12T--2店",
+          "asin": "B0G4THG12T",
+          "product_name": "3D圣诞老人驯鹿贺卡",
+          "row_number": 6,
+          "link": "https://www.amazon.com/dp/B0G4THG12T",
+          "competitor_links": [
+            {
+              "asin": "B0FXMHSHP7",
+              "url": "https://www.amazon.com/dp/B0FXMHSHP7?ie=UTF8&ASIN=B0FXMHSHP7&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0G3X66FJ3--2店",
+          "asin": "B0G3X66FJ3",
+          "product_name": "3D生日气球蛋糕贺卡",
+          "row_number": 7,
+          "link": "https://www.amazon.com/dp/B0G3X66FJ3",
+          "competitor_links": [
+            {
+              "asin": "B0G3X66FJ3",
+              "url": "https://www.amazon.com/dp/B0G3X66FJ3?ie=UTF8&ASIN=B0G3X66FJ3&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0HBK49CKG--2店",
+          "asin": "B0HBK49CKG",
+          "product_name": "3D圣诞老人马车贺卡",
+          "row_number": 8,
+          "link": "https://www.amazon.com/dp/B0HBK49CKG",
+          "competitor_links": [
+            {
+              "asin": "B0HBK49CKG",
+              "url": "https://www.amazon.com/dp/B0HBK49CKG?ie=UTF8&ASIN=B0HBK49CKG&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0HBKCLJCD--2店",
+          "asin": "B0HBKCLJCD",
+          "product_name": "3D圣诞雪橇马车贺卡",
+          "row_number": 9,
+          "link": "https://www.amazon.com/dp/B0HBKCLJCD",
+          "competitor_links": [
+            {
+              "asin": "B0HBKCLJCD",
+              "url": "https://www.amazon.com/dp/B0HBKCLJCD?ie=UTF8&ASIN=B0HBKCLJCD&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14-kaixuan",
+      "name": "凯旋选品（第三批）",
+      "selection_id": "2026-10-14",
+      "selection_name": "10.14周三选品",
+      "selection_date": "2026-10-14",
+      "owner": "凯旋选品",
+      "source_sheet": "data/batch_fast_workbench/source_sheets/2026-10-14/10.14第三批_凯旋.xlsx",
+      "stores": [
+        "1店",
+        "2店"
+      ],
+      "rows": [
+        {
+          "id": "B0H2HJLBRV",
+          "asin": "B0H2HJLBRV",
+          "product_name": "搞怪表情便签纸",
+          "row_number": 2,
+          "link": "https://www.amazon.com/dp/B0H2HJLBRV",
+          "competitor_links": [
+            {
+              "asin": "B0H2HJLBRV",
+              "url": "https://www.amazon.com/dp/B0H2HJLBRV?ie=UTF8&ASIN=B0H2HJLBRV&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GRG3WXWS",
+          "asin": "B0GRG3WXWS",
+          "product_name": "椰子鸭汽车摆件",
+          "row_number": 3,
+          "link": "https://www.amazon.com/dp/B0GRG3WXWS",
+          "competitor_links": [
+            {
+              "asin": "B0GRG3WXWS",
+              "url": "https://www.amazon.com/dp/B0GRG3WXWS?ie=UTF8&ASIN=B0GRG3WXWS&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0HFCQ7BQK",
+          "asin": "B0HFCQ7BQK",
+          "product_name": "老年人坐姿健身海报",
+          "row_number": 4,
+          "link": "https://www.amazon.com/dp/B0HFCQ7BQK",
+          "competitor_links": [
+            {
+              "asin": "B0HFCQ7BQK",
+              "url": "https://www.amazon.com/dp/B0HFCQ7BQK?ie=UTF8&ASIN=B0HFCQ7BQK&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0DTHKNSB4",
+          "asin": "B0DTHKNSB4",
+          "product_name": "便携旅行收纳包",
+          "row_number": 5,
+          "link": "https://www.amazon.com/dp/B0DTHKNSB4",
+          "competitor_links": [
+            {
+              "asin": "B0DTHHV5V7",
+              "url": "https://www.amazon.com/dp/B0DTHHV5V7?ie=UTF8&ASIN=B0DTHHV5V7&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GFMQF3VT",
+          "asin": "B0GFMQF3VT",
+          "product_name": "易拉罐吸管杯盖",
+          "row_number": 6,
+          "link": "https://www.amazon.com/dp/B0GFMQF3VT",
+          "competitor_links": [
+            {
+              "asin": "B0GFMQF3VT",
+              "url": "https://www.amazon.com/dp/B0GFMQF3VT?ie=UTF8&ASIN=B0GFMQF3VT&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0HJ7LCYHM",
+          "asin": "B0HJ7LCYHM",
+          "product_name": "冲击套筒转换接头套装",
+          "row_number": 7,
+          "link": "https://www.amazon.com/dp/B0HJ7LCYHM",
+          "competitor_links": [
+            {
+              "asin": "B0FP4CK3J4",
+              "url": "https://www.amazon.com/dp/B0FP4CK3J4?ie=UTF8&ASIN=B0FP4CK3J4&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0H7X713TD",
+          "asin": "B0H7X713TD",
+          "product_name": "3D趣味圣诞贺卡",
+          "row_number": 8,
+          "link": "https://www.amazon.com/dp/B0H7X713TD",
+          "competitor_links": [
+            {
+              "asin": "B0H7X713TD",
+              "url": "https://www.amazon.com/dp/B0H7X713TD?ie=UTF8&ASIN=B0H7X713TD&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0GG8QGX5Y",
+          "asin": "B0GG8QGX5Y",
+          "product_name": "3D紫色童话城堡贺卡",
+          "row_number": 9,
+          "link": "https://www.amazon.com/dp/B0GG8QGX5Y",
+          "competitor_links": [
+            {
+              "asin": "B0GG8QGX5Y",
+              "url": "https://www.amazon.com/dp/B0GG8QGX5Y?ie=UTF8&ASIN=B0GG8QGX5Y&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "1店"
+        },
+        {
+          "id": "B0H2HJLBRV--2店",
+          "asin": "B0H2HJLBRV",
+          "product_name": "搞怪表情便签纸",
+          "row_number": 2,
+          "link": "https://www.amazon.com/dp/B0H2HJLBRV",
+          "competitor_links": [
+            {
+              "asin": "B0H2HJLBRV",
+              "url": "https://www.amazon.com/dp/B0H2HJLBRV?ie=UTF8&ASIN=B0H2HJLBRV&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GRG3WXWS--2店",
+          "asin": "B0GRG3WXWS",
+          "product_name": "椰子鸭汽车摆件",
+          "row_number": 3,
+          "link": "https://www.amazon.com/dp/B0GRG3WXWS",
+          "competitor_links": [
+            {
+              "asin": "B0GRG3WXWS",
+              "url": "https://www.amazon.com/dp/B0GRG3WXWS?ie=UTF8&ASIN=B0GRG3WXWS&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0HFCQ7BQK--2店",
+          "asin": "B0HFCQ7BQK",
+          "product_name": "老年人坐姿健身海报",
+          "row_number": 4,
+          "link": "https://www.amazon.com/dp/B0HFCQ7BQK",
+          "competitor_links": [
+            {
+              "asin": "B0HFCQ7BQK",
+              "url": "https://www.amazon.com/dp/B0HFCQ7BQK?ie=UTF8&ASIN=B0HFCQ7BQK&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0DTHKNSB4--2店",
+          "asin": "B0DTHKNSB4",
+          "product_name": "便携旅行收纳包",
+          "row_number": 5,
+          "link": "https://www.amazon.com/dp/B0DTHKNSB4",
+          "competitor_links": [
+            {
+              "asin": "B0DTHHV5V7",
+              "url": "https://www.amazon.com/dp/B0DTHHV5V7?ie=UTF8&ASIN=B0DTHHV5V7&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GFMQF3VT--2店",
+          "asin": "B0GFMQF3VT",
+          "product_name": "易拉罐吸管杯盖",
+          "row_number": 6,
+          "link": "https://www.amazon.com/dp/B0GFMQF3VT",
+          "competitor_links": [
+            {
+              "asin": "B0GFMQF3VT",
+              "url": "https://www.amazon.com/dp/B0GFMQF3VT?ie=UTF8&ASIN=B0GFMQF3VT&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0HJ7LCYHM--2店",
+          "asin": "B0HJ7LCYHM",
+          "product_name": "冲击套筒转换接头套装",
+          "row_number": 7,
+          "link": "https://www.amazon.com/dp/B0HJ7LCYHM",
+          "competitor_links": [
+            {
+              "asin": "B0FP4CK3J4",
+              "url": "https://www.amazon.com/dp/B0FP4CK3J4?ie=UTF8&ASIN=B0FP4CK3J4&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0H7X713TD--2店",
+          "asin": "B0H7X713TD",
+          "product_name": "3D趣味圣诞贺卡",
+          "row_number": 8,
+          "link": "https://www.amazon.com/dp/B0H7X713TD",
+          "competitor_links": [
+            {
+              "asin": "B0H7X713TD",
+              "url": "https://www.amazon.com/dp/B0H7X713TD?ie=UTF8&ASIN=B0H7X713TD&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        },
+        {
+          "id": "B0GG8QGX5Y--2店",
+          "asin": "B0GG8QGX5Y",
+          "product_name": "3D紫色童话城堡贺卡",
+          "row_number": 9,
+          "link": "https://www.amazon.com/dp/B0GG8QGX5Y",
+          "competitor_links": [
+            {
+              "asin": "B0GG8QGX5Y",
+              "url": "https://www.amazon.com/dp/B0GG8QGX5Y?ie=UTF8&ASIN=B0GG8QGX5Y&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店"
+        }
+      ]
+    },
     {
       "id": "cady选品",
       "name": "cady选品",
+      "selection_id": "2026-09-02",
+      "selection_name": "09.02周三选品",
+      "selection_date": "2026-09-02",
+      "owner": "cady选品",
       "source_sheet": "data/batch_fast_workbench/source_sheets/2店批量上品.xlsx",
       "rows": [
         {
@@ -889,6 +2046,10 @@
     {
       "id": "图图选品",
       "name": "图图选品",
+      "selection_id": "2026-09-02",
+      "selection_name": "09.02周三选品",
+      "selection_date": "2026-09-02",
+      "owner": "图图选品",
       "source_sheet": "data/batch_fast_workbench/source_sheets/1店批量上品图图.xlsx",
       "rows": [
         {
@@ -1750,6 +2911,10 @@
     {
       "id": "凯旋选品",
       "name": "凯旋选品",
+      "selection_id": "2026-09-02",
+      "selection_name": "09.02周三选品",
+      "selection_date": "2026-09-02",
+      "owner": "凯旋选品",
       "source_sheet": "data/batch_fast_workbench/source_sheets/1店批量上品凯旋.xlsx",
       "rows": [
         {

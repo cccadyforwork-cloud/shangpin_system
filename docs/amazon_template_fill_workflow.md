@@ -208,6 +208,7 @@ Product Description：
 - `PET_TOY` 例外：后台 `99022` 已确认 Parent 行需填写商品长、宽、高及对应单位和 Item Weight；包装尺寸、包装重量仍留空
 - `TOWEL` 例外：后台 `99022` 已确认 Parent 行需填写成品长、宽及对应单位和 Item Weight；优先使用商品实际成品尺寸，包装尺寸、包装重量仍留空
 - `GIFT_WRAP` 例外：后台 `99022` 已确认 Parent 行需填写 Unit Count / Unit Count Type 和 Item Weight；包装尺寸、包装重量仍留空
+- `SPRAY_BOTTLE` 例外：后台 `99022` 已确认 Parent 行需填写 Unit Count / Unit Count Type、商品本体高度和宽度及单位；取产品资料表中已确认的本体尺寸，不能套用装箱尺寸。已确认的 Item Weight 也应写入；Parent 包装尺寸和包装重量仍留空
 
 子体行：
 

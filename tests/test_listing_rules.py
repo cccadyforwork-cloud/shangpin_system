@@ -76,6 +76,20 @@ class ListingRulesTest(unittest.TestCase):
 
         self.assertIn("摄入暗示或绝对化成分宣称", messages)
 
+    def test_natural_color_variation_at_title_end_is_allowed(self):
+        row = {
+            "title": (
+                "Cat Wobble Toy with Textured Body, Self-Righting Tumbler Toy for Indoor Cats, "
+                "Battery-Free Solo Play, Small Natural"
+            ),
+            "color": "Natural",
+            "material": "Jute",
+        }
+
+        messages = [message for field, message, _fix in validate_listing_row(row) if field in {"title", "copy"}]
+
+        self.assertEqual(messages, [])
+
     def test_sensitive_material_claims_are_blocked_in_title(self):
         title = (
             "Food Grade Silicone Pet Bowl, Travel Bowl for Cats and Small Dogs, "

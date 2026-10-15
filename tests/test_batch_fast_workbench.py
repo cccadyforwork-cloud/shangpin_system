@@ -172,6 +172,79 @@ class BatchFastWorkbenchTests(unittest.TestCase):
         with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
             self.assertEqual(["二店输出V1.xlsm"], archive.namelist())
 
+    def test_selection_import_updates_current_date_without_overwriting_history(self):
+        save_ledger({
+            "version": 4,
+            "batches": [
+                {
+                    "id": "2026-10-14-cady",
+                    "name": "cady选品",
+                    "owner": "cady选品",
+                    "selection_id": "2026-10-14",
+                    "selection_name": "10.14周三选品",
+                    "stores": ["1店"],
+                    "source_sheet": "",
+                    "rows": [],
+                },
+                {
+                    "id": "2026-09-02-cady",
+                    "name": "cady选品",
+                    "owner": "cady选品",
+                    "selection_id": "2026-09-02",
+                    "selection_name": "09.02周三选品",
+                    "stores": ["2店", "1店"],
+                    "source_sheet": str(self.root / "历史批次.xlsx"),
+                    "rows": [{"id": "HISTORY", "status": "已上传"}],
+                },
+            ],
+        }, self.ledger)
+
+        import_sheets([self.sheet], self.ledger, selection_id="2026-10-14")
+        batches = load_ledger(self.ledger)["batches"]
+        current = next(batch for batch in batches if batch["id"] == "2026-10-14-cady")
+        history = next(batch for batch in batches if batch["id"] == "2026-09-02-cady")
+        self.assertEqual(["1店"], current["stores"])
+        self.assertEqual("B0ABCDEFGH", current["rows"][0]["id"])
+        self.assertEqual("1店", current["rows"][0]["store_id"])
+        self.assertEqual("HISTORY", history["rows"][0]["id"])
+        self.assertEqual("09.02周三选品", history["selection_name"])
+
+    def test_selection_sync_uses_its_own_source_and_keeps_child_competitor_links(self):
+        current_sheet = self.root / "10.14第一批_cccady.xlsx"
+        workbook = Workbook()
+        sheet = workbook.active
+        sheet.append(["LINK", "品名", "竞品链接"])
+        sheet.append([
+            "https://www.amazon.com/dp/B0PARENT01",
+            "父体商品名",
+            "https://www.amazon.com/dp/B0CHILD001\nhttps://www.amazon.com/dp/B0CHILD002",
+        ])
+        workbook.save(current_sheet)
+        save_ledger({
+            "version": 5,
+            "batches": [{
+                "id": "2026-10-14-cady",
+                "name": "cccady选品（第一批）",
+                "owner": "cady选品",
+                "selection_id": "2026-10-14",
+                "selection_name": "10.14周三选品",
+                "stores": ["1店", "2店"],
+                "source_sheet": str(current_sheet),
+                "rows": [],
+            }],
+        }, self.ledger)
+
+        data = import_sheets(None, self.ledger, selection_id="2026-10-14")
+        rows = data["batches"][0]["rows"]
+        self.assertEqual(["1店", "2店"], data["batches"][0]["stores"])
+        self.assertEqual(2, len(rows))
+        self.assertEqual("父体商品名", rows[0]["product_name"])
+        self.assertEqual(
+            ["B0CHILD001", "B0CHILD002"],
+            [item["asin"] for item in rows[0]["competitor_links"]],
+        )
+        self.assertEqual(rows[0]["competitor_links"], rows[1]["competitor_links"])
+
 
 if __name__ == "__main__":
     unittest.main()
