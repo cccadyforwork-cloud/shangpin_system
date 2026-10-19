@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updated_at": "2026-10-15T11:44:17+08:00",
+  "updated_at": "2026-10-15T21:15:29+08:00",
   "batches": [
     {
       "id": "2026-10-14-cady",
@@ -27,13 +27,24 @@
               "url": "https://www.amazon.com/Charger-Charging-Compatible-Smartphones-Tablets/dp/B0GDQL1ZJP/?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=8xSq7&pd_rd_wg=oUcWD&pd_rd_r=be14921a-71a8-4c36-a212-4ec53f57f328&content-id=amzn1.sym.c1e8fffb-dcad-4a3e-a0a0-a771be3a7399&ref_=Haul_HP_D_ASLIST_2dollar100926_NA_N&pos=ib"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/competitor_html/B0GDQM14G7.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/source_template/ELECTRONIC_CABLE.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/output_file/USB-A转Type-C编织快充线V2.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/output_file/USB-A转Type-C编织快充线V1.xlsm",
+              "added_at": "2026-10-15T18:28:12+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/output_file/USB-A转Type-C编织快充线V2.xlsm",
+              "added_at": "2026-10-15T20:47:14+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {
@@ -48,13 +59,19 @@
               "url": "https://www.amazon.com/dp/B0G516T322?ie=UTF8&ASIN=B0G516T322&s=bazaar"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0G516T322/competitor_html/B0G516T322.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0G516T322/source_template/PET_FEEDER.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0G516T322/output_file/猫粮挤压分配器V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0G516T322/output_file/猫粮挤压分配器V1.xlsm",
+              "added_at": "2026-10-15T18:28:12+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {
@@ -69,13 +86,19 @@
               "url": "https://www.amazon.com/dp/B0GN92GVTH?ie=UTF8&ASIN=B0GN92GVTH&s=bazaar"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0HGFRL717/competitor_html/B0GN92GVTH.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0HGFRL717/source_template/PLANTER.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0HGFRL717/output_file/7加仑土豆种植袋4件V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0HGFRL717/output_file/7加仑土豆种植袋4件V1.xlsm",
+              "added_at": "2026-10-15T18:28:12+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {
@@ -90,13 +113,19 @@
               "url": "https://www.amazon.com/dp/B0DT45VRZP?ie=UTF8&ASIN=B0DT45VRZP&s=bazaar"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0DT45VRZP/competitor_html/B0DT45VRZP.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0DT45VRZP/source_template/MEASURING_CUP.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0DT45VRZP/output_file/叠放式量杯量勺套装V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0DT45VRZP/output_file/叠放式量杯量勺套装V1.xlsm",
+              "added_at": "2026-10-15T18:50:18+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {
@@ -119,13 +148,19 @@
               "url": "https://www.amazon.com/dp/B0H6JYJYB4?ie=UTF8&ASIN=B0H6JYJYB4&s=bazaar"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0HJV7GPBN/competitor_html/B0HGFFX2L8.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0HJV7GPBN/source_template/GREETING_CARD.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0HJV7GPBN/output_file/3D花束茶杯弹出贺卡3款V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0HJV7GPBN/output_file/3D花束茶杯弹出贺卡3款V1.xlsm",
+              "added_at": "2026-10-15T18:50:18+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "原资料含3个子ASIN",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {
@@ -140,13 +175,19 @@
               "url": "https://www.amazon.com/dp/B0GG97R1K1?ie=UTF8&ASIN=B0GG97R1K1&s=bazaar"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0GG97R1K1/competitor_html/B0GG97R1K1.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0GG97R1K1/source_template/GREETING_CARD_(1).xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0GG97R1K1/output_file/3D紫色蝴蝶礼盒贺卡V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0GG97R1K1/output_file/3D紫色蝴蝶礼盒贺卡V1.xlsm",
+              "added_at": "2026-10-15T18:50:18+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {
@@ -161,13 +202,19 @@
               "url": "https://www.amazon.com/dp/B0HBJYC6C7?ie=UTF8&ASIN=B0HBJYC6C7&s=bazaar"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0HBJYC6C7/competitor_html/B0HBJYC6C7.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0HBJYC6C7/source_template/GREETING_CARD_(1).xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0HBJYC6C7/output_file/3D圣诞马车贺卡V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0HBJYC6C7/output_file/3D圣诞马车贺卡V1.xlsm",
+              "added_at": "2026-10-15T18:50:18+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {
@@ -182,13 +229,19 @@
               "url": "https://www.amazon.com/dp/B0GKF7GKV9?ie=UTF8&ASIN=B0GKF7GKV9&s=bazaar"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0GKF7GKV9/competitor_html/B0GKF7GKV9.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0GKF7GKV9/source_template/GREETING_CARD_(1).xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0GKF7GKV9/output_file/3D生日弹出贺卡V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0GKF7GKV9/output_file/3D生日弹出贺卡V1.xlsm",
+              "added_at": "2026-10-15T18:50:18+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {
@@ -203,13 +256,19 @@
               "url": "https://www.amazon.com/dp/B0HC31QF6F?ie=UTF8&ASIN=B0HC31QF6F&s=bazaar"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0HC31QF6F/competitor_html/B0HC31QF6F.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0HC31QF6F/source_template/CALENDAR.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0HC31QF6F/output_file/2027搞怪狗狗挂历V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0HC31QF6F/output_file/2027搞怪狗狗挂历V1.xlsm",
+              "added_at": "2026-10-15T18:50:18+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {
@@ -224,13 +283,19 @@
               "url": "https://www.amazon.com/dp/B0G1YWHD65?ie=UTF8&ASIN=B0G1YWHD65&s=bazaar"
             }
           ],
-          "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0G1YWHD65/competitor_html/B0G1YWHD65.html",
+          "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0G1YWHD65/source_template/STORAGE_BOX.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0G1YWHD65/output_file/太阳月亮图案金属收纳盒V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0G1YWHD65/output_file/太阳月亮图案金属收纳盒V1.xlsm",
+              "added_at": "2026-10-15T18:50:18+08:00"
+            }
+          ],
+          "status": "已上传",
           "purchase_status": "",
-          "note": "",
+          "note": "预估价格",
           "store_id": "1店"
         },
         {

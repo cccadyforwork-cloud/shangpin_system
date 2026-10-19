@@ -1,0 +1,148 @@
+{
+  "batch_name": "2026-10-14 cccady 1店其余七品",
+  "output_dir": "../generated/2026-10-14-cady_1店_其余七品",
+  "tasks": [
+    {
+      "name": "叠放式量杯量勺套装",
+      "product_name": "Measuring Set",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0DT45VRZP/source_template/MEASURING_CUP.xlsm",
+      "competitor": "../files/2026-10-14-cady/B0DT45VRZP/competitor_html/B0DT45VRZP.html",
+      "output_name": "叠放式量杯量勺套装V1.xlsm",
+      "parent_sku": "TTCA-MeasuringSet",
+      "child_sku": "TTCA-MeasuringSet-10pcs",
+      "variation_theme": "NUMBER_OF_ITEMS",
+      "expand_competitor_variants": false,
+      "base_title": "10 Pcs Stackable Measuring Cups and Spoons with Stainless Steel Handles, Nesting Kitchen Tools for Cooking and Baking, Black",
+      "color": "Black",
+      "material": "Stainless Steel, Plastic",
+      "set_count": 10,
+      "estimated_price": 5.99,
+      "logistics_tier": "8_12_oz"
+    },
+    {
+      "name": "3D花束茶杯弹出贺卡（3款）",
+      "product_name": "Floral Card",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0HJV7GPBN/source_template/GREETING_CARD.xlsm",
+      "competitors": [
+        "../files/2026-10-14-cady/B0HJV7GPBN/competitor_html/B0HGFFX2L8.html",
+        "../files/2026-10-14-cady/B0HJV7GPBN/competitor_html/B0HFNK8PJJ.html",
+        "../files/2026-10-14-cady/B0HJV7GPBN/competitor_html/B0H6JYJYB4.html"
+      ],
+      "output_name": "3D花束茶杯弹出贺卡3款V1.xlsm",
+      "parent_sku": "TTCA-FloralCard",
+      "variation_theme": "SET_NAME",
+      "expand_competitor_variants": false,
+      "base_title": "3D Floral Pop Up Greeting Cards with Envelopes, Christmas Teacup, Poinsettia and Pink Blossom, Multiple Colors Available",
+      "material": "Paper",
+      "set_count": 1,
+      "estimated_price": 3.99,
+      "logistics_tier": "le_4_oz",
+      "variants": [
+        {
+          "sku": "TTCA-FloralCard-ChristmasTeacup",
+          "base_title": "3D Christmas Floral Teacup Pop Up Greeting Card with Envelope, Bouquet Holiday Card for Women, Mom and Friends",
+          "color": "Multicolor"
+        },
+        {
+          "sku": "TTCA-FloralCard-Poinsettia",
+          "base_title": "3D Christmas Poinsettia Pop Up Greeting Card with Envelope, Floral Bouquet Vase Design for Holiday Greetings",
+          "color": "Red"
+        },
+        {
+          "sku": "TTCA-FloralCard-PinkBlossomTeacup",
+          "base_title": "3D Pink Cherry Blossom Tulip Teacup Pop Up Greeting Card with Envelope for Birthday and Romantic Occasions",
+          "color": "Pink"
+        }
+      ]
+    },
+    {
+      "name": "3D紫色蝴蝶礼盒贺卡",
+      "product_name": "Butterfly Card",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0GG97R1K1/source_template/GREETING_CARD_(1).xlsm",
+      "competitor": "../files/2026-10-14-cady/B0GG97R1K1/competitor_html/B0GG97R1K1.html",
+      "output_name": "3D紫色蝴蝶礼盒贺卡V1.xlsm",
+      "parent_sku": "TTCA-ButterflyCard",
+      "child_sku": "TTCA-ButterflyCard-Purple",
+      "variation_theme": "COLOR",
+      "expand_competitor_variants": false,
+      "base_title": "Purple Butterfly 3D Pop Up Card Box with Envelope, Romantic Greeting Card for Anniversaries and Special Occasions",
+      "color": "Purple",
+      "material": "Paper",
+      "set_count": 1,
+      "estimated_price": 3.99,
+      "logistics_tier": "le_4_oz"
+    },
+    {
+      "name": "3D圣诞马车贺卡",
+      "product_name": "Carriage Card",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0HBJYC6C7/source_template/GREETING_CARD_(1).xlsm",
+      "competitor": "../files/2026-10-14-cady/B0HBJYC6C7/competitor_html/B0HBJYC6C7.html",
+      "output_name": "3D圣诞马车贺卡V1.xlsm",
+      "parent_sku": "TTCA-CarriageCard",
+      "child_sku": "TTCA-CarriageCard-Christmas",
+      "variation_theme": "SET_NAME",
+      "expand_competitor_variants": false,
+      "base_title": "3D Christmas Carriage Pop Up Greeting Card with Envelope, Vintage Royal Santa Holiday Table Decor for Friends and Family",
+      "material": "Paper",
+      "set_count": 1,
+      "estimated_price": 3.99,
+      "logistics_tier": "le_4_oz"
+    },
+    {
+      "name": "3D生日弹出贺卡",
+      "product_name": "Birthday Card",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0GKF7GKV9/source_template/GREETING_CARD_(1).xlsm",
+      "competitor": "../files/2026-10-14-cady/B0GKF7GKV9/competitor_html/B0GKF7GKV9.html",
+      "output_name": "3D生日弹出贺卡V1.xlsm",
+      "parent_sku": "TTCA-BirthdayCard",
+      "child_sku": "TTCA-BirthdayCard-PopUp",
+      "variation_theme": "SET_NAME",
+      "expand_competitor_variants": false,
+      "base_title": "Happy Birthday 3D Pop Up Greeting Card with Envelope, Blank Note Card for Birthday Celebrations and Party Invitations",
+      "material": "Paper",
+      "set_count": 1,
+      "estimated_price": 3.99,
+      "logistics_tier": "le_4_oz"
+    },
+    {
+      "name": "2027搞怪狗狗挂历",
+      "product_name": "Dog Calendar",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0HC31QF6F/source_template/CALENDAR.xlsm",
+      "competitor": "../files/2026-10-14-cady/B0HC31QF6F/competitor_html/B0HC31QF6F.html",
+      "output_name": "2027搞怪狗狗挂历V1.xlsm",
+      "parent_sku": "TTCA-DogCalendar",
+      "child_sku": "TTCA-DogCalendar-2027",
+      "variation_theme": "SET_NAME",
+      "expand_competitor_variants": false,
+      "base_title": "2027 Wacky Dogs Wall Calendar, 12 Month Monthly Planner with Twin Wire Spiral Binding and Large Writable Blocks, US Holidays",
+      "material": "Paper",
+      "set_count": 1,
+      "estimated_price": 8.99,
+      "logistics_tier": "8_12_oz"
+    },
+    {
+      "name": "太阳月亮图案金属收纳盒",
+      "product_name": "Tin Box",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0G1YWHD65/source_template/STORAGE_BOX.xlsm",
+      "competitor": "../files/2026-10-14-cady/B0G1YWHD65/competitor_html/B0G1YWHD65.html",
+      "output_name": "太阳月亮图案金属收纳盒V1.xlsm",
+      "parent_sku": "TTCA-TinBox",
+      "child_sku": "TTCA-TinBox-SunMoon",
+      "variation_theme": "SET_NAME",
+      "expand_competitor_variants": false,
+      "base_title": "Vintage Sun and Moon Plastic Storage Box, Matte Black Matchbox Style Container with Celestial Design for Small Item Storage",
+      "color": "Black",
+      "material": "Plastic",
+      "set_count": 1,
+      "estimated_price": 4.99,
+      "logistics_tier": "4_8_oz"
+    }
+  ]
+}

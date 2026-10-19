@@ -1,0 +1,63 @@
+{
+  "batch_name": "2026-10-14 cccady 1店首三品",
+  "output_dir": "../generated/2026-10-14-cady_1店_首三品",
+  "tasks": [
+    {
+      "name": "USB-A转Type-C编织快充线",
+      "product_name": "Charging Cable",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0GDQM14G7/source_template/ELECTRONIC_CABLE.xlsm",
+      "competitor": "../files/2026-10-14-cady/B0GDQM14G7/competitor_html/B0GDQM14G7.html",
+      "output_name": "USB-A转Type-C编织快充线V1.xlsm",
+      "parent_sku": "TTCA-ChargingCable",
+      "variation_theme": "COLOR/SIZE",
+      "base_title": "USB A to USB C Woven Charging Cable for Smartphones and Tablets, Cord for Home, Office and Travel",
+      "material": "Woven Fabric",
+      "set_count": 1,
+      "estimated_price": 3.99,
+      "logistics_tier": "le_4_oz",
+      "variants": [
+        {"sku": "TTCA-ChargingCable-White-1m", "color": "White", "size": "1 Meter"},
+        {"sku": "TTCA-ChargingCable-White-2m", "color": "White", "size": "2 Meters"},
+        {"sku": "TTCA-ChargingCable-Blue-1m", "color": "Blue", "size": "1 Meter"},
+        {"sku": "TTCA-ChargingCable-Blue-2m", "color": "Blue", "size": "2 Meters"},
+        {"sku": "TTCA-ChargingCable-Purple-1m", "color": "Purple", "size": "1 Meter"},
+        {"sku": "TTCA-ChargingCable-Purple-2m", "color": "Purple", "size": "2 Meters"}
+      ]
+    },
+    {
+      "name": "猫粮挤压分配器",
+      "product_name": "Cat Dispenser",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0G516T322/source_template/PET_FEEDER.xlsm",
+      "competitor": "../files/2026-10-14-cady/B0G516T322/competitor_html/B0G516T322.html",
+      "output_name": "猫粮挤压分配器V1.xlsm",
+      "parent_sku": "TTCA-CatDispenser",
+      "child_sku": "TTCA-CatDispenser-RandomColor",
+      "variation_theme": "COLOR",
+      "base_title": "Cat Food Squeezer Dispenser, Manual Plastic Pouch Feeder with Non Slip Base and Easy Open Lid for Home or Travel",
+      "color": "Random Color",
+      "material": "Plastic",
+      "set_count": 1,
+      "estimated_price": 3.99,
+      "logistics_tier": "le_4_oz"
+    },
+    {
+      "name": "7加仑土豆种植袋",
+      "product_name": "Grow Bag",
+      "store_id": "1店",
+      "template": "../files/2026-10-14-cady/B0HGFRL717/source_template/PLANTER.xlsm",
+      "competitor": "../files/2026-10-14-cady/B0HGFRL717/competitor_html/B0GN92GVTH.html",
+      "output_name": "7加仑土豆种植袋4件V1.xlsm",
+      "parent_sku": "TTCA-GrowBag",
+      "child_sku": "TTCA-GrowBag-4pcs-7gal",
+      "variation_theme": "SIZE",
+      "base_title": "4 Pcs 7 Gallon Potato Grow Bags with Flap and Handles, Vegetable Planting Bags for Garden Tomatoes and Carrots",
+      "size": "7 Gallons",
+      "material": "Fabric",
+      "set_count": 4,
+      "estimated_price": 12.99,
+      "logistics_tier": "12_16_oz"
+    }
+  ]
+}
