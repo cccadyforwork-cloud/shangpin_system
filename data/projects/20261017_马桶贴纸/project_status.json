@@ -2,15 +2,18 @@
   "product_name": "马桶贴",
   "workbench_owner": "cccady",
   "workbench_store": "1店",
-  "status": "not_started",
+  "status": "uploaded_success",
   "latest_draft": "03_产品详情页/马桶贴_产品资料.xlsx",
-  "updated_at": "2026-10-20T03:29:15",
-  "workbench_note": "上架路线：Haul Generic Variation；Product Type=ADHESIVE_TAPES；Variation Theme=SET_NAME；3个款式：Leaf/树叶、Fruit/水果、Floral/花团；每款1卷。主体材质PVC，亚克力背胶；规格1.5米×3.8厘米；单件重量50g；售价$1.86；≤4 oz且售价≤$3档位，配送费$0.50。V2已修复价格横向误填，仅保留List Price与Your Price USD。",
-  "latest_template": "05_填表版本/马桶贴纸V2.xlsx",
+  "updated_at": "2026-10-20T04:19:52",
+  "workbench_note": "上架路线：Haul Generic Variation；Product Type=ADHESIVE_TAPES；Variation Theme=SET_NAME；4个款式：Leaf/树叶、Fruit/水果、Floral/花团、White/纯白；每款1卷。主体材质PVC，亚克力背胶；规格1.5米×3.8厘米；单件重量50g；售价$1.86；≤4 oz且售价≤$3档位，配送费$0.50。V3已清除价格横向误填，仅保留List Price与Your Price USD。",
+  "latest_template": "05_填表版本/马桶贴纸V3.xlsx",
   "source_template": "05_模版原件/ADHESIVE_TAPES.xlsm",
-  "latest_check_report": "/Users/cc/Documents/GitHub/shangpin_system/data/projects/20261017_马桶贴纸/06_处理报告/马桶贴纸V1_模板自检报告.md",
-  "sku_count": 4,
+  "latest_check_report": "06_处理报告/马桶贴纸V3_模板自检报告.md",
+  "sku_count": 5,
   "written_field_count": 41,
   "template_error_count": 0,
-  "confirmed_at": "2026-10-20T03:29:15"
+  "confirmed_at": "2026-10-20T03:29:15",
+  "version_notes": {
+    "V3": "新增白色子体 TTCA-ToiletSticker-White，现为 1 个父体、4 个子体；白色款沿用原有规格和 $1.86 售价。更新父体款式说明，并清除 V1 中价格误填到非价格栏的问题，仅保留 List Price 和 Haul Price。V3 模板自检 0 项错误。"
+  }
 }

@@ -1,9 +1,9 @@
 {
   "product_name": "下喷式油壶",
   "workbench_owner": "ccady",
-  "status": "ready_for_upload",
+  "status": "uploaded_success",
   "latest_draft": "03_产品详情页/下喷式油壶_产品资料.xlsx",
-  "updated_at": "2026-10-12T18:57:29",
+  "updated_at": "2026-10-20T04:20:00",
   "workbench_note": "V1 上传反馈：父体缺 Unit Count、本体高和宽，已在 V2 按单只、本体 149×45.3 mm 修正。绿色子体已写入成功，但平台提示 100521 审核中，最多等待 48 小时。V2 待重新上传验证；装箱 16×5×5.5 cm、100 g（重量仍为档位默认）。",
   "source_template": "05_模版原件/SPRAY_BOTTLE.xlsm",
   "sku_count": 2,

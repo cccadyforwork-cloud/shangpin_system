@@ -3,7 +3,7 @@
   "store_ops_source_project_id": "P-a12991517256",
   "store_ops_source_revision": 34,
   "status": "ready_for_upload",
-  "updated_at": "2026-10-15T18:20:31",
+  "updated_at": "2026-10-20T04:04:18",
   "latest_draft": "03_产品详情页/AB彩扁碟珠6_产品资料.xlsx",
   "latest_analysis_report": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261006_AB彩扁碟珠6_资料提炼报告.md",
   "selected_route_mode": "variation",
@@ -15,7 +15,7 @@
   "template_error_count": 0,
   "version_notes": {
     "V1": "初始模板",
-    "V2": ""
+    "V2": "V2 将父体和金色、粉色、绿色三个子体的 Variation Theme Name 从 Color 统一改为当前 Amazon 模板允许的 COLOR（共 4 处）；SKU、标题、价格及其他填写内容不变。V1 自检有 4 项变体主题错误，V2 自检为 0 项错误。"
   },
   "store_ops_generated_at": "2026-10-06T04:58:34",
   "store_ops_generated_revision": 19

@@ -1,8 +1,8 @@
 {
   "product_name": "银色耳环",
-  "status": "ready_for_upload",
+  "status": "uploaded_success",
   "latest_draft": "03_产品详情页/银色耳环_产品资料.xlsx",
-  "updated_at": "2026-10-15T18:20:58",
+  "updated_at": "2026-10-20T04:20:05",
   "source_template": "05_模版原件/EARRING_2.xlsm",
   "sku_count": 3,
   "confirmed_at": "2026-09-21T18:55:35",
@@ -14,5 +14,5 @@
     "V2": "上传失败：99022；Stone Creation Method 和 Stone Treatment Method 缺失",
     "V3": "修复 99022：两个 Child 补充 Stone Creation Method = Unknown、Stone Treatment Method = Not Treated"
   },
-  "workbench_note": "需要上传cpsc解冻"
+  "workbench_note": "已经解冻正常上"
 }
