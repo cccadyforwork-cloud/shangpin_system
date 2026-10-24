@@ -1,0 +1,20 @@
+{
+  "product_name": "鸡骨剪刀",
+  "workbench_owner": "cccady",
+  "workbench_store": "1店",
+  "status": "ready_for_upload",
+  "latest_draft": "03_产品详情页/鸡骨剪刀_产品资料.xlsx",
+  "updated_at": "2026-10-23T02:01:09",
+  "sku_count": 2,
+  "confirmed_at": "2026-10-22T17:41:03",
+  "latest_template": "05_填表版本/鸡骨剪刀V2.xlsx",
+  "source_template": "05_模版原件/SCISSORS.xlsm",
+  "written_field_count": 39,
+  "template_error_count": 0,
+  "version_notes": {
+    "V1": "2026-10-22 修改：父体 TTCA-Scissor-chik 与银色子体 TTCA-Scissor-chik-sliver 保持不变；子体包装尺寸由此前按 1688 银色 OPP 袋装换算的 9.45×3.15×0.79 in，改为 $1.77 配送费对应 4–8 oz 档默认 5.91×3.94×1.57 in；包装重量同步按该档默认由 0.40 lb 改为 0.44 lb。父体不填包装与配送费。售价 $6.59 等其余内容不变；V1 自检 0 项错误。修改前的产品资料与 V1 已存入 08_修改前备份。",
+    "V2": "2026-10-23 根据 Amazon V1 processing summary 错误码 90220，仅补银色子体 TTCA-Scissor-chik-sliver 的 Model Name=PH333、Included Components=1 Pair of Kitchen Poultry Shears、Blade Material=Stainless Steel。父体及其他字段不变。本地模板自检 0 错误、0 警告；待重新上传以 Amazon 处理结果确认。详见 06_处理报告/鸡骨剪刀V2_修改记录.md。"
+  },
+  "workbench_note": "1店 / cccady；S1 项目 P-4f312506b9a4（资料版本 7）。父子体路线：父体 TTCA-Scissor-chik，银色子体 TTCA-Scissor-chik-sliver（源 SKU 拼写 sliver 原样保留），变体主题 COLOR。采购成本 ¥8.40，售价 $6.59，配送费 $1.77。Amazon 填表包装尺寸/重量按 4–8 oz 档默认：5.91×3.94×1.57 in、0.44 lb；1688 页面实际包装数据仅作为源资料保存。\n2026-10-23：V1 子体因缺 Model Name、Included Components、Blade Material 报 90220；V2 已补齐，待重新上传确认。",
+  "latest_check_report": "06_处理报告/鸡骨剪刀V2_模板自检报告.md"
+}

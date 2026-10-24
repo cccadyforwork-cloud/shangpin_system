@@ -137,7 +137,6 @@ def _validate_variation_titles(findings, row_infos):
         if not parent:
             continue
         parent_title = _text(parent.get("title"))
-        theme = " ".join(_text(item.get("variation_theme")).lower() for item in [parent] + children)
         colors = _unique_values(children, "color")
         sizes = _unique_values(children, "size")
         if len(colors) > 1 and not _contains_exact_text(parent_title, PARENT_COLOR_PHRASE):
@@ -145,12 +144,8 @@ def _validate_variation_titles(findings, row_infos):
         if len(sizes) > 1 and not _contains_exact_text(parent_title, PARENT_STYLE_PHRASE):
             findings.append(error(parent["row"], "Title", f"{parent_sku} 是多款式 Parent，但标题未说明多款式可选。", f"Parent 标题基于通用标题生成，并加入 {PARENT_STYLE_PHRASE}。"))
 
-        for child in children:
-            child_title = _text(child.get("title"))
-            if "color" in theme and _text(child.get("color")) and not _contains_exact_text(child_title, child.get("color")):
-                findings.append(error(child["row"], "Title", f"{child.get('sku')} 是颜色变体 Child，但标题未包含自身颜色 `{child.get('color')}`。", "Child 标题在通用标题基础上追加自己的颜色属性。"))
-            if "size" in theme and _text(child.get("size")) and not _contains_exact_text(child_title, child.get("size")):
-                findings.append(error(child["row"], "Title", f"{child.get('sku')} 是款式/尺寸变体 Child，但标题未包含自身属性 `{child.get('size')}`。", "Child 标题在通用标题基础上追加自己的尺寸或款式属性。"))
+        # Variation display values are separate listing attributes. A child title
+        # does not need to repeat its color or size display name verbatim.
 
 
 COPY_FIELD_NAMES = {

@@ -228,9 +228,11 @@ def apply_variation_title_rules(rows):
         return prepared
 
     for parent in parent_rows:
-        parent["title"] = build_parent_title(child_rows, parent)
+        if not _text(parent.get("title")):
+            parent["title"] = build_parent_title(child_rows, parent)
     for child in child_rows:
-        child["title"] = build_child_title(child, child_rows)
+        if not _text(child.get("title")):
+            child["title"] = build_child_title(child, child_rows)
     return prepared
 
 

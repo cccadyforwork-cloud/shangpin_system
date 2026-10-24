@@ -1,0 +1,19 @@
+{
+  "product_name": "拖把头替换套",
+  "workbench_owner": "cccady",
+  "workbench_store": "1店",
+  "status": "ready_for_upload",
+  "latest_draft": "03_产品详情页/拖把头替换套_产品资料.xlsx",
+  "updated_at": "2026-10-23T03:11:15",
+  "source_template": "05_模版原件/MOP.xlsm",
+  "workbench_note": "2026-10-23：已按拖把替换套资料包完成 1 父体+5 子体的默认上品资料与 Amazon V1 模板。5 个子体按 CSV 采用 CNY 采购成本、USD 建议售价、USD 预估配送费；成本只在内部产品资料记录，未写入 Amazon 模板。父体不销售，不填成本/售价/包裹。价格：粉2片 $2.68/费$0.50；绿白2片 $4.29/费$0.88；蓝2片、绿4片、白2片各 $4.18/费$0.88。尺寸采用用户确认 24.5×11.5 cm，标题显示 9.6 by 4.5 Inches。模板自检 0 错误。用户确认包装可压缩，并要求按资料包售价及配送档位执行；包裹字段维持工作台档位默认值。供应商单片重量与4oz档位的差异保留在内部资料，不擅自更改定价或档位。\n2026-10-23：Amazon V1 父体成功、5 个子体各报 4 个必填缺失；V2 已仅补缺失字段。型号 JB023 来自供应商货号，证书字段选原模板的 Not Applicable；待重新上传确认。",
+  "latest_template": "05_填表版本/拖把头替换套V2.xlsx",
+  "sku_count": 6,
+  "written_field_count": 39,
+  "template_error_count": 0,
+  "version_notes": {
+    "V1": "按拖把替换套资料包 S1/CSV 更新 5 个子体售价、配送费和内部 CNY 成本；按默认上品规则补齐父子体、颜色+数量变体、英语文案、包裹档位默认值，生成 V1。模板自检 0 错误。用户确认按资料包售价、预估配送费及可压缩包装方案执行，维持原档位；供应商单片重量与4oz档位的差异仅作为内部来源备注。成本仅留内部，不写入 Amazon 模板。",
+    "V2": "2026-10-23 根据 Amazon V1 processing summary 的 20 条 90220 错误，给 5 个子体分别补 Model Name=JB023、Generic Keyword=chenille floor duster cloth hardwood tile laminate cleaning accessory、Number of Boxes=1、Product Compliance Certificate=Not Applicable。父体和其余字段保持 V1 原样。本地自检 0 错误、0 警告；待重新上传确认。详见 06_处理报告/拖把头替换套V2_修改记录.md。"
+  },
+  "latest_check_report": "06_处理报告/拖把头替换套V2_模板自检报告.md"
+}

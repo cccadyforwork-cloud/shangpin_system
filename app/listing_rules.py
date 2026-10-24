@@ -102,13 +102,14 @@ def validate_listing_row(row):
         if high_risk_claim_hits:
             findings.append(("title", f"标题包含医疗、护理、清洁、防护或结果型功效表达：{', '.join(high_risk_claim_hits[:8])}。", "标题不要写治疗、预防、牙齿清洁、杀菌、防护、健康改善等结果；改写为商品类型、款式、对象和使用场景。"))
 
-        color = _text(row.get("color"))
         ingestion_hits = [
             term for term in rules.get("title_ingestion_and_absolute_terms", [])
             if _contains_term(title, term)
             and not (
                 term.lower() == "natural"
-                and color.lower() == "natural"
+                # A terminal "Natural" can be a shade label. Judge the title
+                # itself; changing an independent variation display name must
+                # not retroactively invalidate an unchanged title.
                 and title.lower().endswith("natural")
             )
         ]

@@ -1,12 +1,13 @@
 from pathlib import Path
 
 from .analyzer import analyze_project
-from .paths import DRAFT_DIRS
+from .logistics_defaults import apply_workbench_package_defaults
+from .paths import DRAFT_DIRS, PROJECTS_DIR
 from .project_status import load_project_status, save_project_status
 from .template_validator import validate_template_file
 from .template_writer import fill_template, find_template
 from .versioning import versioned_template_path
-from .workbook_io import read_intake_rows
+from .workbook_io import read_intake_rows, write_intake_workbook
 
 
 def auto_fill_project(project_dir, draft_path=None, template_path=None, output_path=None, force=False, write_reports=False):
@@ -37,6 +38,14 @@ def auto_fill_project(project_dir, draft_path=None, template_path=None, output_p
         }
 
     output_path = Path(output_path) if output_path else _default_output_path(project_dir, draft_path)
+
+    # Keep the default-workbench CLI/API route consistent with workbench saves.
+    # Explicit tier/fee choices use the configured package defaults; projects
+    # without either value are left untouched.
+    if project_dir.resolve().is_relative_to(PROJECTS_DIR.resolve()) and draft_path.suffix.lower() == ".xlsx":
+        rows = read_intake_rows(draft_path)
+        if apply_workbench_package_defaults(rows):
+            write_intake_workbook(draft_path, rows)
 
     filled_path, used_draft, used_template, written_fields = fill_template(
         project_dir,

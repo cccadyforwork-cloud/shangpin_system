@@ -62,6 +62,7 @@ from .paths import (
     safe_name,
 )
 from .project_manager import create_project, delete_project, list_project_summaries
+from .logistics_defaults import apply_workbench_package_defaults, workbench_logistics_options
 from .project_status import infer_latest_template, infer_product_name, infer_sku_count, load_project_status, mark_uploaded_success, save_project_status
 from .report_parser import extract_processing_summary
 from .success_templates import RULES_JSON, RULES_REPORT, SUCCESS_TEMPLATES_DIR, learn_success_templates
@@ -775,25 +776,7 @@ def _template_module_payload(project_dir, product_name, rows, source_template, l
 
 
 def _workbench_logistics_options():
-    path = CONFIG_DIR / "logistics_tiers.json"
-    if not path.exists():
-        return []
-    data = json.loads(path.read_text(encoding="utf-8"))
-    tiers = {str(item.get("id")): item for item in data.get("tiers", [])}
-    options = []
-    for item in data.get("workbench_fee_options", [])[:4]:
-        tier = tiers.get(str(item.get("tier_id"))) or {}
-        package_cm = tier.get("package_cm") or []
-        options.append({
-            "id": str(item.get("id") or ""),
-            "label": str(item.get("label") or ""),
-            "fee": item.get("fee_usd"),
-            "packageLengthIn": round(float(package_cm[0]) / 2.54, 2) if len(package_cm) > 0 else "",
-            "packageWidthIn": round(float(package_cm[1]) / 2.54, 2) if len(package_cm) > 1 else "",
-            "packageHeightIn": round(float(package_cm[2]) / 2.54, 2) if len(package_cm) > 2 else "",
-            "packageWeightLb": round(float(tier.get("default_weight_grams")) / 453.592, 2) if tier.get("default_weight_grams") else "",
-        })
-    return options
+    return workbench_logistics_options()
 
 
 def _feedback_module_payload(project_dir, product_name, status, latest_template, latest_report, version_files, failure_reports, next_version, item):
@@ -1428,6 +1411,7 @@ def _save_intake(payload):
     rows = payload.get("rows") or []
     product_name = str(payload.get("product_name") or "").strip() or infer_product_name(project_dir, "")
     normalized_rows = _normalize_intake_rows(rows, project_dir, product_name)
+    apply_workbench_package_defaults(normalized_rows)
     if not normalized_rows:
         raise ValueError("没有可保存的产品资料行。")
     blocking_copy_issues = [issue for issue in _copy_quality_issues(normalized_rows) if issue and issue[0] == "error"]
@@ -1468,7 +1452,9 @@ def _fill_template_version(payload):
     rows = _read_rows_clean(draft_path)
     if not rows:
         raise ValueError("产品资料为空，请先完成资料提炼和人工确认。")
-    if _apply_template_product_type(rows, template_path):
+    product_type_changed = _apply_template_product_type(rows, template_path)
+    package_defaults_changed = apply_workbench_package_defaults(rows)
+    if product_type_changed or package_defaults_changed:
         write_intake_workbook(draft_path, rows)
     intake_errors = [item for item in validate_intake(draft_path) if item.get("severity") == "error"]
     if intake_errors:

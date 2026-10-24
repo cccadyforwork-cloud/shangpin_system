@@ -6,7 +6,7 @@ from app.template_validator import _validate_variation_titles
 
 
 class VariationTitleRulesTest(unittest.TestCase):
-    def test_prepare_variation_rows_generates_parent_and_child_titles(self):
+    def test_prepare_variation_rows_generates_parent_and_preserves_child_titles(self):
         rows = [
             {
                 "product_name": "Floral Card Holder Picks",
@@ -36,12 +36,10 @@ class VariationTitleRulesTest(unittest.TestCase):
         self.assertNotIn("Gold", parent["title"])
         self.assertLessEqual(len(parent["title"]), 125)
 
-        self.assertTrue(children[0]["title"].startswith("50 Pcs 2 Set "))
-        self.assertIn("Gold", children[0]["title"])
-        self.assertNotIn("Multiple Colors Available", children[0]["title"])
-        self.assertLessEqual(len(children[0]["title"]), 125)
+        self.assertEqual(children[0]["title"], rows[0]["title"])
+        self.assertEqual(children[1]["title"], rows[1]["title"])
 
-    def test_variation_title_self_check_flags_parent_and_child_mismatches(self):
+    def test_variation_title_self_check_does_not_require_display_name_in_child_title(self):
         row_infos = {
             7: {
                 "row": 7,
@@ -81,7 +79,18 @@ class VariationTitleRulesTest(unittest.TestCase):
 
         self.assertIn("多颜色 Parent", messages)
         self.assertIn("Child 行，但标题包含父体总结词", messages)
-        self.assertIn("颜色变体 Child，但标题未包含自身颜色", messages)
+        self.assertNotIn("颜色变体 Child，但标题未包含自身颜色", messages)
+
+    def test_existing_titles_are_preserved_when_display_names_change(self):
+        rows = [
+            {"parentage_level": "Parent", "sku": "PARENT", "title": "Existing parent title"},
+            {"parentage_level": "Child", "sku": "CHILD", "title": "Existing child title", "color": "Natural Sisal"},
+        ]
+        from app.variation_title_rules import apply_variation_title_rules
+
+        prepared = apply_variation_title_rules(rows)
+        self.assertEqual(prepared[0]["title"], "Existing parent title")
+        self.assertEqual(prepared[1]["title"], "Existing child title")
 
 
 if __name__ == "__main__":

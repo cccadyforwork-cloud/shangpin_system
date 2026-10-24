@@ -1,3 +1,5 @@
+import csv
+import io
 import re
 import unicodedata
 import xml.etree.ElementTree as ET
@@ -495,7 +497,41 @@ def _normalize_route_strategy(route_mode):
     return aliases.get(value, "")
 
 
-def _route_strategy(text, route, row_count, set_count, route_mode=None):
+def _source_parent_sku(sources):
+    """A supplied parent SKU is authoritative even when another route was selected."""
+    for source_path, text in sources:
+        if source_path.suffix.lower() in {".csv", ".tsv"}:
+            delimiter = "\t" if source_path.suffix.lower() == ".tsv" else ","
+            reader = csv.DictReader(io.StringIO(text), delimiter=delimiter)
+            for row in reader:
+                fields = {_normalize_table_header(key): str(value or "").strip() for key, value in row.items() if key}
+                role = fields.get("角色") or fields.get("parentagelevel") or fields.get("role") or ""
+                sku = fields.get("sku") or fields.get("*sku") or ""
+                if role.lower() in {"parent", "父体"} and sku:
+                    return sku
+        if source_path.suffix.lower() in {".md", ".txt"}:
+            match = re.search(r"(?im)^\s*(?:父体\s*SKU|parent\s*sku)\s*[:：]\s*([A-Za-z0-9][A-Za-z0-9_-]*)\s*$", text)
+            if match:
+                return match.group(1)
+        if source_path.suffix.lower() in {".xlsx", ".xlsm", ".xls"}:
+            lines = [[part.strip() for part in line.split("|")] for line in text.splitlines() if "|" in line]
+            for index, header in enumerate(lines[:-1]):
+                names = [_normalize_table_header(value) for value in header]
+                sku_index = next((i for i, name in enumerate(names) if name in {"sku", "*sku"}), None)
+                role_index = next((i for i, name in enumerate(names) if name in {"角色", "parentagelevel", "role"}), None)
+                if sku_index is None or role_index is None:
+                    continue
+                for values in lines[index + 1:]:
+                    if len(values) <= max(sku_index, role_index):
+                        continue
+                    if values[role_index].lower() in {"parent", "父体"} and values[sku_index]:
+                        return values[sku_index]
+    return ""
+
+
+def _route_strategy(text, route, row_count, set_count, route_mode=None, parent_sku=""):
+    if parent_sku:
+        return "variation"
     selected_strategy = _normalize_route_strategy(route_mode)
     if selected_strategy:
         return selected_strategy
@@ -805,6 +841,7 @@ def _extract_product_type_from_templates(project_dir):
 def analyze_project(project_dir, output_path=None, route_mode=None, write_report=True):
     project_dir = Path(project_dir)
     sources = _collect_sources(project_dir)
+    supplied_parent_sku = _source_parent_sku(sources)
     combined = "\n".join(text for _path, text in sources)
     price_table = _extract_price_table_data(sources)
 
@@ -869,11 +906,11 @@ def analyze_project(project_dir, output_path=None, route_mode=None, write_report
         colors_for_rows = [item["name"] for item in floral_variants]
     else:
         colors_for_rows = variant_colors or ([color] if color else [""])
-    strategy = _route_strategy(combined, route, len(colors_for_rows), set_count, route_mode=route_mode)
+    strategy = _route_strategy(combined, route, len(colors_for_rows), set_count, route_mode=route_mode, parent_sku=supplied_parent_sku)
     route = _route_name_for_strategy(route, strategy)
     if strategy == "set_bundle":
         colors_for_rows = ["Assorted"]
-    parent_sku = _parent_sku(product_name) if strategy == "variation" else ""
+    parent_sku = (supplied_parent_sku or _parent_sku(product_name)) if strategy == "variation" else ""
     variation_theme = "Color" if strategy == "variation" else ""
 
     rows = []

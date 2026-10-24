@@ -331,6 +331,8 @@ def _parent_sku_for_rows(rows, project_dir):
 
 
 def _should_default_variation(rows):
+    if any(_text(row.get("parent_sku")) or _is_parent_row(row) for row in rows):
+        return True
     route_text = "\n".join(_text(row.get("route")).lower() for row in rows)
     if any(keyword in route_text for keyword in EXPLICIT_BUNDLE_ROUTE_KEYWORDS):
         return False
@@ -351,9 +353,10 @@ def prepare_variation_rows(rows, project_dir):
     if any(_is_parent_row(row) for row in prepared):
         for row in prepared:
             row["variation_theme"] = _text(row.get("variation_theme")) or theme
-            if _is_child_row(row) and not _text(row.get("parent_sku")):
+            if "generic" in _text(row.get("route")).lower() or not _text(row.get("route")):
+                row["route"] = "Haul Generic Variation"
+            if not _is_parent_row(row):
                 row["parent_sku"] = parent_sku
-            if _text(row.get("parent_sku")) and not _text(row.get("parentage_level")):
                 row["parentage_level"] = "Child"
         return apply_variation_title_rules(prepared)
 
@@ -366,6 +369,8 @@ def prepare_variation_rows(rows, project_dir):
     parent["parentage_level"] = "Parent"
     parent["variation_theme"] = theme
     parent["route"] = "Haul Generic Variation" if "generic" in _text(parent.get("route")).lower() or not _text(parent.get("route")) else parent.get("route")
+    # This is a newly synthesized parent, not an existing listing title.
+    parent["title"] = ""
     for field in PARENT_CLEAR_FIELDS:
         parent[field] = ""
 

@@ -82,7 +82,7 @@ class ListingRulesTest(unittest.TestCase):
                 "Cat Wobble Toy with Textured Body, Self-Righting Tumbler Toy for Indoor Cats, "
                 "Battery-Free Solo Play, Small Natural"
             ),
-            "color": "Natural",
+            "color": "Natural Sisal",
             "material": "Jute",
         }
 
