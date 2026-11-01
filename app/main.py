@@ -5,6 +5,7 @@ from .analyzer import analyze_project
 from .auto_fill import auto_fill_project
 from .batch_fast_prelisting import run_batch_fast_prelisting
 from .batch_fast_workbench import package_shared_data
+from .kaixuan_batch_workbench import import_archive as import_distribution_archive
 from .refurb_batch_workbench import package_shared_data as package_refurb_shared_data
 from .error_learning import learn_reports
 from .paths import TEMPLATES_DIR, ensure_base_dirs
@@ -238,6 +239,13 @@ def cmd_refurb_workbench(args):
     run_workbench(host=args.host, port=args.port, open_browser=not args.no_open, start_path="/refurb-batch")
 
 
+def cmd_distribution_workbench(args):
+    if args.archive:
+        result = import_distribution_archive(args.archive)
+        print(f"已同步铺货资料：{result['count']} 个文件（{result['archive']}）")
+    run_workbench(host=args.host, port=args.port, open_browser=not args.no_open, start_path="/distribution")
+
+
 def cmd_package_batch_workbench(_args):
     result = package_shared_data()
     print(f"已整理共享业务文件：{result['copied']} 个新复制文件")
@@ -401,6 +409,13 @@ def build_parser():
     refurb_workbench.add_argument("--port", type=int, default=8768, help="端口，默认 8768")
     refurb_workbench.add_argument("--no-open", action="store_true", help="只启动服务，不自动打开浏览器")
     refurb_workbench.set_defaults(func=cmd_refurb_workbench)
+
+    distribution_workbench = subparsers.add_parser("distribution-workbench", help="启动 cccady、图图、凯旋共用的铺货上品工作台")
+    distribution_workbench.add_argument("--host", default="127.0.0.1", help="监听地址，默认 127.0.0.1")
+    distribution_workbench.add_argument("--port", type=int, default=8769, help="端口，默认 8769")
+    distribution_workbench.add_argument("--no-open", action="store_true", help="只启动服务，不自动打开浏览器")
+    distribution_workbench.add_argument("--archive", help="启动前同步铺货资料 ZIP")
+    distribution_workbench.set_defaults(func=cmd_distribution_workbench)
 
     package_batch = subparsers.add_parser("package-batch-workbench-data", help="把快速上品工作台业务文件整理进 Git 仓库")
     package_batch.set_defaults(func=cmd_package_batch_workbench)

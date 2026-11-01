@@ -27,6 +27,13 @@ from .batch_fast_workbench import (
     referenced_file as batch_fast_referenced_file,
     update_row as update_batch_fast_row,
 )
+from .kaixuan_batch_workbench import (
+    attach_file as attach_kaixuan_batch_file,
+    build_output_archive as build_kaixuan_batch_output_archive,
+    payload as kaixuan_batch_payload,
+    referenced_file as kaixuan_batch_referenced_file,
+    update_row as update_kaixuan_batch_row,
+)
 from .refurb_batch_workbench import (
     attach_reference_screenshot as attach_refurb_reference_screenshot,
     attach_file as attach_refurb_batch_file,
@@ -138,9 +145,9 @@ def _handler():
     class WorkbenchHandler(BaseHTTPRequestHandler):
         def do_HEAD(self):
             parsed = urlparse(self.path)
-            if parsed.path in {"/", "/batch-fast", "/refurb-batch", "/batch-fast/version-preview", "/api/summary", "/api/workbench", "/api/rules", "/api/report", "/api/batch-fast", "/api/refurb-batch"}:
+            if parsed.path in {"/", "/batch-fast", "/refurb-batch", "/distribution", "/batch-fast/version-preview", "/api/summary", "/api/workbench", "/api/rules", "/api/report", "/api/batch-fast", "/api/refurb-batch", "/api/distribution"}:
                 self.send_response(200)
-                html_page = parsed.path in {"/", "/batch-fast", "/refurb-batch", "/batch-fast/version-preview"}
+                html_page = parsed.path in {"/", "/batch-fast", "/refurb-batch", "/distribution", "/batch-fast/version-preview"}
                 self.send_header("Content-Type", "text/html; charset=utf-8" if html_page else "application/json; charset=utf-8")
                 self.end_headers()
             elif parsed.path == "/file":
@@ -153,13 +160,17 @@ def _handler():
                 else:
                     self.send_response(404)
                     self.end_headers()
-            elif parsed.path in {"/batch-fast/file", "/batch-fast/download", "/refurb-batch/file", "/refurb-batch/download", "/refurb-batch/image-groups-download"}:
-                if parsed.path in {"/batch-fast/download", "/refurb-batch/download", "/refurb-batch/image-groups-download"}:
+            elif parsed.path in {"/batch-fast/file", "/batch-fast/download", "/refurb-batch/file", "/refurb-batch/download", "/refurb-batch/image-groups-download", "/distribution/file", "/distribution/download"}:
+                if parsed.path in {"/batch-fast/download", "/refurb-batch/download", "/refurb-batch/image-groups-download", "/distribution/download"}:
                     self.send_response(200)
                     self.send_header("Content-Type", "application/zip")
                     self.end_headers()
                     return
-                resolver = refurb_batch_referenced_file if parsed.path.startswith("/refurb-batch") else batch_fast_referenced_file
+                resolver = (
+                    refurb_batch_referenced_file if parsed.path.startswith("/refurb-batch")
+                    else kaixuan_batch_referenced_file if parsed.path.startswith("/distribution")
+                    else batch_fast_referenced_file
+                )
                 path = resolver(_query_path(parsed.query))
                 if path and path.exists() and path.is_file():
                     self.send_response(200)
@@ -181,6 +192,8 @@ def _handler():
                 self._send_html(_batch_fast_html())
             elif parsed.path == "/refurb-batch":
                 self._send_html(_batch_fast_html())
+            elif parsed.path == "/distribution":
+                self._send_html(_batch_fast_html())
             elif parsed.path == "/batch-fast/version-preview":
                 self._send_html(_batch_fast_version_preview_html())
             elif parsed.path == "/api/summary":
@@ -195,6 +208,8 @@ def _handler():
                 self._send_json(batch_fast_payload())
             elif parsed.path == "/api/refurb-batch":
                 self._send_json(refurb_batch_payload())
+            elif parsed.path == "/api/distribution":
+                self._send_json(kaixuan_batch_payload())
             elif parsed.path == "/file":
                 self._send_file(_served_file_path(parsed.query))
             elif parsed.path == "/batch-fast/file":
@@ -236,6 +251,20 @@ def _handler():
                     self._send_json({"ok": False, "error": str(exc)}, status=404)
                     return
                 self._send_bytes(data, "application/zip", filename)
+            elif parsed.path == "/distribution/file":
+                path = kaixuan_batch_referenced_file(_query_path(parsed.query))
+                if path is None:
+                    self._send_json({"error": "file_not_allowed"}, status=403)
+                else:
+                    self._send_file(path)
+            elif parsed.path == "/distribution/download":
+                batch_id = parse_qs(parsed.query).get("batch_id", [""])[0]
+                try:
+                    filename, data, _count = build_kaixuan_batch_output_archive(batch_id)
+                except ValueError as exc:
+                    self._send_json({"ok": False, "error": str(exc)}, status=404)
+                    return
+                self._send_bytes(data, "application/zip", filename)
             else:
                 self._send_json({"error": "not_found"}, status=404)
 
@@ -250,6 +279,8 @@ def _handler():
                     result = self._handle_batch_fast_upload()
                 elif parsed.path == "/api/refurb-batch/upload":
                     result = self._handle_refurb_batch_upload()
+                elif parsed.path == "/api/distribution/upload":
+                    result = self._handle_kaixuan_batch_upload()
                 elif parsed.path == "/api/refurb-batch/reference-screenshot":
                     result = self._handle_refurb_reference_screenshot()
                 else:
@@ -315,6 +346,15 @@ def _handler():
                         result = refurb_batch_payload()
                     elif parsed.path == "/api/refurb-batch/open":
                         path = refurb_batch_referenced_file(payload.get("path", ""))
+                        if path is None or not path.exists() or not path.is_file():
+                            raise ValueError("文件不存在或不在当前清单中。")
+                        subprocess.run(["open", str(path)], check=False)
+                        result = {"ok": True, "path": str(path)}
+                    elif parsed.path == "/api/distribution/save":
+                        update_kaixuan_batch_row(payload.get("batch_id", ""), payload.get("row_id", ""), payload.get("fields") or {})
+                        result = kaixuan_batch_payload()
+                    elif parsed.path == "/api/distribution/open":
+                        path = kaixuan_batch_referenced_file(payload.get("path", ""))
                         if path is None or not path.exists() or not path.is_file():
                             raise ValueError("文件不存在或不在当前清单中。")
                         subprocess.run(["open", str(path)], check=False)
@@ -390,6 +430,20 @@ def _handler():
                 file_item.file,
             )
             return {"ok": True, "path": str(target), "data": refurb_batch_payload()}
+
+        def _handle_kaixuan_batch_upload(self):
+            form = self._read_multipart_form()
+            if "file" not in form:
+                raise ValueError("请选择要上传的文件。")
+            file_item = form["file"]
+            target, _row = attach_kaixuan_batch_file(
+                form.getfirst("batch_id", ""),
+                form.getfirst("row_id", ""),
+                form.getfirst("field", ""),
+                file_item.filename or "",
+                file_item.file,
+            )
+            return {"ok": True, "path": str(target), "data": kaixuan_batch_payload()}
 
         def _handle_refurb_reference_screenshot(self):
             form = self._read_multipart_form()

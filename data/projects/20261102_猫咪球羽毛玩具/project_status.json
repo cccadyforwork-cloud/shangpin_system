@@ -1,0 +1,20 @@
+{
+  "product_name": "猫咪球羽毛玩具",
+  "workbench_owner": "cccady",
+  "workbench_store": "2店",
+  "status": "ready_for_upload",
+  "latest_draft": "03_产品详情页/猫咪球羽毛玩具_产品资料.xlsx",
+  "updated_at": "2026-11-02T02:32:29",
+  "source_template": "05_模版原件/PET_TOY.xlsm",
+  "workbench_note": "cady 2店。三只装为棒球／篮球／足球 2.5 cm，橡胶球配羽毛，橡胶类型确认为 Synthetic Rubber。包装按 $0.50 的 ≤4 oz 档位默认值填入：3.94 × 3.94 × 0.79 in、0.22 lb；均未实测。默认包装高度 0.79 in 小于 0.98 in 球径，上传前应核实实际包装高度。原 S1 旧店铺标记保留在原文件。",
+  "latest_template": "05_填表版本/猫咪球羽毛玩具运动球三只装V2.xlsx",
+  "sku_count": 2,
+  "written_field_count": 63,
+  "template_error_count": 0,
+  "latest_check_report": "06_处理报告/猫咪球羽毛玩具运动球三只装V2_模板自检报告.md",
+  "latest_failure_report": "06_处理报告/猫咪球羽毛玩具运动球三只装V1-processing-summary.xlsm",
+  "version_notes": {
+    "V1": "Amazon 100095：Model Name 无效",
+    "V2": "V2 修正 Amazon 100095：子体 Model Name 改为对应 SKU；父体与子体 SKU 前缀从 TTCA 改为 CA，并同步子体父 SKU 关联、Model Number、Part Number、产品资料和定价表。V1 及原始资料已保留。"
+  }
+}

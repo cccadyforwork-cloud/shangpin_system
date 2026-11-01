@@ -127,6 +127,22 @@ python3 run.py refurb-workbench
 python3 run.py package-refurb-workbench-data
 ```
 
+## 铺货上品工作台
+
+铺货资料使用独立工作台，入口与批量抄品、退货翻新并列，页面预留 `cccady`、`图图`、`凯旋` 三个负责人，并按店铺隔离资料：
+
+```bash
+python3 run.py distribution-workbench
+```
+
+默认打开 `http://127.0.0.1:8769/distribution`。首次同步铺货资料 ZIP 时可使用：
+
+```bash
+python3 run.py distribution-workbench --archive /绝对路径/铺货资料.zip
+```
+
+当前导入资料保存在 `data/distribution_workbench/`；ZIP 内的目录分组会映射为工作台状态和备注，原始 `.xlsm` 文件作为当前输出文档保存。该目录包含内部业务文件，本地归档不等于发布，不得随源码对外导出。
+
 ## 上传前自检
 
 ```bash

@@ -74,6 +74,7 @@
     select { width:100%; min-width:0; border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 27px 7px 9px; color:var(--ink); }
     select.done { border-color:color-mix(in srgb,var(--green) 55%,var(--line)); background:color-mix(in srgb,var(--green) 14%,var(--button)); color:var(--green); font-weight:650; }
     .note { width:100%; min-width:0; border:1px solid var(--line); border-radius:7px; background:var(--button); padding:7px 9px; color:var(--ink); }
+    textarea.note { display:block; min-height:38px; overflow:hidden; resize:none; white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.5; }
     .note::placeholder { color:var(--muted); }
     .image-groups { display:flex; flex-direction:column; gap:9px; }
     .image-group { display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding:8px; border:1px solid var(--line); border-radius:8px; background:var(--hover); }
@@ -102,6 +103,7 @@
       <div class="actions">
         <button class="btn" id="return-workbench" type="button">默认上品工作台</button>
         <a class="btn" id="other-workbench" href="/refurb-batch">退货翻新批量上品工作台</a>
+        <a class="btn" id="third-workbench" href="/distribution">铺货上品工作台</a>
         <div class="theme-switch" role="group" aria-label="页面主题">
           <button type="button" data-theme-choice="light" aria-pressed="false">浅色</button>
           <button type="button" data-theme-choice="dark" aria-pressed="false">深色</button>
@@ -126,8 +128,10 @@
   <div class="toast" id="toast"></div>
   <script>
     const isRefurb=location.pathname.startsWith('/refurb-batch');
-    const routeBase=isRefurb?'/refurb-batch':'/batch-fast';
-    const apiBase=isRefurb?'/api/refurb-batch':'/api/batch-fast';
+    const isDistribution=location.pathname.startsWith('/distribution');
+    const isStandalone=isRefurb || isDistribution;
+    const routeBase=isRefurb?'/refurb-batch':(isDistribution?'/distribution':'/batch-fast');
+    const apiBase=isRefurb?'/api/refurb-batch':(isDistribution?'/api/distribution':'/api/batch-fast');
     const state = { data:null, activeSelection:null, active:null, activeStore:null };
     const $ = (selector) => document.querySelector(selector);
     const esc = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -168,8 +172,11 @@
     }
     async function load() {
       state.data=await api(apiBase);
-      if(isRefurb){
-        if(!state.active || !state.data.batches.some(b=>b.id===state.active)) state.active=state.data.batches[0]?.id || null;
+      if(isStandalone){
+        if(!state.active || !state.data.batches.some(b=>b.id===state.active)){
+          const preferred=isDistribution?state.data.batches.find(batch=>(batch.rows || []).length):null;
+          state.active=preferred?.id || state.data.batches[0]?.id || null;
+        }
       }else{
         const groups=selectionGroups();
         if(!state.activeSelection || !groups.some(group=>group.id===state.activeSelection)) state.activeSelection=groups[0]?.id || null;
@@ -179,15 +186,15 @@
       render();
     }
     function render() {
-      const d=state.data,groups=isRefurb?[]:selectionGroups();
+      const d=state.data,groups=isStandalone?[]:selectionGroups();
       const currentGroup=groups.find(group=>group.id===state.activeSelection);
-      const visibleBatches=isRefurb?d.batches:(currentGroup?.batches || []);
+      const visibleBatches=isStandalone?d.batches:(currentGroup?.batches || []);
       const selectionNav=$('#selection-nav');
-      selectionNav.hidden=isRefurb;
-      if(!isRefurb){
+      selectionNav.hidden=isStandalone;
+      if(!isStandalone){
         $('#selection-tabs').innerHTML=groups.map(group=>{const count=selectionTotals(group.batches).rows;return `<button class="selection-tab ${group.id===state.activeSelection?'active':''}" data-selection="${esc(group.id)}"><span class="selection-tab-name">${esc(group.name)}</span><span class="selection-tab-meta">${count} 个产品 · ${group.batches.length} 位负责人</span></button>`;}).join('');
       }
-      const t=isRefurb?d.totals:selectionTotals(visibleBatches);
+      const t=isStandalone?d.totals:selectionTotals(visibleBatches);
       $('#summary').innerHTML=`${currentGroup?`<span>当前批次<strong>${esc(currentGroup.name)}</strong></span>`:''}<span>产品<strong>${t.rows}</strong></span><span>竞品 HTML<strong>${t.html}</strong></span><span>原始模板<strong>${t.templates}</strong></span><span>输出文档<strong>${t.outputs}</strong></span><span>更新<strong>${esc(d.updated_at || '-')}</strong></span>`;
       $('#tabs').innerHTML=visibleBatches.map(b=>{const count=b.stores?.length?b.rows.filter(row=>row.store_id===b.stores[0]).length:b.rows.length;return `<button class="tab ${b.id===state.active?'active':''}" data-tab="${esc(b.id)}">${esc(b.name)} <span>(${count})</span></button>`;}).join('');
       const batch=visibleBatches.find(b=>b.id===state.active);
@@ -205,7 +212,8 @@
       download.href=outputCount ? `${productPrefix}${routeBase}/download?batch_id=${encodeURIComponent(batch.id)}${state.activeStore?`&store_id=${encodeURIComponent(state.activeStore)}`:''}` : '#';
       download.classList.toggle('disabled',!outputCount);
       $('#content').innerHTML=batch ? table({...batch,rows:visibleRows}) : '<div class="empty">尚未导入批次</div>';
-      if(!isRefurb) $('#sync').textContent=currentGroup?`同步 ${currentGroup.name} Excel`:'从桌面 Excel 同步';
+      if(isDistribution) document.querySelectorAll('textarea.note').forEach(resizeNote);
+      if(!isStandalone) $('#sync').textContent=currentGroup?`同步 ${currentGroup.name} Excel`:'从桌面 Excel 同步';
     }
     function renderImageProgress(rows) {
       const overview=$('#image-progress-overview');
@@ -232,9 +240,9 @@
     }
     function table(batch) {
       const showPurchase=(batch.owner || batch.name)==='cady选品' && state.activeStore==='2店';
-      const widths=isRefurb?[12,13,15,18,9,9,12,12]:(showPurchase?[13,13,16,20,11,10,9,8]:[14,14,17,22,12,10,11]);
+      const widths=isRefurb?[12,13,15,18,9,9,12,12]:(isDistribution?[16,12,15,23,9,10,15]:(showPurchase?[13,13,16,20,11,10,9,8]:[14,14,17,22,12,10,11]));
       const columns=`<colgroup>${widths.map(width=>`<col style="width:${width}%">`).join('')}</colgroup>`;
-      const referenceLabel=isRefurb?'亚马逊原链接':'竞品 HTML';
+      const referenceLabel=isRefurb?'亚马逊原链接':(isDistribution?'资料分组':'竞品 HTML');
       const columnCount=7+Number(showPurchase)+Number(isRefurb);
       const rows=batch.rows.length?batch.rows.map((row,index)=>rowHtml(batch,row,showPurchase,index+1)).join(''):`<tr><td class="empty" colspan="${columnCount}">当前负责人暂无商品，导入本批选品清单后会显示在这里。</td></tr>`;
       return `<table>${columns}<thead><tr><th>商品</th><th>${referenceLabel}</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th>${showPurchase?'<th>采购状态</th>':''}<th>备注</th>${isRefurb?'<th>新图组</th>':''}</tr></thead><tbody>${rows}</tbody></table>`;
@@ -244,8 +252,8 @@
       const mergedPath=row.variant_values?.length
         ? `${esc(row.attribute_label || '变体')} ${row.variant_values.map(esc).join(' / ')} · Excel 第 ${(row.row_numbers || [row.row_number]).map(esc).join('、')} 行`
         : `${row.asin?`${esc(row.asin)} · `:''}Excel 第 ${esc(row.row_number)} 行`;
-      const productCell=isRefurb
-        ? `<div class="product"><strong>${esc(rowNumber)}.${esc(row.product_name || row.asin || row.id)}</strong><span class="path">${mergedPath}</span></div>`
+      const productCell=isStandalone
+        ? `<div class="product"><strong>${esc(rowNumber)}.${esc(row.product_name || row.asin || row.id)}</strong><span class="path">${isDistribution?`资料包第 ${esc(row.row_number)} 项 · ${esc(row.source_group || '待上传')}`:mergedPath}</span></div>`
         : `<div class="product"><a href="${esc(row.link)}" target="_blank" rel="noreferrer">${esc(row.product_name || row.asin || row.id)}</a><span class="path">${row.product_name && row.asin?`${esc(row.asin)} · `:''}Excel 第 ${row.row_number} 行</span></div>`;
       const competitorLinks=(row.competitor_links || []).map((item,index)=>{
         const link=typeof item==='string'?{url:item,label:''}:item;
@@ -254,6 +262,8 @@
       }).join('');
       const referenceCell=isRefurb
         ? (row.source_links || [{url:row.link,label:''}]).map(item=>`<a class="source-link" href="${esc(item.url)}" target="_blank" rel="noreferrer" title="${esc(item.url)}">${item.label?`${esc(item.label)}：`:''}${esc(item.url)}</a>`).join('')
+        : isDistribution
+        ? `<span class="file-name ok">${esc(row.source_group || '待上传')}</span>`
         : `<div class="product">${competitorLinks || `<a class="source-link" href="${esc(row.link)}" target="_blank" rel="noreferrer">${esc(row.link)}</a>`}${html.exists?fileCell(html,false):'<span class="path">竞品 HTML 未保存</span>'}</div>`;
       const templateCell=isRefurb && row.source_template_files?.length>1
         ? `<div class="file-actions drop-zone" data-upload-field="source_template">${row.source_template_files.map(item=>`<span class="file-actions"><span class="file-name ok" title="${esc(item.file.path)}">${item.label?`${esc(item.label)}：`:''}${esc(item.file.name)}</span><button class="btn small open-file" data-path="${esc(item.file.path)}">打开</button></span>`).join('')}<button class="btn small upload" data-field="source_template">替换主模板</button></div>`
@@ -266,7 +276,7 @@
         <td>${oldVersionsCell(row)}</td>
         <td><select class="status ${row.status==='已上传'?'done':''}">${state.data.statuses.map(s=>`<option ${s===row.status?'selected':''}>${esc(s)}</option>`).join('')}</select></td>
         ${showPurchase?`<td><select class="purchase-status ${row.purchase_status==='已采购'?'done':''}">${state.data.purchase_statuses.map(s=>`<option ${s===(row.purchase_status || '未采购')?'selected':''}>${esc(s)}</option>`).join('')}</select></td>`:''}
-        <td><input class="note" type="text" value="${esc(row.note || '')}" placeholder="可填写备注"></td>
+        <td>${isDistribution?`<textarea class="note" rows="1" placeholder="可填写备注">${esc(row.note || '')}</textarea>`:`<input class="note" type="text" value="${esc(row.note || '')}" placeholder="可填写备注">`}</td>
         ${isRefurb?`<td>${imageGroupCell(row)}</td>`:''}
       </tr>`;
     }
@@ -327,6 +337,13 @@
       try { await api(`${apiBase}/save`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batch_id:row.dataset.batch,row_id:row.dataset.row,fields:{[field]:event.target.value}})}); if(field!=='note') event.target.classList.toggle('done',event.target.value==='已上传' || event.target.value==='已采购'); toast(field==='status'?'状态已保存':field==='purchase_status'?'采购状态已保存':'备注已保存'); }
       catch(e){toast(e.message);await load();}
     });
+    function resizeNote(note){
+      note.style.height='auto';
+      note.style.height=`${note.scrollHeight}px`;
+    }
+    document.addEventListener('input', event=>{
+      if(isDistribution && event.target.matches('textarea.note')) resizeNote(event.target);
+    });
     document.addEventListener('dragover', (event) => {
       if(!event.dataTransfer?.types.includes('Files')) return;
       event.preventDefault();
@@ -361,8 +378,19 @@
       $('#workbench-subtitle').textContent='Cady 专用，全部上传至 1店；独立记录参考资料、原始模板和最终输出文档。';
       $('#other-workbench').textContent='批量抄品工作台';
       $('#other-workbench').href='/batch-fast';
+      $('#third-workbench').textContent='铺货上品工作台';
+      $('#third-workbench').href='/distribution';
       $('#sync').hidden=false;
       $('#sync').textContent='从退货翻新 Excel 同步';
+    }else if(isDistribution){
+      document.title='铺货上品工作台';
+      $('#workbench-title').textContent='铺货上品工作台';
+      $('#workbench-subtitle').textContent='cccady、图图、凯旋共用；按负责人、店铺和批次独立记录铺货输出文档。';
+      $('#other-workbench').textContent='批量抄品工作台';
+      $('#other-workbench').href='/batch-fast';
+      $('#third-workbench').textContent='退货翻新批量上品工作台';
+      $('#third-workbench').href='/refurb-batch';
+      $('#sync').hidden=true;
     }
     setTheme(localStorage.getItem('shangpin-workbench-theme') || localStorage.getItem('batch-fast-theme') || 'light');
     load().catch(e=>{$('#content').innerHTML=`<div class="empty">${esc(e.message)}</div>`});
