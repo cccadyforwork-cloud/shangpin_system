@@ -667,6 +667,10 @@ def validate_template_file(path, output_path=None, write_report=False):
         for col in range(1, ws.max_column + 1)
         if ws.cell(5, col).value
     }
+    model_name_cols = [
+        col for field_name, col in field_to_col.items()
+        if field_name.startswith(("model_name[", "model_name#"))
+    ]
 
     findings = []
     data_rows = []
@@ -810,6 +814,16 @@ def validate_template_file(path, output_path=None, write_report=False):
             value = ws.cell(row, col).value
             if CJK_RE.search(str(value or "")):
                 findings.append(error(row, label, f"{sku} 的 {label} 包含中文。", "改成自然的跨境英语表达，不要把中文原文写入 Amazon 模板。"))
+
+        if not is_parent:
+            for model_name_col in model_name_cols:
+                model_name = _text(ws.cell(row, model_name_col).value)
+                if model_name != _text(sku):
+                    findings.append(error(
+                        row, "Model Name",
+                        f"{sku} 的 Model Name `{model_name}` 与 SKU 不一致。",
+                        "所有上品路线的 Model Name 均填写当前行 SKU。",
+                    ))
 
         listing_row = {}
         for key in ["title", "description", "generic_keyword"]:

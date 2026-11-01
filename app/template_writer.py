@@ -449,7 +449,6 @@ def _animal_collar_rule_defaults(row):
     has_heart = any(keyword in lowered for keyword in ["heart", "hearts", "爱心"])
     length, width = _animal_collar_dimensions(row)
 
-    model_name = "AirTag Pet Collar" if is_airtag else "Pet Collar"
     if is_airtag and is_glow:
         style = "Glow in the Dark AirTag Holder Collar"
     elif is_airtag:
@@ -463,7 +462,6 @@ def _animal_collar_rule_defaults(row):
 
     defaults = {
         ANIMAL_COLLAR_DEFAULT_FIELDS["item_type_keyword"]: "pet-collars",
-        ANIMAL_COLLAR_DEFAULT_FIELDS["model_name"]: model_name,
         ANIMAL_COLLAR_DEFAULT_FIELDS["style"]: style,
         ANIMAL_COLLAR_DEFAULT_FIELDS["number_of_items"]: count,
         ANIMAL_COLLAR_DEFAULT_FIELDS["unit_count_value"]: count,
@@ -546,7 +544,7 @@ def _stable_field_default(field_name, row):
     product_type = str(row.get("product_type") or "").strip().upper()
 
     if "model_name" in field:
-        return product_name
+        return row.get("sku")
     if "model_number" in field or "part_number" in field:
         return row.get("sku")
     if "manufacturer" in field:
@@ -715,6 +713,7 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
         field_name = ws.cell(5, col).value
         if field_name:
             field_to_col[str(field_name).strip()] = col
+    model_name_fields = [name for name in field_to_col if name.startswith(("model_name[", "model_name#"))]
 
     required_fields = _required_fields_from_data_definitions(wb)
     clear_template_data(ws)
@@ -768,6 +767,13 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
         for label, field_name in PRODUCT_TYPE_CONDITIONAL_FIELDS.get(product_type, {}).items():
             default_targets.setdefault(field_name, label)
         required_default_fields.extend(_write_required_defaults(ws, row_index, row_data, field_to_col, default_targets))
+
+        # All listing routes use the sellable SKU as Model Name. Parent rows
+        # leave this optional product attribute empty, as with Model Number.
+        if not _is_parent_row(row_data) and row_data.get("sku"):
+            for model_name_field in model_name_fields:
+                ws.cell(row_index, field_to_col[model_name_field]).value = row_data["sku"]
+                written_fields.append(model_name_field)
 
     wb.save(output_path)
     if write_report:

@@ -140,6 +140,7 @@ def create_intake_workbook(path):
         "brand": "Generic 路线建议填写 Generic；品牌路线填写真实品牌。",
         "manufacturer": "Generic 路线建议和 Brand 逻辑一致；品牌路线与包装、文案统一。",
         "parent_sku/parentage_level/variation_theme": "独立 SKU 留空；父子变体填写 Parent/Child、父 SKU 和 Color/Size 等变体主题。",
+        "Model Name": "所有上品路线统一填写当前行的 SKU；填表时自动写入，上传前会校验。",
         "target_price": "内部目标售价，用于判断 Haul 价格风险。",
         "haul_price": "Haul 上传价，若走 Haul 路线建议填写。",
         "logistics_tier": "默认上品工作台选择的配送费档位。",
