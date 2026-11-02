@@ -6,7 +6,7 @@
 
 只参考竞品并批量生成 V1 时，必须由用户明确选择“批量快速上品路线”，再按 `docs/batch_fast_prelisting.md` 使用独立的 `batch-fast-prelist` 入口；不要把快速路线默认值并入正式 `auto-fill` 流程。快速路线遇到单一颜色维度的完整竞品变体选择器时，默认从一个页面生成整套父子体；竞品 ASIN 不写入模板。多维变体要求人工明确变体组合。
 
-批量快速路线默认从页面 `priceToPay` 取当前售价。有参考旧表时，按 SKU 比较字段：新增 SKU 继续使用 `Create or Replace (Full Update)`，只有已存在且字段发生变化的行改为 `Edit (Partial Update)`。
+批量快速路线默认从页面 `priceToPay` 取当前售价。所有上品路线生成后续版本时，按上一版的 SKU 判断 Listing Action：旧父体和旧子体全部用 `Edit (Partial Update)`，只有本次新增的 SKU 用 `Create or Replace (Full Update)`，与其他字段有无变化无关。批量快速路线提供 `copy_reference` 时，以它作为上一版。
 
 ## 新对话启动提示
 

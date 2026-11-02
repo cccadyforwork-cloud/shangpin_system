@@ -15,6 +15,7 @@ from .paths import COMPETITOR_DIR, CONFIG_DIR, PRODUCT_DETAIL_DIR, TEMPLATE_SOUR
 from .template_validator import validate_template_file
 from .template_red_field_scanner import scan_template_red_fields
 from .template_writer import fill_template
+from .listing_action import action_for_sku
 from .workbook_io import read_intake_rows, write_intake_workbook
 
 
@@ -103,6 +104,8 @@ def _run_one_task(task, index, base_dir, output_dir):
     copy_defaults = _reference_copy(task.get("copy_reference"), base_dir)
     reference_fields = _reference_safe_fields(task.get("copy_reference"), base_dir)
     reference_rows = _reference_rows(task.get("copy_reference"), base_dir)
+    if task.get("copy_reference") and not reference_rows:
+        raise ValueError("copy_reference 没有可比较的 SKU 数据，无法判断哪些变体是新增。")
 
     with tempfile.TemporaryDirectory(prefix="shangpin_fast_") as temp_name:
         project_dir = Path(temp_name) / safe_name(task.get("product_name") or name)
@@ -592,13 +595,11 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
                 if col and value not in (None, ""):
                     ws.cell(row, col).value = value
             action_col = field_to_col.get("::record_action")
-            if action_col and requested_action:
-                ws.cell(row, action_col).value = requested_action
-            elif action_col:
+            if action_col and reference_rows:
                 sku = str(ws.cell(row, sku_col).value or "").strip()
-                previous = reference_rows.get(sku)
-                if previous and _row_changed(ws, row, field_to_col, previous):
-                    ws.cell(row, action_col).value = "Edit (Partial Update)"
+                ws.cell(row, action_col).value = action_for_sku(sku, reference_rows)
+            elif action_col and requested_action:
+                ws.cell(row, action_col).value = requested_action
             continue
         for field_name, value in {**reference_fields, **extra_fields, **dimension_fields}.items():
             col = field_to_col.get(field_name)
@@ -610,34 +611,12 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
                 continue
             ws.cell(row, col).value = value
         action_col = field_to_col.get("::record_action")
-        if action_col and requested_action:
-            ws.cell(row, action_col).value = requested_action
-        elif action_col:
+        if action_col and reference_rows:
             sku = str(ws.cell(row, sku_col).value or "").strip()
-            previous = reference_rows.get(sku)
-            if previous and _row_changed(ws, row, field_to_col, previous):
-                ws.cell(row, action_col).value = "Edit (Partial Update)"
+            ws.cell(row, action_col).value = action_for_sku(sku, reference_rows)
+        elif action_col and requested_action:
+            ws.cell(row, action_col).value = requested_action
     wb.save(path)
-
-
-def _row_changed(ws, row, field_to_col, previous):
-    ignored = {"::record_action"}
-    for field_name, col in field_to_col.items():
-        if field_name in ignored or field_name not in previous:
-            continue
-        current_value = ws.cell(row, col).value
-        previous_value = previous[field_name]
-        if _comparable_value(current_value) != _comparable_value(previous_value):
-            return True
-    return False
-
-
-def _comparable_value(value):
-    if value in (None, ""):
-        return ""
-    if isinstance(value, float) and value.is_integer():
-        return str(int(value))
-    return str(value).strip()
 
 
 def _dimension_overlay_fields(tier):

@@ -37,7 +37,7 @@
 
 如果清单显式提供 `variants` 数组，以清单为准。每个变体可覆盖 `sku`、`color`、`size`、`material`、`set_count` 和 `price`。需要只上当前页面子体时，可设置 `expand_competitor_variants: false`。多维变体不自动展开，必须在清单中明确提供 `variants`。
 
-如果提供 `copy_reference`，批量快速路线会按 SKU 对比新旧表格。新增 SKU 保持 `Create or Replace (Full Update)`；已存在且字段发生变化的 SKU 写入 `Edit (Partial Update)`；已存在但字段没有变化时不改 Action。`Edit (Partial Update)` 是当前 Amazon 模板中 `Edit` 的完整 Valid Value。
+如果提供 `copy_reference`，批量快速路线会按 SKU 对比新旧表格。新增 SKU 写入 `Create or Replace (Full Update)`；已存在的父体和子体一律写入 `Edit (Partial Update)`，不论其他字段有无变化。`Edit (Partial Update)` 是当前 Amazon 模板中 `Edit` 的完整 Valid Value。
 
 如果已有一份同类已填模板，可用 `copy_reference` 复用其五点和描述。该字段只用于加速同类商品，不会复制图片、SKU、价格或包装数据。
 

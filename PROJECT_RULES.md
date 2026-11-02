@@ -44,7 +44,7 @@ python3 run.py batch-fast-prelist <批量任务JSON>
 
 该路线允许只参考竞品、先上品后采购，但仍必须遵守模板 Valid Values、图片留空、Generic 父子体、物流档位、项目模板自检和 WPS 条件格式复核。当单个竞品 HTML 含完整的单一颜色变体选择器时，批量快速路线默认提取全部颜色并生成 1 个 Parent + 全部 Child；不写入竞品 ASIN。显式 `variants` 优先，多维变体不自动展开。详细口径见 `docs/batch_fast_prelisting.md`。
 
-批量快速路线的价格顺序为：清单中显式 `price` 作为人工覆盖；否则先取保存竞品 HTML 中的当前 `priceToPay`；HTML 缺价时必须检查 Amazon 在线页面，有价则以 `online_price` 记录；在线页面也显示缺货或无价时，才允许以 `estimated_price` 记录预估价。不得把 discount 金额或推荐商品价格当成当前商品售价。当有 `copy_reference` 时，按 SKU 对比新旧表格：新增 SKU 保持 `Create or Replace (Full Update)`，只有已存在且字段发生变化的 SKU 才改为 `Edit (Partial Update)`，无字段变化则不改 Action。正式 `auto-fill` 不受影响。
+批量快速路线的价格顺序为：清单中显式 `price` 作为人工覆盖；否则先取保存竞品 HTML 中的当前 `priceToPay`；HTML 缺价时必须检查 Amazon 在线页面，有价则以 `online_price` 记录；在线页面也显示缺货或无价时，才允许以 `estimated_price` 记录预估价。不得把 discount 金额或推荐商品价格当成当前商品售价。所有上品路线生成后续版本时，按 SKU 与紧邻上一版填表文件比较：上一版已有的父体和子体一律填写 `Edit (Partial Update)`，本次新增的 SKU 才填写 `Create or Replace (Full Update)`；是否改过其他字段不影响 Action。批量快速路线提供 `copy_reference` 时以该文件为上一版。首次建立项目时所有 SKU 均为新增。无法读取上一版时，应先补齐基准文件，不猜测旧 SKU 为新增。
 
 批量快速路线未显式提供 SKU 时，使用 `CA-产品名-变体属性`：产品名最多取 `product_name` 前两个英文单词，每个单词首字母大写、其余小写，两个单词直接拼接且中间不加横线；变体属性中的数量或计量单位统一小写，例如 Parent `CA-ToolSharpener`，Child `CA-ToolSharpener-2pcs`、`CA-StorageHook-6mm`。普通属性仍按首字母大写拼接，例如 `CA-GlassBeads-DarkGreen`。显式 `parent_sku` / `child_sku` / variant `sku` 仍作为人工覆盖。正式 `auto-fill` 的 SKU 逻辑不受影响。
 
@@ -129,7 +129,7 @@ maximum_seller_allowed_price
 当前默认值：
 
 ```text
-record_action = Create or Replace (Full Update)
+record_action = 按上一版 SKU 判断；首次建立项目时为 Create or Replace (Full Update)
 非 Parent 行 condition_type = New，Parent 行留空
 item_package_quantity = set_count 或 1
 尺寸单位 = Inches

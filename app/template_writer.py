@@ -6,6 +6,7 @@ from shutil import copyfile
 from openpyxl import load_workbook
 
 from .paths import DRAFT_DIRS, TEMPLATE_DIRS, safe_name
+from .listing_action import action_for_sku, previous_version_template, template_skus
 from .success_rule_defaults import load_safe_defaults
 from .template_sheet import find_template_sheet, template_sheet_names_text
 from .template_validator import PRODUCT_TYPE_CONDITIONAL_FIELDS
@@ -234,7 +235,7 @@ def _value_for(row, source):
     if is_parent and source in {"__package_quantity", "__inches", "__title_inches", "__pounds"}:
         return ""
     if source == "__listing_action":
-        return "Create or Replace (Full Update)"
+        return row.get("listing_action") or "Create or Replace (Full Update)"
     if source == "__variation_relationship":
         return "Variation" if row.get("parent_sku") else ""
     if source == "__package_quantity":
@@ -684,7 +685,7 @@ def _write_required_defaults(ws, row_index, row_data, field_to_col, required_fie
     return written
 
 
-def fill_template(project_dir, draft_path=None, template_path=None, output_path=None, write_report=False):
+def fill_template(project_dir, draft_path=None, template_path=None, output_path=None, write_report=False, reference_template_path=None):
     project_dir = Path(project_dir)
     draft_path = Path(draft_path) if draft_path else find_latest_draft(project_dir)
     template_path = Path(template_path) if template_path else find_template(project_dir)
@@ -699,6 +700,11 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
         output_path = versioned_template_path(project_dir, product_name)
     else:
         output_path = Path(output_path)
+
+    previous_template = Path(reference_template_path) if reference_template_path else previous_version_template(project_dir, output_path)
+    previous_skus = template_skus(previous_template) if previous_template else set()
+    for row_data in rows:
+        row_data["listing_action"] = action_for_sku(row_data.get("sku"), previous_skus)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     copyfile(template_path, output_path)

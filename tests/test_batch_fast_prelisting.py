@@ -1,7 +1,7 @@
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from openpyxl import Workbook
+from openpyxl import Workbook, load_workbook
 
 from app.batch_fast_prelisting import (
     _child_sku,
@@ -11,7 +11,7 @@ from app.batch_fast_prelisting import (
     _parent_required_overlay_fields,
     _parent_sku,
     _resolve_task_price,
-    _row_changed,
+    _apply_batch_overlay,
     extract_competitor_price,
     extract_competitor_title,
     extract_competitor_variants,
@@ -217,15 +217,35 @@ class BatchFastPrelistingTest(unittest.TestCase):
         self.assertGreaterEqual(len(rewritten), 100)
         self.assertLessEqual(len(rewritten), 125)
 
-    def test_row_change_detection_ignores_action_only(self):
-        ws = Workbook().active
-        ws.cell(1, 1).value = "Same Title"
-        ws.cell(1, 2).value = "Edit (Partial Update)"
-        fields = {"item_name": 1, "::record_action": 2}
-        previous = {"item_name": "Same Title"}
-        self.assertFalse(_row_changed(ws, 1, fields, previous))
-        ws.cell(1, 1).value = "Updated Title"
-        self.assertTrue(_row_changed(ws, 1, fields, previous))
+    def test_reference_skus_are_edit_even_when_unchanged(self):
+        with TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "filled.xlsx"
+            workbook = Workbook()
+            ws = workbook.active
+            ws.title = "Template"
+            headers = (
+                "contribution_sku#1.value",
+                "::record_action",
+                "parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value",
+                "product_type#1.value",
+            )
+            for col, name in enumerate(headers, 1):
+                ws.cell(5, col).value = name
+            for row, (sku, level) in enumerate((("PARENT", "Parent"), ("OLD", "Child"), ("NEW", "Child")), 7):
+                ws.cell(row, 1).value = sku
+                ws.cell(row, 2).value = "Create or Replace (Full Update)"
+                ws.cell(row, 3).value = level
+                ws.cell(row, 4).value = "PET_TOY"
+            workbook.save(path)
+
+            _apply_batch_overlay(path, {}, resolve_logistics_tier(tier_id="le_4_oz"), {}, {
+                "PARENT": {}, "OLD": {},
+            })
+
+            result = load_workbook(path, read_only=True, data_only=True)["Template"]
+            self.assertEqual(result.cell(7, 2).value, "Edit (Partial Update)")
+            self.assertEqual(result.cell(8, 2).value, "Edit (Partial Update)")
+            self.assertEqual(result.cell(9, 2).value, "Create or Replace (Full Update)")
 
 
 if __name__ == "__main__":
