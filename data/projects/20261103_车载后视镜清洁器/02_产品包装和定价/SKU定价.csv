@@ -1,0 +1,4 @@
+﻿SKU,角色,是否当前必需,款式,成本 CNY,预估配送费 USD,保本价 USD,建议售价 USD,定价待核对
+CA-MirrorClean,parent,否,,2.33,0.5,1.44,2.23,否
+CA-MirrorClean-Pink,child,是,,2.33,0.5,1.44,2.23,否
+CA-MirrorClean-Black,child,是,,2.33,0.5,1.44,2.23,否

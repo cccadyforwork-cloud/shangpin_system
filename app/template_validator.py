@@ -528,6 +528,29 @@ PRODUCT_TYPE_CONDITIONAL_FIELDS = {
     }
 }
 
+# Fields confirmed as conditionally required by Amazon processing summaries.
+# Keep these separate from PRODUCT_TYPE_CONDITIONAL_FIELDS, which the writer
+# also uses for automatic defaults; warranty and material must not be guessed.
+PRODUCT_TYPE_FEEDBACK_REQUIRED_FIELDS = {
+    "SQUEEGEE": {
+        "Generic Keyword": "generic_keyword[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Handle Material": "handle[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+        "Blade Material": "blade[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",
+        "Product Compliance Certificate": "required_product_compliance_certificate[marketplace_id=ATVPDKIKX0DER]#1.value",
+    },
+    "STRING_LIGHT": {
+        "Special Features": "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Material": "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Occasion": "occasion_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Theme": "theme[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Light Color": "light_color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Light Source": "light_source[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+        "Indoor Outdoor Usage": "indoor_outdoor_usage[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Warranty Description": "warranty_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+    },
+}
+
+
 PRODUCT_TYPE_DISALLOWED_FIELDS = {
     "TOWEL": {
         "Compliance - Towel End Use": "compliance_towel_end_use[marketplace_id=ATVPDKIKX0DER]#1.value",
@@ -934,9 +957,15 @@ def validate_template_file(path, output_path=None, write_report=False):
                 value = ws.cell(row, col).value
                 if value in (None, ""):
                     findings.append(error(row, label, f"{sku} 的 {label} 为空。", "该字段在模板 Data Definitions 中标记为 Required，上传前应补齐。"))
-            for label, field_name in PRODUCT_TYPE_CONDITIONAL_FIELDS.get(str(product_type), {}).items():
+            conditional_fields = (
+                PRODUCT_TYPE_CONDITIONAL_FIELDS.get(str(product_type), {}),
+                PRODUCT_TYPE_FEEDBACK_REQUIRED_FIELDS.get(str(product_type), {}),
+            )
+            for label, field_name in (item for fields in conditional_fields for item in fields.items()):
                 col = field_to_col.get(field_name)
                 if not col:
+                    continue
+                if is_parent and label in PRODUCT_TYPE_FEEDBACK_REQUIRED_FIELDS.get(str(product_type), {}):
                     continue
                 if is_parent and _is_parent_optional_required_field(field_name):
                     continue

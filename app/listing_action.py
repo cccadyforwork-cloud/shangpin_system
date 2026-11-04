@@ -6,6 +6,7 @@ import re
 from openpyxl import load_workbook
 
 from .paths import LEGACY_FILLED_TEMPLATE_DIR
+from .project_status import load_project_status
 from .template_sheet import find_template_sheet, template_sheet_names_text
 from .versioning import version_number
 
@@ -67,5 +68,21 @@ def template_skus(path):
         workbook.close()
 
 
-def action_for_sku(sku, previous_skus):
+def is_error_correction_version(project_dir, output_path, previous_template):
+    """A failed immediately preceding upload is replaced with a full update."""
+    if previous_template is None:
+        return False
+    status = load_project_status(project_dir)
+    failed = status.get("failed_template")
+    if not failed or not status.get("latest_failure_report"):
+        return False
+    return (
+        Path(failed).name == Path(previous_template).name
+        and _logical_version(output_path) == _logical_version(previous_template) + 1
+    )
+
+
+def action_for_sku(sku, previous_skus, *, error_correction=False):
+    if error_correction:
+        return CREATE_ACTION
     return EDIT_ACTION if str(sku or "").strip() in previous_skus else CREATE_ACTION

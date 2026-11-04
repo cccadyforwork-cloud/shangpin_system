@@ -12,6 +12,10 @@ def _title_findings(title):
 
 
 class ListingRulesTest(unittest.TestCase):
+    def test_title_allows_ft_length_unit(self):
+        title = "USB Christmas String Lights with Remote, 9.84 ft Green Wire White Light for Tree and Holiday Decoration"
+        self.assertFalse(any("Title Case" in message for message in _title_findings(title)))
+
     def test_safe_pet_toy_title_passes_title_rules(self):
         title = (
             "Cat Chew Toy, Interactive Bite Toy for Indoor Cats and Kittens, "

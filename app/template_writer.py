@@ -6,7 +6,7 @@ from shutil import copyfile
 from openpyxl import load_workbook
 
 from .paths import DRAFT_DIRS, TEMPLATE_DIRS, safe_name
-from .listing_action import action_for_sku, previous_version_template, template_skus
+from .listing_action import action_for_sku, is_error_correction_version, previous_version_template, template_skus
 from .success_rule_defaults import load_safe_defaults
 from .template_sheet import find_template_sheet, template_sheet_names_text
 from .template_validator import PRODUCT_TYPE_CONDITIONAL_FIELDS
@@ -703,8 +703,9 @@ def fill_template(project_dir, draft_path=None, template_path=None, output_path=
 
     previous_template = Path(reference_template_path) if reference_template_path else previous_version_template(project_dir, output_path)
     previous_skus = template_skus(previous_template) if previous_template else set()
+    error_correction = is_error_correction_version(project_dir, output_path, previous_template)
     for row_data in rows:
-        row_data["listing_action"] = action_for_sku(row_data.get("sku"), previous_skus)
+        row_data["listing_action"] = action_for_sku(row_data.get("sku"), previous_skus, error_correction=error_correction)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     copyfile(template_path, output_path)

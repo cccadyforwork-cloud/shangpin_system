@@ -1,0 +1,15 @@
+{
+  "product_name": "披萨切割器",
+  "workbench_owner": "cccady",
+  "workbench_store": "2店",
+  "status": "uploaded_success",
+  "latest_draft": "03_产品详情页/披萨切割器_产品资料.xlsx",
+  "updated_at": "2026-11-04T01:42:39",
+  "source_template": "05_模版原件/KITCHEN_TOOLS.xlsm",
+  "sku_count": 2,
+  "workbench_note": "2店；负责人 cccady。S1 项目 P-7c2a9ab3f5f4，资料版本16。V1 已填：父体 CA-PizzaSlicer，黑柄披萨轮 CA-PizzaSlicer-Wheel，COLOR 变体，展示名 Black，子体售价 $2.51；首次上品父子均为 Create or Replace (Full Update)。KITCHEN_TOOLS 模板本地自检与联动红框扫描均为 0，已在 WPS 打开 Template 页并保存；尚未上传 Amazon。包装按用户长期规则取 $0.50 档位默认值：3.94×3.94×0.79 in、0.22 lb，非实测。供应商页面该选款标示 28×9×4 cm、125 g，超过该档位重量和尺寸，发货前需核对实物、包装与配送档位。模板可选披萨类目词仅 pizza-peels，已使用该词，实际商品是 pizza cutter wheel。",
+  "latest_template": "05_填表版本/披萨切割器黑柄披萨轮V1.xlsx",
+  "latest_check_report": "/Users/admin/Documents/GitHub/shangpin_system/outputs/披萨切割器黑柄披萨轮V1_模板自检报告.md",
+  "written_field_count": 40,
+  "template_error_count": 0
+}

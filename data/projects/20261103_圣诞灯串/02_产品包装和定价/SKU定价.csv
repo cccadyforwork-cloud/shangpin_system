@@ -1,0 +1,8 @@
+﻿SKU,角色,是否当前必需,款式,成本 CNY,预估配送费 USD,保本价 USD,建议售价 USD,定价待核对
+CA-CMlight,parent,否,,5.6,0.88,1.98,4.07,否
+CA-CMlight-GreWhite-9,child,是,,12.97,1.77,4.93,7.85,否
+CA-CMlight-SliverWarm-9,child,是,,12.97,1.77,4.93,7.85,否
+CA-CMlight-SliverWarm-3,child,是,,5.6,0.88,1.98,4.07,否
+CA-CMlight-GreWarm-9,child,是,,12.97,1.77,4.93,7.85,否
+CA-CMlight-GreWarm-3,child,是,,5.6,0.88,1.98,4.07,否
+CA-CMlight-GreWhite-3,child,是,,5.6,0.88,1.98,4.07,否

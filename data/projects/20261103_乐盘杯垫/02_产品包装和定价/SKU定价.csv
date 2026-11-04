@@ -1,0 +1,4 @@
+﻿SKU,角色,是否当前必需,款式,成本 CNY,预估配送费 USD,保本价 USD,建议售价 USD,定价待核对
+CA-DrinkCoaster,parent,否,,12.0,0.88,3.66,5.82,否
+CA-DrinkCoaster-Colorful-6,child,是,,12.0,0.88,3.66,5.82,否
+CA-DrinkCoaster-Black-6,child,是,,8.0,0.88,2.37,4.73,否

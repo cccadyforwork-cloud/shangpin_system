@@ -597,7 +597,7 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
             action_col = field_to_col.get("::record_action")
             if action_col and reference_rows:
                 sku = str(ws.cell(row, sku_col).value or "").strip()
-                ws.cell(row, action_col).value = action_for_sku(sku, reference_rows)
+                ws.cell(row, action_col).value = action_for_sku(sku, reference_rows, error_correction=bool(task.get("error_correction")))
             elif action_col and requested_action:
                 ws.cell(row, action_col).value = requested_action
             continue
@@ -613,7 +613,7 @@ def _apply_batch_overlay(path, task, tier, reference_fields, reference_rows=None
         action_col = field_to_col.get("::record_action")
         if action_col and reference_rows:
             sku = str(ws.cell(row, sku_col).value or "").strip()
-            ws.cell(row, action_col).value = action_for_sku(sku, reference_rows)
+            ws.cell(row, action_col).value = action_for_sku(sku, reference_rows, error_correction=bool(task.get("error_correction")))
         elif action_col and requested_action:
             ws.cell(row, action_col).value = requested_action
     wb.save(path)

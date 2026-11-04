@@ -1,0 +1,21 @@
+{
+  "product_name": "车载后视镜清洁器",
+  "workbench_owner": "cccady",
+  "workbench_store": "2店",
+  "status": "uploaded_success",
+  "latest_draft": "03_产品详情页/车载后视镜清洁器_产品资料.xlsx",
+  "updated_at": "2026-11-04T01:42:25",
+  "source_template": "05_模版原件/SQUEEGEE.xlsm",
+  "workbench_note": "2店；负责人 cccady。V1 父体成功、两子体各缺 4 项 90220。V2 已修复，用户确认手柄 Plastic、刮片 Rubber。按用户最新规则，报错修正版父体及两子体全部 Action=Create or Replace (Full Update)。V2 自检与红框扫描均 0，待重新上传 Amazon。",
+  "latest_template": "05_填表版本/车载后视镜清洁器磨砂手柄V2.xlsx",
+  "latest_check_report": "/Users/admin/Documents/GitHub/shangpin_system/outputs/车载后视镜清洁器磨砂手柄V2_模板自检报告.md",
+  "sku_count": 3,
+  "written_field_count": 39,
+  "template_error_count": 0,
+  "version_notes": {
+    "V1": "2026-11-03：首次生成父体及粉色、黑色两个子体，主题 COLOR，售价 $2.23。用户确认实际单件含包装重量 ≤4 oz，保留 $0.50 档默认包装。供应商另列 82.5 cm PE 手柄款，本次不套用该长度。模板自检 0 错误。",
+    "V2": "V1 报错修正版：父体及粉/黑两子体全部 Action=Create or Replace (Full Update)。两子体补 Generic Keyword、Handle Material=Plastic、Blade Material=Rubber、Product Compliance Certificate=Not Applicable；材质由用户确认。售价、展示名、$0.50 配送档位不变。模板自检与红框扫描均 0，待重新上传。"
+  },
+  "latest_failure_report": "06_处理报告/车载后视镜清洁器磨砂手柄V1-processing-summary.xlsm",
+  "failed_template": "05_填表版本/车载后视镜清洁器磨砂手柄V1.xlsx"
+}

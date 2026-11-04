@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updated_at": "2026-10-15T21:15:29+08:00",
+  "updated_at": "2026-10-27T01:41:30+08:00",
   "batches": [
     {
       "id": "2026-10-14-cady",
@@ -29,7 +29,7 @@
           ],
           "competitor_html": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/competitor_html/B0GDQM14G7.html",
           "source_template": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/source_template/ELECTRONIC_CABLE.xlsm",
-          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/output_file/USB-A转Type-C编织快充线V2.xlsm",
+          "output_file": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/output_file/USB-A转Type-C编织快充线V5.xlsm",
           "output_versions": [
             {
               "version": 1,
@@ -40,11 +40,26 @@
               "version": 2,
               "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/output_file/USB-A转Type-C编织快充线V2.xlsm",
               "added_at": "2026-10-15T20:47:14+08:00"
+            },
+            {
+              "version": 3,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/output_file/USB-A转Type-C编织快充线V3.xlsm",
+              "added_at": "2026-10-27T01:33:49+08:00"
+            },
+            {
+              "version": 4,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/output_file/USB-A转Type-C编织快充线V4.xlsm",
+              "added_at": "2026-10-27T01:39:37+08:00"
+            },
+            {
+              "version": 5,
+              "path": "data/batch_fast_workbench/files/2026-10-14-cady/B0GDQM14G7/output_file/USB-A转Type-C编织快充线V5.xlsm",
+              "added_at": "2026-10-27T01:41:23+08:00"
             }
           ],
-          "status": "已上传",
+          "status": "待复核",
           "purchase_status": "",
-          "note": "预估价格",
+          "note": "预估价格；V3已上传（用户确认）；V4标题与Size改为3Ft/6Ft/10Ft；V5仅将新增3m白/紫两款Action由Create改为Edit，原2m白/紫仍Delete，其余不变，待复核。",
           "store_id": "1店"
         },
         {

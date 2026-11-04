@@ -1,0 +1,18 @@
+{
+  "product_name": "圣诞贺卡",
+  "workbench_owner": "cccady",
+  "workbench_store": "2店",
+  "status": "uploaded_success",
+  "latest_draft": "03_产品详情页/圣诞贺卡_产品资料.xlsx",
+  "updated_at": "2026-11-03T18:00:03",
+  "source_template": "05_模版原件/GREETING_CARD.xlsm",
+  "workbench_note": "2店；负责人 cccady。S1 项目 P-9fb213b39584。用户确认 CA-CMCard-Red 对应供应商 A0434 红色立体圣诞场景贺卡；父体 CA-CMCard。V1 已生成并通过模板自检（0 错误），尚未上传 Amazon。子体售价 $6.64；包装按 $1.77 配送档位默认值（5.91 × 3.94 × 1.57 in，0.44 lb），未实测。供应商页面记载 A0434 为 11.2 × 20.3 × 0.3 cm、28 g；包装默认尺寸与供应商数据存在差异，实物包装待核对。",
+  "latest_template": "05_填表版本/圣诞贺卡红色立体款V1.xlsx",
+  "latest_check_report": "/Users/admin/Documents/GitHub/shangpin_system/outputs/圣诞贺卡红色立体款V1_模板自检报告.md",
+  "sku_count": 2,
+  "written_field_count": 39,
+  "template_error_count": 0,
+  "version_notes": {
+    "V1": "2026-11-03：首次生成。用户确认供应商 A0434 红色立体圣诞场景卡；父体 CA-CMCard、子体 CA-CMCard-Red，主题 COLOR，售价 $6.64。包装沿用 $1.77 档位默认值；自检 0 错误。"
+  }
+}

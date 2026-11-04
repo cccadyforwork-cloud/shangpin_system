@@ -6,6 +6,7 @@ from openpyxl import Workbook, load_workbook
 
 from app.template_writer import fill_template
 from app.listing_action import _logical_version
+from app.project_status import save_project_status
 from app.workbook_io import write_intake_workbook
 
 
@@ -70,6 +71,37 @@ class ListingActionVersionTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "上一版填表文件"):
                 fill_template(project, draft_path=draft, template_path=source,
                               output_path=project / "05_填表版本" / "猫玩具V2.xlsx")
+
+    def test_error_correction_recreates_existing_parent_and_child(self):
+        with TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir)
+            source = project / "source.xlsx"
+            draft = project / "draft.xlsx"
+            versions = project / "05_填表版本"
+            versions.mkdir()
+            workbook = Workbook()
+            sheet = workbook.active
+            sheet.title = "Template"
+            sheet.cell(5, 1).value = "contribution_sku#1.value"
+            sheet.cell(5, 2).value = "::record_action"
+            workbook.save(source)
+            write_intake_workbook(draft, [
+                {"sku": "PARENT", "parentage_level": "Parent", "route": "Haul Generic Variation", "title": "Cat Toy"},
+                {"sku": "CHILD", "parent_sku": "PARENT", "parentage_level": "Child", "route": "Haul Generic Variation", "title": "Cat Toy"},
+            ])
+            v1 = versions / "猫玩具V1.xlsx"
+            fill_template(project, draft_path=draft, template_path=source, output_path=v1)
+            save_project_status(project, {
+                "failed_template": "05_填表版本/猫玩具V1.xlsx",
+                "latest_failure_report": "06_处理报告/report.xlsm",
+            })
+            v2 = versions / "猫玩具V2.xlsx"
+            fill_template(project, draft_path=draft, template_path=source, output_path=v2)
+            sheet = load_workbook(v2, read_only=True, data_only=True)["Template"]
+            self.assertEqual([sheet.cell(row, 2).value for row in (7, 8)], [
+                "Create or Replace (Full Update)",
+                "Create or Replace (Full Update)",
+            ])
 
 
 if __name__ == "__main__":
