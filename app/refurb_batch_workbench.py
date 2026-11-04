@@ -1,6 +1,8 @@
 import io
+import re
 import zipfile
 from pathlib import Path
+from urllib.parse import urlparse
 
 from openpyxl import load_workbook
 
@@ -190,6 +192,67 @@ def ensure_ledger(path=LEDGER_PATH):
     return data
 
 
+def create_batch(name, store_id, ledger_path=LEDGER_PATH):
+    name = str(name or "").strip()
+    store_id = str(store_id or "").strip()
+    if not name or len(name) > 100:
+        raise ValueError("请填写不超过 100 字的批次名称。")
+    if store_id not in {"1店", "2店"}:
+        raise ValueError("店铺只能选择 1店或 2店。")
+    data = ensure_ledger(ledger_path)
+    batch_id = safe_name(name)
+    existing = next((item for item in data["batches"] if item.get("id") == batch_id), None)
+    if existing:
+        if existing.get("name") != name or existing.get("stores") != [store_id]:
+            raise ValueError("同名批次已存在，且店铺设置不同。")
+        return existing
+    batch = {"id": batch_id, "name": name, "source_sheet": "", "stores": [store_id], "rows": []}
+    data["batches"].insert(0, batch)
+    save_ledger(data, ledger_path)
+    return batch
+
+
+def add_product(batch_id, link, product_name, source_title="", ledger_path=LEDGER_PATH):
+    link = str(link or "").strip()
+    parsed = urlparse(link)
+    host = (parsed.hostname or "").lower()
+    match = re.search(r"/(?:dp|gp/product)/([A-Z0-9]{10})(?:/|$)", parsed.path, re.I)
+    if parsed.scheme != "https" or not (host == "amazon.com" or host.endswith(".amazon.com")) or not match:
+        raise ValueError("请提供包含 ASIN 的 Amazon 商品链接。")
+    asin = match.group(1).upper()
+    product_name = str(product_name or "").strip()
+    source_title = str(source_title or "").strip()
+    if not product_name or len(product_name) > 160 or len(source_title) > 500:
+        raise ValueError("请填写有效的商品名称和原商品标题。")
+    data = ensure_ledger(ledger_path)
+    batch = next((item for item in data["batches"] if item.get("id") == batch_id), None)
+    if batch is None:
+        raise ValueError("找不到批次。")
+    existing = next((row for row in batch.get("rows", []) if row.get("asin") == asin), None)
+    if existing:
+        return existing
+    row = {
+        "id": asin,
+        "asin": asin,
+        "product_name": product_name,
+        "source_title": source_title,
+        "row_number": None,
+        "link": link,
+        "competitor_html": "",
+        "source_template": "",
+        "output_file": "",
+        "output_versions": [],
+        "status": "待处理",
+        "purchase_status": "",
+        "note": "",
+        "store_id": (batch.get("stores") or [""])[0],
+        "image_groups": {},
+    }
+    batch.setdefault("rows", []).append(row)
+    save_ledger(data, ledger_path)
+    return row
+
+
 def import_sheets(paths=None, ledger_path=LEDGER_PATH):
     selected = list(paths or default_source_sheets())
     existing = [path for path in selected if Path(path).expanduser().exists()]
@@ -203,7 +266,8 @@ def payload(ledger_path=LEDGER_PATH):
     ensure_ledger(ledger_path)
     rendered = _payload(ledger_path)
     for batch in rendered.get("batches", []):
-        batch["rows"] = _merge_confirmed_rows(batch.get("rows", []))
+        if batch.get("id") == BATCH_ID:
+            batch["rows"] = _merge_confirmed_rows(batch.get("rows", []))
     rows = [row for batch in rendered.get("batches", []) for row in batch.get("rows", [])]
     rendered["totals"] = {
         "rows": len(rows),
@@ -418,8 +482,16 @@ def _normalize_workbench(data, ledger_path):
     if not batches:
         return ensure_ledger(ledger_path)
 
-    batch = batches[0]
-    changed = len(batches) != 1
+    batch = next((item for item in batches if item.get("id") == BATCH_ID), None)
+    if batch is None:
+        legacy_names = {"退货翻新批量上品.xlsx", "副本入库记录-退货入库-总和.xlsx"}
+        batch = next(
+            (item for item in batches if Path(str(item.get("source_sheet") or "")).name in legacy_names),
+            None,
+        )
+    if batch is None:
+        return data
+    changed = False
     for field, value in {"id": BATCH_ID, "name": BATCH_NAME, "stores": [STORE_ID]}.items():
         if batch.get(field) != value:
             batch[field] = value
@@ -456,7 +528,10 @@ def _normalize_workbench(data, ledger_path):
                 changed = True
         unique_rows.append(row)
     batch["rows"] = unique_rows
-    data["batches"] = [batch]
+    ordered = [item for item in batches if item is not batch] + [batch]
+    if ordered != batches:
+        data["batches"] = ordered
+        changed = True
     if changed:
         save_ledger(data, ledger_path)
     return data
@@ -583,7 +658,7 @@ def _resolve_image_group(batch_id, row_id, image_group_key, ledger_path):
     requested = next((item for item in rows if item.get("id") == row_id), None)
     if requested is None:
         raise ValueError("找不到产品行。")
-    merge_group = MERGE_GROUP_BY_ROW.get(requested.get("row_number"))
+    merge_group = MERGE_GROUP_BY_ROW.get(requested.get("row_number")) if batch_id == BATCH_ID else None
     if merge_group is None:
         key = str(image_group_key or "default")
         if key != "default":

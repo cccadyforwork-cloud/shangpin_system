@@ -10,7 +10,9 @@ from app.refurb_batch_workbench import (
     BATCH_ID,
     BATCH_NAME,
     STORE_ID,
+    add_product,
     attach_reference_screenshot,
+    create_batch,
     ensure_ledger,
     export_generated_images_to_desktop,
     import_sheets,
@@ -56,6 +58,38 @@ class RefurbBatchWorkbenchTests(unittest.TestCase):
         self.assertEqual({STORE_ID}, {row["store_id"] for row in batch["rows"]})
         self.assertEqual("隔油勺", batch["rows"][0]["product_name"])
         self.assertEqual("待翻新", batch["rows"][0]["note"])
+
+    def test_new_store_two_batch_survives_reload_and_legacy_import(self):
+        import_sheets([self.sheet], self.ledger)
+        created = create_batch("cady11月4号1店上2店", "2店", self.ledger)
+        self.assertEqual("cady11月4号1店上2店", created["name"])
+        self.assertEqual(["2店"], created["stores"])
+        self.assertEqual(created, create_batch(created["name"], "2店", self.ledger))
+
+        import_sheets([self.sheet], self.ledger)
+        batches = payload(self.ledger)["batches"]
+        self.assertEqual(2, len(batches))
+        self.assertEqual(created["id"], batches[0]["id"])
+        self.assertEqual(["2店"], batches[0]["stores"])
+        self.assertEqual([], batches[0]["rows"])
+        self.assertEqual(BATCH_ID, batches[1]["id"])
+        self.assertEqual(["1店"], batches[1]["stores"])
+        self.assertEqual("隔油勺", batches[1]["rows"][0]["product_name"])
+
+    def test_add_product_to_new_batch_is_idempotent_and_preserves_source_title(self):
+        import_sheets([self.sheet], self.ledger)
+        batch = create_batch("cady11月4号1店上2店", "2店", self.ledger)
+        link = "https://www.amazon.com/dp/B0HP3N5ZCD?ie=UTF8&ASIN=B0HP3N5ZCD&s=bazaar"
+        first = add_product(batch["id"], link, "猫咪不倒翁玩具（棕色）", "Cat Wobble Toy", self.ledger)
+        self.assertEqual(first, add_product(batch["id"], link, "猫咪不倒翁玩具（棕色）", "Cat Wobble Toy", self.ledger))
+        rendered = next(item for item in payload(self.ledger)["batches"] if item["id"] == batch["id"])
+        self.assertEqual(1, len(rendered["rows"]))
+        row = rendered["rows"][0]
+        self.assertEqual("B0HP3N5ZCD", row["id"])
+        self.assertEqual("2店", row["store_id"])
+        self.assertEqual("Cat Wobble Toy", row["source_title"])
+        self.assertEqual("待处理", row["status"])
+        self.assertEqual(link, row["link"])
 
     def test_import_deduplicates_the_same_amazon_asin(self):
         workbook = Workbook()

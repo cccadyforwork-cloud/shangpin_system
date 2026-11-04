@@ -35,10 +35,12 @@ from .kaixuan_batch_workbench import (
     update_row as update_kaixuan_batch_row,
 )
 from .refurb_batch_workbench import (
+    add_product as add_refurb_product,
     attach_reference_screenshot as attach_refurb_reference_screenshot,
     attach_file as attach_refurb_batch_file,
     build_all_image_groups_archive as build_refurb_all_image_groups_archive,
     build_output_archive as build_refurb_batch_output_archive,
+    create_batch as create_refurb_batch,
     export_generated_images_to_desktop as export_refurb_images_to_desktop,
     fetch_reference_images as fetch_refurb_reference_images,
     import_sheets as import_refurb_batch_sheets,
@@ -340,6 +342,17 @@ def _handler():
                         result = {"ok": True, "path": str(path)}
                     elif parsed.path == "/api/refurb-batch/import":
                         import_refurb_batch_sheets(payload.get("paths") or None)
+                        result = refurb_batch_payload()
+                    elif parsed.path == "/api/refurb-batch/create":
+                        create_refurb_batch(payload.get("name", ""), payload.get("store_id", ""))
+                        result = refurb_batch_payload()
+                    elif parsed.path == "/api/refurb-batch/add-product":
+                        add_refurb_product(
+                            payload.get("batch_id", ""),
+                            payload.get("link", ""),
+                            payload.get("product_name", ""),
+                            payload.get("source_title", ""),
+                        )
                         result = refurb_batch_payload()
                     elif parsed.path == "/api/refurb-batch/save":
                         update_refurb_batch_row(payload.get("batch_id", ""), payload.get("row_id", ""), payload.get("fields") or {})
