@@ -4,19 +4,20 @@
   "workbench_store": "1店",
   "status": "needs_manual_fix",
   "latest_draft": "03_产品详情页/猫玩具不倒翁新增3变体_产品资料.xlsx",
-  "updated_at": "2026-10-24T03:21:31",
+  "updated_at": "2026-11-02T21:45:51",
   "source_template": "05_模版原件/1店+猫玩具不倒翁.xlsm",
-  "workbench_note": "店铺：1店；负责人：cccady。当前为 1 父体、9 子体，变体主题 COLOR。2026-10-24 已生成 V4：九个子体展示名按用户提供的中文款式名更新，其中第二款使用 Natural Sisal；父体和全部旧、新子体标题均保持 V3 原文不变。九个子体售价 USD 2.99，包装沿用 4 oz 以下档位默认值；父体及原五子体 Action=Edit，新增四子体 Action=Create。详见 V4 修改记录。",
-  "latest_template": "05_填表版本/猫玩具不倒翁新增3变体V4.xlsm",
-  "latest_check_report": "06_处理报告/猫玩具不倒翁新增3变体V4_模板自检报告.md",
-  "sku_count": 10,
+  "workbench_note": "1店 cccady；V5 新增 FluffGreen、FluffYellow、Sily、Santa，当前 1 父体、13 子体。原有父体及九个旧子体 Listing Action 均为 Edit，四个新增子体为 Create。新款售价 USD 2.99，配送费 USD 0.50；Model Name=SKU。绿黄两款为绒毛质感；包装数值按配送档位默认值填写；旧 V4 待核事项保留。",
+  "latest_template": "05_填表版本/猫玩具不倒翁新增3变体V5.xlsm",
+  "latest_check_report": "06_处理报告/猫玩具不倒翁新增3变体V5_模板自检报告.md",
+  "sku_count": 14,
   "template_error_count": 0,
   "template_red_field_count": 0,
   "version_notes": {
     "V1": "1店；负责人 cccady。保留 Parent 与原有 Feather、Sisal 子体，新增 STAR、LOVE、ORANGE 三个 COLOR 子体；五个子体的 List Price 与 1店 Haul Price 统一为 3.44 USD。原始 xlsm 保留不动。",
     "V2": "2026-10-24 在 V1 基础上新增 BlueTree、ChristmasTree、FruitTree、AngryBrown 四个子体，售价均 USD 2.99、配送费 USD 0.50；父体与旧五子体 Listing Action 改为 Edit (Partial Update)，四个新子体为 Create or Replace (Full Update)。共 1 父体、9 子体；V2 本地模板自检 0 错误。BlueTree/AngryBrown 尺寸为参考估计，BlueTree/FruitTree/AngryBrown 的供应商子规格与内部款式名需核对，AngryBrown 毛绒材质映射 Polyester 待核。详见 06_处理报告/猫玩具不倒翁新增3变体V2_修改记录.md。",
     "V3": "2026-10-24 在 V2 基础上统一九个子体的 List Price 与 Haul Price 为 USD 2.99，包装尺寸与重量按 4 oz 及以下、售价不高于 $3 的默认值填写；BlueTree 商品尺寸沿用旧款 Feather，AngryBrown 沿用旧款 ORANGE。保留原 Action 与 COLOR 展示名；模板自检 0 错误、0 警告。详见 06_处理报告/猫玩具不倒翁新增3变体V3_修改记录.md。",
-    "V4": "2026-10-24 基于 V3 核对九个子体 COLOR 变体展示名，其中七项变化、两项沿用原值；Sisal 款使用 Natural Sisal。所有父子体标题和其它填表数据保持 V3 原样；全局自检不再要求子体标题包含 Color/Size 变体展示名，已有标题不会被生成流程自动改写。模板自检 0 错误、0 警告。详见 06_处理报告/猫玩具不倒翁新增3变体V4_修改记录.md。"
+    "V4": "2026-10-24 基于 V3 核对九个子体 COLOR 变体展示名，其中七项变化、两项沿用原值；Sisal 款使用 Natural Sisal。所有父子体标题和其它填表数据保持 V3 原样；全局自检不再要求子体标题包含 Color/Size 变体展示名，已有标题不会被生成流程自动改写。模板自检 0 错误、0 警告。详见 06_处理报告/猫玩具不倒翁新增3变体V4_修改记录.md。",
+    "V5": "2026-11-02 新增 FluffGreen、FluffYellow、Sily、Santa 四个子体；所有子体 Model Name=SKU；共 1 父体、13 子体。Listing Action 以 V4 为基准：原有父体及九个旧子体均为 Edit (Partial Update)，仅四个新增子体为 Create or Replace (Full Update)。本地模板校验及红框扫描均 0 项。新款 COLOR 展示名已更新；绿黄两款为毛衣般绒毛，非羽毛。包装数值按所选配送档位默认值填写；旧 V4 合规核对事项仍保留。详见 V5 修改记录。"
   },
   "blocked_reason": "BlueTree、FruitTree、AngryBrown 的内部款式名与供应商子规格需核对；AngryBrown 的材质映射及不同材质/造型的 COLOR 父体合规性待核。BlueTree、AngryBrown 商品尺寸为用户确认沿用的旧款参考值，非新款实测。"
 }
