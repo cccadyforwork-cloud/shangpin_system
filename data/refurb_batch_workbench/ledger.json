@@ -1,7 +1,871 @@
 {
   "version": 2,
-  "updated_at": "2026-11-04T23:21:32+08:00",
+  "updated_at": "2026-11-05T17:23:05+08:00",
   "batches": [
+    {
+      "id": "2026-11-05_2店退货翻新（SP+KCC）",
+      "name": "2026-11-05 2店退货翻新（SP+KCC）",
+      "source_sheet": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/source_sheets/2026-11-05_2店退货翻新_SP_KCC_按原链接合并.xlsx",
+      "rows": [
+        {
+          "id": "ROW-2",
+          "asin": "",
+          "product_name": "收纳茶包盒子",
+          "row_number": 2,
+          "link": "https://a.co/d/037IjkZN",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-shounafenge-tou；数量：4；配送费：2.6；来源：SP退货翻新的1.xlsx / SP 第2行",
+          "store_id": "2店",
+          "source_msku": "SP-shounafenge-tou",
+          "source_quantity": 4,
+          "shipping_fee": 2.6,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-shounafenge-tou",
+              "product_name": "收纳茶包盒子",
+              "quantity": 4,
+              "link": "https://a.co/d/037IjkZN",
+              "shipping_fee": 2.6,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-3",
+          "asin": "",
+          "product_name": "包饺子工具",
+          "row_number": 3,
+          "link": "https://a.co/d/02baE78F",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-baojiaozi-1；数量：3；配送费：1.77；来源：SP退货翻新的1.xlsx / SP 第3行",
+          "store_id": "2店",
+          "source_msku": "SP-baojiaozi-1",
+          "source_quantity": 3,
+          "shipping_fee": 1.77,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-baojiaozi-1",
+              "product_name": "包饺子工具",
+              "quantity": 3,
+              "link": "https://a.co/d/02baE78F",
+              "shipping_fee": 1.77,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-4",
+          "asin": "",
+          "product_name": "曲奇饼干模具",
+          "row_number": 4,
+          "link": "https://a.co/d/0dwDTt3D",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-quqimuju-2；数量：4；配送费：0.88；来源：SP退货翻新的1.xlsx / SP 第4行",
+          "store_id": "2店",
+          "source_msku": "SP-quqimuju-2",
+          "source_quantity": 4,
+          "shipping_fee": 0.88,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-quqimuju-2",
+              "product_name": "曲奇饼干模具",
+              "quantity": 4,
+              "link": "https://a.co/d/0dwDTt3D",
+              "shipping_fee": 0.88,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-5",
+          "asin": "",
+          "product_name": "便携手机支架，挂件",
+          "row_number": 5,
+          "link": "https://a.co/d/0hXEDgrc",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-zhijiache-1；数量：3；配送费：0.88；来源：SP退货翻新的1.xlsx / SP 第5行",
+          "store_id": "2店",
+          "source_msku": "SP-zhijiache-1",
+          "source_quantity": 3,
+          "shipping_fee": 0.88,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-zhijiache-1",
+              "product_name": "便携手机支架，挂件",
+              "quantity": 3,
+              "link": "https://a.co/d/0hXEDgrc",
+              "shipping_fee": 0.88,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-6",
+          "asin": "",
+          "product_name": "勺子",
+          "row_number": 6,
+          "link": "https://a.co/d/049oVgRH",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-06-01；数量：19；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第6行",
+          "store_id": "2店",
+          "source_msku": "SP-06-01",
+          "source_quantity": 19,
+          "shipping_fee": 0.5,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-06-01",
+              "product_name": "勺子",
+              "quantity": 19,
+              "link": "https://a.co/d/049oVgRH",
+              "shipping_fee": 0.5,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-7",
+          "asin": "",
+          "product_name": "勺子",
+          "row_number": 7,
+          "link": "https://a.co/d/07PCJq3b",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-07-01；数量：22；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第7行",
+          "store_id": "2店",
+          "source_msku": "SP-07-01",
+          "source_quantity": 22,
+          "shipping_fee": 0.5,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-07-01",
+              "product_name": "勺子",
+              "quantity": 22,
+              "link": "https://a.co/d/07PCJq3b",
+              "shipping_fee": 0.5,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-8",
+          "asin": "",
+          "product_name": "勺子",
+          "row_number": 8,
+          "link": "https://a.co/d/08AOvlpQ",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-08-01；数量：29；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第8行",
+          "store_id": "2店",
+          "source_msku": "SP-08-01",
+          "source_quantity": 29,
+          "shipping_fee": 0.5,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-08-01",
+              "product_name": "勺子",
+              "quantity": 29,
+              "link": "https://a.co/d/08AOvlpQ",
+              "shipping_fee": 0.5,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-9",
+          "asin": "",
+          "product_name": "勺子",
+          "row_number": 9,
+          "link": "https://a.co/d/0j8uIvYV",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-09-01；数量：30；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第9行",
+          "store_id": "2店",
+          "source_msku": "SP-09-01",
+          "source_quantity": 30,
+          "shipping_fee": 0.5,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-09-01",
+              "product_name": "勺子",
+              "quantity": 30,
+              "link": "https://a.co/d/0j8uIvYV",
+              "shipping_fee": 0.5,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-10",
+          "asin": "",
+          "product_name": "勺子",
+          "row_number": 10,
+          "link": "https://a.co/d/0gHedMB3",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-10-01；数量：7；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第10行",
+          "store_id": "2店",
+          "source_msku": "SP-10-01",
+          "source_quantity": 7,
+          "shipping_fee": 0.5,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-10-01",
+              "product_name": "勺子",
+              "quantity": 7,
+              "link": "https://a.co/d/0gHedMB3",
+              "shipping_fee": 0.5,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-11",
+          "asin": "",
+          "product_name": "冰袖",
+          "row_number": 11,
+          "link": "https://a.co/d/06Dvrok6",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-BINGXIU-lan02；数量：4；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第11行",
+          "store_id": "2店",
+          "source_msku": "SP-BINGXIU-lan02",
+          "source_quantity": 4,
+          "shipping_fee": 0.5,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-BINGXIU-lan02",
+              "product_name": "冰袖",
+              "quantity": 4,
+              "link": "https://a.co/d/06Dvrok6",
+              "shipping_fee": 0.5,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "ROW-12",
+          "asin": "",
+          "product_name": "宠物拾便袋",
+          "row_number": 12,
+          "link": "https://a.co/d/07iA16OD",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：SP-shibian8c-01；数量：5；配送费：2.6；来源：SP退货翻新的1.xlsx / SP 第12行",
+          "store_id": "2店",
+          "source_msku": "SP-shibian8c-01",
+          "source_quantity": 5,
+          "shipping_fee": 2.6,
+          "source_group": "SP",
+          "source_items": [
+            {
+              "sku": "SP-shibian8c-01",
+              "product_name": "宠物拾便袋",
+              "quantity": 5,
+              "link": "https://a.co/d/07iA16OD",
+              "shipping_fee": 2.6,
+              "source_group": "SP"
+            }
+          ]
+        },
+        {
+          "id": "B0H6FSY7JW",
+          "asin": "B0H6FSY7JW",
+          "product_name": "按摩刷",
+          "row_number": 13,
+          "link": "https://www.amazon.com/dp/B0H6FSY7JW?ie=UTF8&ASIN=B0H6FSY7JW&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-AMS-1；数量：10；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第2行",
+          "store_id": "2店",
+          "source_msku": "KCC-AMS-1",
+          "source_quantity": 10,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-AMS-1",
+              "product_name": "按摩刷",
+              "quantity": 10,
+              "link": "https://www.amazon.com/dp/B0H6FSY7JW?ie=UTF8&ASIN=B0H6FSY7JW&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0HB48JQCY",
+          "asin": "B0HB48JQCY",
+          "product_name": "冰箱贴夹",
+          "row_number": 14,
+          "link": "https://www.amazon.com/dp/B0HB48JQCY?ie=UTF8&ASIN=B0HB48JQCY&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-BXTJ-5；数量：6；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第3行",
+          "store_id": "2店",
+          "source_msku": "KCC-BXTJ-5",
+          "source_quantity": 6,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-BXTJ-5",
+              "product_name": "冰箱贴夹",
+              "quantity": 6,
+              "link": "https://www.amazon.com/dp/B0HB48JQCY?ie=UTF8&ASIN=B0HB48JQCY&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0HF4DDD5Y",
+          "asin": "B0HF4DDD5Y",
+          "product_name": "彩色衣服夹子",
+          "row_number": 15,
+          "link": "https://www.amazon.com/dp/B0HF4DDD5Y?ie=UTF8&ASIN=B0HF4DDD5Y&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-CCYFJ-12；数量：7；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第4行",
+          "store_id": "2店",
+          "source_msku": "KCC-CCYFJ-12",
+          "source_quantity": 7,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-CCYFJ-12",
+              "product_name": "彩色衣服夹子",
+              "quantity": 7,
+              "link": "https://www.amazon.com/dp/B0HF4DDD5Y?ie=UTF8&ASIN=B0HF4DDD5Y&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0HF7Y5XX8",
+          "asin": "B0HF7Y5XX8",
+          "product_name": "帽子收纳",
+          "row_number": 16,
+          "link": "https://www.amazon.com/dp/B0HF7Y5XX8?ie=UTF8&ASIN=B0HF7Y5XX8&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-MZSN-HEI；数量：10；配送费：3.22；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第5行",
+          "store_id": "2店",
+          "source_msku": "KCC-MZSN-HEI",
+          "source_quantity": 10,
+          "shipping_fee": 3.22,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-MZSN-HEI",
+              "product_name": "帽子收纳",
+              "quantity": 10,
+              "link": "https://www.amazon.com/dp/B0HF7Y5XX8?ie=UTF8&ASIN=B0HF7Y5XX8&s=bazaar",
+              "shipping_fee": 3.22,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0HCN943ZX",
+          "asin": "B0HCN943ZX",
+          "product_name": "扎带（150/200）",
+          "row_number": 17,
+          "link": "https://www.amazon.com/dp/B0HCN943ZX?ie=UTF8&ASIN=B0HCN943ZX&s=bazaar",
+          "competitor_links": [
+            {
+              "asin": "B0HCN943ZX",
+              "url": "https://www.amazon.com/dp/B0HCN943ZX?ie=UTF8&ASIN=B0HCN943ZX&s=bazaar"
+            },
+            {
+              "asin": "B0HCMPVGDY",
+              "url": "https://www.amazon.com/dp/B0HCMPVGDY?ie=UTF8&ASIN=B0HCMPVGDY&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "同一原商品父ASIN B0HCN7WLWB；KCC-ZD1-150 扎带 数量10 配送费0.5 链接https://www.amazon.com/dp/B0HCN943ZX?ie=UTF8&ASIN=B0HCN943ZX&s=bazaar；KCC-ZD1-200 扎带 数量10 配送费0.5 链接https://www.amazon.com/dp/B0HCMPVGDY?ie=UTF8&ASIN=B0HCMPVGDY&s=bazaar",
+          "store_id": "2店",
+          "source_msku": "KCC-ZD1-150 / KCC-ZD1-200",
+          "source_quantity": 20,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-ZD1-150",
+              "product_name": "扎带",
+              "quantity": 10,
+              "link": "https://www.amazon.com/dp/B0HCN943ZX?ie=UTF8&ASIN=B0HCN943ZX&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            },
+            {
+              "sku": "KCC-ZD1-200",
+              "product_name": "扎带",
+              "quantity": 10,
+              "link": "https://www.amazon.com/dp/B0HCMPVGDY?ie=UTF8&ASIN=B0HCMPVGDY&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ],
+          "parent_asin": "B0HCN7WLWB"
+        },
+        {
+          "id": "B0H2M4BQ1N",
+          "asin": "B0H2M4BQ1N",
+          "product_name": "刷子",
+          "row_number": 18,
+          "link": "https://www.amazon.com/dp/B0H2M4BQ1N?ie=UTF8&ASIN=B0H2M4BQ1N&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-4H1QJSZ-1；数量：5；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第8行",
+          "store_id": "2店",
+          "source_msku": "KCC-4H1QJSZ-1",
+          "source_quantity": 5,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-4H1QJSZ-1",
+              "product_name": "刷子",
+              "quantity": 5,
+              "link": "https://www.amazon.com/dp/B0H2M4BQ1N?ie=UTF8&ASIN=B0H2M4BQ1N&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0H2HBWW7R",
+          "asin": "B0H2HBWW7R",
+          "product_name": "FD6872手链",
+          "row_number": 19,
+          "link": "https://www.amazon.com/dp/B0H2HBWW7R?ie=UTF8&ASIN=B0H2HBWW7R&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-FD6872SL-1；数量：5；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第9行",
+          "store_id": "2店",
+          "source_msku": "KCC-FD6872SL-1",
+          "source_quantity": 5,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-FD6872SL-1",
+              "product_name": "FD6872手链",
+              "quantity": 5,
+              "link": "https://www.amazon.com/dp/B0H2HBWW7R?ie=UTF8&ASIN=B0H2HBWW7R&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0GY8VM6JW",
+          "asin": "B0GY8VM6JW",
+          "product_name": "小狗衣服",
+          "row_number": 20,
+          "link": "https://www.amazon.com/dp/B0GY8VM6JW?ie=UTF8&ASIN=B0GY8VM6JW&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-XGYF-M；数量：8；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第10行",
+          "store_id": "2店",
+          "source_msku": "KCC-XGYF-M",
+          "source_quantity": 8,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-XGYF-M",
+              "product_name": "小狗衣服",
+              "quantity": 8,
+              "link": "https://www.amazon.com/dp/B0GY8VM6JW?ie=UTF8&ASIN=B0GY8VM6JW&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0GVNR46S6",
+          "asin": "B0GVNR46S6",
+          "product_name": "鞋拔子",
+          "row_number": 21,
+          "link": "https://www.amazon.com/dp/B0GVNR46S6?ie=UTF8&ASIN=B0GVNR46S6&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-xieba-5se；数量：8；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第11行",
+          "store_id": "2店",
+          "source_msku": "KCC-xieba-5se",
+          "source_quantity": 8,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-xieba-5se",
+              "product_name": "鞋拔子",
+              "quantity": 8,
+              "link": "https://www.amazon.com/dp/B0GVNR46S6?ie=UTF8&ASIN=B0GVNR46S6&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0H3TW3M4Z",
+          "asin": "B0H3TW3M4Z",
+          "product_name": "圆柱冰块磨具",
+          "row_number": 22,
+          "link": "https://www.amazon.com/dp/B0H3TW3M4Z?ie=UTF8&ASIN=B0H3TW3M4Z&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-YZBKMJ-LAN；数量：7；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第12行",
+          "store_id": "2店",
+          "source_msku": "KCC-YZBKMJ-LAN",
+          "source_quantity": 7,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-YZBKMJ-LAN",
+              "product_name": "圆柱冰块磨具",
+              "quantity": 7,
+              "link": "https://www.amazon.com/dp/B0H3TW3M4Z?ie=UTF8&ASIN=B0H3TW3M4Z&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0HCBHQJZT",
+          "asin": "B0HCBHQJZT",
+          "product_name": "垃圾桶贴纸",
+          "row_number": 23,
+          "link": "https://www.amazon.com/dp/B0HCBHQJZT?ie=UTF8&ASIN=B0HCBHQJZT&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-MTTZ-CAT；数量：16；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第13行",
+          "store_id": "2店",
+          "source_msku": "KCC-MTTZ-CAT",
+          "source_quantity": 16,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-MTTZ-CAT",
+              "product_name": "垃圾桶贴纸",
+              "quantity": 16,
+              "link": "https://www.amazon.com/dp/B0HCBHQJZT?ie=UTF8&ASIN=B0HCBHQJZT&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0H4F7RWSK",
+          "asin": "B0H4F7RWSK",
+          "product_name": "折叠宠物碗（蓝白/蓝黑/蓝绿）",
+          "row_number": 24,
+          "link": "https://www.amazon.com/dp/B0H4F7RWSK?ie=UTF8&ASIN=B0H4F7RWSK&s=bazaar",
+          "competitor_links": [
+            {
+              "asin": "B0H4F7RWSK",
+              "url": "https://www.amazon.com/dp/B0H4F7RWSK?ie=UTF8&ASIN=B0H4F7RWSK&s=bazaar"
+            },
+            {
+              "asin": "B0H4F4BVQD",
+              "url": "https://www.amazon.com/dp/B0H4F4BVQD?ie=UTF8&ASIN=B0H4F4BVQD&s=bazaar"
+            },
+            {
+              "asin": "B0H4FD3WWP",
+              "url": "https://www.amazon.com/dp/B0H4FD3WWP?ie=UTF8&ASIN=B0H4FD3WWP&s=bazaar"
+            }
+          ],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "同一原商品父ASIN B0H4F96LGP；KCC-ZDCWW-LANBAI 折叠宠物碗蓝白 数量5 配送费0.5 链接https://www.amazon.com/dp/B0H4F7RWSK?ie=UTF8&ASIN=B0H4F7RWSK&s=bazaar；KCC-ZDCWW-LANHEI 折叠宠物碗蓝黑 数量5 配送费0.5 链接https://www.amazon.com/dp/B0H4F4BVQD?ie=UTF8&ASIN=B0H4F4BVQD&s=bazaar；KCC-ZDCWW-LANLV 折叠宠物碗蓝绿 数量5 配送费0.5 链接https://www.amazon.com/dp/B0H4FD3WWP?ie=UTF8&ASIN=B0H4FD3WWP&s=bazaar",
+          "store_id": "2店",
+          "source_msku": "KCC-ZDCWW-LANBAI / KCC-ZDCWW-LANHEI / KCC-ZDCWW-LANLV",
+          "source_quantity": 15,
+          "shipping_fee": 0.5,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-ZDCWW-LANBAI",
+              "product_name": "折叠宠物碗蓝白",
+              "quantity": 5,
+              "link": "https://www.amazon.com/dp/B0H4F7RWSK?ie=UTF8&ASIN=B0H4F7RWSK&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            },
+            {
+              "sku": "KCC-ZDCWW-LANHEI",
+              "product_name": "折叠宠物碗蓝黑",
+              "quantity": 5,
+              "link": "https://www.amazon.com/dp/B0H4F4BVQD?ie=UTF8&ASIN=B0H4F4BVQD&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            },
+            {
+              "sku": "KCC-ZDCWW-LANLV",
+              "product_name": "折叠宠物碗蓝绿",
+              "quantity": 5,
+              "link": "https://www.amazon.com/dp/B0H4FD3WWP?ie=UTF8&ASIN=B0H4FD3WWP&s=bazaar",
+              "shipping_fee": 0.5,
+              "source_group": "KCC"
+            }
+          ],
+          "parent_asin": "B0H4F96LGP"
+        },
+        {
+          "id": "B0H1VFBVL9",
+          "asin": "B0H1VFBVL9",
+          "product_name": "铝箔碗盖",
+          "row_number": 25,
+          "link": "https://www.amazon.com/dp/B0H1VFBVL9?ie=UTF8&ASIN=B0H1VFBVL9&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-LBWG-10GE；数量：20；配送费：1.77；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第17行",
+          "store_id": "2店",
+          "source_msku": "KCC-LBWG-10GE",
+          "source_quantity": 20,
+          "shipping_fee": 1.77,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-LBWG-10GE",
+              "product_name": "铝箔碗盖",
+              "quantity": 20,
+              "link": "https://www.amazon.com/dp/B0H1VFBVL9?ie=UTF8&ASIN=B0H1VFBVL9&s=bazaar",
+              "shipping_fee": 1.77,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0H397QVSK",
+          "asin": "B0H397QVSK",
+          "product_name": "无纺布收纳袋",
+          "row_number": 26,
+          "link": "https://www.amazon.com/dp/B0H397QVSK?ie=UTF8&ASIN=B0H397QVSK&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-WFB-90L；数量：9；配送费：3.22；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第18行",
+          "store_id": "2店",
+          "source_msku": "KCC-WFB-90L",
+          "source_quantity": 9,
+          "shipping_fee": 3.22,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-WFB-90L",
+              "product_name": "无纺布收纳袋",
+              "quantity": 9,
+              "link": "https://www.amazon.com/dp/B0H397QVSK?ie=UTF8&ASIN=B0H397QVSK&s=bazaar",
+              "shipping_fee": 3.22,
+              "source_group": "KCC"
+            }
+          ]
+        },
+        {
+          "id": "B0H3VBSMBX",
+          "asin": "B0H3VBSMBX",
+          "product_name": "蚊香支架",
+          "row_number": 27,
+          "link": "https://www.amazon.com/dp/B0H3VBSMBX?ie=UTF8&ASIN=B0H3VBSMBX&s=bazaar",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "reference_template": "",
+          "output_file": "",
+          "output_versions": [],
+          "status": "待处理",
+          "purchase_status": "",
+          "note": "原SKU：KCC-WXZJ-1；数量：13；配送费：1.77；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第19行",
+          "store_id": "2店",
+          "source_msku": "KCC-WXZJ-1",
+          "source_quantity": 13,
+          "shipping_fee": 1.77,
+          "source_group": "KCC",
+          "source_items": [
+            {
+              "sku": "KCC-WXZJ-1",
+              "product_name": "蚊香支架",
+              "quantity": 13,
+              "link": "https://www.amazon.com/dp/B0H3VBSMBX?ie=UTF8&ASIN=B0H3VBSMBX&s=bazaar",
+              "shipping_fee": 1.77,
+              "source_group": "KCC"
+            }
+          ]
+        }
+      ],
+      "stores": [
+        "2店"
+      ]
+    },
     {
       "id": "cady11月4号1店上2店",
       "name": "cady11月4号1店上2店",
@@ -35,14 +899,21 @@
           "row_number": null,
           "link": "https://www.amazon.com/dp/B0HC3RND7T?ie=UTF8&ASIN=B0HC3RND7T&s=bazaar",
           "competitor_html": "",
-          "source_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3RND7T/source_template/HEALTH_PERSONAL_CARE.xlsm",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3RND7T/output_file/透明钻石分趾器V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3RND7T/output_file/透明钻石分趾器V1.xlsm",
+              "added_at": "2026-11-05T02:20:24+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "2店",
-          "image_groups": {}
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3RND7T/reference_template/美甲脚趾分离器多款式V2.xlsx"
         },
         {
           "id": "B0HC3J2F63",
@@ -70,13 +941,20 @@
           "link": "https://www.amazon.com/dp/B0HC4C269F?ie=UTF8&ASIN=B0HC4C269F&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC4C269F/source_template/HARDWARE_CLAMP_VISE.xlsm",
-          "output_file": "",
-          "output_versions": [],
-          "status": "已有模板",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC4C269F/output_file/植物固定抓夹V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC4C269F/output_file/植物固定抓夹V1.xlsm",
+              "added_at": "2026-11-05T10:52:23+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "2店",
-          "image_groups": {}
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC4C269F/reference_template/1店+植物固定抓夹-颜色父子体.xlsx"
         },
         {
           "id": "B0HC3ZWK92",
@@ -87,13 +965,20 @@
           "link": "https://www.amazon.com/dp/B0HC3ZWK92?ie=UTF8&ASIN=B0HC3ZWK92&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3ZWK92/source_template/DECORATIVE_RIBBON_TRIM.xlsm",
-          "output_file": "",
-          "output_versions": [],
-          "status": "已有模板",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3ZWK92/output_file/极光包花扎带V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3ZWK92/output_file/极光包花扎带V1.xlsm",
+              "added_at": "2026-11-05T03:11:32+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "2店",
-          "image_groups": {}
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3ZWK92/reference_template/1店+极光包花扎带V5.xlsx"
         },
         {
           "id": "B0HC6NHLPF",
@@ -104,13 +989,20 @@
           "link": "https://www.amazon.com/dp/B0HC6NHLPF?ie=UTF8&ASIN=B0HC6NHLPF&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC6NHLPF/source_template/PLANTER.xlsm",
-          "output_file": "",
-          "output_versions": [],
-          "status": "已有模板",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC6NHLPF/output_file/换盆垫多色多尺寸V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC6NHLPF/output_file/换盆垫多色多尺寸V1.xlsm",
+              "added_at": "2026-11-05T06:46:04+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
           "note": "",
           "store_id": "2店",
-          "image_groups": {}
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC6NHLPF/reference_template/换土垫多色多尺寸V3.xlsx"
         },
         {
           "id": "B0HCBK2Q4M",
@@ -121,13 +1013,98 @@
           "link": "https://www.amazon.com/dp/B0HCBK2Q4M?ie=UTF8&ASIN=B0HCBK2Q4M&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HCBK2Q4M/source_template/DECORATIVE_MAGNET.xlsm",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HCBK2Q4M/output_file/磁吸花瓶套装V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HCBK2Q4M/output_file/磁吸花瓶套装V1.xlsm",
+              "added_at": "2026-11-05T07:14:15+08:00"
+            }
+          ],
+          "status": "待复核",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店",
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HCBK2Q4M/reference_template/1店+磁吸花瓶套装.xlsx"
+        },
+        {
+          "id": "B0HFJHJ1SM",
+          "asin": "B0HFJHJ1SM",
+          "product_name": "球拍握把胶带",
+          "source_title": "Amazon.com : 1 Pack Tennis Racket Grip Tape, Tennis Grip Tape, Precut Anti-Slip Overgrip Wrap for Badminton Pickleball Fishing Rod, Black : Sports & Outdoors",
+          "row_number": null,
+          "link": "https://www.amazon.com/dp/B0HFJHJ1SM?ie=UTF8&ASIN=B0HFJHJ1SM&s=bazaar",
+          "competitor_html": "",
+          "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/source_template/ADHESIVE_TAPES.xlsm",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/output_file/球拍握把胶带黑白V5.xlsm",
+          "output_versions": [
+            {
+              "version": 5,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/output_file/球拍握把胶带黑白V5.xlsm",
+              "added_at": "2026-11-05T17:23:05+08:00"
+            }
+          ],
+          "status": "待复核",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店",
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/reference_template/球拍握把胶带黑白V4.xlsm"
+        },
+        {
+          "id": "B0HFNBGWZR",
+          "asin": "B0HFNBGWZR",
+          "product_name": "宠物垃圾袋和分配器套装",
+          "source_title": "Amazon.com : Dog Poop Bag Holder with Dog Poop Bags, Poop Bag Holders for Leashes, Dog Bag Holder, Pink Scented, 1 Dispenser and 60 Bags : Pet Supplies",
+          "row_number": null,
+          "link": "https://www.amazon.com/dp/B0HFNBGWZR?ie=UTF8&ASIN=B0HFNBGWZR&s=bazaar",
+          "competitor_html": "",
+          "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFNBGWZR/source_template/WASTE_BAG.xlsm",
+          "output_file": "",
+          "output_versions": [],
+          "status": "已有模板",
+          "purchase_status": "",
+          "note": "同一参考模板还包含散装拾便袋链接：https://www.amazon.com/dp/B0HFNM1HHH?ie=UTF8&ASIN=B0HFNM1HHH&s=bazaar；参考表有拾便袋和分配器套装两组父子体。",
+          "store_id": "2店",
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFNBGWZR/reference_template/宠物垃圾袋和套装V1.xlsx"
+        },
+        {
+          "id": "B0HFCC48RP",
+          "asin": "B0HFCC48RP",
+          "product_name": "鹦鹉树根吊环",
+          "source_title": "Amazon.com : Wood Bird Swing, Hummingbird Swing, Tree Root Ring Perch Toy, Parakeet Toys and Bird Cage Accessories for Cockatiels : Pet Supplies",
+          "row_number": null,
+          "link": "https://www.amazon.com/dp/B0HFCC48RP?ie=UTF8&ASIN=B0HFCC48RP&s=bazaar",
+          "competitor_html": "",
+          "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFCC48RP/source_template/PET_TOY.xlsm",
           "output_file": "",
           "output_versions": [],
           "status": "已有模板",
           "purchase_status": "",
           "note": "",
           "store_id": "2店",
-          "image_groups": {}
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFCC48RP/reference_template/鹦鹉树根吊环_PET_TOY_父子体_v1.xlsm"
+        },
+        {
+          "id": "B0HFGC6GBT",
+          "asin": "B0HFGC6GBT",
+          "product_name": "卷纸切割器",
+          "source_title": "Amazon.com : 1PC Christmas Wrapping Paper Cutter, Gift Wrapping Paper Roll Slider Tool | Black wrapping paper cutter tool works as a slider and roll holder for gift wrapping paper at Halloween or Christmas. : Office Products",
+          "row_number": null,
+          "link": "https://www.amazon.com/dp/B0HFGC6GBT?ie=UTF8&ASIN=B0HFGC6GBT&s=bazaar",
+          "competitor_html": "",
+          "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFGC6GBT/source_template/OFFICE_PRODUCTS.xlsm",
+          "output_file": "",
+          "output_versions": [],
+          "status": "已有模板",
+          "purchase_status": "",
+          "note": "",
+          "store_id": "2店",
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFGC6GBT/reference_template/卷纸切割器黑色V2.xlsx"
         }
       ]
     },
@@ -3692,6 +4669,6 @@
     }
   ],
   "last_imported": [
-    "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/source_sheets/副本入库记录-退货入库-总和.xlsx"
+    "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/source_sheets/2026-11-05_2店退货翻新_SP_KCC.xlsx"
   ]
 }

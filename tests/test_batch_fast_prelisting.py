@@ -196,26 +196,22 @@ class BatchFastPrelistingTest(unittest.TestCase):
                 "Original Product Keywords for Home Craft Projects and Daily Organization",
             )
 
-    def test_competitor_title_adds_only_three_to_five_tail_words(self):
+    def test_competitor_title_stays_within_short_limit(self):
         source = "Compact Storage Hooks for Closet Shelves Travel Bags and Everyday Home Organization"
         rewritten = rewrite_competitor_title_tail(source)
-        self.assertTrue(rewritten.startswith(source))
-        added_words = rewritten[len(source):].strip(" ,").split()
-        self.assertGreaterEqual(len(added_words), 3)
-        self.assertLessEqual(len(added_words), 5)
+        self.assertLessEqual(len(rewritten), 75)
+        self.assertTrue(rewritten.startswith(source[:40]))
 
-    def test_long_competitor_title_deletes_only_three_to_five_tail_words(self):
+    def test_long_competitor_title_keeps_leading_terms(self):
         source = " ".join(f"Keyword{index}" for index in range(1, 19))
         rewritten = rewrite_competitor_title_tail(source)
         source_words = source.split()
         rewritten_words = rewritten.split()
-        self.assertGreaterEqual(len(source_words) - len(rewritten_words), 3)
-        self.assertLessEqual(len(source_words) - len(rewritten_words), 5)
-        self.assertEqual(rewritten_words[:10], source_words[:10])
+        self.assertGreater(len(source_words), len(rewritten_words))
+        self.assertLessEqual(len(rewritten), 75)
+        self.assertEqual(rewritten_words[:3], source_words[:3])
         source_iter = iter(source_words)
         self.assertTrue(all(any(candidate == word for candidate in source_iter) for word in rewritten_words))
-        self.assertGreaterEqual(len(rewritten), 100)
-        self.assertLessEqual(len(rewritten), 125)
 
     def test_reference_skus_are_edit_even_when_unchanged(self):
         with TemporaryDirectory() as temp_dir:

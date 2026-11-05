@@ -1,6 +1,7 @@
 {
-  "title_min_chars": 100,
-  "title_max_chars": 125,
+  "title_min_chars": 1,
+  "title_max_chars": 75,
+  "item_highlight_max_chars": 125,
   "official_title_max_chars": 75,
   "generic_keywords_max_chars": 220,
   "bullet_min_chars": 200,

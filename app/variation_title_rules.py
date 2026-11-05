@@ -188,17 +188,6 @@ def _common_package_prefix(child_rows):
     return ""
 
 
-def _parent_suffixes(child_rows):
-    colors = _attr_values(child_rows, "color")
-    sizes = _attr_values(child_rows, "size")
-    suffixes = []
-    if len(colors) > 1:
-        suffixes.append(PARENT_COLOR_PHRASE)
-    if len(sizes) > 1:
-        suffixes.append(PARENT_STYLE_PHRASE)
-    return suffixes
-
-
 def build_parent_title(child_rows, fallback_row=None):
     child_rows = [row for row in child_rows if _text(row.get("title")) or _text(row.get("product_name"))]
     if not child_rows:
@@ -206,7 +195,7 @@ def build_parent_title(child_rows, fallback_row=None):
     attr_values = _attr_values(child_rows, "color") + _attr_values(child_rows, "size")
     prefix = _common_package_prefix(child_rows) or package_prefix_for_row(fallback_row or {})
     base_segments = _best_base_segments(child_rows, attr_values)
-    return _compose_title(prefix, base_segments, _parent_suffixes(child_rows))
+    return _compose_title(prefix, base_segments, [])
 
 
 def build_child_title(row, child_rows):

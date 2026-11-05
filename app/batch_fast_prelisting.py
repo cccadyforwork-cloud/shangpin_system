@@ -4,7 +4,6 @@ import re
 import tempfile
 import zipfile
 from copy import deepcopy
-from itertools import combinations
 from pathlib import Path
 from shutil import copyfile
 
@@ -271,41 +270,20 @@ def extract_competitor_title(paths):
     return ""
 
 
-def rewrite_competitor_title_tail(title, min_chars=100, max_chars=125):
-    """Keep the competitor title body and alter only 3–5 trailing words."""
+def rewrite_competitor_title_tail(title, max_chars=75):
+    """Keep the leading product terms within the current title limit."""
     title = re.sub(r"\s+", " ", str(title or "")).strip(" ,")
     if not title:
         return ""
-
-    additions = (
-        "for Everyday Use",
-        "for Everyday Project Use",
-        "for Organized Everyday Project Use",
-    )
-    for phrase in additions:
-        candidate = f"{title}, {phrase}"
-        if min_chars <= len(candidate) <= max_chars:
-            return candidate
-
+    addition = ", for Everyday Use"
+    if len(title) + len(addition) <= max_chars:
+        return title + addition
+    if len(title) <= max_chars:
+        return title
     words = title.split()
-    tail_start = max(0, len(words) - 8)
-    deletion_candidates = []
-    for count in range(3, 6):
-        if len(words) <= count:
-            break
-        for removed in combinations(range(tail_start, len(words)), count):
-            removed = set(removed)
-            candidate = " ".join(word for index, word in enumerate(words) if index not in removed).rstrip(" ,-/")
-            if min_chars <= len(candidate) <= max_chars:
-                deletion_candidates.append((count, -len(candidate), candidate))
-    if deletion_candidates:
-        return min(deletion_candidates)[2]
-
-    if len(title) < min_chars:
-        candidate = f"{title}, {additions[-1]}"
-        if len(candidate) <= max_chars:
-            return candidate
-    return " ".join(words[:-5]).rstrip(" ,-/") if len(words) > 5 else title
+    while words and len(" ".join(words).rstrip(" ,-/")) > max_chars:
+        words.pop()
+    return " ".join(words).rstrip(" ,-/")
 
 
 def _normalize_competitor_color(value):
@@ -774,11 +752,14 @@ def _fast_copy_fallback(row):
     count = str(row.get("set_count") or 1).strip()
 
     title = str(row.get("title") or "").strip()
-    if len(title) < 100:
-        title = (
-            f"{subject}, Practical Supplies for Home, Travel, Work, Craft Projects, "
-            "Daily Tasks and General Organization"
-        )
+    if not title:
+        title = f"{subject} in {color} for Home and Everyday Use"
+    if len(title) > 75:
+        title = rewrite_competitor_title_tail(title)
+    highlight = str(row.get("item_highlight") or "").strip()
+    if not highlight:
+        highlight = f"{subject} in {color} and {size} for everyday use."
+    highlight = highlight[:124].rstrip(" ,;.") + "." if len(highlight) > 125 else highlight
 
     bullet_sources = [
         f"Package Details Included: This listing contains {count} count of {subject} in {color} and {size}, giving buyers a clearly identified configuration for planned projects, routine tasks, organized storage, and general everyday use.",
@@ -797,7 +778,7 @@ def _fast_copy_fallback(row):
     if not (1500 <= len(description) <= 1800 and len(paragraphs) == 4):
         description = _fast_description(subject, color, size, material, count)
 
-    return {"title": title, "description": description, **bullets}
+    return {"title": title, "item_highlight": highlight, "description": description, **bullets}
 
 
 def _fit_bullet(text):

@@ -28,7 +28,7 @@ Haul Generic Variation
 - 生成 1 行 Parent 和多行 Child。
 - Parent 行填写 `parentage_level = Parent` 和 `variation_theme`。
 - Child 行填写 `parentage_level = Child`、`parent_sku`、`variation_theme`。
-- Parent 行不填写价格、包装尺寸、包装重量、主图、颜色、尺寸、Item Condition、Model Number、Model Name、Manufacturer、Part Number、Item Highlight 等子体/报价/可售专属字段。
+- Parent 行不填写价格、包装尺寸、包装重量、主图、颜色、尺寸、Item Condition、Model Number、Model Name、Manufacturer、Part Number 等子体/报价/可售专属字段；Item Highlight 可填写概括全部子体的亮点。
 
 只有用户明确选择或资料中明确写明时，才走：
 
@@ -70,7 +70,7 @@ python3 run.py batch-fast-prelist <批量任务JSON>
 - 子体展示顺序由 Amazon 系统自动决定，不能通过模板字段人工指定。
 - 如果业务目标是让买家在一个变体选项里直接看到“款式名 + 尺寸”，优先把变体主题设为可承载完整选项文案的单一维度（如模板支持的 `SET_NAME`），并在对应字段写入 `Style Name Size` 形式的英文值，例如 `WARNING Print 1.97 in x 118.11 in`。
 - 只有当需要买家分别选择两个维度时，才使用组合维度（如 `SIZE/SET_NAME`）；组合维度可能在前台拆成两个选择项，而不是一个“款式 + 尺寸”的按钮。
-- 不要为了触发父体标题规则而虚构颜色差异。若本质是款式差异，父体标题使用 `Multiple Styles Available`，不要写 `Multiple Colors Available`。
+- 不要为了触发父体标题规则而虚构颜色差异。父体标题概括全部子体，不强制使用 `Multiple Colors Available` 或 `Multiple Styles Available`。
 
 ## 价格字段规则
 
@@ -238,8 +238,7 @@ Listing 文案必须英文填写。
 
 标题：
 
-- 100-125 字符，尽量贴近 125 字符但不能超。
-- 2026-07-27 起 Amazon 官方非媒体类标题方向为 75 字符以内；项目当前仍按可上传的 100-125 字符生成长标题，但超过 75 字符时必须把 `Item Highlight` / `title_differentiation` 留空，并关注后续短标题迁移。
+- Item Name 不超过 75 字符；Item Highlight / `title_differentiation` 填写与商品相符的英文亮点，不超过 125 字符。父体亮点概括全部子体。
 - 核心关键词靠前，并覆盖更多相关关键词、长尾词、用途、场景和款式信息。
 - 不堆砌关键词，不全大写。
 - 除介词、冠词、连词外，同一单词不要超过两次。
@@ -251,12 +250,12 @@ Listing 文案必须英文填写。
 - 标题避免食用/摄入暗示和绝对化成分宣称，例如 `Flavor`、`Edible`、`Digestible`、`Food Grade`、`Non-Toxic`、`Natural`、`100% Natural`、`All Natural`、`Pure`、`Chemical Free`、`Safe`、`Hypoallergenic`。普通非食品商品表达气味用 `Scent`。
 - 标题允许资料可证明的普通材质词作为卖点，例如 `Velvet`、`Plastic`、`Silicone`。但材质安全/等级/环保/不含某物等合规宣称不要写进标题，例如 `Food Grade`、`Medical Grade`、`BPA Free`、`Phthalate Free`、`Lead Free`、`Latex Free`、`Flame Retardant`、`Waterproof`、`Biodegradable`、`Eco Friendly`、`Organic`、`Recycled`。
 - 标题只描述商品类型、款式/形状、适用对象、使用场景和可感知属性；凡涉及“让身体、皮肤、牙齿、空气、环境更健康/更干净/更安全”的结果型表达，默认不写进标题。
-- 标题按 100-125 字符时，不填写 `Item Highlight` / `title_differentiation`。Amazon 报错 100476 已确认：只要填写 Item Highlight，Item Name 必须 75 字符以内。
+- Amazon 报错 100476 已确认：只要填写 Item Highlight，Item Name 必须 75 字符以内；当前项目统一按此组合填写。
 
 父子体标题：
 
 - 父体标题不再继承第一条子体标题，系统会基于现有子体标题生成可覆盖全部子体的通用总结标题。
-- 父体标题去掉具体颜色、尺寸等单一子体属性；多颜色变体加入 `Multiple Colors Available`，多尺寸或多款式变体加入 `Multiple Styles Available`。
+- 父体标题去掉具体颜色、尺寸等单一子体属性，概括全部子体；不强制加入多色或多款式固定短语。
 - 子体标题基于通用标题生成，并追加自己的颜色、尺寸或款式属性；子体标题不能包含 `Multiple Colors Available`、`Multiple Styles Available` 等父体总结词。
 - 多件装或套装如果在 `set_count` 或原标题中可识别，父体和子体标题都必须把数量/套装前缀放在首位，例如 `50 Pcs`、`2 Set`。
 - 父子体标题仍必须遵守现有标题长度、关键词覆盖、Title Case、禁用词和敏感材质宣称规则，不能超过当前配置的标题字符上限。
@@ -288,7 +287,7 @@ Listing 文案必须英文填写。
 - 非 Parent 行 `Item Condition = New`，Parent 行可留空。
 - `Skip Offer` 留空。
 - 非 Parent 行 `List Price` 和 Haul/BZR `our_price` 已填写；`minimum_seller_allowed_price` 默认留空，不做人工填写值限制。
-- 标题超过 75 字符时，`Item Highlight` / `title_differentiation` 必须留空。
+- Item Name 不超过 75 字符；Item Highlight / `title_differentiation` 已填写且不超过 125 字符。
 - 尺寸数值和单位成对填写。
 - Parent 行不填 Parent SKU；Child 行必须填 Parent SKU。
 - Parent/Child 行必须有 Variation Theme。

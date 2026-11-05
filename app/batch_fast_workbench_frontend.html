@@ -243,13 +243,13 @@
     }
     function table(batch) {
       const showPurchase=(batch.owner || batch.name)==='cady选品' && state.activeStore==='2店';
-      const widths=isRefurb?[12,13,15,18,9,9,12,12]:(isDistribution?[16,12,15,23,9,10,15]:(showPurchase?[13,13,16,20,11,10,9,8]:[14,14,17,22,12,10,11]));
+      const widths=isRefurb?[11,12,13,13,16,8,8,9,10]:(isDistribution?[16,12,15,23,9,10,15]:(showPurchase?[13,13,16,20,11,10,9,8]:[14,14,17,22,12,10,11]));
       const columns=`<colgroup>${widths.map(width=>`<col style="width:${width}%">`).join('')}</colgroup>`;
       const referenceLabel=isRefurb?'亚马逊原链接':(isDistribution?'资料分组':'竞品 HTML');
-      const columnCount=7+Number(showPurchase)+Number(isRefurb);
+      const columnCount=7+Number(showPurchase)+2*Number(isRefurb);
       const emptyText=isRefurb?'当前批次暂无商品，提供亚马逊原链接后会显示在这里。':'当前负责人暂无商品，导入本批选品清单后会显示在这里。';
       const rows=batch.rows.length?batch.rows.map((row,index)=>rowHtml(batch,row,showPurchase,index+1)).join(''):`<tr><td class="empty" colspan="${columnCount}">${emptyText}</td></tr>`;
-      return `<table>${columns}<thead><tr><th>商品</th><th>${referenceLabel}</th><th>原始模板</th><th>当前输出文档</th><th>旧版</th><th>状态</th>${showPurchase?'<th>采购状态</th>':''}<th>备注</th>${isRefurb?'<th>新图组</th>':''}</tr></thead><tbody>${rows}</tbody></table>`;
+      return `<table>${columns}<thead><tr><th>商品</th><th>${referenceLabel}</th><th>原始模板</th>${isRefurb?'<th>参考模版表格</th>':''}<th>当前输出文档</th><th>旧版</th><th>状态</th>${showPurchase?'<th>采购状态</th>':''}<th>备注</th>${isRefurb?'<th>新图组</th>':''}</tr></thead><tbody>${rows}</tbody></table>`;
     }
     function rowHtml(batch,row,showPurchase,rowNumber) {
       const html=row.files.competitor_html, source=row.files.source_template, output=row.files.output_file;
@@ -276,6 +276,7 @@
         <td>${productCell}</td>
         <td>${referenceCell}</td>
         <td>${templateCell}</td>
+        ${isRefurb?`<td>${fileCell(row.files.reference_template || {exists:false},true,'reference_template')}</td>`:''}
         <td>${outputCell(row)}</td>
         <td>${oldVersionsCell(row)}</td>
         <td><select class="status ${row.status==='已上传'?'done':''}">${state.data.statuses.map(s=>`<option ${s===row.status?'selected':''}>${esc(s)}</option>`).join('')}</select></td>

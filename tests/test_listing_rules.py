@@ -18,8 +18,7 @@ class ListingRulesTest(unittest.TestCase):
 
     def test_safe_pet_toy_title_passes_title_rules(self):
         title = (
-            "Cat Chew Toy, Interactive Bite Toy for Indoor Cats and Kittens, "
-            "Multiple Shapes Available, Active Play and Chewing Activity"
+            "Cat Chew Toy for Indoor Cats, Multiple Shapes for Play"
         )
 
         self.assertEqual(_title_findings(title), [])
@@ -48,24 +47,21 @@ class ListingRulesTest(unittest.TestCase):
 
     def test_non_risky_verifiable_material_can_appear_in_title(self):
         title = (
-            "Velvet Pet Collar with Bell, Adjustable Collar for Cats and Small Dogs, "
-            "Daily Wear and Indoor Outdoor Use, Dark Brown"
+            "Velvet Pet Collar with Bell for Cats and Small Dogs, Dark Brown"
         )
 
         self.assertEqual(_title_findings(title), [])
 
     def test_ordinary_material_terms_can_appear_in_title(self):
         title = (
-            "Plastic Pet Collar with Bell, Adjustable Collar for Cats and Small Dogs, "
-            "Daily Wear and Indoor Outdoor Use, Dark Brown"
+            "Plastic Pet Collar with Bell for Cats and Small Dogs, Dark Brown"
         )
 
         self.assertEqual(_title_findings(title), [])
 
     def test_wooden_handle_can_appear_without_absolute_material_claims(self):
         title = (
-            "Coffee Grinder Cleaning Brush with Wooden Handle, Espresso Machine "
-            "Barista Tool for Home Kitchen Coffee Bar"
+            "Coffee Grinder Cleaning Brush with Wooden Handle for Espresso Machines"
         )
 
         self.assertEqual(_title_findings(title), [])
@@ -83,8 +79,7 @@ class ListingRulesTest(unittest.TestCase):
     def test_natural_color_variation_at_title_end_is_allowed(self):
         row = {
             "title": (
-                "Cat Wobble Toy with Textured Body, Self-Righting Tumbler Toy for Indoor Cats, "
-                "Battery-Free Solo Play, Small Natural"
+                "Cat Wobble Toy with Textured Body for Indoor Cats, Small Natural"
             ),
             "color": "Natural Sisal",
             "material": "Jute",

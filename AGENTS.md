@@ -6,3 +6,5 @@
 
 SQUEEGEE 上传反馈确认子体必填 Generic Keyword、Handle Material、Blade Material、Product Compliance Certificate；填写材质须对应实际选款，不能套用其他手柄款。上传前按 `app/template_validator.py` 自检。
 
+Listing 文案新规则：Item Name 不超过 75 字符，Item Highlight 不超过 125 字符；父体可填写概括全部子体的亮点，父体标题不强制写“多色可选”或“多款式可选”。
+

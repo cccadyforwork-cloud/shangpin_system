@@ -25,6 +25,7 @@ FIELD_MAP = {
     "product_type#1.value": "product_type",
     "::record_action": "__listing_action",
     "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "title",
+    "title_differentiation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "item_highlight",
     "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "brand",
     "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value": "item_type_keyword",
     "parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value": "parentage_level",
@@ -173,7 +174,6 @@ PARENT_SKIP_FIELD_NAMES = {
     "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
     "manufacturer[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
     "part_number[marketplace_id=ATVPDKIKX0DER]#1.value",
-    "title_differentiation[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
     "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value",
     "skip_offer[marketplace_id=ATVPDKIKX0DER]#1.value",
     "list_price[marketplace_id=ATVPDKIKX0DER]#1.value",
@@ -372,6 +372,7 @@ def prepare_variation_rows(rows, project_dir):
     parent["route"] = "Haul Generic Variation" if "generic" in _text(parent.get("route")).lower() or not _text(parent.get("route")) else parent.get("route")
     # This is a newly synthesized parent, not an existing listing title.
     parent["title"] = ""
+    parent["item_highlight"] = f"Explore the available {parent.get('product_name') or 'product'} styles and choose the option that fits your needs."
     for field in PARENT_CLEAR_FIELDS:
         parent[field] = ""
 
@@ -663,7 +664,6 @@ def _write_required_defaults(ws, row_index, row_data, field_to_col, required_fie
         if not col or ws.cell(row_index, col).value not in (None, ""):
             continue
         if is_parent and any(token in field_name for token in [
-            "title_differentiation",
             "condition_type",
             "model_number",
             "model_name",

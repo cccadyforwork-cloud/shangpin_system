@@ -32,9 +32,9 @@ class VariationTitleRulesTest(unittest.TestCase):
         children = prepared[1:]
         self.assertEqual(parent["parentage_level"], "Parent")
         self.assertTrue(parent["title"].startswith("50 Pcs 2 Set "))
-        self.assertIn("Multiple Colors Available", parent["title"])
+        self.assertNotIn("Multiple Colors Available", parent["title"])
         self.assertNotIn("Gold", parent["title"])
-        self.assertLessEqual(len(parent["title"]), 125)
+        self.assertLessEqual(len(parent["title"]), 75)
 
         self.assertEqual(children[0]["title"], rows[0]["title"])
         self.assertEqual(children[1]["title"], rows[1]["title"])
@@ -77,7 +77,7 @@ class VariationTitleRulesTest(unittest.TestCase):
         _validate_variation_titles(findings, row_infos)
         messages = "\n".join(item["message"] for item in findings)
 
-        self.assertIn("多颜色 Parent", messages)
+        self.assertNotIn("多颜色 Parent", messages)
         self.assertIn("Child 行，但标题包含父体总结词", messages)
         self.assertNotIn("颜色变体 Child，但标题未包含自身颜色", messages)
 

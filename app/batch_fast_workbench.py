@@ -16,7 +16,7 @@ LEDGER_PATH = WORKBENCH_DIR / "ledger.json"
 FILES_DIR = WORKBENCH_DIR / "files"
 SOURCE_SHEETS_DIR = WORKBENCH_DIR / "source_sheets"
 
-FILE_FIELDS = {"competitor_html", "source_template", "output_file"}
+FILE_FIELDS = {"competitor_html", "source_template", "reference_template", "output_file"}
 EDITABLE_FIELDS = FILE_FIELDS | {"status", "purchase_status", "note"}
 STATUS_VALUES = ("待处理", "已有模板", "生成中", "待复核", "可上传", "已上传", "需修正")
 PURCHASE_STATUS_VALUES = ("已采购", "未采购")
@@ -192,7 +192,7 @@ def update_row(batch_id, row_id, fields, ledger_path=LEDGER_PATH):
 
 
 def attach_file(batch_id, row_id, field, filename, source, ledger_path=LEDGER_PATH, files_dir=FILES_DIR):
-    if field not in {"source_template", "output_file"}:
+    if field not in {"source_template", "reference_template", "output_file"}:
         raise ValueError("这个位置不支持上传文件。")
     suffix = Path(filename or "").suffix.lower()
     if suffix not in {".xlsx", ".xlsm", ".xls"}:
@@ -326,7 +326,7 @@ def package_shared_data(ledger_path=LEDGER_PATH, files_dir=FILES_DIR, source_she
                 missing.append(str(source))
 
         for row in batch.get("rows", []):
-            for field in ("competitor_html", "source_template"):
+            for field in ("competitor_html", "source_template", "reference_template"):
                 raw = str(row.get(field) or "").strip()
                 if not raw:
                     continue
@@ -467,6 +467,7 @@ def _batch_from_sheet(path, previous=None):
             "competitor_links": competitor_links,
             "competitor_html": competitor_html or _path_with_suffix(previous_row.get("competitor_html", ""), {".html", ".htm"}),
             "source_template": source_template or _path_with_suffix(previous_row.get("source_template", ""), {".xlsx", ".xlsm", ".xls"}),
+            "reference_template": _path_with_suffix(previous_row.get("reference_template", ""), {".xlsx", ".xlsm", ".xls"}),
             "output_file": previous_row.get("output_file", ""),
             "output_versions": previous_row.get("output_versions", []),
             "status": previous_row.get("status", "待处理"),
@@ -491,6 +492,7 @@ def _batch_from_sheet(path, previous=None):
                 "competitor_links": primary_row.get("competitor_links", []),
                 "competitor_html": primary_row.get("competitor_html", ""),
                 "source_template": _path_with_suffix(previous_row.get("source_template", ""), {".xlsx", ".xlsm", ".xls"}),
+                "reference_template": _path_with_suffix(previous_row.get("reference_template", ""), {".xlsx", ".xlsm", ".xls"}),
                 "output_file": previous_row.get("output_file", ""),
                 "output_versions": previous_row.get("output_versions", []),
                 "status": previous_row.get("status", "待处理"),

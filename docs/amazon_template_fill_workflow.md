@@ -148,8 +148,8 @@ WPS 表格常见 COM 名称：
 
 标题：
 
-- 控制在 100-125 字符，尽量贴近 125 字符但不能超。
-- 2026-07-27 起 Amazon 官方非媒体类标题方向为 75 字符以内；项目当前仍按可上传的 100-125 字符生成长标题，超过 75 字符时 `Item Highlight` / `title_differentiation` 必须留空。
+- Item Name 不超过 75 字符，Item Highlight 不超过 125 字符。
+- 当前项目统一使用短标题加亮点，父体和子体均可填写 Item Highlight。
 - 核心关键词靠前，核心关键词之间用英文逗号隔开，并尽量覆盖更多相关关键词、长尾词、用途、场景和款式信息。
 - 除介词、冠词、连词外，单词首字母大写。
 - 除介词、冠词、连词外，同一单词不要超过两次。
@@ -164,10 +164,10 @@ WPS 表格常见 COM 名称：
 父子体标题：
 
 - Parent 标题不继承第一条 Child 标题，而是从当前 Child 标题中提取共同商品关键词，生成能覆盖全部子体的总结性标题。
-- Parent 标题不带具体单一颜色、尺寸或款式；多颜色变体写 `Multiple Colors Available`，多尺寸或多款式变体写 `Multiple Styles Available`。
+- Parent 标题不带具体单一颜色、尺寸或款式；不强制写多色或多款式固定短语。
 - Child 标题使用通用标题骨架，并追加自己的颜色、尺寸或款式属性；Child 标题不写 `Multiple Colors Available`、`Multiple Styles Available` 等 Parent 总结词。
 - 多件装或套装在 Parent 和 Child 标题中都要说明，并放在标题首位，例如 `50 Pcs`、`2 Set`。
-- 父子体标题生成后仍按当前标题规则自检：100-125 字符、Title Case、关键词自然覆盖、不超字符上限、不含禁用词和敏感材质宣称。
+- 父子体标题生成后仍按当前标题规则自检：不超过 75 字符、Title Case、关键词自然覆盖、不超字符上限、不含禁用词和敏感材质宣称。
 
 Generic Keywords：
 
@@ -202,9 +202,9 @@ Product Description：
 - Parentage Level：`Parent`
 - Variation Theme：必须按当前模板 `Valid Values` 精确填写，例如 PET_TOY 可能要求 `COLOR`，不要凭语义写成 `Color`
 - Brand：`Generic`
-- Item Name：基于子体标题生成通用总结标题，不继承第一条子体标题，不带具体单一颜色/尺寸/款式；多颜色写 `Multiple Colors Available`，多款式写 `Multiple Styles Available`
+- Item Name：基于子体标题生成通用总结标题，不继承第一条子体标题，不带具体单一颜色/尺寸/款式；不强制使用固定总结词
 - 通常不填 Parent SKU
-- 不填 Item Condition、Model Number、Model Name、Manufacturer、Part Number、Item Highlight、价格、报价日期、最低/最高价、包装尺寸、包装重量、颜色、尺寸等子体/报价/可售专属字段；图片字段全路线默认不处理
+- 不填 Item Condition、Model Number、Model Name、Manufacturer、Part Number、价格、报价日期、最低/最高价、包装尺寸、包装重量、颜色、尺寸等子体/报价/可售专属字段；Item Highlight 可填写概括全部子体的亮点；图片字段全路线默认不处理
 - `PET_TOY` 例外：后台 `99022` 已确认 Parent 行需填写商品长、宽、高及对应单位和 Item Weight；包装尺寸、包装重量仍留空
 - `TOWEL` 例外：后台 `99022` 已确认 Parent 行需填写成品长、宽及对应单位和 Item Weight；优先使用商品实际成品尺寸，包装尺寸、包装重量仍留空
 - `GIFT_WRAP` 例外：后台 `99022` 已确认 Parent 行需填写 Unit Count / Unit Count Type 和 Item Weight；包装尺寸、包装重量仍留空
@@ -217,7 +217,7 @@ Product Description：
 - Parent SKU：父体 SKU
 - Child Relationship Type：`Variation`
 - Variation Theme：与 Parent 保持一致，并且必须是当前模板 `Valid Values` 中的精确枚举值
-- Item Highlight / Title Differentiation：标题按 100-125 字符时留空；只有标题不超过 75 字符时才可填写
+- Item Highlight / Title Differentiation：填写与该子体相符的英文亮点，不超过 125 字符
 - Color：例如 `Black`
 - Item Name：基于通用标题骨架追加自身颜色、尺寸或款式属性，不写 Parent 的总结词或多色/多款式可选词
 - 价格、尺寸、重量按最终价格表填写
@@ -233,7 +233,7 @@ Product Description：
 - 子体顺序由 Amazon 自动排序，模板里不能人工指定前台顺序。
 - 如果要让买家在一个选项里看到“款式名 + 尺寸”，优先使用模板支持的单一文本维度，例如 `SET_NAME`，并把值写成 `WARNING Print 1.97 in x 118.11 in` 这种英文前台文案。
 - 如果使用 `SIZE/SET_NAME` 等组合维度，要预期前台可能拆成两个选择维度：尺寸和款式。
-- 款式变体不要强行写成颜色变体；父体标题按真实差异写 `Multiple Styles Available`，不要因为子体字段颜色不同就写 `Multiple Colors Available`。
+- 款式变体不要强行写成颜色变体；父体标题概括全部子体，不强制写多色或多款式固定短语。
 
 ## Google Drive 怎么加速
 
@@ -309,9 +309,9 @@ Get-ChildItem -Force | Where-Object { $_.Name -like '~$*' }
 - 子体 Parent SKU 指向父体
 - Product Type 正确
 - Brand 是 `Generic`；子体 Manufacturer 是 `Generic`，父体 Manufacturer 留空
-- 父体 Item Condition / Model Number / Model Name / Manufacturer / Part Number / Item Highlight / 价格 / 包装尺寸重量留空
+- 父体 Item Condition / Model Number / Model Name / Manufacturer / Part Number / 价格 / 包装尺寸重量留空；父体 Item Highlight 可写通用亮点
 - 子体 List Price / Haul Price 与最终价格表一致，卖方最低价格默认留空
-- 标题超过 75 字符时，Item Highlight 留空
+- Item Name 不超过 75 字符，Item Highlight 已填写且不超过 125 字符
 - 必填字段非空
 - 五点描述 5 个单元格非空
 - `Country of Origin = China`

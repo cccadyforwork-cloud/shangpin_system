@@ -4,7 +4,7 @@ import re
 from openpyxl import load_workbook
 
 from .paths import OUTPUTS_DIR
-from .listing_rules import validate_listing_row
+from .listing_rules import _load_rules, validate_listing_row
 from .template_sheet import find_template_sheet, template_sheet_names_text
 from .variation_title_rules import (
     PARENT_COLOR_PHRASE,
@@ -60,29 +60,6 @@ def _text(value):
     return str(value or "").strip()
 
 
-def _contains_exact_text(text, value):
-    text = _text(text)
-    value = _text(value)
-    if not text or not value:
-        return False
-    return re.search(rf"(?<![A-Za-z0-9]){re.escape(value)}(?![A-Za-z0-9])", text, re.I) is not None
-
-
-def _unique_values(items, key):
-    values = []
-    seen = set()
-    for item in items:
-        value = _text(item.get(key))
-        if not value:
-            continue
-        lowered = value.lower()
-        if lowered in seen:
-            continue
-        seen.add(lowered)
-        values.append(value)
-    return values
-
-
 def _valid_values_row(wb, label_prefix):
     if "Valid Values" not in wb.sheetnames:
         return set()
@@ -110,19 +87,6 @@ def _requires_package_prefix(info):
 
 
 def _validate_variation_titles(findings, row_infos):
-    parents_by_sku = {
-        _text(info.get("sku")): info
-        for info in row_infos.values()
-        if _text(info.get("parentage")).lower() == "parent" and _text(info.get("sku"))
-    }
-    children_by_parent = {}
-    for info in row_infos.values():
-        if _text(info.get("parentage")).lower() != "child":
-            continue
-        parent_sku = _text(info.get("parent_sku"))
-        if parent_sku:
-            children_by_parent.setdefault(parent_sku, []).append(info)
-
     for info in row_infos.values():
         title = _text(info.get("title"))
         sku = info.get("sku")
@@ -131,22 +95,6 @@ def _validate_variation_titles(findings, row_infos):
         if _text(info.get("parentage")).lower() == "child":
             if has_parent_only_phrase(title):
                 findings.append(error(info["row"], "Title", f"{sku} 是 Child 行，但标题包含父体总结词。", f"Child 标题只保留通用标题和自身变体属性，不填写 {PARENT_COLOR_PHRASE} 或 {PARENT_STYLE_PHRASE}。"))
-
-    for parent_sku, children in children_by_parent.items():
-        parent = parents_by_sku.get(parent_sku)
-        if not parent:
-            continue
-        parent_title = _text(parent.get("title"))
-        colors = _unique_values(children, "color")
-        sizes = _unique_values(children, "size")
-        if len(colors) > 1 and not _contains_exact_text(parent_title, PARENT_COLOR_PHRASE):
-            findings.append(error(parent["row"], "Title", f"{parent_sku} 是多颜色 Parent，但标题未说明多色可选。", f"Parent 标题基于通用标题生成，并加入 {PARENT_COLOR_PHRASE}。"))
-        if len(sizes) > 1 and not _contains_exact_text(parent_title, PARENT_STYLE_PHRASE):
-            findings.append(error(parent["row"], "Title", f"{parent_sku} 是多款式 Parent，但标题未说明多款式可选。", f"Parent 标题基于通用标题生成，并加入 {PARENT_STYLE_PHRASE}。"))
-
-        # Variation display values are separate listing attributes. A child title
-        # does not need to repeat its color or size display name verbatim.
-
 
 COPY_FIELD_NAMES = {
     "Title": FIELD_NAMES["title"],
@@ -696,6 +644,7 @@ def validate_template_file(path, output_path=None, write_report=False):
     ]
 
     findings = []
+    item_highlight_max_chars = _load_rules()["item_highlight_max_chars"]
     data_rows = []
     sku_col = field_to_col.get(FIELD_NAMES["sku"])
     if not sku_col:
@@ -804,8 +753,10 @@ def validate_template_file(path, output_path=None, write_report=False):
             title_col = field_to_col.get(FIELD_NAMES["title"])
             title = str(ws.cell(row, title_col).value or "") if title_col else ""
             item_highlight = ws.cell(row, item_highlight_col).value
-            if item_highlight not in (None, "") and len(title) > 75:
-                findings.append(error(row, "Item Highlight", f"{sku} 填写了 Item Highlight，但 Item Name 长度为 {len(title)}，超过 75 字符。", "标题按 100-125 字符规则时清空 Item Highlight；只有标题不超过 75 字符时才填写该字段。"))
+            if not _text(item_highlight):
+                findings.append(error(row, "Item Highlight", f"{sku} 的 Item Highlight 为空。", f"填写与商品及款式相符的英文亮点，最多 {item_highlight_max_chars} 字符。"))
+            elif len(_text(item_highlight)) > item_highlight_max_chars:
+                findings.append(error(row, "Item Highlight", f"{sku} 的 Item Highlight 长度超过 {item_highlight_max_chars} 字符。", f"压缩亮点至 {item_highlight_max_chars} 字符以内。"))
 
         for label, value_col, unit_col in available_dimension_pairs:
             value = ws.cell(row, value_col).value
@@ -1022,7 +973,7 @@ def write_template_report(path, checked_file, findings, data_rows):
             "- Skip Offer 留空",
             "- List Price / Haul Price 已填写",
             "- 卖方最低价格默认留空，不限制人工填写值",
-            "- 标题超过 75 字符时 Item Highlight 留空",
+            "- Item Name 不超过 75 字符，Item Highlight 已填写且不超过 125 字符",
             "- 模板包含 Item Depth/Height/Width 字段时，其数值与单位成对填写",
             ""
         ])
