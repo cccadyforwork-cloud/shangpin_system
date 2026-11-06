@@ -184,6 +184,8 @@ manufacturer = Generic
 - `TOWEL`
 - `PROTECTIVE_GLOVE`
 
+WATER_PURIFICATION_UNIT 上传反馈 `90220` 已确认子体需填写 Special Features、Capacity Unit、Purification Method、Container Type、商品本体 Length Unit。V2 上传反馈 `99022` 进一步确认 `item_length_width_height` 必须完整填写长、宽、高三组数值及单位，不能只补长度。尺寸须取实际商品本体；圆柱形商品经资料确认直径后，宽度和高度可按直径填写。容量数值和单位成对填写；Container Type 必须来自当前模板 Valid Values，并记录分类选择依据。该分类字段不代表套装附带对应容器，套装内容须按实际选款填写。
+
 这些规则只对对应 Product Type 生效，不能泛化到所有模板。
 
 PET_TOY 注意：

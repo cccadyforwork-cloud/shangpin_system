@@ -71,7 +71,7 @@
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script>
-    const HEADERS=["project_name","product_name","route","brand","manufacturer","category","product_type","item_type_keyword","sku","parent_sku","parentage_level","variation_theme","color","size","set_count","material","accessories","cost","target_price","list_price","haul_price","logistics_tier","shipping_fee_usd","package_length_in","package_width_in","package_height_in","package_weight_lb","country_of_origin","batteries_required","dangerous_goods","main_image_url","supplier_link","competitor_links","title","bullet_1","bullet_2","bullet_3","bullet_4","bullet_5","description","notes"];
+    const HEADERS=["project_name","product_name","route","brand","manufacturer","category","product_type","item_type_keyword","sku","parent_sku","parentage_level","variation_theme","color","size","set_count","material","accessories","cost","target_price","list_price","haul_price","logistics_tier","shipping_fee_usd","package_length_in","package_width_in","package_height_in","package_weight_lb","country_of_origin","batteries_required","dangerous_goods","main_image_url","supplier_link","competitor_links","title","item_highlight","bullet_1","bullet_2","bullet_3","bullet_4","bullet_5","description","notes"];
     const STORES=["1店","2店"];
     const ROUTES=[["单链接子体","Haul Generic"],["多链接变体","Haul Generic Variation"],["套装售卖","Haul Generic Set Bundle"]];
     const params=new URLSearchParams(location.search),embedMode=params.get("embed")==="1",sourceProjectId=params.get("source_project_id")||"",parentOrigin=params.get("parent_origin")||"http://127.0.0.1:8770";

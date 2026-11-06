@@ -480,6 +480,19 @@ PRODUCT_TYPE_CONDITIONAL_FIELDS = {
 # Keep these separate from PRODUCT_TYPE_CONDITIONAL_FIELDS, which the writer
 # also uses for automatic defaults; warranty and material must not be guessed.
 PRODUCT_TYPE_FEEDBACK_REQUIRED_FIELDS = {
+    "WATER_PURIFICATION_UNIT": {
+        "Special Features": "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Capacity": "capacity[marketplace_id=ATVPDKIKX0DER]#1.value",
+        "Capacity Unit": "capacity[marketplace_id=ATVPDKIKX0DER]#1.unit",
+        "Purification Method": "purification_method[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+        "Container Type": "container[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value",
+        "Item Length": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+        "Item Length Unit": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+        "Item Width": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+        "Item Width Unit": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+        "Item Height": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+        "Item Height Unit": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+    },
     "SQUEEGEE": {
         "Generic Keyword": "generic_keyword[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
         "Handle Material": "handle[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value",

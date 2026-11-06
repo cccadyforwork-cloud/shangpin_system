@@ -1,0 +1,23 @@
+{
+  "product_name": "户外饮水过滤器",
+  "workbench_owner": "cccady",
+  "workbench_store": "2店",
+  "status": "uploaded_success",
+  "latest_draft": "03_产品详情页/户外饮水过滤器_产品资料.xlsx",
+  "updated_at": "2026-11-06T03:59:34",
+  "source_template": "05_模版原件/WATER_PURIFICATION_UNIT.xlsm",
+  "latest_template": "05_填表版本/户外饮水过滤器硅胶延长管V3.xlsx",
+  "sku_count": 2,
+  "template_error_count": 0,
+  "workbench_note": "S2 硅胶延长管款 V3：2026-11-06 用户确认上传通过。子体 CA-WaterFilter-S2，本体长宽高 8.27×1.18×1.18 Inches。",
+  "version_notes": {
+    "V1": "V1：S2 套装2（硅胶延长管）；子体 CA-WaterFilter-S2。按用户提供的原文更新父子体 Item Name 和 Item Highlight；标题 68 字符，亮点 104 字符；模板自检 0 个问题。",
+    "V2": "Amazon 90220 报错修正：依据 1688 详情图填写 Portable、过滤处理量 1500 Liters、Hollow Fiber Membrane/Activated Carbon、本体长度 8.27 Inches；父子体均 Full Update。Container Type 按用户授权从当前模板有效值中选最接近的 Bottle；套装不含水瓶。模板自检 0 个问题。 Amazon 回传：父体成功，子体 99022 报错 4 项（本体宽、高及单位缺失），由 V3 修正。",
+    "V3": "V2 上传反馈 99022 修正：按 1688 本体长21 cm、直径3 cm，补齐商品长宽高 8.27×1.18×1.18 Inches；宽、高均取圆柱直径。源表只新增 CS8/CT8/CW8/CX8 四格；父体和子体均 Full Update。模板自检 0 个问题；2026-11-06 用户确认上传通过。"
+  },
+  "failed_template": "05_填表版本/户外饮水过滤器硅胶延长管V2.xlsx",
+  "latest_failure_report": "06_处理报告/户外饮水过滤器硅胶延长管V2-processing-summary.xlsm",
+  "last_upload_feedback_error_count": 4,
+  "uploaded_at": "2026-11-06",
+  "notes": "用户确认 V3 上传通过。"
+}

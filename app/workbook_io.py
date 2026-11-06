@@ -40,6 +40,7 @@ INTAKE_HEADERS = [
     "supplier_link",
     "competitor_links",
     "title",
+    "item_highlight",
     "bullet_1",
     "bullet_2",
     "bullet_3",
