@@ -1,0 +1,496 @@
+{
+  "scope": "Inventory determines actual contents, size and color. Provided ASINs are references, never expand unprovided inventory variants.",
+  "user_confirmations": {
+    "dog_size": "M, user confirmed",
+    "dog_fabric": "100% Polyester is a provisional common-fabric assumption authorized by user, not verified from a label",
+    "sku_names": "approved by user before generation",
+    "missing_measurements": "User confirmed currently unavailable; keep three drafts pending, do not invent values."
+  },
+  "rows": [
+    {
+      "row_id": "B0H2M4BQ1N",
+      "sku": "CA-GapBrush-Green",
+      "parent_sku": "CA-GapBrush",
+      "original_sku": "KCC-4H1QJSZ-1",
+      "reference_asin": "B0H2M4BQ1N",
+      "source_url": "https://www.amazon.com/dp/B0H2M4BQ1N?ie=UTF8&ASIN=B0H2M4BQ1N&s=bazaar",
+      "cost_rmb": 3.6,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 2.55,
+      "inventory_color": "Green",
+      "inventory_size": "One Size"
+    },
+    {
+      "row_id": "B0H2HBWW7R",
+      "sku": "CA-BeadBracelet-6mm",
+      "parent_sku": "CA-BeadBracelet",
+      "original_sku": "KCC-FD6872SL-1",
+      "reference_asin": "B0H2HBWW7R",
+      "source_url": "https://www.amazon.com/dp/B0H2HBWW7R?ie=UTF8&ASIN=B0H2HBWW7R&s=bazaar",
+      "cost_rmb": 2.9,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 2.37,
+      "inventory_color": "Multicolor",
+      "inventory_size": "6mm Beads"
+    },
+    {
+      "row_id": "B0GY8VM6JW",
+      "sku": "CA-DogVest-Blue-M",
+      "parent_sku": "CA-DogVest",
+      "original_sku": "KCC-XGYF-M",
+      "reference_asin": "B0GY8VM6JW",
+      "source_url": "https://www.amazon.com/dp/B0GY8VM6JW?ie=UTF8&ASIN=B0GY8VM6JW&s=bazaar",
+      "cost_rmb": 6.65,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 3.61,
+      "inventory_color": "Blue",
+      "inventory_size": "Medium"
+    },
+    {
+      "row_id": "B0H3TW3M4Z",
+      "sku": "CA-IceMold-Blue",
+      "parent_sku": "CA-IceMold",
+      "original_sku": "KCC-YZBKMJ-LAN",
+      "reference_asin": "B0H3TW3M4Z",
+      "source_url": "https://www.amazon.com/dp/B0H3TW3M4Z?ie=UTF8&ASIN=B0H3TW3M4Z&s=bazaar",
+      "cost_rmb": 1.5,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 2.02,
+      "inventory_color": "Blue",
+      "inventory_size": "One Size"
+    },
+    {
+      "row_id": "B0H4F7RWSK",
+      "sku": "CA-PetBowls-BlueWhite-2P",
+      "parent_sku": "CA-PetBowls",
+      "original_sku": "KCC-ZDCWW-LANBAI",
+      "reference_asin": "B0H4F7RWSK",
+      "source_url": "https://www.amazon.com/dp/B0H4F7RWSK?ie=UTF8&ASIN=B0H4F7RWSK&s=bazaar",
+      "cost_rmb": 3.66,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 2.57,
+      "inventory_color": "Blue and White",
+      "inventory_size": "2 Bowls"
+    },
+    {
+      "row_id": "B0H4F7RWSK",
+      "sku": "CA-PetBowls-BlueBlack-2P",
+      "parent_sku": "CA-PetBowls",
+      "original_sku": "KCC-ZDCWW-LANHEI",
+      "reference_asin": "B0H4F4BVQD",
+      "source_url": "https://www.amazon.com/dp/B0H4F4BVQD?ie=UTF8&ASIN=B0H4F4BVQD&s=bazaar",
+      "cost_rmb": 3.66,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 2.57,
+      "inventory_color": "Blue and Black",
+      "inventory_size": "2 Bowls"
+    },
+    {
+      "row_id": "B0H4F7RWSK",
+      "sku": "CA-PetBowls-BlueGreen-2P",
+      "parent_sku": "CA-PetBowls",
+      "original_sku": "KCC-ZDCWW-LANLV",
+      "reference_asin": "B0H4FD3WWP",
+      "source_url": "https://www.amazon.com/dp/B0H4FD3WWP?ie=UTF8&ASIN=B0H4FD3WWP&s=bazaar",
+      "cost_rmb": 3.66,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 2.57,
+      "inventory_color": "Blue and Green",
+      "inventory_size": "2 Bowls"
+    },
+    {
+      "row_id": "B0H1VFBVL9",
+      "sku": "CA-BowlCovers-Silver-10P",
+      "parent_sku": "CA-BowlCovers",
+      "original_sku": "KCC-LBWG-10GE",
+      "reference_asin": "B0H1VFBVL9",
+      "source_url": "https://www.amazon.com/dp/B0H1VFBVL9?ie=UTF8&ASIN=B0H1VFBVL9&s=bazaar",
+      "cost_rmb": 0.89,
+      "shipping_fee_usd": 1.77,
+      "price_usd": 4.53,
+      "inventory_color": "Silver",
+      "inventory_size": "10 Pieces"
+    },
+    {
+      "row_id": "B0H397QVSK",
+      "sku": "CA-StorageBag-Gray-90l",
+      "parent_sku": "CA-StorageBag",
+      "original_sku": "KCC-WFB-90L",
+      "reference_asin": "B0H397QVSK",
+      "source_url": "https://www.amazon.com/dp/B0H397QVSK?ie=UTF8&ASIN=B0H397QVSK&s=bazaar",
+      "cost_rmb": 0.89,
+      "shipping_fee_usd": 3.22,
+      "price_usd": 7.4,
+      "inventory_color": "Gray",
+      "inventory_size": "90L"
+    }
+  ],
+  "files": [
+    {
+      "row_id": "B0H2M4BQ1N",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/待补资料/四合一缝隙刷绿色V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/待补资料/四合一缝隙刷绿色V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H2M4BQ1N/source_template/CLEANING_BRUSH.xlsm",
+      "template_sha256": "bbfbd19850e6874ee8483262a3dbf90c48dccd81aba044dff5b7654b6c5cb3bc",
+      "parent_sku": "CA-GapBrush",
+      "child_skus": [
+        "CA-GapBrush-Green"
+      ],
+      "classification": "CLEANING_BRUSH",
+      "checks": {
+        "findings": [
+          {
+            "severity": "error",
+            "row": 8,
+            "field": "Item Weight",
+            "message": "CA-GapBrush-Green 的 Item Weight 为空。",
+            "fix": "CLEANING_BRUSH 模板上传前应补齐该条件必填字段。"
+          },
+          {
+            "severity": "error",
+            "row": 8,
+            "field": "Item Weight Unit",
+            "message": "CA-GapBrush-Green 的 Item Weight Unit 为空。",
+            "fix": "CLEANING_BRUSH 模板上传前应补齐该条件必填字段。"
+          }
+        ],
+        "red": [],
+        "unresolved": []
+      },
+      "ready_for_review": false,
+      "sha256": "cb831d8c44380c8dba85543ebb9c1410baa7fafe3900801b1fe26878e6fb784f"
+    },
+    {
+      "row_id": "B0H2HBWW7R",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/待补资料/石珠弹力手链6毫米V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/待补资料/石珠弹力手链6毫米V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H2HBWW7R/source_template/BRACELET.xlsm",
+      "template_sha256": "8c611cdfe2cbcb6e0ed78c931774280e36815a8fadb91ee2bf75e0ae977974f0",
+      "parent_sku": "CA-BeadBracelet",
+      "child_skus": [
+        "CA-BeadBracelet-6mm"
+      ],
+      "classification": "BRACELET",
+      "checks": {
+        "findings": [
+          {
+            "severity": "error",
+            "row": 7,
+            "field": "Item Weight",
+            "message": "CA-BeadBracelet 的 Item Weight 为空。",
+            "fix": "BRACELET Parent 行经后台报错确认必须补齐该字段。"
+          },
+          {
+            "severity": "error",
+            "row": 7,
+            "field": "Item Length",
+            "message": "CA-BeadBracelet 的 Item Length 为空。",
+            "fix": "BRACELET Parent 行经后台报错确认必须补齐该字段。"
+          },
+          {
+            "severity": "error",
+            "row": 7,
+            "field": "Item Width",
+            "message": "CA-BeadBracelet 的 Item Width 为空。",
+            "fix": "BRACELET Parent 行经后台报错确认必须补齐该字段。"
+          },
+          {
+            "severity": "error",
+            "row": 7,
+            "field": "Item Height",
+            "message": "CA-BeadBracelet 的 Item Height 为空。",
+            "fix": "BRACELET Parent 行经后台报错确认必须补齐该字段。"
+          }
+        ],
+        "red": [
+          {
+            "row": 8,
+            "column": 79,
+            "coordinate": "CA8",
+            "label": "Gem Type",
+            "field_name": "gem_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0gem_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 83,
+            "coordinate": "CE8",
+            "label": "Stone ID",
+            "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.id",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.id,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 84,
+            "coordinate": "CF8",
+            "label": "Stone Type",
+            "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US].value",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.typelanguage_tagen_US.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 86,
+            "coordinate": "CH8",
+            "label": "Stone Creation Method",
+            "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.creation_method[language_tag=en_US].value",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.creation_methodlanguage_tagen_US.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 87,
+            "coordinate": "CI8",
+            "label": "Stone Treatment Method",
+            "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.treatment_method[language_tag=en_US].value",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.treatment_methodlanguage_tagen_US.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 88,
+            "coordinate": "CJ8",
+            "label": "Stone Clarity",
+            "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.clarity[language_tag=en_US].value",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.claritylanguage_tagen_US.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 89,
+            "coordinate": "CK8",
+            "label": "Stone Color",
+            "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.color[language_tag=en_US].value",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.colorlanguage_tagen_US.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 90,
+            "coordinate": "CL8",
+            "label": "Stone Cut",
+            "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.cut[language_tag=en_US].value",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.cutlanguage_tagen_US.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 91,
+            "coordinate": "CM8",
+            "label": "Stone Shape",
+            "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.shape[language_tag=en_US].value",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.shapelanguage_tagen_US.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 152,
+            "coordinate": "EV8",
+            "label": "Clasp Type",
+            "field_name": "clasp_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value",
+            "sku": "CA-BeadBracelet-6mm",
+            "formula": "IF(PTList0,reqPTList0clasp_typemarketplace_idATVPDKIKX0DERlanguage_tagen_US1.value,0)",
+            "kind": "required"
+          }
+        ],
+        "unresolved": []
+      },
+      "ready_for_review": false,
+      "sha256": "58429a9224d318c97d2461e71949f2645377081da609f8064e2ceb42c5943449"
+    },
+    {
+      "row_id": "B0GY8VM6JW",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/狗背心蓝色M码V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/狗背心蓝色M码V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GY8VM6JW/source_template/PET_APPAREL.xlsm",
+      "template_sha256": "42372e7cd19b6d2bf59067766de9c1ec494ed44512db0ae68b0ccc5837d965b0",
+      "parent_sku": "CA-DogVest",
+      "child_skus": [
+        "CA-DogVest-Blue-M"
+      ],
+      "classification": "PET_APPAREL",
+      "checks": {
+        "findings": [],
+        "red": [],
+        "unresolved": []
+      },
+      "ready_for_review": true,
+      "sha256": "0c6b6ca62c27bb101e8c57e6fdb57c4849ef6bd378c938215d26603ddab90468",
+      "registered_output": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GY8VM6JW/output_file/狗背心蓝色M码V1.xlsx",
+      "wps_preview": "Native WPS Template sheet opened and reviewed on 2026-11-10; no workbook data saved from preview."
+    },
+    {
+      "row_id": "B0H3TW3M4Z",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/圆柱冰模蓝色V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/圆柱冰模蓝色V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/cady退货翻新/B0H2GX1GTC/source_template/ICE_CUBE_TRAY.xlsm",
+      "template_sha256": "77ac4b07f3285688da3afdbe46d6467c4c66a0cc59e085e17a58ea8920effe28",
+      "parent_sku": "CA-IceMold",
+      "child_skus": [
+        "CA-IceMold-Blue"
+      ],
+      "classification": "ICE_CUBE_TRAY",
+      "checks": {
+        "findings": [],
+        "red": [],
+        "unresolved": []
+      },
+      "ready_for_review": true,
+      "sha256": "30552b54664f531b0a66e2d09281c5cca4c7c29c44a2e9784471883db4a5593d",
+      "registered_output": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H3TW3M4Z/output_file/圆柱冰模蓝色V1.xlsx",
+      "wps_preview": "Native WPS Template sheet opened and reviewed on 2026-11-10; no workbook data saved from preview."
+    },
+    {
+      "row_id": "B0H4F7RWSK",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/折叠宠物碗蓝白蓝黑蓝绿2件装V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/折叠宠物碗蓝白蓝黑蓝绿2件装V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H4F7RWSK/source_template/PET_FEEDER.xlsm",
+      "template_sha256": "9802527097ff150b0c9764a02a6018f34420acb1ab046700e061b7da2941e5ee",
+      "parent_sku": "CA-PetBowls",
+      "child_skus": [
+        "CA-PetBowls-BlueWhite-2P",
+        "CA-PetBowls-BlueBlack-2P",
+        "CA-PetBowls-BlueGreen-2P"
+      ],
+      "classification": "PET_FEEDER",
+      "checks": {
+        "findings": [],
+        "red": [],
+        "unresolved": []
+      },
+      "ready_for_review": true,
+      "sha256": "4dd87fd721a5008965a20999b0cd28f59d7f327182ec64fe63ae9ea735790c9e",
+      "registered_output": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H4F7RWSK/output_file/折叠宠物碗蓝白蓝黑蓝绿2件装V1.xlsx",
+      "wps_preview": "Native WPS Template sheet opened and reviewed on 2026-11-10; no workbook data saved from preview."
+    },
+    {
+      "row_id": "B0H1VFBVL9",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/铝箔碗盖银色10件装V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/铝箔碗盖银色10件装V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H1VFBVL9/source_template/CONTAINER_LID.xlsm",
+      "template_sha256": "dc20c9ebeab2b7d328ec622d44dd1dc738fac6c8cc13838bf0a172a761ce5aaa",
+      "parent_sku": "CA-BowlCovers",
+      "child_skus": [
+        "CA-BowlCovers-Silver-10P"
+      ],
+      "classification": "CONTAINER_LID",
+      "checks": {
+        "findings": [],
+        "red": [],
+        "unresolved": []
+      },
+      "ready_for_review": true,
+      "sha256": "e780f625731c8c09840ed3117a41f7923ecf60156e8ce6397adf9dc6df7fbc5d",
+      "registered_output": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H1VFBVL9/output_file/铝箔碗盖银色10件装V1.xlsx",
+      "wps_preview": "Native WPS Template sheet opened and reviewed on 2026-11-10; no workbook data saved from preview."
+    },
+    {
+      "row_id": "B0H397QVSK",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/待补资料/无纺布收纳袋灰色90升V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/待补资料/无纺布收纳袋灰色90升V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H397QVSK/source_template/STORAGE_BAG.xlsm",
+      "template_sha256": "a6b65d24f86e52fdcdd26439a47d87ba08300f127207f8bd952187b3bf9fd0b3",
+      "parent_sku": "CA-StorageBag",
+      "child_skus": [
+        "CA-StorageBag-Gray-90l"
+      ],
+      "classification": "STORAGE_BAG",
+      "checks": {
+        "findings": [],
+        "red": [
+          {
+            "row": 8,
+            "column": 89,
+            "coordinate": "CK8",
+            "label": "Height base to top",
+            "field_name": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.value",
+            "sku": "CA-StorageBag-Gray-90l",
+            "formula": "IF(PTList0,reqPTList0item_length_width_heightmarketplace_idATVPDKIKX0DER1.height.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 90,
+            "coordinate": "CL8",
+            "label": "Height Unit",
+            "field_name": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.height.unit",
+            "sku": "CA-StorageBag-Gray-90l",
+            "formula": "IF(PTList0,reqPTList0item_length_width_heightmarketplace_idATVPDKIKX0DER1.height.unit,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 91,
+            "coordinate": "CM8",
+            "label": "Length longer horizontal edge",
+            "field_name": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.value",
+            "sku": "CA-StorageBag-Gray-90l",
+            "formula": "IF(PTList0,reqPTList0item_length_width_heightmarketplace_idATVPDKIKX0DER1.length.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 92,
+            "coordinate": "CN8",
+            "label": "Length Unit",
+            "field_name": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.length.unit",
+            "sku": "CA-StorageBag-Gray-90l",
+            "formula": "IF(PTList0,reqPTList0item_length_width_heightmarketplace_idATVPDKIKX0DER1.length.unit,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 93,
+            "coordinate": "CO8",
+            "label": "Width shorter horizontal edge",
+            "field_name": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.value",
+            "sku": "CA-StorageBag-Gray-90l",
+            "formula": "IF(PTList0,reqPTList0item_length_width_heightmarketplace_idATVPDKIKX0DER1.width.value,0)",
+            "kind": "required"
+          },
+          {
+            "row": 8,
+            "column": 94,
+            "coordinate": "CP8",
+            "label": "Width Unit",
+            "field_name": "item_length_width_height[marketplace_id=ATVPDKIKX0DER]#1.width.unit",
+            "sku": "CA-StorageBag-Gray-90l",
+            "formula": "IF(PTList0,reqPTList0item_length_width_heightmarketplace_idATVPDKIKX0DER1.width.unit,0)",
+            "kind": "required"
+          }
+        ],
+        "unresolved": []
+      },
+      "ready_for_review": false,
+      "sha256": "dbf764c5fc67ca1cd09203285b9094a2b6130ee676f068b64de601b18fe60d77"
+    }
+  ],
+  "pending_facts": [
+    "Brush net weight not provided.",
+    "Bracelet actual net weight and overall dimensions not provided. Reference gemstone / clasp / treatment metadata conflicts with photos.",
+    "90L storage bag expanded dimensions not provided; folded dimensions not reused as expanded dimensions."
+  ],
+  "reference_photo_facts": {
+    "ice_tray": "diameter 3.15 in, height 3.54 in, net 0.13 lb",
+    "bracelet": "circumference 19 cm / 7.48 in, bead diameter 6 mm / 0.24 in",
+    "brush": "5.87 x 3.03 x 3.66 in, stiff bristles",
+    "pet_bowl": "350 ml each, top diameter 5.71 in, height 1.97 in, 58g each"
+  },
+  "logistics_note": "Pet bowl pair: photo net 116g exceeds original under-4oz default 100g. Package weight provisional minimum 0.26lb and estimated 15x15x4cm envelope. Ice tray estimated 10x10x10cm envelope. These provisional package envelopes avoid configured dimensions smaller than known goods. User-supplied USD0.50 fee retained as explicit override, not recomputed from photo weight. Remaining package values use configured shipping-tier defaults, not measurements.",
+  "checks_summary": "Four documents passed field validation, dynamic red fields, formula evaluation, applicable-field checks, price math and SKU scope checks. Three drafts remain pending factual attributes.",
+  "local_registered_at": "2026-11-10T19:52:52+08:00",
+  "bundle": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/本批4份已填待复核表V1.zip",
+  "sku_review": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/本批7款SKU与定价核对.xlsx",
+  "amazon_submitted": false
+}

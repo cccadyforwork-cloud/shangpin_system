@@ -1,0 +1,103 @@
+{
+  "user_instructions": {
+    "brush_weight_grams": 20,
+    "bracelet_source": "Use information from original product link",
+    "storage_bag_expanded_dimensions": "Leave blank for now"
+  },
+  "files": [
+    {
+      "row_id": "B0H2M4BQ1N",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_supplement/四合一缝隙刷绿色V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_supplement/四合一缝隙刷绿色V1_产品资料.xlsx",
+      "previous_draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/待补资料/四合一缝隙刷绿色V1.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H2M4BQ1N/source_template/CLEANING_BRUSH.xlsm",
+      "template_sha256": "bbfbd19850e6874ee8483262a3dbf90c48dccd81aba044dff5b7654b6c5cb3bc",
+      "sha256": "9d0c69cc364139e96d8932b106f8d174c6bbfdf58b863739bd4bdd7741e3ddc9",
+      "findings": [],
+      "red": [],
+      "unresolved": [],
+      "ready": true,
+      "registered_output": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H2M4BQ1N/output_file/四合一缝隙刷绿色V1.xlsx",
+      "wps_preview": "Native Template preview completed; file hash unchanged."
+    },
+    {
+      "row_id": "B0H2HBWW7R",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_supplement/待补资料/石珠弹力手链6毫米V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_supplement/待补资料/石珠弹力手链6毫米V1_产品资料.xlsx",
+      "previous_draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_batch3/待补资料/石珠弹力手链6毫米V1.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H2HBWW7R/source_template/BRACELET.xlsm",
+      "template_sha256": "8c611cdfe2cbcb6e0ed78c931774280e36815a8fadb91ee2bf75e0ae977974f0",
+      "sha256": "2abda351ef9d2b02e6c99df3681c5c89c78bf64fa7b174655269c80014a53276",
+      "findings": [
+        {
+          "severity": "error",
+          "row": 7,
+          "field": "Item Weight",
+          "message": "CA-BeadBracelet 的 Item Weight 为空。",
+          "fix": "BRACELET Parent 行经后台报错确认必须补齐该字段。"
+        },
+        {
+          "severity": "error",
+          "row": 7,
+          "field": "Item Length",
+          "message": "CA-BeadBracelet 的 Item Length 为空。",
+          "fix": "BRACELET Parent 行经后台报错确认必须补齐该字段。"
+        },
+        {
+          "severity": "error",
+          "row": 7,
+          "field": "Item Width",
+          "message": "CA-BeadBracelet 的 Item Width 为空。",
+          "fix": "BRACELET Parent 行经后台报错确认必须补齐该字段。"
+        },
+        {
+          "severity": "error",
+          "row": 7,
+          "field": "Item Height",
+          "message": "CA-BeadBracelet 的 Item Height 为空。",
+          "fix": "BRACELET Parent 行经后台报错确认必须补齐该字段。"
+        }
+      ],
+      "red": [
+        {
+          "row": 8,
+          "column": 87,
+          "coordinate": "CI8",
+          "label": "Stone Treatment Method",
+          "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.treatment_method[language_tag=en_US].value",
+          "sku": "CA-BeadBracelet-6mm",
+          "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.treatment_methodlanguage_tagen_US.value,0)",
+          "kind": "required"
+        },
+        {
+          "row": 8,
+          "column": 88,
+          "coordinate": "CJ8",
+          "label": "Stone Clarity",
+          "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.clarity[language_tag=en_US].value",
+          "sku": "CA-BeadBracelet-6mm",
+          "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.claritylanguage_tagen_US.value,0)",
+          "kind": "required"
+        },
+        {
+          "row": 8,
+          "column": 90,
+          "coordinate": "CL8",
+          "label": "Stone Cut",
+          "field_name": "stones[marketplace_id=ATVPDKIKX0DER]#1.cut[language_tag=en_US].value",
+          "sku": "CA-BeadBracelet-6mm",
+          "formula": "IF(PTList0,reqPTList0stonesmarketplace_idATVPDKIKX0DER1.cutlanguage_tagen_US.value,0)",
+          "kind": "required"
+        }
+      ],
+      "unresolved": [],
+      "ready": false,
+      "source_selection_notes": "Gem/stone Agate and creation Natural from linked title; colors Multiple Colors and shape Round from linked photos; clasp Bolo, chain Bead Chain, Casual and Adult from linked properties. The properties also contradict photos/title (Imitation pearl, White; image says Jasper). Source choices preserved for user review, not independently verified inventory facts."
+    }
+  ],
+  "brush_package_note": "Provisional envelope 16x8x10cm (6.30x3.15x3.94in), adjusted to fit known product dimensions; package weight remains default 0.22lb. Product net 20g explicitly confirmed by user.",
+  "local_registered_at": "2026-11-10T20:46:26+08:00",
+  "bundle": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_supplement/本批6份已填待复核表_当前版本.zip",
+  "sku_review": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_supplement/本批8款SKU与定价核对.xlsx",
+  "amazon_submitted": false
+}

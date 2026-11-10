@@ -1,0 +1,44 @@
+{
+  "user_confirmations": {
+    "pet_package_weight_oz": 4,
+    "pet_shipping_fee_usd": 0.5,
+    "pet_price_usd": 2.57,
+    "shoe_sku_rule": "Follow inventory, no number-of-colors annotation; other data references original link.",
+    "shoe_pack_model": "1 mixed-color set; individual piece count not claimed because inventory does not provide it."
+  },
+  "files": [
+    {
+      "row_id": "B0H4F7RWSK",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_continue/折叠宠物碗蓝白蓝黑蓝绿2件装V2.xlsx",
+      "sha256": "63da40b32b433f274c81229d0e4cbb7ca707e1ab435810cd8ed7465007951f2a",
+      "findings": [],
+      "red": [],
+      "unresolved": [],
+      "previous_file": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H4F7RWSK/output_file/折叠宠物碗蓝白蓝黑蓝绿2件装V1.xlsx",
+      "registered_output": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H4F7RWSK/output_file/折叠宠物碗蓝白蓝黑蓝绿2件装V2.xlsx",
+      "wps_preview": "Native Template preview completed; file hash unchanged."
+    },
+    {
+      "row_id": "B0GVNR46S6",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_continue/鞋拔子混色套装V1.xlsx",
+      "sha256": "e72624ccd2f4f7a91439680bbd1abe14fdb58d193b6d51a8deb0bb0183450524",
+      "findings": [],
+      "red": [],
+      "unresolved": [],
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_continue/鞋拔子混色套装V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GVNR46S6/source_template/FOOTWEAR_CARE_KIT.xlsm",
+      "template_sha256": "085e6f97cb3cc8b4b63bf2bd03cf6fef3c584293b5561f85dd00cae22b24ecf3",
+      "price_usd": 2.4,
+      "cost_rmb": 3.02,
+      "shipping_fee_usd": 0.5,
+      "parent_sku": "CA-Shoehorn",
+      "child_sku": "CA-Shoehorn-Set",
+      "registered_output": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GVNR46S6/output_file/鞋拔子混色套装V1.xlsx",
+      "wps_preview": "Native Template preview completed; file hash unchanged."
+    }
+  ],
+  "local_registered_at": "2026-11-10T20:16:19+08:00",
+  "bundle": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_continue/本批5份已填待复核表_当前版本.zip",
+  "sku_review": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_continue/本批8款SKU与定价核对.xlsx",
+  "amazon_submitted": false
+}

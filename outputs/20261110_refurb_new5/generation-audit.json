@@ -1,0 +1,252 @@
+{
+  "pricing_config": {
+    "marketplace": "US",
+    "currency_rate_rmb_to_usd": 7.2,
+    "referral_fee_rate": 0.15,
+    "return_rate": 0.05,
+    "return_rate_price_threshold_usd": 3.0,
+    "first_leg_shipping_usd": 0.4,
+    "target_margin_min": 0.3,
+    "target_price_gap_usd": 0.39,
+    "dimensional_weight_divisor": 139,
+    "disposal_fee_usd": 0.0
+  },
+  "rows": [
+    {
+      "row_id": "ROW-12",
+      "product_name": "宠物拾便袋绿色8卷装",
+      "sku": "CA-WasteBags-Green-8P",
+      "parent_sku": "CA-WasteBags",
+      "original_sku": "SP-shibian8c-01",
+      "cost_rmb": 5.68,
+      "shipping_fee_usd": 2.6,
+      "price_usd": 7.49,
+      "return_rate": 0.05,
+      "actual_margin": 0.3005153352618306,
+      "source_file": "SP退货翻新的1(1)(1).xlsx",
+      "source_sheet": "SP",
+      "source_url": "https://www.amazon.com/dp/B0GXYX911P?s=bazaar"
+    },
+    {
+      "row_id": "B0HB48JQCY",
+      "product_name": "冰箱贴夹混色5件装",
+      "sku": "CA-FridgeClips-Multicolor-5P",
+      "parent_sku": "CA-FridgeClips",
+      "original_sku": "KCC-BXTJ-5",
+      "cost_rmb": 3.4,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 2.5,
+      "return_rate": 0.0,
+      "actual_margin": 0.3011111111111111,
+      "source_file": "KCC退货翻新重做链接版(3)(1).xlsx",
+      "source_sheet": "KCC",
+      "source_url": "https://www.amazon.com/dp/B0HB48JQCY?s=bazaar"
+    },
+    {
+      "row_id": "B0HF4DDD5Y",
+      "product_name": "彩色衣服夹混色12件装",
+      "sku": "CA-ClothesClips-Multicolor-12P",
+      "parent_sku": "CA-ClothesClips",
+      "original_sku": "KCC-CCYFJ-12",
+      "cost_rmb": 1.6,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 2.05,
+      "return_rate": 0.0,
+      "actual_margin": 0.3025745257452574,
+      "source_file": "KCC退货翻新重做链接版(3)(1).xlsx",
+      "source_sheet": "KCC",
+      "source_url": "https://www.amazon.com/dp/B0HF4DDD5Y?s=bazaar"
+    },
+    {
+      "row_id": "B0HF7Y5XX8",
+      "product_name": "帽子收纳盒黑色",
+      "sku": "CA-HatBox-Black",
+      "parent_sku": "CA-HatBox",
+      "original_sku": "KCC-MZSN-HEI",
+      "cost_rmb": 4.75,
+      "shipping_fee_usd": 3.22,
+      "price_usd": 8.46,
+      "return_rate": 0.05,
+      "actual_margin": 0.3004976687680588,
+      "source_file": "KCC退货翻新重做链接版(3)(1).xlsx",
+      "source_sheet": "KCC",
+      "source_url": "https://www.amazon.com/dp/B0HF7Y5XX8?s=bazaar"
+    },
+    {
+      "row_id": "B0HCN943ZX",
+      "product_name": "扎带黑色150毫米200毫米100条装",
+      "sku": "CA-CableTies-Black-150mm-100P",
+      "parent_sku": "CA-CableTies",
+      "original_sku": "KCC-ZD1-150",
+      "cost_rmb": 0.97,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 1.89,
+      "return_rate": 0.0,
+      "actual_margin": 0.30252792475014684,
+      "source_file": "KCC退货翻新重做链接版(3)(1).xlsx",
+      "source_sheet": "KCC",
+      "source_url": "https://www.amazon.com/dp/B0HCN943ZX?s=bazaar"
+    },
+    {
+      "row_id": "B0HCN943ZX",
+      "product_name": "扎带黑色150毫米200毫米100条装",
+      "sku": "CA-CableTies-Black-200mm-100P",
+      "parent_sku": "CA-CableTies",
+      "original_sku": "KCC-ZD1-200",
+      "cost_rmb": 1.83,
+      "shipping_fee_usd": 0.5,
+      "price_usd": 2.1,
+      "return_rate": 0.0,
+      "actual_margin": 0.3003968253968253,
+      "source_file": "KCC退货翻新重做链接版(3)(1).xlsx",
+      "source_sheet": "KCC",
+      "source_url": "https://www.amazon.com/dp/B0HCMPVGDY?s=bazaar"
+    }
+  ],
+  "files": [
+    {
+      "row_id": "ROW-12",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/宠物拾便袋绿色8卷装V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/宠物拾便袋绿色8卷装V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-12/source_template/WASTE_BAG.xlsm",
+      "template_sha256": "12f05ab9ae24b8f3183be930411439b2d3be26a1d8417c79558e1108c2eeaeb4",
+      "parent_sku": "CA-WasteBags",
+      "child_skus": [
+        "CA-WasteBags-Green-8P"
+      ],
+      "classification": "WASTE_BAG",
+      "source_urls": [
+        "https://www.amazon.com/dp/B0GXYX911P?s=bazaar"
+      ],
+      "sha256": "68082769e628804c58a854576bc166a42273e4243f8243a30d16d3a8c11c25d3"
+    },
+    {
+      "row_id": "B0HB48JQCY",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/冰箱贴夹混色5件装V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/冰箱贴夹混色5件装V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HB48JQCY/source_template/PAPER_CLIP_CLAMP_DECORATIVE_MAGNET.xlsm",
+      "template_sha256": "4a559764ce8c156181f1ed475e6a5e04d9fc02df5fd84434dd38262bd9e8fe42",
+      "parent_sku": "CA-FridgeClips",
+      "child_skus": [
+        "CA-FridgeClips-Multicolor-5P"
+      ],
+      "classification": "DECORATIVE_MAGNET",
+      "source_urls": [
+        "https://www.amazon.com/dp/B0HB48JQCY?s=bazaar"
+      ],
+      "sha256": "1f5ae8827987534a501a6034a1272d36efaed1960726acf67248758fe524a618"
+    },
+    {
+      "row_id": "B0HF4DDD5Y",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/彩色衣服夹混色12件装V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/彩色衣服夹混色12件装V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF4DDD5Y/source_template/PAPER_CLIP_CLAMP_HARDWARE_CLAMP_VISE.xlsm",
+      "template_sha256": "e82e5c04a953826817818f538279da124c0147d6ce696b83880876748e8832b3",
+      "parent_sku": "CA-ClothesClips",
+      "child_skus": [
+        "CA-ClothesClips-Multicolor-12P"
+      ],
+      "classification": "HARDWARE_CLAMP_VISE",
+      "source_urls": [
+        "https://www.amazon.com/dp/B0HF4DDD5Y?s=bazaar"
+      ],
+      "sha256": "06e0b35ddd01e74d2d4aa3158e3d914cd0cf648dce162790cfb5fb6702b4ab74"
+    },
+    {
+      "row_id": "B0HF7Y5XX8",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/帽子收纳盒黑色V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/帽子收纳盒黑色V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF7Y5XX8/source_template/STORAGE_BOX.xlsm",
+      "template_sha256": "33ef9b00d816e2a18c66ee4322ea3b41f1898db86cd4ebd7e2cc3d4da31bb9ce",
+      "parent_sku": "CA-HatBox",
+      "child_skus": [
+        "CA-HatBox-Black"
+      ],
+      "classification": "STORAGE_BOX",
+      "source_urls": [
+        "https://www.amazon.com/dp/B0HF7Y5XX8?s=bazaar"
+      ],
+      "sha256": "5d9167d3495a4cbcce11273ef40ac0eaddb0be966e7a12942610e70425d79818"
+    },
+    {
+      "row_id": "B0HCN943ZX",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/扎带黑色150毫米200毫米100条装V1.xlsx",
+      "draft": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/扎带黑色150毫米200毫米100条装V1_产品资料.xlsx",
+      "source_template": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HCN943ZX/source_template/CABLE_TIE.xlsm",
+      "template_sha256": "50e5267e22992d8478171d999bae968d2fe0b0ffe1e3c6bf4d0e59ef274f7235",
+      "parent_sku": "CA-CableTies",
+      "child_skus": [
+        "CA-CableTies-Black-150mm-100P",
+        "CA-CableTies-Black-200mm-100P"
+      ],
+      "classification": "CABLE_TIE",
+      "source_urls": [
+        "https://www.amazon.com/dp/B0HCN943ZX?s=bazaar",
+        "https://www.amazon.com/dp/B0HCMPVGDY?s=bazaar"
+      ],
+      "sha256": "70af3948093cfe50583f5afb2a071756ce422bf8c57b6e1ec4e4bc186a32720f"
+    }
+  ],
+  "checks": [
+    {
+      "file": "宠物拾便袋绿色8卷装V1.xlsx",
+      "template_errors": 0,
+      "red_fields": 0,
+      "unresolved_formulas": 0,
+      "filled_inapplicable_fields": 0,
+      "source_template_unchanged": true
+    },
+    {
+      "file": "冰箱贴夹混色5件装V1.xlsx",
+      "template_errors": 0,
+      "red_fields": 0,
+      "unresolved_formulas": 0,
+      "filled_inapplicable_fields": 0,
+      "source_template_unchanged": true
+    },
+    {
+      "file": "彩色衣服夹混色12件装V1.xlsx",
+      "template_errors": 0,
+      "red_fields": 0,
+      "unresolved_formulas": 0,
+      "filled_inapplicable_fields": 0,
+      "source_template_unchanged": true
+    },
+    {
+      "file": "帽子收纳盒黑色V1.xlsx",
+      "template_errors": 0,
+      "red_fields": 0,
+      "unresolved_formulas": 0,
+      "filled_inapplicable_fields": 0,
+      "source_template_unchanged": true
+    },
+    {
+      "file": "扎带黑色150毫米200毫米100条装V1.xlsx",
+      "template_errors": 0,
+      "red_fields": 0,
+      "unresolved_formulas": 0,
+      "filled_inapplicable_fields": 0,
+      "source_template_unchanged": true
+    }
+  ],
+  "user_confirmations": {
+    "waste_bag_scent": "Unscented, explicitly confirmed by user on 2026-11-10"
+  },
+  "notes": [
+    "All package dimensions and weights follow configured shipping-tier defaults and are not physical measurements.",
+    "Waste bag rolled single-unit dimensions: 2.32 x 1.18 x 1.18 in; unfolded bag: 8.66 x 11.81 in; supplied 8-roll set weight from page: 8.6 oz.",
+    "Clothespins: selected HARDWARE_CLAMP_VISE/spring-clamps from supplied multi-type template, based on spring-clip structure; 12 plastic bodies with stainless steel springs.",
+    "Refrigerator clips: DECORATIVE_MAGNET/refrigerator-magnets; plastic body; required Fabric Type describes its non-fabric body. Inapplicable PAPER_CLIP_CLAMP-only dimensions cleared; actual 2.95 x 1.18 in size remains in copy.",
+    "Hat box: 16.54 in diameter x 10.43 in high; 0.79 lb net; fabric and PVC per source specification image.",
+    "All five files opened in WPS for native Template-sheet preview; their complete dynamic conditional-format rules were also evaluated without unsupported formulas."
+  ],
+  "published_at": "2026-11-10T18:03:09+08:00",
+  "bundle": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/11月5日新增5款上传表V1.zip",
+  "linked_files": [
+    "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-12/output_file/宠物拾便袋绿色8卷装V1.xlsx",
+    "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HB48JQCY/output_file/冰箱贴夹混色5件装V1.xlsx",
+    "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF4DDD5Y/output_file/彩色衣服夹混色12件装V1.xlsx",
+    "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF7Y5XX8/output_file/帽子收纳盒黑色V1.xlsx",
+    "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HCN943ZX/output_file/扎带黑色150毫米200毫米100条装V1.xlsx"
+  ]
+}

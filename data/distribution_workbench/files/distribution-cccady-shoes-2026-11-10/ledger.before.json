@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "updated_at": "2026-11-10T17:32:41+08:00",
+  "source_archive": "",
+  "batches": [
+    {
+      "id": "distribution-cccady",
+      "name": "cccady",
+      "owner": "cccady",
+      "stores": [
+        "1店",
+        "2店"
+      ],
+      "rows": []
+    },
+    {
+      "id": "distribution-tutu",
+      "name": "图图",
+      "owner": "图图",
+      "stores": [
+        "1店",
+        "2店"
+      ],
+      "rows": []
+    },
+    {
+      "id": "distribution-kaixuan",
+      "name": "凯旋",
+      "owner": "凯旋",
+      "stores": [
+        "1店",
+        "2店"
+      ],
+      "rows": []
+    }
+  ]
+}

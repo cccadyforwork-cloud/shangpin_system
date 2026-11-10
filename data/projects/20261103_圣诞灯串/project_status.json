@@ -4,7 +4,7 @@
   "workbench_store": "2店",
   "status": "needs_manual_fix",
   "latest_draft": "03_产品详情页/圣诞灯串_产品资料.xlsx",
-  "updated_at": "2026-11-04T01:42:35",
+  "updated_at": "2026-11-06T19:44:33",
   "workbench_note": "2店；负责人 cccady。用户反馈原圣诞灯串链接仍未成功；已按要求基于 V3 生成 V4 新 SKU 版：父体及 6 子体全部加 -R，子体 Parent SKU 与 SKU 同步，Model Number/Model Name/Part Number 同步新 SKU，其余商品字段不变。全部 7 行 Action=Create or Replace (Full Update)。V4 本地模板自检 0、联动红框 0；尚未上传 Amazon。旧 V1–V3 与处理报告保留。",
   "source_template": "05_模版原件/STRING_LIGHT.xlsm",
   "latest_template": "05_填表版本/圣诞灯串USB遥控V4.xlsx",
@@ -16,7 +16,7 @@
     "V1": "2026-11-03：用户已审核确认 COLOR/SIZE 主题及六个子体的 Color、Size 展示名。标题与描述长度单位使用 ft；遥控器不含电池；包装使用对应配送档位默认值。",
     "V2": "依据 V1 Amazon 报告补齐 6 子体各 8 项条件必填字段；Light Color 白光=White、暖白=Yellow，展示名不变。V2 自检 0 错误，全部旧 SKU Action=Edit。V2 Amazon 处理报告：7 SKU 中父体完全成功，6 子体成功但返回 100521 审核中，0 SKU 因错误失败；未发现需改字段，暂不生成 V3，待平台最长 48 小时审核结果。",
     "V3": "V3 Amazon 处理报告：7 SKU 中父体完全成功，6 子体均返回 100521 审核中，0 个因错误失败。5 子体收到 18448 Power Source 缺失警告，但报告附带 Template 页六子体 BX 列均为 Corded Electric，与本地 V3 一致；警告非阻断。保留 V3，不生成 V4，等待审核后续通知。",
-    "V4": "2026-11-04：用户反馈原圣诞灯串链接仍未成功，要求全部 SKU 后加 -R、其余不变。以 V3 为底稿建立新 SKU：父体及 6 子体 SKU、子体 Parent SKU、以 SKU 作为值的 Model Number/Model Name/Part Number 同步追加 -R；商品字段未变。全部 7 行 Listing Action=Create or Replace (Full Update)。本地模板自检 0 问题、动态红框 0；尚未提交 Amazon。"
+    "V4": "2026-11-04：用户反馈原圣诞灯串链接仍未成功，要求全部 SKU 后加 -R、其余不变。以 V3 为底稿建立新 SKU：父体及 6 子体 SKU、子体 Parent SKU、以 SKU 作为值的 Model Number/Model Name/Part Number 同步追加 -R；商品字段未变。全部 7 行 Listing Action=Create or Replace (Full Update)。本地模板自检 0 问题、动态红框 0；尚未提交 Amazon。这个版本已经删除"
   },
   "failed_template": "05_填表版本/圣诞灯串USB遥控V1.xlsx",
   "latest_failure_report": "06_处理报告/圣诞灯串USB遥控V2-processing-summary.xlsm",

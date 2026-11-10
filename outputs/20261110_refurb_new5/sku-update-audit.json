@@ -1,0 +1,102 @@
+{
+  "updated_at": "2026-11-10T18:19:38.225704+08:00",
+  "mapping": {
+    "CA-FridgeClips-Multicolor-5P": "CA-FridgeClips-5P",
+    "CA-ClothesClips-Multicolor-12P": "CA-ClothesClips-12P",
+    "CA-CableTies-Black-150mm-100P": "CA-CableTies-Black-150mm",
+    "CA-CableTies-Black-200mm-100P": "CA-CableTies-Black-200mm"
+  },
+  "files": [
+    {
+      "row_id": "B0HB48JQCY",
+      "source": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HB48JQCY/output_file/冰箱贴夹混色5件装V1.xlsx",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/冰箱贴夹混色5件装V2.xlsx",
+      "changes": [
+        {
+          "old_sku": "CA-FridgeClips",
+          "sku": "CA-FridgeClips",
+          "action": "Edit (Partial Update)"
+        },
+        {
+          "old_sku": "CA-FridgeClips-Multicolor-5P",
+          "sku": "CA-FridgeClips-5P",
+          "action": "Create or Replace (Full Update)"
+        }
+      ],
+      "sha256": "b2e9d00c7df1073f8f40a73935151df85ed0866f1903dfbb7d9505014b0287f3",
+      "modified_cells": [
+        "A8",
+        "BE8",
+        "C7",
+        "N8",
+        "O8"
+      ]
+    },
+    {
+      "row_id": "B0HF4DDD5Y",
+      "source": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF4DDD5Y/output_file/彩色衣服夹混色12件装V1.xlsx",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/彩色衣服夹混色12件装V2.xlsx",
+      "changes": [
+        {
+          "old_sku": "CA-ClothesClips",
+          "sku": "CA-ClothesClips",
+          "action": "Edit (Partial Update)"
+        },
+        {
+          "old_sku": "CA-ClothesClips-Multicolor-12P",
+          "sku": "CA-ClothesClips-12P",
+          "action": "Create or Replace (Full Update)"
+        }
+      ],
+      "sha256": "b3f42e2739cf99ebc528f669e28e6d1283acfc8786ccc61cbcd86e4d27cc487e",
+      "modified_cells": [
+        "A8",
+        "BA8",
+        "C7",
+        "N8",
+        "O8"
+      ]
+    },
+    {
+      "row_id": "B0HCN943ZX",
+      "source": "/Users/admin/Documents/GitHub/shangpin_system/data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HCN943ZX/output_file/扎带黑色150毫米200毫米100条装V1.xlsx",
+      "output": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/扎带黑色150毫米200毫米100条装V2.xlsx",
+      "changes": [
+        {
+          "old_sku": "CA-CableTies",
+          "sku": "CA-CableTies",
+          "action": "Edit (Partial Update)"
+        },
+        {
+          "old_sku": "CA-CableTies-Black-150mm-100P",
+          "sku": "CA-CableTies-Black-150mm",
+          "action": "Create or Replace (Full Update)"
+        },
+        {
+          "old_sku": "CA-CableTies-Black-200mm-100P",
+          "sku": "CA-CableTies-Black-200mm",
+          "action": "Create or Replace (Full Update)"
+        }
+      ],
+      "sha256": "7b379565276f257090ea61831854b3ef1ad7d3772b6d29ebbe81d44482cab8cc",
+      "modified_cells": [
+        "A8",
+        "A9",
+        "AV8",
+        "AV9",
+        "C7",
+        "N8",
+        "N9",
+        "O8",
+        "O9"
+      ]
+    }
+  ],
+  "bundle": "/Users/admin/Documents/GitHub/shangpin_system/outputs/20261110_refurb_new5/11月5日新增5款上传表_当前版本.zip",
+  "checks": {
+    "template_errors": 0,
+    "dynamic_red_fields": 0,
+    "unresolved_formulas": 0,
+    "all_non_identity_product_fields_unchanged": true
+  }
+}

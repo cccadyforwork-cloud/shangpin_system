@@ -1,0 +1,1211 @@
+{
+  "version": 1,
+  "updated_at": "2026-10-28T13:03:33+08:00",
+  "source_archive": "10.26链接完整_WESSP_adult.zip",
+  "batches": [
+    {
+      "id": "distribution-cccady",
+      "name": "cccady",
+      "owner": "cccady",
+      "stores": [
+        "1店",
+        "2店"
+      ],
+      "rows": []
+    },
+    {
+      "id": "distribution-tutu-2026-10-26",
+      "name": "图图 · 10.26",
+      "owner": "图图",
+      "stores": [
+        "1店"
+      ],
+      "source_archive": "10.26链接完整_WESSP_adult.zip",
+      "rows": [
+        {
+          "id": "TU-D2AC0B1937FC",
+          "product_name": "2027金色皇冠气球套装",
+          "row_number": 1,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-D2AC0B1937FC/output_file/2027金色皇冠气球套装V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-D2AC0B1937FC/output_file/2027金色皇冠气球套装V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/2027金色皇冠气球套装V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-102E9D166983",
+          "product_name": "2027银色皇冠气球套装",
+          "row_number": 2,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-102E9D166983/output_file/2027银色皇冠气球套装V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-102E9D166983/output_file/2027银色皇冠气球套装V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/2027银色皇冠气球套装V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-4A1B94E159D9",
+          "product_name": "3D老人脸滑雪面罩_图1款",
+          "row_number": 3,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-4A1B94E159D9/output_file/3D老人脸滑雪面罩_图1款V5_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 5,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-4A1B94E159D9/output_file/3D老人脸滑雪面罩_图1款V5_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/3D老人脸滑雪面罩_图1款V5_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-5B0C51593CBD",
+          "product_name": "3D老人脸滑雪面罩_图2款",
+          "row_number": 4,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-5B0C51593CBD/output_file/3D老人脸滑雪面罩_图2款V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-5B0C51593CBD/output_file/3D老人脸滑雪面罩_图2款V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/3D老人脸滑雪面罩_图2款V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-23A62D781A93",
+          "product_name": "圣诞扭蛋玩具30件",
+          "row_number": 5,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-23A62D781A93/output_file/圣诞扭蛋玩具30件V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-23A62D781A93/output_file/圣诞扭蛋玩具30件V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "冻结",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体不可售。冻结原因：商品存在跨境运输限制，亚马逊 Haul 当前不接受此类商品；子体状态为“非在售”，商品详情页已移除。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/圣诞扭蛋玩具30件V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-B7B94D39530F",
+          "product_name": "圣诞气球花环92件",
+          "row_number": 6,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-B7B94D39530F/output_file/圣诞气球花环92件V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-B7B94D39530F/output_file/圣诞气球花环92件V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/圣诞气球花环92件V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-46CB09F04C04",
+          "product_name": "圣诞狗狗三角巾2件",
+          "row_number": 7,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-46CB09F04C04/output_file/圣诞狗狗三角巾2件V4.xlsm",
+          "output_versions": [
+            {
+              "version": 4,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-46CB09F04C04/output_file/圣诞狗狗三角巾2件V4.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/圣诞狗狗三角巾2件V4.xlsm"
+        },
+        {
+          "id": "TU-01A9A7AD7B9C",
+          "product_name": "圣诞箔膜气球12件",
+          "row_number": 8,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-01A9A7AD7B9C/output_file/圣诞箔膜气球12件V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-01A9A7AD7B9C/output_file/圣诞箔膜气球12件V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/圣诞箔膜气球12件V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-B452FB7EBFD4",
+          "product_name": "圣诞老人礼盒气球横幅",
+          "row_number": 9,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-B452FB7EBFD4/output_file/圣诞老人礼盒气球横幅V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-B452FB7EBFD4/output_file/圣诞老人礼盒气球横幅V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/圣诞老人礼盒气球横幅V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-7EB4EE0ABB18",
+          "product_name": "圣诞蝴蝶结气球12件",
+          "row_number": 10,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-7EB4EE0ABB18/output_file/圣诞蝴蝶结气球12件V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-7EB4EE0ABB18/output_file/圣诞蝴蝶结气球12件V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体缺货。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/圣诞蝴蝶结气球12件V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-7D27AAA6D89E",
+          "product_name": "圣诞驯鹿鹿角发带",
+          "row_number": 11,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-7D27AAA6D89E/output_file/圣诞驯鹿鹿角发带V4_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 4,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-7D27AAA6D89E/output_file/圣诞驯鹿鹿角发带V4_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；检索到 2 条报价缺失记录。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/圣诞驯鹿鹿角发带V4_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-82C042B737DB",
+          "product_name": "奶油色数字气球套装",
+          "row_number": 12,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-82C042B737DB/output_file/奶油色数字气球套装V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-82C042B737DB/output_file/奶油色数字气球套装V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "冻结",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。处理报告：父 SKU 成功；子 SKU 因跨境运输限制被亚马逊 Haul 拒绝（错误码 100721），并有欧盟 GPSR 警告与安全信息提示（警告码 100526）。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/奶油色数字气球套装V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-8E7D84D009B0",
+          "product_name": "棕金色乳胶气球24只",
+          "row_number": 13,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-8E7D84D009B0/output_file/棕金色乳胶气球24只V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-8E7D84D009B0/output_file/棕金色乳胶气球24只V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体缺货。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/棕金色乳胶气球24只V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-1B4E20E0D052",
+          "product_name": "气球拱门橡皮筋100个",
+          "row_number": 14,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-1B4E20E0D052/output_file/气球拱门橡皮筋100个V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-1B4E20E0D052/output_file/气球拱门橡皮筋100个V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/气球拱门橡皮筋100个V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-20D9C3173FC4",
+          "product_name": "粉沙白乳胶气球24件",
+          "row_number": 15,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-20D9C3173FC4/output_file/粉沙白乳胶气球24件V4_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 4,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-20D9C3173FC4/output_file/粉沙白乳胶气球24件V4_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/粉沙白乳胶气球24件V4_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-B300596DE5F7",
+          "product_name": "粉色数字气球套装",
+          "row_number": 16,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-B300596DE5F7/output_file/粉色数字气球套装V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-B300596DE5F7/output_file/粉色数字气球套装V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/粉色数字气球套装V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-6AE2396A12B9",
+          "product_name": "粉色钻石数字气球",
+          "row_number": 17,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-6AE2396A12B9/output_file/粉色钻石数字气球V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-6AE2396A12B9/output_file/粉色钻石数字气球V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/粉色钻石数字气球V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-53909A2D919D",
+          "product_name": "红绿爆炸星气球9件",
+          "row_number": 18,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-53909A2D919D/output_file/红绿爆炸星气球9件V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-53909A2D919D/output_file/红绿爆炸星气球9件V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/红绿爆炸星气球9件V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-BCBE4F697E06",
+          "product_name": "红绿蝴蝶结气球8件",
+          "row_number": 19,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-BCBE4F697E06/output_file/红绿蝴蝶结气球8件V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-BCBE4F697E06/output_file/红绿蝴蝶结气球8件V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/红绿蝴蝶结气球8件V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-B71CC70CAE4A",
+          "product_name": "红色蝴蝶结气球流苏套装",
+          "row_number": 20,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-B71CC70CAE4A/output_file/红色蝴蝶结气球流苏套装V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-B71CC70CAE4A/output_file/红色蝴蝶结气球流苏套装V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/红色蝴蝶结气球流苏套装V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-60D3D186069C",
+          "product_name": "角色扮演钩式饰品2个",
+          "row_number": 21,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-60D3D186069C/output_file/角色扮演钩式饰品2个V5_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 5,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-60D3D186069C/output_file/角色扮演钩式饰品2个V5_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/角色扮演钩式饰品2个V5_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-CD982CD44C69",
+          "product_name": "趣味派对整蛊道具",
+          "row_number": 22,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-CD982CD44C69/output_file/趣味派对整蛊道具V4_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 4,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-CD982CD44C69/output_file/趣味派对整蛊道具V4_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体缺货。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/趣味派对整蛊道具V4_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-FB7F9A59ABE2",
+          "product_name": "足球气球套装30个",
+          "row_number": 23,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-FB7F9A59ABE2/output_file/足球气球套装30个V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-FB7F9A59ABE2/output_file/足球气球套装30个V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体缺货。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/足球气球套装30个V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-A2A6F6FD8812",
+          "product_name": "金属箔流苏背景2件",
+          "row_number": 24,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-A2A6F6FD8812/output_file/金属箔流苏背景2件V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-A2A6F6FD8812/output_file/金属箔流苏背景2件V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/金属箔流苏背景2件V3_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-1D878E5B5130",
+          "product_name": "骑乘式圣诞老人服装",
+          "row_number": 25,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-1D878E5B5130/output_file/骑乘式圣诞老人服装V4_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 4,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-1D878E5B5130/output_file/骑乘式圣诞老人服装V4_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/骑乘式圣诞老人服装V4_已改for adult.xlsm"
+        },
+        {
+          "id": "TU-20C279EE3313",
+          "product_name": "黑金爆炸星气球9件",
+          "row_number": 26,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-20C279EE3313/output_file/黑金爆炸星气球9件V3_已改for_adult.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/distribution_workbench/files/distribution-tutu-2026-10-26/TU-20C279EE3313/output_file/黑金爆炸星气球9件V3_已改for_adult.xlsm",
+              "added_at": "2026-10-28T12:49:29+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "1店",
+          "source_group": "待上传",
+          "source_member": "10.26链接完整_WESSP_adult/黑金爆炸星气球9件V3_已改for adult.xlsm"
+        }
+      ]
+    },
+    {
+      "id": "distribution-kaixuan-2026-10-26",
+      "name": "凯旋 · 10.26",
+      "owner": "凯旋",
+      "stores": [
+        "2店"
+      ],
+      "rows": [
+        {
+          "id": "KX-F151E8FB711A",
+          "product_name": "动物跳跳玩具礼品包",
+          "row_number": 1,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-F151E8FB711A/output_file/动物跳跳玩具礼品包V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-F151E8FB711A/output_file/动物跳跳玩具礼品包V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "冻结",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体不可售。库存冻结原因：商品存在跨境运输限制，亚马逊 Haul 当前不接受此类商品；子体状态为“非在售”，商品详情页已移除。处理报告：父、子 SKU 均成功；子 SKU 另有亚马逊政策警告（警告码 100477）。",
+          "store_id": "2店",
+          "source_group": "冻结的",
+          "source_member": "10.26二店上新25个/冻结的/动物跳跳玩具礼品包V1.xlsm"
+        },
+        {
+          "id": "KX-3F95655E92AB",
+          "product_name": "圣诞主题玩具戒指礼品",
+          "row_number": 2,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-3F95655E92AB/output_file/圣诞主题玩具戒指礼品V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-3F95655E92AB/output_file/圣诞主题玩具戒指礼品V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "冻结",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体不可售。库存冻结原因：商品存在跨境运输限制，亚马逊 Haul 当前不接受此类商品；子体状态为“非在售”，商品详情页已移除。处理报告：父、子 SKU 均成功，0 个错误、0 个警告。",
+          "store_id": "2店",
+          "source_group": "冻结的",
+          "source_member": "10.26二店上新25个/冻结的/圣诞主题玩具戒指礼品V1.xlsm"
+        },
+        {
+          "id": "KX-733D1A7C35E0",
+          "product_name": "手压弹跳火箭玩具",
+          "row_number": 3,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-733D1A7C35E0/output_file/手压弹跳火箭玩具V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-733D1A7C35E0/output_file/手压弹跳火箭玩具V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "冻结",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体不可售。处理报告：父 SKU 成功；子 SKU 因跨境运输限制被亚马逊 Haul 拒绝（错误码 100721），并有欧盟 GPSR 警告与安全信息提示（警告码 100526）；库存中商品详情页已移除。",
+          "store_id": "2店",
+          "source_group": "冻结的",
+          "source_member": "10.26二店上新25个/冻结的/手压弹跳火箭玩具V1.xlsm"
+        },
+        {
+          "id": "KX-B3E31B271F20",
+          "product_name": "圣诞主题铝膜气球套装",
+          "row_number": 4,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-B3E31B271F20/output_file/圣诞主题铝膜气球套装V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-B3E31B271F20/output_file/圣诞主题铝膜气球套装V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "审核中",
+          "purchase_status": "",
+          "note": "亚马逊审核中（错误码 100521）；父、子 SKU 均已接收，处理报告未提示字段填写错误。请在上传后 48 小时内等待审核完成，再复核父子关系。",
+          "store_id": "2店",
+          "source_group": "待上传",
+          "source_member": "10.26二店上新25个/圣诞主题铝膜气球套装V1.xlsm"
+        },
+        {
+          "id": "KX-BF09F632DCAA",
+          "product_name": "奶油色数字铝膜气球",
+          "row_number": 5,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-BF09F632DCAA/output_file/奶油色数字铝膜气球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-BF09F632DCAA/output_file/奶油色数字铝膜气球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "处理报告：父、子 SKU 均上传失败（错误码 90244）。Numeric Theme 填入了无效值“Cream Number Foil Balloon Set”，需改为该类目允许的数字主题后重新上传。本地 V1 当前已填写允许值“Number 1”；请先确认实物确为数字 1，再重新上传并复核父子关系。",
+          "store_id": "2店",
+          "source_group": "待上传",
+          "source_member": "10.26二店上新25个/奶油色数字铝膜气球V1.xlsm"
+        },
+        {
+          "id": "KX-B0BE0CC585FC",
+          "product_name": "圣诞主题塑料印章",
+          "row_number": 6,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-B0BE0CC585FC/output_file/圣诞主题塑料印章V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-B0BE0CC585FC/output_file/圣诞主题塑料印章V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "已上传成功",
+          "source_member": "10.26二店上新25个/已上传成功/圣诞主题塑料印章V1.xlsm"
+        },
+        {
+          "id": "KX-C1234B9F9D81",
+          "product_name": "圣诞回力车玩具礼品",
+          "row_number": 7,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-C1234B9F9D81/output_file/圣诞回力车玩具礼品V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-C1234B9F9D81/output_file/圣诞回力车玩具礼品V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "已上传成功",
+          "source_member": "10.26二店上新25个/已上传成功/圣诞回力车玩具礼品V1.xlsm"
+        },
+        {
+          "id": "KX-EEAF74614567",
+          "product_name": "圣诞图案夜光弹力球",
+          "row_number": 8,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-EEAF74614567/output_file/圣诞图案夜光弹力球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-EEAF74614567/output_file/圣诞图案夜光弹力球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "已上传成功",
+          "source_member": "10.26二店上新25个/已上传成功/圣诞图案夜光弹力球V1.xlsm"
+        },
+        {
+          "id": "KX-F6E8FE59276A",
+          "product_name": "圣诞图案弹跳球派对礼品",
+          "row_number": 9,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-F6E8FE59276A/output_file/圣诞图案弹跳球派对礼品V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-F6E8FE59276A/output_file/圣诞图案弹跳球派对礼品V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "已上传成功",
+          "source_member": "10.26二店上新25个/已上传成功/圣诞图案弹跳球派对礼品V1.xlsm"
+        },
+        {
+          "id": "KX-C57D0BED7550",
+          "product_name": "圣诞填色本派对礼品",
+          "row_number": 10,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-C57D0BED7550/output_file/圣诞填色本派对礼品V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-C57D0BED7550/output_file/圣诞填色本派对礼品V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "已上传成功",
+          "source_member": "10.26二店上新25个/已上传成功/圣诞填色本派对礼品V1.xlsm"
+        },
+        {
+          "id": "KX-77B02B865745",
+          "product_name": "圣诞连帽斗篷",
+          "row_number": 11,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-77B02B865745/output_file/圣诞连帽斗篷V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-77B02B865745/output_file/圣诞连帽斗篷V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "已上传成功",
+          "source_member": "10.26二店上新25个/已上传成功/圣诞连帽斗篷V1.xlsm"
+        },
+        {
+          "id": "KX-867303A264B7",
+          "product_name": "彩色迷你拍手器礼包",
+          "row_number": 12,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-867303A264B7/output_file/彩色迷你拍手器礼包V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-867303A264B7/output_file/彩色迷你拍手器礼包V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "已上传成功",
+          "source_member": "10.26二店上新25个/已上传成功/彩色迷你拍手器礼包V1.xlsm"
+        },
+        {
+          "id": "KX-E8A9A17F6104",
+          "product_name": "迷你手指篮球投篮游戏",
+          "row_number": 13,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-E8A9A17F6104/output_file/迷你手指篮球投篮游戏V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-E8A9A17F6104/output_file/迷你手指篮球投篮游戏V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "已上传",
+          "purchase_status": "",
+          "note": "已形成父体链接；子体已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "已上传成功",
+          "source_member": "10.26二店上新25个/已上传成功/迷你手指篮球投篮游戏V1.xlsm"
+        },
+        {
+          "id": "KX-20BC10AD47C3",
+          "product_name": "圣诞造型空泡泡棒礼品",
+          "row_number": 14,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-20BC10AD47C3/output_file/圣诞造型空泡泡棒礼品V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-20BC10AD47C3/output_file/圣诞造型空泡泡棒礼品V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "审核中",
+          "purchase_status": "",
+          "note": "处理报告显示父、子 SKU 均成功，0 个错误、0 个警告；库存当前仍未形成父体链接，父 SKU 显示报价缺失，子 SKU 已禁止显示搜索结果。等待亚马逊目录同步后再复核父子关系。",
+          "store_id": "2店",
+          "source_group": "报价缺失",
+          "source_member": "10.26二店上新25个/报价缺失/圣诞造型空泡泡棒礼品V1.xlsm"
+        },
+        {
+          "id": "KX-00C810072DD5",
+          "product_name": "粉白蝴蝶结印花气球",
+          "row_number": 15,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-00C810072DD5/output_file/粉白蝴蝶结印花气球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-00C810072DD5/output_file/粉白蝴蝶结印花气球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "报价缺失",
+          "source_member": "10.26二店上新25个/报价缺失/粉白蝴蝶结印花气球V1.xlsm"
+        },
+        {
+          "id": "KX-22518BBD1949",
+          "product_name": "航空主题服装配饰套装",
+          "row_number": 16,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-22518BBD1949/output_file/航空主题服装配饰套装V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-22518BBD1949/output_file/航空主题服装配饰套装V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "报价缺失",
+          "source_member": "10.26二店上新25个/报价缺失/航空主题服装配饰套装V1.xlsm"
+        },
+        {
+          "id": "KX-61E84875CE6F",
+          "product_name": "迷你按牙咬手互动游戏",
+          "row_number": 17,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-61E84875CE6F/output_file/迷你按牙咬手互动游戏V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-61E84875CE6F/output_file/迷你按牙咬手互动游戏V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "报价缺失",
+          "source_member": "10.26二店上新25个/报价缺失/迷你按牙咬手互动游戏V1.xlsm"
+        },
+        {
+          "id": "KX-6BA1DB7AB91E",
+          "product_name": "黑色连帽披风",
+          "row_number": 18,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-6BA1DB7AB91E/output_file/黑色连帽披风V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-6BA1DB7AB91E/output_file/黑色连帽披风V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "报价缺失",
+          "source_member": "10.26二店上新25个/报价缺失/黑色连帽披风V1.xlsm"
+        },
+        {
+          "id": "KX-347CC9A14C0B",
+          "product_name": "棕金奶油色乳胶气球",
+          "row_number": 19,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-347CC9A14C0B/output_file/棕金奶油色乳胶气球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-347CC9A14C0B/output_file/棕金奶油色乳胶气球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "待上传",
+          "source_member": "10.26二店上新25个/棕金奶油色乳胶气球V1.xlsm"
+        },
+        {
+          "id": "KX-ABEF4945E55B",
+          "product_name": "粉白五彩纸屑乳胶气球",
+          "row_number": 20,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-ABEF4945E55B/output_file/粉白五彩纸屑乳胶气球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-ABEF4945E55B/output_file/粉白五彩纸屑乳胶气球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "待上传",
+          "source_member": "10.26二店上新25个/粉白五彩纸屑乳胶气球V1.xlsm"
+        },
+        {
+          "id": "KX-769B7EDDCF14",
+          "product_name": "糖果棒与蝴蝶结圣诞气球",
+          "row_number": 21,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-769B7EDDCF14/output_file/糖果棒与蝴蝶结圣诞气球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-769B7EDDCF14/output_file/糖果棒与蝴蝶结圣诞气球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "待上传",
+          "source_member": "10.26二店上新25个/糖果棒与蝴蝶结圣诞气球V1.xlsm"
+        },
+        {
+          "id": "KX-E86F286455EB",
+          "product_name": "自立式圣诞老人气球",
+          "row_number": 22,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-E86F286455EB/output_file/自立式圣诞老人气球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-E86F286455EB/output_file/自立式圣诞老人气球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "待上传",
+          "source_member": "10.26二店上新25个/自立式圣诞老人气球V1.xlsm"
+        },
+        {
+          "id": "KX-9A14FD82480E",
+          "product_name": "银色爆炸星星铝膜气球",
+          "row_number": 23,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-9A14FD82480E/output_file/银色爆炸星星铝膜气球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-9A14FD82480E/output_file/银色爆炸星星铝膜气球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父、子 SKU 均未生成 ASIN。",
+          "store_id": "2店",
+          "source_group": "待上传",
+          "source_member": "10.26二店上新25个/银色爆炸星星铝膜气球V1.xlsm"
+        },
+        {
+          "id": "KX-692262B13CB4",
+          "product_name": "银色迪斯科球铝膜气球",
+          "row_number": 24,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-692262B13CB4/output_file/银色迪斯科球铝膜气球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-692262B13CB4/output_file/银色迪斯科球铝膜气球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "待上传",
+          "source_member": "10.26二店上新25个/银色迪斯科球铝膜气球V1.xlsm"
+        },
+        {
+          "id": "KX-A72E9216B8AB",
+          "product_name": "马卡龙彩色乳胶气球",
+          "row_number": 25,
+          "link": "",
+          "competitor_links": [],
+          "competitor_html": "",
+          "source_template": "",
+          "output_file": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-A72E9216B8AB/output_file/马卡龙彩色乳胶气球V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/distribution_workbench/files/distribution-kaixuan-2026-10-26/KX-A72E9216B8AB/output_file/马卡龙彩色乳胶气球V1.xlsm",
+              "added_at": "2026-10-28T12:46:21+08:00"
+            }
+          ],
+          "status": "需修正",
+          "purchase_status": "",
+          "note": "未形成父体链接；父 SKU 报价缺失，子 SKU 已禁止显示搜索结果。",
+          "store_id": "2店",
+          "source_group": "待上传",
+          "source_member": "10.26二店上新25个/马卡龙彩色乳胶气球V1.xlsm"
+        }
+      ]
+    }
+  ]
+}

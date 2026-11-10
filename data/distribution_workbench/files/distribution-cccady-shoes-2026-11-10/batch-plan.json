@@ -1,0 +1,544 @@
+{
+  "batch_id": "distribution-cccady-shoes-2026-11-10",
+  "date": "2026-11-10",
+  "owner": "cccady",
+  "name": "鞋子铺货",
+  "route": "Haul Generic Single",
+  "parent_child": false,
+  "link_count": 50,
+  "store_id": "1店",
+  "store_status": "已确认",
+  "source_sha256": "37d6f5e5ebb08a2191f3e33b871fa8a5b2b230706dfbe1927834c036270e8a04",
+  "reference_groups": [
+    {
+      "from": 1,
+      "to": 30,
+      "reference_sku": "QS-023-42/43"
+    },
+    {
+      "from": 31,
+      "to": 50,
+      "reference_sku": "QS-024-42/43"
+    }
+  ],
+  "references": {
+    "QS-023-42/43": {
+      "sheet": "模板",
+      "row": 75,
+      "fields": {
+        "contribution_sku#1.value": "QS-023-42/43",
+        "product_type#1.value": "SHOES",
+        "::record_action": "Edit (Partial Update)",
+        "parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value": "Child",
+        "child_parent_sku_relationship[marketplace_id=ATVPDKIKX0DER]#1.parent_sku": "QS-023",
+        "variation_theme#1.name": "SIZE/COLOR",
+        "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Printed Water Shoes Unisex, Non Skid Sole, Lightweight Quick Dry Shoes for Beach",
+        "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Generic",
+        "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value": "时尚 > 女士时尚 > 女鞋 > 女士运动户外鞋 > 女士溯溪鞋、涉水鞋 (athletic-water-shoes)",
+        "model_number[marketplace_id=ATVPDKIKX0DER]#1.value": "QS-023",
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "QS-023",
+        "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Creek trekking water shoes, non-skid sole and flexible upper, built for stream crossings.",
+        "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Durable non-slip sole resists wear from frequent use on concrete and sand. Quick-dry material is fade-resistant, maintaining its color after many washes. High-stretch upper fits snugly; no blisters from friction during water activities. Shock-absorbent insole reduces impact on knees and ankles during water sports. Stylish geometric prints; perfect for fashion-forward men and women.",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Slip Resistant",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value": "Breathable",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value": "Lightweight",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value": "Flexible",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value": "Washable",
+        "lifestyle[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Beach, Travel, Casual, Outdoor, Sporty",
+        "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Non-slip, durable, quick-dry, lightweight, unisex",
+        "target_gender[marketplace_id=ATVPDKIKX0DER]#1.value": "Unisex",
+        "age_range_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Adult",
+        "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Polyester",
+        "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.standardized_values#1": "Multicolor",
+        "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Multicolor",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_system": "US Footwear Size System",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.age_group": "Adult",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.gender": "Men",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_class": "Numeric Range",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.width": "Medium",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size": "9",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.to_size": "10",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.size_system": "US Footwear Size System",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.age_group": "Adult",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.gender": "Women",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.size_class": "Numeric Range",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.width": "Medium",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.size": "11",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.to_size": "12",
+        "sole_material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Ethylene Vinyl Acetate",
+        "height_map[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Mid Top",
+        "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Hiking",
+        "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value": "Sports",
+        "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value": "Climbing",
+        "sport_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Swimming",
+        "sport_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value": "Diving",
+        "sport_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value": "Water Skiing",
+        "heel[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value": "Flat",
+        "supplier_package_type[marketplace_id=ATVPDKIKX0DER]#1.value": "Sealed Bag",
+        "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value": "Pull-On",
+        "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value": "New",
+        "list_price[marketplace_id=ATVPDKIKX0DER]#1.value": 10.99,
+        "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax": 10.99,
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value": 11.81,
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit": "Inches",
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value": 5.91,
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit": "Inches",
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value": 0.79,
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit": "Inches",
+        "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value": 0.16,
+        "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit": "Kilograms",
+        "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value": "China",
+        "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value": "No",
+        "outer[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value": "Mesh"
+      }
+    },
+    "QS-024-42/43": {
+      "sheet": "模板",
+      "row": 78,
+      "fields": {
+        "contribution_sku#1.value": "QS-024-42/43",
+        "product_type#1.value": "SHOES",
+        "::record_action": "Edit (Partial Update)",
+        "parentage_level[marketplace_id=ATVPDKIKX0DER]#1.value": "Child",
+        "child_parent_sku_relationship[marketplace_id=ATVPDKIKX0DER]#1.parent_sku": "QS-024",
+        "variation_theme#1.name": "SIZE/COLOR",
+        "item_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Water Shoes for Men Women, Durable Rubber Outsole, Soft Stretch Upper, For Pool",
+        "brand[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Generic",
+        "item_type_keyword[marketplace_id=ATVPDKIKX0DER]#1.value": "时尚 > 女士时尚 > 女鞋 > 女士运动户外鞋 > 女士溯溪鞋、涉水鞋 (athletic-water-shoes)",
+        "model_number[marketplace_id=ATVPDKIKX0DER]#1.value": "QS-024",
+        "model_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "QS-024",
+        "product_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Beach swim shoes with rubber outsole, lightweight packable design for suitcase, backpack, or gym bag.",
+        "bullet_point[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Water-Friendly Build: Designed for swimming, surfing, beach walking, and water activities. Cushioned Footbed: Soft supportive insole for lasting comfort on long trips and walks. Slip-Resistant Outsole: Stable grip on wet ground, sand, rocks, and poolside areas. Lightweight & Foldable: Easy to fold and store, great for travel, camping, and vacations. Versatile Style: Suitable for beach, pool, gym, shower, hiking, and daily casual use.",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Slip Resistant",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value": "Breathable",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value": "Lightweight",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#4.value": "Flexible",
+        "special_feature[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#5.value": "Washable",
+        "lifestyle[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Beach, Travel, Casual, Outdoor, Sporty",
+        "style[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Non-slip, durable, quick-dry, lightweight, unisex",
+        "target_gender[marketplace_id=ATVPDKIKX0DER]#1.value": "Unisex",
+        "age_range_description[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Adult",
+        "material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Polyester",
+        "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.standardized_values#1": "Multicolor",
+        "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Multicolor",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_system": "US Footwear Size System",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.age_group": "Adult",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.gender": "Men",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size_class": "Numeric Range",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.width": "Medium",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.size": "9",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#1.to_size": "10",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.size_system": "US Footwear Size System",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.age_group": "Adult",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.gender": "Women",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.size_class": "Numeric Range",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.width": "Medium",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.size": "11",
+        "footwear_size[marketplace_id=ATVPDKIKX0DER]#2.to_size": "12",
+        "sole_material[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Ethylene Vinyl Acetate",
+        "height_map[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Mid Top",
+        "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Hiking",
+        "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value": "Sports",
+        "specific_uses_for_product[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value": "Climbing",
+        "sport_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "Swimming",
+        "sport_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#2.value": "Diving",
+        "sport_type[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#3.value": "Water Skiing",
+        "heel[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value": "Flat",
+        "supplier_package_type[marketplace_id=ATVPDKIKX0DER]#1.value": "Sealed Bag",
+        "closure[marketplace_id=ATVPDKIKX0DER]#1.type[language_tag=en_US]#1.value": "Pull-On",
+        "condition_type[marketplace_id=ATVPDKIKX0DER]#1.value": "New",
+        "list_price[marketplace_id=ATVPDKIKX0DER]#1.value": 10.99,
+        "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax": 10.99,
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.value": 11.81,
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.length.unit": "Inches",
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.value": 5.91,
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.width.unit": "Inches",
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.value": 0.79,
+        "item_package_dimensions[marketplace_id=ATVPDKIKX0DER]#1.height.unit": "Inches",
+        "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.value": 0.16,
+        "item_package_weight[marketplace_id=ATVPDKIKX0DER]#1.unit": "Kilograms",
+        "country_of_origin[marketplace_id=ATVPDKIKX0DER]#1.value": "China",
+        "batteries_required[marketplace_id=ATVPDKIKX0DER]#1.value": "No",
+        "outer[marketplace_id=ATVPDKIKX0DER]#1.material[language_tag=en_US]#1.value": "Mesh"
+      }
+    }
+  },
+  "generation_status": "50份V1和50行总表已生成，项目自检通过，已完成WPS复核",
+  "link_materials": "用户确认直接按两组参考资料新建50个独立链接",
+  "sku_status": "按用户指定格式确定",
+  "reference_template": "data/distribution_workbench/files/distribution-cccady-shoes-2026-11-10/source_template/SHOES-潜水溯溪沙滩游泳(1).xlsm",
+  "sku_format": "TTCA-QS023-42-01（两款分别QS023/QS024，序号01至50）",
+  "sku_size_note": "实际尺码42/43，SKU尺码段按用户指定写42",
+  "skus": [
+    {
+      "链接序号": 1,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-01"
+    },
+    {
+      "链接序号": 2,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-02"
+    },
+    {
+      "链接序号": 3,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-03"
+    },
+    {
+      "链接序号": 4,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-04"
+    },
+    {
+      "链接序号": 5,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-05"
+    },
+    {
+      "链接序号": 6,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-06"
+    },
+    {
+      "链接序号": 7,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-07"
+    },
+    {
+      "链接序号": 8,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-08"
+    },
+    {
+      "链接序号": 9,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-09"
+    },
+    {
+      "链接序号": 10,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-10"
+    },
+    {
+      "链接序号": 11,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-11"
+    },
+    {
+      "链接序号": 12,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-12"
+    },
+    {
+      "链接序号": 13,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-13"
+    },
+    {
+      "链接序号": 14,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-14"
+    },
+    {
+      "链接序号": 15,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-15"
+    },
+    {
+      "链接序号": 16,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-16"
+    },
+    {
+      "链接序号": 17,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-17"
+    },
+    {
+      "链接序号": 18,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-18"
+    },
+    {
+      "链接序号": 19,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-19"
+    },
+    {
+      "链接序号": 20,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-20"
+    },
+    {
+      "链接序号": 21,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-21"
+    },
+    {
+      "链接序号": 22,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-22"
+    },
+    {
+      "链接序号": 23,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-23"
+    },
+    {
+      "链接序号": 24,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-24"
+    },
+    {
+      "链接序号": 25,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-25"
+    },
+    {
+      "链接序号": 26,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-26"
+    },
+    {
+      "链接序号": 27,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-27"
+    },
+    {
+      "链接序号": 28,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-28"
+    },
+    {
+      "链接序号": 29,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-29"
+    },
+    {
+      "链接序号": 30,
+      "款式": "第一款",
+      "参考SKU": "QS-023-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS023-42-30"
+    },
+    {
+      "链接序号": 31,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-31"
+    },
+    {
+      "链接序号": 32,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-32"
+    },
+    {
+      "链接序号": 33,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-33"
+    },
+    {
+      "链接序号": 34,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-34"
+    },
+    {
+      "链接序号": 35,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-35"
+    },
+    {
+      "链接序号": 36,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-36"
+    },
+    {
+      "链接序号": 37,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-37"
+    },
+    {
+      "链接序号": 38,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-38"
+    },
+    {
+      "链接序号": 39,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-39"
+    },
+    {
+      "链接序号": 40,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-40"
+    },
+    {
+      "链接序号": 41,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-41"
+    },
+    {
+      "链接序号": 42,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-42"
+    },
+    {
+      "链接序号": 43,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-43"
+    },
+    {
+      "链接序号": 44,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-44"
+    },
+    {
+      "链接序号": 45,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-45"
+    },
+    {
+      "链接序号": 46,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-46"
+    },
+    {
+      "链接序号": 47,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-47"
+    },
+    {
+      "链接序号": 48,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-48"
+    },
+    {
+      "链接序号": 49,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-49"
+    },
+    {
+      "链接序号": 50,
+      "款式": "第二款",
+      "参考SKU": "QS-024-42/43",
+      "实际尺码": "42/43",
+      "SKU": "TTCA-QS024-42-50"
+    }
+  ],
+  "source_template": "data/distribution_workbench/files/distribution-cccady-shoes-2026-11-10/source_template/SHOES.xlsm",
+  "source_template_sha256": "bf6572ef353734b70fc90756dfe7ad0e50a705ddb2075b5203e29ca49ef4b2bc",
+  "generated_at": "2026-11-10T17:57:18+08:00",
+  "combined_output": "data/distribution_workbench/files/distribution-cccady-shoes-2026-11-10/outputs/溯溪游泳鞋50链接V1.xlsm",
+  "individual_outputs_zip": "data/distribution_workbench/files/distribution-cccady-shoes-2026-11-10/outputs/溯溪游泳鞋50份单链接V1.zip",
+  "checks": {
+    "project_validator_errors": 0,
+    "required_fields": 0,
+    "invalid_enums": 0,
+    "red_field_findings": 0,
+    "unresolved_formulas": 0,
+    "wps_opened": true,
+    "representative_rows": [
+      7,
+      37
+    ],
+    "image_fields_blank": true,
+    "unique_skus": 50
+  },
+  "material_note": "原文存在Rubber与结构化EVA冲突，鞋底材质沿用参考行结构化Ethylene Vinyl Acetate，文案不写鞋底材质宣称。"
+}

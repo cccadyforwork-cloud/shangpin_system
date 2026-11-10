@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-11-10T04:50:14+08:00",
+  "updated_at": "2026-11-10T20:46:26+08:00",
   "batches": [
     {
       "id": "2026-11-05_2店退货翻新（SP+KCC）",
@@ -17,17 +17,22 @@
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-2/source_template/CADDY_STORAGE_DRAWER.xlsm",
           "reference_template": "",
-          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-2/output_file/收纳茶包盒透明款V1_20261110_025106.xlsx",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-2/output_file/收纳茶包盒透明款V2.xlsx",
           "output_versions": [
             {
               "version": 1,
               "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-2/output_file/收纳茶包盒透明款V1_20261110_025106.xlsx",
               "added_at": "2026-11-10T02:51:06+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-2/output_file/收纳茶包盒透明款V2.xlsx",
+              "added_at": "2026-11-10T17:26:46+08:00"
             }
           ],
           "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：SP-shounafenge-tou；数量：4；配送费：2.6；来源：SP退货翻新的1.xlsx / SP 第2行；V1已更新并通过模板自检与红框扫描；售价暂定 2.99 USD；配送费档位 $2.60（8–12 oz）；包装按档位默认 7.09 × 4.72 × 1.97 in、0.66 lb，非实测。",
+          "note": "原SKU：SP-shounafenge-tou；数量：4；配送费：2.6；来源：SP退货翻新的1.xlsx / SP 第2行；V1已更新并通过模板自检与红框扫描；售价暂定 2.99 USD；配送费档位 $2.60（8–12 oz）；包装按档位默认 7.09 × 4.72 × 1.97 in、0.66 lb，非实测。\n2026-11-10 V2 定价复核：按用户新提供 SP/KCC 成本表，成本人民币、配送费美元。沿用定价工作台默认30%目标毛利、汇率7.2、佣金15%、头程USD0.40；售价>USD3时退货率5%，否则0%；弃置费0，向上取整至美分。配送费使用新表显式数值。CA-TeaOrganizer-Clear：成本 CNY 4.20、配送费 USD 2.60 → 售价 USD 7.08。子体 List Price 与 Haul/BZR Price 同步；父体价格留空。V1保留，普通后续版本全部已有SKU Action=Edit (Partial Update)。模板自检0、动态红框0、未解析公式0。成本原件和计算明细归档：data/refurb_batch_workbench/source_sheets/20261110_定价复核。",
           "store_id": "2店",
           "source_msku": "SP-shounafenge-tou",
           "source_quantity": 4,
@@ -54,17 +59,22 @@
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-3/source_template/PASTA_MAKER.xlsm",
           "reference_template": "",
-          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-3/output_file/包饺子工具红色V1_20261110_025107.xlsx",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-3/output_file/包饺子工具红色V2.xlsx",
           "output_versions": [
             {
               "version": 1,
               "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-3/output_file/包饺子工具红色V1_20261110_025107.xlsx",
               "added_at": "2026-11-10T02:51:07+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-3/output_file/包饺子工具红色V2.xlsx",
+              "added_at": "2026-11-10T17:26:46+08:00"
             }
           ],
           "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：SP-baojiaozi-1；数量：3；配送费：1.77；来源：SP退货翻新的1.xlsx / SP 第3行；V1已更新并通过模板自检与红框扫描；售价暂定 2.99 USD；配送费档位 $1.77（4–8 oz）；包装按档位默认 5.91 × 3.94 × 1.57 in、0.44 lb，非实测。",
+          "note": "原SKU：SP-baojiaozi-1；数量：3；配送费：1.77；来源：SP退货翻新的1.xlsx / SP 第3行；V1已更新并通过模板自检与红框扫描；售价暂定 2.99 USD；配送费档位 $1.77（4–8 oz）；包装按档位默认 5.91 × 3.94 × 1.57 in、0.44 lb，非实测。\n2026-11-10 V2 定价复核：按用户新提供 SP/KCC 成本表，成本人民币、配送费美元。沿用定价工作台默认30%目标毛利、汇率7.2、佣金15%、头程USD0.40；售价>USD3时退货率5%，否则0%；弃置费0，向上取整至美分。配送费使用新表显式数值。CA-DumplingMaker-Red：成本 CNY 1.72、配送费 USD 1.77 → 售价 USD 4.76。子体 List Price 与 Haul/BZR Price 同步；父体价格留空。V1保留，普通后续版本全部已有SKU Action=Edit (Partial Update)。模板自检0、动态红框0、未解析公式0。成本原件和计算明细归档：data/refurb_batch_workbench/source_sheets/20261110_定价复核。",
           "store_id": "2店",
           "source_msku": "SP-baojiaozi-1",
           "source_quantity": 3,
@@ -91,17 +101,22 @@
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-4/source_template/COOKIE_CUTTER.xlsm",
           "reference_template": "",
-          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-4/output_file/曲奇饼干模具橙色花形V1_20261110_025109.xlsx",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-4/output_file/曲奇饼干模具橙色花形V2.xlsx",
           "output_versions": [
             {
               "version": 1,
               "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-4/output_file/曲奇饼干模具橙色花形V1_20261110_025109.xlsx",
               "added_at": "2026-11-10T02:51:09+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-4/output_file/曲奇饼干模具橙色花形V2.xlsx",
+              "added_at": "2026-11-10T17:26:46+08:00"
             }
           ],
           "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：SP-quqimuju-2；数量：4；配送费：0.88；来源：SP退货翻新的1.xlsx / SP 第4行；V1已更新并通过模板自检与红框扫描；售价暂定 2.99 USD；因售价不超过 $3，当前按 $0.50（≤4 oz）档；包装默认 3.94 × 3.94 × 0.79 in、0.22 lb，非实测。原表 $0.88 为售价高于 $3 时的档位。",
+          "note": "原SKU：SP-quqimuju-2；数量：4；配送费：0.88；来源：SP退货翻新的1.xlsx / SP 第4行；V1已更新并通过模板自检与红框扫描；售价暂定 2.99 USD；因售价不超过 $3，当前按 $0.50（≤4 oz）档；包装默认 3.94 × 3.94 × 0.79 in、0.22 lb，非实测。原表 $0.88 为售价高于 $3 时的档位。\n2026-11-10 V2 定价复核：按用户新提供 SP/KCC 成本表，成本人民币、配送费美元。沿用定价工作台默认30%目标毛利、汇率7.2、佣金15%、头程USD0.40；售价>USD3时退货率5%，否则0%；弃置费0，向上取整至美分。配送费使用新表显式数值。CA-CookieCutter-Orange：成本 CNY 3.10、配送费 USD 0.88 → 售价 USD 3.38。子体 List Price 与 Haul/BZR Price 同步；父体价格留空。V1保留，普通后续版本全部已有SKU Action=Edit (Partial Update)。模板自检0、动态红框0、未解析公式0。成本原件和计算明细归档：data/refurb_batch_workbench/source_sheets/20261110_定价复核。",
           "store_id": "2店",
           "source_msku": "SP-quqimuju-2",
           "source_quantity": 4,
@@ -236,17 +251,22 @@
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-6/source_template/SPOON.xlsm",
           "reference_template": "",
-          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-6/output_file/勺子五款合并V1_20261110_025549.xlsx",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-6/output_file/勺子五款合并V2.xlsx",
           "output_versions": [
             {
               "version": 1,
               "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-6/output_file/勺子五款合并V1_20261110_025549.xlsx",
               "added_at": "2026-11-10T02:55:49+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-6/output_file/勺子五款合并V2.xlsx",
+              "added_at": "2026-11-10T17:26:47+08:00"
             }
           ],
           "status": "待复核",
           "purchase_status": "",
-          "note": "5款勺子合并；SP-06-01 数量19；SP-07-01 数量22；SP-08-01 数量29；SP-09-01 数量30；SP-10-01 数量7；配送费均为0.5；来源：SP退货翻新的1.xlsx / SP 第6-10行；V1已更新并通过模板自检与红框扫描；售价均暂定 2.99 USD；配送费档位均为 $0.50（≤4 oz 且售价不超过 $3）；父体 SKU CA-Spoon；子体 SKU 使用 Sakura、Rose、Daisy、Heart、WoodHandle 简写；Set Name 前台展示名为 Sakura Flower、Rose Flower、Daisy Flower、Heart Shape、Wood Handle Set；包装默认 3.94 × 3.94 × 0.79 in、0.22 lb，非实测。",
+          "note": "5款勺子合并；SP-06-01 数量19；SP-07-01 数量22；SP-08-01 数量29；SP-09-01 数量30；SP-10-01 数量7；配送费均为0.5；来源：SP退货翻新的1.xlsx / SP 第6-10行；V1已更新并通过模板自检与红框扫描；售价均暂定 2.99 USD；配送费档位均为 $0.50（≤4 oz 且售价不超过 $3）；父体 SKU CA-Spoon；子体 SKU 使用 Sakura、Rose、Daisy、Heart、WoodHandle 简写；Set Name 前台展示名为 Sakura Flower、Rose Flower、Daisy Flower、Heart Shape、Wood Handle Set；包装默认 3.94 × 3.94 × 0.79 in、0.22 lb，非实测。\n2026-11-10 V2 定价复核：按用户新提供 SP/KCC 成本表，成本人民币、配送费美元。沿用定价工作台默认30%目标毛利、汇率7.2、佣金15%、头程USD0.40；售价>USD3时退货率5%，否则0%；弃置费0，向上取整至美分。配送费使用新表显式数值。CA-Spoon-Sakura-2P：成本 CNY 0.57、配送费 USD 0.50 → 售价 USD 1.79；CA-Spoon-Rose-2P：成本 CNY 0.57、配送费 USD 0.50 → 售价 USD 1.79；CA-Spoon-Daisy-2P：成本 CNY 0.57、配送费 USD 0.50 → 售价 USD 1.79；CA-Spoon-Heart-2P：成本 CNY 0.57、配送费 USD 0.50 → 售价 USD 1.79；CA-Spoon-WoodHandle-3P：成本 CNY 3.05、配送费 USD 0.50 → 售价 USD 2.41。子体 List Price 与 Haul/BZR Price 同步；父体价格留空。V1保留，普通后续版本全部已有SKU Action=Edit (Partial Update)。模板自检0、动态红框0、未解析公式0。成本原件和计算明细归档：data/refurb_batch_workbench/source_sheets/20261110_定价复核。",
           "store_id": "2店",
           "source_msku": "SP-06-01 / SP-07-01 / SP-08-01 / SP-09-01 / SP-10-01",
           "source_quantity": 107,
@@ -334,13 +354,19 @@
           "link": "https://a.co/d/07iA16OD",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-12/source_template/WASTE_BAG.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-12/output_file/宠物拾便袋绿色8卷装V1.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-12/output_file/宠物拾便袋绿色8卷装V1.xlsx",
+              "added_at": "2026-11-10T18:03:09+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：SP-shibian8c-01；数量：5；配送费：2.6；来源：SP退货翻新的1.xlsx / SP 第12行",
+          "note": "原SKU：SP-shibian8c-01；数量：5；配送费：2.6；来源：SP退货翻新的1.xlsx / SP 第12行\n2026-11-10 生成V1：参照原商品链接及用户新上传原始模板填写，图片字段留空。实际选款为绿色8卷装，用户已明确确认无香，Scent=Unscented；未沿用原网页矛盾的薰衣草香属性或厚度宣称。父体SKU CA-WasteBags。CA-WasteBags-Green-8P：成本人民币 5.68、配送费美元 2.60、售价美元 7.49。沿用已确认定价：30%目标毛利，汇率7.2、佣金15%、头程USD0.40、售价超过USD3按5%退货、弃置费0，向上取整到美分；配送费按用户SP/KCC表。包装件重尺采用当前配送档位默认值，非实测。全部为新SKU，父子体均Create or Replace (Full Update)。模板自检0、动态红框0、未解析公式0，已用WPS打开复核；尚未提交Amazon。",
           "store_id": "2店",
           "source_msku": "SP-shibian8c-01",
           "source_quantity": 5,
@@ -367,17 +393,22 @@
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H6FSY7JW/source_template/HAIR_BRUSH.xlsm",
           "reference_template": "",
-          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H6FSY7JW/output_file/便携胡须刷棕色V1_20261110_025112.xlsx",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H6FSY7JW/output_file/便携胡须刷棕色V2.xlsx",
           "output_versions": [
             {
               "version": 1,
               "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H6FSY7JW/output_file/便携胡须刷棕色V1_20261110_025112.xlsx",
               "added_at": "2026-11-10T02:51:12+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H6FSY7JW/output_file/便携胡须刷棕色V2.xlsx",
+              "added_at": "2026-11-10T17:26:47+08:00"
             }
           ],
           "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-AMS-1；数量：10；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第2行；V1已更新并通过模板自检与红框扫描；原链接实际商品为棕色便携胡须刷；售价暂定 2.99 USD；配送费档位 $0.50（≤4 oz 且售价不超过 $3）；包装默认 3.94 × 3.94 × 0.79 in、0.22 lb，非实测。",
+          "note": "原SKU：KCC-AMS-1；数量：10；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第2行；V1已更新并通过模板自检与红框扫描；原链接实际商品为棕色便携胡须刷；售价暂定 2.99 USD；配送费档位 $0.50（≤4 oz 且售价不超过 $3）；包装默认 3.94 × 3.94 × 0.79 in、0.22 lb，非实测。\n2026-11-10 V2 定价复核：按用户新提供 SP/KCC 成本表，成本人民币、配送费美元。沿用定价工作台默认30%目标毛利、汇率7.2、佣金15%、头程USD0.40；售价>USD3时退货率5%，否则0%；弃置费0，向上取整至美分。配送费使用新表显式数值。CA-BeardBrush-Brown：成本 CNY 3.00、配送费 USD 0.50 → 售价 USD 2.40。子体 List Price 与 Haul/BZR Price 同步；父体价格留空。V1保留，普通后续版本全部已有SKU Action=Edit (Partial Update)。模板自检0、动态红框0、未解析公式0。成本原件和计算明细归档：data/refurb_batch_workbench/source_sheets/20261110_定价复核。",
           "store_id": "2店",
           "source_msku": "KCC-AMS-1",
           "source_quantity": 10,
@@ -402,13 +433,24 @@
           "link": "https://www.amazon.com/dp/B0HB48JQCY?ie=UTF8&ASIN=B0HB48JQCY&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HB48JQCY/source_template/PAPER_CLIP_CLAMP_DECORATIVE_MAGNET.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HB48JQCY/output_file/冰箱贴夹混色5件装V2.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HB48JQCY/output_file/冰箱贴夹混色5件装V1.xlsx",
+              "added_at": "2026-11-10T18:03:09+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HB48JQCY/output_file/冰箱贴夹混色5件装V2.xlsx",
+              "added_at": "2026-11-10T18:20:08+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-BXTJ-5；数量：6；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第3行",
+          "note": "原SKU：KCC-BXTJ-5；数量：6；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第3行\n2026-11-10 生成V1：参照原商品链接及用户新上传原始模板填写，图片字段留空。混色5件装，选择DECORATIVE_MAGNET / refrigerator-magnets；塑料主体，必填Fabric Type按非织物主体说明。PAPER_CLIP_CLAMP专属尺寸字段留空，2.95×1.18in保留在Size和文案。父体SKU CA-FridgeClips。CA-FridgeClips-Multicolor-5P：成本人民币 3.40、配送费美元 0.50、售价美元 2.50。沿用已确认定价：30%目标毛利，汇率7.2、佣金15%、头程USD0.40、售价超过USD3按5%退货、弃置费0，向上取整到美分；配送费按用户SP/KCC表。包装件重尺采用当前配送档位默认值，非实测。全部为新SKU，父子体均Create or Replace (Full Update)。模板自检0、动态红框0、未解析公式0，已用WPS打开复核；尚未提交Amazon。\n2026-11-10 V2 SKU调整：按用户要求删除SKU中的Multicolor及100P标记；CA-FridgeClips-Multicolor-5P → CA-FridgeClips-5P。SKU和以SKU为值的Model Number/Model Name/Part Number同步修改，父体SKU保持原值；普通后续版按紧邻V1比较：已存在父体Edit，改名子体为新增Create or Replace。售价、配送费、商品颜色、实际装数和其他商品字段保持V1值。模板自检0、动态红框0、未解析公式0。",
           "store_id": "2店",
           "source_msku": "KCC-BXTJ-5",
           "source_quantity": 6,
@@ -433,13 +475,24 @@
           "link": "https://www.amazon.com/dp/B0HF4DDD5Y?ie=UTF8&ASIN=B0HF4DDD5Y&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF4DDD5Y/source_template/PAPER_CLIP_CLAMP_HARDWARE_CLAMP_VISE.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF4DDD5Y/output_file/彩色衣服夹混色12件装V2.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF4DDD5Y/output_file/彩色衣服夹混色12件装V1.xlsx",
+              "added_at": "2026-11-10T18:03:09+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF4DDD5Y/output_file/彩色衣服夹混色12件装V2.xlsx",
+              "added_at": "2026-11-10T18:20:08+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-CCYFJ-12；数量：7；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第4行",
+          "note": "原SKU：KCC-CCYFJ-12；数量：7；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第4行\n2026-11-10 生成V1：参照原商品链接及用户新上传原始模板填写，图片字段留空。混色12件装，按所供模板选择HARDWARE_CLAMP_VISE / spring-clamps，依据实际弹簧夹结构；材质为塑料主体和不锈钢弹簧。父体SKU CA-ClothesClips。CA-ClothesClips-Multicolor-12P：成本人民币 1.60、配送费美元 0.50、售价美元 2.05。沿用已确认定价：30%目标毛利，汇率7.2、佣金15%、头程USD0.40、售价超过USD3按5%退货、弃置费0，向上取整到美分；配送费按用户SP/KCC表。包装件重尺采用当前配送档位默认值，非实测。全部为新SKU，父子体均Create or Replace (Full Update)。模板自检0、动态红框0、未解析公式0，已用WPS打开复核；尚未提交Amazon。\n2026-11-10 V2 SKU调整：按用户要求删除SKU中的Multicolor及100P标记；CA-ClothesClips-Multicolor-12P → CA-ClothesClips-12P。SKU和以SKU为值的Model Number/Model Name/Part Number同步修改，父体SKU保持原值；普通后续版按紧邻V1比较：已存在父体Edit，改名子体为新增Create or Replace。售价、配送费、商品颜色、实际装数和其他商品字段保持V1值。模板自检0、动态红框0、未解析公式0。",
           "store_id": "2店",
           "source_msku": "KCC-CCYFJ-12",
           "source_quantity": 7,
@@ -464,13 +517,19 @@
           "link": "https://www.amazon.com/dp/B0HF7Y5XX8?ie=UTF8&ASIN=B0HF7Y5XX8&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF7Y5XX8/source_template/STORAGE_BOX.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF7Y5XX8/output_file/帽子收纳盒黑色V1.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HF7Y5XX8/output_file/帽子收纳盒黑色V1.xlsx",
+              "added_at": "2026-11-10T18:03:09+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-MZSN-HEI；数量：10；配送费：3.22；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第5行",
+          "note": "原SKU：KCC-MZSN-HEI；数量：10；配送费：3.22；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第5行\n2026-11-10 生成V1：参照原商品链接及用户新上传原始模板填写，图片字段留空。黑色单只圆形帽盒，选择STORAGE_BOX / hat-boxes；非织造布和PVC。商品本体直径16.54in、高10.43in、净重0.79lb来自原链接规格图；与折叠包装尺寸区分。父体SKU CA-HatBox。CA-HatBox-Black：成本人民币 4.75、配送费美元 3.22、售价美元 8.46。沿用已确认定价：30%目标毛利，汇率7.2、佣金15%、头程USD0.40、售价超过USD3按5%退货、弃置费0，向上取整到美分；配送费按用户SP/KCC表。包装件重尺采用当前配送档位默认值，非实测。全部为新SKU，父子体均Create or Replace (Full Update)。模板自检0、动态红框0、未解析公式0，已用WPS打开复核；尚未提交Amazon。",
           "store_id": "2店",
           "source_msku": "KCC-MZSN-HEI",
           "source_quantity": 10,
@@ -504,13 +563,24 @@
             }
           ],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HCN943ZX/source_template/CABLE_TIE.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HCN943ZX/output_file/扎带黑色150毫米200毫米100条装V2.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HCN943ZX/output_file/扎带黑色150毫米200毫米100条装V1.xlsx",
+              "added_at": "2026-11-10T18:03:09+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0HCN943ZX/output_file/扎带黑色150毫米200毫米100条装V2.xlsx",
+              "added_at": "2026-11-10T18:20:08+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "同一原商品父ASIN B0HCN7WLWB；KCC-ZD1-150 扎带 数量10 配送费0.5 链接https://www.amazon.com/dp/B0HCN943ZX?ie=UTF8&ASIN=B0HCN943ZX&s=bazaar；KCC-ZD1-200 扎带 数量10 配送费0.5 链接https://www.amazon.com/dp/B0HCMPVGDY?ie=UTF8&ASIN=B0HCMPVGDY&s=bazaar",
+          "note": "同一原商品父ASIN B0HCN7WLWB；KCC-ZD1-150 扎带 数量10 配送费0.5 链接https://www.amazon.com/dp/B0HCN943ZX?ie=UTF8&ASIN=B0HCN943ZX&s=bazaar；KCC-ZD1-200 扎带 数量10 配送费0.5 链接https://www.amazon.com/dp/B0HCMPVGDY?ie=UTF8&ASIN=B0HCMPVGDY&s=bazaar\n2026-11-10 生成V1：参照原商品链接及用户新上传原始模板填写，图片字段留空。同一份SIZE父子体包含黑色150mm/200mm两款，模板前台长度5.91/7.87 Inches，均为100条装、Nylon；Power Source使用有效值hand_powered。父体SKU CA-CableTies。CA-CableTies-Black-150mm-100P：成本人民币 0.97、配送费美元 0.50、售价美元 1.89；CA-CableTies-Black-200mm-100P：成本人民币 1.83、配送费美元 0.50、售价美元 2.10。沿用已确认定价：30%目标毛利，汇率7.2、佣金15%、头程USD0.40、售价超过USD3按5%退货、弃置费0，向上取整到美分；配送费按用户SP/KCC表。包装件重尺采用当前配送档位默认值，非实测。全部为新SKU，父子体均Create or Replace (Full Update)。模板自检0、动态红框0、未解析公式0，已用WPS打开复核；尚未提交Amazon。\n2026-11-10 V2 SKU调整：按用户要求删除SKU中的Multicolor及100P标记；CA-CableTies-Black-150mm-100P → CA-CableTies-Black-150mm；CA-CableTies-Black-200mm-100P → CA-CableTies-Black-200mm。SKU和以SKU为值的Model Number/Model Name/Part Number同步修改，父体SKU保持原值；普通后续版按紧邻V1比较：已存在父体Edit，改名子体为新增Create or Replace。售价、配送费、商品颜色、实际装数和其他商品字段保持V1值。模板自检0、动态红框0、未解析公式0。",
           "store_id": "2店",
           "source_msku": "KCC-ZD1-150 / KCC-ZD1-200",
           "source_quantity": 20,
@@ -544,13 +614,19 @@
           "link": "https://www.amazon.com/dp/B0H2M4BQ1N?ie=UTF8&ASIN=B0H2M4BQ1N&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H2M4BQ1N/source_template/CLEANING_BRUSH.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H2M4BQ1N/output_file/四合一缝隙刷绿色V1.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H2M4BQ1N/output_file/四合一缝隙刷绿色V1.xlsx",
+              "added_at": "2026-11-10T20:46:26+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-4H1QJSZ-1；数量：5；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第8行",
+          "note": "原SKU：KCC-4H1QJSZ-1；数量：5；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第8行\n2026-11-10：以库存货物为准，ASIN页面只作参考；仅重建有提供ASIN或参考链接的库存SKU，不增加页面其他款式。SKU名称已获用户确认。KCC-4H1QJSZ-1 → CA-GapBrush-Green，参考ASIN B0H2M4BQ1N，成本人民币3.60、配送费美元0.50、售价美元2.55。图片及参考ASIN不写入上传表。【待补资料，不登记正式输出】商品净重未提供，用户确认目前没有，保留空值。 已填草稿保存在outputs/20261110_refurb_batch3/待补资料/四合一缝隙刷绿色V1.xlsx。\n2026-11-10 补齐V1：用户明确确认商品净重20g，Item Weight=20 / Grams。原父体CA-GapBrush、子体CA-GapBrush-Green及售价USD2.55、配送费USD0.50不变。此前待补净重已解决。包装按已知刷体尺寸调整为暂定16×8×10cm包络，包装重仍为默认0.22lb，均非实测。首次正式输出，父子均Create or Replace (Full Update)。模板自检0、动态红框0、未解析公式0，已用WPS实际打开Template复核；尚未提交Amazon。",
           "store_id": "2店",
           "source_msku": "KCC-4H1QJSZ-1",
           "source_quantity": 5,
@@ -575,13 +651,13 @@
           "link": "https://www.amazon.com/dp/B0H2HBWW7R?ie=UTF8&ASIN=B0H2HBWW7R&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H2HBWW7R/source_template/BRACELET.xlsm",
           "reference_template": "",
           "output_file": "",
           "output_versions": [],
           "status": "待处理",
           "purchase_status": "",
-          "note": "原SKU：KCC-FD6872SL-1；数量：5；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第9行",
+          "note": "原SKU：KCC-FD6872SL-1；数量：5；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第9行\n2026-11-10：以库存货物为准，ASIN页面只作参考；仅重建有提供ASIN或参考链接的库存SKU，不增加页面其他款式。SKU名称已获用户确认。KCC-FD6872SL-1 → CA-BeadBracelet-6mm，参考ASIN B0H2HBWW7R，成本人民币2.90、配送费美元0.50、售价美元2.37。图片及参考ASIN不写入上传表。【待补资料，不登记正式输出】商品净重和外廓长宽高未提供；仅已知周长19cm、珠径6mm。参考图文对宝石种类、扣型及处理属性存在冲突，相关动态必填项未冒填。 已填草稿保存在outputs/20261110_refurb_batch3/待补资料/石珠弹力手链6毫米V1.xlsx。\n2026-11-10 更新待补草稿：用户要求按原链接资料填写。采用链接标题Agate/Natural，图片混色圆珠与6mm珠径、19cm周长，页面属性Bolo扣型、Bead Chain链型、Casual、Adult。页面另写Imitation pearl和White、图片写Jasper，冲突及采用依据已记录，未视为实物核验。链接未提供商品净重、整体外廓长宽高、宝石处理方式、净度和切工等级，继续留空。未改变已确认SKU及售价USD2.37，未登记正式输出、未提交Amazon。最新草稿：outputs/20261110_refurb_supplement/待补资料/石珠弹力手链6毫米V1.xlsx。",
           "store_id": "2店",
           "source_msku": "KCC-FD6872SL-1",
           "source_quantity": 5,
@@ -606,13 +682,19 @@
           "link": "https://www.amazon.com/dp/B0GY8VM6JW?ie=UTF8&ASIN=B0GY8VM6JW&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GY8VM6JW/source_template/PET_APPAREL.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GY8VM6JW/output_file/狗背心蓝色M码V1.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GY8VM6JW/output_file/狗背心蓝色M码V1.xlsx",
+              "added_at": "2026-11-10T19:52:52+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-XGYF-M；数量：8；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第10行",
+          "note": "原SKU：KCC-XGYF-M；数量：8；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第10行\n2026-11-10：以库存货物为准，ASIN页面只作参考；仅重建有提供ASIN或参考链接的库存SKU，不增加页面其他款式。SKU名称已获用户确认。KCC-XGYF-M → CA-DogVest-Blue-M，参考ASIN B0GY8VM6JW，成本人民币6.65、配送费美元0.50、售价美元3.61。图片及参考ASIN不写入上传表。字段校验0、动态红框0、未解析公式0，已用WPS实际打开Template复核。父子体首次新建，全部Create or Replace (Full Update)。仅登记本地输出，尚未提交Amazon。 用户确认M码，模板Medium；100% Polyester为用户授权常见面料暂定值，未实物标签核验。",
           "store_id": "2店",
           "source_msku": "KCC-XGYF-M",
           "source_quantity": 8,
@@ -637,13 +719,19 @@
           "link": "https://www.amazon.com/dp/B0GVNR46S6?ie=UTF8&ASIN=B0GVNR46S6&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GVNR46S6/source_template/FOOTWEAR_CARE_KIT.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GVNR46S6/output_file/鞋拔子混色套装V1.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0GVNR46S6/output_file/鞋拔子混色套装V1.xlsx",
+              "added_at": "2026-11-10T20:16:19+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-xieba-5se；数量：8；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第11行",
+          "note": "原SKU：KCC-xieba-5se；数量：8；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第11行\n2026-11-10 V1：按库存原SKU KCC-xieba-5se，参考ASIN B0GVNR46S6，仅建立一套库存混色鞋拔子，不扩展页面其他款式。用户要求SKU不标色数，父体CA-Shoehorn，子体CA-Shoehorn-Set，供上传前最终查看。5se不误读成支数，参考页6支未视为库存已确认数，文案及计数按1套，不宣称每套支数。成本人民币3.02、配送费美元0.50、售价美元2.40，沿用已确认30%毛利、汇率7.2、佣金15%、头程USD0.40、退货阶梯及向上取整规则。按用户FOOTWEAR_CARE_KIT模板 / shoe-care-kits填写，材质Plastic、Department=Unisex、Age Range=Adult。包装尺重为配送档位默认值，非实测。父子均Create or Replace (Full Update)。模板自检0、动态红框0、未解析公式0，已用WPS实际打开Template页复核。尚未提交Amazon。",
           "store_id": "2店",
           "source_msku": "KCC-xieba-5se",
           "source_quantity": 8,
@@ -668,13 +756,19 @@
           "link": "https://www.amazon.com/dp/B0H3TW3M4Z?ie=UTF8&ASIN=B0H3TW3M4Z&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H3TW3M4Z/source_template/ICE_CUBE_TRAY.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H3TW3M4Z/output_file/圆柱冰模蓝色V1.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H3TW3M4Z/output_file/圆柱冰模蓝色V1.xlsx",
+              "added_at": "2026-11-10T19:52:52+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-YZBKMJ-LAN；数量：7；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第12行",
+          "note": "原SKU：KCC-YZBKMJ-LAN；数量：7；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第12行\n2026-11-10：以库存货物为准，ASIN页面只作参考；仅重建有提供ASIN或参考链接的库存SKU，不增加页面其他款式。SKU名称已获用户确认。KCC-YZBKMJ-LAN → CA-IceMold-Blue，参考ASIN B0H3TW3M4Z，成本人民币1.50、配送费美元0.50、售价美元2.02。图片及参考ASIN不写入上传表。字段校验0、动态红框0、未解析公式0，已用WPS实际打开Template复核。父子体首次新建，全部Create or Replace (Full Update)。仅登记本地输出，尚未提交Amazon。 根据库存圆柱冰模及照片改用原始ICE_CUBE_TRAY / ice-cube-molds模板；用户原ITEM_CONTAINER模板原样保留。图示高3.54in、直径3.15in、净重0.13lb。包装包络暂定10×10×10cm，非实测。",
           "store_id": "2店",
           "source_msku": "KCC-YZBKMJ-LAN",
           "source_quantity": 7,
@@ -743,13 +837,24 @@
             }
           ],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H4F7RWSK/source_template/PET_FEEDER.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H4F7RWSK/output_file/折叠宠物碗蓝白蓝黑蓝绿2件装V2.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H4F7RWSK/output_file/折叠宠物碗蓝白蓝黑蓝绿2件装V1.xlsx",
+              "added_at": "2026-11-10T19:52:52+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H4F7RWSK/output_file/折叠宠物碗蓝白蓝黑蓝绿2件装V2.xlsx",
+              "added_at": "2026-11-10T20:16:18+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "同一原商品父ASIN B0H4F96LGP；KCC-ZDCWW-LANBAI 折叠宠物碗蓝白 数量5 配送费0.5 链接https://www.amazon.com/dp/B0H4F7RWSK?ie=UTF8&ASIN=B0H4F7RWSK&s=bazaar；KCC-ZDCWW-LANHEI 折叠宠物碗蓝黑 数量5 配送费0.5 链接https://www.amazon.com/dp/B0H4F4BVQD?ie=UTF8&ASIN=B0H4F4BVQD&s=bazaar；KCC-ZDCWW-LANLV 折叠宠物碗蓝绿 数量5 配送费0.5 链接https://www.amazon.com/dp/B0H4FD3WWP?ie=UTF8&ASIN=B0H4FD3WWP&s=bazaar",
+          "note": "同一原商品父ASIN B0H4F96LGP；KCC-ZDCWW-LANBAI 折叠宠物碗蓝白 数量5 配送费0.5 链接https://www.amazon.com/dp/B0H4F7RWSK?ie=UTF8&ASIN=B0H4F7RWSK&s=bazaar；KCC-ZDCWW-LANHEI 折叠宠物碗蓝黑 数量5 配送费0.5 链接https://www.amazon.com/dp/B0H4F4BVQD?ie=UTF8&ASIN=B0H4F4BVQD&s=bazaar；KCC-ZDCWW-LANLV 折叠宠物碗蓝绿 数量5 配送费0.5 链接https://www.amazon.com/dp/B0H4FD3WWP?ie=UTF8&ASIN=B0H4FD3WWP&s=bazaar\n2026-11-10：以库存货物为准，ASIN页面只作参考；仅重建有提供ASIN或参考链接的库存SKU，不增加页面其他款式。SKU名称已获用户确认。KCC-ZDCWW-LANBAI → CA-PetBowls-BlueWhite-2P，参考ASIN B0H4F7RWSK，成本人民币3.66、配送费美元0.50、售价美元2.57；KCC-ZDCWW-LANHEI → CA-PetBowls-BlueBlack-2P，参考ASIN B0H4F4BVQD，成本人民币3.66、配送费美元0.50、售价美元2.57；KCC-ZDCWW-LANLV → CA-PetBowls-BlueGreen-2P，参考ASIN B0H4FD3WWP，成本人民币3.66、配送费美元0.50、售价美元2.57。图片及参考ASIN不写入上传表。字段校验0、动态红框0、未解析公式0，已用WPS实际打开Template复核。父子体首次新建，全部Create or Replace (Full Update)。仅登记本地输出，尚未提交Amazon。 图示58g/只，两只净重116g已超4oz；配送费仍保留原表USD0.50人工覆盖值，售价USD2.57，发货前需复核实际含包重量和配送费。包装包络为暂定15×15×4cm、0.26lb，非实测。\n2026-11-10 V2：用户确认库存含包重量4oz，以此覆盖参考图重量差异。子体Package Weight=0.25 Pounds；旧参考图商品净重字段已清空，避免高于用户确认含包重量。配送费USD0.50、售价USD2.57及原父子SKU不变。普通后续版本按V1 SKU比较，父子体均Edit (Partial Update)。前述116g图示及待复称提醒已被本次用户确认覆盖。模板自检0、动态红框0、未解析公式0，已用WPS实际打开Template页复核。尚未提交Amazon。",
           "store_id": "2店",
           "source_msku": "KCC-ZDCWW-LANBAI / KCC-ZDCWW-LANHEI / KCC-ZDCWW-LANLV",
           "source_quantity": 15,
@@ -791,13 +896,19 @@
           "link": "https://www.amazon.com/dp/B0H1VFBVL9?ie=UTF8&ASIN=B0H1VFBVL9&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H1VFBVL9/source_template/CONTAINER_LID.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H1VFBVL9/output_file/铝箔碗盖银色10件装V1.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H1VFBVL9/output_file/铝箔碗盖银色10件装V1.xlsx",
+              "added_at": "2026-11-10T19:52:52+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-LBWG-10GE；数量：20；配送费：1.77；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第17行",
+          "note": "原SKU：KCC-LBWG-10GE；数量：20；配送费：1.77；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第17行\n2026-11-10：以库存货物为准，ASIN页面只作参考；仅重建有提供ASIN或参考链接的库存SKU，不增加页面其他款式。SKU名称已获用户确认。KCC-LBWG-10GE → CA-BowlCovers-Silver-10P，参考ASIN B0H1VFBVL9，成本人民币0.89、配送费美元1.77、售价美元4.53。图片及参考ASIN不写入上传表。字段校验0、动态红框0、未解析公式0，已用WPS实际打开Template复核。父子体首次新建，全部Create or Replace (Full Update)。仅登记本地输出，尚未提交Amazon。",
           "store_id": "2店",
           "source_msku": "KCC-LBWG-10GE",
           "source_quantity": 20,
@@ -822,13 +933,13 @@
           "link": "https://www.amazon.com/dp/B0H397QVSK?ie=UTF8&ASIN=B0H397QVSK&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H397QVSK/source_template/STORAGE_BAG.xlsm",
           "reference_template": "",
           "output_file": "",
           "output_versions": [],
           "status": "待处理",
           "purchase_status": "",
-          "note": "原SKU：KCC-WFB-90L；数量：9；配送费：3.22；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第18行",
+          "note": "原SKU：KCC-WFB-90L；数量：9；配送费：3.22；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第18行\n2026-11-10：以库存货物为准，ASIN页面只作参考；仅重建有提供ASIN或参考链接的库存SKU，不增加页面其他款式。SKU名称已获用户确认。KCC-WFB-90L → CA-StorageBag-Gray-90l，参考ASIN B0H397QVSK，成本人民币0.89、配送费美元3.22、售价美元7.40。图片及参考ASIN不写入上传表。【待补资料，不登记正式输出】90L袋展开长宽高未提供，用户确认目前没有，未把折叠尺寸当展开尺寸。 已填草稿保存在outputs/20261110_refurb_batch3/待补资料/无纺布收纳袋灰色90升V1.xlsx。\n2026-11-10 用户明确要求无纺布收纳袋尺寸先不填。展开长宽高及单位继续留空，保留待补资料草稿，未登记正式输出。",
           "store_id": "2店",
           "source_msku": "KCC-WFB-90L",
           "source_quantity": 9,
@@ -869,6 +980,16 @@
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HP3N5ZCD/source_template/PET_TOY.xlsm",
           "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HP3N5ZCD/output_file/猫玩具不倒翁2店V3.xlsm",
           "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HP3N5ZCD/output_file/猫玩具不倒翁2店V1.xlsm",
+              "added_at": "2026-11-06T18:06:22+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HP3N5ZCD/output_file/猫玩具不倒翁2店V2.xlsm",
+              "added_at": "2026-11-06T19:43:45+08:00"
+            },
             {
               "version": 3,
               "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HP3N5ZCD/output_file/猫玩具不倒翁2店V3.xlsm",
