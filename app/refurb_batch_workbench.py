@@ -164,6 +164,9 @@ def default_source_sheets():
     shared = SOURCE_SHEETS_DIR / "退货翻新批量上品.xlsx"
     if shared.exists():
         return [shared]
+    legacy_shared = SOURCE_SHEETS_DIR / "副本入库记录-退货入库-总和.xlsx"
+    if legacy_shared.exists():
+        return [legacy_shared]
     shared_candidates = sorted(SOURCE_SHEETS_DIR.glob("*.xlsx"))
     if shared_candidates:
         return [shared_candidates[0]]

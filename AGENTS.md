@@ -9,3 +9,5 @@ WATER_PURIFICATION_UNIT 上传反馈确认子体需填写 Special Features、Cap
 
 Listing 文案新规则：Item Name 不超过 75 字符，Item Highlight 不超过 125 字符；父体可填写概括全部子体的亮点，父体标题不强制写“多色可选”或“多款式可选”。
 
+新建上品 SKU 统一规则：1店使用 `TTCA-`，2店及其他店铺使用 `CA-`；英文品名段最多两个词、各词首字母大写并直接拼接；父体不加 `-P`/`-PARENT`；子体在同一品名段后追加变体，数量使用 `2P`/`4P`、计量单位小写、混色直接拼接。正式 `auto-fill` 与批量快速路线共用 `app/sku_rules.py`。已有、供应商明确提供或已上传 SKU 不自动改名。
+

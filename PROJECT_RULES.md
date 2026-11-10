@@ -46,7 +46,7 @@ python3 run.py batch-fast-prelist <批量任务JSON>
 
 批量快速路线的价格顺序为：清单中显式 `price` 作为人工覆盖；否则先取保存竞品 HTML 中的当前 `priceToPay`；HTML 缺价时必须检查 Amazon 在线页面，有价则以 `online_price` 记录；在线页面也显示缺货或无价时，才允许以 `estimated_price` 记录预估价。不得把 discount 金额或推荐商品价格当成当前商品售价。上传报错后的修正版，父体和全部子体一律填写 `Create or Replace (Full Update)`；普通后续版本才按 SKU 与紧邻上一版填表文件比较：已有 SKU 填 `Edit (Partial Update)`，新增 SKU 填 `Create or Replace (Full Update)`。批量快速路线提供 `copy_reference` 时以该文件为上一版，报错修正任务需标记 `error_correction`。首次建立项目时所有 SKU 均为新增。无法读取上一版时，应先补齐基准文件。
 
-批量快速路线未显式提供 SKU 时，使用 `CA-产品名-变体属性`：产品名最多取 `product_name` 前两个英文单词，每个单词首字母大写、其余小写，两个单词直接拼接且中间不加横线；变体属性中的数量或计量单位统一小写，例如 Parent `CA-ToolSharpener`，Child `CA-ToolSharpener-2pcs`、`CA-StorageHook-6mm`。普通属性仍按首字母大写拼接，例如 `CA-GlassBeads-DarkGreen`。显式 `parent_sku` / `child_sku` / variant `sku` 仍作为人工覆盖。正式 `auto-fill` 的 SKU 逻辑不受影响。
+所有新建上品路线统一使用 `店铺前缀-产品名-变体属性`：1店前缀为 `TTCA-`，2店及其他店铺为 `CA-`；产品名最多取 `product_name` 前两个英文单词，每个单词首字母大写、其余小写，两个单词直接拼接且中间不加横线；父体不添加 `-P` 或 `-PARENT`。数量后缀统一使用 `2P`、`4P`，计量单位小写，例如 Parent `CA-ToolSharpener`，Child `CA-ToolSharpener-2P`、`CA-StorageHook-6mm`。普通属性按首字母大写拼接，混色 SKU 去掉连接符直接拼接，例如 `CA-GlassBeads-DarkGreen`、`CA-MopPad-GreenWhite-2P`。显式 `parent_sku` / `child_sku` / variant `sku` 仍作为人工覆盖；已有、供应商明确提供或已上传的 SKU 不自动改名。
 
 批量快速路线未显式提供 `base_title` 时，标题以竞品页面的 Product Title 为底稿，保持标题前部和中部关键词顺序，只在标题末尾添加或删除 3–5 个英文单词，避免整段原样复制。显式 `base_title` 仍作为人工覆盖；标题长度、禁用词、变体属性和其他现有自检规则继续生效，正式 `auto-fill` 不受影响。
 

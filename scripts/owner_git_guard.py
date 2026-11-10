@@ -10,6 +10,7 @@ import shlex
 import shutil
 import subprocess
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
@@ -54,13 +55,36 @@ def identity(url):
 
 def git(repo, *args, optional=False):
     env = dict(os.environ, GIT_TERMINAL_PROMPT='0', GCM_INTERACTIVE='Never')
-    result = subprocess.run(['git', '-C', str(repo), *args], text=True, encoding='utf-8',
-                            errors='replace', capture_output=True, timeout=90, env=env,
-                            creationflags=0x08000000 if os.name == 'nt' else 0)
+    # GitHub Desktop supplies an askpass bridge to its own process. A hook that
+    # starts another Git process can block waiting on that bridge while Desktop
+    # waits for the hook. Use the machine's configured noninteractive helper.
+    env.pop('GIT_ASKPASS', None)
+    env.pop('SSH_ASKPASS', None)
+    executable = '/usr/bin/git' if sys.platform == 'darwin' and Path('/usr/bin/git').is_file() else 'git'
+    command = [executable, '-C', str(repo), *args]
+    attempts = 2 if args[0] in ('ls-remote', 'fetch') else 1
+    for attempt in range(attempts):
+        result = subprocess.run(command, text=True, encoding='utf-8', errors='replace',
+                                capture_output=True, timeout=90, env=env,
+                                creationflags=0x08000000 if os.name == 'nt' else 0)
+        if result.returncode == 0 or not _transient_network_error(result.stderr) or attempt == attempts - 1:
+            break
+        time.sleep(1)
     if result.returncode and not optional:
         # Do not leak credentials from a malformed URL or credential-manager log.
-        raise GuardError('Git check failed: ' + args[0] + '; stop without overwriting work')
+        reason = ' (temporary network failure)' if _transient_network_error(result.stderr) else ''
+        raise GuardError('Git check failed: ' + args[0] + reason +
+                         '; check GitHub access and retry without overwriting work')
     return result
+
+
+def _transient_network_error(stderr):
+    message = stderr.lower()
+    return any(fragment in message for fragment in (
+        'could not resolve host', 'failed to connect', 'connection timed out',
+        'operation timed out', 'connection reset', 'network is unreachable',
+        'remote end hung up unexpectedly',
+    ))
 
 
 def output(repo, *args, optional=False):

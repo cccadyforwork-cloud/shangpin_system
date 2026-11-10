@@ -57,9 +57,18 @@ class BatchFastPrelistingTest(unittest.TestCase):
         self.assertEqual(_parent_sku(task), "CA-GlassBeads")
         self.assertEqual(_child_sku(task, {}, 1), "CA-GlassBeads-Green")
 
-    def test_number_of_items_sku_uses_lowercase_unit_suffix(self):
+    def test_number_of_items_sku_uses_unified_pack_suffix(self):
         task = {"product_name": "tool SHARPENER", "set_count": 2, "variation_theme": "NUMBER_OF_ITEMS"}
-        self.assertEqual(_child_sku(task, {}, 1), "CA-ToolSharpener-2pcs")
+        self.assertEqual(_child_sku(task, {}, 1), "CA-ToolSharpener-2P")
+
+    def test_color_and_quantity_sku_uses_both_dimensions(self):
+        task = {
+            "product_name": "mop pad",
+            "color": "Green+White",
+            "set_count": 2,
+            "variation_theme": "COLOR/NUMBER_OF_ITEMS",
+        }
+        self.assertEqual(_child_sku(task, {}, 1), "CA-MopPad-GreenWhite-2P")
 
     def test_size_sku_uses_lowercase_measurement_unit(self):
         task = {

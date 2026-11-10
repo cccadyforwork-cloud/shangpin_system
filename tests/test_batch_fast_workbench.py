@@ -7,6 +7,7 @@ from pathlib import Path
 from openpyxl import Workbook
 
 from app.batch_fast_workbench import (
+    _output_version_number,
     attach_file,
     build_output_archive,
     import_sheets,
@@ -132,6 +133,10 @@ class BatchFastWorkbenchTests(unittest.TestCase):
         with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
             self.assertEqual([v2.name], archive.namelist())
             self.assertEqual(b"version two", archive.read(v2.name))
+
+    def test_timestamped_copy_keeps_declared_output_version(self):
+        self.assertEqual(1, _output_version_number("测试产品V1_20261110_020225.xlsx"))
+        self.assertEqual(2, _output_version_number("测试产品V2_2.xlsm"))
 
     def test_store_views_share_competitor_but_keep_downstream_files_independent(self):
         data = import_sheets([self.sheet], self.ledger)

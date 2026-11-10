@@ -7,6 +7,7 @@ from openpyxl import load_workbook
 
 from .paths import DRAFT_DIRS, TEMPLATE_DIRS, safe_name
 from .listing_action import action_for_sku, is_error_correction_version, previous_version_template, template_skus
+from .sku_rules import generated_child_sku, generated_parent_sku
 from .success_rule_defaults import load_safe_defaults
 from .template_sheet import find_template_sheet, template_sheet_names_text
 from .template_validator import PRODUCT_TYPE_CONDITIONAL_FIELDS
@@ -53,6 +54,7 @@ FIELD_MAP = {
     "item_package_quantity[marketplace_id=ATVPDKIKX0DER]#1.value": "__package_quantity",
     "color[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "color",
     "size[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "size",
+    "set_name[marketplace_id=ATVPDKIKX0DER][language_tag=en_US]#1.value": "set_name",
     "part_number[marketplace_id=ATVPDKIKX0DER]#1.value": "sku",
     "list_price[marketplace_id=ATVPDKIKX0DER]#1.value": "list_price",
     "purchasable_offer[marketplace_id=ATVPDKIKX0DER][audience=BZR]#1.our_price#1.schedule#1.value_with_tax": "haul_price",
@@ -156,6 +158,9 @@ PARENT_CLEAR_FIELDS = {
     "parent_sku",
     "color",
     "size",
+    "set_name",
+    "set_count",
+    "unit_count",
     "manufacturer",
     "model_name",
     "cost",
@@ -239,7 +244,7 @@ def _value_for(row, source):
     if source == "__variation_relationship":
         return "Variation" if row.get("parent_sku") else ""
     if source == "__package_quantity":
-        return row.get("set_count") or 1
+        return "" if _is_parent_row(row) else (row.get("set_count") or 1)
     if source == "__item_count_type":
         return "Count" if row.get("unit_count") not in (None, "") else ""
     if source == "__item_height_unit":
@@ -312,13 +317,6 @@ def _infer_variation_theme(rows):
     return "Color"
 
 
-def _sku_base(value):
-    words = re.findall(r"[A-Za-z0-9]+", str(value or "").upper())
-    if words:
-        return "-".join(words[:4])[:24]
-    return safe_name(str(value or "PRODUCT")).upper()[:24] or "PRODUCT"
-
-
 def _parent_sku_for_rows(rows, project_dir):
     for row in rows:
         parent_sku = _text(row.get("parent_sku"))
@@ -328,7 +326,8 @@ def _parent_sku_for_rows(rows, project_dir):
         if _is_parent_row(row) and _text(row.get("sku")):
             return _text(row.get("sku"))
     product_name = next((_text(row.get("product_name")) for row in rows if _text(row.get("product_name"))), "")
-    return f"{_sku_base(product_name or Path(project_dir).name)}-PARENT"
+    store_id = next((_text(row.get("store_id")) for row in rows if _text(row.get("store_id"))), "")
+    return generated_parent_sku(product_name or Path(project_dir).name, store_id)
 
 
 def _should_default_variation(rows):
@@ -377,6 +376,7 @@ def prepare_variation_rows(rows, project_dir):
         parent[field] = ""
 
     child_rows = []
+    used_skus = {parent_sku}
     for index, row in enumerate(prepared, 1):
         row["parent_sku"] = parent_sku
         row["parentage_level"] = "Child"
@@ -384,7 +384,19 @@ def prepare_variation_rows(rows, project_dir):
         if "generic" in _text(row.get("route")).lower() or not _text(row.get("route")):
             row["route"] = "Haul Generic Variation"
         if not _text(row.get("sku")):
-            row["sku"] = f"{_sku_base(row.get('product_name') or Path(project_dir).name)}-{index:03d}"
+            generated = generated_child_sku(
+                parent_sku,
+                variation_theme=theme,
+                color=row.get("color"),
+                size=row.get("size"),
+                set_count=row.get("set_count"),
+                set_name=row.get("set_name"),
+                index=index,
+            )
+            if generated in used_skus:
+                generated = f"{generated}-{index:03d}"
+            row["sku"] = generated
+        used_skus.add(_text(row.get("sku")))
         child_rows.append(row)
     return apply_variation_title_rules([parent] + child_rows)
 

@@ -24,7 +24,7 @@
 - `store_id`：工作台店铺标识。填写 `1店` 时，系统强制所有 Parent/Child SKU 使用 `TTCA-` 前缀；其他店铺沿用 `CA-` 前缀。
 - `price`：可选人工覆盖。未填写时先取竞品 HTML 的当前 `priceToPay`。HTML 缺价时先打开 Amazon 在线页面核对，页面有价时填入 `online_price`；在线页面也缺货或无价时才填入 `estimated_price`。系统按 `price` → HTML `priceToPay` → `online_price` → `estimated_price` 的顺序决定 List Price 和 Haul/BZR Price，不把 discount 金额或推荐商品价格当成当前售价。
 - `weight_grams` 或 `logistics_tier`：页面重量或指定物流档位。
-- `parent_sku`、`child_sku`：可选人工覆盖。留空时按快速路线短 SKU 规则自动生成：`前缀-产品名-变体属性`。`1店` 的前缀固定为 `TTCA`，其他店铺默认 `CA`；`1店` 中即使显式提供 SKU，也会统一校正为 `TTCA-` 开头。产品名最多取 `product_name` 的前两个英文单词，各单词首字母大写、其余小写，两个单词直接拼接且中间不加横线；变体属性中的数量或计量单位统一小写，例如 Parent `TTCA-ToolSharpener`、Child `TTCA-ToolSharpener-2pcs`。颜色等普通属性仍按首字母大写拼接，例如 `TTCA-GlassBeads-DarkGreen`。
+- `parent_sku`、`child_sku`：可选人工覆盖。留空时按统一短 SKU 规则自动生成：`前缀-产品名-变体属性`。`1店` 的前缀固定为 `TTCA`，其他店铺默认 `CA`；`1店` 中即使显式提供 SKU，也会统一校正为 `TTCA-` 开头。产品名最多取 `product_name` 的前两个英文单词，各单词首字母大写、其余小写，两个单词直接拼接且中间不加横线；父体不添加 `-P` 或 `-PARENT`。数量统一使用 `2P`、`4P`，计量单位小写，例如 Parent `TTCA-ToolSharpener`、Child `TTCA-ToolSharpener-2P`、`TTCA-StorageHook-6mm`。颜色等普通属性仍按首字母大写拼接，混色去掉连接符直接拼接，例如 `TTCA-MopPad-GreenWhite-2P`。
 - `color`、`size`、`material`、`set_count`：已知的基础属性。
 - `extra_fields`：按模板第 5 行字段名补充 Child 行字段；只在当前任务显式提供时写入。
 - `parent_extra_fields`：按模板第 5 行字段名补充 Parent 行字段；用于模板动态规则要求 Parent 也填写的少数字段。

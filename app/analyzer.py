@@ -21,6 +21,7 @@ from .paths import (
     safe_name,
 )
 from .template_writer import extract_template_product_type
+from .sku_rules import attribute_sku_token, generated_child_sku, generated_parent_sku
 from .workbook_io import write_intake_workbook
 
 
@@ -559,35 +560,25 @@ def _route_name_for_strategy(route, strategy):
     return route
 
 
-def _make_sku(product_name):
-    words = re.findall(r"[A-Za-z0-9]+", product_name.upper())
-    base = "-".join(words[:4]) if words else safe_name(product_name).upper()
-    return f"{base[:32]}-001"
+def _make_sku(product_name, store_id=""):
+    return f"{generated_parent_sku(product_name, store_id)}-001"
 
 
-def _sku_base(product_name):
-    words = re.findall(r"[A-Za-z0-9]+", product_name.upper())
-    if words:
-        return "-".join(words[:4])[:24]
-    if "瑜伽" in product_name:
-        return "YOGA-BLOCK"
-    return "PRODUCT"
+def _single_link_sku(product_name, store_id=""):
+    return _make_sku(product_name, store_id)
 
 
-def _single_link_sku(product_name):
-    return f"{_sku_base(product_name)}-001"
+def _parent_sku(product_name, store_id=""):
+    return generated_parent_sku(product_name, store_id)
 
 
-def _parent_sku(product_name):
-    return f"{_sku_base(product_name)}-PARENT"
-
-
-def _sku_for_color(product_name, color, index):
-    if "yoga" in product_name.lower() or "瑜伽" in product_name:
-        return f"YOGA-Block-{color}"
-    base = _sku_base(product_name)
-    color_part = re.sub(r"[^A-Z0-9]+", "", str(color).upper()) or f"{index:02d}"
-    return f"{base}-{color_part}-{index:02d}"
+def _sku_for_color(product_name, color, index, store_id=""):
+    return generated_child_sku(
+        generated_parent_sku(product_name, store_id),
+        variation_theme="COLOR",
+        color=color,
+        index=index,
+    )
 
 
 def _make_copy(product_name, color, size, material, set_count):
@@ -867,6 +858,7 @@ def analyze_project(project_dir, output_path=None, route_mode=None, write_report
     material = _extract_named_value(["材质", "material"], combined) or _guess_from_words(MATERIAL_WORDS, combined)
     set_count = price_table.get("set_count") or _extract_named_value(["套装数", "数量", "pack", "set count"], combined)
     brand_hint = _extract_named_value(["品牌", "brand"], combined)
+    store_id = _extract_named_value(["目标店铺", "店铺", "store_id", "store id"], combined)
     category = _guess_category(combined)
     product_type = _extract_product_type_from_templates(project_dir)
     route = _guess_route(combined, target_price if isinstance(target_price, float) else None, brand_hint)
@@ -910,7 +902,7 @@ def analyze_project(project_dir, output_path=None, route_mode=None, write_report
     route = _route_name_for_strategy(route, strategy)
     if strategy == "set_bundle":
         colors_for_rows = ["Assorted"]
-    parent_sku = (supplied_parent_sku or _parent_sku(product_name)) if strategy == "variation" else ""
+    parent_sku = (supplied_parent_sku or _parent_sku(product_name, store_id)) if strategy == "variation" else ""
     variation_theme = "Color" if strategy == "variation" else ""
 
     rows = []
@@ -920,6 +912,7 @@ def analyze_project(project_dir, output_path=None, route_mode=None, write_report
             "project_name": project_dir.name,
             "product_name": product_name,
             "route": route,
+            "store_id": store_id,
             "brand": brand,
             "manufacturer": manufacturer,
             "category": category,
@@ -963,15 +956,16 @@ def analyze_project(project_dir, output_path=None, route_mode=None, write_report
         if floral_variant:
             row_sku = f"FLORAL-CARD-HOLDER-{re.sub(r'[^A-Z0-9]+', '-', row_color.upper()).strip('-')}"
         elif len(colors_for_rows) > 1:
-            row_sku = f"{base_sku}-{row_color}" if base_sku else _sku_for_color(product_name, row_color, index)
+            row_sku = f"{base_sku}-{attribute_sku_token(row_color)}" if base_sku else _sku_for_color(product_name, row_color, index, store_id)
         else:
-            row_sku = base_sku or _single_link_sku(product_name)
+            row_sku = base_sku or _single_link_sku(product_name, store_id)
         row_color = _normalize_color_value(row_color)
         title, bullets, description = _make_copy(product_name, row_color, size, material, set_count)
         rows.append(_apply_cross_border_copy({
             "project_name": project_dir.name,
             "product_name": product_name,
             "route": route,
+            "store_id": store_id,
             "brand": brand,
             "manufacturer": manufacturer,
             "category": category,

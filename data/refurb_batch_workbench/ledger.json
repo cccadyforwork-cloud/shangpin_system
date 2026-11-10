@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-11-05T17:23:05+08:00",
+  "updated_at": "2026-11-10T04:50:14+08:00",
   "batches": [
     {
       "id": "2026-11-05_2店退货翻新（SP+KCC）",
@@ -15,13 +15,19 @@
           "link": "https://a.co/d/037IjkZN",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-2/source_template/CADDY_STORAGE_DRAWER.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-2/output_file/收纳茶包盒透明款V1_20261110_025106.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-2/output_file/收纳茶包盒透明款V1_20261110_025106.xlsx",
+              "added_at": "2026-11-10T02:51:06+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：SP-shounafenge-tou；数量：4；配送费：2.6；来源：SP退货翻新的1.xlsx / SP 第2行",
+          "note": "原SKU：SP-shounafenge-tou；数量：4；配送费：2.6；来源：SP退货翻新的1.xlsx / SP 第2行；V1已更新并通过模板自检与红框扫描；售价暂定 2.99 USD；配送费档位 $2.60（8–12 oz）；包装按档位默认 7.09 × 4.72 × 1.97 in、0.66 lb，非实测。",
           "store_id": "2店",
           "source_msku": "SP-shounafenge-tou",
           "source_quantity": 4,
@@ -46,13 +52,19 @@
           "link": "https://a.co/d/02baE78F",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-3/source_template/PASTA_MAKER.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-3/output_file/包饺子工具红色V1_20261110_025107.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-3/output_file/包饺子工具红色V1_20261110_025107.xlsx",
+              "added_at": "2026-11-10T02:51:07+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：SP-baojiaozi-1；数量：3；配送费：1.77；来源：SP退货翻新的1.xlsx / SP 第3行",
+          "note": "原SKU：SP-baojiaozi-1；数量：3；配送费：1.77；来源：SP退货翻新的1.xlsx / SP 第3行；V1已更新并通过模板自检与红框扫描；售价暂定 2.99 USD；配送费档位 $1.77（4–8 oz）；包装按档位默认 5.91 × 3.94 × 1.57 in、0.44 lb，非实测。",
           "store_id": "2店",
           "source_msku": "SP-baojiaozi-1",
           "source_quantity": 3,
@@ -77,13 +89,19 @@
           "link": "https://a.co/d/0dwDTt3D",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-4/source_template/COOKIE_CUTTER.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-4/output_file/曲奇饼干模具橙色花形V1_20261110_025109.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-4/output_file/曲奇饼干模具橙色花形V1_20261110_025109.xlsx",
+              "added_at": "2026-11-10T02:51:09+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：SP-quqimuju-2；数量：4；配送费：0.88；来源：SP退货翻新的1.xlsx / SP 第4行",
+          "note": "原SKU：SP-quqimuju-2；数量：4；配送费：0.88；来源：SP退货翻新的1.xlsx / SP 第4行；V1已更新并通过模板自检与红框扫描；售价暂定 2.99 USD；因售价不超过 $3，当前按 $0.50（≤4 oz）档；包装默认 3.94 × 3.94 × 0.79 in、0.22 lb，非实测。原表 $0.88 为售价高于 $3 时的档位。",
           "store_id": "2店",
           "source_msku": "SP-quqimuju-2",
           "source_quantity": 4,
@@ -134,21 +152,104 @@
         {
           "id": "ROW-6",
           "asin": "",
-          "product_name": "勺子",
+          "product_name": "勺子（5款合并）",
           "row_number": 6,
           "link": "https://a.co/d/049oVgRH",
-          "competitor_links": [],
+          "competitor_links": [
+            {
+              "label": "SP-06-01",
+              "url": "https://a.co/d/049oVgRH"
+            },
+            {
+              "label": "SP-07-01",
+              "url": "https://a.co/d/07PCJq3b"
+            },
+            {
+              "label": "SP-08-01",
+              "url": "https://a.co/d/08AOvlpQ"
+            },
+            {
+              "label": "SP-09-01",
+              "url": "https://a.co/d/0j8uIvYV"
+            },
+            {
+              "label": "SP-10-01",
+              "url": "https://a.co/d/0gHedMB3"
+            }
+          ],
+          "source_links": [
+            {
+              "label": "SP-06-01",
+              "url": "https://a.co/d/049oVgRH",
+              "row_number": 6,
+              "row_id": "ROW-6"
+            },
+            {
+              "label": "SP-07-01",
+              "url": "https://a.co/d/07PCJq3b",
+              "row_number": 7,
+              "row_id": "ROW-7"
+            },
+            {
+              "label": "SP-08-01",
+              "url": "https://a.co/d/08AOvlpQ",
+              "row_number": 8,
+              "row_id": "ROW-8"
+            },
+            {
+              "label": "SP-09-01",
+              "url": "https://a.co/d/0j8uIvYV",
+              "row_number": 9,
+              "row_id": "ROW-9"
+            },
+            {
+              "label": "SP-10-01",
+              "url": "https://a.co/d/0gHedMB3",
+              "row_number": 10,
+              "row_id": "ROW-10"
+            }
+          ],
+          "row_numbers": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "merged_row_ids": [
+            "ROW-6",
+            "ROW-7",
+            "ROW-8",
+            "ROW-9",
+            "ROW-10"
+          ],
+          "merge_group": "2026-11-05-spoons",
+          "merge_type": "variation",
+          "attribute_label": "原SKU",
+          "variant_values": [
+            "SP-06-01",
+            "SP-07-01",
+            "SP-08-01",
+            "SP-09-01",
+            "SP-10-01"
+          ],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-6/source_template/SPOON.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-6/output_file/勺子五款合并V1_20261110_025549.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/ROW-6/output_file/勺子五款合并V1_20261110_025549.xlsx",
+              "added_at": "2026-11-10T02:55:49+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：SP-06-01；数量：19；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第6行",
+          "note": "5款勺子合并；SP-06-01 数量19；SP-07-01 数量22；SP-08-01 数量29；SP-09-01 数量30；SP-10-01 数量7；配送费均为0.5；来源：SP退货翻新的1.xlsx / SP 第6-10行；V1已更新并通过模板自检与红框扫描；售价均暂定 2.99 USD；配送费档位均为 $0.50（≤4 oz 且售价不超过 $3）；父体 SKU CA-Spoon；子体 SKU 使用 Sakura、Rose、Daisy、Heart、WoodHandle 简写；Set Name 前台展示名为 Sakura Flower、Rose Flower、Daisy Flower、Heart Shape、Wood Handle Set；包装默认 3.94 × 3.94 × 0.79 in、0.22 lb，非实测。",
           "store_id": "2店",
-          "source_msku": "SP-06-01",
-          "source_quantity": 19,
+          "source_msku": "SP-06-01 / SP-07-01 / SP-08-01 / SP-09-01 / SP-10-01",
+          "source_quantity": 107,
           "shipping_fee": 0.5,
           "source_group": "SP",
           "source_items": [
@@ -159,30 +260,7 @@
               "link": "https://a.co/d/049oVgRH",
               "shipping_fee": 0.5,
               "source_group": "SP"
-            }
-          ]
-        },
-        {
-          "id": "ROW-7",
-          "asin": "",
-          "product_name": "勺子",
-          "row_number": 7,
-          "link": "https://a.co/d/07PCJq3b",
-          "competitor_links": [],
-          "competitor_html": "",
-          "source_template": "",
-          "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "原SKU：SP-07-01；数量：22；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第7行",
-          "store_id": "2店",
-          "source_msku": "SP-07-01",
-          "source_quantity": 22,
-          "shipping_fee": 0.5,
-          "source_group": "SP",
-          "source_items": [
+            },
             {
               "sku": "SP-07-01",
               "product_name": "勺子",
@@ -190,30 +268,7 @@
               "link": "https://a.co/d/07PCJq3b",
               "shipping_fee": 0.5,
               "source_group": "SP"
-            }
-          ]
-        },
-        {
-          "id": "ROW-8",
-          "asin": "",
-          "product_name": "勺子",
-          "row_number": 8,
-          "link": "https://a.co/d/08AOvlpQ",
-          "competitor_links": [],
-          "competitor_html": "",
-          "source_template": "",
-          "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "原SKU：SP-08-01；数量：29；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第8行",
-          "store_id": "2店",
-          "source_msku": "SP-08-01",
-          "source_quantity": 29,
-          "shipping_fee": 0.5,
-          "source_group": "SP",
-          "source_items": [
+            },
             {
               "sku": "SP-08-01",
               "product_name": "勺子",
@@ -221,30 +276,7 @@
               "link": "https://a.co/d/08AOvlpQ",
               "shipping_fee": 0.5,
               "source_group": "SP"
-            }
-          ]
-        },
-        {
-          "id": "ROW-9",
-          "asin": "",
-          "product_name": "勺子",
-          "row_number": 9,
-          "link": "https://a.co/d/0j8uIvYV",
-          "competitor_links": [],
-          "competitor_html": "",
-          "source_template": "",
-          "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "原SKU：SP-09-01；数量：30；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第9行",
-          "store_id": "2店",
-          "source_msku": "SP-09-01",
-          "source_quantity": 30,
-          "shipping_fee": 0.5,
-          "source_group": "SP",
-          "source_items": [
+            },
             {
               "sku": "SP-09-01",
               "product_name": "勺子",
@@ -252,30 +284,7 @@
               "link": "https://a.co/d/0j8uIvYV",
               "shipping_fee": 0.5,
               "source_group": "SP"
-            }
-          ]
-        },
-        {
-          "id": "ROW-10",
-          "asin": "",
-          "product_name": "勺子",
-          "row_number": 10,
-          "link": "https://a.co/d/0gHedMB3",
-          "competitor_links": [],
-          "competitor_html": "",
-          "source_template": "",
-          "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "原SKU：SP-10-01；数量：7；配送费：0.5；来源：SP退货翻新的1.xlsx / SP 第10行",
-          "store_id": "2店",
-          "source_msku": "SP-10-01",
-          "source_quantity": 7,
-          "shipping_fee": 0.5,
-          "source_group": "SP",
-          "source_items": [
+            },
             {
               "sku": "SP-10-01",
               "product_name": "勺子",
@@ -356,13 +365,19 @@
           "link": "https://www.amazon.com/dp/B0H6FSY7JW?ie=UTF8&ASIN=B0H6FSY7JW&s=bazaar",
           "competitor_links": [],
           "competitor_html": "",
-          "source_template": "",
+          "source_template": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H6FSY7JW/source_template/HAIR_BRUSH.xlsm",
           "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
+          "output_file": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H6FSY7JW/output_file/便携胡须刷棕色V1_20261110_025112.xlsx",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/2026-11-05_2店退货翻新（SP+KCC）/B0H6FSY7JW/output_file/便携胡须刷棕色V1_20261110_025112.xlsx",
+              "added_at": "2026-11-10T02:51:12+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "原SKU：KCC-AMS-1；数量：10；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第2行",
+          "note": "原SKU：KCC-AMS-1；数量：10；配送费：0.5；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第2行；V1已更新并通过模板自检与红框扫描；原链接实际商品为棕色便携胡须刷；售价暂定 2.99 USD；配送费档位 $0.50（≤4 oz 且售价不超过 $3）；包装默认 3.94 × 3.94 × 0.79 in、0.22 lb，非实测。",
           "store_id": "2店",
           "source_msku": "KCC-AMS-1",
           "source_quantity": 10,
@@ -829,37 +844,6 @@
               "source_group": "KCC"
             }
           ]
-        },
-        {
-          "id": "B0H3VBSMBX",
-          "asin": "B0H3VBSMBX",
-          "product_name": "蚊香支架",
-          "row_number": 27,
-          "link": "https://www.amazon.com/dp/B0H3VBSMBX?ie=UTF8&ASIN=B0H3VBSMBX&s=bazaar",
-          "competitor_links": [],
-          "competitor_html": "",
-          "source_template": "",
-          "reference_template": "",
-          "output_file": "",
-          "output_versions": [],
-          "status": "待处理",
-          "purchase_status": "",
-          "note": "原SKU：KCC-WXZJ-1；数量：13；配送费：1.77；来源：KCC退货翻新重做链接版(3).xlsx / KCC 第19行",
-          "store_id": "2店",
-          "source_msku": "KCC-WXZJ-1",
-          "source_quantity": 13,
-          "shipping_fee": 1.77,
-          "source_group": "KCC",
-          "source_items": [
-            {
-              "sku": "KCC-WXZJ-1",
-              "product_name": "蚊香支架",
-              "quantity": 13,
-              "link": "https://www.amazon.com/dp/B0H3VBSMBX?ie=UTF8&ASIN=B0H3VBSMBX&s=bazaar",
-              "shipping_fee": 1.77,
-              "source_group": "KCC"
-            }
-          ]
         }
       ],
       "stores": [
@@ -883,13 +867,20 @@
           "link": "https://www.amazon.com/dp/B0HP3N5ZCD?ie=UTF8&ASIN=B0HP3N5ZCD&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HP3N5ZCD/source_template/PET_TOY.xlsm",
-          "output_file": "",
-          "output_versions": [],
-          "status": "已有模板",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HP3N5ZCD/output_file/猫玩具不倒翁2店V3.xlsm",
+          "output_versions": [
+            {
+              "version": 3,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HP3N5ZCD/output_file/猫玩具不倒翁2店V3.xlsm",
+              "added_at": "2026-11-08T03:13:15+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "",
+          "note": "已同步用户提供的1店参考V5和2店输出V3，均含1父体+13子体。V3：剑麻款 SKU 为 CA-Pettoy-Sisal-R，Listing Action 为 Create or Replace (Full Update)；父体及其余12子体均为 Edit (Partial Update)。本地模板自检0个问题。",
           "store_id": "2店",
-          "image_groups": {}
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HP3N5ZCD/reference_template/猫玩具不倒翁新增3变体V5.xlsm"
         },
         {
           "id": "B0HC3RND7T",
@@ -924,13 +915,25 @@
           "link": "https://www.amazon.com/dp/B0HC3J2F63?ie=UTF8&ASIN=B0HC3J2F63&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3J2F63/source_template/PET_TOY.xlsm",
-          "output_file": "",
-          "output_versions": [],
-          "status": "已有模板",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3J2F63/output_file/猫咪玩具SET_NAME2店V2.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3J2F63/output_file/猫咪玩具SET_NAME2店V1.xlsm",
+              "added_at": "2026-11-08T03:42:03+08:00"
+            },
+            {
+              "version": 2,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3J2F63/output_file/猫咪玩具SET_NAME2店V2.xlsm",
+              "added_at": "2026-11-08T04:58:01+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "",
+          "note": "已保存用户提供的1店猫咪玩具SET_NAME参考表，对应米色小号羽毛款；参考表含1父体+5子体。\n已按1店参考生成2店V1，保持原链接1父体+5子体及SET_NAME选项。全部SKU及关联编号去掉开头TT，全部Listing Action为Create or Replace (Full Update)。价格、材质、子体商品和包装件重尺沿用参考。标题≤75、亮点≤125，删除鱼骨款文案；Model Name按新SKU填写，清空父体子体专属字段，父体Subject Character=Cat，父体本体尺寸/重量采用参考羽毛款1.97×1.97×0.79 Inches、0.04 Pounds作为代表，不填父体包装件重尺。2店模板无Display Dimensions列，重复的显示尺寸已由相同本体尺寸保留。模板自检0问题，动态红框0，未解析公式0，WPS打开复核通过。\n按用户要求生成V2避免复用截图中的旧SKU：父CA-Pettoy-Cat-Setname-N；羽毛CA-PetToy-Feather-N（原-R替换为-N）；其余CA-Petchewtoy-fly-N、CA-Petchewtoy-mouse-N、CA-Petchewtoy-bird-N、CA-Petchewtoy-ball-N。父子关联、子体Model Number/Model Name/Part Number同步更新，全部Create or Replace (Full Update)。仅改26个SKU关联单元格，其余文案、价格、材质、尺寸重量与V1一致；V1保留旧版。模板自检0，动态红框0，未解析0。",
           "store_id": "2店",
-          "image_groups": {}
+          "image_groups": {},
+          "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HC3J2F63/reference_template/1店+猫咪玩具_SET_NAME父体试传.xlsm"
         },
         {
           "id": "B0HC4C269F",
@@ -1037,17 +1040,17 @@
           "link": "https://www.amazon.com/dp/B0HFJHJ1SM?ie=UTF8&ASIN=B0HFJHJ1SM&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/source_template/ADHESIVE_TAPES.xlsm",
-          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/output_file/球拍握把胶带黑白V5.xlsm",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/output_file/球拍握把胶带黑白2店V1.xlsm",
           "output_versions": [
             {
-              "version": 5,
-              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/output_file/球拍握把胶带黑白V5.xlsm",
-              "added_at": "2026-11-05T17:23:05+08:00"
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/output_file/球拍握把胶带黑白2店V1.xlsm",
+              "added_at": "2026-11-10T04:50:14+08:00"
             }
           ],
           "status": "待复核",
           "purchase_status": "",
-          "note": "",
+          "note": "用户暂缓2店球拍握把胶带重做，已清空误挂的1店TTCA-Grip系列V5当前输出及版本关联；原文件未删除。领星产品管理上传表V2排除本品4个子SKU，待后续使用2店模板重新制作。原误挂文件：data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/output_file/球拍握把胶带黑白V5.xlsm。\n2026-11-10已按1店球拍握把胶带黑白V4及谷歌浏览器原链接核对，使用2店ADHESIVE_TAPES原生模板生成2店V1：1父4子，黑/白各1 Pack、4 Pack；SKU去TT，父体CA-Grip，子体CA-Grip-Black-1、CA-Grip-White-1、CA-Grip-B4、CA-Grip-W4；全部Create or Replace (Full Update)。标题≤75、亮点≤125；保留参考表价格/包装尺寸重量、图片留空。原链接确认Rubber材质、黑白1/4 Pack；按已有握把覆盖用途填Surface Recommendation=Rubber，Is Product Expirable=No。模板校验0项、动态红框0项、未解析规则0项。1店参考文件保留；领星采购表本次未修改。",
           "store_id": "2店",
           "image_groups": {},
           "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFJHJ1SM/reference_template/球拍握把胶带黑白V4.xlsm"
@@ -1061,11 +1064,17 @@
           "link": "https://www.amazon.com/dp/B0HFNBGWZR?ie=UTF8&ASIN=B0HFNBGWZR&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFNBGWZR/source_template/WASTE_BAG.xlsm",
-          "output_file": "",
-          "output_versions": [],
-          "status": "已有模板",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFNBGWZR/output_file/宠物垃圾袋和套装2店V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFNBGWZR/output_file/宠物垃圾袋和套装2店V1.xlsm",
+              "added_at": "2026-11-08T04:03:34+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "同一参考模板还包含散装拾便袋链接：https://www.amazon.com/dp/B0HFNM1HHH?ie=UTF8&ASIN=B0HFNM1HHH&s=bazaar；参考表有拾便袋和分配器套装两组父子体。",
+          "note": "同一参考模板还包含散装拾便袋链接：https://www.amazon.com/dp/B0HFNM1HHH?ie=UTF8&ASIN=B0HFNM1HHH&s=bazaar；参考表有拾便袋和分配器套装两组父子体。\n已按参考生成2店V1，同一上传表包含2父体+4子体，两个系列各蓝/粉两款，COLOR/SIZE。拾便袋父CA-Poopbags-4→CA-Poopbags-Blue4、CA-Poopbags-Pink4；套装父CA-PoopSet→CA-Poop-BlueSet、CA-Poop-PinkSet。全部SKU及关联编号去掉开头TT，全部Listing Action=Create or Replace (Full Update)，子体Model Name=SKU。价格、材质、数量、颜色、规格及件重尺沿用参考；标题≤75、亮点≤125，五点200—250字符，描述1534/1555字符，去掉参考里的内部填表说明。Google已核对B0HFNM1HHH前台含蓝/粉两款；B0HFNBGWZR触发亚马逊访问验证，套装蓝/粉两款依据参考表和用户明确确认填写，未完成前台复核。模板自检0，动态红框0，未解析0，WPS打开和两组父子体显示复核通过。",
           "store_id": "2店",
           "image_groups": {},
           "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFNBGWZR/reference_template/宠物垃圾袋和套装V1.xlsx"
@@ -1079,11 +1088,17 @@
           "link": "https://www.amazon.com/dp/B0HFCC48RP?ie=UTF8&ASIN=B0HFCC48RP&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFCC48RP/source_template/PET_TOY.xlsm",
-          "output_file": "",
-          "output_versions": [],
-          "status": "已有模板",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFCC48RP/output_file/鹦鹉树根吊环2店V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFCC48RP/output_file/鹦鹉树根吊环2店V1.xlsm",
+              "added_at": "2026-11-08T03:50:04+08:00"
+            }
+          ],
+          "status": "待复核",
           "purchase_status": "",
-          "note": "",
+          "note": "已按1店参考生成2店V1。Google Chrome已核对原链接B0HFCC48RP，前台仅Tree Root Wood一款，表格为1父体+1子体，沿用SET_NAME。父SKU CA-BirdRing，子SKU CA-BirdRing-Wood及关联编号均去掉开头TT，全部Listing Action=Create or Replace (Full Update)。价格沿用参考2.34美元，材质Wood；子体本体4.72×4.72×0.8 Inches、0.22 Pounds，包装5×5×0.8 Inches、0.24 Pounds。父体补本体尺寸重量，包装留空。2店模板无Display Diameter列，4.72英寸直径已在本体长宽及标题亮点保留。标题60/54字符，亮点116/120字符，子体Model Name=SKU；改写描述末段的内部填表说明。模板自检0，动态红框0，未解析0，WPS打开复核通过。",
           "store_id": "2店",
           "image_groups": {},
           "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFCC48RP/reference_template/鹦鹉树根吊环_PET_TOY_父子体_v1.xlsm"
@@ -1097,11 +1112,17 @@
           "link": "https://www.amazon.com/dp/B0HFGC6GBT?ie=UTF8&ASIN=B0HFGC6GBT&s=bazaar",
           "competitor_html": "",
           "source_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFGC6GBT/source_template/OFFICE_PRODUCTS.xlsm",
-          "output_file": "",
-          "output_versions": [],
-          "status": "已有模板",
+          "output_file": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFGC6GBT/output_file/卷纸切割器黑色2店V1.xlsm",
+          "output_versions": [
+            {
+              "version": 1,
+              "path": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFGC6GBT/output_file/卷纸切割器黑色2店V1.xlsm",
+              "added_at": "2026-11-08T03:03:51+08:00"
+            }
+          ],
+          "status": "需修正",
           "purchase_status": "",
-          "note": "",
+          "note": "按用户要求使用2店 OFFICE_PRODUCTS 模板，父SKU CA-PaperCutter、子SKU CA-PaperCutter-Black，仅去掉SKU及关联编号开头TT；Listing Action、文案、价格、尺寸等沿用参考V2。参考文件已保存工作台并核对原件一致。参考表原有5项自检问题按“其它不变”保留：父标题107/子标题114字符，父子体Item Highlight为空，子体Model Name未等于SKU。",
           "store_id": "2店",
           "image_groups": {},
           "reference_template": "data/refurb_batch_workbench/files/cady11月4号1店上2店/B0HFGC6GBT/reference_template/卷纸切割器黑色V2.xlsx"

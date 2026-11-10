@@ -581,7 +581,7 @@ def _normalize_output_versions(row):
 
 def _output_version_number(filename):
     match = re.search(
-        r"V(\d+)(?:_已改for(?:[ _]adult)?)?(?=\.[^.]+$)",
+        r"V(\d+)(?:_已改for(?:[ _]adult)?)?(?:_\d{8}_\d{6}|_\d+)?(?=\.[^.]+$)",
         str(filename or ""),
         re.I,
     )

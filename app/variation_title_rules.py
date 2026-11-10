@@ -192,17 +192,25 @@ def build_parent_title(child_rows, fallback_row=None):
     child_rows = [row for row in child_rows if _text(row.get("title")) or _text(row.get("product_name"))]
     if not child_rows:
         return _text((fallback_row or {}).get("title"))
-    attr_values = _attr_values(child_rows, "color") + _attr_values(child_rows, "size")
+    attr_values = (
+        _attr_values(child_rows, "color")
+        + _attr_values(child_rows, "size")
+        + _attr_values(child_rows, "set_name")
+    )
     prefix = _common_package_prefix(child_rows) or package_prefix_for_row(fallback_row or {})
     base_segments = _best_base_segments(child_rows, attr_values)
     return _compose_title(prefix, base_segments, [])
 
 
 def build_child_title(row, child_rows):
-    attr_values = _attr_values(child_rows, "color") + _attr_values(child_rows, "size")
+    attr_values = (
+        _attr_values(child_rows, "color")
+        + _attr_values(child_rows, "size")
+        + _attr_values(child_rows, "set_name")
+    )
     base_segments = _best_base_segments(child_rows, attr_values)
     row_attrs = []
-    for field in ("color", "size"):
+    for field in ("color", "size", "set_name"):
         value = _clean_spaces(row.get(field))
         if value and not _is_attr_segment(value, row_attrs):
             row_attrs.append(value)

@@ -15,6 +15,13 @@ from .template_validator import validate_template_file
 from .template_red_field_scanner import scan_template_red_fields
 from .template_writer import fill_template
 from .listing_action import action_for_sku
+from .sku_rules import (
+    generated_child_sku,
+    generated_parent_sku,
+    product_sku_token,
+    sku_title_word,
+    variant_sku_suffix,
+)
 from .workbook_io import read_intake_rows, write_intake_workbook
 
 
@@ -664,22 +671,28 @@ def _parent_sku(task):
     value = str(task.get("parent_sku") or "").strip()
     if value:
         return _apply_store_sku_prefix(task, value)
-    base = _product_sku_token(
+    product_name = (
         task.get("sku_base")
         or task.get("product_name")
         or task.get("name")
         or task.get("output_name")
     )
-    prefix = "TTCA" if str(task.get("store_id") or "").strip() == "1店" else "CA"
-    return f"{prefix}-{base}"
+    return generated_parent_sku(product_name, task.get("store_id"))
 
 
 def _child_sku(task, variant, index):
     explicit = str(variant.get("sku") or (task.get("child_sku") if index == 1 else "") or "").strip()
     if explicit:
         return _apply_store_sku_prefix(task, explicit)
-    suffix = _variant_sku_suffix(task, variant, index)
-    return f"{_parent_sku(task)}-{suffix}"
+    return generated_child_sku(
+        _parent_sku(task),
+        variation_theme=task.get("variation_theme"),
+        color=variant.get("color") or task.get("color"),
+        size=variant.get("size") or task.get("size"),
+        set_count=variant.get("set_count") or task.get("set_count"),
+        set_name=variant.get("set_name") or task.get("set_name"),
+        index=index,
+    )
 
 
 def _apply_store_sku_prefix(task, value):
@@ -691,52 +704,22 @@ def _apply_store_sku_prefix(task, value):
 
 
 def _product_sku_token(value):
-    words = re.findall(r"[A-Za-z0-9]+", str(value or ""))[:2]
-    token = "".join(_sku_title_word(word) for word in words)
-    return token[:20] or "Product"
+    return product_sku_token(value)
 
 
 def _variant_sku_suffix(task, variant, index):
-    theme = str(task.get("variation_theme") or "").upper()
-    color = variant.get("color") or task.get("color")
-    size = variant.get("size") or task.get("size")
-    set_count = variant.get("set_count") or task.get("set_count")
-    set_name = variant.get("set_name") or task.get("set_name")
-
-    if "NUMBER_OF_ITEMS" in theme or "ITEM_PACKAGE_QUANTITY" in theme:
-        value = f"{set_count} Pcs" if set_count not in (None, "") else ""
-    elif theme in {"COLOR", "COLOR_NAME"}:
-        value = color
-    elif theme in {"SIZE", "SIZE_NAME"}:
-        value = size
-    elif "SET_NAME" in theme and "/" not in theme:
-        value = set_name or size or color
-    else:
-        value = " ".join(str(item) for item in (color, size) if item not in (None, ""))
-    token = "".join(
-        _sku_title_word(word, lowercase_units=True)
-        for word in re.findall(r"[A-Za-z0-9]+", str(value or ""))
+    return variant_sku_suffix(
+        variation_theme=task.get("variation_theme"),
+        color=variant.get("color") or task.get("color"),
+        size=variant.get("size") or task.get("size"),
+        set_count=variant.get("set_count") or task.get("set_count"),
+        set_name=variant.get("set_name") or task.get("set_name"),
+        index=index,
     )
-    return token[:16] or f"Option{index}"
-
-
-SKU_UNIT_TOKENS = {
-    "pc", "pcs", "set", "sets",
-    "mm", "cm", "m",
-    "in", "inch", "inches",
-    "oz", "lb", "lbs",
-    "g", "kg",
-    "ml", "l",
-}
 
 
 def _sku_title_word(word, lowercase_units=False):
-    text = str(word or "")
-    if text.isdigit():
-        return text
-    if lowercase_units and text.lower() in SKU_UNIT_TOKENS:
-        return text.lower()
-    return text[:1].upper() + text[1:].lower()
+    return sku_title_word(word, lowercase_units=lowercase_units)
 
 
 def _normalize_size(value):
